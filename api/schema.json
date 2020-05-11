@@ -1,448 +1,450 @@
 {
-      "produces": [
-            "application/json"
-      ],
-      "consumes": [
-            "application/json"
-      ],
-      "tags":{ [{
-                  "description": "Status data of the LCP."
-              },
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "tags": {
+        [{
+                "description": "Status data of the LCP."
+            },
             {
                 "name": "code",
-                  "description": "Code injection at run-time."
-              },
+                "description": "Code injection at run-time."
+            },
             {
                 "name": "config",
-                  "description": "Configuration at run-time."
-              }
+                "description": "Configuration at run-time."
+            }
         ],
-      "paths": {
-          "/status": {
+        "paths": {
+            "/status": {
                 "get": {
-                      "summary": "Status info",
-                        "description": "Get info about the status of the LCP in the execution environment.",
-                        "tags": [
-                            "status"
-                          ],
-                        "responses": {
-                            "200": {
-                                  "description": "Status data of the LCP.",
-                                    "schema": {
-                                        "$ref": "#/definitions/StatusResponseSchema"
-                                      }
-                                },
-                              "401": {
-                                  "description": "Unauthorized.",
-                                    "schema": {
-                                        "$ref": "#/definitions/HTTPError"
-                                      }
-                                }
-                          }
-                    },
-                  "post": {
-                      "summary": "Status set.",
-                        "description": "Set the last heartbeat.",
-                        "tags": [
-                            "status"
-                          ],
-                        "responses": {
-                            "200": {
-                                  "description": "Status data of the LCP.",
-                                    "schema": {
-                                        "$ref": "#/definitions/StatusResponseSchema"
-                                      }
-                                },
-                              "401": {
-                                  "description": "Unauthorized.",
-                                    "schema": {
-                                        "$ref": "#/definitions/HTTPError"
-                                      }
-                                }
-                          }
+                    "summary": "Status info",
+                    "description": "Get info about the status of the LCP in the execution environment.",
+                    "tags": [
+                        "status"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Status data of the LCP.",
+                            "schema": {
+                                "$ref": "#/definitions/StatusResponseSchema"
+                            }
+                        },
+                        "401": {
+                            "description": "Unauthorized.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
+                            }
+                        }
                     }
-              },
+                },
+                "post": {
+                    "summary": "Status set.",
+                    "description": "Set the last heartbeat.",
+                    "tags": [
+                        "status"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Status data of the LCP.",
+                            "schema": {
+                                "$ref": "#/definitions/StatusResponseSchema"
+                            }
+                        },
+                        "401": {
+                            "description": "Unauthorized.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
+                            }
+                        }
+                    }
+                }
+            },
             "/code": {
                 "get": {
-                      "summary": "Code injection history",
-                        "description": "Get the history of injected code.",
-                        "tags": [
-                            "code"
-                          ],
-                        "responses": {
-                            "200": {
-                                  "description": "History of the injected code.",
-                                    "schema": {
-                                        "type": "array",
-                                          "items": {
-                                              "oneOf": [
-                                                    "CodeInjectedResponseSchema",
-                                                      "CodeErrorResponseSchema"
-                                                  ]
-                                            }
-                                      }
-                                },
-                              "400": {
-                                  "description": "Bad Request.",
-                                    "schema": {
-                                        "$ref": "#/definitions/HTTPError"
-                                      }
-                                },
-                              "401": {
-                                  "description": "Unauthorized.",
-                                    "schema": {
-                                        "$ref": "#/definitions/HTTPError"
-                                      }
-                                }
-                          }
-                    },
-                  "post": {
-                      "summary": "Code injection",
-                        "description": "Inject code at run-time in the local environment.",
-                        "parameters": [{
-                            "na{me": "payload",
-                            "in": "body",
+                    "summary": "Code injection history",
+                    "description": "Get the history of injected code.",
+                    "tags": [
+                        "code"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "History of the injected code.",
                             "schema": {
                                 "type": "array",
                                 "items": {
-                                      "$ref": "#/definitions/CodeRequestSchema"
-                                  }
+                                    "oneOf": [
+                                        "CodeInjectedResponseSchema",
+                                        "CodeErrorResponseSchema"
+                                    ]
                                 }
-                          }],
-                        "tags": [
-                 ],         "code"
-                        "responses": {
-                              "200": {
-                                "description": "Code injection executed.",
-                                "schema": {
-                                      "$ref": "#/definitions/CodeResponseSchema"
-                                    }
-                                },
-                                  "400": {
-                                    "description": "Bad Request.",
-                                  "schema": {
-                                      "$ref": "#/definitions/HTTPError"
-                                    }
-                                },
-                                  "401": {
-                                    "description": "Unauthorized.",
-                                  "schema": {
-                                      "$ref": "#/definitions/HTTPError"
-                                    }
-                                }
-                              }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
+                            }
+                        },
+                        "401": {
+                            "description": "Unauthorized.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
+                            }
                         }
+                    }
+                },
+                "post": {
+                    "summary": "Code injection",
+                    "description": "Inject code at run-time in the local environment.",
+                    "parameters": [{
+                        "na{me": "payload",
+                        "in": "body",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CodeRequestSchema"
+                            }
+                        }
+                    }],
+                    "tags": [],
+                    "code"
+                    "responses": {
+                        "200": {
+                            "description": "Code injection executed.",
+                            "schema": {
+                                "$ref": "#/definitions/CodeResponseSchema"
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
+                            }
+                        },
+                        "401": {
+                            "description": "Unauthorized.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
+                            }
+                        }
+                    }
+                }
             },
-                "/config": {
-                  "get": {
+            "/config": {
+                "get": {
                     "summary": "Configuration update history",
                     "description": "Get the history of configuration updates.",
-                      "tags": [
-                            "config"
-                        ],
-                        "responses": {
-                              "200": {
-                                "description": "History of the configuration updates.",
-                                "schema": {
-                                      "type": "array",
-                                        "items": {
-                                            "oneOf": [
-                                                  "ConfigActionResponseSchema",
-                                                  "ConfigParameterResponseSchema",
-                                                    "ConfigResourceResponseSchema"
-                                                  ]
-                                              }
-                                          }
-                                    },
-                                  "400": {
-                                    "description": "Bad Request.",
-                                  "schema": {
-                                      "$ref": "#/definitions/HTTPError"
-                                    }
-                                },
-                                  "401": {
-                                    "description": "Unauthorized.",
-                                  "schema": {
-                                      "$ref": "#/definitions/HTTPError"
-                                    }
-                                }
-                              }
-                        },
-                      "post": {
-                        "summary": "Configuration update",
-                      "description": "Apply configuration changes to the local environment.",
-                      "tags": [
-                            "config"
-                        ],
-                        "parameters": [{
-                              "name": "payload",
-                            "required": true,
-                            "in{": "body",
+                    "tags": [
+                        "config"
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "History of the configuration updates.",
+                            "schema": {
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/definitions/ConfigRequestSchema"
+                                    "oneOf": [
+                                        "ConfigActionResponseSchema",
+                                        "ConfigParameterResponseSchema",
+                                        "ConfigResourceResponseSchema"
+                                    ]
                                 }
-                              }
-                          }],
-                            "responses": {
-                              "200": {
-                                "description": "Configuration changes executed.",
-                 ],             "schema": {
-                                    "items": {
-                                          "$ref": "#/definitions/ConfigResponseSchema"
-                                        }
-                                    }
-                                  },
-                                  "400": {
-                                        "description": "Bad request.",
-                                      "schema": {
-                                        "$ref": "#/definitions/HTTPError"
-                                  }
-                              },
-                                "401": {
-                                    "description": "Unauthorized.",
-                                      "schema": {
-                                        "$ref": "#/definitions/HTTPError"
-                                  }
-                              }
+                            }
+                        },
+                        "400": {
+                            "description": "Bad Request.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
+                            }
+                        },
+                        "401": {
+                            "description": "Unauthorized.",
+                            "schema": {
+                                "$ref": "#/definitions/HTTPError"
                             }
                         }
-           }
-         },
-            "info"  : {
-                "title": "GUARD Local Control Plane",
-              "version": "0.0.1"
-        },
-      "swagger": "2.0",
-      "definitions": {
-            "StatusResponseSchema": {
-                "type": "object",
-              "properties": {
-                  "last_heartbeat": {
-                      "type": "string",
-                        "format": "date-time",
-                          "description": "Timestamp of the last hearthbeat between the LCP and the CB",
-                          "example": "2019_02_14 15:23:33"
-                        },
-                          "started": {
-                              "type": "string",
-                              "format": "date-time",
-                              "description": "Timestamp when the LCP is started in this execution environment",
-                            "example": "2019_02_14 15:23:30"
-                        },
-                          "id": {
-                              "type": "string",
-                              "description": "ID of the execution environment.",
-                              "example": "fa7ca1b7-80b5-4a47-8cc6-2cb1ca0ed778"
-                        }
-                    },
-                      "required": [
-                          "id",
-                          "last_heartbeat",
-                        "started"
-                  ]
-              },
-                "HTTPError": {
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "type": "string",
-                        "description": "Human readable message that describes the error.",
-                          "example": "Could not decode the request body, either because it was not valid JSON or because it was not encoded as UTF-8."
-                      },
-                        "title": {
-                              "type": "string",
-                              "description": "Title error",
-                              "example": "400 Bad Request"
-                        }
-                    },
-                      "required": [
-                          "description",
-                          "title"
-                    ]
-              },
-              "CodeRequestSchema": {
-                    "type": "object",
-                    "properties": {
-                      "source": {
-                        "type": "string",
-                        "description": "Code source"
-                      },
-                      "name": {
-                            "type": "string",
-                              "description": "Code name.",
-                              "example": "firewall"
-                        }
-                    },
-                      "required": [
-                          "name",
-                          "source"
-                    ]
-              },
-              "CodeResultResponse": {
-                    "type": "object",
-                    "properties": {
-                      "warning": {
-                        "type": "string",
-                        "description": "Warning message.",
-                          "example": "Useless properties: id"
-                      }
                     }
-             },
-                  "CodeResponseSchema": {
-                      "type": "object",
-                    "properties": {
-                      "when": {
-                        "type": "string",
-                        "format": "date-time",
-                          "description": "Datetime of the configuration changes.",
-                          "example": "2020/02/13 15:27:06"
-                        },
-                          "results": {
-                              "type": "array",
-                              "items": {
-                                  "$ref": "#/definitions/CodeResultResponse"
-                            }
-                        }
-                      },
-                      "required": [
-                            "results",
-                          "when"
-                    ]
-              },
-              "ConfigResourceRequest": {
-                    "type": "object",
-                    "properties": {
-                      "content": {
-                        "type": "string",
-                        "description": "Resource content."
-                      },
-                      "destination": {
-                            "type": "string",
-                              "description": "Destination filename",
-                              "example": "filebeat.yml"
-                        }
-                    },
-                      "required": [
-                          "content",
-                          "destination"
-                    ]
-              },
-              "ConfigActionRequest": {
-                    "type": "object",
-                    "properties": {
-                      "cmd": {
-                        "type": "string",
-                        "description": "Command."
-                      },
-                      "args": {
+                },
+                "post": {
+                    "summary": "Configuration update",
+                    "description": "Apply configuration changes to the local environment.",
+                    "tags": [
+                        "config"
+                    ],
+                    "parameters": [{
+                            "name": "payload",
+                            "required": true,
+                            "in{": "body",
                             "type": "array",
-                              "description": "Command arguments.",
-                              "items": {
-                                "type": "string",
-                                "description": "Single command argument.",
-                                  "example": "-al"
-                              }
-                          }
-                        },
-                        "required": [
-                            "cmd"
-                      ]
-                },
-              "ConfigParameterRequest": {
-                  "type": "object",
-                    "properties": {
-                      "value": {
-                        "type": "string",
-                        "description": "Parameter new value.",
-                          "example": "10s"
-                      },
-                        "sep": {
-                              "type": "string",
-                              "description": "Separator between name and value.",
-                              "example": "="
-                        },
-                        "name": {
-                              "type": "string",
-                              "description": "Parameter name.",
-                              "example": "period"
-                        },
-                        "destination": {
-                              "type": "string",
-                              "description": "Destination filename.",
-                              "example": "filebeat.yml"
-                        }
-                    },
-                      "required": [
-                          "destination",
-                          "name",
-                        "sep",
-                      "value"
-                  ]
-                },
-                "ConfigRequestSchema": {
-                    "type": "object",
-                    "properties": {
-                      "resources": {
-                        "description": "List of resources.",
-                        "type": "array",
-                          "items": {
-                              "$ref": "#/definitions/ConfigResourceRequest"
-                            }
-                          },
-                          "actions": {
-                              "description": "List of actions.",
-                                "type": "array",
-                              "items": {
-                                "$ref": "#/definitions/ConfigActionRequest"
-                            }
-                          },
-                          "parameters": {
-                              "description": "List of parameters.",
-                                "type": "array",
-                              "items": {
-                                "$ref": "#/definitions/ConfigParameterRequest"
-                            }
-                          }
-                      }
-              },
-           "Con         figResultResponse": {
-                      "type": "object",
-                    "properties": {
-                      "type": {
-                        "type": "string",
-                        "description": "Configuration type."
-                      },
-                      "warning": {
-                            "type": "string",
-                              "description": "Warning message",
-                              "example": "Useless property: id"
-                        }
-                    },
-                      "required": [
-                          "type"
-                      ]
-                },
-              "ConfigResponseSchema": {
-                  "type": "object",
-                    "properties": {
-                      "when": {
-                        "type": "string",
-                        "format": "date-time",
-                          "description": "Datetime of the configuration changes",
-                          "example": "2020/02/13 15:27:06"
-                        },
-                          "results": {
-                              "type": "array",
-                              "items": {
-                                  "$ref": "#/definitions/ConfigResultResponse"
+                            "items": {
+                                "$ref": "#/definitions/ConfigRequestSchema"
                             }
                         }
-                      },
-                      "required": [
-                            "results",
-                          "when"
-                    ]
-              }
-          }
+                    }],
+                "responses": {
+                    "200": {
+                        "description": "Configuration changes executed.",
+                    ],
+                    "schema": {
+                        "items": {
+                            "$ref": "#/definitions/ConfigResponseSchema"
+                        }
+                    }
+                },
+                "400": {
+                    "description": "Bad request.",
+                    "schema": {
+                        "$ref": "#/definitions/HTTPError"
+                    }
+                },
+                "401": {
+                    "description": "Unauthorized.",
+                    "schema": {
+                        "$ref": "#/definitions/HTTPError"
+                    }
+                }
+            }
+        }
+    }
+},
+"info": {
+    "title": "Local Control Plane",
+    "version": "0.0.1"
+},
+"swagger": "2.0",
+"definitions": {
+    "StatusResponseSchema": {
+        "type": "object",
+        "properties": {
+            "last_heartbeat": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp of the last hearthbeat between the LCP and the CB",
+                "example": "2019_02_14 15:23:33"
+            },
+            "started": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp when the LCP is started in this execution environment",
+                "example": "2019_02_14 15:23:30"
+            },
+            "id": {
+                "type": "string",
+                "description": "ID of the execution environment.",
+                "example": "fa7ca1b7-80b5-4a47-8cc6-2cb1ca0ed778"
+            }
+        },
+        "required": [
+            "id",
+            "last_heartbeat",
+            "started"
+        ]
+    },
+    "HTTPError": {
+        "type": "object",
+        "properties": {
+            "description": {
+                "type": "string",
+                "description": "Human readable message that describes the error.",
+                "example": "Could not decode the request body, either because it was not valid JSON or because it was not encoded as UTF-8."
+            },
+            "title": {
+                "type": "string",
+                "description": "Title error",
+                "example": "400 Bad Request"
+            }
+        },
+        "required": [
+            "description",
+            "title"
+        ]
+    },
+    "CodeRequestSchema": {
+        "type": "object",
+        "properties": {
+            "source": {
+                "type": "string",
+                "description": "Code source"
+            },
+            "name": {
+                "type": "string",
+                "description": "Code name.",
+                "example": "firewall"
+            }
+        },
+        "required": [
+            "name",
+            "source"
+        ]
+    },
+    "CodeResultResponse": {
+        "type": "object",
+        "properties": {
+            "warning": {
+                "type": "string",
+                "description": "Warning message.",
+                "example": "Useless properties: id"
+            }
+        }
+    },
+    "CodeResponseSchema": {
+        "type": "object",
+        "properties": {
+            "when": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Datetime of the configuration changes.",
+                "example": "2020/02/13 15:27:06"
+            },
+            "results": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/CodeResultResponse"
+                }
+            }
+        },
+        "required": [
+            "results",
+            "when"
+        ]
+    },
+    "ConfigResourceRequest": {
+        "type": "object",
+        "properties": {
+            "content": {
+                "type": "string",
+                "description": "Resource content."
+            },
+            "destination": {
+                "type": "string",
+                "description": "Destination filename",
+                "example": "filebeat.yml"
+            }
+        },
+        "required": [
+            "content",
+            "destination"
+        ]
+    },
+    "ConfigActionRequest": {
+        "type": "object",
+        "properties": {
+            "cmd": {
+                "type": "string",
+                "description": "Command."
+            },
+            "args": {
+                "type": "array",
+                "description": "Command arguments.",
+                "items": {
+                    "type": "string",
+                    "description": "Single command argument.",
+                    "example": "-al"
+                }
+            }
+        },
+        "required": [
+            "cmd"
+        ]
+    },
+    "ConfigParameterRequest": {
+        "type": "object",
+        "properties": {
+            "value": {
+                "type": "string",
+                "description": "Parameter new value.",
+                "example": "10s"
+            },
+            "sep": {
+                "type": "string",
+                "description": "Separator between name and value.",
+                "example": "="
+            },
+            "name": {
+                "type": "string",
+                "description": "Parameter name.",
+                "example": "period"
+            },
+            "destination": {
+                "type": "string",
+                "description": "Destination filename.",
+                "example": "filebeat.yml"
+            }
+        },
+        "required": [
+            "destination",
+            "name",
+            "sep",
+            "value"
+        ]
+    },
+    "ConfigRequestSchema": {
+        "type": "object",
+        "properties": {
+            "resources": {
+                "description": "List of resources.",
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/ConfigResourceRequest"
+                }
+            },
+            "actions": {
+                "description": "List of actions.",
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/ConfigActionRequest"
+                }
+            },
+            "parameters": {
+                "description": "List of parameters.",
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/ConfigParameterRequest"
+                }
+            }
+        }
+    },
+    "Con         figResultResponse": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "description": "Configuration type."
+            },
+            "warning": {
+                "type": "string",
+                "description": "Warning message",
+                "example": "Useless property: id"
+            }
+        },
+        "required": [
+            "type"
+        ]
+    },
+    "ConfigResponseSchema": {
+        "type": "object",
+        "properties": {
+            "when": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Datetime of the configuration changes",
+                "example": "2020/02/13 15:27:06"
+            },
+            "results": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/ConfigResultResponse"
+                }
+            }
+        },
+        "required": [
+            "results",
+            "when"
+        ]
+    }
+}
 }
