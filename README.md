@@ -28,7 +28,7 @@ See the [Swagger Schema](swagger.yml) and the relative [documentation](https://a
 2. Clone the repository.
 
    ```bash
-   git clone https://gitlab.com/guard-repositories/wp2/guard-local-control-plane.git
+   git clone https://gitlab.com/guard-repositories/guard-local-control-plane.git
    cd guard-local-control-plane
    ```
 
