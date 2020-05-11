@@ -5,7 +5,7 @@
       {
         "type": "action",
         "executed": "pwd",
-        "stdout": "/c/Users/aless/Dropbox (Personal)/work/projects/astrid/gitlab_repositories/wp2/astrid-local-control-plane\n",
+        "stdout": "/c/Users/aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/wp2/guard-local-control-plane\n",
         "stderr": "",
         "return-code": 0
       },
@@ -27,7 +27,7 @@
       {
         "type": "action",
         "executed": "pwd",
-        "stdout": "/c/Users/aless/Dropbox (Personal)/work/projects/astrid/gitlab_repositories/wp2/astrid-local-control-plane\n",
+        "stdout": "/c/Users/aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/wp2/guard-local-control-plane\n",
         "stderr": "",
         "return-code": 0
       },
@@ -94,7 +94,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination $HOME/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination $HOME/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -104,7 +104,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination $HOME/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination $HOME/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -114,7 +114,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination $HOME/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination $HOME/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -214,7 +214,7 @@
       {
         "type": "action",
         "executed": "pwd",
-        "stdout": "/c/Users/aless/Dropbox (Personal)/work/projects/astrid/gitlab_repositories/wp2/astrid-local-control-plane\n",
+        "stdout": "/c/Users/aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/wp2/guard-local-control-plane\n",
         "stderr": "",
         "return-code": 0
       },
@@ -231,7 +231,7 @@
       {
         "type": "action",
         "executed": "ls",
-        "stdout": "__pycache__\napi\nastrid-local-control-plane.code-workspace\navatar.png\nCHANGELOG\nconfig.ini\nCONTRIBUTING.md\ncurl.py\ndata\nLICENSE\nmain.py\nmode.py\nREADME.md\nrequirements.txt\nresource\nschema\nutils.py\n",
+        "stdout": "__pycache__\napi\nguard-local-control-plane.code-workspace\navatar.png\nCHANGELOG\nconfig.ini\nCONTRIBUTING.md\ncurl.py\ndata\nLICENSE\nmain.py\nmode.py\nREADME.md\nrequirements.txt\nresource\nschema\nutils.py\n",
         "stderr": "",
         "return-code": 0
       },
@@ -333,7 +333,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -341,16 +341,16 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"wget 127.0.0.1:5000/pkg/filebeat.tar.gz -O ~/astrid-framework/env/src/filebeat.tar.gz\"' returned non-zero exit status 6."
+        "description": "Command 'bash -c \"wget 127.0.0.1:5000/pkg/filebeat.tar.gz -O ~/guard-framework/env/src/filebeat.tar.gz\"' returned non-zero exit status 6."
       },
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env\"' returned non-zero exit status 2."
+        "description": "Command 'bash -c \"tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env\"' returned non-zero exit status 2."
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -363,7 +363,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/src/filebeat/filebeat -c ~/astrid-framework/env/src/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 127."
+        "description": "Command 'bash -c \"~/guard-framework/env/src/filebeat/filebeat -c ~/guard-framework/env/src/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 127."
       }
     ]
   },
@@ -373,7 +373,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/src/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/src/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -382,28 +382,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   718M      0 --:--:-- --:--:-- --:--:--  742M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -416,7 +416,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/src/filebeat/filebeat -c ~/astrid-framework/env/src/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 127."
+        "description": "Command 'bash -c \"~/guard-framework/env/src/filebeat/filebeat -c ~/guard-framework/env/src/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 127."
       }
     ]
   },
@@ -426,7 +426,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/src/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/src/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -435,28 +435,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   857M      0 --:--:-- --:--:-- --:--:--  891M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -469,7 +469,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -479,7 +479,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/src/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/src/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -488,28 +488,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   795M      0 --:--:-- --:--:-- --:--:--  795M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -522,7 +522,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -532,7 +532,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -541,28 +541,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   857M      0 --:--:-- --:--:-- --:--:--  857M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -575,7 +575,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -585,7 +585,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -594,28 +594,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   825M      0 --:--:-- --:--:-- --:--:--  857M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -627,28 +627,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   891M      0 --:--:-- --:--:-- --:--:--  891M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -661,7 +661,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -671,7 +671,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -680,28 +680,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   768M      0 --:--:-- --:--:-- --:--:--  768M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -714,7 +714,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -724,7 +724,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -733,28 +733,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   655M      0 --:--:-- --:--:-- --:--:--  675M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -767,7 +767,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -777,7 +777,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -786,28 +786,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   675M      0 --:--:-- --:--:-- --:--:--  675M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -820,7 +820,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -830,7 +830,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -839,28 +839,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   768M      0 --:--:-- --:--:-- --:--:--  768M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -873,7 +873,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -883,7 +883,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -892,28 +892,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   718M      0 --:--:-- --:--:-- --:--:--  742M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -926,7 +926,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -936,7 +936,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -945,28 +945,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   696M      0 --:--:-- --:--:-- --:--:--  696M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -979,7 +979,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -989,7 +989,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -998,28 +998,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   825M      0 --:--:-- --:--:-- --:--:--  825M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1032,7 +1032,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1042,7 +1042,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1051,28 +1051,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   571M      0 --:--:-- --:--:-- --:--:--  586M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1085,7 +1085,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1095,7 +1095,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1104,28 +1104,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   928M      0 --:--:-- --:--:-- --:--:--  928M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1138,7 +1138,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1148,7 +1148,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1157,28 +1157,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   675M      0 --:--:-- --:--:-- --:--:--  675M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1191,7 +1191,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1201,7 +1201,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1210,28 +1210,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   619M      0 --:--:-- --:--:-- --:--:--  636M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1244,7 +1244,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1254,7 +1254,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1263,28 +1263,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   795M      0 --:--:-- --:--:-- --:--:--  825M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1297,7 +1297,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1307,7 +1307,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1316,28 +1316,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   696M      0 --:--:-- --:--:-- --:--:--  696M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1350,7 +1350,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1360,7 +1360,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1369,28 +1369,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   696M      0 --:--:-- --:--:-- --:--:--  696M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1403,7 +1403,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1413,7 +1413,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1422,28 +1422,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   795M      0 --:--:-- --:--:-- --:--:--  795M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1456,7 +1456,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1466,7 +1466,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1475,28 +1475,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   857M      0 --:--:-- --:--:-- --:--:--  857M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1509,7 +1509,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1518,7 +1518,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/src/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/src/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1530,28 +1530,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   857M      0 --:--:-- --:--:-- --:--:--  891M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1564,7 +1564,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1573,28 +1573,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   696M      0 --:--:-- --:--:-- --:--:--  696M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1607,7 +1607,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1617,7 +1617,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1626,28 +1626,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   969M      0 --:--:-- --:--:-- --:--:--  969M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1660,7 +1660,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1670,7 +1670,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1679,7 +1679,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/src/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/src/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1691,28 +1691,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   891M      0 --:--:-- --:--:-- --:--:--  928M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1725,7 +1725,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1735,7 +1735,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1744,28 +1744,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   928M      0 --:--:-- --:--:-- --:--:--  969M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1778,7 +1778,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1788,7 +1788,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1797,7 +1797,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/src/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/src/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1809,28 +1809,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   795M      0 --:--:-- --:--:-- --:--:--  795M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1843,7 +1843,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1853,7 +1853,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1862,7 +1862,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/src/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/src/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1874,28 +1874,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   768M      0 --:--:-- --:--:-- --:--:--  768M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1908,7 +1908,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1918,7 +1918,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1927,7 +1927,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1939,28 +1939,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   969M      0 --:--:-- --:--:-- --:--:--  969M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -1973,7 +1973,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -1983,7 +1983,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -1992,28 +1992,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   857M      0 --:--:-- --:--:-- --:--:--  891M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2026,7 +2026,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2036,7 +2036,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2045,7 +2045,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2057,28 +2057,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   696M      0 --:--:-- --:--:-- --:--:--  696M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2091,7 +2091,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2101,7 +2101,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2110,28 +2110,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   928M      0 --:--:-- --:--:-- --:--:--  928M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2144,7 +2144,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2154,7 +2154,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2163,28 +2163,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   928M      0 --:--:-- --:--:-- --:--:--  928M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2197,7 +2197,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2207,7 +2207,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2217,7 +2217,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2226,28 +2226,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0  1013M      0 --:--:-- --:--:-- --:--:-- 1013M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2260,7 +2260,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2270,7 +2270,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2279,28 +2279,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   768M      0 --:--:-- --:--:-- --:--:--  768M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2313,7 +2313,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2323,7 +2323,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2332,28 +2332,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   557M      0 --:--:-- --:--:-- --:--:--  557M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2366,7 +2366,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2376,7 +2376,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2385,7 +2385,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2397,28 +2397,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   825M      0 --:--:-- --:--:-- --:--:--  857M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2431,7 +2431,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2441,7 +2441,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2450,28 +2450,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   928M      0 --:--:-- --:--:-- --:--:--  969M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2484,7 +2484,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2494,7 +2494,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2503,7 +2503,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2515,28 +2515,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   495M      0 --:--:-- --:--:-- --:--:--  506M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2549,7 +2549,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2559,7 +2559,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2568,7 +2568,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2580,28 +2580,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0  1061M      0 --:--:-- --:--:-- --:--:-- 1061M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2614,7 +2614,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2624,7 +2624,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2633,7 +2633,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2645,28 +2645,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   891M      0 --:--:-- --:--:-- --:--:--  891M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2679,7 +2679,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2689,7 +2689,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },
@@ -2698,7 +2698,7 @@
     "results": [
       {
         "type": "action",
-        "executed": "rm -rf ~/astrid-framework/env/filebeat",
+        "executed": "rm -rf ~/guard-framework/env/filebeat",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2710,28 +2710,28 @@
     "results": [
       {
         "type": "action",
-        "executed": "mkdir -p ~/astrid-framework/env/src",
+        "executed": "mkdir -p ~/guard-framework/env/src",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "curl --user cb:astrid http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "curl --user cb:guard http://127.0.0.1:5000/pkg/filebeat.tar.gz --output ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n100 22.2M  100 22.2M    0     0   891M      0 --:--:-- --:--:-- --:--:--  891M\n",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "tar -xzf ~/astrid-framework/env/src/filebeat.tar.gz -C ~/astrid-framework/env",
+        "executed": "tar -xzf ~/guard-framework/env/src/filebeat.tar.gz -C ~/guard-framework/env",
         "stdout": "",
         "stderr": "",
         "return-code": 0
       },
       {
         "type": "action",
-        "executed": "rm ~/astrid-framework/env/src/filebeat.tar.gz",
+        "executed": "rm ~/guard-framework/env/src/filebeat.tar.gz",
         "stdout": "",
         "stderr": "",
         "return-code": 0
@@ -2744,7 +2744,7 @@
       {
         "type": "action",
         "error": true,
-        "description": "Command 'bash -c \"~/astrid-framework/env/filebeat/filebeat -c ~/astrid-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
+        "description": "Command 'bash -c \"~/guard-framework/env/filebeat/filebeat -c ~/guard-framework/env/filebeat/config/filebeat.yml -e\"' returned non-zero exit status 126."
       }
     ]
   },
@@ -2754,7 +2754,7 @@
       {
         "type": "parameter",
         "error": true,
-        "description": "Destination ~/astrid-framework/env/filebeat/config/inputs/log.yml not found"
+        "description": "Destination ~/guard-framework/env/filebeat/config/inputs/log.yml not found"
       }
     ]
   },

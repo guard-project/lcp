@@ -1,10 +1,10 @@
-# ASTRID Local Control Plane
+# GUARD Local Control Plane
 
 In each local agent, the control plane is responsible for programmability, i.e., changing the behaviour of the data plane at run-time.
 
 ---
 
-- [ASTRID Local Control Plane](#astrid-local-control-plane)
+- [GUARD Local Control Plane](#guard-local-control-plane)
   - [Guide](#guide)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -16,7 +16,7 @@ In each local agent, the control plane is responsible for programmability, i.e.,
 
 ## Guide
 
-See the [Swagger Schema](swagger.yml) and the relative [documentation](https://app.swaggerhub.com/apis-docs/alexcarrega/astrid-lcp/0.0.1) for more details about the REST endpoints and relative formats and requirements of request and response.
+See the [Swagger Schema](swagger.yml) and the relative [documentation](https://app.swaggerhub.com/apis-docs/alexcarrega/guard-lcp/0.0.1) for more details about the REST endpoints and relative formats and requirements of request and response.
 
 ## Installation
 
@@ -28,8 +28,8 @@ See the [Swagger Schema](swagger.yml) and the relative [documentation](https://a
 2. Clone the repository.
 
    ```bash
-   git clone https://gitlab.com/astrid-repositories/wp2/astrid-local-control-plane.git
-   cd astrid-local-control-plane
+   git clone https://gitlab.com/guard-repositories/wp2/guard-local-control-plane.git
+   cd guard-local-control-plane
    ```
 
 3. Install the dependencies.
