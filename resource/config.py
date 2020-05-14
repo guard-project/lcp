@@ -2,6 +2,7 @@ from .base import BaseResource
 from schema import *
 
 
+import os
 import falcon
 import re
 import subprocess
@@ -104,7 +105,7 @@ class ConfigResource(BaseResource):
                                     output = dict(type=type, error=True, description=f'Missing {utils.get_none(destination=dest, name=name, sep=sep, value=value)}')
                                 else:
                                     try:
-                                        fix_dest = os.path.expenduser(dest)
+                                        fix_dest = os.path.expanduser(dest)
                                         with open(fix_dest, "r") as file:
                                             content = file.read()
                                         with open(fix_dest, "w") as file:
@@ -127,7 +128,7 @@ class ConfigResource(BaseResource):
                                     output = dict(type=type, error=True, description=f'Missing {utils.get_none(destination=dest, content=content)}')
                                 else:
                                     try:
-                                        fix_dest = os.path.expenduser(dest)
+                                        fix_dest = os.path.expanduser(dest)
                                         with open(fix_dest, "w") as file:
                                             file.write(content)
                                             output = dict(type=type, destination=dest)
