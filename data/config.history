@@ -1,1 +1,668 @@
-[]
+[
+  {
+    "when": "2020/05/18 21:43:16",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Missing schema"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:44:06",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not found"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:44:46",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:45:09",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:46:29",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:47:06",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:48:03",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/test.yml",
+        "path": [],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:48:59",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:49:27",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/test.yml",
+        "path": [],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:50:13",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:50:40",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:50:47",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/test.yml",
+        "path": [],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:50:54",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/test.yml",
+        "path": [],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:51:17",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/test.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:51:25",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/test.yml",
+        "path": [
+          "filebeat"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:57:07",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:57:24",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 21:57:51",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:00:01",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:00:39",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:00:57",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:01:05",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:03:20",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:03:28",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:03:41",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeats"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:04:09",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:04:25",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:13:16",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:13:27",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:13:38",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeats2",
+          "ciao"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:14:22",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeats2",
+          "ciao"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:15:15",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeats2",
+          "ciao"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:15:30",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:15:40",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeats2",
+          "ciao"
+        ],
+        "value": "10s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:16:16",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": "5s"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:19:34",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "5s",
+          "old": "5s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:19:39",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "yaml",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "10s",
+          "old": "5s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:20:35",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:21:20",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:22:22",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "json",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "10s",
+          "old": "10s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:22:37",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "json",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "10s",
+          "old": "1s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:23:02",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "json",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "10s",
+          "old": "10s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:23:16",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:24:06",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:24:21",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:24:34",
+    "results": [
+      {
+        "type": "parameter",
+        "error": true,
+        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:27:54",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "properties",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "10s",
+          "old": "10s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:28:09",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "properties",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "1s",
+          "old": "1s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:28:46",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "properties",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "1s",
+          "old": [
+            "1s",
+            {}
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:29:17",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "properties",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "1s",
+          "old": "1s"
+        }
+      }
+    ]
+  },
+  {
+    "when": "2020/05/18 22:29:30",
+    "results": [
+      {
+        "type": "parameter",
+        "schema": "properties",
+        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
+        "path": [
+          "filebeat",
+          "period"
+        ],
+        "value": {
+          "new": "10s",
+          "old": "1s"
+        }
+      }
+    ]
+  }
+]
