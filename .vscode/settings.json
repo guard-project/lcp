@@ -9,6 +9,7 @@
         "filebeat",
         "openapi",
         "reloader",
+        "proc",
         "resp",
         "strftime",
         "strptime",
