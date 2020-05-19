@@ -24,14 +24,16 @@ from ttldict import  TTLOrderedDict
 
 import argparse
 import falcon
+import git
 import hashlib
 import json
 import waitress
 
+repo = git.Repo(search_parent_directories=True)
 
 title = config_parser.get('info', 'title')
 description = config_parser.get('info', 'description')
-version = config_parser.get('info', 'version')
+version = f'{repo.head.object.hexsha}@{repo.active_branch}'
 
 lcp_host = config_parser.get('local-control-plane', 'host')
 lcp_port = config_parser.get('local-control-plane', 'port')
@@ -44,7 +46,7 @@ dev_password = config_parser.get('dev', 'password')
 log_level = config_parser.get('log', 'level')
 
 
-print(f'{title} v{version}')
+print(f'{title} version:{version}')
 
 
 parser = argparse.ArgumentParser(
