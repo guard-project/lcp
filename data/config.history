@@ -1,797 +1,781 @@
 [
   {
-    "when": "2020/05/18 21:43:16",
+    "when": "2020/02/19-14:09:38",
     "results": [
       {
-        "type": "parameter",
+        "name": "firewall",
+        "injected": true
+      }
+    ]
+  },
+  {
+    "when": "2020/02/19-14:09:42",
+    "results": [
+      {
+        "name": "firewall",
+        "injected": true
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 21:47:50",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Missing schema"
+        "description": "Stop winlogbeat not possible"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:44:06",
+    "when": "2020/05/26 21:48:13",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 21:50:44",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not found"
+        "description": "Stop winlogbeat not possible"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:44:46",
+    "when": "2020/05/26 21:50:59",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 21:52:04",
+    "results": [
+      {
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 21:52:11",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Stop winlogbeat not possible"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:45:09",
+    "when": "2020/05/26 21:52:54",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:46:29",
+    "when": "2020/05/26 21:53:02",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 21:53:16",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Stop winlogbeat not possible"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:47:06",
+    "when": "2020/05/26 21:56:24",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:48:03",
+    "when": "2020/05/26 21:56:29",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/test.yml",
-        "path": [],
-        "value": "5s"
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:48:59",
+    "when": "2020/05/26 21:57:08",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 21:57:23",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Stop winlogbeat not possible"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:49:27",
+    "when": "2020/05/26 22:02:56",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/test.yml",
-        "path": [],
-        "value": "5s"
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:50:13",
+    "when": "2020/05/26 22:03:13",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Stop winlogbeat not possible"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:50:40",
+    "when": "2020/05/26 22:04:51",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:50:47",
+    "when": "2020/05/26 22:04:56",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/test.yml",
-        "path": [],
-        "value": "5s"
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:50:54",
+    "when": "2020/05/26 22:05:11",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/test.yml",
-        "path": [],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 21:51:17",
-    "results": [
-      {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/test.yml not accessible"
+        "description": "Stop winlogbeat not possible"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:51:25",
+    "when": "2020/05/26 22:05:52",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/test.yml",
-        "path": [
-          "filebeat"
-        ],
-        "value": "5s"
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 21:57:07",
+    "when": "2020/05/26 22:05:59",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 21:57:24",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 21:57:51",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:00:01",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:00:39",
-    "results": [
-      {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "name 'z' is not defined"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:00:57",
+    "when": "2020/05/26 22:07:26",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:01:05",
+    "when": "2020/05/26 22:07:31",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat"
-        ],
-        "value": "5s"
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:03:20",
+    "when": "2020/05/26 22:07:38",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:03:28",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:03:41",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeats"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:04:09",
-    "results": [
-      {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "local variable 'run' referenced before assignment"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:04:25",
+    "when": "2020/05/26 22:08:50",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:13:16",
+    "when": "2020/05/26 22:08:55",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:09:00",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:10:00",
+    "results": [
+      {
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:10:04",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 41000
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:11:07",
+    "results": [
+      {
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:11:13",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 48008
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:18:32",
+    "results": [
+      {
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:18:39",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 143968,
+        "return-code": null
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:23:00",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:13:27",
+    "when": "2020/05/26 22:23:03",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:23:21",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "psutil.NoSuchProcess process no longer exists (pid=122144)"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:13:38",
+    "when": "2020/05/26 22:25:08",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeats2",
-          "ciao"
-        ],
-        "value": "5s"
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:14:22",
+    "when": "2020/05/26 22:25:16",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeats2",
-          "ciao"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:15:15",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeats2",
-          "ciao"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:15:30",
-    "results": [
-      {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "name 'prtin' is not defined"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:15:40",
+    "when": "2020/05/26 22:26:02",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeats2",
-          "ciao"
-        ],
-        "value": "10s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:16:16",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": "5s"
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:19:34",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "5s",
-          "old": "5s"
-        }
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:19:39",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "10s",
-          "old": "5s"
-        }
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:20:35",
-    "results": [
-      {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:21:20",
+    "when": "2020/05/26 22:26:04",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:26:10",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 98700
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:26:52",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:22:22",
+    "when": "2020/05/26 22:26:54",
     "results": [
       {
-        "type": "parameter",
-        "schema": "json",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "10s",
-          "old": "10s"
-        }
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:22:37",
+    "when": "2020/05/26 22:27:03",
     "results": [
       {
-        "type": "parameter",
-        "schema": "json",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "10s",
-          "old": "1s"
-        }
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 173576
       }
     ]
   },
   {
-    "when": "2020/05/18 22:23:02",
+    "when": "2020/05/26 22:29:13",
     "results": [
       {
-        "type": "parameter",
-        "schema": "json",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.json",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "10s",
-          "old": "10s"
-        }
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:23:16",
-    "results": [
-      {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:24:06",
+    "when": "2020/05/26 22:29:18",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:29:26",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 66988
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:30:50",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:24:21",
+    "when": "2020/05/26 22:30:55",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:30:58",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "module 'signal' has no attribute 'SIGKILL'"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:24:34",
+    "when": "2020/05/26 22:31:56",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:27:54",
+    "when": "2020/05/26 22:31:59",
     "results": [
       {
-        "type": "parameter",
-        "schema": "properties",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "10s",
-          "old": "10s"
-        }
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 22:28:09",
+    "when": "2020/05/26 22:32:02",
     "results": [
       {
-        "type": "parameter",
-        "schema": "properties",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "1s",
-          "old": "1s"
-        }
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:28:46",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "properties",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "1s",
-          "old": [
-            "1s",
-            {}
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:29:17",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "properties",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "1s",
-          "old": "1s"
-        }
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 22:29:30",
-    "results": [
-      {
-        "type": "parameter",
-        "schema": "properties",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.properties",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "10s",
-          "old": "1s"
-        }
-      }
-    ]
-  },
-  {
-    "when": "2020/05/18 23:43:45",
-    "results": [
-      {
-        "type": "parameter",
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "psutil.NoSuchProcess process no longer exists (pid=154640)"
       }
     ]
   },
   {
-    "when": "2020/05/18 23:44:35",
+    "when": "2020/05/26 22:32:17",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:32:24",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "psutil.NoSuchProcess process no longer exists (pid=64092)"
       }
     ]
   },
   {
-    "when": "2020/05/18 23:45:15",
+    "when": "2020/05/26 22:33:13",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:34:17",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 23:47:19",
+    "when": "2020/05/26 22:34:20",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:34:23",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Stop winlogbeat not possible",
+        "exception": "psutil.NoSuchProcess process no longer exists (pid=161896)"
       }
     ]
   },
   {
-    "when": "2020/05/18 23:48:18",
+    "when": "2020/05/26 22:35:38",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:35:42",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 176120
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:40:32",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Daemon winlogbeat not found"
       }
     ]
   },
   {
-    "when": "2020/05/18 23:48:43",
+    "when": "2020/05/26 22:40:37",
     "results": [
       {
-        "type": "parameter",
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:40:42",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 139752
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:40:56",
+    "results": [
+      {
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:41:12",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 119316
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:50:53",
+    "results": [
+      {
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 22:51:02",
+    "results": [
+      {
+        "type": "action",
         "error": true,
-        "description": "Source C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml not accessible"
+        "description": "Restart winlogbeat not possible",
+        "exception": "module 'signal' has no attribute 'SIGHP'"
       }
     ]
   },
   {
-    "when": "2020/05/18 23:49:41",
+    "when": "2020/05/26 22:53:43",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "0",
-          "period"
-        ],
-        "value": {
-          "new": "5s",
-          "old": "10s"
-        }
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/18 23:50:01",
+    "when": "2020/05/26 23:00:07",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/guard/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "0",
-          "period"
-        ],
-        "value": {
-          "new": "5s",
-          "old": "10s"
-        }
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
       }
     ]
   },
   {
-    "when": "2020/05/19 02:11:56",
+    "when": "2020/05/26 23:00:12",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/astrid/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": "5s",
-        "note": "No change needed"
+        "type": "action",
+        "error": true,
+        "description": "Stop winlogbeat not possible",
+        "exception": "send_signal_tree() got an unexpected keyword argument 'signal'"
       }
     ]
   },
   {
-    "when": "2020/05/19 02:12:07",
+    "when": "2020/05/26 23:00:51",
     "results": [
       {
-        "type": "parameter",
-        "schema": "yaml",
-        "source": "C:\\Users\\aless/Dropbox (Personal)/work/projects/astrid/gitlab_repositories/lcp/test/source.yml",
-        "path": [
-          "filebeat",
-          "period"
-        ],
-        "value": {
-          "new": "1s",
-          "old": "5s"
-        }
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 23:00:55",
+    "results": [
+      {
+        "type": "action",
+        "error": true,
+        "description": "Stop winlogbeat not possible",
+        "exception": "name 'sgn' is not defined"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 23:01:33",
+    "results": [
+      {
+        "type": "action",
+        "executed": "\"C:/Program Files/Elastic/Beats/7.7.0/winlogbeat.cmd\" run ",
+        "daemon": "winlogbeat"
+      }
+    ]
+  },
+  {
+    "when": "2020/05/26 23:01:37",
+    "results": [
+      {
+        "type": "action",
+        "cmd": "@stop",
+        "daemon": "winlogbeat",
+        "pid": 40600
       }
     ]
   }
