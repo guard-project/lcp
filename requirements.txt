@@ -3,7 +3,7 @@ colorama==0.4.3
 coloredlogs==14.0
 falcon==2.0.0
 falcon-apispec==0.4.0
-falcon-auth
+falcon-auth==1.1.0
 falcon-marshmallow
 gitpython
 jproperties
