@@ -6,7 +6,7 @@ falcon-apispec==0.4.0
 falcon-auth==1.1.0
 falcon-marshmallow==0.3.0
 gitpython==3.1.7
-jproperties
+jproperties==2.1.0
 pint
 psutil
 pyyaml
