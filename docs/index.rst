@@ -1,39 +1,37 @@
 .. CB-Manager documentation master file.
 
-Welcome to CB-Manager documentation!
+Welcome to LCP documentation!
 ====================================
 
-|CB|-Manager provides various |APIs| to interact with the Context Broker's database.
-Through a |REST| Interface, it exposes data and events stored in the internal storage system in a structured way.
-It provides uniform access to the capabilities of monitoring agents.
+In each local agent, the control plane is responsible for programmability, i.e., changing the behaviour of the data plane at run-time.
 
 Compatibility
 =============
 
-|CB|-Manager requires Python 3.5+.
+|LCP| requires Python 3.5+.
 
 
 Installation
 ============
 
 
-You can install |CB|-Manager with pip:
+You can install |LCP| with pip:
 
 .. code-block:: console
 
-    $ pip install cb-manager
+    $ pip install lcp
 
 or with easy_install:
 
 .. code-block:: console
 
-    $ easy_install cb-manager
+    $ easy_install lcp
 
 
 Documentation
 =============
 
-This part of the documentation will show you how to get started in using |CB|-Manager.
+This part of the documentation will show you how to get started in using |LCP|.
 
 .. toctree::
    :maxdepth: 2
@@ -41,16 +39,6 @@ This part of the documentation will show you how to get started in using |CB|-Ma
 
    installation
    running
-   exec-env
-   exec-env-type
-   network-link
-   network-link-type
-   connection
-   data
-   agent-catalog
-   agent-instance
-   ebpf-program-catalog
-   ebpf-program-instance
    glossary
 
 
@@ -82,6 +70,4 @@ Indices and tables
 * :ref:`search`
 
 
-.. |APIs| replace:: :abbr:`APIs (Application Program Interfaces)`
-.. |CB| replace:: :abbr:`CB (Context Broker)`
-.. |REST| replace:: :abbr:`REST (Representational State Transfer)`
+.. |LCP| replace:: :abbr:`LCP (Local Control Plane)`

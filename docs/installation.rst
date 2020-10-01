@@ -3,24 +3,24 @@
 Installation
 ============
 
-Install |CB|-Manager with ``pip``:
+Install |LCP| with ``pip``:
 
 .. code-block:: console
 
-    pip install cb-manager
+    pip install lcp
 
 
-The development version can be downloaded from `GitHub <https://github.com/guard-project/cb-manager>`_.
+The development version can be downloaded from `GitHub <https://github.com/guard-project/lcp>`_.
 
 .. code-block:: console
 
-    git clone https://github.com/guard-project/cb-manager.git
-    cd cb-manager
+    git clone https://github.com/guard-porject/lcp.git
+    cd lcp
     pip install -r requirements.txt
 
 
-|CB|-Manager requires Python version 3.5+.
+|LCP| requires Python version 3.5+.
 It's also working with PyPy and PyPy3.
 
 
-.. |CB| replace:: :abbr:`CB (Context Broker)`
+.. |LCP| replace:: :abbr:`LCP (Local Control Plane)`

@@ -7,19 +7,13 @@ __all__ = [
     'is_list',
     'iterate',
     'subset',
+    'table_to_dict',
     'wrap'
 ]
 
 
 def expand(elements, **kwrds):
     return dict(**elements, **kwrds)
-
-
-def extract(elements, **kwargs):
-    output = dict()
-    for key, val in kwargs.items():
-        output.update({key: elements.get(val, None)})
-    return output
 
 
 def format(elements, data):
@@ -41,7 +35,7 @@ def is_list(obj):
 
 
 def iterate(source, *keys):
-    """Iterate a nested dict based on list of keys
+    """Iterate a nested dict based on list of keys.
 
     :param source: nested dict
     :param keys: list of keys
@@ -67,18 +61,17 @@ def subset(elements, *keys, negation=False):
     return dict(filter(match, elements.items()))
 
 
-def table_to_dict(data, sep=' '):
-    keys = data.pop(0).split(sep)
+def table_to_dict(data):
+    keys = data.pop(0).split()
     output = []
     for dr in data:
-        vals = dr.split(sep)
+        vals = dr.split()
         item = {}
         for k, v in zip(keys, vals):
             item[k] = v
         if len(item) > 0:
             output.append(item)
     return output
-
 
 def wrap(data):
     """Wrap the data if an array if it is ont a list of tuple.

@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'CB-Manager'
+project = 'LCP'
 copyright = '2020, GUARD Project'
 author = 'Alex Carrega <alessandro.carrega@cnit.it>'
 
@@ -74,7 +74,7 @@ html_theme_options = {
     # Note the "1" or "True" value above as the third argument to indicate
     # an arbitrary url.
     'navbar_links': [
-        ("GitHub", "http://github.com/guard-project/cb-manager", True),
+        ("GitHub", "http://github.com/guard-project/lcp", True),
     ],
 
     # Render the next and previous page links in navbar. (Default: true)
@@ -122,11 +122,11 @@ html_theme_options = {
     # Currently, the supported themes are:
     # - Bootstrap 2: https://bootswatch.com/2
     # - Bootstrap 3: https://bootswatch.com/3
-    'bootswatch_theme': "cosmo",
+    'bootswatch_theme': "united",
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)
-    'bootstrap_version': "3",
+    'bootstrap_version': "3"
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -134,9 +134,4 @@ html_theme_options = {
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ['_static']
 
-issues_github_path = "guard-project/cb-manager"
-
-nitpick_ignore = [
-    ('any', 'falcon.Request'),
-    ('any', 'falcon.Response')
-]
+issues_github_path = "guard-project/lcp"

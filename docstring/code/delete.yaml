@@ -1,0 +1,44 @@
+Delete inject code at run-time in the local environment.
+---
+summary: Delete injected code
+description: Delete inject code at run-time in the local environment.
+parameters:
+  - name: payload
+    required: true
+    in: body
+    schema:
+      type: array
+      items: Code_Request_Schema
+tags: [code]
+responses:
+  205:
+    description: All injected codes correctly deleted.
+    schema:
+      type: array
+      items: Reset_Content_Response_Schema
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  404:
+    description: Injected codes based on the request query not found.
+    schema: Not_Found_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  415:
+    description: Media type not supported.
+    schema: Unsupported_Media_Type_Response_Schema
+  422:
+    description: Not possible to delete one or more injected codes based on the request query.
+    schema:
+      type: array
+      items:
+        oneOf:
+          - Reset_Content_Response_Schema
+          - Unprocessable_Entity_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

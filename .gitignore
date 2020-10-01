@@ -1,4 +1,4 @@
 /.history
 __pycache__
-/pkg
 /docs/.build
+/build

@@ -10,28 +10,26 @@ while True:
     try:
         from about import title, version
         from api import api
-        from lib.elasticsearch import connection as es_conn
         from reader.arg import Arg_Reader
         from werkzeug.serving import run_with_reloader
         import waitress
         break
-    except ImportError as error:
+    except Import_Error as error:
         reload_import(error)
 
 db = Arg_Reader.read()
 
 print(f'{title} version:{version}')
 
+
 if db.version is not None:
     print(db.version)
 else:
-    es_conn(endpoint=db.es_endpoint, timeout=db.es_timeout,
-            retry_period=db.es_retry_period)
-
     @run_with_reloader
     def run_server():
+        u, p = db.dev_username, db.dev_password
         waitress.serve(api(title=title, version=version,
-                           dev_username=db.dev_username, dev_password=db.dev_password),
+                           dev_username=u, dev_password=p),
                        host=db.host, port=db.port, expose_tracebacks=False)
 
     run_server()

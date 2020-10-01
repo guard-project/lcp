@@ -1,0 +1,21 @@
+Get info about the status of the LCP in the execution environment.
+---
+summary: Status info
+description: Get info about the status of the LCP in the execution environment.
+tags: [status]
+responses:
+  200:
+    description: Status data of the LCP.
+    schema: Status_Response_Schema
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

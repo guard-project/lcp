@@ -2,13 +2,13 @@ from falcon.errors import HTTPBadRequest as HTTP_Bad_Request
 from dicttoxml import dicttoxml as dict_to_xml
 from falcon.media import JSONHandler as JSON_Handler
 from functools import partial
-from yaml import  FullLoader as Full_Loader
+from yaml import FullLoader as Full_Loader
 from yaml.parser import ParserError as Parser_Error, ScannerError as Scanner_Error
 from xml.parsers.expat import ExpatError as Expat_Error
 
+import xml
 import xmltodict as xml_to_dict
 import yaml
-import xml
 
 __all__ = [
     'XML_Handler',

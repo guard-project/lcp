@@ -3,7 +3,7 @@
 Running
 =======
 
-To run |CB|-Manager using ``python3``:
+To run |LCP| using ``python3``:
 
 .. code-block:: console
 
@@ -14,4 +14,4 @@ To run |CB|-Manager using ``python3``:
 .. autoprogram:: reader.arg:Arg_Reader.init()
 
 
-.. |CB| replace:: :abbr:`CB (Context Broker)`
+.. |LCP| replace:: :abbr:`LCP (Local Control Plane)`

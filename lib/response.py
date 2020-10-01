@@ -140,10 +140,6 @@ class Content_Response(Ok_Response):
     def __init__(self, content):
         self.data = content
 
-    def apply(self, resp):
-        resp.media = self.data
-        resp.status = f'{self.code} {self}'
-
 
 class Internal_Server_Error_Response(Base_Response):
     code = HTTP_Status.INTERNAL_SERVER_ERROR

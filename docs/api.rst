@@ -86,116 +86,8 @@ Docstring
 .. autodecorator:: docstring
 
 
-Document
---------
-
-.. currentmodule:: document.base
-
-.. autoclass:: Base_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Agent
-^^^^^
-
-.. currentmodule:: document.agent.catalog
-
-.. autoclass:: Agent_Catalog_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. currentmodule:: document.agent.instance
-
-.. autoclass:: Agent_Instance_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-eBPF Program
-^^^^^^^^^^^^
-
-.. currentmodule:: document.ebpf_program.catalog
-
-.. autoclass:: eBPF_Program_Catalog_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. currentmodule:: document.ebpf_program.instance
-
-.. autoclass:: eBPF_Program_Instance_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Connection
-^^^^^^^^^^
-
-.. currentmodule:: document.connection
-
-.. autoclass:: Connection_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Data
-^^^^
-
-.. currentmodule:: document.data
-
-.. autoclass:: Data_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Execution Environment
-^^^^^^^^^^^^^^^^^^^^^
-
-.. currentmodule:: document.exec_env
-
-.. autoclass:: Exec_Env_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Exec_Env_Type_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Network Link
-^^^^^^^^^^^^
-
-.. currentmodule:: document.network_link
-
-.. autoclass:: Network_Link_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Network_Link_Type_Document
-    :members:
-    :private-members:
-    :inherited-members:
-
 Lib
 ---
-
-.. currentmodule:: lib.elasticsearch
-
-.. autofunction:: connection
-
-.. currentmodule:: lib.heartbeat
-
-.. autofunction:: heartbeat
 
 .. currentmodule:: lib.http
 
@@ -205,6 +97,13 @@ Lib
     :inherited-members:
 
 .. autoclass:: HTTP_Status
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. currentmodule:: lib.polycube
+
+.. autoclass:: Polycube
     :members:
     :private-members:
     :inherited-members:
@@ -308,13 +207,6 @@ Reader
     :private-members:
     :inherited-members:
 
-.. currentmodule:: reader.query
-
-.. autoclass:: Query_Reader
-    :members:
-    :private-members:
-    :inherited-members:
-
 
 Resource
 --------
@@ -330,167 +222,26 @@ Resource
     :private-members:
     :inherited-members:
 
-.. currentmodule:: resource.base.handler.lcp
+.. currentmodule:: resource.code
 
-.. autoclass:: LCP
+.. autoclass:: Code_Resource
     :members:
     :private-members:
     :inherited-members:
 
+.. currentmodule:: resource.config
 
-Agent
-^^^^^
-
-.. currentmodule:: resource.agent.catalog
-
-.. autoclass:: Agent_Catalog_Resource
+.. autoclass:: Config_Resource
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Agent_Catalog_Selected_Resource
+.. currentmodule:: resource.status
+
+.. autoclass:: Status_Resource
     :members:
     :private-members:
     :inherited-members:
-
-.. currentmodule:: resource.agent.instance
-
-.. autoclass:: Agent_Instance_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Instance_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. currentmodule:: resource.agent.handler.lcp
-
-.. autoclass:: LCP
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-eBPF Program
-^^^^^^^^^^^^
-
-.. currentmodule:: resource.ebpf_program.catalog
-
-.. autoclass:: eBPF_Program_Catalog_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Catalog_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. currentmodule:: resource.ebpf_program.instance
-
-.. autoclass:: eBPF_Program_Instance_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Instance_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. currentmodule:: resource.ebpf_program.handler.lcp
-
-.. autoclass:: LCP
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Execution Environment
-^^^^^^^^^^^^^^^^^^^^^
-
-.. currentmodule:: resource.exec_env
-
-.. autoclass:: Exec_Env_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Exec_Env_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Exec_Env_Type_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Exec_Env_Type_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Network Link
-^^^^^^^^^^^^
-
-.. currentmodule:: resource.network_link
-
-.. autoclass:: Network_Link_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Network_Link_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Network_Link_Type_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Network_Link_Type_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Connection
-^^^^^^^^^^
-
-.. currentmodule:: resource.connection
-
-.. autoclass:: Connection_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Connection_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Data
-^^^^
-
-.. currentmodule:: resource.data
-
-.. autoclass:: Data_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Data_Selected_Resource
-    :members:
-    :private-members:
-    :inherited-members:
-
 
 Schema
 ------
@@ -515,221 +266,81 @@ Schema
     :inherited-members:
 
 
-Agent
-^^^^^
-
-Catalog
-"""""""
-
-.. currentmodule:: schema.agent.catalog
-
-.. autoclass:: Agent_Catalog_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Catalog_Action_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Catalog_Action_Config_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Catalog_Parameter_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Catalog_Parameter_Config_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Catalog_Resource_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Catalog_Resource_Config_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Instance
-""""""""
-
-.. currentmodule:: schema.agent.instance
-
-.. autoclass:: Agent_Instance_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Instance_Operation_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Instance_Action_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Instance_Parameter_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Agent_Instance_Resource_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-eBPF Program
-^^^^^^^^^^^^
-
-Catalog
-"""""""
-
-.. currentmodule:: schema.ebpf_program.catalog
-
-.. autoclass:: eBPF_Program_Catalog_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Catalog_Parameter_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Catalog_Config_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Catalog_Config_Metric_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Catalog_Config_Metric_Open_Metrics_Metadata_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Catalog_Config_Metric_Open_Metrics_Metadata_Label_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Instance
-""""""""
-
-.. currentmodule:: schema.ebpf_program.instance
-
-.. autoclass:: eBPF_Program_Instance_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: eBPF_Program_Instance_Parameter_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Execution Environment
-^^^^^^^^^^^^^^^^^^^^^
-
-.. currentmodule:: schema.exec_env
-
-.. autoclass:: LCP_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Exec_Env_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Exec_Env_Type_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Network Link
-^^^^^^^^^^^^
-
-.. currentmodule:: schema.network_link
-
-.. autoclass:: Network_Link_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. autoclass:: Network_Link_Type_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-
-Connection
-^^^^^^^^^^
-
-.. currentmodule:: schema.connection
-
-.. autoclass:: Connection_Schema
-    :members:
-    :private-members:
-    :inherited-members:
-
-.. currentmodule:: schema.data
-
-
-Data
+Code
 ^^^^
+.. currentmodule:: schema.code
 
-.. autoclass:: Data_Schema
+.. autoclass:: Code_Request_Schema
     :members:
     :private-members:
     :inherited-members:
 
 
-Query Request
-^^^^^^^^^^^^^
+Config
+^^^^^^
 
-.. currentmodule:: schema.query_request
+.. currentmodule:: schema.config
 
-.. autoclass:: Query_Request_Schema
+Request
+"""""""
+
+.. autoclass:: Config_Request_Schema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Query_Request_Order_Schema
+.. autoclass:: Config_Action_Request_Schema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Query_Request_Limit_Schema
+.. autoclass:: Config_Parameter_Request_Schema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Query_Request_Filter_Schema
+.. autoclass:: Config_Resource_Request_Schema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Query_Request_Clause_Schema
+
+Response
+""""""""
+
+.. autoclass:: Config_Action_Response_Schema
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: Config_Parameter_Response_Schema
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: Config_Parameter_Value_Response_Schema
+    :members:
+    :private-members:
+    :inherited-members:
+
+.. autoclass:: Config_Resource_Response_Schema
+    :members:
+    :private-members:
+    :inherited-members:
+
+
+Status
+^^^^^^
+
+.. currentmodule:: schema.status
+
+.. autoclass:: Status_Request_Schema
+    :members:
+    :private-members:
+    :inherited-members:
+
+
+.. autoclass:: Status_Response_Schema
     :members:
     :private-members:
     :inherited-members:
@@ -812,8 +423,8 @@ Response
 
 .. autoclass:: Unsupported_Media_Type_Response_Schema
     :members:
-    :inherited-members:
     :private-members:
+    :inherited-members:
 
 
 Utils
