@@ -69,7 +69,7 @@
 		"editor.wordWrap": "on",
 		"editor.wrappingIndent": "deepIndent",
 		"files.insertFinalNewline": true,
-		"workbench.colorTheme": "Bloody Pie",
+		"workbench.colorTheme": "Kimbie Dark",
 		"workbench.editor.tabSizing": "shrink"
 	}
 }
