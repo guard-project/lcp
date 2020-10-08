@@ -7,11 +7,13 @@
 	"settings": {
 		"cSpell.language": "en-GB",
 		"cSpell.words": [
+			"Carrega",
+			"Guerino",
+			"Lammanna",
 			"Pandoc",
 			"Timeout",
 			"UNPROCESSABLE",
 			"apispec",
-			"guard",
 			"atexit",
 			"bdist",
 			"certdir",
@@ -28,6 +30,7 @@
 			"filebeat",
 			"frmt",
 			"gitlab",
+			"guard",
 			"hexsha",
 			"htmls",
 			"iface",
