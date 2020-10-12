@@ -1,5 +1,12 @@
 # Local Control Plane
 
+[![License](https://img.shields.io/github/license/guard-project/lcp)](https://github.com/guard-project/lcp/blob/master/LICENSE)
+[![Code size](https://img.shields.io/github/languages/code-size/guard-project/lcp?color=red&logo=github)](https://github.com/guard-project/lcp)
+[![Repository Size](https://img.shields.io/github/repo-size/guard-project/lcp?color=red&logo=github)](https://github.com/guard-project/lcp)
+[![Release](https://img.shields.io/github/v/tag/guard-project/lcp?label=release&logo=github)](https://github.com/guard-project/lcp/releases)
+[![Docker image](https://img.shields.io/docker/image-size/guardproject/lcp?label=image&logo=docker)](https://hub.docker.com/repository/docker/guardproject/lcp)
+[![Docs](https://readthedocs.org/projects/guard-lcp/badge/?version=latest)](https://guard-lcp.readthedocs.io)
+
 In each local agent, the control plane is responsible for programmability, i.e., changing the behaviour of the data plane at run-time.
 
 ---
