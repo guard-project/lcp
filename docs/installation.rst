@@ -3,14 +3,7 @@
 Installation
 ============
 
-Install |LCP| with ``pip``:
-
-.. code-block:: console
-
-    pip install lcp
-
-
-The development version can be downloaded from `GitHub <https://github.com/guard-project/lcp>`_.
+Download from `GitHub <https://github.com/guard-project/lcp>`_.
 
 .. code-block:: console
 
