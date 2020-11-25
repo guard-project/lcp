@@ -53,6 +53,14 @@ definitions:
         description: Id of the action.
         example: start
         type: string
+      output_format:
+        description: Format of the output of the command.
+        enum:
+        - plain
+        - lines
+        - json
+        example: lines
+        type: string
     required:
     - cmd
     - id
