@@ -93,7 +93,6 @@ definitions:
       value:
         description: Parameter new value.
         example: 10s
-        type: string
     required:
     - id
     - schema
