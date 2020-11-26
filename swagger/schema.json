@@ -693,15 +693,15 @@
           "example": 80,
           "description": "Line where the exception is raised."
         },
-        "filename": {
-          "type": "string",
-          "example": "lib/connection.py",
-          "description": "Filename where the exception is raised."
-        },
         "reason": {
           "type": "string",
           "example": "Connection timeout",
           "description": "Exception reason."
+        },
+        "filename": {
+          "type": "string",
+          "example": "lib/connection.py",
+          "description": "Filename where the exception is raised."
         }
       },
       "required": [
@@ -713,11 +713,19 @@
     "No_Content_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": false
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "status": {
           "default": "No Content"
+        },
+        "error": {
+          "default": false
         },
         "code": {
           "default": 204
@@ -726,14 +734,6 @@
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
-        },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
         }
       },
       "required": [
@@ -743,11 +743,19 @@
     "Bad_Request_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "status": {
           "default": "Bad Request"
+        },
+        "error": {
+          "default": true
         },
         "code": {
           "default": 400
@@ -756,14 +764,6 @@
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
-        },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
         }
       },
       "required": [
@@ -773,11 +773,19 @@
     "Unauthorized_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "status": {
           "default": "Unauthorized"
+        },
+        "error": {
+          "default": true
         },
         "code": {
           "default": 401
@@ -786,14 +794,6 @@
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
-        },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
         }
       },
       "required": [
@@ -803,11 +803,19 @@
     "Not_Acceptable_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "status": {
           "default": "Not Acceptable"
+        },
+        "error": {
+          "default": true
         },
         "code": {
           "default": 406
@@ -816,14 +824,6 @@
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
-        },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
         }
       },
       "required": [
@@ -833,11 +833,19 @@
     "Ok_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": false
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "status": {
           "default": "OK"
+        },
+        "error": {
+          "default": false
         },
         "code": {
           "default": 200
@@ -846,14 +854,6 @@
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
-        },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
         }
       },
       "required": [
@@ -863,11 +863,19 @@
     "Unsupported_Media_Type_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "status": {
           "default": "Unsupported Media Type"
+        },
+        "error": {
+          "default": true
         },
         "code": {
           "default": 415
@@ -876,14 +884,6 @@
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
-        },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
         }
       },
       "required": [
@@ -893,11 +893,19 @@
     "Internal_Server_Error_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "status": {
           "default": "Internal Server Error"
+        },
+        "error": {
+          "default": true
         },
         "code": {
           "default": 500
@@ -906,46 +914,53 @@
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
-        },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
         }
       },
       "required": [
         "message"
       ]
     },
+    "Config_Action_Request": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "start",
+          "description": "Id of the action."
+        },
+        "args": {
+          "type": "string",
+          "example": "-al",
+          "description": "Single command argument."
+        },
+        "cmd": {
+          "type": "string",
+          "description": "Command."
+        },
+        "daemon": {
+          "type": "boolean",
+          "example": true,
+          "description": "Execute the command as daemon."
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "lines",
+            "json"
+          ],
+          "example": "lines",
+          "description": "Format of the output of the command."
+        }
+      },
+      "required": [
+        "cmd",
+        "id"
+      ]
+    },
     "Config_Parameter_Request": {
       "type": "object",
       "properties": {
-        "source": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "Source filename."
-        },
-        "value": {
-          "type": "string",
-          "example": "10s",
-          "description": "Parameter new value."
-        },
-        "path": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "example": "period",
-            "description": "Key path."
-          }
-        },
-        "id": {
-          "type": "string",
-          "example": "period",
-          "description": "Id of the parameter."
-        },
         "schema": {
           "type": "string",
           "enum": [
@@ -956,6 +971,29 @@
           ],
           "example": "yaml",
           "description": "Scheme."
+        },
+        "id": {
+          "type": "string",
+          "example": "period",
+          "description": "Id of the parameter."
+        },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "period",
+            "description": "Key path."
+          }
+        },
+        "value": {
+          "type": "string",
+          "example": "10s",
+          "description": "Parameter new value."
+        },
+        "source": {
+          "type": "string",
+          "example": "firewall.xml",
+          "description": "Source filename."
         }
       },
       "required": [
@@ -968,6 +1006,11 @@
     "Config_Resource_Request": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "example": "filebeat-config",
+          "description": "Id of the resource."
+        },
         "path": {
           "type": "string",
           "example": "firewall.xml",
@@ -976,11 +1019,6 @@
         "content": {
           "type": "string",
           "description": "Resource content."
-        },
-        "id": {
-          "type": "string",
-          "example": "filebeat-config",
-          "description": "Id of the resource."
         }
       },
       "required": [
@@ -989,47 +1027,16 @@
         "path"
       ]
     },
-    "Config_Action_Request": {
-      "type": "object",
-      "properties": {
-        "daemon": {
-          "type": "boolean",
-          "example": true,
-          "description": "Execute the command as daemon."
-        },
-        "cmd": {
-          "type": "string",
-          "description": "Command."
-        },
-        "output_format": {
-          "type": "string",
-          "enum": [
-            "plain",
-            "lines",
-            "json"
-          ],
-          "example": "lines",
-          "description": "Format of the output of the command."
-        },
-        "args": {
-          "type": "string",
-          "example": "-al",
-          "description": "Single command argument."
-        },
-        "id": {
-          "type": "string",
-          "example": "start",
-          "description": "Id of the action."
-        }
-      },
-      "required": [
-        "cmd",
-        "id"
-      ]
-    },
     "Config_Request": {
       "type": "object",
       "properties": {
+        "actions": {
+          "description": "List of actions.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Config_Action_Request"
+          }
+        },
         "parameters": {
           "description": "List of parameters.",
           "type": "array",
@@ -1043,43 +1050,36 @@
           "items": {
             "$ref": "#/definitions/Config_Resource_Request"
           }
-        },
-        "actions": {
-          "description": "List of actions.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Action_Request"
-          }
         }
       }
     },
     "Status_Response": {
       "type": "object",
       "properties": {
-        "last_heartbeat": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2019/02/14 15:23:33",
-          "description": "Timestamp of the expiration of the API access configuration."
-        },
-        "username": {
-          "type": "string",
-          "description": "Username for the CB to connect to this LCP."
-        },
-        "password": {
-          "type": "string",
-          "description": "Password for the CB to connect to this LCP."
-        },
         "started": {
           "type": "string",
           "format": "date-time",
           "example": "2019/02/14 15:23:30",
           "description": "Timestamp when the LCP is started"
         },
+        "password": {
+          "type": "string",
+          "description": "Password for the CB to connect to this LCP."
+        },
+        "last_heartbeat": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2019/02/14 15:23:33",
+          "description": "Timestamp of the expiration of the API access configuration."
+        },
         "id": {
           "type": "string",
           "example": "apache",
           "description": "ID of the execution environment."
+        },
+        "username": {
+          "type": "string",
+          "description": "Username for the CB to connect to this LCP."
         }
       },
       "required": [
