@@ -10,7 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import sphinx_bootstrap_theme
+import furo
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
@@ -62,7 +62,7 @@ html_logo = '../logo.png'
 html_favicon = '../logo.ico'
 
 html_theme = 'furo'
-# html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_theme_path = furo.get_html_theme_path()
 # html_theme_options = {
 #     # Tab name for entire site. (Default: "Site")
 #     'navbar_site_name': "Contents",
