@@ -62,3 +62,8 @@ html_favicon = '../logo.ico'
 html_theme = 'furo'
 
 issues_github_path = "guard-project/lcp"
+
+nitpick_ignore = [
+    ('any', 'falcon.Request'),
+    ('any', 'falcon.Response')
+]
