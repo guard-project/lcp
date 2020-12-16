@@ -62,7 +62,7 @@ html_logo = '../logo.png'
 html_favicon = '../logo.ico'
 
 html_theme = 'furo'
-html_theme_path = furo.get_html_theme_path()
+#html_theme_path = furo.get_html_theme_path()
 # html_theme_options = {
 #     # Tab name for entire site. (Default: "Site")
 #     'navbar_site_name': "Contents",
