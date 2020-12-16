@@ -5,11 +5,24 @@ Welcome to LCP documentation!
 
 In each local agent, the control plane is responsible for programmability, i.e., changing the behaviour of the data plane at run-time.
 
-
 Compatibility
 =============
 
 |LCP| requires Python 3.5+.
+
+
+Documentation
+=============
+
+This part of the documentation will show you how to get started in using |LCP|.
+
+.. toctree::
+   :maxdepth: 1
+   :numbered:
+
+   installation
+   running
+   glossary
 
 
 API Reference
