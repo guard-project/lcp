@@ -41,6 +41,7 @@
             "jproperties",
             "kwrd",
             "kwrds",
+            "mathjax",
             "maxdepth",
             "modindex",
             "msgpack",
@@ -55,6 +56,7 @@
             "pycodestyle",
             "pydocstyle",
             "pytest",
+            "recommonmark",
             "reloader",
             "resp",
             "ruamel",
@@ -79,7 +81,7 @@
 		"editor.wordWrap": "on",
 		"editor.wrappingIndent": "deepIndent",
 		"files.insertFinalNewline": true,
-		"workbench.colorTheme": "Kimbie Dark",
+		"workbench.colorTheme": "GitHub Dark",
 		"workbench.editor.tabSizing": "shrink"
 	}
 }

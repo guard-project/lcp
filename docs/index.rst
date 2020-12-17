@@ -41,6 +41,7 @@ Additional Notes
 .. toctree::
    :maxdepth: 1
 
+   license
    CONTRIBUTING
    CHANGELOG
 
