@@ -1,6 +1,8 @@
 from resource.code import *
 from resource.config import *
 from resource.status import *
+from resource.foothing import *
+from resource.filiationbyid import *
 from utils.log import Log
 from utils.sequence import wrap
 
@@ -11,7 +13,10 @@ __all__ = [
 db = (
     Code_Resource,
     Config_Resource,
-    Status_Resource
+    Status_Resource,
+    FooThing,
+    FiliationById,
+    Filiation
 )
 
 tags = []

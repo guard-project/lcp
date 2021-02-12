@@ -2,3 +2,6 @@
 __pycache__
 /docs/.build
 /build
+/.venv
+*.pyc
+config.ini

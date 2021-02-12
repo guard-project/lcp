@@ -1,0 +1,1589 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:get.responses.400.schema
+$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:get.responses.500.schema
+$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:get.responses.406.schema
+$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:get.responses.200.schema
+$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:get.responses.401.schema
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code.delete.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code.post.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code.put.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code/{id}.delete.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code/{id}.post.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code/{id}.put.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Config_Request"$/;"	s	object:paths./config.post.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code.put.responses.200.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code/{id}.put.responses.200.schema.items
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code.delete.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code.put.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code/{id}.delete.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code/{id}.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code/{id}.put.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./config.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./filiation.get.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./filiation.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./filiation/{id}.get.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./foothing.get.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./foothing/{id}.get.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./status.get.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./status.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Bad_Request_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Internal_Server_Error_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.No_Content_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Not_Acceptable_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Ok_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Unauthorized_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./code.put.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./code/{id}.put.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./config.post.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./filiation.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./filiation.post.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./filiation/{id}.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./foothing.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./foothing/{id}.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./status.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./status.post.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.delete.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.post.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.put.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code/{id}.delete.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code/{id}.post.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code/{id}.put.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./config.post.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code.delete.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code.post.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code.put.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code/{id}.delete.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code/{id}.post.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code/{id}.put.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./config.post.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./filiation.get.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./filiation.post.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./filiation/{id}.get.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./foothing.get.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./foothing/{id}.get.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./status.get.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./status.post.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation.get.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation.post.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation/{id}.get.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./foothing.get.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./foothing/{id}.get.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./status.get.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./status.post.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code.delete.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code.post.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code.put.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code/{id}.delete.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code/{id}.post.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code/{id}.put.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./config.post.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./filiation.get.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./filiation.post.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./filiation/{id}.get.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./foothing.get.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./foothing/{id}.get.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./status.get.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./status.post.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unsupported_Media_Type_Response"$/;"	s	object:paths./code.put.responses.415.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unsupported_Media_Type_Response"$/;"	s	object:paths./code/{id}.put.responses.415.schema
+$ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Action_Request"$/;"	s	object:definitions.Config_Request.properties.actions.items
+$ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Parameter_Request"$/;"	s	object:definitions.Config_Request.properties.parameters.items
+$ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_Request"$/;"	s	object:definitions.Config_Request.properties.resources.items
+/code	swagger/schema.json	/^    "\/code": {$/;"	o	object:paths
+/code/{id}	swagger/schema.json	/^    "\/code\/{id}": {$/;"	o	object:paths
+/config	swagger/schema.json	/^    "\/config": {$/;"	o	object:paths
+/filiation	swagger/schema.json	/^    "\/filiation": {$/;"	o	object:paths
+/filiation/{id}	swagger/schema.json	/^    "\/filiation\/{id}": {$/;"	o	object:paths
+/foothing	swagger/schema.json	/^    "\/foothing": {$/;"	o	object:paths
+/foothing/{id}	swagger/schema.json	/^    "\/foothing\/{id}": {$/;"	o	object:paths
+/status	swagger/schema.json	/^    "\/status": {$/;"	o	object:paths
+0	docstring/foothing/get.json	/^          "FooThing"$/;"	s	array:get.tags
+0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code.delete.responses.422.schema.items.oneOf
+0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code.post.responses.422.schema.items.oneOf
+0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code/{id}.delete.responses.422.schema.items.oneOf
+0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code/{id}.post.responses.422.schema.items.oneOf
+0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./config.post.responses.422.schema.items.oneOf
+0	swagger/schema.json	/^                  "Ok_Response_Schema",$/;"	s	array:paths./code.put.responses.304.schema.items.oneOf
+0	swagger/schema.json	/^                  "Ok_Response_Schema",$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
+0	swagger/schema.json	/^                  "Ok_Response_Schema",$/;"	s	array:paths./code/{id}.put.responses.304.schema.items.oneOf
+0	swagger/schema.json	/^                  "Ok_Response_Schema",$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
+0	swagger/schema.json	/^                {$/;"	o	array:paths./code.delete.responses.200.schema.oneOf
+0	swagger/schema.json	/^                {$/;"	o	array:paths./code.post.responses.200.schema.oneOf
+0	swagger/schema.json	/^                {$/;"	o	array:paths./code/{id}.delete.responses.200.schema.oneOf
+0	swagger/schema.json	/^                {$/;"	o	array:paths./code/{id}.post.responses.200.schema.oneOf
+0	swagger/schema.json	/^                {$/;"	o	array:paths./config.post.responses.200.schema.oneOf
+0	swagger/schema.json	/^            "json",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+0	swagger/schema.json	/^            "plain",$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
+0	swagger/schema.json	/^            {$/;"	o	array:definitions.Bad_Request_Response.properties.exception.allOf
+0	swagger/schema.json	/^            {$/;"	o	array:definitions.Internal_Server_Error_Response.properties.exception.allOf
+0	swagger/schema.json	/^            {$/;"	o	array:definitions.No_Content_Response.properties.exception.allOf
+0	swagger/schema.json	/^            {$/;"	o	array:definitions.Not_Acceptable_Response.properties.exception.allOf
+0	swagger/schema.json	/^            {$/;"	o	array:definitions.Ok_Response.properties.exception.allOf
+0	swagger/schema.json	/^            {$/;"	o	array:definitions.Unauthorized_Response.properties.exception.allOf
+0	swagger/schema.json	/^            {$/;"	o	array:definitions.Unsupported_Media_Type_Response.properties.exception.allOf
+0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation.get.tags
+0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation.post.tags
+0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation/{id}.delete.tags
+0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation/{id}.get.tags
+0	swagger/schema.json	/^          "FooThing"$/;"	s	array:paths./foothing.get.tags
+0	swagger/schema.json	/^          "FooThing"$/;"	s	array:paths./foothing/{id}.get.tags
+0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code.delete.tags
+0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code.post.tags
+0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code.put.tags
+0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code/{id}.delete.tags
+0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code/{id}.post.tags
+0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code/{id}.put.tags
+0	swagger/schema.json	/^          "config"$/;"	s	array:paths./config.post.tags
+0	swagger/schema.json	/^          "status"$/;"	s	array:paths./status.get.tags
+0	swagger/schema.json	/^          "status"$/;"	s	array:paths./status.post.tags
+0	swagger/schema.json	/^          {$/;"	o	array:paths./code.delete.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./code.post.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./code.put.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./code/{id}.delete.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./code/{id}.post.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./code/{id}.put.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./config.post.parameters
+0	swagger/schema.json	/^        "cmd",$/;"	s	array:definitions.Config_Action_Request.required
+0	swagger/schema.json	/^        "code",$/;"	s	array:definitions.Code_Request.required
+0	swagger/schema.json	/^        "content",$/;"	s	array:definitions.Config_Resource_Request.required
+0	swagger/schema.json	/^        "filename",$/;"	s	array:definitions.Exception_Response.required
+0	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Config_Parameter_Request.required
+0	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Status_Response.required
+0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Bad_Request_Response.required
+0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Internal_Server_Error_Response.required
+0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.No_Content_Response.required
+0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Not_Acceptable_Response.required
+0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Ok_Response.required
+0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Unauthorized_Response.required
+0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Unsupported_Media_Type_Response.required
+0	swagger/schema.json	/^    "application\/json"$/;"	s	array:consumes
+0	swagger/schema.json	/^    "application\/json"$/;"	s	array:produces
+0	swagger/schema.json	/^    {$/;"	o	array:tags
+1	swagger/schema.json	/^                  "Not_Modified_Response"$/;"	s	array:paths./code.put.responses.304.schema.items.oneOf
+1	swagger/schema.json	/^                  "Not_Modified_Response"$/;"	s	array:paths./code/{id}.put.responses.304.schema.items.oneOf
+1	swagger/schema.json	/^                  "Not_Modified_Response",$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
+1	swagger/schema.json	/^                  "Not_Modified_Response",$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
+1	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code.delete.responses.422.schema.items.oneOf
+1	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code.post.responses.422.schema.items.oneOf
+1	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.delete.responses.422.schema.items.oneOf
+1	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.post.responses.422.schema.items.oneOf
+1	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./config.post.responses.422.schema.items.oneOf
+1	swagger/schema.json	/^            "lines",$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
+1	swagger/schema.json	/^            "properties",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+1	swagger/schema.json	/^        "id"$/;"	s	array:definitions.Code_Request.required
+1	swagger/schema.json	/^        "id"$/;"	s	array:definitions.Config_Action_Request.required
+1	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Config_Resource_Request.required
+1	swagger/schema.json	/^        "last_heartbeat",$/;"	s	array:definitions.Status_Response.required
+1	swagger/schema.json	/^        "line",$/;"	s	array:definitions.Exception_Response.required
+1	swagger/schema.json	/^        "schema",$/;"	s	array:definitions.Config_Parameter_Request.required
+1	swagger/schema.json	/^    {$/;"	o	array:tags
+1.0.0	CHANGELOG.md	/^## 1.0.0$/;"	s
+1.0.0	docs/CHANGELOG.md	/^## 1.0.0$/;"	s
+1.0.1	CHANGELOG.md	/^## 1.0.1$/;"	s
+1.0.1	docs/CHANGELOG.md	/^## 1.0.1$/;"	s
+1.0.2	CHANGELOG.md	/^## 1.0.2$/;"	s
+1.0.2	docs/CHANGELOG.md	/^## 1.0.2$/;"	s
+1.0.3	CHANGELOG.md	/^## 1.0.3$/;"	s
+1.0.3	docs/CHANGELOG.md	/^## 1.0.3$/;"	s
+2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
+2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
+2	swagger/schema.json	/^            "json"$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
+2	swagger/schema.json	/^            "xml",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+2	swagger/schema.json	/^        "path"$/;"	s	array:definitions.Config_Resource_Request.required
+2	swagger/schema.json	/^        "reason"$/;"	s	array:definitions.Exception_Response.required
+2	swagger/schema.json	/^        "source",$/;"	s	array:definitions.Config_Parameter_Request.required
+2	swagger/schema.json	/^        "started"$/;"	s	array:definitions.Status_Response.required
+2	swagger/schema.json	/^    {$/;"	o	array:tags
+200	docstring/foothing/get.json	/^          "200": {$/;"	o	object:get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code.delete.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code.post.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code.put.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code/{id}.delete.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code/{id}.post.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code/{id}.put.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./config.post.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./filiation.get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./filiation.post.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./filiation/{id}.delete.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./filiation/{id}.get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./foothing.get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./foothing/{id}.get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./status.get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./status.post.responses
+204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code.delete.responses
+204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code.post.responses
+204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code.put.responses
+204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code/{id}.delete.responses
+204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code/{id}.post.responses
+204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code/{id}.put.responses
+204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./config.post.responses
+3	swagger/schema.json	/^            "yaml"$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+3	swagger/schema.json	/^        "value"$/;"	s	array:definitions.Config_Parameter_Request.required
+3	swagger/schema.json	/^    {$/;"	o	array:tags
+304	swagger/schema.json	/^          "304": {$/;"	o	object:paths./code.put.responses
+304	swagger/schema.json	/^          "304": {$/;"	o	object:paths./code/{id}.put.responses
+4	swagger/schema.json	/^    {$/;"	o	array:tags
+400	docstring/foothing/get.json	/^          "400": {$/;"	o	object:get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code.delete.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code.post.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code.put.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code/{id}.delete.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code/{id}.post.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code/{id}.put.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./config.post.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./filiation.get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./filiation.post.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./filiation/{id}.delete.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./filiation/{id}.get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./foothing.get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./foothing/{id}.get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./status.get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./status.post.responses
+401	docstring/foothing/get.json	/^          "401": {$/;"	o	object:get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code.delete.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code.post.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code.put.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code/{id}.delete.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code/{id}.post.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code/{id}.put.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./config.post.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./filiation.get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./filiation.post.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./filiation/{id}.delete.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./filiation/{id}.get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./foothing.get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./foothing/{id}.get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./status.get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./status.post.responses
+406	docstring/foothing/get.json	/^          "406": {$/;"	o	object:get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code.delete.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code.post.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code.put.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code/{id}.delete.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code/{id}.post.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code/{id}.put.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./config.post.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./filiation.get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./filiation.post.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./filiation/{id}.delete.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./filiation/{id}.get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./foothing.get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./foothing/{id}.get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./status.get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./status.post.responses
+415	swagger/schema.json	/^          "415": {$/;"	o	object:paths./code.put.responses
+415	swagger/schema.json	/^          "415": {$/;"	o	object:paths./code/{id}.put.responses
+422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./code.delete.responses
+422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./code.post.responses
+422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./code.put.responses
+422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./code/{id}.delete.responses
+422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./code/{id}.post.responses
+422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./code/{id}.put.responses
+422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./config.post.responses
+5	swagger/schema.json	/^    {$/;"	o	array:tags
+500	docstring/foothing/get.json	/^          "500": {$/;"	o	object:get.responses
+500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code.delete.responses.422
+500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code.post.responses.422
+500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code/{id}.delete.responses.422
+500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code/{id}.post.responses.422
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./code.put.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./code/{id}.put.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./config.post.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./filiation.get.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./filiation.post.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./filiation/{id}.delete.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./filiation/{id}.get.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./foothing.get.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./foothing/{id}.get.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./status.get.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./status.post.responses
+ALLSPHINXOPTS	docs/Makefile	/^ALLSPHINXOPTS   = -d $(BUILDDIR)\/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .$/;"	m
+ALLSPHINXOPTS	docs/make.bat	/^	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%$/;"	v
+ALLSPHINXOPTS	docs/make.bat	/^set ALLSPHINXOPTS=-d %BUILDDIR%\/doctrees %SPHINXOPTS% .$/;"	v
+API	docs/api.rst	/^API$/;"	c
+API Reference	docs/index.rst	/^API Reference$/;"	s	chapter:Documentation
+API_Spec	api/spec.py	/^from apispec import APISpec as API_Spec$/;"	x
+Additional Notes	docs/index.rst	/^Additional Notes$/;"	s	chapter:Documentation
+Arg_Reader	reader/arg.py	/^class Arg_Reader:$/;"	c
+Argument_Parser	reader/arg.py	/^from argparse import ArgumentParser as Argument_Parser$/;"	x
+Attribution	CONTRIBUTING.md	/^### Attribution$/;"	S
+Attribution	docs/CONTRIBUTING.md	/^### Attribution$/;"	S
+Authors	AUTHORS.md	/^# Authors$/;"	c
+BUILDDIR	docs/Makefile	/^BUILDDIR      = .build$/;"	m
+BUILDDIR	docs/make.bat	/^set BUILDDIR=.build$/;"	v
+Bad_Request_Handler	api/error_handler.py	/^class Bad_Request_Handler(Base_Handler):$/;"	c
+Bad_Request_Response	lib/response.py	/^class Bad_Request_Response(Base_Response):$/;"	c
+Bad_Request_Response	swagger/schema.json	/^    "Bad_Request_Response": {$/;"	o	object:definitions
+Bad_Request_Response_Schema	schema/response.py	/^class Bad_Request_Response_Schema(Base_Response_Schema):$/;"	c
+Base_Handler	api/error_handler.py	/^class Base_Handler(object):$/;"	c
+Base_Resource	resource/base.py	/^class Base_Resource(object):$/;"	c
+Base_Response	lib/response.py	/^class Base_Response(object):$/;"	c
+Base_Response_Schema	schema/response.py	/^class Base_Response_Schema(Schema):$/;"	c
+Base_Schema	schema/base.py	/^class Base_Schema(Schema):$/;"	c
+Basic_Auth_Backend	api/middleware.py	/^from falcon_auth import BasicAuthBackend as Basic_Auth_Backend$/;"	x
+Basic_Auth_Backend_Middleware	api/middleware.py	/^class Basic_Auth_Backend_Middleware(Basic_Auth_Backend):$/;"	c
+Basic_Interpolation	reader/config.py	/^from configparser import BasicInterpolation as Basic_Interpolation, ConfigParser as Config_Parse/;"	x
+Changelog	CHANGELOG.md	/^# Changelog$/;"	c
+Changelog	docs/CHANGELOG.md	/^# Changelog$/;"	c
+Code	docs/api.rst	/^Code$/;"	S	section:Schema
+Code of Conduct	CONTRIBUTING.md	/^## Code of Conduct$/;"	s
+Code of Conduct	docs/CONTRIBUTING.md	/^## Code of Conduct$/;"	s
+Code_Request	swagger/schema.json	/^    "Code_Request": {$/;"	o	object:definitions
+Code_Request_Schema	schema/code.py	/^class Code_Request_Schema(Base_Schema):$/;"	c
+Code_Resource	resource/code.py	/^class Code_Resource(Base_Resource):$/;"	c
+Compatibility	docs/index.rst	/^Compatibility$/;"	c
+Config	docs/api.rst	/^Config$/;"	S	section:Schema
+Config_Action_Request	swagger/schema.json	/^    "Config_Action_Request": {$/;"	o	object:definitions
+Config_Action_Request_Schema	schema/config.py	/^class Config_Action_Request_Schema(Base_Schema):$/;"	c
+Config_Action_Response_Schema	schema/config.py	/^class Config_Action_Response_Schema(Config_Response_Schema):$/;"	c
+Config_Parameter_Request	swagger/schema.json	/^    "Config_Parameter_Request": {$/;"	o	object:definitions
+Config_Parameter_Request_Schema	schema/config.py	/^class Config_Parameter_Request_Schema(Base_Schema):$/;"	c
+Config_Parameter_Response_Schema	schema/config.py	/^class Config_Parameter_Response_Schema(Config_Response_Schema):$/;"	c
+Config_Parameter_Value_Response_Schema	schema/config.py	/^class Config_Parameter_Value_Response_Schema(Base_Schema):$/;"	c
+Config_Parser	reader/config.py	/^from configparser import BasicInterpolation as Basic_Interpolation, ConfigParser as Config_Parse/;"	x
+Config_Reader	reader/config.py	/^class Config_Reader:$/;"	c
+Config_Request	swagger/schema.json	/^    "Config_Request": {$/;"	o	object:definitions
+Config_Request_Schema	schema/config.py	/^class Config_Request_Schema(Base_Schema):$/;"	c
+Config_Resource	resource/config.py	/^class Config_Resource(Base_Resource):$/;"	c
+Config_Resource_Request	swagger/schema.json	/^    "Config_Resource_Request": {$/;"	o	object:definitions
+Config_Resource_Request_Schema	schema/config.py	/^class Config_Resource_Request_Schema(Base_Schema):$/;"	c
+Config_Resource_Response_Schema	schema/config.py	/^class Config_Resource_Response_Schema(Config_Response_Schema):$/;"	c
+Config_Response_Schema	schema/config.py	/^class Config_Response_Schema(Base_Schema):$/;"	c
+Configuration	README.md	/^## Configuration$/;"	s
+Conflict_Response	lib/response.py	/^class Conflict_Response(Base_Response):$/;"	c
+Conflict_Response_Schema	schema/response.py	/^class Conflict_Response_Schema(Base_Response_Schema):$/;"	c
+Connection_Error	lib/polycube.py	/^from requests.exceptions import ConnectionError as Connection_Error, Timeout as Timeout_Error$/;"	x
+Content_Response	lib/response.py	/^class Content_Response(Ok_Response):$/;"	c
+Content_Response_Schema	schema/response.py	/^class Content_Response_Schema(Ok_Response_Schema):$/;"	c
+Contributing	CONTRIBUTING.md	/^# Contributing$/;"	c
+Contributing	docs/CONTRIBUTING.md	/^# Contributing$/;"	c
+Created_Response	lib/response.py	/^class Created_Response(Base_Response):$/;"	c
+Created_Response_Schema	schema/response.py	/^class Created_Response_Schema(Base_Response_Schema):$/;"	c
+DELETE	lib/http.py	/^    DELETE = 'delete'$/;"	v	class:HTTP_Method
+Date_Time	schema/code.py	/^from marshmallow.fields import Bool, DateTime as Date_Time, Nested, Str$/;"	x
+Date_Time	schema/config.py	/^from marshmallow.fields import Boolean, Constant, DateTime as Date_Time, Float, Integer, List, N/;"	x
+Date_Time	schema/foothing.py	/^from marshmallow.fields import Bool, DateTime as Date_Time, Nested, Str$/;"	x
+Date_Time	schema/status.py	/^from marshmallow.fields import DateTime as Date_Time, Str$/;"	x
+Datetime	docs/api.rst	/^Datetime$/;"	S	section:Utils
+Display help	README.md	/^### Display help$/;"	S
+Docstring	docs/api.rst	/^Docstring$/;"	s	chapter:API
+Documentation	docs/index.rst	/^Documentation$/;"	c
+EXAMPLE_FILENAME	schema/config.py	/^EXAMPLE_FILENAME = 'firewall.xml'$/;"	v
+Elastic_Apm_Middleware	api/__init__.py	/^from falcon_elastic_apm import ElasticApmMiddleware as Elastic_Apm_Middleware$/;"	x
+Enforcement	CONTRIBUTING.md	/^### Enforcement$/;"	S
+Enforcement	docs/CONTRIBUTING.md	/^### Enforcement$/;"	S
+Env_Interpolation	reader/config.py	/^    class Env_Interpolation(Basic_Interpolation):$/;"	c	class:Config_Reader
+Error Handler	docs/api.rst	/^Error Handler$/;"	s	chapter:API
+Exception	docs/api.rst	/^Exception$/;"	S	section:Utils
+Exception_Response	swagger/schema.json	/^    "Exception_Response": {$/;"	o	object:definitions
+Exception_Response_Schema	schema/response.py	/^class Exception_Response_Schema(Schema):$/;"	c
+Execute	README.md	/^### Execute$/;"	S
+Expat_Error	api/media_handler.py	/^from xml.parsers.expat import ExpatError as Expat_Error$/;"	x
+Extra	README.md	/^## Extra$/;"	s
+FORMAT	utils/datetime.py	/^FORMAT = '%Y\/%m\/%dT%H:%M:%S'$/;"	v
+Falcon_Auth_Middleware	api/__init__.py	/^from falcon_auth import FalconAuthMiddleware as Falcon_Auth_Middleware$/;"	x
+Falcon_Plugin	api/spec.py	/^from falcon_apispec import FalconPlugin as Falcon_Plugin$/;"	x
+File_Not_Found_Error	resource/config.py	/^File_Not_Found_Error = FileNotFoundError$/;"	v
+Filiation	resource/filiationbyid.py	/^class Filiation(Base_Resource):$/;"	c
+FiliationById	resource/filiationbyid.py	/^class FiliationById(Base_Resource):$/;"	c
+FiliationTesting	test/filiation_tests.py	/^class FiliationTesting(testing.TestCase):$/;"	c
+FooThing	resource/foothing.py	/^class FooThing(Base_Resource):$/;"	c
+FooThing	schema/foothing.py	/^class FooThing(Base_Schema):$/;"	c
+Formatter	utils/string.py	/^class Formatter(String_Formatter):$/;"	c
+Full_Loader	api/media_handler.py	/^from yaml import FullLoader as Full_Loader$/;"	x
+Full_Loader	lib/parser.py	/^from yaml import FullLoader as Full_Loader$/;"	x
+GET	lib/http.py	/^    GET = 'get'$/;"	v	class:HTTP_Method
+Glossary	docs/glossary.rst	/^Glossary$/;"	c
+Guide	README.md	/^## Guide$/;"	s
+HTTP_Bad_Request	api/error_handler.py	/^from falcon.errors import HTTPBadRequest as HTTP_Bad_Request, HTTPInternalServerError as HTTP_In/;"	x
+HTTP_Bad_Request	api/media_handler.py	/^from falcon.errors import HTTPBadRequest as HTTP_Bad_Request$/;"	x
+HTTP_Error	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x
+HTTP_Gateway_Timeout	lib/polycube.py	/^from falcon.errors import HTTPGatewayTimeout as HTTP_Gateway_Timeout, HTTPServiceUnavailable as /;"	x
+HTTP_Internal_Server_Error	api/error_handler.py	/^from falcon.errors import HTTPBadRequest as HTTP_Bad_Request, HTTPInternalServerError as HTTP_In/;"	x
+HTTP_Method	lib/http.py	/^class HTTP_Method(object):$/;"	c
+HTTP_Service_Unavailable	lib/polycube.py	/^from falcon.errors import HTTPGatewayTimeout as HTTP_Gateway_Timeout, HTTPServiceUnavailable as /;"	x
+HTTP_Status	lib/http.py	/^from http import HTTPStatus as HTTP_Status$/;"	x
+HTTP_Unauthorized	api/middleware.py	/^from falcon.errors import HTTPUnauthorized as HTTP_Unauthorized$/;"	x
+HTTP_Unauthorized	resource/status.py	/^from falcon.errors import HTTPUnauthorized as HTTP_Unauthorized$/;"	x
+HTTP_Unsupported_Media_Type	api/error_handler.py	/^from falcon.errors import HTTPBadRequest as HTTP_Bad_Request, HTTPInternalServerError as HTTP_In/;"	x
+Hash	docs/api.rst	/^Hash$/;"	S	section:Utils
+I18NSPHINXOPTS	docs/Makefile	/^I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .$/;"	m
+I18NSPHINXOPTS	docs/make.bat	/^	set I18NSPHINXOPTS=-D latex_paper_size=%PAPER% %I18NSPHINXOPTS%$/;"	v
+I18NSPHINXOPTS	docs/make.bat	/^set I18NSPHINXOPTS=%SPHINXOPTS% .$/;"	v
+Import_Error	main.py	/^Import_Error = ImportError$/;"	v
+In	schema/validate.py	/^class In(object):$/;"	c
+Indices and tables	docs/index.rst	/^Indices and tables$/;"	c
+Installation	README.md	/^## Installation$/;"	s
+Installation	docs/installation.rst	/^Installation$/;"	c
+Internal_Server_Error_Handler	api/error_handler.py	/^class Internal_Server_Error_Handler(Base_Handler):$/;"	c
+Internal_Server_Error_Response	lib/response.py	/^class Internal_Server_Error_Response(Base_Response):$/;"	c
+Internal_Server_Error_Response	swagger/schema.json	/^    "Internal_Server_Error_Response": {$/;"	o	object:definitions
+Internal_Server_Error_Response_Schema	schema/response.py	/^class Internal_Server_Error_Response_Schema(Base_Response_Schema):$/;"	c
+JSON	docs/api.rst	/^JSON$/;"	S	section:Utils
+JSON_Handler	api/__init__.py	/^from falcon.media import JSONHandler as JSON_Handler, MessagePackHandler as Message_Pack_Handler$/;"	x
+JSON_Handler	api/media_handler.py	/^from falcon.media import JSONHandler as JSON_Handler$/;"	x
+LCPBasics	schema/filiation.py	/^class LCPBasics(Base_Schema):$/;"	c
+Lib	docs/api.rst	/^Lib$/;"	s	chapter:API
+License	docs/license.rst	/^License$/;"	c
+List_or_One	utils/schema.py	/^class List_or_One(List):$/;"	c
+Local Control Plane	README.md	/^# Local Control Plane$/;"	c
+Log	docs/api.rst	/^Log$/;"	S	section:Utils
+Log	utils/log.py	/^class Log:$/;"	c
+Marshmallow_Plugin	api/spec.py	/^from apispec.ext.marshmallow import MarshmallowPlugin as Marshmallow_Plugin$/;"	x
+Media Handler	docs/api.rst	/^Media Handler$/;"	s	chapter:API
+Message_Pack_Handler	api/__init__.py	/^from falcon.media import JSONHandler as JSON_Handler, MessagePackHandler as Message_Pack_Handler$/;"	x
+Middleware	docs/api.rst	/^Middleware$/;"	s	chapter:API
+NO_CHANGE_NEEDED	lib/parser.py	/^NO_CHANGE_NEEDED = 'No change needed'$/;"	v
+Negotiation_Middleware	api/middleware.py	/^class Negotiation_Middleware(object):$/;"	c
+No_Content_Response	lib/response.py	/^class No_Content_Response(Base_Response):$/;"	c
+No_Content_Response	swagger/schema.json	/^    "No_Content_Response": {$/;"	o	object:definitions
+No_Content_Response_Schema	schema/response.py	/^class No_Content_Response_Schema(Base_Response_Schema):$/;"	c
+Not_Acceptable_Response	lib/response.py	/^class Not_Acceptable_Response(Base_Response):$/;"	c
+Not_Acceptable_Response	swagger/schema.json	/^    "Not_Acceptable_Response": {$/;"	o	object:definitions
+Not_Acceptable_Response_Schema	schema/response.py	/^class Not_Acceptable_Response_Schema(Base_Response_Schema):$/;"	c
+Not_Found_Response	lib/response.py	/^class Not_Found_Response(Base_Response):$/;"	c
+Not_Found_Response_Schema	schema/response.py	/^class Not_Found_Response_Schema(Base_Response_Schema):$/;"	c
+Not_Modified_Response	lib/response.py	/^class Not_Modified_Response(Base_Response):$/;"	c
+Not_Modified_Response_Schema	schema/response.py	/^class Not_Modified_Response_Schema(Base_Response_Schema):$/;"	c
+OUTPUT_FORMATS	schema/config.py	/^OUTPUT_FORMATS = ['plain', 'lines', 'json']$/;"	v
+Ok_Response	lib/response.py	/^class Ok_Response(Base_Response):$/;"	c
+Ok_Response	swagger/schema.json	/^    "Ok_Response": {$/;"	o	object:definitions
+Ok_Response_Schema	schema/response.py	/^class Ok_Response_Schema(Base_Response_Schema):$/;"	c
+Our Pledge	CONTRIBUTING.md	/^### Our Pledge$/;"	S
+Our Pledge	docs/CONTRIBUTING.md	/^### Our Pledge$/;"	S
+Our Responsibilities	CONTRIBUTING.md	/^### Our Responsibilities$/;"	S
+Our Responsibilities	docs/CONTRIBUTING.md	/^### Our Responsibilities$/;"	S
+Our Standards	CONTRIBUTING.md	/^### Our Standards$/;"	S
+Our Standards	docs/CONTRIBUTING.md	/^### Our Standards$/;"	S
+PAPER	docs/Makefile	/^PAPER         =$/;"	m
+PAPER	docs/make.bat	/^	echo.  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter$/;"	v
+PAPEROPT_a4	docs/Makefile	/^PAPEROPT_a4     = -D latex_paper_size=a4$/;"	m
+PAPEROPT_letter	docs/Makefile	/^PAPEROPT_letter = -D latex_paper_size=letter$/;"	m
+PARAMETER_SCHEMAS	schema/config.py	/^PARAMETER_SCHEMAS = ['json', 'properties', 'xml', 'yaml']$/;"	v
+POST	lib/http.py	/^    POST = 'post'$/;"	v	class:HTTP_Method
+PUT	lib/http.py	/^    PUT = 'put'$/;"	v	class:HTTP_Method
+Parser_Error	api/media_handler.py	/^from yaml.parser import ParserError as Parser_Error, ScannerError as Scanner_Error$/;"	x
+Polycube	lib/polycube.py	/^class Polycube:$/;"	c
+Pull Request Process	CONTRIBUTING.md	/^## Pull Request Process$/;"	s
+Pull Request Process	docs/CONTRIBUTING.md	/^## Pull Request Process$/;"	s
+RESPONSE_CODES	schema/response.py	/^RESPONSE_CODES = [$/;"	v
+RESPONSE_STATUS	schema/response.py	/^RESPONSE_STATUS = [$/;"	v
+RESPONSE_TYPES	schema/config.py	/^RESPONSE_TYPES = ['action', 'parameter', 'resource']$/;"	v
+Reader	docs/api.rst	/^Reader$/;"	s	chapter:API
+Request	docs/api.rst	/^Request$/;"	t	subsection:Config
+Reset_Content_Response	lib/response.py	/^class Reset_Content_Response(Base_Response):$/;"	c
+Reset_Content_Response_Schema	schema/response.py	/^class Reset_Content_Response_Schema(Base_Response_Schema):$/;"	c
+Resource	docs/api.rst	/^Resource$/;"	s	chapter:API
+Response	docs/api.rst	/^Response$/;"	S	section:Schema
+Response	docs/api.rst	/^Response$/;"	s	chapter:API
+Response	docs/api.rst	/^Response$/;"	t	subsection:Config
+Running	docs/running.rst	/^Running$/;"	c
+SPHINXBUILD	docs/Makefile	/^SPHINXBUILD   = sphinx-build$/;"	m
+SPHINXBUILD	docs/make.bat	/^	set SPHINXBUILD=sphinx-build$/;"	v
+SPHINXOPTS	docs/Makefile	/^SPHINXOPTS    =$/;"	m
+Scanner_Error	api/media_handler.py	/^from yaml.parser import ParserError as Parser_Error, ScannerError as Scanner_Error$/;"	x
+Schema	docs/api.rst	/^Schema$/;"	s	chapter:API
+Scope	CONTRIBUTING.md	/^### Scope$/;"	S
+Scope	docs/CONTRIBUTING.md	/^### Scope$/;"	S
+Sequence	docs/api.rst	/^Sequence$/;"	S	section:Utils
+Signal	docs/api.rst	/^Signal$/;"	S	section:Utils
+Spec	api/spec.py	/^class Spec:$/;"	c
+Spec	docs/api.rst	/^Spec$/;"	s	chapter:API
+Status	docs/api.rst	/^Status$/;"	S	section:Schema
+Status_Request_Schema	schema/status.py	/^class Status_Request_Schema(Base_Schema):$/;"	c
+Status_Resource	resource/status.py	/^class Status_Resource(object):$/;"	c
+Status_Response	swagger/schema.json	/^    "Status_Response": {$/;"	o	object:definitions
+Status_Response_Schema	schema/status.py	/^class Status_Response_Schema(Base_Schema):$/;"	c
+String	docs/api.rst	/^String$/;"	S	section:Utils
+String_Formatter	utils/string.py	/^from string import Formatter as String_Formatter$/;"	x
+TTL_Ordered_Dict	resource/status.py	/^from ttldict import TTLOrderedDict as TTL_Ordered_Dict$/;"	x
+TestMyApp	test/filiation_tests.py	/^class TestMyApp(FiliationTesting):$/;"	c
+Time	docs/api.rst	/^Time$/;"	S	section:Utils
+Timeout_Error	lib/polycube.py	/^from requests.exceptions import ConnectionError as Connection_Error, Timeout as Timeout_Error$/;"	x
+Unauthorized_Response	lib/response.py	/^class Unauthorized_Response(Base_Response):$/;"	c
+Unauthorized_Response	swagger/schema.json	/^    "Unauthorized_Response": {$/;"	o	object:definitions
+Unauthorized_Response_Schema	schema/response.py	/^class Unauthorized_Response_Schema(Base_Response_Schema):$/;"	c
+Unique_List	schema/validate.py	/^class Unique_List(object):$/;"	c
+Unit_Registry	utils/time.py	/^from pint import UnitRegistry as Unit_Registry$/;"	x
+Unprocessable_Entity_Response	lib/response.py	/^class Unprocessable_Entity_Response(Base_Response):$/;"	c
+Unprocessable_Entity_Response_Schema	schema/response.py	/^class Unprocessable_Entity_Response_Schema(Base_Response_Schema):$/;"	c
+Unsupported_Media_Type_Handler	api/error_handler.py	/^class Unsupported_Media_Type_Handler(Base_Handler):$/;"	c
+Unsupported_Media_Type_Response	lib/response.py	/^class Unsupported_Media_Type_Response(Base_Response):$/;"	c
+Unsupported_Media_Type_Response	swagger/schema.json	/^    "Unsupported_Media_Type_Response": {$/;"	o	object:definitions
+Unsupported_Media_Type_Response_Schema	schema/response.py	/^class Unsupported_Media_Type_Response_Schema(Base_Response_Schema):$/;"	c
+Usage	README.md	/^## Usage$/;"	s
+Utils	docs/api.rst	/^Utils$/;"	s	chapter:API
+Validation_Error	schema/base.py	/^from marshmallow.exceptions import ValidationError as Validation_Error$/;"	x
+Welcome to LCP documentation!	docs/index.rst	/^Welcome to LCP documentation!$/;"	c
+XML_Handler	api/media_handler.py	/^class XML_Handler(JSON_Handler):$/;"	c
+YAML_Handler	api/media_handler.py	/^class YAML_Handler(JSON_Handler):$/;"	c
+__Q	utils/time.py	/^__Q = __ureg.Quantity$/;"	v
+__actions	resource/config.py	/^    def __actions(self, data):$/;"	m	class:Config_Resource	file:
+__all__	api/__init__.py	/^__all__ = [$/;"	v
+__all__	api/error_handler.py	/^__all__ = [$/;"	v
+__all__	api/media_handler.py	/^__all__ = [$/;"	v
+__all__	api/middleware.py	/^__all__ = [$/;"	v
+__all__	api/spec.py	/^__all__ = [$/;"	v
+__all__	docstring/__init__.py	/^__all__ = [$/;"	v
+__all__	lib/http.py	/^__all__ = [$/;"	v
+__all__	lib/parser.py	/^__all__ = [$/;"	v
+__all__	lib/polycube.py	/^__all__ = [$/;"	v
+__all__	lib/response.py	/^__all__ = [$/;"	v
+__all__	reader/arg.py	/^__all__ = [$/;"	v
+__all__	reader/config.py	/^__all__ = [$/;"	v
+__all__	resource/__init__.py	/^__all__ = [$/;"	v
+__all__	resource/base.py	/^__all__ = [$/;"	v
+__all__	resource/code.py	/^__all__ = [$/;"	v
+__all__	resource/config.py	/^__all__ = [$/;"	v
+__all__	resource/filiationbyid.py	/^__all__ = [$/;"	v
+__all__	resource/foothing.py	/^__all__ = [$/;"	v
+__all__	resource/status.py	/^__all__ = [$/;"	v
+__all__	schema/base.py	/^__all__ = [$/;"	v
+__all__	schema/code.py	/^__all__ = [$/;"	v
+__all__	schema/filiation.py	/^__all__ = [$/;"	v
+__all__	schema/foothing.py	/^__all__ = [$/;"	v
+__all__	schema/response.py	/^__all__ = [$/;"	v
+__all__	schema/status.py	/^__all__ = [$/;"	v
+__all__	schema/validate.py	/^__all__ = [$/;"	v
+__all__	utils/datetime.py	/^__all__ = [$/;"	v
+__all__	utils/exception.py	/^__all__ = [$/;"	v
+__all__	utils/hash.py	/^__all__ = [$/;"	v
+__all__	utils/json.py	/^__all__ = [$/;"	v
+__all__	utils/log.py	/^__all__ = [$/;"	v
+__all__	utils/schema.py	/^__all__ = [$/;"	v
+__all__	utils/sequence.py	/^__all__ = [$/;"	v
+__all__	utils/signal.py	/^__all__ = [$/;"	v
+__all__	utils/string.py	/^__all__ = [$/;"	v
+__all__	utils/time.py	/^__all__ = [$/;"	v
+__attach	lib/polycube.py	/^    def __attach(self, cube, interface):$/;"	m	class:Polycube	file:
+__auth	api/middleware.py	/^    def __auth(self, username, password):$/;"	m	class:Basic_Auth_Backend_Middleware	file:
+__converter	utils/json.py	/^def __converter(obj):$/;"	f
+__data	lib/response.py	/^    def __data(self):$/;"	m	class:Base_Response	file:
+__dataplane_config	lib/polycube.py	/^    def __dataplane_config(cube, code, metrics):$/;"	m	class:Polycube	file:
+__detach	lib/polycube.py	/^    def __detach(self, cube, interface):$/;"	m	class:Polycube	file:
+__dict__	lib/response.py	/^    def __dict__(self):$/;"	m	class:Base_Response
+__eq	lib/http.py	/^def __eq(code_a, code_b):$/;"	f
+__exception	utils/log.py	/^        def __exception(message, exception):$/;"	f	member:Log.get	file:
+__from_resp	lib/polycube.py	/^    def __from_resp(self, resp, error=None):$/;"	m	class:Polycube	file:
+__get	lib/http.py	/^def __get(code):$/;"	f
+__get	schema/validate.py	/^        def __get(values):$/;"	f	member:Unique_List.apply	file:
+__gt	lib/http.py	/^def __gt(code_a, code_b):$/;"	f
+__gte	lib/http.py	/^def __gte(code_a, code_b):$/;"	f
+__init__	api/media_handler.py	/^    def __init__(self, dumps=None, loads=None):$/;"	m	class:XML_Handler
+__init__	api/media_handler.py	/^    def __init__(self, dumps=None, loads=None):$/;"	m	class:YAML_Handler
+__init__	api/middleware.py	/^    def __init__(self, dev_username, dev_password):$/;"	m	class:Basic_Auth_Backend_Middleware
+__init__	api/spec.py	/^    def __init__(self, api, title, version):$/;"	m	class:Spec
+__init__	lib/polycube.py	/^    def __init__(self):$/;"	m	class:Polycube
+__init__	lib/response.py	/^    def __init__(self):$/;"	m	class:Unauthorized_Response
+__init__	lib/response.py	/^    def __init__(self, content):$/;"	m	class:Content_Response
+__init__	lib/response.py	/^    def __init__(self, exception=None, **kwargs):$/;"	m	class:Bad_Request_Response
+__init__	lib/response.py	/^    def __init__(self, exception=None, **kwargs):$/;"	m	class:Internal_Server_Error_Response
+__init__	lib/response.py	/^    def __init__(self, exception=None, **kwargs):$/;"	m	class:Unsupported_Media_Type_Response
+__init__	lib/response.py	/^    def __init__(self, message, **kwargs):$/;"	m	class:Created_Response
+__init__	lib/response.py	/^    def __init__(self, message, **kwargs):$/;"	m	class:Internal_Server_Error_Response
+__init__	lib/response.py	/^    def __init__(self, message, **kwargs):$/;"	m	class:Not_Modified_Response
+__init__	lib/response.py	/^    def __init__(self, message, **kwargs):$/;"	m	class:Ok_Response
+__init__	lib/response.py	/^    def __init__(self, message, **kwargs):$/;"	m	class:Reset_Content_Response
+__init__	lib/response.py	/^    def __init__(self, message, error=False, exception=None, **kwargs):$/;"	m	class:Base_Response
+__init__	lib/response.py	/^    def __init__(self, message, exception=None, **kwargs):$/;"	m	class:Conflict_Response
+__init__	lib/response.py	/^    def __init__(self, message, exception=None, **kwargs):$/;"	m	class:No_Content_Response
+__init__	lib/response.py	/^    def __init__(self, message, exception=None, **kwargs):$/;"	m	class:Not_Acceptable_Response
+__init__	lib/response.py	/^    def __init__(self, message, exception=None, **kwargs):$/;"	m	class:Not_Found_Response
+__init__	lib/response.py	/^    def __init__(self, message, exception=None, **kwargs):$/;"	m	class:Unprocessable_Entity_Response
+__init__	reader/config.py	/^    def __init__(self):$/;"	m	class:Config_Reader
+__init__	resource/base.py	/^    def __init__(self):$/;"	m	class:Base_Resource
+__init__	resource/code.py	/^    def __init__(self):$/;"	m	class:Code_Resource
+__init__	resource/filiationbyid.py	/^    def __init__(self):$/;"	m	class:Filiation
+__init__	resource/filiationbyid.py	/^    def __init__(self):$/;"	m	class:FiliationById
+__init__	resource/foothing.py	/^    def __init__(self):$/;"	m	class:FooThing
+__init__	resource/status.py	/^    def __init__(self):$/;"	m	class:Status_Resource
+__init__	schema/base.py	/^    def __init__(self, *args, method=None, check_unique_id=False, **kwargs):$/;"	m	class:Base_Schema
+__int__	lib/response.py	/^    def __int__(self):$/;"	m	class:Base_Response
+__log	lib/response.py	/^    def __log(self):$/;"	m	class:Base_Response	file:
+__lt	lib/http.py	/^def __lt(code_a, code_b):$/;"	f
+__lte	lib/http.py	/^def __lte(code_a, code_b):$/;"	f
+__manager	lib/polycube.py	/^    def __manager(self, resp_req):$/;"	m	class:Polycube	file:
+__norm	schema/base.py	/^            def __norm(block):$/;"	f	member:Base_Schema.validate	file:
+__parameters	resource/config.py	/^    def __parameters(self, data):$/;"	m	class:Config_Resource	file:
+__resources	resource/config.py	/^    def __resources(self, data):$/;"	m	class:Config_Resource	file:
+__run_cmd	resource/config.py	/^    def __run_cmd(self, cmd, daemon, output):$/;"	m	class:Config_Resource	file:
+__schema_name_resolver	api/spec.py	/^    def __schema_name_resolver(schema):$/;"	m	class:Spec	file:
+__set_std	resource/config.py	/^    def __set_std(self, data, output, key, output_format):$/;"	m	class:Config_Resource	file:
+__str__	lib/response.py	/^    def __str__(self):$/;"	m	class:Base_Response
+__ureg	utils/time.py	/^__ureg = Unit_Registry()$/;"	v
+__validate_readonly	schema/base.py	/^    def __validate_readonly(self, data, **kwargs):$/;"	m	class:Base_Schema	file:
+_all__	schema/config.py	/^_all__ = [$/;"	v
+_deserialize	utils/schema.py	/^    def _deserialize(self, value, attr, data, **kwargs):$/;"	m	class:List_or_One
+_getAuthorizationHeaders	test/filiation_tests.py	/^    def _getAuthorizationHeaders(self):$/;"	m	class:TestMyApp
+_getFiliationData	test/filiation_tests.py	/^    def _getFiliationData(self):$/;"	m	class:TestMyApp
+_setFiliationData	test/filiation_tests.py	/^    def _setFiliationData(self):$/;"	m	class:TestMyApp
+_setMultiFiliationData	test/filiation_tests.py	/^    def _setMultiFiliationData(self):$/;"	m	class:TestMyApp
+actions	schema/config.py	/^    actions = Nested(Config_Action_Request_Schema, many=True, unknown='INCLUDE',$/;"	v	class:Config_Request_Schema
+actions	swagger/schema.json	/^        "actions": {$/;"	o	object:definitions.Config_Request.properties
+add	lib/response.py	/^    def add(self, resp):$/;"	m	class:Base_Response
+allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Bad_Request_Response.properties.exception
+allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Internal_Server_Error_Response.properties.exception
+allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.No_Content_Response.properties.exception
+allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Not_Acceptable_Response.properties.exception
+allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Ok_Response.properties.exception
+allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Unauthorized_Response.properties.exception
+allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Unsupported_Media_Type_Response.properties.exception
+ap	reader/arg.py	/^    ap = None$/;"	v	class:Arg_Reader
+api	api/__init__.py	/^def api(title, version, dev_username, dev_password):$/;"	f
+api	docs/api.rst	/^.. _api:$/;"	T
+apply	lib/response.py	/^    def apply(self, resp):$/;"	m	class:Base_Response
+apply	lib/response.py	/^    def apply(self, resp):$/;"	m	class:Content_Response
+apply	lib/response.py	/^    def apply(self, resp):$/;"	m	class:Unauthorized_Response
+apply	schema/validate.py	/^    def apply(field=None):$/;"	m	class:Unique_List
+apply	schema/validate.py	/^    def apply(src, negation=False):$/;"	m	class:In
+args	schema/config.py	/^    args = Str(many=True, example='-al',$/;"	v	class:Config_Action_Request_Schema
+args	swagger/schema.json	/^        "args": {$/;"	o	object:definitions.Config_Action_Request.properties
+auth	config.ini	/^[auth]$/;"	s
+auth	resource/status.py	/^    auth = dict(exempt_methods=['POST'])$/;"	v	class:Status_Resource
+auth_db	resource/status.py	/^    auth_db = {}$/;"	v	class:Status_Resource
+authenticate	api/middleware.py	/^    def authenticate(self, req, resp, resource):$/;"	m	class:Basic_Auth_Backend_Middleware
+author	docs/conf.py	/^author = 'Alex Carrega <alessandro.carrega@cnit.it>'$/;"	v
+before_get	reader/config.py	/^        def before_get(self, parser, section, option, value, defaults):$/;"	m	class:Config_Reader.Env_Interpolation
+cb	resource/status.py	/^    cb = {}$/;"	v	class:Status_Resource
+changes	docs/Makefile	/^changes:$/;"	t
+clean	docs/Makefile	/^clean:$/;"	t
+cmd	schema/config.py	/^    cmd = Str(required=True,$/;"	v	class:Config_Action_Request_Schema
+cmd	swagger/schema.json	/^        "cmd": {$/;"	o	object:definitions.Config_Action_Request.properties
+code	lib/response.py	/^    code = HTTP_Status.BAD_REQUEST$/;"	v	class:Bad_Request_Response
+code	lib/response.py	/^    code = HTTP_Status.CONFLICT$/;"	v	class:Conflict_Response
+code	lib/response.py	/^    code = HTTP_Status.CREATED$/;"	v	class:Created_Response
+code	lib/response.py	/^    code = HTTP_Status.INTERNAL_SERVER_ERROR$/;"	v	class:Internal_Server_Error_Response
+code	lib/response.py	/^    code = HTTP_Status.NOT_ACCEPTABLE$/;"	v	class:Not_Acceptable_Response
+code	lib/response.py	/^    code = HTTP_Status.NOT_FOUND$/;"	v	class:Not_Found_Response
+code	lib/response.py	/^    code = HTTP_Status.NOT_MODIFIED$/;"	v	class:Not_Modified_Response
+code	lib/response.py	/^    code = HTTP_Status.NO_CONTENT$/;"	v	class:No_Content_Response
+code	lib/response.py	/^    code = HTTP_Status.OK$/;"	v	class:Ok_Response
+code	lib/response.py	/^    code = HTTP_Status.RESET_CONTENT$/;"	v	class:Reset_Content_Response
+code	lib/response.py	/^    code = HTTP_Status.UNAUTHORIZED$/;"	v	class:Unauthorized_Response
+code	lib/response.py	/^    code = HTTP_Status.UNPROCESSABLE_ENTITY$/;"	v	class:Unprocessable_Entity_Response
+code	lib/response.py	/^    code = HTTP_Status.UNSUPPORTED_MEDIA_TYPE$/;"	v	class:Unsupported_Media_Type_Response
+code	schema/code.py	/^    code = List_or_One(Str, required=True,$/;"	v	class:Code_Request_Schema
+code	schema/foothing.py	/^    code = List_or_One(Str, required=True,$/;"	v	class:FooThing
+code	schema/response.py	/^    code = Constant(Content_Response.code)$/;"	v	class:Content_Response_Schema
+code	schema/response.py	/^    code = Constant(Created_Response.code)$/;"	v	class:Created_Response_Schema
+code	schema/response.py	/^    code = Constant(Internal_Server_Error_Response.code)$/;"	v	class:Internal_Server_Error_Response_Schema
+code	schema/response.py	/^    code = Constant(No_Content_Response.code)$/;"	v	class:No_Content_Response_Schema
+code	schema/response.py	/^    code = Constant(Not_Acceptable_Response.code)$/;"	v	class:Not_Acceptable_Response_Schema
+code	schema/response.py	/^    code = Constant(Not_Found_Response.code)$/;"	v	class:Not_Found_Response_Schema
+code	schema/response.py	/^    code = Constant(Not_Modified_Response.code)$/;"	v	class:Not_Modified_Response_Schema
+code	schema/response.py	/^    code = Constant(Ok_Response.code)$/;"	v	class:Ok_Response_Schema
+code	schema/response.py	/^    code = Constant(Reset_Content_Response.code)$/;"	v	class:Reset_Content_Response_Schema
+code	schema/response.py	/^    code = Constant(Unauthorized_Response.code)$/;"	v	class:Unauthorized_Response_Schema
+code	schema/response.py	/^    code = Constant(Unprocessable_Entity_Response.code)$/;"	v	class:Unprocessable_Entity_Response_Schema
+code	schema/response.py	/^    code = Constant(Unsupported_Media_Type_Response.code)$/;"	v	class:Unsupported_Media_Type_Response_Schema
+code	schema/response.py	/^    code = Constant(constant=Bad_Request_Response.code)$/;"	v	class:Bad_Request_Response_Schema
+code	schema/response.py	/^    code = Constant(constant=Conflict_Response.code)$/;"	v	class:Conflict_Response_Schema
+code	schema/response.py	/^    code = Integer(required=True, enum=RESPONSE_CODES,$/;"	v	class:Base_Response_Schema
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.Bad_Request_Response.properties
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.Code_Request.properties
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.Internal_Server_Error_Response.properties
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.No_Content_Response.properties
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.Not_Acceptable_Response.properties
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.Ok_Response.properties
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.Unauthorized_Response.properties
+code	swagger/schema.json	/^        "code": {$/;"	o	object:definitions.Unsupported_Media_Type_Response.properties
+code_priority_order	lib/http.py	/^code_priority_order = cpo = {$/;"	v
+connectionpool	config.ini	/^urllib3.connectionpool = CRITICAL$/;"	k	section:log
+consumes	swagger/schema.json	/^  "consumes": [$/;"	a
+content	schema/config.py	/^    content = Str(required=True,$/;"	v	class:Config_Resource_Request_Schema
+content	swagger/schema.json	/^        "content": {$/;"	o	object:definitions.Config_Resource_Request.properties
+convert_field	utils/string.py	/^    def convert_field(self, value, conversion):$/;"	m	class:Formatter
+copyright	docs/conf.py	/^copyright = '2020, GUARD Project'$/;"	v
+cr	reader/arg.py	/^    cr = None$/;"	v	class:Arg_Reader
+create	lib/polycube.py	/^    def create(self, cube, code, interface, metrics):$/;"	m	class:Polycube
+daemon	schema/config.py	/^    daemon = Boolean(default=False, example=True,$/;"	v	class:Config_Action_Request_Schema
+daemon	swagger/schema.json	/^        "daemon": {$/;"	o	object:definitions.Config_Action_Request.properties
+data	resource/filiationbyid.py	/^    data = {}$/;"	v	class:Filiation
+data	schema/config.py	/^    data = Raw(description='Configuration data.')$/;"	v	class:Config_Response_Schema
+data	schema/validate.py	/^        def data():$/;"	f	member:In.apply	file:
+datetime_from_str	utils/datetime.py	/^def datetime_from_str(date_time_str, format=FORMAT):$/;"	f
+datetime_to_str	utils/datetime.py	/^def datetime_to_str(date_time=None, format=FORMAT):$/;"	f
+db	main.py	/^db = Arg_Reader.read()$/;"	v
+db	reader/arg.py	/^    db = None$/;"	v	class:Arg_Reader
+db	resource/__init__.py	/^db = ($/;"	v
+decorator	docstring/__init__.py	/^    def decorator(self):$/;"	f	function:docstring	file:
+default	swagger/schema.json	/^          "default": "Bad Request"$/;"	s	object:definitions.Bad_Request_Response.properties.status
+default	swagger/schema.json	/^          "default": "Internal Server Error"$/;"	s	object:definitions.Internal_Server_Error_Response.properties.status
+default	swagger/schema.json	/^          "default": "No Content"$/;"	s	object:definitions.No_Content_Response.properties.status
+default	swagger/schema.json	/^          "default": "Not Acceptable"$/;"	s	object:definitions.Not_Acceptable_Response.properties.status
+default	swagger/schema.json	/^          "default": "OK"$/;"	s	object:definitions.Ok_Response.properties.status
+default	swagger/schema.json	/^          "default": "Unauthorized"$/;"	s	object:definitions.Unauthorized_Response.properties.status
+default	swagger/schema.json	/^          "default": "Unsupported Media Type"$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.status
+default	swagger/schema.json	/^          "default": 200$/;"	n	object:definitions.Ok_Response.properties.code
+default	swagger/schema.json	/^          "default": 204$/;"	n	object:definitions.No_Content_Response.properties.code
+default	swagger/schema.json	/^          "default": 400$/;"	n	object:definitions.Bad_Request_Response.properties.code
+default	swagger/schema.json	/^          "default": 401$/;"	n	object:definitions.Unauthorized_Response.properties.code
+default	swagger/schema.json	/^          "default": 406$/;"	n	object:definitions.Not_Acceptable_Response.properties.code
+default	swagger/schema.json	/^          "default": 415$/;"	n	object:definitions.Unsupported_Media_Type_Response.properties.code
+default	swagger/schema.json	/^          "default": 500$/;"	n	object:definitions.Internal_Server_Error_Response.properties.code
+default	swagger/schema.json	/^          "default": false$/;"	b	object:definitions.No_Content_Response.properties.error
+default	swagger/schema.json	/^          "default": false$/;"	b	object:definitions.Ok_Response.properties.error
+default	swagger/schema.json	/^          "default": true$/;"	b	object:definitions.Bad_Request_Response.properties.error
+default	swagger/schema.json	/^          "default": true$/;"	b	object:definitions.Internal_Server_Error_Response.properties.error
+default	swagger/schema.json	/^          "default": true$/;"	b	object:definitions.Not_Acceptable_Response.properties.error
+default	swagger/schema.json	/^          "default": true$/;"	b	object:definitions.Unauthorized_Response.properties.error
+default	swagger/schema.json	/^          "default": true$/;"	b	object:definitions.Unsupported_Media_Type_Response.properties.error
+default	utils/log.py	/^    default = None$/;"	v	class:Log
+definitions	swagger/schema.json	/^  "definitions": {$/;"	o
+delete	lib/polycube.py	/^    def delete(self, cube):$/;"	m	class:Polycube
+delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./code
+delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./code/{id}
+delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./filiation/{id}
+delete_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x
+description	about.py	/^description = 'In each local agent, the control plane is responsible for programmability, i.e., /;"	v
+description	docstring/foothing/get.json	/^            "description": "Authentication failed.",$/;"	s	object:get.responses.401
+description	docstring/foothing/get.json	/^            "description": "Request not valid.",$/;"	s	object:get.responses.400
+description	docstring/foothing/get.json	/^            "description": "Request validation failed.",$/;"	s	object:get.responses.406
+description	docstring/foothing/get.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:get.responses.500
+description	docstring/foothing/get.json	/^            "description": "Status data of the LCP.",$/;"	s	object:get.responses.200
+description	docstring/foothing/get.json	/^        "description": "Get simply nothing",$/;"	s	object:get
+description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code.delete.responses.422.500
+description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code.post.responses.422.500
+description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code/{id}.delete.responses.422.500
+description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code/{id}.post.responses.422.500
+description	swagger/schema.json	/^            "description": "All injected code correctly updated.",$/;"	s	object:paths./code.put.responses.200
+description	swagger/schema.json	/^            "description": "All injected code correctly updated.",$/;"	s	object:paths./code/{id}.put.responses.200
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code.delete.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code.post.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code.put.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code/{id}.delete.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code/{id}.post.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code/{id}.put.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./config.post.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./filiation.get.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./filiation.post.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./filiation/{id}.delete.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./filiation/{id}.get.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./foothing.get.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./foothing/{id}.get.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./status.get.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./status.post.responses.401
+description	swagger/schema.json	/^            "description": "Codes inject correctly.",$/;"	s	object:paths./code.delete.responses.200
+description	swagger/schema.json	/^            "description": "Codes inject correctly.",$/;"	s	object:paths./code.post.responses.200
+description	swagger/schema.json	/^            "description": "Codes inject correctly.",$/;"	s	object:paths./code/{id}.delete.responses.200
+description	swagger/schema.json	/^            "description": "Codes inject correctly.",$/;"	s	object:paths./code/{id}.post.responses.200
+description	swagger/schema.json	/^            "description": "Configuration changed correctly.",$/;"	s	object:paths./config.post.responses.200
+description	swagger/schema.json	/^            "description": "Heartbeat with CB-Manager correctly executed.",$/;"	s	object:paths./status.post.responses.200
+description	swagger/schema.json	/^            "description": "Key path."$/;"	s	object:definitions.Config_Parameter_Request.properties.path.items
+description	swagger/schema.json	/^            "description": "Media type not supported.",$/;"	s	object:paths./code.put.responses.415
+description	swagger/schema.json	/^            "description": "Media type not supported.",$/;"	s	object:paths./code/{id}.put.responses.415
+description	swagger/schema.json	/^            "description": "No content to configure based on the request.",$/;"	s	object:paths./config.post.responses.204
+description	swagger/schema.json	/^            "description": "No content to inject codes based on the request.",$/;"	s	object:paths./code.delete.responses.204
+description	swagger/schema.json	/^            "description": "No content to inject codes based on the request.",$/;"	s	object:paths./code.post.responses.204
+description	swagger/schema.json	/^            "description": "No content to inject codes based on the request.",$/;"	s	object:paths./code/{id}.delete.responses.204
+description	swagger/schema.json	/^            "description": "No content to inject codes based on the request.",$/;"	s	object:paths./code/{id}.post.responses.204
+description	swagger/schema.json	/^            "description": "No content to update codes based on the request.",$/;"	s	object:paths./code.put.responses.204
+description	swagger/schema.json	/^            "description": "No content to update codes based on the request.",$/;"	s	object:paths./code/{id}.put.responses.204
+description	swagger/schema.json	/^            "description": "Not possible to change one or more configurations.",$/;"	s	object:paths./config.post.responses.422
+description	swagger/schema.json	/^            "description": "Not possible to inject one or more codes.",$/;"	s	object:paths./code.delete.responses.422
+description	swagger/schema.json	/^            "description": "Not possible to inject one or more codes.",$/;"	s	object:paths./code.post.responses.422
+description	swagger/schema.json	/^            "description": "Not possible to inject one or more codes.",$/;"	s	object:paths./code/{id}.delete.responses.422
+description	swagger/schema.json	/^            "description": "Not possible to inject one or more codes.",$/;"	s	object:paths./code/{id}.post.responses.422
+description	swagger/schema.json	/^            "description": "Not possible to update one or more codes based on the request.",$/;"	s	object:paths./code.put.responses.422
+description	swagger/schema.json	/^            "description": "Not possible to update one or more codes based on the request.",$/;"	s	object:paths./code/{id}.put.responses.422
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code.delete.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code.post.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code.put.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code/{id}.delete.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code/{id}.post.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code/{id}.put.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./config.post.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./filiation.get.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./filiation.post.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./filiation/{id}.delete.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./filiation/{id}.get.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./foothing.get.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./foothing/{id}.get.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./status.get.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./status.post.responses.400
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code.delete.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code.post.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code.put.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code/{id}.delete.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code/{id}.post.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code/{id}.put.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./config.post.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./filiation.get.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./filiation.post.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./filiation/{id}.delete.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./filiation/{id}.get.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./foothing.get.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./foothing/{id}.get.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./status.get.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./status.post.responses.406
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code.put.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code/{id}.put.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./config.post.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./filiation.get.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./filiation.post.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./filiation/{id}.delete.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./filiation/{id}.get.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./foothing.get.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./foothing/{id}.get.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./status.get.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./status.post.responses.500
+description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation.get.responses.200
+description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation.post.responses.200
+description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation/{id}.delete.responses.200
+description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation/{id}.get.responses.200
+description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./foothing.get.responses.200
+description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./foothing/{id}.get.responses.200
+description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./status.get.responses.200
+description	swagger/schema.json	/^            "description": "Update for one or more codes not necessary.",$/;"	s	object:paths./code.put.responses.304
+description	swagger/schema.json	/^            "description": "Update for one or more codes not necessary.",$/;"	s	object:paths./code/{id}.put.responses.304
+description	swagger/schema.json	/^          "description": "Code id."$/;"	s	object:definitions.Code_Request.properties.id
+description	swagger/schema.json	/^          "description": "Code source",$/;"	s	object:definitions.Code_Request.properties.code
+description	swagger/schema.json	/^          "description": "Command."$/;"	s	object:definitions.Config_Action_Request.properties.cmd
+description	swagger/schema.json	/^          "description": "Exception reason."$/;"	s	object:definitions.Exception_Response.properties.reason
+description	swagger/schema.json	/^          "description": "Execute the command as daemon."$/;"	s	object:definitions.Config_Action_Request.properties.daemon
+description	swagger/schema.json	/^          "description": "File path"$/;"	s	object:definitions.Config_Resource_Request.properties.path
+description	swagger/schema.json	/^          "description": "Filename where the exception is raised."$/;"	s	object:definitions.Exception_Response.properties.filename
+description	swagger/schema.json	/^          "description": "Format of the output of the command."$/;"	s	object:definitions.Config_Action_Request.properties.output_format
+description	swagger/schema.json	/^          "description": "Human readable message that describes the status of the operation."$/;"	s	object:definitions.Bad_Request_Response.properties.message
+description	swagger/schema.json	/^          "description": "Human readable message that describes the status of the operation."$/;"	s	object:definitions.Internal_Server_Error_Response.properties.message
+description	swagger/schema.json	/^          "description": "Human readable message that describes the status of the operation."$/;"	s	object:definitions.No_Content_Response.properties.message
+description	swagger/schema.json	/^          "description": "Human readable message that describes the status of the operation."$/;"	s	object:definitions.Not_Acceptable_Response.properties.message
+description	swagger/schema.json	/^          "description": "Human readable message that describes the status of the operation."$/;"	s	object:definitions.Ok_Response.properties.message
+description	swagger/schema.json	/^          "description": "Human readable message that describes the status of the operation."$/;"	s	object:definitions.Unauthorized_Response.properties.message
+description	swagger/schema.json	/^          "description": "Human readable message that describes the status of the operation."$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.message
+description	swagger/schema.json	/^          "description": "ID of the execution environment."$/;"	s	object:definitions.Status_Response.properties.id
+description	swagger/schema.json	/^          "description": "Id of the action."$/;"	s	object:definitions.Config_Action_Request.properties.id
+description	swagger/schema.json	/^          "description": "Id of the parameter."$/;"	s	object:definitions.Config_Parameter_Request.properties.id
+description	swagger/schema.json	/^          "description": "Id of the resource."$/;"	s	object:definitions.Config_Resource_Request.properties.id
+description	swagger/schema.json	/^          "description": "Line where the exception is raised."$/;"	s	object:definitions.Exception_Response.properties.line
+description	swagger/schema.json	/^          "description": "List of actions.",$/;"	s	object:definitions.Config_Request.properties.actions
+description	swagger/schema.json	/^          "description": "List of parameters.",$/;"	s	object:definitions.Config_Request.properties.parameters
+description	swagger/schema.json	/^          "description": "List of resources.",$/;"	s	object:definitions.Config_Request.properties.resources
+description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Bad_Request_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Internal_Server_Error_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.No_Content_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Not_Acceptable_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Ok_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Unauthorized_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Parameter new value."$/;"	s	object:definitions.Config_Parameter_Request.properties.value
+description	swagger/schema.json	/^          "description": "Password for the CB to connect to this LCP."$/;"	s	object:definitions.Status_Response.properties.password
+description	swagger/schema.json	/^          "description": "Resource content."$/;"	s	object:definitions.Config_Resource_Request.properties.content
+description	swagger/schema.json	/^          "description": "Scheme."$/;"	s	object:definitions.Config_Parameter_Request.properties.schema
+description	swagger/schema.json	/^          "description": "Single command argument."$/;"	s	object:definitions.Config_Action_Request.properties.args
+description	swagger/schema.json	/^          "description": "Source filename."$/;"	s	object:definitions.Config_Parameter_Request.properties.source
+description	swagger/schema.json	/^          "description": "Timestamp of the expiration of the API access configuration."$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
+description	swagger/schema.json	/^          "description": "Timestamp when the LCP is started"$/;"	s	object:definitions.Status_Response.properties.started
+description	swagger/schema.json	/^          "description": "Username for the CB to connect to this LCP."$/;"	s	object:definitions.Status_Response.properties.username
+description	swagger/schema.json	/^        "description": "Apply configuration changes to the local environment.",$/;"	s	object:paths./config.post
+description	swagger/schema.json	/^        "description": "Get info about the status of the LCP in the execution environment.",$/;"	s	object:paths./status.get
+description	swagger/schema.json	/^        "description": "Get simply nothing",$/;"	s	object:paths./foothing.get
+description	swagger/schema.json	/^        "description": "Get simply nothing",$/;"	s	object:paths./foothing/{id}.get
+description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation.get
+description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation.post
+description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation/{id}.delete
+description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation/{id}.get
+description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code.delete
+description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code.post
+description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code/{id}.delete
+description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code/{id}.post
+description	swagger/schema.json	/^        "description": "Set the last heartbeat.",$/;"	s	object:paths./status.post
+description	swagger/schema.json	/^        "description": "Update the injected code at run-time in the local environment.",$/;"	s	object:paths./code.put
+description	swagger/schema.json	/^        "description": "Update the injected code at run-time in the local environment.",$/;"	s	object:paths./code/{id}.put
+description	swagger/schema.json	/^      "description": "Code injection at run-time."$/;"	s	object:tags.0
+description	swagger/schema.json	/^      "description": "Configuration at run-time."$/;"	s	object:tags.1
+description	swagger/schema.json	/^      "description": "Does Nothing but allows me learn."$/;"	s	object:tags.3
+description	swagger/schema.json	/^      "description": "Does Nothing but allows me learn."$/;"	s	object:tags.4
+description	swagger/schema.json	/^      "description": "Does Nothing but allows me learn."$/;"	s	object:tags.5
+description	swagger/schema.json	/^      "description": "Status data of the LCP."$/;"	s	object:tags.2
+deserialize	api/media_handler.py	/^    def deserialize(self, stream, content_type, content_length):$/;"	m	class:XML_Handler
+deserialize	api/media_handler.py	/^    def deserialize(self, stream, content_type, content_length):$/;"	m	class:YAML_Handler
+dev	config.ini	/^[dev]$/;"	s
+devhelp	docs/Makefile	/^devhelp:$/;"	t
+dict_to_xml	api/media_handler.py	/^from dicttoxml import dicttoxml as dict_to_xml$/;"	x
+dir_path	main.py	/^dir_path = os.path.dirname(path)$/;"	v
+dirhtml	docs/Makefile	/^dirhtml:$/;"	t
+docstring	docstring/__init__.py	/^def docstring(source):$/;"	f
+doctest	docs/Makefile	/^doctest:$/;"	t
+dumps	utils/json.py	/^def dumps(data, *args, **kwargs):$/;"	f
+duration	schema/config.py	/^    duration = Float(description='Execution time of the action (in seconds')$/;"	v	class:Config_Action_Response_Schema
+elastic-apm	config.ini	/^[elastic-apm]$/;"	s
+elasticsearch	config.ini	/^elasticsearch = CRITICAL$/;"	k	section:log
+element_map	utils/sequence.py	/^    def element_map(element):$/;"	f	function:format	file:
+end	docs/make.bat	/^:end$/;"	l
+enum	swagger/schema.json	/^          "enum": [$/;"	a	object:definitions.Config_Action_Request.properties.output_format
+enum	swagger/schema.json	/^          "enum": [$/;"	a	object:definitions.Config_Parameter_Request.properties.schema
+epub	docs/Makefile	/^epub:$/;"	t
+error	api/error_handler.py	/^    error = HTTP_Bad_Request$/;"	v	class:Bad_Request_Handler
+error	api/error_handler.py	/^    error = HTTP_Internal_Server_Error$/;"	v	class:Internal_Server_Error_Handler
+error	api/error_handler.py	/^    error = HTTP_Unsupported_Media_Type$/;"	v	class:Unsupported_Media_Type_Handler
+error	lib/response.py	/^    error = False$/;"	v	class:Base_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Bad_Request_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Conflict_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Internal_Server_Error_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Not_Acceptable_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Not_Found_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Unauthorized_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Unprocessable_Entity_Response
+error	lib/response.py	/^    error = True$/;"	v	class:Unsupported_Media_Type_Response
+error	schema/config.py	/^    error = Boolean(default=False, example=True,$/;"	v	class:Config_Response_Schema
+error	schema/response.py	/^    error = Bool(default=False, example=False,$/;"	v	class:Base_Response_Schema
+error	schema/response.py	/^    error = Constant(Content_Response.error)$/;"	v	class:Content_Response_Schema
+error	schema/response.py	/^    error = Constant(Created_Response.error)$/;"	v	class:Created_Response_Schema
+error	schema/response.py	/^    error = Constant(Internal_Server_Error_Response.error)$/;"	v	class:Internal_Server_Error_Response_Schema
+error	schema/response.py	/^    error = Constant(No_Content_Response.error)$/;"	v	class:No_Content_Response_Schema
+error	schema/response.py	/^    error = Constant(Not_Acceptable_Response.error)$/;"	v	class:Not_Acceptable_Response_Schema
+error	schema/response.py	/^    error = Constant(Not_Found_Response.error)$/;"	v	class:Not_Found_Response_Schema
+error	schema/response.py	/^    error = Constant(Not_Modified_Response.error)$/;"	v	class:Not_Modified_Response_Schema
+error	schema/response.py	/^    error = Constant(Ok_Response.error)$/;"	v	class:Ok_Response_Schema
+error	schema/response.py	/^    error = Constant(Reset_Content_Response.error)$/;"	v	class:Reset_Content_Response_Schema
+error	schema/response.py	/^    error = Constant(Unauthorized_Response.error)$/;"	v	class:Unauthorized_Response_Schema
+error	schema/response.py	/^    error = Constant(Unprocessable_Entity_Response.error)$/;"	v	class:Unprocessable_Entity_Response_Schema
+error	schema/response.py	/^    error = Constant(Unsupported_Media_Type_Response.error)$/;"	v	class:Unsupported_Media_Type_Response_Schema
+error	schema/response.py	/^    error = Constant(constant=Bad_Request_Response.error)$/;"	v	class:Bad_Request_Response_Schema
+error	schema/response.py	/^    error = Constant(constant=Conflict_Response.error)$/;"	v	class:Conflict_Response_Schema
+error	swagger/schema.json	/^        "error": {$/;"	o	object:definitions.Bad_Request_Response.properties
+error	swagger/schema.json	/^        "error": {$/;"	o	object:definitions.Internal_Server_Error_Response.properties
+error	swagger/schema.json	/^        "error": {$/;"	o	object:definitions.No_Content_Response.properties
+error	swagger/schema.json	/^        "error": {$/;"	o	object:definitions.Not_Acceptable_Response.properties
+error	swagger/schema.json	/^        "error": {$/;"	o	object:definitions.Ok_Response.properties
+error	swagger/schema.json	/^        "error": {$/;"	o	object:definitions.Unauthorized_Response.properties
+error	swagger/schema.json	/^        "error": {$/;"	o	object:definitions.Unsupported_Media_Type_Response.properties
+error_messages	schema/validate.py	/^    error_messages = dict(validator_failed='Id not found.')$/;"	v	class:In
+error_messages	schema/validate.py	/^    error_messages = dict(validator_failed='Repeated values.')$/;"	v	class:Unique_List
+example	swagger/schema.json	/^            "example": "period",$/;"	s	object:definitions.Config_Parameter_Request.properties.path.items
+example	swagger/schema.json	/^          "example": "-al",$/;"	s	object:definitions.Config_Action_Request.properties.args
+example	swagger/schema.json	/^          "example": "10s",$/;"	s	object:definitions.Config_Parameter_Request.properties.value
+example	swagger/schema.json	/^          "example": "2019\/02\/14 15:23:30",$/;"	s	object:definitions.Status_Response.properties.started
+example	swagger/schema.json	/^          "example": "2019\/02\/14 15:23:33",$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
+example	swagger/schema.json	/^          "example": "Connection timeout",$/;"	s	object:definitions.Exception_Response.properties.reason
+example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Bad_Request_Response.properties.message
+example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Internal_Server_Error_Response.properties.message
+example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.No_Content_Response.properties.message
+example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Not_Acceptable_Response.properties.message
+example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Ok_Response.properties.message
+example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Unauthorized_Response.properties.message
+example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.message
+example	swagger/schema.json	/^          "example": "apache",$/;"	s	object:definitions.Status_Response.properties.id
+example	swagger/schema.json	/^          "example": "filebeat-config",$/;"	s	object:definitions.Config_Resource_Request.properties.id
+example	swagger/schema.json	/^          "example": "firewall",$/;"	s	object:definitions.Code_Request.properties.id
+example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:definitions.Config_Parameter_Request.properties.source
+example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:definitions.Config_Resource_Request.properties.path
+example	swagger/schema.json	/^          "example": "lib\/connection.py",$/;"	s	object:definitions.Exception_Response.properties.filename
+example	swagger/schema.json	/^          "example": "lines",$/;"	s	object:definitions.Config_Action_Request.properties.output_format
+example	swagger/schema.json	/^          "example": "period",$/;"	s	object:definitions.Config_Parameter_Request.properties.id
+example	swagger/schema.json	/^          "example": "start",$/;"	s	object:definitions.Config_Action_Request.properties.id
+example	swagger/schema.json	/^          "example": "yaml",$/;"	s	object:definitions.Config_Parameter_Request.properties.schema
+example	swagger/schema.json	/^          "example": 80,$/;"	n	object:definitions.Exception_Response.properties.line
+example	swagger/schema.json	/^          "example": true,$/;"	b	object:definitions.Config_Action_Request.properties.daemon
+exception	schema/response.py	/^    exception = Nested(Exception_Response_Schema,$/;"	v	class:Base_Response_Schema
+exception	swagger/schema.json	/^        "exception": {$/;"	o	object:definitions.Bad_Request_Response.properties
+exception	swagger/schema.json	/^        "exception": {$/;"	o	object:definitions.Internal_Server_Error_Response.properties
+exception	swagger/schema.json	/^        "exception": {$/;"	o	object:definitions.No_Content_Response.properties
+exception	swagger/schema.json	/^        "exception": {$/;"	o	object:definitions.Not_Acceptable_Response.properties
+exception	swagger/schema.json	/^        "exception": {$/;"	o	object:definitions.Ok_Response.properties
+exception	swagger/schema.json	/^        "exception": {$/;"	o	object:definitions.Unauthorized_Response.properties
+exception	swagger/schema.json	/^        "exception": {$/;"	o	object:definitions.Unsupported_Media_Type_Response.properties
+exclude_patterns	docs/conf.py	/^exclude_patterns = []$/;"	v
+expand	utils/sequence.py	/^def expand(elements, **kwrds):$/;"	f
+expand_user	resource/config.py	/^from os.path import expanduser as expand_user$/;"	x
+extensions	docs/conf.py	/^extensions = [$/;"	v
+extract_info	utils/exception.py	/^def extract_info(exception):$/;"	f
+filename	schema/response.py	/^    filename = Str(required=True, example='lib\/connection.py',$/;"	v	class:Exception_Response_Schema
+filename	swagger/schema.json	/^        "filename": {$/;"	o	object:definitions.Exception_Response.properties
+format	swagger/schema.json	/^          "format": "date-time",$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
+format	swagger/schema.json	/^          "format": "date-time",$/;"	s	object:definitions.Status_Response.properties.started
+format	utils/sequence.py	/^def format(elements, data):$/;"	f
+format	utils/string.py	/^format = Formatter().format$/;"	v
+frmt	utils/sequence.py	/^    def frmt(val):$/;"	f	function:format	file:
+generate_password	utils/hash.py	/^def generate_password():$/;"	f
+generate_username	utils/hash.py	/^def generate_username():$/;"	f
+get	api/error_handler.py	/^    def get(cls):$/;"	m	class:Base_Handler
+get	api/spec.py	/^    def get(self):$/;"	m	class:Spec
+get	docstring/foothing/get.json	/^      "get": {$/;"	o
+get	lib/polycube.py	/^    def get(self, cube):$/;"	m	class:Polycube
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./filiation
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./filiation/{id}
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./foothing
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./foothing/{id}
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./status
+get	utils/log.py	/^    def get(cls, name):$/;"	m	class:Log
+get_levels	utils/log.py	/^    def get_levels():$/;"	m	class:Log
+get_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x
+get_seconds	utils/time.py	/^def get_seconds(text, to_int=False):$/;"	f
+gettext	docs/Makefile	/^gettext:$/;"	t
+handler	api/error_handler.py	/^    def handler(cls, req, resp, ex, params):$/;"	m	class:Base_Handler
+hash	utils/hash.py	/^def hash(text):$/;"	f
+help	docs/Makefile	/^help:$/;"	t
+host	config.ini	/^host = 0.0.0.0$/;"	k	section:local-control-plane
+host	config.ini	/^host = localhost$/;"	k	section:polycube
+html	docs/Makefile	/^html:$/;"	t
+html_favicon	docs/conf.py	/^html_favicon = '..\/logo.ico'$/;"	v
+html_theme	docs/conf.py	/^html_theme = 'sphinx_rtd_theme'$/;"	v
+htmlhelp	docs/Makefile	/^htmlhelp:$/;"	t
+id	schema/code.py	/^    id = Str(required=True, example='firewall',$/;"	v	class:Code_Request_Schema
+id	schema/config.py	/^    id = Str(required=True, example='filebeat-config',$/;"	v	class:Config_Resource_Request_Schema
+id	schema/config.py	/^    id = Str(required=True, example='period',$/;"	v	class:Config_Parameter_Request_Schema
+id	schema/config.py	/^    id = Str(required=True, example='start',$/;"	v	class:Config_Action_Request_Schema
+id	schema/config.py	/^    id = Str(required=True, example='start',$/;"	v	class:Config_Response_Schema
+id	schema/filiation.py	/^    id = fields.Str(required=True, example='15d41167-79d3-48bf-b8db-9db0c8cc8d54',$/;"	v	class:LCPBasics
+id	schema/foothing.py	/^    id = Str(required=True, example='firewall',$/;"	v	class:FooThing
+id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Request_Schema
+id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Response_Schema
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Code_Request.properties
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Config_Action_Request.properties
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Config_Parameter_Request.properties
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Config_Resource_Request.properties
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Status_Response.properties
+ident	main.py	/^ident = f'{project} - {title} v:{version}'$/;"	v
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code.delete.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code.post.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code.put.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code/{id}.delete.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code/{id}.post.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code/{id}.put.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./config.post.parameters.0
+info	docs/Makefile	/^info:$/;"	t
+info	swagger/schema.json	/^  "info": {$/;"	o
+info	utils/stack.py	/^def info(level):$/;"	f
+init	reader/arg.py	/^    def init(cls):$/;"	m	class:Arg_Reader
+init	utils/log.py	/^    def init(cls, default, levels):$/;"	m	class:Log
+installation	docs/installation.rst	/^.. _installation:$/;"	T
+is_dict	utils/sequence.py	/^def is_dict(obj):$/;"	f
+is_list	utils/sequence.py	/^def is_list(obj):$/;"	f
+is_str	utils/string.py	/^def is_str(obj):$/;"	f
+issues_github_path	docs/conf.py	/^issues_github_path = "guard-project\/lcp"$/;"	v
+item_getter	resource/code.py	/^from operator import itemgetter as item_getter$/;"	x
+item_getter	resource/foothing.py	/^from operator import itemgetter as item_getter$/;"	x
+items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./code.delete.responses.200.schema.oneOf.0
+items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./code.post.responses.200.schema.oneOf.0
+items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./code/{id}.delete.responses.200.schema.oneOf.0
+items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./code/{id}.post.responses.200.schema.oneOf.0
+items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./config.post.responses.200.schema.oneOf.0
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.delete.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.delete.responses.422.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.post.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.post.responses.422.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.put.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.put.responses.200.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.put.responses.304.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code.put.responses.422.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.delete.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.delete.responses.422.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.post.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.post.responses.422.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.put.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.put.responses.200.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.put.responses.304.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.put.responses.422.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.responses.422.schema
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Code_Request.properties.code
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Parameter_Request.properties.path
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Request.properties.actions
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Request.properties.parameters
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Request.properties.resources
+iterate	utils/sequence.py	/^def iterate(source, *keys):$/;"	f
+json	docs/Makefile	/^json:$/;"	t
+json_parser	lib/parser.py	/^def json_parser(schema, source, path, value):$/;"	f
+last_heartbeat	schema/status.py	/^    last_heartbeat = Date_Time(format=FORMAT, required=True, example='2019\/02\/14 15:23:33',$/;"	v	class:Status_Response_Schema
+last_heartbeat	swagger/schema.json	/^        "last_heartbeat": {$/;"	o	object:definitions.Status_Response.properties
+latex	docs/Makefile	/^latex:$/;"	t
+latexpdf	docs/Makefile	/^latexpdf:$/;"	t
+latexpdfja	docs/Makefile	/^latexpdfja:$/;"	t
+level	config.ini	/^level = DEBUG$/;"	k	section:log
+levels	utils/log.py	/^    levels = {}$/;"	v	class:Log
+line	schema/response.py	/^    line = Integer(required=True, example=80,$/;"	v	class:Exception_Response_Schema
+line	swagger/schema.json	/^        "line": {$/;"	o	object:definitions.Exception_Response.properties
+linkcheck	docs/Makefile	/^linkcheck:$/;"	t
+loads	utils/json.py	/^def loads(data, *args, **kwargs):$/;"	f
+local-control-plane	config.ini	/^[local-control-plane]$/;"	s
+log	config.ini	/^[log]$/;"	s
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Bad_Request_Response
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Conflict_Response
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Internal_Server_Error_Response
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Not_Acceptable_Response
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Not_Found_Response
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Unauthorized_Response
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Unprocessable_Entity_Response
+log_level	lib/response.py	/^    log_level = 'error'$/;"	v	class:Unsupported_Media_Type_Response
+log_level	lib/response.py	/^    log_level = 'info'$/;"	v	class:Base_Response
+log_level	lib/response.py	/^    log_level = 'success'$/;"	v	class:Created_Response
+log_level	lib/response.py	/^    log_level = 'success'$/;"	v	class:Ok_Response
+log_level	lib/response.py	/^    log_level = 'warn'$/;"	v	class:Reset_Content_Response
+log_level	lib/response.py	/^    log_level = 'warning'$/;"	v	class:No_Content_Response
+log_level	lib/response.py	/^    log_level = 'warning'$/;"	v	class:Not_Modified_Response
+log_level	lib/response.py	/^    log_level = None$/;"	v	class:Content_Response
+man	docs/Makefile	/^man:$/;"	t
+master_doc	docs/conf.py	/^master_doc = 'index'$/;"	v
+match	utils/sequence.py	/^    def match(element):$/;"	f	function:subset	file:
+message	schema/response.py	/^    message = Str(required=True, example='Request not valid: two ids provided.',$/;"	v	class:Base_Response_Schema
+message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Bad_Request_Response.properties
+message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Internal_Server_Error_Response.properties
+message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.No_Content_Response.properties
+message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Not_Acceptable_Response.properties
+message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Ok_Response.properties
+message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Unauthorized_Response.properties
+message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Unsupported_Media_Type_Response.properties
+middleware	config.ini	/^falcon_marshmallow.middleware = CRITICAL$/;"	k	section:log
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code.delete.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code.post.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code.put.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code/{id}.delete.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code/{id}.post.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code/{id}.put.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./config.post.parameters.0
+name	swagger/schema.json	/^      "name": "Filiation",$/;"	s	object:tags.4
+name	swagger/schema.json	/^      "name": "Filiation",$/;"	s	object:tags.5
+name	swagger/schema.json	/^      "name": "FooThing",$/;"	s	object:tags.3
+name	swagger/schema.json	/^      "name": "code",$/;"	s	object:tags.0
+name	swagger/schema.json	/^      "name": "config",$/;"	s	object:tags.1
+name	swagger/schema.json	/^      "name": "status",$/;"	s	object:tags.2
+new	schema/config.py	/^    new = Raw(required=True, example='5s',$/;"	v	class:Config_Parameter_Value_Response_Schema
+nitpick_ignore	docs/conf.py	/^nitpick_ignore = [$/;"	v
+note	schema/config.py	/^    note = Str(example='No change needed.',$/;"	v	class:Config_Parameter_Response_Schema
+old	schema/config.py	/^    old = Raw(required=True, example='10s',$/;"	v	class:Config_Parameter_Value_Response_Schema
+on_delete	resource/code.py	/^    def on_delete(self, req, resp, id=None):$/;"	m	class:Code_Resource
+on_delete	resource/filiationbyid.py	/^    def on_delete(self, req, resp, id):$/;"	m	class:FiliationById
+on_get	resource/filiationbyid.py	/^    def on_get(self, req, resp):$/;"	m	class:Filiation
+on_get	resource/filiationbyid.py	/^    def on_get(self, req, resp, id):$/;"	m	class:FiliationById
+on_get	resource/foothing.py	/^    def on_get(self, req, resp, id=None):$/;"	m	class:FooThing
+on_get	resource/status.py	/^    def on_get(self, req, resp):$/;"	m	class:Status_Resource
+on_post	resource/code.py	/^    def on_post(self, req, resp, id=None):$/;"	m	class:Code_Resource
+on_post	resource/config.py	/^    def on_post(self, req, resp):$/;"	m	class:Config_Resource
+on_post	resource/filiationbyid.py	/^    def on_post(self, req, resp):$/;"	m	class:Filiation
+on_post	resource/status.py	/^    def on_post(self, req, resp):$/;"	m	class:Status_Resource
+on_put	resource/code.py	/^    def on_put(self, req, resp, id=None):$/;"	m	class:Code_Resource
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code.delete.responses.422.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code.post.responses.422.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code.put.responses.304.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code.put.responses.422.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code/{id}.delete.responses.422.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code/{id}.post.responses.422.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code/{id}.put.responses.304.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code/{id}.put.responses.422.schema.items
+oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./config.post.responses.422.schema.items
+oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code.delete.responses.200.schema
+oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code.post.responses.200.schema
+oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code/{id}.delete.responses.200.schema
+oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code/{id}.post.responses.200.schema
+oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./config.post.responses.200.schema
+output_format	schema/config.py	/^    output_format = Str(enum=OUTPUT_FORMATS, default=OUTPUT_FORMATS[0],$/;"	v	class:Config_Action_Request_Schema
+output_format	swagger/schema.json	/^        "output_format": {$/;"	o	object:definitions.Config_Action_Request.properties
+parameters	schema/config.py	/^    parameters = Nested(Config_Parameter_Request_Schema, many=True, unknown='INCLUDE',$/;"	v	class:Config_Request_Schema
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code.delete
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code.post
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code.put
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code/{id}.delete
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code/{id}.post
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code/{id}.put
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./config.post
+parameters	swagger/schema.json	/^        "parameters": {$/;"	o	object:definitions.Config_Request.properties
+parsers	resource/config.py	/^    parsers = dict(json=json_parser,$/;"	v	class:Config_Resource
+password	config.ini	/^password = a9d4034da07d8ef31db1cd4119b6a4552fdfbd19787e2848e71c8ee3b47703a7$/;"	k	section:dev
+password	schema/status.py	/^    password = Str(allow_none=True,$/;"	v	class:Status_Request_Schema
+password	schema/status.py	/^    password = Str(description='Password for the CB to connect to this LCP.')$/;"	v	class:Status_Response_Schema
+password	swagger/schema.json	/^        "password": {$/;"	o	object:definitions.Status_Response.properties
+path	main.py	/^path = os.path.abspath(__file__)$/;"	v
+path	reader/config.py	/^    path = Path(__file__).parent \/ '..\/config.ini'$/;"	v	class:Config_Reader
+path	schema/config.py	/^    path = List(Str(required=True, example='period',$/;"	v	class:Config_Parameter_Request_Schema
+path	schema/config.py	/^    path = Str(required=True, example=EXAMPLE_FILENAME,$/;"	v	class:Config_Resource_Request_Schema
+path	swagger/schema.json	/^        "path": {$/;"	o	object:definitions.Config_Parameter_Request.properties
+path	swagger/schema.json	/^        "path": {$/;"	o	object:definitions.Config_Resource_Request.properties
+paths	swagger/schema.json	/^  "paths": {$/;"	o
+pickle	docs/Makefile	/^pickle:$/;"	t
+polycube	config.ini	/^[polycube]$/;"	s
+port	config.ini	/^port = 4000$/;"	k	section:local-control-plane
+port	config.ini	/^port = 9000$/;"	k	section:polycube
+post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./code
+post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./code/{id}
+post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./config
+post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./filiation
+post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./status
+post_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x
+process_request	api/middleware.py	/^    def process_request(self, req, resp):$/;"	m	class:Negotiation_Middleware
+produces	swagger/schema.json	/^  "produces": [$/;"	a
+project	about.py	/^project = 'GUARD'$/;"	v
+project	docs/conf.py	/^project = 'LCP'$/;"	v
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Bad_Request_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Code_Request
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Action_Request
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Parameter_Request
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Request
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Resource_Request
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Exception_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Internal_Server_Error_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.No_Content_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Not_Acceptable_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Ok_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Status_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Unauthorized_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Unsupported_Media_Type_Response
+property_parser	lib/parser.py	/^def property_parser(schema, source, path, value):$/;"	f
+pseudoxml	docs/Makefile	/^pseudoxml:$/;"	t
+put	swagger/schema.json	/^      "put": {$/;"	o	object:paths./code
+put	swagger/schema.json	/^      "put": {$/;"	o	object:paths./code/{id}
+put_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x
+qthelp	docs/Makefile	/^qthelp:$/;"	t
+rc_tags	api/spec.py	/^from resource import tags as rc_tags$/;"	x
+read	reader/arg.py	/^    def read(cls):$/;"	m	class:Arg_Reader
+read	reader/config.py	/^    def read(self):$/;"	m	class:Config_Reader
+reason	schema/response.py	/^    reason = Str(required=True, example='Connection timeout',$/;"	v	class:Exception_Response_Schema
+reason	swagger/schema.json	/^        "reason": {$/;"	o	object:definitions.Exception_Response.properties
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code.delete.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code.post.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code.put.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code/{id}.delete.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code/{id}.post.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code/{id}.put.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./config.post.parameters.0
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Bad_Request_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Code_Request
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Config_Action_Request
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Config_Parameter_Request
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Config_Resource_Request
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Exception_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Internal_Server_Error_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.No_Content_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Not_Acceptable_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Ok_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Status_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Unauthorized_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Unsupported_Media_Type_Response
+resources	schema/config.py	/^    resources = Nested(Config_Resource_Request_Schema, many=True, unknown='INCLUDE',$/;"	v	class:Config_Request_Schema
+resources	swagger/schema.json	/^        "resources": {$/;"	o	object:definitions.Config_Request.properties
+response	api/error_handler.py	/^    response = Bad_Request_Response$/;"	v	class:Bad_Request_Handler
+response	api/error_handler.py	/^    response = Internal_Server_Error_Response$/;"	v	class:Internal_Server_Error_Handler
+response	api/error_handler.py	/^    response = Unsupported_Media_Type_Response$/;"	v	class:Unsupported_Media_Type_Handler
+responses	docstring/foothing/get.json	/^        "responses": {$/;"	o	object:get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code.delete
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code.post
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code.put
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code/{id}.delete
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code/{id}.post
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code/{id}.put
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./config.post
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filiation.get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filiation.post
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filiation/{id}.delete
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filiation/{id}.get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./foothing.get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./foothing/{id}.get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./status.get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./status.post
+restructuredtext.confPath	.vscode/settings.json	/^    "restructuredtext.confPath": ""$/;"	s
+return_code	schema/config.py	/^    return_code = Integer(required=True, example=0,$/;"	v	class:Config_Action_Response_Schema
+routes	resource/__init__.py	/^def routes(api, spec):$/;"	f
+routes	resource/code.py	/^    routes = '\/code', '\/code\/{id}',$/;"	v	class:Code_Resource
+routes	resource/config.py	/^    routes = '\/config',$/;"	v	class:Config_Resource
+routes	resource/filiationbyid.py	/^    routes = '\/filiation',$/;"	v	class:Filiation
+routes	resource/filiationbyid.py	/^    routes = '\/filiation\/{id}',$/;"	v	class:FiliationById
+routes	resource/foothing.py	/^    routes = '\/foothing', '\/foothing\/{id}',$/;"	v	class:FooThing
+routes	resource/status.py	/^    routes = '\/status',$/;"	v	class:Status_Resource
+running	docs/running.rst	/^.. _running:$/;"	T
+schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.200
+schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.400
+schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.401
+schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.406
+schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.500
+schema	schema/config.py	/^    schema = Str(required=True, enum=PARAMETER_SCHEMAS, example='yaml',$/;"	v	class:Config_Parameter_Request_Schema
+schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.delete.responses.422.500
+schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.post.responses.422.500
+schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code/{id}.delete.responses.422.500
+schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code/{id}.post.responses.422.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.204
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.422
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.post.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.post.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.post.responses.204
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.post.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.post.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.post.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.post.responses.422
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.204
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.304
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.415
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.422
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.put.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.delete.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.delete.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.delete.responses.204
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.delete.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.delete.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.delete.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.delete.responses.422
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.post.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.post.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.post.responses.204
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.post.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.post.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.post.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.post.responses.422
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.204
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.304
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.415
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.422
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code/{id}.put.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.responses.204
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.responses.422
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./config.post.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.delete.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.delete.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.delete.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.delete.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.delete.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.post.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.post.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.post.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.post.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.post.responses.500
+schema	swagger/schema.json	/^        "schema": {$/;"	o	object:definitions.Config_Parameter_Request.properties
+send_tree	utils/signal.py	/^def send_tree(pid, sig=SIGTERM, include_parent=True, timeout=None, on_terminate=None):$/;"	f
+server	config.ini	/^server = http:\/\/localhost:8200$/;"	k	section:elastic-apm
+setUp	test/filiation_tests.py	/^    def setUp(self):$/;"	m	class:FiliationTesting
+singlehtml	docs/Makefile	/^singlehtml:$/;"	t
+source	schema/config.py	/^    source = Str(required=True, example=EXAMPLE_FILENAME,$/;"	v	class:Config_Parameter_Request_Schema
+source	swagger/schema.json	/^        "source": {$/;"	o	object:definitions.Config_Parameter_Request.properties
+source_suffix	docs/conf.py	/^source_suffix = {$/;"	v
+sp	resource/config.py	/^import subprocess as sp$/;"	I
+started	schema/status.py	/^    started = Date_Time(format=FORMAT, required=True, example='2019\/02\/14 15:23:30',$/;"	v	class:Status_Response_Schema
+started	swagger/schema.json	/^        "started": {$/;"	o	object:definitions.Status_Response.properties
+status	lib/response.py	/^    def status(cls):$/;"	m	class:Base_Response
+status	schema/response.py	/^    status = Constant(Content_Response.status())$/;"	v	class:Content_Response_Schema
+status	schema/response.py	/^    status = Constant(Created_Response.status())$/;"	v	class:Created_Response_Schema
+status	schema/response.py	/^    status = Constant(Internal_Server_Error_Response.status())$/;"	v	class:Internal_Server_Error_Response_Schema
+status	schema/response.py	/^    status = Constant(No_Content_Response.status())$/;"	v	class:No_Content_Response_Schema
+status	schema/response.py	/^    status = Constant(Not_Acceptable_Response.status())$/;"	v	class:Not_Acceptable_Response_Schema
+status	schema/response.py	/^    status = Constant(Not_Found_Response.status())$/;"	v	class:Not_Found_Response_Schema
+status	schema/response.py	/^    status = Constant(Not_Modified_Response.status())$/;"	v	class:Not_Modified_Response_Schema
+status	schema/response.py	/^    status = Constant(Ok_Response.status())$/;"	v	class:Ok_Response_Schema
+status	schema/response.py	/^    status = Constant(Reset_Content_Response.status())$/;"	v	class:Reset_Content_Response_Schema
+status	schema/response.py	/^    status = Constant(Unauthorized_Response.status())$/;"	v	class:Unauthorized_Response_Schema
+status	schema/response.py	/^    status = Constant(Unprocessable_Entity_Response.status())$/;"	v	class:Unprocessable_Entity_Response_Schema
+status	schema/response.py	/^    status = Constant(Unsupported_Media_Type_Response.status())$/;"	v	class:Unsupported_Media_Type_Response_Schema
+status	schema/response.py	/^    status = Constant(constant=Bad_Request_Response.status())$/;"	v	class:Bad_Request_Response_Schema
+status	schema/response.py	/^    status = Constant(constant=Conflict_Response.status())$/;"	v	class:Conflict_Response_Schema
+status	schema/response.py	/^    status = Str(required=True, enum=RESPONSE_STATUS,$/;"	v	class:Base_Response_Schema
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Bad_Request_Response.properties
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Internal_Server_Error_Response.properties
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.No_Content_Response.properties
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Not_Acceptable_Response.properties
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Ok_Response.properties
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Unauthorized_Response.properties
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Unsupported_Media_Type_Response.properties
+stderr	schema/config.py	/^    stderr = Raw(description='Standard error output of the execution.')$/;"	v	class:Config_Action_Response_Schema
+stdout	schema/config.py	/^    stdout = Raw(description='Standard output of the execution.')$/;"	v	class:Config_Action_Response_Schema
+subset	utils/sequence.py	/^def subset(elements, *keys, negation=False):$/;"	f
+summary	docstring/foothing/get.json	/^        "summary": "Do some foo thing as starting point for integration of LCP",$/;"	s	object:get
+summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code.delete
+summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code.post
+summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code/{id}.delete
+summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code/{id}.post
+summary	swagger/schema.json	/^        "summary": "Configuration update",$/;"	s	object:paths./config.post
+summary	swagger/schema.json	/^        "summary": "Do some foo thing as starting point for integration of LCP",$/;"	s	object:paths./foothing.get
+summary	swagger/schema.json	/^        "summary": "Do some foo thing as starting point for integration of LCP",$/;"	s	object:paths./foothing/{id}.get
+summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./filiation.get
+summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./filiation.post
+summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./filiation/{id}.delete
+summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./filiation/{id}.get
+summary	swagger/schema.json	/^        "summary": "Status info",$/;"	s	object:paths./status.get
+summary	swagger/schema.json	/^        "summary": "Status set.",$/;"	s	object:paths./status.post
+summary	swagger/schema.json	/^        "summary": "Update injected code",$/;"	s	object:paths./code.put
+summary	swagger/schema.json	/^        "summary": "Update injected code",$/;"	s	object:paths./code/{id}.put
+swagger	swagger/schema.json	/^  "swagger": "2.0",$/;"	s
+table_to_dict	utils/sequence.py	/^def table_to_dict(data):$/;"	f
+tag	resource/code.py	/^    tag = {'name': 'code', 'description': 'Code injection at run-time.'}$/;"	v	class:Code_Resource
+tag	resource/config.py	/^    tag = dict(name='config', description='Configuration at run-time.')$/;"	v	class:Config_Resource
+tag	resource/filiationbyid.py	/^    tag = {'name': 'Filiation', 'description': 'Does Nothing but allows me learn.'}$/;"	v	class:Filiation
+tag	resource/filiationbyid.py	/^    tag = {'name': 'Filiation', 'description': 'Does Nothing but allows me learn.'}$/;"	v	class:FiliationById
+tag	resource/foothing.py	/^    tag = {'name': 'FooThing', 'description': 'Does Nothing but allows me learn.'}$/;"	v	class:FooThing
+tag	resource/status.py	/^    tag = dict(name='status', description='Status data of the LCP.')$/;"	v	class:Status_Resource
+tags	docstring/foothing/get.json	/^        "tags": [$/;"	a	object:get
+tags	resource/__init__.py	/^tags = []$/;"	v
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code.delete
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code.post
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code.put
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code/{id}.delete
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code/{id}.post
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code/{id}.put
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./config.post
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation.get
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation.post
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation/{id}.delete
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation/{id}.get
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./foothing.get
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./foothing/{id}.get
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./status.get
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./status.post
+tags	swagger/schema.json	/^  "tags": [$/;"	a
+templates_path	docs/conf.py	/^templates_path = ['_templates']$/;"	v
+testFoo	test/filiation_tests.py	/^    def testFoo(self):$/;"	m	class:TestMyApp
+test_delete_message	test/filiation_tests.py	/^    def test_delete_message(self):$/;"	m	class:TestMyApp
+test_get_messages	test/filiation_tests.py	/^    def test_get_messages(self):$/;"	m	class:TestMyApp
+test_get_messages_by_id	test/filiation_tests.py	/^    def test_get_messages_by_id(self):$/;"	m	class:TestMyApp
+test_other	test/filiation_tests.py	/^    def test_other(self):$/;"	m	class:TestMyApp
+test_post_message	test/filiation_tests.py	/^    def test_post_message(self):$/;"	m	class:TestMyApp
+texinfo	docs/Makefile	/^texinfo:$/;"	t
+text	docs/Makefile	/^text:$/;"	t
+timeout	config.ini	/^timeout = 20s$/;"	k	section:polycube
+timestamp	schema/config.py	/^    timestamp = Date_Time(format=FORMAT, required=True,$/;"	v	class:Config_Response_Schema
+title	about.py	/^title = 'Local Control Plane'$/;"	v
+title	swagger/schema.json	/^    "title": "Local Control Plane",$/;"	s	object:info
+to_str	utils/exception.py	/^def to_str(exception):$/;"	f
+ttl	config.ini	/^max-ttl = 10min$/;"	k	section:auth
+type	schema/config.py	/^    type = Str(enum=RESPONSE_TYPES, example=RESPONSE_TYPES[0],$/;"	v	class:Config_Response_Schema
+type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code.delete.responses.200.schema.oneOf.0
+type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code.post.responses.200.schema.oneOf.0
+type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code/{id}.delete.responses.200.schema.oneOf.0
+type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code/{id}.post.responses.200.schema.oneOf.0
+type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./config.post.responses.200.schema.oneOf.0
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.delete.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.delete.responses.422.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.post.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.post.responses.422.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.put.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.put.responses.200.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.put.responses.304.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code.put.responses.422.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.delete.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.delete.responses.422.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.post.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.post.responses.422.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.put.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.put.responses.200.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.put.responses.304.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.put.responses.422.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.responses.422.schema
+type	swagger/schema.json	/^            "type": "string"$/;"	s	object:definitions.Code_Request.properties.code.items
+type	swagger/schema.json	/^            "type": "string",$/;"	s	object:definitions.Config_Parameter_Request.properties.path.items
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Code_Request.properties.code
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Parameter_Request.properties.path
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Request.properties.actions
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Request.properties.parameters
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Request.properties.resources
+type	swagger/schema.json	/^          "type": "boolean",$/;"	s	object:definitions.Config_Action_Request.properties.daemon
+type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.Exception_Response.properties.line
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Bad_Request_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Code_Request.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Action_Request.properties.args
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Action_Request.properties.cmd
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Action_Request.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Action_Request.properties.output_format
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Parameter_Request.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Parameter_Request.properties.schema
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Parameter_Request.properties.source
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Resource_Request.properties.content
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Resource_Request.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Resource_Request.properties.path
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Exception_Response.properties.filename
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Exception_Response.properties.reason
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Internal_Server_Error_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.No_Content_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Not_Acceptable_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Ok_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.password
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.started
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.username
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Unauthorized_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.message
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Bad_Request_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Code_Request
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Action_Request
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Parameter_Request
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Request
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Resource_Request
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Exception_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Internal_Server_Error_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.No_Content_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Not_Acceptable_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Ok_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Status_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Unauthorized_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Unsupported_Media_Type_Response
+update	lib/polycube.py	/^    def update(self, cube, code, interface, metrics):$/;"	m	class:Polycube
+update	lib/response.py	/^    def update(self, **kwargs):$/;"	m	class:Base_Response
+url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi:4000",$/;"	v	class:LCPBasics
+username	config.ini	/^username = lcp$/;"	k	section:dev
+username	schema/status.py	/^    username = Str(allow_none=True,$/;"	v	class:Status_Request_Schema
+username	schema/status.py	/^    username = Str(description='Username for the CB to connect to this LCP.')$/;"	v	class:Status_Response_Schema
+username	swagger/schema.json	/^        "username": {$/;"	o	object:definitions.Status_Response.properties
+validate	schema/base.py	/^    def validate(self, data, response_type=Ok_Response, id=None):$/;"	m	class:Base_Schema
+value	schema/config.py	/^    value = Nested(Config_Parameter_Value_Response_Schema)$/;"	v	class:Config_Parameter_Response_Schema
+value	schema/config.py	/^    value = Raw(required=True, example='10s',$/;"	v	class:Config_Parameter_Request_Schema
+value	swagger/schema.json	/^        "value": {$/;"	o	object:definitions.Config_Parameter_Request.properties
+version	about.py	/^version = '1.0.3'$/;"	v
+version	swagger/schema.json	/^    "version": "1.0.3"$/;"	s	object:info
+wrap	utils/sequence.py	/^def wrap(data):$/;"	f
+write	api/spec.py	/^    def write(self):$/;"	m	class:Spec
+write	reader/config.py	/^    def write(self, db):$/;"	m	class:Config_Reader
+xml	docs/Makefile	/^xml:$/;"	t
+xml_parser	lib/parser.py	/^def xml_parser(schema, source, path, value):$/;"	f
+xml_to_dict	api/media_handler.py	/^import xmltodict as xml_to_dict$/;"	I
+xml_to_dict	lib/parser.py	/^import xmltodict as xml_to_dict$/;"	I
+yaml_parser	lib/parser.py	/^def yaml_parser(schema, source, path, value):$/;"	f

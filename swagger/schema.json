@@ -17,6 +17,18 @@
     {
       "name": "status",
       "description": "Status data of the LCP."
+    },
+    {
+      "name": "FooThing",
+      "description": "Does Nothing but allows me learn."
+    },
+    {
+      "name": "Filiation",
+      "description": "Does Nothing but allows me learn."
+    },
+    {
+      "name": "Filiation",
+      "description": "Does Nothing but allows me learn."
     }
   ],
   "paths": {
@@ -656,6 +668,248 @@
           }
         }
       }
+    },
+    "/foothing": {
+      "get": {
+        "summary": "Do some foo thing as starting point for integration of LCP",
+        "description": "Get simply nothing",
+        "tags": [
+          "FooThing"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status data of the LCP.",
+            "schema": {
+              "$ref": "#/definitions/Status_Response"
+            }
+          },
+          "400": {
+            "description": "Request not valid.",
+            "schema": {
+              "$ref": "#/definitions/Bad_Request_Response"
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized_Response"
+            }
+          },
+          "406": {
+            "description": "Request validation failed.",
+            "schema": {
+              "$ref": "#/definitions/Not_Acceptable_Response"
+            }
+          },
+          "500": {
+            "description": "Server not available to satisfy the request.",
+            "schema": {
+              "$ref": "#/definitions/Internal_Server_Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/foothing/{id}": {
+      "get": {
+        "summary": "Do some foo thing as starting point for integration of LCP",
+        "description": "Get simply nothing",
+        "tags": [
+          "FooThing"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status data of the LCP.",
+            "schema": {
+              "$ref": "#/definitions/Status_Response"
+            }
+          },
+          "400": {
+            "description": "Request not valid.",
+            "schema": {
+              "$ref": "#/definitions/Bad_Request_Response"
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized_Response"
+            }
+          },
+          "406": {
+            "description": "Request validation failed.",
+            "schema": {
+              "$ref": "#/definitions/Not_Acceptable_Response"
+            }
+          },
+          "500": {
+            "description": "Server not available to satisfy the request.",
+            "schema": {
+              "$ref": "#/definitions/Internal_Server_Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/filiation/{id}": {
+      "delete": {
+        "summary": "Get the \"filiated\" (or legitimated LCP childs) for this Service Chain",
+        "description": "Gets a list of next links in the service chain filiated (as son childs) with\nthis Execution Environment.\n",
+        "tags": [
+          "Filiation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status data of the LCP.",
+            "schema": {
+              "$ref": "#/definitions/Status_Response"
+            }
+          },
+          "400": {
+            "description": "Request not valid.",
+            "schema": {
+              "$ref": "#/definitions/Bad_Request_Response"
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized_Response"
+            }
+          },
+          "406": {
+            "description": "Request validation failed.",
+            "schema": {
+              "$ref": "#/definitions/Not_Acceptable_Response"
+            }
+          },
+          "500": {
+            "description": "Server not available to satisfy the request.",
+            "schema": {
+              "$ref": "#/definitions/Internal_Server_Error_Response"
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get the \"filiated\" (or legitimated LCP childs) for this Service Chain",
+        "description": "Gets a list of next links in the service chain filiated (as son childs) with\nthis Execution Environment.\n",
+        "tags": [
+          "Filiation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status data of the LCP.",
+            "schema": {
+              "$ref": "#/definitions/Status_Response"
+            }
+          },
+          "400": {
+            "description": "Request not valid.",
+            "schema": {
+              "$ref": "#/definitions/Bad_Request_Response"
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized_Response"
+            }
+          },
+          "406": {
+            "description": "Request validation failed.",
+            "schema": {
+              "$ref": "#/definitions/Not_Acceptable_Response"
+            }
+          },
+          "500": {
+            "description": "Server not available to satisfy the request.",
+            "schema": {
+              "$ref": "#/definitions/Internal_Server_Error_Response"
+            }
+          }
+        }
+      }
+    },
+    "/filiation": {
+      "get": {
+        "summary": "Get the \"filiated\" (or legitimated LCP childs) for this Service Chain",
+        "description": "Gets a list of next links in the service chain filiated (as son childs) with\nthis Execution Environment.\n",
+        "tags": [
+          "Filiation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status data of the LCP.",
+            "schema": {
+              "$ref": "#/definitions/Status_Response"
+            }
+          },
+          "400": {
+            "description": "Request not valid.",
+            "schema": {
+              "$ref": "#/definitions/Bad_Request_Response"
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized_Response"
+            }
+          },
+          "406": {
+            "description": "Request validation failed.",
+            "schema": {
+              "$ref": "#/definitions/Not_Acceptable_Response"
+            }
+          },
+          "500": {
+            "description": "Server not available to satisfy the request.",
+            "schema": {
+              "$ref": "#/definitions/Internal_Server_Error_Response"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Get the \"filiated\" (or legitimated LCP childs) for this Service Chain",
+        "description": "Gets a list of next links in the service chain filiated (as son childs) with\nthis Execution Environment.\n",
+        "tags": [
+          "Filiation"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status data of the LCP.",
+            "schema": {
+              "$ref": "#/definitions/Status_Response"
+            }
+          },
+          "400": {
+            "description": "Request not valid.",
+            "schema": {
+              "$ref": "#/definitions/Bad_Request_Response"
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized_Response"
+            }
+          },
+          "406": {
+            "description": "Request validation failed.",
+            "schema": {
+              "$ref": "#/definitions/Not_Acceptable_Response"
+            }
+          },
+          "500": {
+            "description": "Server not available to satisfy the request.",
+            "schema": {
+              "$ref": "#/definitions/Internal_Server_Error_Response"
+            }
+          }
+        }
+      }
     }
   },
   "info": {
@@ -693,15 +947,15 @@
           "example": "lib/connection.py",
           "description": "Filename where the exception is raised."
         },
-        "line": {
-          "type": "integer",
-          "example": 80,
-          "description": "Line where the exception is raised."
-        },
         "reason": {
           "type": "string",
           "example": "Connection timeout",
           "description": "Exception reason."
+        },
+        "line": {
+          "type": "integer",
+          "example": 80,
+          "description": "Line where the exception is raised."
         }
       },
       "required": [
@@ -713,19 +967,13 @@
     "No_Content_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "No Content"
-        },
-        "error": {
-          "default": false
-        },
-        "code": {
-          "default": 204
-        },
         "message": {
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
+        },
+        "error": {
+          "default": false
         },
         "exception": {
           "description": "Message of the occurred exception.",
@@ -734,6 +982,12 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "code": {
+          "default": 204
+        },
+        "status": {
+          "default": "No Content"
         }
       },
       "required": [
@@ -743,19 +997,13 @@
     "Bad_Request_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Bad Request"
-        },
-        "error": {
-          "default": true
-        },
-        "code": {
-          "default": 400
-        },
         "message": {
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
+        },
+        "error": {
+          "default": true
         },
         "exception": {
           "description": "Message of the occurred exception.",
@@ -764,6 +1012,12 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "code": {
+          "default": 400
+        },
+        "status": {
+          "default": "Bad Request"
         }
       },
       "required": [
@@ -773,19 +1027,13 @@
     "Unauthorized_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Unauthorized"
-        },
-        "error": {
-          "default": true
-        },
-        "code": {
-          "default": 401
-        },
         "message": {
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
+        },
+        "error": {
+          "default": true
         },
         "exception": {
           "description": "Message of the occurred exception.",
@@ -794,6 +1042,12 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "code": {
+          "default": 401
+        },
+        "status": {
+          "default": "Unauthorized"
         }
       },
       "required": [
@@ -803,19 +1057,13 @@
     "Not_Acceptable_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Not Acceptable"
-        },
-        "error": {
-          "default": true
-        },
-        "code": {
-          "default": 406
-        },
         "message": {
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
+        },
+        "error": {
+          "default": true
         },
         "exception": {
           "description": "Message of the occurred exception.",
@@ -824,6 +1072,12 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "code": {
+          "default": 406
+        },
+        "status": {
+          "default": "Not Acceptable"
         }
       },
       "required": [
@@ -833,19 +1087,13 @@
     "Ok_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "OK"
-        },
-        "error": {
-          "default": false
-        },
-        "code": {
-          "default": 200
-        },
         "message": {
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
+        },
+        "error": {
+          "default": false
         },
         "exception": {
           "description": "Message of the occurred exception.",
@@ -854,6 +1102,12 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "code": {
+          "default": 200
+        },
+        "status": {
+          "default": "OK"
         }
       },
       "required": [
@@ -863,19 +1117,13 @@
     "Unsupported_Media_Type_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Unsupported Media Type"
-        },
-        "error": {
-          "default": true
-        },
-        "code": {
-          "default": 415
-        },
         "message": {
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
+        },
+        "error": {
+          "default": true
         },
         "exception": {
           "description": "Message of the occurred exception.",
@@ -884,6 +1132,12 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "code": {
+          "default": 415
+        },
+        "status": {
+          "default": "Unsupported Media Type"
         }
       },
       "required": [
@@ -893,19 +1147,13 @@
     "Internal_Server_Error_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Internal Server Error"
-        },
-        "error": {
-          "default": true
-        },
-        "code": {
-          "default": 500
-        },
         "message": {
           "type": "string",
           "example": "Request not valid: two ids provided.",
           "description": "Human readable message that describes the status of the operation."
+        },
+        "error": {
+          "default": true
         },
         "exception": {
           "description": "Message of the occurred exception.",
@@ -914,28 +1162,59 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "code": {
+          "default": 500
+        },
+        "status": {
+          "default": "Internal Server Error"
         }
       },
       "required": [
         "message"
       ]
     },
+    "Config_Action_Request": {
+      "type": "object",
+      "properties": {
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "lines",
+            "json"
+          ],
+          "example": "lines",
+          "description": "Format of the output of the command."
+        },
+        "id": {
+          "type": "string",
+          "example": "start",
+          "description": "Id of the action."
+        },
+        "args": {
+          "type": "string",
+          "example": "-al",
+          "description": "Single command argument."
+        },
+        "daemon": {
+          "type": "boolean",
+          "example": true,
+          "description": "Execute the command as daemon."
+        },
+        "cmd": {
+          "type": "string",
+          "description": "Command."
+        }
+      },
+      "required": [
+        "cmd",
+        "id"
+      ]
+    },
     "Config_Parameter_Request": {
       "type": "object",
       "properties": {
-        "source": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "Source filename."
-        },
-        "path": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "example": "period",
-            "description": "Key path."
-          }
-        },
         "id": {
           "type": "string",
           "example": "period",
@@ -952,9 +1231,22 @@
           "example": "yaml",
           "description": "Scheme."
         },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "period",
+            "description": "Key path."
+          }
+        },
         "value": {
           "example": "10s",
           "description": "Parameter new value."
+        },
+        "source": {
+          "type": "string",
+          "example": "firewall.xml",
+          "description": "Source filename."
         }
       },
       "required": [
@@ -967,15 +1259,15 @@
     "Config_Resource_Request": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "filebeat-config",
-          "description": "Id of the resource."
-        },
         "path": {
           "type": "string",
           "example": "firewall.xml",
           "description": "File path"
+        },
+        "id": {
+          "type": "string",
+          "example": "filebeat-config",
+          "description": "Id of the resource."
         },
         "content": {
           "type": "string",
@@ -988,47 +1280,16 @@
         "path"
       ]
     },
-    "Config_Action_Request": {
-      "type": "object",
-      "properties": {
-        "cmd": {
-          "type": "string",
-          "description": "Command."
-        },
-        "id": {
-          "type": "string",
-          "example": "start",
-          "description": "Id of the action."
-        },
-        "output_format": {
-          "type": "string",
-          "enum": [
-            "plain",
-            "lines",
-            "json"
-          ],
-          "example": "lines",
-          "description": "Format of the output of the command."
-        },
-        "daemon": {
-          "type": "boolean",
-          "example": true,
-          "description": "Execute the command as daemon."
-        },
-        "args": {
-          "type": "string",
-          "example": "-al",
-          "description": "Single command argument."
-        }
-      },
-      "required": [
-        "cmd",
-        "id"
-      ]
-    },
     "Config_Request": {
       "type": "object",
       "properties": {
+        "actions": {
+          "description": "List of actions.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Config_Action_Request"
+          }
+        },
         "parameters": {
           "description": "List of parameters.",
           "type": "array",
@@ -1042,43 +1303,36 @@
           "items": {
             "$ref": "#/definitions/Config_Resource_Request"
           }
-        },
-        "actions": {
-          "description": "List of actions.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Action_Request"
-          }
         }
       }
     },
     "Status_Response": {
       "type": "object",
       "properties": {
-        "last_heartbeat": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2019/02/14 15:23:33",
-          "description": "Timestamp of the expiration of the API access configuration."
-        },
         "password": {
           "type": "string",
           "description": "Password for the CB to connect to this LCP."
-        },
-        "username": {
-          "type": "string",
-          "description": "Username for the CB to connect to this LCP."
         },
         "id": {
           "type": "string",
           "example": "apache",
           "description": "ID of the execution environment."
         },
+        "username": {
+          "type": "string",
+          "description": "Username for the CB to connect to this LCP."
+        },
         "started": {
           "type": "string",
           "format": "date-time",
           "example": "2019/02/14 15:23:30",
           "description": "Timestamp when the LCP is started"
+        },
+        "last_heartbeat": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2019/02/14 15:23:33",
+          "description": "Timestamp of the expiration of the API access configuration."
         }
       },
       "required": [

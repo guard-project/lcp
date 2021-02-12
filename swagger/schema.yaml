@@ -719,6 +719,186 @@ paths:
       summary: Status set.
       tags:
       - status
+  /foothing:
+    get:
+      description: Get simply nothing
+      responses:
+        '200':
+          description: Status data of the LCP.
+          schema:
+            $ref: '#/definitions/Status_Response'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Do some foo thing as starting point for integration of LCP
+      tags:
+      - FooThing
+  /foothing/{id}:
+    get:
+      description: Get simply nothing
+      responses:
+        '200':
+          description: Status data of the LCP.
+          schema:
+            $ref: '#/definitions/Status_Response'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Do some foo thing as starting point for integration of LCP
+      tags:
+      - FooThing
+  /filiation/{id}:
+    delete:
+      description: 'Gets a list of next links in the service chain filiated (as son
+        childs) with
+
+        this Execution Environment.
+
+        '
+      responses:
+        '200':
+          description: Status data of the LCP.
+          schema:
+            $ref: '#/definitions/Status_Response'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      tags:
+      - Filiation
+    get:
+      description: 'Gets a list of next links in the service chain filiated (as son
+        childs) with
+
+        this Execution Environment.
+
+        '
+      responses:
+        '200':
+          description: Status data of the LCP.
+          schema:
+            $ref: '#/definitions/Status_Response'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      tags:
+      - Filiation
+  /filiation:
+    get:
+      description: 'Gets a list of next links in the service chain filiated (as son
+        childs) with
+
+        this Execution Environment.
+
+        '
+      responses:
+        '200':
+          description: Status data of the LCP.
+          schema:
+            $ref: '#/definitions/Status_Response'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      tags:
+      - Filiation
+    post:
+      description: 'Gets a list of next links in the service chain filiated (as son
+        childs) with
+
+        this Execution Environment.
+
+        '
+      responses:
+        '200':
+          description: Status data of the LCP.
+          schema:
+            $ref: '#/definitions/Status_Response'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      tags:
+      - Filiation
 produces:
 - application/json
 swagger: '2.0'
@@ -729,3 +909,9 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
+- description: Does Nothing but allows me learn.
+  name: FooThing
+- description: Does Nothing but allows me learn.
+  name: Filiation
+- description: Does Nothing but allows me learn.
+  name: Filiation

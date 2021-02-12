@@ -1,0 +1,41 @@
+    "/foothing": {
+      "get": {
+        "summary": "Do some foo thing as starting point for integration of LCP",
+        "description": "Get simply nothing",
+        "tags": [
+          "FooThing"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status data of the LCP.",
+            "schema": {
+              "$ref": "#/definitions/Status_Response"
+            }
+          },
+          "400": {
+            "description": "Request not valid.",
+            "schema": {
+              "$ref": "#/definitions/Bad_Request_Response"
+            }
+          },
+          "401": {
+            "description": "Authentication failed.",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized_Response"
+            }
+          },
+          "406": {
+            "description": "Request validation failed.",
+            "schema": {
+              "$ref": "#/definitions/Not_Acceptable_Response"
+            }
+          },
+          "500": {
+            "description": "Server not available to satisfy the request.",
+            "schema": {
+              "$ref": "#/definitions/Internal_Server_Error_Response"
+            }
+          }
+        }
+      }
+    }
