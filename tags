@@ -5,11 +5,6 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	0.0.0	//
-$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:get.responses.400.schema
-$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:get.responses.500.schema
-$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:get.responses.406.schema
-$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:get.responses.200.schema
-$ref	docstring/foothing/get.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:get.responses.401.schema
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code.delete.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code.post.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code.put.parameters.0.schema.items
@@ -17,8 +12,14 @@ $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code/{id}.post.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Code_Request"$/;"	s	object:paths./code/{id}.put.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Config_Request"$/;"	s	object:paths./config.post.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Disk"$/;"	s	object:definitions.BaremetalServer.properties.diskDevices.items.allOf.0
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/DiskPartition"$/;"	s	object:definitions.Disk.properties.diskPartitions.items.allOf.0
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.get.responses.200.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.post.responses.200.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code.put.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code/{id}.put.responses.200.schema.items
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./baremetal.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code.delete.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code.post.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./code.put.responses.400.schema
@@ -30,10 +31,9 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Re
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./filiation.post.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./filiation/{id}.get.responses.400.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./foothing.get.responses.400.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./foothing/{id}.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./status.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./status.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/BaremetalServer"$/;"	s	object:paths./baremetal.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Bad_Request_Response.properties.exception.allOf.0
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Internal_Server_Error_Response.properties.exception.allOf.0
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.No_Content_Response.properties.exception.allOf.0
@@ -41,6 +41,7 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Resp
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Ok_Response.properties.exception.allOf.0
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Unauthorized_Response.properties.exception.allOf.0
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Exception_Response"$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.exception.allOf.0
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./baremetal.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./code.put.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./code/{id}.put.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./config.post.responses.500.schema
@@ -48,10 +49,9 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Serve
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./filiation.post.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./filiation/{id}.get.responses.500.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./foothing.get.responses.500.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./foothing/{id}.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./status.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./status.post.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation/{id}.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.delete.responses.204.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.post.responses.204.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.put.responses.204.schema
@@ -59,6 +59,7 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Res
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code/{id}.post.responses.204.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code/{id}.put.responses.204.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./config.post.responses.204.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./baremetal.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code.delete.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code.post.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./code.put.responses.406.schema
@@ -70,18 +71,11 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./filiation.post.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./filiation/{id}.get.responses.406.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./foothing.get.responses.406.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./foothing/{id}.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./status.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./status.post.responses.406.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation.get.responses.200.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation.post.responses.200.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./filiation/{id}.get.responses.200.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./foothing.get.responses.200.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./foothing/{id}.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./status.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./status.post.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./baremetal.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code.delete.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code.post.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./code.put.responses.401.schema
@@ -93,8 +87,6 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_R
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./filiation.post.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./filiation/{id}.delete.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./filiation/{id}.get.responses.401.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./foothing.get.responses.401.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./foothing/{id}.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./status.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./status.post.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unsupported_Media_Type_Response"$/;"	s	object:paths./code.put.responses.415.schema
@@ -102,15 +94,14 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unsupported_Me
 $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Action_Request"$/;"	s	object:definitions.Config_Request.properties.actions.items
 $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Parameter_Request"$/;"	s	object:definitions.Config_Request.properties.parameters.items
 $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_Request"$/;"	s	object:definitions.Config_Request.properties.resources.items
+$ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface"$/;"	s	object:definitions.BaremetalServer.properties.networkInterfaces.items
+/baremetal	swagger/schema.json	/^    "\/baremetal": {$/;"	o	object:paths
 /code	swagger/schema.json	/^    "\/code": {$/;"	o	object:paths
 /code/{id}	swagger/schema.json	/^    "\/code\/{id}": {$/;"	o	object:paths
 /config	swagger/schema.json	/^    "\/config": {$/;"	o	object:paths
 /filiation	swagger/schema.json	/^    "\/filiation": {$/;"	o	object:paths
 /filiation/{id}	swagger/schema.json	/^    "\/filiation\/{id}": {$/;"	o	object:paths
-/foothing	swagger/schema.json	/^    "\/foothing": {$/;"	o	object:paths
-/foothing/{id}	swagger/schema.json	/^    "\/foothing\/{id}": {$/;"	o	object:paths
 /status	swagger/schema.json	/^    "\/status": {$/;"	o	object:paths
-0	docstring/foothing/get.json	/^          "FooThing"$/;"	s	array:get.tags
 0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code.delete.responses.422.schema.items.oneOf
 0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code.post.responses.422.schema.items.oneOf
 0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code/{id}.delete.responses.422.schema.items.oneOf
@@ -125,6 +116,8 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 0	swagger/schema.json	/^                {$/;"	o	array:paths./code/{id}.delete.responses.200.schema.oneOf
 0	swagger/schema.json	/^                {$/;"	o	array:paths./code/{id}.post.responses.200.schema.oneOf
 0	swagger/schema.json	/^                {$/;"	o	array:paths./config.post.responses.200.schema.oneOf
+0	swagger/schema.json	/^              {$/;"	o	array:definitions.BaremetalServer.properties.diskDevices.items.allOf
+0	swagger/schema.json	/^              {$/;"	o	array:definitions.Disk.properties.diskPartitions.items.allOf
 0	swagger/schema.json	/^            "json",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
 0	swagger/schema.json	/^            "plain",$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
 0	swagger/schema.json	/^            {$/;"	o	array:definitions.Bad_Request_Response.properties.exception.allOf
@@ -134,12 +127,6 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 0	swagger/schema.json	/^            {$/;"	o	array:definitions.Ok_Response.properties.exception.allOf
 0	swagger/schema.json	/^            {$/;"	o	array:definitions.Unauthorized_Response.properties.exception.allOf
 0	swagger/schema.json	/^            {$/;"	o	array:definitions.Unsupported_Media_Type_Response.properties.exception.allOf
-0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation.get.tags
-0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation.post.tags
-0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation/{id}.delete.tags
-0	swagger/schema.json	/^          "Filiation"$/;"	s	array:paths./filiation/{id}.get.tags
-0	swagger/schema.json	/^          "FooThing"$/;"	s	array:paths./foothing.get.tags
-0	swagger/schema.json	/^          "FooThing"$/;"	s	array:paths./foothing/{id}.get.tags
 0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code.delete.tags
 0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code.post.tags
 0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code.put.tags
@@ -147,6 +134,11 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code/{id}.post.tags
 0	swagger/schema.json	/^          "code"$/;"	s	array:paths./code/{id}.put.tags
 0	swagger/schema.json	/^          "config"$/;"	s	array:paths./config.post.tags
+0	swagger/schema.json	/^          "filiation"$/;"	s	array:paths./filiation.get.tags
+0	swagger/schema.json	/^          "filiation"$/;"	s	array:paths./filiation.post.tags
+0	swagger/schema.json	/^          "filiation"$/;"	s	array:paths./filiation/{id}.delete.tags
+0	swagger/schema.json	/^          "filiation"$/;"	s	array:paths./filiation/{id}.get.tags
+0	swagger/schema.json	/^          "hardware"$/;"	s	array:paths./baremetal.get.tags
 0	swagger/schema.json	/^          "status"$/;"	s	array:paths./status.get.tags
 0	swagger/schema.json	/^          "status"$/;"	s	array:paths./status.post.tags
 0	swagger/schema.json	/^          {$/;"	o	array:paths./code.delete.parameters
@@ -159,8 +151,12 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 0	swagger/schema.json	/^        "cmd",$/;"	s	array:definitions.Config_Action_Request.required
 0	swagger/schema.json	/^        "code",$/;"	s	array:definitions.Code_Request.required
 0	swagger/schema.json	/^        "content",$/;"	s	array:definitions.Config_Resource_Request.required
+0	swagger/schema.json	/^        "cpus",$/;"	s	array:definitions.BaremetalServer.required
 0	swagger/schema.json	/^        "filename",$/;"	s	array:definitions.Exception_Response.required
 0	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Config_Parameter_Request.required
+0	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Disk.required
+0	swagger/schema.json	/^        "id",$/;"	s	array:definitions.LCPSonDescription.required
+0	swagger/schema.json	/^        "id",$/;"	s	array:definitions.NetworkInterface.required
 0	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Status_Response.required
 0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Bad_Request_Response.required
 0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Internal_Server_Error_Response.required
@@ -169,9 +165,20 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Ok_Response.required
 0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Unauthorized_Response.required
 0	swagger/schema.json	/^        "message"$/;"	s	array:definitions.Unsupported_Media_Type_Response.required
+0	swagger/schema.json	/^        "name",$/;"	s	array:definitions.DiskPartition.required
 0	swagger/schema.json	/^    "application\/json"$/;"	s	array:consumes
 0	swagger/schema.json	/^    "application\/json"$/;"	s	array:produces
 0	swagger/schema.json	/^    {$/;"	o	array:tags
+0	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	o	array:diskDevices.0.diskPartitions
+0	test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	o	array:diskDevices.1.diskPartitions
+0	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["10.0.3.1\/24"],$/;"	s	array:networkInterfaces.2.IPv4Addresses
+0	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["127.0.0.1\/8","169.254.169.254\/24"],$/;"	s	array:networkInterfaces.3.IPv4Addresses
+0	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["172.17.0.1"],$/;"	s	array:networkInterfaces.4.IPv4Addresses
+0	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["192.168.0.16\/24"],$/;"	s	array:networkInterfaces.0.IPv4Addresses
+0	test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["::1\/128"],$/;"	s	array:networkInterfaces.3.IPv6Addresses
+0	test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["fe80::dc07:b5e4:d87f:2538\/64"],$/;"	s	array:networkInterfaces.0.IPv6Addresses
+0	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:diskDevices
+0	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:networkInterfaces
 1	swagger/schema.json	/^                  "Not_Modified_Response"$/;"	s	array:paths./code.put.responses.304.schema.items.oneOf
 1	swagger/schema.json	/^                  "Not_Modified_Response"$/;"	s	array:paths./code/{id}.put.responses.304.schema.items.oneOf
 1	swagger/schema.json	/^                  "Not_Modified_Response",$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
@@ -183,13 +190,22 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 1	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./config.post.responses.422.schema.items.oneOf
 1	swagger/schema.json	/^            "lines",$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
 1	swagger/schema.json	/^            "properties",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+1	swagger/schema.json	/^        "hostname",$/;"	s	array:definitions.BaremetalServer.required
 1	swagger/schema.json	/^        "id"$/;"	s	array:definitions.Code_Request.required
 1	swagger/schema.json	/^        "id"$/;"	s	array:definitions.Config_Action_Request.required
 1	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Config_Resource_Request.required
 1	swagger/schema.json	/^        "last_heartbeat",$/;"	s	array:definitions.Status_Response.required
 1	swagger/schema.json	/^        "line",$/;"	s	array:definitions.Exception_Response.required
+1	swagger/schema.json	/^        "mtu",$/;"	s	array:definitions.NetworkInterface.required
+1	swagger/schema.json	/^        "name",$/;"	s	array:definitions.Disk.required
 1	swagger/schema.json	/^        "schema",$/;"	s	array:definitions.Config_Parameter_Request.required
+1	swagger/schema.json	/^        "size"$/;"	s	array:definitions.DiskPartition.required
+1	swagger/schema.json	/^        "url"$/;"	s	array:definitions.LCPSonDescription.required
 1	swagger/schema.json	/^    {$/;"	o	array:tags
+1	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	o	array:diskDevices.0.diskPartitions
+1	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["127.0.0.1\/8","169.254.169.254\/24"],$/;"	s	array:networkInterfaces.3.IPv4Addresses
+1	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:diskDevices
+1	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:networkInterfaces
 1.0.0	CHANGELOG.md	/^## 1.0.0$/;"	s
 1.0.0	docs/CHANGELOG.md	/^## 1.0.0$/;"	s
 1.0.1	CHANGELOG.md	/^## 1.0.1$/;"	s
@@ -202,12 +218,17 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
 2	swagger/schema.json	/^            "json"$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
 2	swagger/schema.json	/^            "xml",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+2	swagger/schema.json	/^        "id",$/;"	s	array:definitions.BaremetalServer.required
+2	swagger/schema.json	/^        "name",$/;"	s	array:definitions.NetworkInterface.required
 2	swagger/schema.json	/^        "path"$/;"	s	array:definitions.Config_Resource_Request.required
 2	swagger/schema.json	/^        "reason"$/;"	s	array:definitions.Exception_Response.required
+2	swagger/schema.json	/^        "size"$/;"	s	array:definitions.Disk.required
 2	swagger/schema.json	/^        "source",$/;"	s	array:definitions.Config_Parameter_Request.required
 2	swagger/schema.json	/^        "started"$/;"	s	array:definitions.Status_Response.required
 2	swagger/schema.json	/^    {$/;"	o	array:tags
-200	docstring/foothing/get.json	/^          "200": {$/;"	o	object:get.responses
+2	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	o	array:diskDevices.0.diskPartitions
+2	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:networkInterfaces
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./baremetal.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code.delete.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code.post.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./code.put.responses
@@ -219,8 +240,6 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./filiation.post.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./filiation/{id}.delete.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./filiation/{id}.get.responses
-200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./foothing.get.responses
-200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./foothing/{id}.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./status.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./status.post.responses
 204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code.delete.responses
@@ -231,12 +250,19 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code/{id}.put.responses
 204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./config.post.responses
 3	swagger/schema.json	/^            "yaml"$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+3	swagger/schema.json	/^        "operatingSystem",$/;"	s	array:definitions.BaremetalServer.required
+3	swagger/schema.json	/^        "state"$/;"	s	array:definitions.NetworkInterface.required
 3	swagger/schema.json	/^        "value"$/;"	s	array:definitions.Config_Parameter_Request.required
 3	swagger/schema.json	/^    {$/;"	o	array:tags
+3	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p4", "size": 0.482},$/;"	o	array:diskDevices.0.diskPartitions
+3	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:networkInterfaces
 304	swagger/schema.json	/^          "304": {$/;"	o	object:paths./code.put.responses
 304	swagger/schema.json	/^          "304": {$/;"	o	object:paths./code/{id}.put.responses
+4	swagger/schema.json	/^        "ram"$/;"	s	array:definitions.BaremetalServer.required
 4	swagger/schema.json	/^    {$/;"	o	array:tags
-400	docstring/foothing/get.json	/^          "400": {$/;"	o	object:get.responses
+4	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p5", "size": 16},$/;"	o	array:diskDevices.0.diskPartitions
+4	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:networkInterfaces
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./baremetal.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code.delete.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code.post.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./code.put.responses
@@ -248,11 +274,9 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./filiation.post.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./filiation/{id}.delete.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./filiation/{id}.get.responses
-400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./foothing.get.responses
-400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./foothing/{id}.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./status.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./status.post.responses
-401	docstring/foothing/get.json	/^          "401": {$/;"	o	object:get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./baremetal.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code.delete.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code.post.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./code.put.responses
@@ -264,11 +288,9 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./filiation.post.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./filiation/{id}.delete.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./filiation/{id}.get.responses
-401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./foothing.get.responses
-401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./foothing/{id}.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./status.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./status.post.responses
-406	docstring/foothing/get.json	/^          "406": {$/;"	o	object:get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./baremetal.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code.delete.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code.post.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./code.put.responses
@@ -280,8 +302,6 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./filiation.post.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./filiation/{id}.delete.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./filiation/{id}.get.responses
-406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./foothing.get.responses
-406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./foothing/{id}.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./status.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./status.post.responses
 415	swagger/schema.json	/^          "415": {$/;"	o	object:paths./code.put.responses
@@ -294,11 +314,12 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./code/{id}.put.responses
 422	swagger/schema.json	/^          "422": {$/;"	o	object:paths./config.post.responses
 5	swagger/schema.json	/^    {$/;"	o	array:tags
-500	docstring/foothing/get.json	/^          "500": {$/;"	o	object:get.responses
+5	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p6", "size": 305.7}$/;"	o	array:diskDevices.0.diskPartitions
 500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code.delete.responses.422
 500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code.post.responses.422
 500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code/{id}.delete.responses.422
 500	swagger/schema.json	/^            "500": {$/;"	o	object:paths./code/{id}.post.responses.422
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./baremetal.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./code.put.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./code/{id}.put.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./config.post.responses
@@ -306,8 +327,6 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/Config_Resource_
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./filiation.post.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./filiation/{id}.delete.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./filiation/{id}.get.responses
-500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./foothing.get.responses
-500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./foothing/{id}.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./status.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./status.post.responses
 ALLSPHINXOPTS	docs/Makefile	/^ALLSPHINXOPTS   = -d $(BUILDDIR)\/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .$/;"	m
@@ -328,6 +347,11 @@ Bad_Request_Handler	api/error_handler.py	/^class Bad_Request_Handler(Base_Handle
 Bad_Request_Response	lib/response.py	/^class Bad_Request_Response(Base_Response):$/;"	c
 Bad_Request_Response	swagger/schema.json	/^    "Bad_Request_Response": {$/;"	o	object:definitions
 Bad_Request_Response_Schema	schema/response.py	/^class Bad_Request_Response_Schema(Base_Response_Schema):$/;"	c
+BaremetalServer	resource/hardware_definitions.py	/^class BaremetalServer(Base_Resource):$/;"	c
+BaremetalServer	schema/hardware_definitions.py	/^class BaremetalServer(Base_Schema):$/;"	c
+BaremetalServer	swagger/schema.json	/^    "BaremetalServer": {$/;"	o	object:definitions
+BaremetalServerSchema	resource/hardware_definitions.py	/^from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema$/;"	x
+BaremetalServerTesting	test/baremetal_server_test.py	/^class BaremetalServerTesting(testing.TestCase):$/;"	c
 Base_Handler	api/error_handler.py	/^class Base_Handler(object):$/;"	c
 Base_Resource	resource/base.py	/^class Base_Resource(object):$/;"	c
 Base_Response	lib/response.py	/^class Base_Response(object):$/;"	c
@@ -375,9 +399,12 @@ Created_Response_Schema	schema/response.py	/^class Created_Response_Schema(Base_
 DELETE	lib/http.py	/^    DELETE = 'delete'$/;"	v	class:HTTP_Method
 Date_Time	schema/code.py	/^from marshmallow.fields import Bool, DateTime as Date_Time, Nested, Str$/;"	x
 Date_Time	schema/config.py	/^from marshmallow.fields import Boolean, Constant, DateTime as Date_Time, Float, Integer, List, N/;"	x
-Date_Time	schema/foothing.py	/^from marshmallow.fields import Bool, DateTime as Date_Time, Nested, Str$/;"	x
 Date_Time	schema/status.py	/^from marshmallow.fields import DateTime as Date_Time, Str$/;"	x
 Datetime	docs/api.rst	/^Datetime$/;"	S	section:Utils
+Disk	schema/hardware_definitions.py	/^class Disk(Base_Schema):$/;"	c
+Disk	swagger/schema.json	/^    "Disk": {$/;"	o	object:definitions
+DiskPartition	schema/hardware_definitions.py	/^class DiskPartition(Base_Schema):$/;"	c
+DiskPartition	swagger/schema.json	/^    "DiskPartition": {$/;"	o	object:definitions
 Display help	README.md	/^### Display help$/;"	S
 Docstring	docs/api.rst	/^Docstring$/;"	s	chapter:API
 Documentation	docs/index.rst	/^Documentation$/;"	c
@@ -397,11 +424,9 @@ FORMAT	utils/datetime.py	/^FORMAT = '%Y\/%m\/%dT%H:%M:%S'$/;"	v
 Falcon_Auth_Middleware	api/__init__.py	/^from falcon_auth import FalconAuthMiddleware as Falcon_Auth_Middleware$/;"	x
 Falcon_Plugin	api/spec.py	/^from falcon_apispec import FalconPlugin as Falcon_Plugin$/;"	x
 File_Not_Found_Error	resource/config.py	/^File_Not_Found_Error = FileNotFoundError$/;"	v
-Filiation	resource/filiationbyid.py	/^class Filiation(Base_Resource):$/;"	c
-FiliationById	resource/filiationbyid.py	/^class FiliationById(Base_Resource):$/;"	c
+Filiation	resource/filiation.py	/^class Filiation(Base_Resource):$/;"	c
+FiliationById	resource/filiation.py	/^class FiliationById(Base_Resource):$/;"	c
 FiliationTesting	test/filiation_tests.py	/^class FiliationTesting(testing.TestCase):$/;"	c
-FooThing	resource/foothing.py	/^class FooThing(Base_Resource):$/;"	c
-FooThing	schema/foothing.py	/^class FooThing(Base_Schema):$/;"	c
 Formatter	utils/string.py	/^class Formatter(String_Formatter):$/;"	c
 Full_Loader	api/media_handler.py	/^from yaml import FullLoader as Full_Loader$/;"	x
 Full_Loader	lib/parser.py	/^from yaml import FullLoader as Full_Loader$/;"	x
@@ -419,10 +444,25 @@ HTTP_Status	lib/http.py	/^from http import HTTPStatus as HTTP_Status$/;"	x
 HTTP_Unauthorized	api/middleware.py	/^from falcon.errors import HTTPUnauthorized as HTTP_Unauthorized$/;"	x
 HTTP_Unauthorized	resource/status.py	/^from falcon.errors import HTTPUnauthorized as HTTP_Unauthorized$/;"	x
 HTTP_Unsupported_Media_Type	api/error_handler.py	/^from falcon.errors import HTTPBadRequest as HTTP_Bad_Request, HTTPInternalServerError as HTTP_In/;"	x
+HardwareDefinitionsTesting	test/hardware_definition_tests.py	/^class HardwareDefinitionsTesting(testing.TestCase):$/;"	c
 Hash	docs/api.rst	/^Hash$/;"	S	section:Utils
 I18NSPHINXOPTS	docs/Makefile	/^I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .$/;"	m
 I18NSPHINXOPTS	docs/make.bat	/^	set I18NSPHINXOPTS=-D latex_paper_size=%PAPER% %I18NSPHINXOPTS%$/;"	v
 I18NSPHINXOPTS	docs/make.bat	/^set I18NSPHINXOPTS=%SPHINXOPTS% .$/;"	v
+IPV4_RE	schema/hardware_definitions.py	/^IPV4_RE = r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?/;"	v
+IPV6_RE	schema/hardware_definitions.py	/^IPV6_RE = r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,/;"	v
+IPv4Addresses	schema/hardware_definitions.py	/^    IPv4Addresses = fields.List(IPv4CIDR, required=False,$/;"	v	class:NetworkInterface
+IPv4Addresses	swagger/schema.json	/^        "IPv4Addresses": {$/;"	o	object:definitions.NetworkInterface.properties
+IPv4Addresses	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["10.0.3.1\/24"],$/;"	a	object:networkInterfaces.2
+IPv4Addresses	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["127.0.0.1\/8","169.254.169.254\/24"],$/;"	a	object:networkInterfaces.3
+IPv4Addresses	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["172.17.0.1"],$/;"	a	object:networkInterfaces.4
+IPv4Addresses	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["192.168.0.16\/24"],$/;"	a	object:networkInterfaces.0
+IPv4CIDR	schema/hardware_definitions.py	/^class IPv4CIDR(fields.Str):$/;"	c
+IPv6Addresses	schema/hardware_definitions.py	/^    IPv6Addresses = fields.List(IPv6CIDR, required=False,$/;"	v	class:NetworkInterface
+IPv6Addresses	swagger/schema.json	/^        "IPv6Addresses": {$/;"	o	object:definitions.NetworkInterface.properties
+IPv6Addresses	test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["::1\/128"],$/;"	a	object:networkInterfaces.3
+IPv6Addresses	test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["fe80::dc07:b5e4:d87f:2538\/64"],$/;"	a	object:networkInterfaces.0
+IPv6CIDR	schema/hardware_definitions.py	/^class IPv6CIDR(fields.Str):$/;"	c
 Import_Error	main.py	/^Import_Error = ImportError$/;"	v
 In	schema/validate.py	/^class In(object):$/;"	c
 Indices and tables	docs/index.rst	/^Indices and tables$/;"	c
@@ -435,19 +475,31 @@ Internal_Server_Error_Response_Schema	schema/response.py	/^class Internal_Server
 JSON	docs/api.rst	/^JSON$/;"	S	section:Utils
 JSON_Handler	api/__init__.py	/^from falcon.media import JSONHandler as JSON_Handler, MessagePackHandler as Message_Pack_Handler$/;"	x
 JSON_Handler	api/media_handler.py	/^from falcon.media import JSONHandler as JSON_Handler$/;"	x
-LCPBasics	schema/filiation.py	/^class LCPBasics(Base_Schema):$/;"	c
+LCPSonDescription	schema/filiation.py	/^class LCPSonDescription(Base_Schema):$/;"	c
+LCPSonDescription	swagger/schema.json	/^    "LCPSonDescription": {$/;"	o	object:definitions
 Lib	docs/api.rst	/^Lib$/;"	s	chapter:API
 License	docs/license.rst	/^License$/;"	c
 List_or_One	utils/schema.py	/^class List_or_One(List):$/;"	c
 Local Control Plane	README.md	/^# Local Control Plane$/;"	c
 Log	docs/api.rst	/^Log$/;"	S	section:Utils
 Log	utils/log.py	/^class Log:$/;"	c
+MACADDR_RE	schema/hardware_definitions.py	/^MACADDR_RE = r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"$/;"	v
+MacAddress	schema/hardware_definitions.py	/^    MacAddress = fields.Str(required=False, example="a2:bc:14:43:ff:43", name="MacAddress",$/;"	v	class:NetworkInterface
+MacAddress	swagger/schema.json	/^        "MacAddress": {$/;"	o	object:definitions.NetworkInterface.properties
+MacAddress	test/examples/bare-metal-server-example.json	/^            "MacAddress": "00:16:3e:00:00:00",$/;"	s	object:networkInterfaces.2
+MacAddress	test/examples/bare-metal-server-example.json	/^            "MacAddress": "00:16:3e:00:00:00",$/;"	s	object:networkInterfaces.3
+MacAddress	test/examples/bare-metal-server-example.json	/^            "MacAddress": "02:42:08:91:8b:98",$/;"	s	object:networkInterfaces.4
+MacAddress	test/examples/bare-metal-server-example.json	/^            "MacAddress": "50:3e:aa:dd:cb:eb",$/;"	s	object:networkInterfaces.0
+MacAddress	test/examples/bare-metal-server-example.json	/^            "MacAddress": "c0:b5:d7:73:5e:25",$/;"	s	object:networkInterfaces.1
 Marshmallow_Plugin	api/spec.py	/^from apispec.ext.marshmallow import MarshmallowPlugin as Marshmallow_Plugin$/;"	x
 Media Handler	docs/api.rst	/^Media Handler$/;"	s	chapter:API
 Message_Pack_Handler	api/__init__.py	/^from falcon.media import JSONHandler as JSON_Handler, MessagePackHandler as Message_Pack_Handler$/;"	x
 Middleware	docs/api.rst	/^Middleware$/;"	s	chapter:API
 NO_CHANGE_NEEDED	lib/parser.py	/^NO_CHANGE_NEEDED = 'No change needed'$/;"	v
 Negotiation_Middleware	api/middleware.py	/^class Negotiation_Middleware(object):$/;"	c
+NetworkDefinitionsTesting	test/network_definitions_test.py	/^class NetworkDefinitionsTesting(testing.TestCase):$/;"	c
+NetworkInterface	schema/hardware_definitions.py	/^class NetworkInterface(Base_Schema):$/;"	c
+NetworkInterface	swagger/schema.json	/^    "NetworkInterface": {$/;"	o	object:definitions
 No_Content_Response	lib/response.py	/^class No_Content_Response(Base_Response):$/;"	c
 No_Content_Response	swagger/schema.json	/^    "No_Content_Response": {$/;"	o	object:definitions
 No_Content_Response_Schema	schema/response.py	/^class No_Content_Response_Schema(Base_Response_Schema):$/;"	c
@@ -510,7 +562,10 @@ Status_Response_Schema	schema/status.py	/^class Status_Response_Schema(Base_Sche
 String	docs/api.rst	/^String$/;"	S	section:Utils
 String_Formatter	utils/string.py	/^from string import Formatter as String_Formatter$/;"	x
 TTL_Ordered_Dict	resource/status.py	/^from ttldict import TTLOrderedDict as TTL_Ordered_Dict$/;"	x
+TestMyApp	test/baremetal_server_test.py	/^class TestMyApp(BaremetalServerTesting):$/;"	c
 TestMyApp	test/filiation_tests.py	/^class TestMyApp(FiliationTesting):$/;"	c
+TestMyApp	test/hardware_definition_tests.py	/^class TestMyApp(HardwareDefinitionsTesting):$/;"	c
+TestMyApp	test/network_definitions_test.py	/^class TestMyApp(NetworkDefinitionsTesting):$/;"	c
 Time	docs/api.rst	/^Time$/;"	S	section:Utils
 Timeout_Error	lib/polycube.py	/^from requests.exceptions import ConnectionError as Connection_Error, Timeout as Timeout_Error$/;"	x
 Unauthorized_Response	lib/response.py	/^class Unauthorized_Response(Base_Response):$/;"	c
@@ -548,13 +603,13 @@ __all__	resource/__init__.py	/^__all__ = [$/;"	v
 __all__	resource/base.py	/^__all__ = [$/;"	v
 __all__	resource/code.py	/^__all__ = [$/;"	v
 __all__	resource/config.py	/^__all__ = [$/;"	v
-__all__	resource/filiationbyid.py	/^__all__ = [$/;"	v
-__all__	resource/foothing.py	/^__all__ = [$/;"	v
+__all__	resource/filiation.py	/^__all__ = [$/;"	v
+__all__	resource/hardware_definitions.py	/^__all__ = [$/;"	v
 __all__	resource/status.py	/^__all__ = [$/;"	v
 __all__	schema/base.py	/^__all__ = [$/;"	v
 __all__	schema/code.py	/^__all__ = [$/;"	v
 __all__	schema/filiation.py	/^__all__ = [$/;"	v
-__all__	schema/foothing.py	/^__all__ = [$/;"	v
+__all__	schema/hardware_definitions.py	/^__all__ = [$/;"	v
 __all__	schema/response.py	/^__all__ = [$/;"	v
 __all__	schema/status.py	/^__all__ = [$/;"	v
 __all__	schema/validate.py	/^__all__ = [$/;"	v
@@ -606,11 +661,13 @@ __init__	lib/response.py	/^    def __init__(self, message, exception=None, **kwa
 __init__	reader/config.py	/^    def __init__(self):$/;"	m	class:Config_Reader
 __init__	resource/base.py	/^    def __init__(self):$/;"	m	class:Base_Resource
 __init__	resource/code.py	/^    def __init__(self):$/;"	m	class:Code_Resource
-__init__	resource/filiationbyid.py	/^    def __init__(self):$/;"	m	class:Filiation
-__init__	resource/filiationbyid.py	/^    def __init__(self):$/;"	m	class:FiliationById
-__init__	resource/foothing.py	/^    def __init__(self):$/;"	m	class:FooThing
+__init__	resource/filiation.py	/^    def __init__(self):$/;"	m	class:Filiation
+__init__	resource/filiation.py	/^    def __init__(self):$/;"	m	class:FiliationById
+__init__	resource/hardware_definitions.py	/^    def __init__(self):$/;"	m	class:BaremetalServer
 __init__	resource/status.py	/^    def __init__(self):$/;"	m	class:Status_Resource
 __init__	schema/base.py	/^    def __init__(self, *args, method=None, check_unique_id=False, **kwargs):$/;"	m	class:Base_Schema
+__init__	schema/hardware_definitions.py	/^    def __init__(self):$/;"	m	class:IPv4CIDR
+__init__	schema/hardware_definitions.py	/^    def __init__(self):$/;"	m	class:IPv6CIDR
 __int__	lib/response.py	/^    def __int__(self):$/;"	m	class:Base_Response
 __log	lib/response.py	/^    def __log(self):$/;"	m	class:Base_Response	file:
 __lt	lib/http.py	/^def __lt(code_a, code_b):$/;"	f
@@ -628,12 +685,19 @@ __validate_readonly	schema/base.py	/^    def __validate_readonly(self, data, **k
 _all__	schema/config.py	/^_all__ = [$/;"	v
 _deserialize	utils/schema.py	/^    def _deserialize(self, value, attr, data, **kwargs):$/;"	m	class:List_or_One
 _getAuthorizationHeaders	test/filiation_tests.py	/^    def _getAuthorizationHeaders(self):$/;"	m	class:TestMyApp
+_getBaremetalServer	test/baremetal_server_test.py	/^    def _getBaremetalServer(self):$/;"	m	class:TestMyApp
 _getFiliationData	test/filiation_tests.py	/^    def _getFiliationData(self):$/;"	m	class:TestMyApp
+_getTestingDiskHD1	test/hardware_definition_tests.py	/^    def _getTestingDiskHD1(self):$/;"	m	class:TestMyApp
+_getTestingNetwork	test/network_definitions_test.py	/^    def _getTestingNetwork(self):$/;"	m	class:TestMyApp
+_getTestingPartitionsHD1	test/hardware_definition_tests.py	/^    def _getTestingPartitionsHD1(self):$/;"	m	class:TestMyApp
+_getTestingPartitionsHD2	test/hardware_definition_tests.py	/^    def _getTestingPartitionsHD2(self):$/;"	m	class:TestMyApp
 _setFiliationData	test/filiation_tests.py	/^    def _setFiliationData(self):$/;"	m	class:TestMyApp
 _setMultiFiliationData	test/filiation_tests.py	/^    def _setMultiFiliationData(self):$/;"	m	class:TestMyApp
 actions	schema/config.py	/^    actions = Nested(Config_Action_Request_Schema, many=True, unknown='INCLUDE',$/;"	v	class:Config_Request_Schema
 actions	swagger/schema.json	/^        "actions": {$/;"	o	object:definitions.Config_Request.properties
 add	lib/response.py	/^    def add(self, resp):$/;"	m	class:Base_Response
+allOf	swagger/schema.json	/^            "allOf": [$/;"	a	object:definitions.BaremetalServer.properties.diskDevices.items
+allOf	swagger/schema.json	/^            "allOf": [$/;"	a	object:definitions.Disk.properties.diskPartitions.items
 allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Bad_Request_Response.properties.exception
 allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.Internal_Server_Error_Response.properties.exception
 allOf	swagger/schema.json	/^          "allOf": [$/;"	a	object:definitions.No_Content_Response.properties.exception
@@ -676,7 +740,6 @@ code	lib/response.py	/^    code = HTTP_Status.UNAUTHORIZED$/;"	v	class:Unauthori
 code	lib/response.py	/^    code = HTTP_Status.UNPROCESSABLE_ENTITY$/;"	v	class:Unprocessable_Entity_Response
 code	lib/response.py	/^    code = HTTP_Status.UNSUPPORTED_MEDIA_TYPE$/;"	v	class:Unsupported_Media_Type_Response
 code	schema/code.py	/^    code = List_or_One(Str, required=True,$/;"	v	class:Code_Request_Schema
-code	schema/foothing.py	/^    code = List_or_One(Str, required=True,$/;"	v	class:FooThing
 code	schema/response.py	/^    code = Constant(Content_Response.code)$/;"	v	class:Content_Response_Schema
 code	schema/response.py	/^    code = Constant(Created_Response.code)$/;"	v	class:Created_Response_Schema
 code	schema/response.py	/^    code = Constant(Internal_Server_Error_Response.code)$/;"	v	class:Internal_Server_Error_Response_Schema
@@ -707,11 +770,15 @@ content	schema/config.py	/^    content = Str(required=True,$/;"	v	class:Config_R
 content	swagger/schema.json	/^        "content": {$/;"	o	object:definitions.Config_Resource_Request.properties
 convert_field	utils/string.py	/^    def convert_field(self, value, conversion):$/;"	m	class:Formatter
 copyright	docs/conf.py	/^copyright = '2020, GUARD Project'$/;"	v
+cpus	schema/hardware_definitions.py	/^    cpus = fields.Int(required=True, example="8",$/;"	v	class:BaremetalServer
+cpus	swagger/schema.json	/^        "cpus": {$/;"	o	object:definitions.BaremetalServer.properties
+cpus	test/examples/bare-metal-server-example.json	/^    "cpus": 8,$/;"	n
 cr	reader/arg.py	/^    cr = None$/;"	v	class:Arg_Reader
 create	lib/polycube.py	/^    def create(self, cube, code, interface, metrics):$/;"	m	class:Polycube
 daemon	schema/config.py	/^    daemon = Boolean(default=False, example=True,$/;"	v	class:Config_Action_Request_Schema
 daemon	swagger/schema.json	/^        "daemon": {$/;"	o	object:definitions.Config_Action_Request.properties
-data	resource/filiationbyid.py	/^    data = {}$/;"	v	class:Filiation
+data	resource/filiation.py	/^    data = {}$/;"	v	class:Filiation
+data	resource/hardware_definitions.py	/^    data = {}$/;"	v	class:BaremetalServer
 data	schema/config.py	/^    data = Raw(description='Configuration data.')$/;"	v	class:Config_Response_Schema
 data	schema/validate.py	/^        def data():$/;"	f	member:In.apply	file:
 datetime_from_str	utils/datetime.py	/^def datetime_from_str(date_time_str, format=FORMAT):$/;"	f
@@ -749,18 +816,13 @@ delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./code/{id}
 delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./filiation/{id}
 delete_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x
 description	about.py	/^description = 'In each local agent, the control plane is responsible for programmability, i.e., /;"	v
-description	docstring/foothing/get.json	/^            "description": "Authentication failed.",$/;"	s	object:get.responses.401
-description	docstring/foothing/get.json	/^            "description": "Request not valid.",$/;"	s	object:get.responses.400
-description	docstring/foothing/get.json	/^            "description": "Request validation failed.",$/;"	s	object:get.responses.406
-description	docstring/foothing/get.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:get.responses.500
-description	docstring/foothing/get.json	/^            "description": "Status data of the LCP.",$/;"	s	object:get.responses.200
-description	docstring/foothing/get.json	/^        "description": "Get simply nothing",$/;"	s	object:get
 description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code.delete.responses.422.500
 description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code.post.responses.422.500
 description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code/{id}.delete.responses.422.500
 description	swagger/schema.json	/^              "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code/{id}.post.responses.422.500
 description	swagger/schema.json	/^            "description": "All injected code correctly updated.",$/;"	s	object:paths./code.put.responses.200
 description	swagger/schema.json	/^            "description": "All injected code correctly updated.",$/;"	s	object:paths./code/{id}.put.responses.200
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./baremetal.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code.delete.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code.post.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./code.put.responses.401
@@ -772,8 +834,6 @@ description	swagger/schema.json	/^            "description": "Authentication fai
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./filiation.post.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./filiation/{id}.delete.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./filiation/{id}.get.responses.401
-description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./foothing.get.responses.401
-description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./foothing/{id}.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./status.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./status.post.responses.401
 description	swagger/schema.json	/^            "description": "Codes inject correctly.",$/;"	s	object:paths./code.delete.responses.200
@@ -781,6 +841,9 @@ description	swagger/schema.json	/^            "description": "Codes inject corre
 description	swagger/schema.json	/^            "description": "Codes inject correctly.",$/;"	s	object:paths./code/{id}.delete.responses.200
 description	swagger/schema.json	/^            "description": "Codes inject correctly.",$/;"	s	object:paths./code/{id}.post.responses.200
 description	swagger/schema.json	/^            "description": "Configuration changed correctly.",$/;"	s	object:paths./config.post.responses.200
+description	swagger/schema.json	/^            "description": "Disk Partitions for the Disk",$/;"	s	object:definitions.Disk.properties.diskPartitions.items
+description	swagger/schema.json	/^            "description": "Disks installed in the Server",$/;"	s	object:definitions.BaremetalServer.properties.diskDevices.items
+description	swagger/schema.json	/^            "description": "Get the Server's configuration infromation from LCP",$/;"	s	object:paths./baremetal.get.responses.200
 description	swagger/schema.json	/^            "description": "Heartbeat with CB-Manager correctly executed.",$/;"	s	object:paths./status.post.responses.200
 description	swagger/schema.json	/^            "description": "Key path."$/;"	s	object:definitions.Config_Parameter_Request.properties.path.items
 description	swagger/schema.json	/^            "description": "Media type not supported.",$/;"	s	object:paths./code.put.responses.415
@@ -799,6 +862,7 @@ description	swagger/schema.json	/^            "description": "Not possible to in
 description	swagger/schema.json	/^            "description": "Not possible to inject one or more codes.",$/;"	s	object:paths./code/{id}.post.responses.422
 description	swagger/schema.json	/^            "description": "Not possible to update one or more codes based on the request.",$/;"	s	object:paths./code.put.responses.422
 description	swagger/schema.json	/^            "description": "Not possible to update one or more codes based on the request.",$/;"	s	object:paths./code/{id}.put.responses.422
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./baremetal.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code.delete.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code.post.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./code.put.responses.400
@@ -810,10 +874,9 @@ description	swagger/schema.json	/^            "description": "Request not valid.
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./filiation.post.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./filiation/{id}.delete.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./filiation/{id}.get.responses.400
-description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./foothing.get.responses.400
-description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./foothing/{id}.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./status.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./status.post.responses.400
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./baremetal.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code.delete.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code.post.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./code.put.responses.406
@@ -825,10 +888,9 @@ description	swagger/schema.json	/^            "description": "Request validation
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./filiation.post.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./filiation/{id}.delete.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./filiation/{id}.get.responses.406
-description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./foothing.get.responses.406
-description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./foothing/{id}.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./status.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./status.post.responses.406
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./baremetal.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code.put.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./code/{id}.put.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./config.post.responses.500
@@ -836,22 +898,23 @@ description	swagger/schema.json	/^            "description": "Server not availab
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./filiation.post.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./filiation/{id}.delete.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./filiation/{id}.get.responses.500
-description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./foothing.get.responses.500
-description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./foothing/{id}.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./status.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./status.post.responses.500
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation.get.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation.post.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation/{id}.delete.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation/{id}.get.responses.200
-description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./foothing.get.responses.200
-description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./foothing/{id}.get.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./status.get.responses.200
 description	swagger/schema.json	/^            "description": "Update for one or more codes not necessary.",$/;"	s	object:paths./code.put.responses.304
 description	swagger/schema.json	/^            "description": "Update for one or more codes not necessary.",$/;"	s	object:paths./code/{id}.put.responses.304
+description	swagger/schema.json	/^          "description": "CPU Cores in the Server"$/;"	s	object:definitions.BaremetalServer.properties.cpus
 description	swagger/schema.json	/^          "description": "Code id."$/;"	s	object:definitions.Code_Request.properties.id
 description	swagger/schema.json	/^          "description": "Code source",$/;"	s	object:definitions.Code_Request.properties.code
 description	swagger/schema.json	/^          "description": "Command."$/;"	s	object:definitions.Config_Action_Request.properties.cmd
+description	swagger/schema.json	/^          "description": "Complete Disk Size in Kilo Bytes"$/;"	s	object:definitions.Disk.properties.size
+description	swagger/schema.json	/^          "description": "Disk Model\/Vendor"$/;"	s	object:definitions.Disk.properties.model
+description	swagger/schema.json	/^          "description": "Disk Name in the OS"$/;"	s	object:definitions.Disk.properties.name
+description	swagger/schema.json	/^          "description": "Disk UUID."$/;"	s	object:definitions.Disk.properties.id
 description	swagger/schema.json	/^          "description": "Exception reason."$/;"	s	object:definitions.Exception_Response.properties.reason
 description	swagger/schema.json	/^          "description": "Execute the command as daemon."$/;"	s	object:definitions.Config_Action_Request.properties.daemon
 description	swagger/schema.json	/^          "description": "File path"$/;"	s	object:definitions.Config_Resource_Request.properties.path
@@ -869,6 +932,9 @@ description	swagger/schema.json	/^          "description": "Id of the action."$/
 description	swagger/schema.json	/^          "description": "Id of the parameter."$/;"	s	object:definitions.Config_Parameter_Request.properties.id
 description	swagger/schema.json	/^          "description": "Id of the resource."$/;"	s	object:definitions.Config_Resource_Request.properties.id
 description	swagger/schema.json	/^          "description": "Line where the exception is raised."$/;"	s	object:definitions.Exception_Response.properties.line
+description	swagger/schema.json	/^          "description": "List of CIDR for IPv4 values",$/;"	s	object:definitions.NetworkInterface.properties.IPv4Addresses
+description	swagger/schema.json	/^          "description": "List of CIDR for IPv6 values",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses
+description	swagger/schema.json	/^          "description": "List of Network Interfaces in the host",$/;"	s	object:definitions.BaremetalServer.properties.networkInterfaces
 description	swagger/schema.json	/^          "description": "List of actions.",$/;"	s	object:definitions.Config_Request.properties.actions
 description	swagger/schema.json	/^          "description": "List of parameters.",$/;"	s	object:definitions.Config_Request.properties.parameters
 description	swagger/schema.json	/^          "description": "List of resources.",$/;"	s	object:definitions.Config_Request.properties.resources
@@ -879,23 +945,37 @@ description	swagger/schema.json	/^          "description": "Message of the occur
 description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Ok_Response.properties.exception
 description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Unauthorized_Response.properties.exception
 description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.exception
+description	swagger/schema.json	/^          "description": "Network Card UUID."$/;"	s	object:definitions.BaremetalServer.properties.id
+description	swagger/schema.json	/^          "description": "Network Card UUID."$/;"	s	object:definitions.NetworkInterface.properties.id
+description	swagger/schema.json	/^          "description": "Network Interface MTU value"$/;"	s	object:definitions.NetworkInterface.properties.mtu
+description	swagger/schema.json	/^          "description": "Network Interface state in the OS"$/;"	s	object:definitions.NetworkInterface.properties.state
+description	swagger/schema.json	/^          "description": "Network Interface's Mac Address"$/;"	s	object:definitions.NetworkInterface.properties.MacAddress
+description	swagger/schema.json	/^          "description": "Network interface Name in the OS"$/;"	s	object:definitions.BaremetalServer.properties.hostname
+description	swagger/schema.json	/^          "description": "Network interface Name in the OS"$/;"	s	object:definitions.BaremetalServer.properties.operatingSystem
+description	swagger/schema.json	/^          "description": "Network interface Name in the OS"$/;"	s	object:definitions.NetworkInterface.properties.name
 description	swagger/schema.json	/^          "description": "Parameter new value."$/;"	s	object:definitions.Config_Parameter_Request.properties.value
+description	swagger/schema.json	/^          "description": "Partition Size in Kilo Bytes"$/;"	s	object:definitions.DiskPartition.properties.size
+description	swagger/schema.json	/^          "description": "Partition name in the OS"$/;"	s	object:definitions.DiskPartition.properties.name
+description	swagger/schema.json	/^          "description": "Partition type or Filesystem"$/;"	s	object:definitions.DiskPartition.properties.type
 description	swagger/schema.json	/^          "description": "Password for the CB to connect to this LCP."$/;"	s	object:definitions.Status_Response.properties.password
+description	swagger/schema.json	/^          "description": "RAM installed in the Server in Megabytes"$/;"	s	object:definitions.BaremetalServer.properties.ram
 description	swagger/schema.json	/^          "description": "Resource content."$/;"	s	object:definitions.Config_Resource_Request.properties.content
 description	swagger/schema.json	/^          "description": "Scheme."$/;"	s	object:definitions.Config_Parameter_Request.properties.schema
 description	swagger/schema.json	/^          "description": "Single command argument."$/;"	s	object:definitions.Config_Action_Request.properties.args
 description	swagger/schema.json	/^          "description": "Source filename."$/;"	s	object:definitions.Config_Parameter_Request.properties.source
 description	swagger/schema.json	/^          "description": "Timestamp of the expiration of the API access configuration."$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
 description	swagger/schema.json	/^          "description": "Timestamp when the LCP is started"$/;"	s	object:definitions.Status_Response.properties.started
+description	swagger/schema.json	/^          "description": "Type of Network device"$/;"	s	object:definitions.NetworkInterface.properties.deviceType
+description	swagger/schema.json	/^          "description": "URL where the Son LCP Listens"$/;"	s	object:definitions.LCPSonDescription.properties.url
+description	swagger/schema.json	/^          "description": "Unique ID for the Son LCP"$/;"	s	object:definitions.LCPSonDescription.properties.id
 description	swagger/schema.json	/^          "description": "Username for the CB to connect to this LCP."$/;"	s	object:definitions.Status_Response.properties.username
 description	swagger/schema.json	/^        "description": "Apply configuration changes to the local environment.",$/;"	s	object:paths./config.post
 description	swagger/schema.json	/^        "description": "Get info about the status of the LCP in the execution environment.",$/;"	s	object:paths./status.get
-description	swagger/schema.json	/^        "description": "Get simply nothing",$/;"	s	object:paths./foothing.get
-description	swagger/schema.json	/^        "description": "Get simply nothing",$/;"	s	object:paths./foothing/{id}.get
 description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation.get
 description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation.post
 description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation/{id}.delete
 description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./filiation/{id}.get
+description	swagger/schema.json	/^        "description": "Gets the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./baremetal.get
 description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code.delete
 description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code.post
 description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code/{id}.delete
@@ -905,17 +985,31 @@ description	swagger/schema.json	/^        "description": "Update the injected co
 description	swagger/schema.json	/^        "description": "Update the injected code at run-time in the local environment.",$/;"	s	object:paths./code/{id}.put
 description	swagger/schema.json	/^      "description": "Code injection at run-time."$/;"	s	object:tags.0
 description	swagger/schema.json	/^      "description": "Configuration at run-time."$/;"	s	object:tags.1
-description	swagger/schema.json	/^      "description": "Does Nothing but allows me learn."$/;"	s	object:tags.3
-description	swagger/schema.json	/^      "description": "Does Nothing but allows me learn."$/;"	s	object:tags.4
-description	swagger/schema.json	/^      "description": "Does Nothing but allows me learn."$/;"	s	object:tags.5
+description	swagger/schema.json	/^      "description": "Describes a \\"son\\" LCP linked in this service chain."$/;"	s	object:tags.3
+description	swagger/schema.json	/^      "description": "Describes a \\"son\\" LCP linked in this service chain."$/;"	s	object:tags.4
+description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.5
 description	swagger/schema.json	/^      "description": "Status data of the LCP."$/;"	s	object:tags.2
 deserialize	api/media_handler.py	/^    def deserialize(self, stream, content_type, content_length):$/;"	m	class:XML_Handler
 deserialize	api/media_handler.py	/^    def deserialize(self, stream, content_type, content_length):$/;"	m	class:YAML_Handler
 dev	config.ini	/^[dev]$/;"	s
 devhelp	docs/Makefile	/^devhelp:$/;"	t
+deviceType	schema/hardware_definitions.py	/^    deviceType = fields.Str(required=False, example="ethernet",$/;"	v	class:NetworkInterface
+deviceType	swagger/schema.json	/^        "deviceType": {$/;"	o	object:definitions.NetworkInterface.properties
+deviceType	test/examples/bare-metal-server-example.json	/^            "deviceType": "bridge"$/;"	s	object:networkInterfaces.2
+deviceType	test/examples/bare-metal-server-example.json	/^            "deviceType": "bridge"$/;"	s	object:networkInterfaces.4
+deviceType	test/examples/bare-metal-server-example.json	/^            "deviceType": "ethernet"$/;"	s	object:networkInterfaces.0
+deviceType	test/examples/bare-metal-server-example.json	/^            "deviceType": "loopback"$/;"	s	object:networkInterfaces.3
+deviceType	test/examples/bare-metal-server-example.json	/^            "deviceType": "wifi"$/;"	s	object:networkInterfaces.1
 dict_to_xml	api/media_handler.py	/^from dicttoxml import dicttoxml as dict_to_xml$/;"	x
 dir_path	main.py	/^dir_path = os.path.dirname(path)$/;"	v
 dirhtml	docs/Makefile	/^dirhtml:$/;"	t
+diskDevices	schema/hardware_definitions.py	/^    diskDevices = List_or_One(fields.Nested(Disk, required=False,$/;"	v	class:BaremetalServer
+diskDevices	swagger/schema.json	/^        "diskDevices": {$/;"	o	object:definitions.BaremetalServer.properties
+diskDevices	test/examples/bare-metal-server-example.json	/^    "diskDevices": [$/;"	a
+diskPartitions	schema/hardware_definitions.py	/^    diskPartitions = List_or_One(fields.Nested(DiskPartition, required=False,$/;"	v	class:Disk
+diskPartitions	swagger/schema.json	/^        "diskPartitions": {$/;"	o	object:definitions.Disk.properties
+diskPartitions	test/examples/bare-metal-server-example.json	/^            "diskPartitions": [$/;"	a	object:diskDevices.0
+diskPartitions	test/examples/bare-metal-server-example.json	/^            "diskPartitions": [$/;"	a	object:diskDevices.1
 docstring	docstring/__init__.py	/^def docstring(source):$/;"	f
 doctest	docs/Makefile	/^doctest:$/;"	t
 dumps	utils/json.py	/^def dumps(data, *args, **kwargs):$/;"	f
@@ -967,9 +1061,17 @@ error_messages	schema/validate.py	/^    error_messages = dict(validator_failed='
 example	swagger/schema.json	/^            "example": "period",$/;"	s	object:definitions.Config_Parameter_Request.properties.path.items
 example	swagger/schema.json	/^          "example": "-al",$/;"	s	object:definitions.Config_Action_Request.properties.args
 example	swagger/schema.json	/^          "example": "10s",$/;"	s	object:definitions.Config_Parameter_Request.properties.value
+example	swagger/schema.json	/^          "example": "1500",$/;"	s	object:definitions.NetworkInterface.properties.mtu
+example	swagger/schema.json	/^          "example": "15d41167-79d3-48bf-b8db-9db0c8cc8d54",$/;"	s	object:definitions.LCPSonDescription.properties.id
 example	swagger/schema.json	/^          "example": "2019\/02\/14 15:23:30",$/;"	s	object:definitions.Status_Response.properties.started
 example	swagger/schema.json	/^          "example": "2019\/02\/14 15:23:33",$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
+example	swagger/schema.json	/^          "example": "314461424",$/;"	s	object:definitions.Disk.properties.size
+example	swagger/schema.json	/^          "example": "314461424",$/;"	s	object:definitions.DiskPartition.properties.size
+example	swagger/schema.json	/^          "example": "5db06770-8c64-4693-9724-ff318b02f897",$/;"	s	object:definitions.Disk.properties.id
+example	swagger/schema.json	/^          "example": "8",$/;"	s	object:definitions.BaremetalServer.properties.cpus
+example	swagger/schema.json	/^          "example": "8",$/;"	s	object:definitions.BaremetalServer.properties.ram
 example	swagger/schema.json	/^          "example": "Connection timeout",$/;"	s	object:definitions.Exception_Response.properties.reason
+example	swagger/schema.json	/^          "example": "KBG30ZMV512G TOSHIBA",$/;"	s	object:definitions.Disk.properties.model
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Bad_Request_Response.properties.message
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Internal_Server_Error_Response.properties.message
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.No_Content_Response.properties.message
@@ -977,13 +1079,25 @@ example	swagger/schema.json	/^          "example": "Request not valid: two ids p
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Ok_Response.properties.message
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Unauthorized_Response.properties.message
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.message
+example	swagger/schema.json	/^          "example": "UP",$/;"	s	object:definitions.NetworkInterface.properties.state
+example	swagger/schema.json	/^          "example": "Ubuntu Linux 20.04.2 LTS",$/;"	s	object:definitions.BaremetalServer.properties.operatingSystem
+example	swagger/schema.json	/^          "example": "a2:bc:14:43:ff:43",$/;"	s	object:definitions.NetworkInterface.properties.MacAddress
 example	swagger/schema.json	/^          "example": "apache",$/;"	s	object:definitions.Status_Response.properties.id
+example	swagger/schema.json	/^          "example": "corporario.example.com",$/;"	s	object:definitions.BaremetalServer.properties.hostname
+example	swagger/schema.json	/^          "example": "d450f1ce-95a1-4c3d-9e01-6e37f3d0c584",$/;"	s	object:definitions.NetworkInterface.properties.id
+example	swagger/schema.json	/^          "example": "ed5bd35a-7213-47a9-ae6e-76212e62a157",$/;"	s	object:definitions.BaremetalServer.properties.id
+example	swagger/schema.json	/^          "example": "enx503eaaddcbeb",$/;"	s	object:definitions.NetworkInterface.properties.name
+example	swagger/schema.json	/^          "example": "ethernet",$/;"	s	object:definitions.NetworkInterface.properties.deviceType
+example	swagger/schema.json	/^          "example": "ext4",$/;"	s	object:definitions.DiskPartition.properties.type
 example	swagger/schema.json	/^          "example": "filebeat-config",$/;"	s	object:definitions.Config_Resource_Request.properties.id
 example	swagger/schema.json	/^          "example": "firewall",$/;"	s	object:definitions.Code_Request.properties.id
 example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:definitions.Config_Parameter_Request.properties.source
 example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:definitions.Config_Resource_Request.properties.path
+example	swagger/schema.json	/^          "example": "http:\/\/lcpapi:4000",$/;"	s	object:definitions.LCPSonDescription.properties.url
 example	swagger/schema.json	/^          "example": "lib\/connection.py",$/;"	s	object:definitions.Exception_Response.properties.filename
 example	swagger/schema.json	/^          "example": "lines",$/;"	s	object:definitions.Config_Action_Request.properties.output_format
+example	swagger/schema.json	/^          "example": "nveme0n1p6",$/;"	s	object:definitions.DiskPartition.properties.name
+example	swagger/schema.json	/^          "example": "nvme0n1",$/;"	s	object:definitions.Disk.properties.name
 example	swagger/schema.json	/^          "example": "period",$/;"	s	object:definitions.Config_Parameter_Request.properties.id
 example	swagger/schema.json	/^          "example": "start",$/;"	s	object:definitions.Config_Action_Request.properties.id
 example	swagger/schema.json	/^          "example": "yaml",$/;"	s	object:definitions.Config_Parameter_Request.properties.schema
@@ -1006,6 +1120,7 @@ filename	schema/response.py	/^    filename = Str(required=True, example='lib\/co
 filename	swagger/schema.json	/^        "filename": {$/;"	o	object:definitions.Exception_Response.properties
 format	swagger/schema.json	/^          "format": "date-time",$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
 format	swagger/schema.json	/^          "format": "date-time",$/;"	s	object:definitions.Status_Response.properties.started
+format	swagger/schema.json	/^          "format": "url",$/;"	s	object:definitions.LCPSonDescription.properties.url
 format	utils/sequence.py	/^def format(elements, data):$/;"	f
 format	utils/string.py	/^format = Formatter().format$/;"	v
 frmt	utils/sequence.py	/^    def frmt(val):$/;"	f	function:format	file:
@@ -1013,12 +1128,10 @@ generate_password	utils/hash.py	/^def generate_password():$/;"	f
 generate_username	utils/hash.py	/^def generate_username():$/;"	f
 get	api/error_handler.py	/^    def get(cls):$/;"	m	class:Base_Handler
 get	api/spec.py	/^    def get(self):$/;"	m	class:Spec
-get	docstring/foothing/get.json	/^      "get": {$/;"	o
 get	lib/polycube.py	/^    def get(self, cube):$/;"	m	class:Polycube
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./baremetal
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./filiation
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./filiation/{id}
-get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./foothing
-get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./foothing/{id}
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./status
 get	utils/log.py	/^    def get(cls, name):$/;"	m	class:Log
 get_levels	utils/log.py	/^    def get_levels():$/;"	m	class:Log
@@ -1030,6 +1143,9 @@ hash	utils/hash.py	/^def hash(text):$/;"	f
 help	docs/Makefile	/^help:$/;"	t
 host	config.ini	/^host = 0.0.0.0$/;"	k	section:local-control-plane
 host	config.ini	/^host = localhost$/;"	k	section:polycube
+hostname	schema/hardware_definitions.py	/^    hostname = fields.Str(required=True, example='corporario.example.com',$/;"	v	class:BaremetalServer
+hostname	swagger/schema.json	/^        "hostname": {$/;"	o	object:definitions.BaremetalServer.properties
+hostname	test/examples/bare-metal-server-example.json	/^    "hostname": "corporario",$/;"	s
 html	docs/Makefile	/^html:$/;"	t
 html_favicon	docs/conf.py	/^html_favicon = '..\/logo.ico'$/;"	v
 html_theme	docs/conf.py	/^html_theme = 'sphinx_rtd_theme'$/;"	v
@@ -1039,15 +1155,29 @@ id	schema/config.py	/^    id = Str(required=True, example='filebeat-config',$/;"
 id	schema/config.py	/^    id = Str(required=True, example='period',$/;"	v	class:Config_Parameter_Request_Schema
 id	schema/config.py	/^    id = Str(required=True, example='start',$/;"	v	class:Config_Action_Request_Schema
 id	schema/config.py	/^    id = Str(required=True, example='start',$/;"	v	class:Config_Response_Schema
-id	schema/filiation.py	/^    id = fields.Str(required=True, example='15d41167-79d3-48bf-b8db-9db0c8cc8d54',$/;"	v	class:LCPBasics
-id	schema/foothing.py	/^    id = Str(required=True, example='firewall',$/;"	v	class:FooThing
+id	schema/filiation.py	/^    id = fields.Str(required=True, example='15d41167-79d3-48bf-b8db-9db0c8cc8d54',$/;"	v	class:LCPSonDescription
+id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",$/;"	v	class:Disk
+id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="d450f1ce-95a1-4c3d-9e01-6e37f3d0c584",$/;"	v	class:NetworkInterface
+id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",$/;"	v	class:BaremetalServer
 id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Request_Schema
 id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Response_Schema
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.BaremetalServer.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Code_Request.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Config_Action_Request.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Config_Parameter_Request.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Config_Resource_Request.properties
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Disk.properties
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.LCPSonDescription.properties
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.NetworkInterface.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Status_Response.properties
+id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:docker0",$/;"	s	object:networkInterfaces.4
+id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:enx503eaaddcbeb",$/;"	s	object:networkInterfaces.0
+id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:lo",$/;"	s	object:networkInterfaces.3
+id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:lxcbr0",$/;"	s	object:networkInterfaces.2
+id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:wlo1",$/;"	s	object:networkInterfaces.1
+id	test/examples/bare-metal-server-example.json	/^            "id": "urn:HardDiskDevice:mmcblk0"$/;"	s	object:diskDevices.1
+id	test/examples/bare-metal-server-example.json	/^            "id": "urn:HardDiskDevice:nvme0n1"$/;"	s	object:diskDevices.0
+id	test/examples/bare-metal-server-example.json	/^    "id": "hostid:a8c01000",$/;"	s
 ident	main.py	/^ident = f'{project} - {title} v:{version}'$/;"	v
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code.delete.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code.post.parameters.0
@@ -1067,7 +1197,6 @@ is_list	utils/sequence.py	/^def is_list(obj):$/;"	f
 is_str	utils/string.py	/^def is_str(obj):$/;"	f
 issues_github_path	docs/conf.py	/^issues_github_path = "guard-project\/lcp"$/;"	v
 item_getter	resource/code.py	/^from operator import itemgetter as item_getter$/;"	x
-item_getter	resource/foothing.py	/^from operator import itemgetter as item_getter$/;"	x
 items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./code.delete.responses.200.schema.oneOf.0
 items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./code.post.responses.200.schema.oneOf.0
 items	swagger/schema.json	/^                  "items": "Created_Response"$/;"	s	object:paths./code/{id}.delete.responses.200.schema.oneOf.0
@@ -1091,11 +1220,19 @@ items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{i
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{id}.put.responses.422.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.responses.422.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation.get.responses.200.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation.post.responses.200.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation/{id}.delete.responses.200.schema
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.BaremetalServer.properties.diskDevices
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.BaremetalServer.properties.networkInterfaces
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Code_Request.properties.code
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Parameter_Request.properties.path
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Request.properties.actions
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Request.properties.parameters
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config_Request.properties.resources
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Disk.properties.diskPartitions
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.NetworkInterface.properties.IPv4Addresses
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.NetworkInterface.properties.IPv6Addresses
 iterate	utils/sequence.py	/^def iterate(source, *keys):$/;"	f
 json	docs/Makefile	/^json:$/;"	t
 json_parser	lib/parser.py	/^def json_parser(schema, source, path, value):$/;"	f
@@ -1139,6 +1276,18 @@ message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Ok_R
 message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Unauthorized_Response.properties
 message	swagger/schema.json	/^        "message": {$/;"	o	object:definitions.Unsupported_Media_Type_Response.properties
 middleware	config.ini	/^falcon_marshmallow.middleware = CRITICAL$/;"	k	section:log
+model	schema/hardware_definitions.py	/^    model = fields.Str(required=False, example="KBG30ZMV512G TOSHIBA",$/;"	v	class:Disk
+model	swagger/schema.json	/^        "model": {$/;"	o	object:definitions.Disk.properties
+mtu	schema/hardware_definitions.py	/^    mtu = fields.Int(required=True, example="1500",$/;"	v	class:NetworkInterface
+mtu	swagger/schema.json	/^        "mtu": {$/;"	o	object:definitions.NetworkInterface.properties
+mtu	test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	object:networkInterfaces.0
+mtu	test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	object:networkInterfaces.1
+mtu	test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	object:networkInterfaces.2
+mtu	test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	object:networkInterfaces.3
+mtu	test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	object:networkInterfaces.4
+name	schema/hardware_definitions.py	/^    name = fields.Str(required=True, example="nveme0n1p6",$/;"	v	class:DiskPartition
+name	schema/hardware_definitions.py	/^    name = fields.Str(required=True, example='enx503eaaddcbeb',$/;"	v	class:NetworkInterface
+name	schema/hardware_definitions.py	/^    name = fields.Str(required=True, example='nvme0n1',$/;"	v	class:Disk
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code.delete.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code.put.parameters.0
@@ -1146,25 +1295,45 @@ name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./co
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code/{id}.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code/{id}.put.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./config.post.parameters.0
-name	swagger/schema.json	/^      "name": "Filiation",$/;"	s	object:tags.4
-name	swagger/schema.json	/^      "name": "Filiation",$/;"	s	object:tags.5
-name	swagger/schema.json	/^      "name": "FooThing",$/;"	s	object:tags.3
+name	swagger/schema.json	/^        "name": {$/;"	o	object:definitions.Disk.properties
+name	swagger/schema.json	/^        "name": {$/;"	o	object:definitions.DiskPartition.properties
+name	swagger/schema.json	/^        "name": {$/;"	o	object:definitions.NetworkInterface.properties
 name	swagger/schema.json	/^      "name": "code",$/;"	s	object:tags.0
 name	swagger/schema.json	/^      "name": "config",$/;"	s	object:tags.1
+name	swagger/schema.json	/^      "name": "filiation",$/;"	s	object:tags.3
+name	swagger/schema.json	/^      "name": "filiation",$/;"	s	object:tags.4
+name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.5
 name	swagger/schema.json	/^      "name": "status",$/;"	s	object:tags.2
+name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	s	object:diskDevices.0.diskPartitions.0
+name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	s	object:diskDevices.0.diskPartitions.1
+name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	s	object:diskDevices.0.diskPartitions.2
+name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p4", "size": 0.482},$/;"	s	object:diskDevices.0.diskPartitions.3
+name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p5", "size": 16},$/;"	s	object:diskDevices.0.diskPartitions.4
+name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p6", "size": 305.7}$/;"	s	object:diskDevices.0.diskPartitions.5
+name	test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	s	object:diskDevices.1.diskPartitions.0
+name	test/examples/bare-metal-server-example.json	/^            "name": "docker0",$/;"	s	object:networkInterfaces.4
+name	test/examples/bare-metal-server-example.json	/^            "name": "enx503eaaddcbeb",$/;"	s	object:networkInterfaces.0
+name	test/examples/bare-metal-server-example.json	/^            "name": "lxcbr0",$/;"	s	object:networkInterfaces.2
+name	test/examples/bare-metal-server-example.json	/^            "name": "lxcbr0",$/;"	s	object:networkInterfaces.3
+name	test/examples/bare-metal-server-example.json	/^            "name": "mmcblk0",$/;"	s	object:diskDevices.1
+name	test/examples/bare-metal-server-example.json	/^            "name": "nvme0n1",$/;"	s	object:diskDevices.0
+name	test/examples/bare-metal-server-example.json	/^            "name": "wlo1",$/;"	s	object:networkInterfaces.1
+networkInterfaces	schema/hardware_definitions.py	/^    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,$/;"	v	class:BaremetalServer
+networkInterfaces	swagger/schema.json	/^        "networkInterfaces": {$/;"	o	object:definitions.BaremetalServer.properties
+networkInterfaces	test/examples/bare-metal-server-example.json	/^    "networkInterfaces": [$/;"	a
 new	schema/config.py	/^    new = Raw(required=True, example='5s',$/;"	v	class:Config_Parameter_Value_Response_Schema
 nitpick_ignore	docs/conf.py	/^nitpick_ignore = [$/;"	v
 note	schema/config.py	/^    note = Str(example='No change needed.',$/;"	v	class:Config_Parameter_Response_Schema
 old	schema/config.py	/^    old = Raw(required=True, example='10s',$/;"	v	class:Config_Parameter_Value_Response_Schema
 on_delete	resource/code.py	/^    def on_delete(self, req, resp, id=None):$/;"	m	class:Code_Resource
-on_delete	resource/filiationbyid.py	/^    def on_delete(self, req, resp, id):$/;"	m	class:FiliationById
-on_get	resource/filiationbyid.py	/^    def on_get(self, req, resp):$/;"	m	class:Filiation
-on_get	resource/filiationbyid.py	/^    def on_get(self, req, resp, id):$/;"	m	class:FiliationById
-on_get	resource/foothing.py	/^    def on_get(self, req, resp, id=None):$/;"	m	class:FooThing
+on_delete	resource/filiation.py	/^    def on_delete(self, req, resp, id):$/;"	m	class:FiliationById
+on_get	resource/filiation.py	/^    def on_get(self, req, resp):$/;"	m	class:Filiation
+on_get	resource/filiation.py	/^    def on_get(self, req, resp, id):$/;"	m	class:FiliationById
+on_get	resource/hardware_definitions.py	/^    def on_get(self, req, resp):$/;"	m	class:BaremetalServer
 on_get	resource/status.py	/^    def on_get(self, req, resp):$/;"	m	class:Status_Resource
 on_post	resource/code.py	/^    def on_post(self, req, resp, id=None):$/;"	m	class:Code_Resource
 on_post	resource/config.py	/^    def on_post(self, req, resp):$/;"	m	class:Config_Resource
-on_post	resource/filiationbyid.py	/^    def on_post(self, req, resp):$/;"	m	class:Filiation
+on_post	resource/filiation.py	/^    def on_post(self, req, resp):$/;"	m	class:Filiation
 on_post	resource/status.py	/^    def on_post(self, req, resp):$/;"	m	class:Status_Resource
 on_put	resource/code.py	/^    def on_put(self, req, resp, id=None):$/;"	m	class:Code_Resource
 oneOf	swagger/schema.json	/^                "oneOf": [$/;"	a	object:paths./code.delete.responses.422.schema.items
@@ -1181,6 +1350,9 @@ oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code.po
 oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code/{id}.delete.responses.200.schema
 oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code/{id}.post.responses.200.schema
 oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./config.post.responses.200.schema
+operatingSystem	schema/hardware_definitions.py	/^    operatingSystem = fields.Str(required=True, example='Ubuntu Linux 20.04.2 LTS',$/;"	v	class:BaremetalServer
+operatingSystem	swagger/schema.json	/^        "operatingSystem": {$/;"	o	object:definitions.BaremetalServer.properties
+operatingSystem	test/examples/bare-metal-server-example.json	/^    "operatingSystem": "Ubuntu 20.04.1 LTS",$/;"	s
 output_format	schema/config.py	/^    output_format = Str(enum=OUTPUT_FORMATS, default=OUTPUT_FORMATS[0],$/;"	v	class:Config_Action_Request_Schema
 output_format	swagger/schema.json	/^        "output_format": {$/;"	o	object:definitions.Config_Action_Request.properties
 parameters	schema/config.py	/^    parameters = Nested(Config_Parameter_Request_Schema, many=True, unknown='INCLUDE',$/;"	v	class:Config_Request_Schema
@@ -1204,6 +1376,9 @@ path	schema/config.py	/^    path = Str(required=True, example=EXAMPLE_FILENAME,$
 path	swagger/schema.json	/^        "path": {$/;"	o	object:definitions.Config_Parameter_Request.properties
 path	swagger/schema.json	/^        "path": {$/;"	o	object:definitions.Config_Resource_Request.properties
 paths	swagger/schema.json	/^  "paths": {$/;"	o
+pattern	swagger/schema.json	/^            "pattern": "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\\\.){3}(25[0-5]|2[0-4][0-9]|[0/;"	s	object:definitions.NetworkInterface.properties.IPv4Addresses.items
+pattern	swagger/schema.json	/^            "pattern": "^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses.items
+pattern	swagger/schema.json	/^          "pattern": "^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$",$/;"	s	object:definitions.NetworkInterface.properties.MacAddress
 pickle	docs/Makefile	/^pickle:$/;"	t
 polycube	config.ini	/^[polycube]$/;"	s
 port	config.ini	/^port = 4000$/;"	k	section:local-control-plane
@@ -1219,13 +1394,18 @@ produces	swagger/schema.json	/^  "produces": [$/;"	a
 project	about.py	/^project = 'GUARD'$/;"	v
 project	docs/conf.py	/^project = 'LCP'$/;"	v
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Bad_Request_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.BaremetalServer
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Code_Request
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Action_Request
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Parameter_Request
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Request
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Config_Resource_Request
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Disk
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.DiskPartition
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Exception_Response
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Internal_Server_Error_Response
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.LCPSonDescription
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.NetworkInterface
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.No_Content_Response
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Not_Acceptable_Response
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Ok_Response
@@ -1238,6 +1418,9 @@ put	swagger/schema.json	/^      "put": {$/;"	o	object:paths./code
 put	swagger/schema.json	/^      "put": {$/;"	o	object:paths./code/{id}
 put_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x
 qthelp	docs/Makefile	/^qthelp:$/;"	t
+ram	schema/hardware_definitions.py	/^    ram = fields.Int(required=True, example="8",$/;"	v	class:BaremetalServer
+ram	swagger/schema.json	/^        "ram": {$/;"	o	object:definitions.BaremetalServer.properties
+ram	test/examples/bare-metal-server-example.json	/^    "ram": 16120776,$/;"	n
 rc_tags	api/spec.py	/^from resource import tags as rc_tags$/;"	x
 read	reader/arg.py	/^    def read(cls):$/;"	m	class:Arg_Reader
 read	reader/config.py	/^    def read(self):$/;"	m	class:Config_Reader
@@ -1251,12 +1434,17 @@ required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths.
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code/{id}.put.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./config.post.parameters.0
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Bad_Request_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.BaremetalServer
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Code_Request
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Config_Action_Request
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Config_Parameter_Request
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Config_Resource_Request
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Disk
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.DiskPartition
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Exception_Response
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Internal_Server_Error_Response
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.LCPSonDescription
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.NetworkInterface
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.No_Content_Response
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Not_Acceptable_Response
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Ok_Response
@@ -1268,7 +1456,7 @@ resources	swagger/schema.json	/^        "resources": {$/;"	o	object:definitions.
 response	api/error_handler.py	/^    response = Bad_Request_Response$/;"	v	class:Bad_Request_Handler
 response	api/error_handler.py	/^    response = Internal_Server_Error_Response$/;"	v	class:Internal_Server_Error_Handler
 response	api/error_handler.py	/^    response = Unsupported_Media_Type_Response$/;"	v	class:Unsupported_Media_Type_Handler
-responses	docstring/foothing/get.json	/^        "responses": {$/;"	o	object:get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./baremetal.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code.delete
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code.post
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./code.put
@@ -1280,8 +1468,6 @@ responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filia
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filiation.post
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filiation/{id}.delete
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./filiation/{id}.get
-responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./foothing.get
-responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./foothing/{id}.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./status.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./status.post
 restructuredtext.confPath	.vscode/settings.json	/^    "restructuredtext.confPath": ""$/;"	s
@@ -1289,21 +1475,21 @@ return_code	schema/config.py	/^    return_code = Integer(required=True, example=
 routes	resource/__init__.py	/^def routes(api, spec):$/;"	f
 routes	resource/code.py	/^    routes = '\/code', '\/code\/{id}',$/;"	v	class:Code_Resource
 routes	resource/config.py	/^    routes = '\/config',$/;"	v	class:Config_Resource
-routes	resource/filiationbyid.py	/^    routes = '\/filiation',$/;"	v	class:Filiation
-routes	resource/filiationbyid.py	/^    routes = '\/filiation\/{id}',$/;"	v	class:FiliationById
-routes	resource/foothing.py	/^    routes = '\/foothing', '\/foothing\/{id}',$/;"	v	class:FooThing
+routes	resource/filiation.py	/^    routes = '\/filiation',$/;"	v	class:Filiation
+routes	resource/filiation.py	/^    routes = '\/filiation\/{id}',$/;"	v	class:FiliationById
+routes	resource/hardware_definitions.py	/^    routes = '\/baremetal',$/;"	v	class:BaremetalServer
 routes	resource/status.py	/^    routes = '\/status',$/;"	v	class:Status_Resource
 running	docs/running.rst	/^.. _running:$/;"	T
-schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.200
-schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.400
-schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.401
-schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.406
-schema	docstring/foothing/get.json	/^            "schema": {$/;"	o	object:get.responses.500
 schema	schema/config.py	/^    schema = Str(required=True, enum=PARAMETER_SCHEMAS, example='yaml',$/;"	v	class:Config_Parameter_Request_Schema
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.delete.responses.422.500
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.post.responses.422.500
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code/{id}.delete.responses.422.500
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code/{id}.post.responses.422.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./baremetal.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./baremetal.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./baremetal.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./baremetal.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./baremetal.get.responses.500
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.parameters.0
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.200
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./code.delete.responses.204
@@ -1380,16 +1566,6 @@ schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiati
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.401
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.406
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation/{id}.get.responses.500
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.200
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.400
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.401
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.406
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing.get.responses.500
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.200
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.400
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.401
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.406
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./foothing/{id}.get.responses.500
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.200
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.400
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.401
@@ -1403,14 +1579,37 @@ schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.
 schema	swagger/schema.json	/^        "schema": {$/;"	o	object:definitions.Config_Parameter_Request.properties
 send_tree	utils/signal.py	/^def send_tree(pid, sig=SIGTERM, include_parent=True, timeout=None, on_terminate=None):$/;"	f
 server	config.ini	/^server = http:\/\/localhost:8200$/;"	k	section:elastic-apm
+setUp	test/baremetal_server_test.py	/^    def setUp(self):$/;"	m	class:BaremetalServerTesting
 setUp	test/filiation_tests.py	/^    def setUp(self):$/;"	m	class:FiliationTesting
+setUp	test/hardware_definition_tests.py	/^    def setUp(self):$/;"	m	class:HardwareDefinitionsTesting
+setUp	test/network_definitions_test.py	/^    def setUp(self):$/;"	m	class:NetworkDefinitionsTesting
 singlehtml	docs/Makefile	/^singlehtml:$/;"	t
+size	schema/hardware_definitions.py	/^    size = fields.Float(required=True, example="314461424",$/;"	v	class:DiskPartition
+size	schema/hardware_definitions.py	/^    size = fields.Int(required=True, example="314461424",$/;"	v	class:Disk
+size	swagger/schema.json	/^        "size": {$/;"	o	object:definitions.Disk.properties
+size	swagger/schema.json	/^        "size": {$/;"	o	object:definitions.DiskPartition.properties
+size	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	n	object:diskDevices.0.diskPartitions.0
+size	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	n	object:diskDevices.0.diskPartitions.1
+size	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	n	object:diskDevices.0.diskPartitions.2
+size	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p4", "size": 0.482},$/;"	n	object:diskDevices.0.diskPartitions.3
+size	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p5", "size": 16},$/;"	n	object:diskDevices.0.diskPartitions.4
+size	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p6", "size": 305.7}$/;"	n	object:diskDevices.0.diskPartitions.5
+size	test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	n	object:diskDevices.1.diskPartitions.0
+size	test/examples/bare-metal-server-example.json	/^            "size": 238.77,$/;"	n	object:diskDevices.1
+size	test/examples/bare-metal-server-example.json	/^            "size": 476.96,$/;"	n	object:diskDevices.0
 source	schema/config.py	/^    source = Str(required=True, example=EXAMPLE_FILENAME,$/;"	v	class:Config_Parameter_Request_Schema
 source	swagger/schema.json	/^        "source": {$/;"	o	object:definitions.Config_Parameter_Request.properties
 source_suffix	docs/conf.py	/^source_suffix = {$/;"	v
 sp	resource/config.py	/^import subprocess as sp$/;"	I
 started	schema/status.py	/^    started = Date_Time(format=FORMAT, required=True, example='2019\/02\/14 15:23:30',$/;"	v	class:Status_Response_Schema
 started	swagger/schema.json	/^        "started": {$/;"	o	object:definitions.Status_Response.properties
+state	schema/hardware_definitions.py	/^    state = fields.Str(required=True, example="UP",$/;"	v	class:NetworkInterface
+state	swagger/schema.json	/^        "state": {$/;"	o	object:definitions.NetworkInterface.properties
+state	test/examples/bare-metal-server-example.json	/^            "state": "DOWN",$/;"	s	object:networkInterfaces.1
+state	test/examples/bare-metal-server-example.json	/^            "state": "LOWER_UP",$/;"	s	object:networkInterfaces.3
+state	test/examples/bare-metal-server-example.json	/^            "state": "UP",$/;"	s	object:networkInterfaces.0
+state	test/examples/bare-metal-server-example.json	/^            "state": "UP",$/;"	s	object:networkInterfaces.2
+state	test/examples/bare-metal-server-example.json	/^            "state": "UP",$/;"	s	object:networkInterfaces.4
 status	lib/response.py	/^    def status(cls):$/;"	m	class:Base_Response
 status	schema/response.py	/^    status = Constant(Content_Response.status())$/;"	v	class:Content_Response_Schema
 status	schema/response.py	/^    status = Constant(Created_Response.status())$/;"	v	class:Created_Response_Schema
@@ -1437,14 +1636,12 @@ status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Unsupp
 stderr	schema/config.py	/^    stderr = Raw(description='Standard error output of the execution.')$/;"	v	class:Config_Action_Response_Schema
 stdout	schema/config.py	/^    stdout = Raw(description='Standard output of the execution.')$/;"	v	class:Config_Action_Response_Schema
 subset	utils/sequence.py	/^def subset(elements, *keys, negation=False):$/;"	f
-summary	docstring/foothing/get.json	/^        "summary": "Do some foo thing as starting point for integration of LCP",$/;"	s	object:get
 summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code.delete
 summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code.post
 summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code/{id}.delete
 summary	swagger/schema.json	/^        "summary": "Code injection",$/;"	s	object:paths./code/{id}.post
 summary	swagger/schema.json	/^        "summary": "Configuration update",$/;"	s	object:paths./config.post
-summary	swagger/schema.json	/^        "summary": "Do some foo thing as starting point for integration of LCP",$/;"	s	object:paths./foothing.get
-summary	swagger/schema.json	/^        "summary": "Do some foo thing as starting point for integration of LCP",$/;"	s	object:paths./foothing/{id}.get
+summary	swagger/schema.json	/^        "summary": "Get the Baremetal server where the LCP is deployed on.",$/;"	s	object:paths./baremetal.get
 summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./filiation.get
 summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./filiation.post
 summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./filiation/{id}.delete
@@ -1457,12 +1654,12 @@ swagger	swagger/schema.json	/^  "swagger": "2.0",$/;"	s
 table_to_dict	utils/sequence.py	/^def table_to_dict(data):$/;"	f
 tag	resource/code.py	/^    tag = {'name': 'code', 'description': 'Code injection at run-time.'}$/;"	v	class:Code_Resource
 tag	resource/config.py	/^    tag = dict(name='config', description='Configuration at run-time.')$/;"	v	class:Config_Resource
-tag	resource/filiationbyid.py	/^    tag = {'name': 'Filiation', 'description': 'Does Nothing but allows me learn.'}$/;"	v	class:Filiation
-tag	resource/filiationbyid.py	/^    tag = {'name': 'Filiation', 'description': 'Does Nothing but allows me learn.'}$/;"	v	class:FiliationById
-tag	resource/foothing.py	/^    tag = {'name': 'FooThing', 'description': 'Does Nothing but allows me learn.'}$/;"	v	class:FooThing
+tag	resource/filiation.py	/^    tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service cha/;"	v	class:Filiation
+tag	resource/filiation.py	/^    tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service cha/;"	v	class:FiliationById
+tag	resource/hardware_definitions.py	/^    tag = {'name': 'hardware',$/;"	v	class:BaremetalServer
 tag	resource/status.py	/^    tag = dict(name='status', description='Status data of the LCP.')$/;"	v	class:Status_Resource
-tags	docstring/foothing/get.json	/^        "tags": [$/;"	a	object:get
 tags	resource/__init__.py	/^tags = []$/;"	v
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./baremetal.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code.delete
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code.post
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./code.put
@@ -1474,14 +1671,16 @@ tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation.post
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation/{id}.delete
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./filiation/{id}.get
-tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./foothing.get
-tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./foothing/{id}.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./status.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./status.post
 tags	swagger/schema.json	/^  "tags": [$/;"	a
 templates_path	docs/conf.py	/^templates_path = ['_templates']$/;"	v
 testFoo	test/filiation_tests.py	/^    def testFoo(self):$/;"	m	class:TestMyApp
+test_baremetal_server	test/baremetal_server_test.py	/^    def test_baremetal_server(self):$/;"	m	class:TestMyApp
+test_chk	test/baremetal_server_test.py	/^    def test_chk(self):$/;"	m	class:TestMyApp
 test_delete_message	test/filiation_tests.py	/^    def test_delete_message(self):$/;"	m	class:TestMyApp
+test_disk_definitions	test/hardware_definition_tests.py	/^    def test_disk_definitions(self):$/;"	m	class:TestMyApp
+test_disk_definitions	test/network_definitions_test.py	/^    def test_disk_definitions(self):$/;"	m	class:TestMyApp
 test_get_messages	test/filiation_tests.py	/^    def test_get_messages(self):$/;"	m	class:TestMyApp
 test_get_messages_by_id	test/filiation_tests.py	/^    def test_get_messages_by_id(self):$/;"	m	class:TestMyApp
 test_other	test/filiation_tests.py	/^    def test_other(self):$/;"	m	class:TestMyApp
@@ -1495,6 +1694,7 @@ title	swagger/schema.json	/^    "title": "Local Control Plane",$/;"	s	object:inf
 to_str	utils/exception.py	/^def to_str(exception):$/;"	f
 ttl	config.ini	/^max-ttl = 10min$/;"	k	section:auth
 type	schema/config.py	/^    type = Str(enum=RESPONSE_TYPES, example=RESPONSE_TYPES[0],$/;"	v	class:Config_Response_Schema
+type	schema/hardware_definitions.py	/^    type = fields.Str(required=False, example='ext4',$/;"	v	class:DiskPartition
 type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code.delete.responses.200.schema.oneOf.0
 type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code.post.responses.200.schema.oneOf.0
 type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code/{id}.delete.responses.200.schema.oneOf.0
@@ -1518,16 +1718,34 @@ type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./co
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./code/{id}.put.responses.422.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.responses.422.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation.get.responses.200.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation.post.responses.200.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema
 type	swagger/schema.json	/^            "type": "string"$/;"	s	object:definitions.Code_Request.properties.code.items
 type	swagger/schema.json	/^            "type": "string",$/;"	s	object:definitions.Config_Parameter_Request.properties.path.items
+type	swagger/schema.json	/^            "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.IPv4Addresses.items
+type	swagger/schema.json	/^            "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses.items
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.BaremetalServer.properties.diskDevices
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.BaremetalServer.properties.networkInterfaces
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Code_Request.properties.code
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Parameter_Request.properties.path
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Request.properties.actions
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Request.properties.parameters
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Config_Request.properties.resources
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Disk.properties.diskPartitions
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.NetworkInterface.properties.IPv4Addresses
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses
 type	swagger/schema.json	/^          "type": "boolean",$/;"	s	object:definitions.Config_Action_Request.properties.daemon
+type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.BaremetalServer.properties.cpus
+type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.BaremetalServer.properties.ram
+type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.Disk.properties.size
 type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.Exception_Response.properties.line
+type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.NetworkInterface.properties.mtu
+type	swagger/schema.json	/^          "type": "number",$/;"	s	object:definitions.DiskPartition.properties.size
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Bad_Request_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.BaremetalServer.properties.hostname
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.BaremetalServer.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.BaremetalServer.properties.operatingSystem
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Code_Request.properties.id
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Action_Request.properties.args
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Action_Request.properties.cmd
@@ -1539,9 +1757,21 @@ type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Resource_Request.properties.content
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Resource_Request.properties.id
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Config_Resource_Request.properties.path
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Disk.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Disk.properties.model
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Disk.properties.name
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.DiskPartition.properties.name
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.DiskPartition.properties.type
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Exception_Response.properties.filename
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Exception_Response.properties.reason
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Internal_Server_Error_Response.properties.message
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.LCPSonDescription.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.LCPSonDescription.properties.url
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.MacAddress
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.deviceType
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.name
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.state
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.No_Content_Response.properties.message
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Not_Acceptable_Response.properties.message
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Ok_Response.properties.message
@@ -1552,14 +1782,20 @@ type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.username
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Unauthorized_Response.properties.message
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.message
+type	swagger/schema.json	/^        "type": {$/;"	o	object:definitions.DiskPartition.properties
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Bad_Request_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.BaremetalServer
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Code_Request
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Action_Request
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Parameter_Request
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Request
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Config_Resource_Request
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Disk
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.DiskPartition
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Exception_Response
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Internal_Server_Error_Response
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.LCPSonDescription
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.NetworkInterface
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.No_Content_Response
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Not_Acceptable_Response
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Ok_Response
@@ -1568,7 +1804,8 @@ type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Unau
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Unsupported_Media_Type_Response
 update	lib/polycube.py	/^    def update(self, cube, code, interface, metrics):$/;"	m	class:Polycube
 update	lib/response.py	/^    def update(self, **kwargs):$/;"	m	class:Base_Response
-url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi:4000",$/;"	v	class:LCPBasics
+url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi:4000",$/;"	v	class:LCPSonDescription
+url	swagger/schema.json	/^        "url": {$/;"	o	object:definitions.LCPSonDescription.properties
 username	config.ini	/^username = lcp$/;"	k	section:dev
 username	schema/status.py	/^    username = Str(allow_none=True,$/;"	v	class:Status_Request_Schema
 username	schema/status.py	/^    username = Str(description='Username for the CB to connect to this LCP.')$/;"	v	class:Status_Response_Schema

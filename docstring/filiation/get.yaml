@@ -5,11 +5,13 @@ description: |
   Gets a list of next links in the service chain filiated (as son childs) with
   this Execution Environment.
 
-tags: [Filiation]
+tags: [filiation]
 responses:
   200:
     description: Status data of the LCP.
-    schema: Status_Response_Schema
+    schema:
+      type: array
+      items: LCPSonDescription
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

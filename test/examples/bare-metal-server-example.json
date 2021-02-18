@@ -1,0 +1,78 @@
+{
+    "id": "hostid:a8c01000",
+    "hostname": "corporario",
+    "operatingSystem": "Ubuntu 20.04.1 LTS",
+    "cpus": 8,
+    "ram": 16120776,
+    "diskDevices": [
+        {
+            "name": "nvme0n1",
+            "size": 476.96,
+            "diskPartitions": [
+                {"name": "/dev/nvme0n1p1", "size": 0.26},
+                {"name": "/dev/nvme0n1p2", "size": 0.016},
+                {"name": "/dev/nvme0n1p3", "size": 154.5},
+                {"name": "/dev/nvme0n1p4", "size": 0.482},
+                {"name": "/dev/nvme0n1p5", "size": 16},
+                {"name": "/dev/nvme0n1p6", "size": 305.7}
+            ],
+            "id": "urn:HardDiskDevice:nvme0n1"
+        },
+        {
+            "name": "mmcblk0",
+            "size": 238.77,
+            "diskPartitions": [
+                {"name": "mmcblk0p1", "size": 238.7}
+            ],
+            "id": "urn:HardDiskDevice:mmcblk0"
+        }
+    ],
+    "networkInterfaces": [
+        {
+            "id": "nwiface:enx503eaaddcbeb",
+            "name": "enx503eaaddcbeb",
+            "mtu": 1500,
+            "MacAddress": "50:3e:aa:dd:cb:eb",
+            "IPv4Addresses": ["192.168.0.16/24"],
+            "IPv6Addresses": ["fe80::dc07:b5e4:d87f:2538/64"],
+            "state": "UP",
+            "deviceType": "ethernet"
+        },
+        {
+            "id": "nwiface:wlo1",
+            "name": "wlo1",
+            "mtu": 1500,
+            "MacAddress": "c0:b5:d7:73:5e:25",
+            "state": "DOWN",
+            "deviceType": "wifi"
+        },
+        {
+            "id": "nwiface:lxcbr0",
+            "name": "lxcbr0",
+            "mtu": 1500,
+            "MacAddress": "00:16:3e:00:00:00",
+            "IPv4Addresses": ["10.0.3.1/24"],
+            "state": "UP",
+            "deviceType": "bridge"
+        },
+        {
+            "id": "nwiface:lo",
+            "name": "lxcbr0",
+            "mtu": 1500,
+            "MacAddress": "00:16:3e:00:00:00",
+            "IPv4Addresses": ["127.0.0.1/8","169.254.169.254/24"],
+            "IPv6Addresses": ["::1/128"],
+            "state": "LOWER_UP",
+            "deviceType": "loopback"
+        },
+        {
+            "id": "nwiface:docker0",
+            "name": "docker0",
+            "mtu": 1500,
+            "MacAddress": "02:42:08:91:8b:98",
+            "IPv4Addresses": ["172.17.0.1"],
+            "state": "UP",
+            "deviceType": "bridge"
+        }
+    ]
+}

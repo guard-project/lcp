@@ -1,12 +1,13 @@
-Get info about the status of the LCP in the execution environment.
+Get Description of a Baremetal Server where the LCP is deployed.
 ---
-summary: Do some foo thing as starting point for integration of LCP but with the id parameter
-description: Get simply nothing
-tags: [FooThing]
+summary: Get the Baremetal server where the LCP is deployed on.
+description: |
+  Gets the information of the Server where the LCP is deployed
+tags: [hardware]
 responses:
   200:
-    description: Status data of the LCP.
-    schema: Status_Response_Schema
+    description: Get the Server's configuration infromation from LCP
+    schema: BaremetalServer
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

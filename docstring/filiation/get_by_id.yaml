@@ -1,12 +1,21 @@
 Get info about the status of the LCP in the execution environment.
 ---
-summary: Do some foo thing as starting point for integration of LCP
-description: Get simply nothing
-tags: [FooThing]
+summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+description: |
+  Gets a list of next links in the service chain filiated (as son childs) with
+  this Execution Environment.
+parameters:
+  - name: id
+    requiered: true
+    in: path
+    schema:
+        type: string
+    description: id of LCP son to be queried
+tags: [filiation]
 responses:
   200:
     description: Status data of the LCP.
-    schema: Status_Response_Schema
+    schema: LCPSonDescription
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

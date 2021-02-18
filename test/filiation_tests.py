@@ -2,7 +2,7 @@ from falcon import testing
 from api import api
 from reader.arg import Arg_Reader
 from about import project, title, version
-from schema.filiation import LCPBasics
+from schema.filiation import LCPSonDescription
 from marshmallow import ValidationError
 from pprint import pprint
 import json
@@ -84,7 +84,7 @@ class TestMyApp(FiliationTesting):
     def test_post_message(self):
         # No Authorization for request:
         id, url, body_dict = self._getFiliationData()
-        lcp_info = LCPBasics()
+        lcp_info = LCPSonDescription()
         body = lcp_info.dump(body_dict)
 
         # Test Unauthorized. -- Expected 401 Unauthorized
@@ -130,14 +130,14 @@ class TestMyApp(FiliationTesting):
     def test_other(self):
         body_fake = '{"whatever": "something wrong", "other_thing": "just_fail_this"}'
         try:
-            lcp = LCPBasics().load(body_fake)
+            lcp = LCPSonDescription().load(body_fake)
         except ValidationError as err:
             #  pprint(err.messages)
             pass
 
         body_fake = 'tara ri que te vi'
         try:
-            lcp = LCPBasics(many=is_list(body_fake)).load(body_fake)
+            lcp = LCPSonDescription(many=is_list(body_fake)).load(body_fake)
         except ValidationError as err:
             # pprint(err.messages)
             pass

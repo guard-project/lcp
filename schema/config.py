@@ -69,7 +69,7 @@ class Config_Request_Schema(Base_Schema):
 class Config_Response_Schema(Base_Schema):
     """Response for config endpoint."""
     id = Str(required=True, example='start',
-               description='Config id.')
+             description='Config id.')
     data = Raw(description='Configuration data.')
     timestamp = Date_Time(format=FORMAT, required=True,
                           description='Timestamp when the configuration is done.')
