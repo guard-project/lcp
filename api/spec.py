@@ -31,7 +31,6 @@ class Spec:
 
     @staticmethod
     def __schema_name_resolver(schema):
-        print("__schema_name_resolver/spec.py: ",schema)
         if is_str(schema):
             ref = schema
         else:

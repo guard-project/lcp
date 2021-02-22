@@ -381,6 +381,41 @@ definitions:
     required:
     - message
     type: object
+  SoftwareDefinition:
+    properties:
+      id:
+        description: ID of this Software Instance
+        example: a406874b-dea7-4cd1-9d4e-b82a18ec993b
+        type: string
+      name:
+        description: Name of this piece of Software instance
+        example: MySQL
+        type: string
+      openTCPPorts:
+        description: List of opened TCP Ports
+        example: '[3306]'
+        items:
+          type: integer
+        type: array
+      openUDPPorts:
+        description: List of opened UDP Ports
+        example: '[33066]'
+        items:
+          type: integer
+        type: array
+      vendor:
+        description: Name of the Vendor for this software
+        example: Oracle Coorporation
+        type: string
+      version:
+        description: Version of the Piece of Software installed
+        example: 5.8+1.0.5ubuntu2
+        type: string
+    required:
+    - id
+    - name
+    - version
+    type: object
   Status_Response:
     properties:
       id:
@@ -1035,6 +1070,35 @@ paths:
       summary: Get the Baremetal server where the LCP is deployed on.
       tags:
       - hardware
+  /software:
+    get:
+      description: 'Gets the information of the Server software that LCP Knows.
+
+        '
+      responses:
+        '200':
+          description: Get the Server's configuration infromation from LCP
+          schema:
+            $ref: '#/definitions/SoftwareDefinition'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Software installed and controlled and known by the LCP
+      tags:
+      - software
 produces:
 - application/json
 swagger: '2.0'
@@ -1051,3 +1115,5 @@ tags:
   name: filiation
 - description: Returns description of a Baremetal Server.
   name: hardware
+- description: Returns the description of software installed
+  name: software

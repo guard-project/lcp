@@ -1,0 +1,7 @@
+{
+    "id": "oracle:mysql:5.8.1.0.5ubuntu2",
+    "name": "MySQL",
+    "version": "5.8+1.0.5ubuntu2",
+    "openTCPPorts": [3306],
+    "vendor": "Oracle Corporation"
+}

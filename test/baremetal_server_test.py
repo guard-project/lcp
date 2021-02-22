@@ -6,7 +6,6 @@ from marshmallow.exceptions import ValidationError
 from schema.hardware_definitions import BaremetalServer, Disk, DiskPartition
 import json
 import os
-import re
 
 
 class BaremetalServerTesting(testing.TestCase):
