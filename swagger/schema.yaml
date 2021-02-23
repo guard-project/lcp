@@ -1,6 +1,29 @@
 consumes:
 - application/json
 definitions:
+  AgentParameter:
+    properties:
+      description:
+        description: Some description explaining the parameter
+        example: Time between Heartbeats
+        type: string
+      name:
+        description: Name of the Parameter
+        example: HeartbeatTime
+        type: string
+      type:
+        description: 'Type of the Parameter: Int, Number, String...'
+        example: Int
+        type: string
+      value:
+        description: Value of the Parameter to be configured
+        example: '30'
+        type: string
+    required:
+    - name
+    - type
+    - value
+    type: object
   Bad_Request_Response:
     properties:
       code:
@@ -380,6 +403,45 @@ definitions:
         default: OK
     required:
     - message
+    type: object
+  SecurityFunction:
+    properties:
+      endpoint_url:
+        description: URL if some to configure the Parameters.
+        example: http://example.com:4250/v1/config
+        format: url
+        type: string
+      id:
+        description: Security Function ID.
+        example: 5db06770-8c64-4693-9724-ff318b02f897
+        type: string
+      name:
+        description: Name of the Agent Catalog
+        example: VM Sensor Probe
+        type: string
+      parameters:
+        description: List of configuration parameters used
+        items:
+          $ref: '#/definitions/AgentParameter'
+        type: array
+      type:
+        description: Type of the Security Function Associated with the LCP
+        example: PROBE
+        type: string
+      vendor:
+        description: Name of the vendor providing the security Function
+        example: FIWARE Foundation e.V.
+        type: string
+      version:
+        description: Version of the Security Property associated
+        example: 1.0.1
+        type: string
+    required:
+    - id
+    - name
+    - type
+    - vendor
+    - version
     type: object
   SoftwareDefinition:
     properties:
@@ -1077,7 +1139,7 @@ paths:
         '
       responses:
         '200':
-          description: Get the Server's configuration infromation from LCP
+          description: Get the Description of the Software controlled by the LCP
           schema:
             $ref: '#/definitions/SoftwareDefinition'
         '400':
@@ -1099,6 +1161,108 @@ paths:
       summary: Get the Software installed and controlled and known by the LCP
       tags:
       - software
+    post:
+      description: 'Posts the information of some Security Functions that LCP must
+        be aware of.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/SecurityFunction'
+          type: array
+      responses:
+        '201':
+          description: The Security Function definition has been successfully updated
+            there.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post the Description and configuration parameters of Security Agents
+        deployed with LCP
+      tags:
+      - software
+  /securityFunctions:
+    get:
+      description: 'Gets the information of the SecurityFunctions deployed with
+
+        '
+      responses:
+        '200':
+          description: Get the Server's configuration infromation from LCP
+          schema:
+            $ref: '#/definitions/SecurityFunction'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Get the Description and configuration parameters of Security Agents
+        deployed with LCP
+      tags:
+      - software
+    post:
+      description: 'Posts the information of the Server software that LCP must be
+        aware of.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/SoftwareDefinition'
+          type: array
+      responses:
+        '201':
+          description: The software definition has been successfully updated there.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Post Software description of a new Software installed in the System
+      tags:
+      - software
 produces:
 - application/json
 swagger: '2.0'
@@ -1116,4 +1280,6 @@ tags:
 - description: Returns description of a Baremetal Server.
   name: hardware
 - description: Returns the description of software installed
+  name: software
+- description: Returns description of a Baremetal Server.
   name: software

@@ -13,6 +13,7 @@ __all__ = [
     'Filiation'
 ]
 
+
 class Filiation(Base_Resource):
     data = {}
     tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service chain.'}
@@ -24,7 +25,7 @@ class Filiation(Base_Resource):
     @docstring(source='filiation/get.yaml')
     def on_get(self, req, resp):
         resp_Data, valid = LCPSonDescription(method=HTTP_Method.GET) \
-        .validate(many=True, data=[{}])
+        .validate(data={})
         child_nodes = []
         for k in Filiation.data:
             child_nodes.append(Filiation.data[k])

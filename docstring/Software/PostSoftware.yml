@@ -1,0 +1,28 @@
+Post the Description of the Security Agents deployed with LCP
+---
+summary: Post the Description and configuration parameters of Security Agents deployed with LCP
+description: |
+  Posts the information of some Security Functions that LCP must be aware of.
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: array
+      items: SecurityFunction
+tags: [software]
+responses:
+  201:
+    description: The Security Function definition has been successfully updated there.
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

@@ -1,0 +1,16 @@
+{
+  "id": "5db06770-8c64-4693-9724-ff318b02f897",
+  "vendor": "FIWARE Foundation e.V.",
+  "version": "1.0.1",
+  "endpoint_url": "http://example.com:4250/v1/config",
+  "name": "VM Sensor Probe",
+  "type": "PROBE",
+  "parameters": [
+    {
+      "description": "Time between Heartbeats",
+      "value": "30",
+      "type": "Int",
+      "name": "HeartbeatTime"
+    }
+  ]
+}

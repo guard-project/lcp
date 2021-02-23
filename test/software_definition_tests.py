@@ -5,8 +5,9 @@ from about import project, title, version
 import os
 import json
 from schema.software_definitions import SoftwareDefinition
+from resource.software_definition import SoftwareDefinition as SoftwareDefinitionResource
 from marshmallow.exceptions import ValidationError
-
+from test_utils import *
 
 class SoftwareDefinitionsTesting(testing.TestCase):
     def setUp(self):
@@ -24,8 +25,8 @@ class TestMyApp(SoftwareDefinitionsTesting):
             file_data = f.read()
         return json.loads(file_data)
 
-    def _getAuthorizationHeaders(self):
-        return {"Authorization": "Basic bGNwOmd1YXJk"}
+    # def _getAuthorizationHeaders(self):
+    #    return {"Authorization": "Basic bGNwOmd1YXJk"}
 
     def test_software_piece(self):
         software_dict = self._getSoftwareExample()
@@ -39,7 +40,9 @@ class TestMyApp(SoftwareDefinitionsTesting):
             assert (False)
 
     def test_get_software(self):
-        headers = self._getAuthorizationHeaders()
+        headers = getAuthorizationHeaders()
+
+        SoftwareDefinitionResource.load_test_file()
 
         result = self.simulate_get("/software")
         assert (result.status == "401 Unauthorized")
@@ -57,4 +60,33 @@ class TestMyApp(SoftwareDefinitionsTesting):
                 assert True
             except ValidationError as e:
                 print(e)
-                assert False
+                raise e
+
+    def test_post_software(self):
+        headers = getAuthorizationHeaders()
+        software_dict = self._getSoftwareExample()
+
+        try:
+            # Test - Post
+            resp = self.simulate_post("/software", headers=headers,
+                                  body=json.dumps(software_dict))
+            assert len(SoftwareDefinitionResource.data)==1
+            assert SoftwareDefinitionResource.data[0]["id"] == software_dict["id"]
+            assert resp.status_code == 201
+
+            # Test - Update
+            software_dict["name"]="MySQL Server"
+            resp = self.simulate_post("/software", headers=headers,
+                                      body=json.dumps(software_dict))
+            assert len(SoftwareDefinitionResource.data)==1
+            assert SoftwareDefinitionResource.data[0]["name"] == software_dict["name"]
+            assert resp.status_code == 201
+
+        except ValidationError as e:
+            print(e)
+            assert False
+
+
+
+
+

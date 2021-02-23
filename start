@@ -25,6 +25,8 @@ export LCP_LOG_LEVEL=DEBUG
 
 source ~/.venv/carrega/bin/activate
 
+rm $PIDFILE
+
 if [ -f $PIDFILE ] ; then
     echo "Error: $COMPONENT already started"
     echo "Note: to force the start please remove $PIDFILE"

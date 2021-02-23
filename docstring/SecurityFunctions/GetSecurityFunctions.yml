@@ -1,13 +1,13 @@
-Get Description of a Piece of Software Installed
+Get Description of the Security Agents deployed with LCP
 ---
-summary: Get the Software installed and controlled and known by the LCP
+summary: Get the Description and configuration parameters of Security Agents deployed with LCP
 description: |
-  Gets the information of the Server software that LCP Knows.
+  Gets the information of the SecurityFunctions deployed with
 tags: [software]
 responses:
   200:
-    description: Get the Description of the Software controlled by the LCP
-    schema: SoftwareDefinition
+    description: Get the Server's configuration infromation from LCP
+    schema: SecurityFunction
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema
@@ -19,4 +19,4 @@ responses:
     schema: Not_Acceptable_Response_Schema
   500:
     description: Server not available to satisfy the request.
-    schema: Internal_Server_Error_Response_Schema
+    schema: Internal_Server_Error_Response_Schem

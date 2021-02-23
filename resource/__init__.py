@@ -4,6 +4,7 @@ from resource.status import *
 from resource.filiation import *
 from resource.hardware_definitions import *
 from resource.software_definition import *
+from resource.security_functions import *
 from utils.log import Log
 from utils.sequence import wrap
 
@@ -19,6 +20,7 @@ db = (
     Filiation,
     BaremetalServer,
     SoftwareDefinition,
+    SecurityFunction
 )
 
 tags = []

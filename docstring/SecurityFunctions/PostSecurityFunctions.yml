@@ -1,0 +1,28 @@
+Post a description of a Piece of Software Installed
+---
+summary: Post Software description of a new Software installed in the System
+description: |
+  Posts the information of the Server software that LCP must be aware of.
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: array
+      items: SoftwareDefinition
+tags: [software]
+responses:
+  201:
+    description: The software definition has been successfully updated there.
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schem

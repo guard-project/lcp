@@ -40,6 +40,7 @@ class TestMyApp(FiliationTesting):
 
     def test_get_messages(self):
         headers = self._getAuthorizationHeaders()
+        Filiation.data = {}
 
         # No Authorization for request:
         result = self.simulate_get("/filiation")
@@ -50,6 +51,7 @@ class TestMyApp(FiliationTesting):
         assert (result.status == "200 OK")
         sons = result.json
         assert type(sons) is list
+        print("len(sons) == 0 ", len(sons))
         assert len(sons) == 0
 
         uuid, url, body_dict = self._setFiliationData()
