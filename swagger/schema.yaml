@@ -84,6 +84,71 @@ definitions:
     - operatingSystem
     - ram
     type: object
+  CloudCompute:
+    properties:
+      controller_id:
+        description: ID of the Compute host. The controller could act as compute
+        example: 3b3041bf-b2fb-47da-8e72-331a67ffd292
+        type: string
+      type:
+        description: Type of server acting as CloudController
+        example: BaremetalServer
+        type: string
+    required:
+    - controller_id
+    - type
+    type: object
+  CloudController:
+    properties:
+      controller_id:
+        description: ID of the Controller host
+        example: 3b3041bf-b2fb-47da-8e72-331a67ffd292
+        type: string
+      type:
+        description: Type of server acting as CloudController
+        example: BaremetalServer
+        type: string
+    required:
+    - controller_id
+    - type
+    type: object
+  CloudSchema:
+    properties:
+      compute_nodes:
+        description: List of Cloud compute nodes
+        items:
+          $ref: '#/definitions/CloudCompute'
+        type: array
+      controllers:
+        description: List of Cloud Controllers
+        items:
+          $ref: '#/definitions/CloudController'
+        type: array
+      description:
+        description: Some description of the Cloud
+        example: FIWARE Lab Wolfsburg node
+        type: string
+      id:
+        description: Cloud ID
+        example: f9e6ee65-517a-44da-854d-fdd058fcf2dd
+        type: string
+      name:
+        description: Human readable Cloud name
+        example: Wolfsburg-FIWARE-Lab-Cloud
+        type: string
+      vendor:
+        description: Cloud Vendor Name
+        example: Openstack
+        type: string
+      version:
+        description: Cloud release code name
+        example: queens
+        type: string
+    required:
+    - id
+    - name
+    - vendor
+    type: object
   Code_Request:
     properties:
       code:
@@ -544,6 +609,59 @@ definitions:
         default: Unsupported Media Type
     required:
     - message
+    type: object
+  VirtualServer:
+    properties:
+      cloud_id:
+        description: Cloud ID -- Maybe None if somehow hosted
+        example: a4518fe5-9da9-43a5-8bc6-1433e28935f1
+        type: string
+      cpus:
+        description: CPU Cores in the Server
+        example: '8'
+        type: integer
+      diskDevices:
+        items:
+          allOf:
+          - $ref: '#/definitions/Disk'
+          description: Disks installed in the Server
+        type: array
+      host_id:
+        description: ID of underlying Baremetal Server
+        example: 39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c
+        type: string
+      hostname:
+        description: Network interface Name in the OS
+        example: corporario.example.com
+        type: string
+      hypervisor:
+        description: Hypervisor name/technology
+        example: KVM
+        type: string
+      id:
+        description: Network Card UUID.
+        example: ed5bd35a-7213-47a9-ae6e-76212e62a157
+        type: string
+      networkInterfaces:
+        description: List of Network Interfaces in the host
+        items:
+          $ref: '#/definitions/NetworkInterface'
+        type: array
+      operatingSystem:
+        description: Network interface Name in the OS
+        example: Ubuntu Linux 20.04.2 LTS
+        type: string
+      ram:
+        description: RAM installed in the Server in Megabytes
+        example: '8'
+        type: integer
+    required:
+    - cpus
+    - hostname
+    - hypervisor
+    - id
+    - operatingSystem
+    - ram
     type: object
 info:
   title: Local Control Plane
@@ -1112,7 +1230,9 @@ paths:
         '200':
           description: Get the Server's configuration infromation from LCP
           schema:
-            $ref: '#/definitions/BaremetalServer'
+            items:
+              $ref: '#/definitions/BaremetalServer'
+            type: array
         '400':
           description: Request not valid.
           schema:
@@ -1130,6 +1250,105 @@ paths:
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
       summary: Get the Baremetal server where the LCP is deployed on.
+      tags:
+      - hardware
+    post:
+      description: 'Posts the information of the Server where the LCP is deployed
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/BaremetalServer'
+          type: array
+      responses:
+        '201':
+          description: The BaremetalServer has been successfully updated.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: POST the Baremetal server where the LCP is deployed on.
+      tags:
+      - hardware
+  /virtualserver:
+    get:
+      description: 'Gets the information of the Server where the LCP is deployed
+
+        '
+      responses:
+        '200':
+          description: Get the Server's configuration infromation from LCP
+          schema:
+            items:
+              $ref: '#/definitions/VirtualServer'
+            type: array
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Virtual server where the LCP is deployed on.
+      tags:
+      - hardware
+    post:
+      description: 'Posts the information of the Server where the LCP is deployed
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/VirtualServer'
+          type: array
+      responses:
+        '201':
+          description: The VirtualServer has been successfully updated.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: POST the Baremetal server where the LCP is deployed on.
       tags:
       - hardware
   /software:
@@ -1223,7 +1442,7 @@ paths:
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+            $ref: '#/definitions/Internal_Server_Error_Response'
       summary: Get the Description and configuration parameters of Security Agents
         deployed with LCP
       tags:
@@ -1263,6 +1482,72 @@ paths:
       summary: Post Software description of a new Software installed in the System
       tags:
       - software
+  /cloud:
+    get:
+      description: 'Gets the information of one cloud Infrastrucutre
+
+        '
+      responses:
+        '200':
+          description: Get the description of a Cloud Infrastructure known by the
+            system
+          schema:
+            items:
+              $ref: '#/definitions/CloudSchema'
+            type: array
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Description of one Cloud Infrastructure
+      tags:
+      - hardware
+    post:
+      description: 'Posts the information of one cloud Infrastrucutre
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/CloudSchema'
+          type: array
+      responses:
+        '201':
+          description: The Cloud Infrastructure has been successfully updated
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post the Description of one Cloud Infrastructure
+      tags:
+      - hardware
 produces:
 - application/json
 swagger: '2.0'
@@ -1279,7 +1564,11 @@ tags:
   name: filiation
 - description: Returns description of a Baremetal Server.
   name: hardware
+- description: Returns description of a Baremetal Server.
+  name: hardware
 - description: Returns the description of software installed
   name: software
 - description: Returns description of a Baremetal Server.
   name: software
+- description: Description of a Cloud Infrastructure
+  name: hardware

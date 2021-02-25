@@ -1,15 +1,15 @@
-Get Description of a Baremetal Server where the LCP is deployed.
+Get Description of a cloud Infrastrucutre
 ---
-summary: Get the Baremetal server where the LCP is deployed on.
+summary: Get the Description of one Cloud Infrastructure
 description: |
-  Gets the information of the Server where the LCP is deployed
+  Gets the information of one cloud Infrastrucutre
 tags: [hardware]
 responses:
   200:
-    description: Get the Server's configuration infromation from LCP
+    description: Get the description of a Cloud Infrastructure known by the system
     schema:
       type: array
-      items: BaremetalServer
+      items: CloudSchema
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

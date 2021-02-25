@@ -4,8 +4,10 @@ from reader.arg import Arg_Reader
 from about import project, title, version
 from marshmallow.exceptions import ValidationError
 from schema.hardware_definitions import BaremetalServer, Disk, DiskPartition
+from resource.hardware_definitions import BaremetalServer as BaremetalServerResource
 import json
 import os
+from test_utils import *
 
 
 class BaremetalServerTesting(testing.TestCase):
@@ -25,7 +27,7 @@ class TestMyApp(BaremetalServerTesting):
         return json.loads(file_data)
 
     def test_baremetal_server(self):
-        server = self._getBaremetalServer()
+        server = loadExampleFile("bare-metal-server-example.json")
         bm_server = BaremetalServer(many=False)
         try:
             d = bm_server.load(server)
@@ -54,7 +56,8 @@ class TestMyApp(BaremetalServerTesting):
         print(disk)"""
 
     def test_chk(self):
-        bm_server = self._getBaremetalServer()
+        # bm_server = self._getBaremetalServer()
+        bm_server = loadExampleFile("bare-metal-server-example.json")
         diskDevices = bm_server['diskDevices']
 
         d = {"size": 143.24, "type": "ext4", "name": "/dev/nvme0n1p6"}
@@ -72,3 +75,44 @@ class TestMyApp(BaremetalServerTesting):
                 DiskPartition().load(device['diskPartitions'][0])
                 print(device)
                 print(ve)
+
+    def test_get_baremetal_server(self):
+        bm_server = loadExampleFile("bare-metal-server-example.json")
+        headers = getAuthorizationHeaders()
+        BaremetalServerResource.data = []
+
+        result = self.simulate_get("/baremetal", headers=headers)
+        assert (result.status == "200 OK")
+        body = result.json
+        assert (type(body) is list)
+        assert len(body) == 0
+
+        BaremetalServerResource.update_data(bm_server)
+        result = self.simulate_get("/baremetal", headers=headers)
+        assert (result.status == "200 OK")
+        body = result.json
+        assert (type(body) is list)
+        assert len(body) == 1
+
+        try:
+            bm_schema = BaremetalServer(many=True)
+            bm_schema.load(body)
+            assert True
+        except ValidationError as ve:
+            print(ve)
+            assert False
+
+
+    def test_post_baremetal_server(self):
+        bm_server_dict = loadExampleFile("bare-metal-server-example.json")
+        headers = getAuthorizationHeaders()
+        BaremetalServerResource.data = []
+
+        body = json.dumps(bm_server_dict)
+        result = self.simulate_post("/baremetal", headers=headers,
+                                    body=body)
+        assert result.status_code == 201
+        assert len(BaremetalServerResource.data) == 1
+        assert BaremetalServerResource.data[0]["id"] == bm_server_dict["id"]
+
+

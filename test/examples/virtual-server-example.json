@@ -1,0 +1,42 @@
+{
+    "id": "029b97e0-4498-4013-acd1-1b585cf6e85a",
+    "hostname": "corporario",
+    "operatingSystem": "Ubuntu 18.04.1 LTS",
+    "cpus": 4,
+    "ram": 8167560,
+    "diskDevices": [
+        {
+            "name": "vda",
+            "size": 80.0,
+            "diskPartitions": [
+                {"name": "/dev/vda1", "size": 79.9},
+                {"name": "/dev/vda14", "size": 0.004},
+                {"name": "/dev/vda15", "size": 0.1}
+            ],
+            "id": "urn:HardDiskDevice:vda"
+        }
+    ],
+    "networkInterfaces": [
+        {
+            "id": "nwiface:ens3",
+            "name": "ens3",
+            "mtu": 1450,
+            "MacAddress": "fa:16:3e:e0:58:23",
+            "IPv4Addresses": ["10.202.254.11/24", "46.17.108.64/32"],
+            "state": "UP",
+            "deviceType": "ethernet"
+        },
+        {
+            "id": "nwiface:docker0",
+            "name": "docker0",
+            "mtu": 1400,
+            "MacAddress": "02:42:a1:96:d8:c6",
+            "IPv4Addresses": ["172.17.0.1/16"],
+            "state": "UP",
+            "deviceType": "bridge"
+        }
+    ],
+    "hypervisor": "kvm",
+    "host_id": "wolfsburg-compute-03",
+    "cloud_id": "28f67bd9-0ace-4b09-a561-0ec137b77bcc"
+}

@@ -5,6 +5,7 @@ from resource.filiation import *
 from resource.hardware_definitions import *
 from resource.software_definition import *
 from resource.security_functions import *
+from resource.cloud_resource import *
 from utils.log import Log
 from utils.sequence import wrap
 
@@ -19,8 +20,10 @@ db = (
     FiliationById,
     Filiation,
     BaremetalServer,
+    VirtualServer,
     SoftwareDefinition,
-    SecurityFunction
+    SecurityFunction,
+    CloudInfrastructure
 )
 
 tags = []

@@ -1,0 +1,16 @@
+{
+    "id": "f9e6ee65-517a-44da-854d-fdd058fcf2dd",
+    "name": "Wolfsburg Openstack",
+    "description": "Wolfsburg FIWARE Lab Node",
+    "vendor": "Openstack",
+    "version": "queens",
+    "description": "Openstack Node with FIWARE Lab Features",
+    "controllers": [
+        {"type": "BaremetalServer", "controller_id": "94c2bfb4-b9ce-4c9c-a07f-b82bbd7c211c"}
+    ],
+    "compute_nodes": [
+        {"type": "BaremetalServer", "controller_id": "1f2d9206-0f11-4c63-b831-c5325af8f19e"},
+        {"type": "BaremetalServer", "controller_id": "8ce76f65-c2b0-484d-a7b8-e2c99ea6c13b"},
+        {"type": "BaremetalServer", "controller_id": "8ce76f65-c2b0-484d-a7b8-e2c99ea6c13b"}
+    ]
+}

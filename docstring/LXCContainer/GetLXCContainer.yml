@@ -1,15 +1,15 @@
-Get Description of a Baremetal Server where the LCP is deployed.
+Get Description of an LXC Container
 ---
-summary: Get the Baremetal server where the LCP is deployed on.
+summary: Get the LXC description of an LCP
 description: |
-  Gets the information of the Server where the LCP is deployed
+  Gets the information of an LXC Container
 tags: [hardware]
 responses:
   200:
-    description: Get the Server's configuration infromation from LCP
+    description: Get LXC Container's server Description
     schema:
       type: array
-      items: BaremetalServer
+      items: LXCContainer
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

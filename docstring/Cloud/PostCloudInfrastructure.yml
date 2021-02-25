@@ -1,15 +1,19 @@
-Get Description of a Baremetal Server where the LCP is deployed.
+Post Description of a cloud Infrastrucutre
 ---
-summary: Get the Baremetal server where the LCP is deployed on.
+summary: Post the Description of one Cloud Infrastructure
 description: |
-  Gets the information of the Server where the LCP is deployed
+  Posts the information of one cloud Infrastrucutre
 tags: [hardware]
-responses:
-  200:
-    description: Get the Server's configuration infromation from LCP
+parameters:
+  - name: payload
+    in: body
+    required: true
     schema:
       type: array
-      items: BaremetalServer
+      items: CloudSchema
+responses:
+  201:
+    description: The Cloud Infrastructure has been successfully updated
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

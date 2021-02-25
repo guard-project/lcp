@@ -1,6 +1,6 @@
-Get Description of a Baremetal Server where the LCP is deployed.
+Get Description of a Virtual Server where the LCP is deployed.
 ---
-summary: Get the Baremetal server where the LCP is deployed on.
+summary: Get the Virtual server where the LCP is deployed on.
 description: |
   Gets the information of the Server where the LCP is deployed
 tags: [hardware]
@@ -9,7 +9,7 @@ responses:
     description: Get the Server's configuration infromation from LCP
     schema:
       type: array
-      items: BaremetalServer
+      items: VirtualServer
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

@@ -19,4 +19,4 @@ responses:
     schema: Not_Acceptable_Response_Schema
   500:
     description: Server not available to satisfy the request.
-    schema: Internal_Server_Error_Response_Schem
+    schema: Internal_Server_Error_Response_Schema
