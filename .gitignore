@@ -7,4 +7,4 @@ __pycache__
 config.ini
 start
 stop
-/swagger/*
+swagger/*

@@ -357,7 +357,7 @@ definitions:
         type: string
       url:
         description: URL where the Son LCP Listens
-        example: http://lcpapi:4000
+        example: http://lcpapi.example.com:4000
         format: url
         type: string
     required:
@@ -1200,9 +1200,7 @@ paths:
         name: payload
         required: true
         schema:
-          items:
-            $ref: '#/definitions/LCPSonDescription'
-          type: array
+          $ref: '#/definitions/LCPSonDescription'
       responses:
         '200':
           description: Status data of the LCP.

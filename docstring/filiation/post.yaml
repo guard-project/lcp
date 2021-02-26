@@ -8,10 +8,7 @@ parameters:
   - name: payload
     in: body
     required: true
-    schema:
-      type: array
-      items: LCPSonDescription
-
+    schema: LCPSonDescription
 tags: [filiation]
 responses:
   200:

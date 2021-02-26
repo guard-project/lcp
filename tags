@@ -20,7 +20,6 @@ $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Disk"$/;"	s	
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Disk"$/;"	s	object:definitions.VirtualServer.properties.diskDevices.items.allOf.0
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/DiskPartition"$/;"	s	object:definitions.Disk.properties.diskPartitions.items.allOf.0
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.get.responses.200.schema.items
-$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.post.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code.put.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code/{id}.put.responses.200.schema.items
@@ -77,6 +76,7 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Serve
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./virtualserver.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./virtualserver.post.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response_Schem"$/;"	s	object:paths./securityFunctions.post.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.post.parameters.0.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation/{id}.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.delete.responses.204.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/No_Content_Response"$/;"	s	object:paths./code.post.responses.204.schema
@@ -1477,7 +1477,7 @@ example	swagger/schema.json	/^          "example": "firewall",$/;"	s	object:defi
 example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:definitions.Config_Parameter_Request.properties.source
 example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:definitions.Config_Resource_Request.properties.path
 example	swagger/schema.json	/^          "example": "http:\/\/example.com:4250\/v1\/config",$/;"	s	object:definitions.SecurityFunction.properties.endpoint_url
-example	swagger/schema.json	/^          "example": "http:\/\/lcpapi:4000",$/;"	s	object:definitions.LCPSonDescription.properties.url
+example	swagger/schema.json	/^          "example": "http:\/\/lcpapi.example.com:4000",$/;"	s	object:definitions.LCPSonDescription.properties.url
 example	swagger/schema.json	/^          "example": "lib\/connection.py",$/;"	s	object:definitions.Exception_Response.properties.filename
 example	swagger/schema.json	/^          "example": "lines",$/;"	s	object:definitions.Config_Action_Request.properties.output_format
 example	swagger/schema.json	/^          "example": "nveme0n1p6",$/;"	s	object:definitions.DiskPartition.properties.name
@@ -1651,7 +1651,6 @@ items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{i
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.responses.422.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation.get.responses.200.schema
-items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation/{id}.delete.responses.200.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./securityFunctions.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./software.post.parameters.0.schema
@@ -2369,7 +2368,6 @@ type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./co
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.responses.422.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation.get.responses.200.schema
-type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./securityFunctions.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./software.post.parameters.0.schema
@@ -2522,7 +2520,7 @@ update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/
 update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/;"	m	class:VirtualServer
 update_data	resource/security_functions.py	/^    def update_data(cls, elem):$/;"	m	class:SecurityFunction
 update_data	resource/software_definition.py	/^    def update_data(cls, elem):$/;"	m	class:SoftwareDefinition
-url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi:4000",$/;"	v	class:LCPSonDescription
+url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi.example.com:4000",$/;"	v	class:LCPSonDescription
 url	swagger/schema.json	/^        "url": {$/;"	o	object:definitions.LCPSonDescription.properties
 username	config.ini	/^username = lcp$/;"	k	section:dev
 username	schema/status.py	/^    username = Str(allow_none=True,$/;"	v	class:Status_Request_Schema
