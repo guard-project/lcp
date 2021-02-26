@@ -42,7 +42,7 @@ class SoftwareDefinition(Base_Resource):
     @docstring(source="Software/GetSoftware.yml")
     def on_get(self, req, resp):
         resp_data, valid = SoftwareDefinitionSchema(method=HTTP_Method.GET) \
-          .validate(data={})
+            .validate(data={})
 
         resp.body = json.dumps(SoftwareDefinition.data)
 
@@ -63,5 +63,4 @@ class SoftwareDefinition(Base_Resource):
                 SoftwareDefinition.update_data(e)
 
         except ValidationError as e:
-            print(e)
-            raise e
+            resp.status = HTTP_NOT_ACCEPTABLE

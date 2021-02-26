@@ -20,7 +20,7 @@ $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Disk"$/;"	s	
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Disk"$/;"	s	object:definitions.VirtualServer.properties.diskDevices.items.allOf.0
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/DiskPartition"$/;"	s	object:definitions.Disk.properties.diskPartitions.items.allOf.0
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.get.responses.200.schema.items
-$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.post.responses.200.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation.post.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPSonDescription"$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code.put.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code/{id}.put.responses.200.schema.items
@@ -214,6 +214,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 0	swagger/schema.json	/^          {$/;"	o	array:paths./code/{id}.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./code/{id}.put.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./config.post.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./filiation.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./filiation/{id}.get.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./securityFunctions.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./software.post.parameters
@@ -1182,8 +1183,8 @@ description	swagger/schema.json	/^            "description": "Server not availab
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./status.post.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./virtualserver.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./virtualserver.post.responses.500
+description	swagger/schema.json	/^            "description": "Status data of the LCP."$/;"	s	object:paths./filiation.post.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation.get.responses.200
-description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation.post.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation/{id}.delete.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./filiation/{id}.get.responses.200
 description	swagger/schema.json	/^            "description": "Status data of the LCP.",$/;"	s	object:paths./status.get.responses.200
@@ -1606,6 +1607,7 @@ in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code/{id}
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code/{id}.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code/{id}.put.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./config.post.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./filiation.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./securityFunctions.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./software.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./virtualserver.post.parameters.0
@@ -1649,7 +1651,7 @@ items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./code/{i
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.post.responses.422.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation.get.responses.200.schema
-items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation.post.responses.200.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./filiation/{id}.delete.responses.200.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./securityFunctions.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./software.post.parameters.0.schema
@@ -1745,6 +1747,7 @@ name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./co
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code/{id}.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./code/{id}.put.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./config.post.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./filiation.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./securityFunctions.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./software.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./virtualserver.post.parameters.0
@@ -1859,6 +1862,7 @@ parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./cod
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code/{id}.post
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./code/{id}.put
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./config.post
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./filiation.post
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./filiation/{id}.get
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./securityFunctions.post
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./software.post
@@ -1953,6 +1957,7 @@ required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths.
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code/{id}.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./code/{id}.put.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./config.post.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./filiation.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./securityFunctions.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./software.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./virtualserver.post.parameters.0
@@ -2110,7 +2115,7 @@ schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiati
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.401
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.406
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.get.responses.500
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.parameters.0
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.400
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.401
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./filiation.post.responses.406
@@ -2364,7 +2369,7 @@ type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./co
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./config.post.responses.422.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation.get.responses.200.schema
-type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation.post.responses.200.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./filiation/{id}.delete.responses.200.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./securityFunctions.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./software.post.parameters.0.schema

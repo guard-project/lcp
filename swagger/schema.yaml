@@ -1195,13 +1195,17 @@ paths:
         this Execution Environment.
 
         '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/LCPSonDescription'
+          type: array
       responses:
         '200':
           description: Status data of the LCP.
-          schema:
-            items:
-              $ref: '#/definitions/LCPSonDescription'
-            type: array
         '400':
           description: Request not valid.
           schema:

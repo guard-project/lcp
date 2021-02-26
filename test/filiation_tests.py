@@ -95,7 +95,10 @@ class TestMyApp(FiliationTesting):
 
         # With Authorization header + OK data -- Expected: 201 Created
         headers = self._getAuthorizationHeaders()
+        print(body)
         result = self.simulate_post("/filiation", headers=headers, body=json.dumps(body))
+        print(result.status)
+        print(result.json)
         assert(result.status == "201 Created")
 
         # Fake thing. Not a correct data -- Expected: 406 Not Acceptable

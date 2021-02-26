@@ -133,6 +133,7 @@ class LXCContainer(Base_Resource):
 
     @docstring(source='LXCContainer/PostLXCContainer.yml')
     def on_post(self, req, resp):
+        print("Ahora en el on_post")
         resp_data, valid = LXCContainerSchema(method=HTTP_Method.POST) \
             .validate(data={})
 

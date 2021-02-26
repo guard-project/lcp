@@ -13,7 +13,6 @@ __all__ = [
 
 class Spec:
     def __init__(self, api, title, version):
-        print("Spec tags: ", rc_tags)
         self.obj = API_Spec(title=title, version=version, openapi_version='2.0',
                             produces=['application/json'], consumes=['application/json'],
                             tags=rc_tags, plugins=[Falcon_Plugin(api), Marshmallow_Plugin(schema_name_resolver=self.__schema_name_resolver)])

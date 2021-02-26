@@ -31,8 +31,10 @@ class Filiation(Base_Resource):
             child_nodes.append(Filiation.data[k])
         resp.body = json.dumps(child_nodes)
 
-    @docstring(source="filiation/get.yaml")
+    @docstring(source="filiation/post.yaml")
     def on_post(self, req, resp):
+        resp_Data, valid = LCPSonDescription(method=HTTP_Method.POST) \
+            .validate(data={})
         payload = req.media
         try:
             lcp = LCPSonDescription(many=False)
@@ -73,6 +75,7 @@ class FiliationById(Base_Resource):
             resp.body = json.dumps(o)
             resp.status = HTTP_OK
         else:
+
             resp.status = HTTP_NOT_FOUND
 
 
