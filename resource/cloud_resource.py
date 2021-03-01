@@ -42,7 +42,7 @@ class CloudInfrastructure(Base_Resource):
     def on_post(self, req, resp):
         resp_data, valid = CloudSchema(method=HTTP_Method.POST) \
             .validate(data={})
-        payload = req.media if req.media is list else [req.media]
+        payload = req.media if isinstance(req.media, list) else [req.media]
 
         try:
             cl_schema = CloudSchema(many=True)

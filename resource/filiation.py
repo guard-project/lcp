@@ -35,15 +35,18 @@ class Filiation(Base_Resource):
     def on_post(self, req, resp):
         resp_Data, valid = LCPSonDescription(method=HTTP_Method.POST) \
             .validate(data={})
-        payload = req.media
+        payload = req.media if isinstance(req.media, list) else [req.media]
         try:
-            lcp = LCPSonDescription(many=False)
+            lcp = LCPSonDescription(many=True)
             lcp.load(payload)
             valid = lcp.validate(payload)
-            Filiation.data[payload['id']] = payload
+            for f in payload:
+                print(f)
+                Filiation.data[f['id']] = f
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
+            print(e.messages)
             resp.body = json.dumps(e.messages)
 
 

@@ -53,7 +53,7 @@ class SoftwareDefinition(Base_Resource):
 
         payload = req.media
         try:
-            many = payload is list
+            many = isinstance(payload, list)
             if not many:
                 payload = [payload]
             software_schema = SoftwareDefinitionSchema(many=True)

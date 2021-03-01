@@ -247,6 +247,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 0	swagger/schema.json	/^    "application\/json"$/;"	s	array:consumes
 0	swagger/schema.json	/^    "application\/json"$/;"	s	array:produces
 0	swagger/schema.json	/^    {$/;"	o	array:tags
+0	test/examples/FiliatedLCPs.json	/^{$/;"	o
 0	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	o	array:diskDevices.0.diskPartitions
 0	test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	o	array:diskDevices.1.diskPartitions
 0	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["10.0.3.1\/24"],$/;"	s	array:networkInterfaces.2.IPv4Addresses
@@ -296,6 +297,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 1	swagger/schema.json	/^        "type",$/;"	s	array:definitions.AgentParameter.required
 1	swagger/schema.json	/^        "url"$/;"	s	array:definitions.LCPSonDescription.required
 1	swagger/schema.json	/^    {$/;"	o	array:tags
+1	test/examples/FiliatedLCPs.json	/^{$/;"	o
 1	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	o	array:diskDevices.0.diskPartitions
 1	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["127.0.0.1\/8","169.254.169.254\/24"],$/;"	s	array:networkInterfaces.3.IPv4Addresses
 1	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:diskDevices
@@ -329,6 +331,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 2	swagger/schema.json	/^        "vendor"$/;"	s	array:definitions.CloudSchema.required
 2	swagger/schema.json	/^        "version"$/;"	s	array:definitions.SoftwareDefinition.required
 2	swagger/schema.json	/^    {$/;"	o	array:tags
+2	test/examples/FiliatedLCPs.json	/^{$/;"	o
 2	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	o	array:diskDevices.0.diskPartitions
 2	test/examples/bare-metal-server-example.json	/^        {$/;"	o	array:networkInterfaces
 2	test/examples/cloud-infrastructure-example.json	/^        {"type": "BaremetalServer", "controller_id": "8ce76f65-c2b0-484d-a7b8-e2c99ea6c13b"}$/;"	o	array:compute_nodes
@@ -1582,6 +1585,9 @@ id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.SecurityFuncti
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.SoftwareDefinition.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Status_Response.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.VirtualServer.properties
+id	test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-01:01697379-9bcd-469f-8b78-ab9d03d11af7"$/;"	s	object:0
+id	test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-02:01697379-9bcd-469f-8b78-ab9d03d11af7"$/;"	s	object:1
+id	test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-03:01697379-9bcd-469f-8b78-ab9d03d11af7"$/;"	s	object:2
 id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:docker0",$/;"	s	object:networkInterfaces.4
 id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:enx503eaaddcbeb",$/;"	s	object:networkInterfaces.0
 id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:lo",$/;"	s	object:networkInterfaces.3
@@ -2320,6 +2326,7 @@ test_get_virtual_server	test/virtual_server_test.py	/^    def test_get_virtual_s
 test_other	test/filiation_tests.py	/^    def test_other(self):$/;"	m	class:TestMyApp
 test_post_baremetal_server	test/baremetal_server_test.py	/^    def test_post_baremetal_server(self):$/;"	m	class:TestMyApp
 test_post_message	test/filiation_tests.py	/^    def test_post_message(self):$/;"	m	class:TestMyApp
+test_post_multi	test/filiation_tests.py	/^    def test_post_multi(self):$/;"	m	class:TestMyApp
 test_post_security_function	test/security_function_tests.py	/^    def test_post_security_function(self):$/;"	m	class:TestMyApp
 test_post_software	test/software_definition_tests.py	/^    def test_post_software(self):$/;"	m	class:TestMyApp
 test_post_virtual_server	test/virtual_server_test.py	/^    def test_post_virtual_server(self):$/;"	m	class:TestMyApp
@@ -2522,6 +2529,9 @@ update_data	resource/security_functions.py	/^    def update_data(cls, elem):$/;"
 update_data	resource/software_definition.py	/^    def update_data(cls, elem):$/;"	m	class:SoftwareDefinition
 url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi.example.com:4000",$/;"	v	class:LCPSonDescription
 url	swagger/schema.json	/^        "url": {$/;"	o	object:definitions.LCPSonDescription.properties
+url	test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-01.lab.fiware.org",$/;"	s	object:0
+url	test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-02.lab.fiware.org",$/;"	s	object:1
+url	test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-03.lab.fiware.org",$/;"	s	object:2
 username	config.ini	/^username = lcp$/;"	k	section:dev
 username	schema/status.py	/^    username = Str(allow_none=True,$/;"	v	class:Status_Request_Schema
 username	schema/status.py	/^    username = Str(description='Username for the CB to connect to this LCP.')$/;"	v	class:Status_Response_Schema

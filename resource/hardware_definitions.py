@@ -40,7 +40,7 @@ class BaremetalServer(Base_Resource):
     @docstring(source='BaremetalServer/GetBaremetalServer.yml')
     def on_get(self, req, resp):
         resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
-        .validate(data={})
+            .validate(data={})
 
         resp.body = json.dumps(BaremetalServer.data)
 
@@ -49,7 +49,7 @@ class BaremetalServer(Base_Resource):
         resp_data, valid = BaremetalServerSchema(method=HTTP_Method.POST) \
             .validate(data={})
 
-        payload = req.media if req.media is list else [req.media]
+        payload = req.media if isinstance(req.media, list) else [req.media]
         try:
             bm_schema = BaremetalServerSchema(many=True)
             bm_schema.load(payload)
@@ -83,7 +83,7 @@ class VirtualServer(Base_Resource):
     @docstring(source='VirtualServer/GetVirtualServer.yml')
     def on_get(self, req, resp):
         resp_Data, valid = VirtualServerSchema(method=HTTP_Method.GET) \
-        .validate(data={})
+            .validate(data={})
 
         resp.body = json.dumps(VirtualServer.data)
 
@@ -92,7 +92,7 @@ class VirtualServer(Base_Resource):
         resp_data, valid = VirtualServerSchema(method=HTTP_Method.POST) \
             .validate(data={})
 
-        payload = req.media if req.media is list else [req.media]
+        payload = req.media if isinstance(req.media, list) else [req.media]
         try:
             bm_schema = VirtualServerSchema(many=True)
             bm_schema.load(payload)
@@ -102,7 +102,6 @@ class VirtualServer(Base_Resource):
         except ValidationError as e:
             resp.body = e.data
             req.status = HTTP_NOT_ACCEPTABLE
-
 
 
 class LXCContainer(Base_Resource):
@@ -137,7 +136,7 @@ class LXCContainer(Base_Resource):
         resp_data, valid = LXCContainerSchema(method=HTTP_Method.POST) \
             .validate(data={})
 
-        payload = req.media if req.media is list else [req.media]
+        payload = req.media if isinstance(req.media, list) else [req.media]
         try:
             bm_schema = LXCContainerSchema(many=True)
             bm_schema.load(payload)
