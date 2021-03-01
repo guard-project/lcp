@@ -21,8 +21,8 @@ __all__ = [
 
 def api(title, version, dev_username, dev_password):
     instance = API(middleware=[
-        Falcon_Auth_Middleware(Basic_Auth_Backend_Middleware(dev_username, dev_password),
-                               exempt_routes=['/api/doc', '/api/doc/swagger.json']),
+        # Falcon_Auth_Middleware(Basic_Auth_Backend_Middleware(dev_username, dev_password),
+        #                       exempt_routes=['/api/doc', '/api/doc/swagger.json']),
         Negotiation_Middleware() # ,
         # Elastic_Apm_Middleware(
         #     service_name='lcp-apm',
