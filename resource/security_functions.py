@@ -37,13 +37,10 @@ class SecurityFunction(Base_Resource):
         resp_data, valid = SecurityFunctionSchema(method=HTTP_Method.POST) \
             .validate(data={})
 
-        payload = req.media
+        payload = req.media if isinstance(req.media, list) else [req.media]
         try:
-            many = isinstance(payload, list)
-            if not many:
-                payload = [payload]
             sf_schema = SecurityFunctionSchema(many=True)
-            d = sf_schema.load(req.media)
+            d = sf_schema.load(payload)
             for e in payload:
                 SecurityFunction.update_data(e)
 

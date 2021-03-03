@@ -121,6 +121,9 @@ class TestMyApp(FiliationTesting):
                                     body=json.dumps(body))
         assert result.status == "201 Created"
 
+        result = self.simulate_get("/filiation", headers=headers)
+        print(result)
+
     def test_delete_message(self):
         uuid, url, body_dict = self._getFiliationData()
         headers = self._getAuthorizationHeaders()
