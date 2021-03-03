@@ -355,6 +355,10 @@ definitions:
         description: Unique ID for the Son LCP
         example: 15d41167-79d3-48bf-b8db-9db0c8cc8d54
         type: string
+      name:
+        description: A Human readable name which could be depicted in graphs
+        example: lcp:node1
+        type: string
       url:
         description: URL where the Son LCP Listens
         example: http://lcpapi.example.com:4000
@@ -362,6 +366,7 @@ definitions:
         type: string
     required:
     - id
+    - name
     - url
     type: object
   NetworkInterface:
