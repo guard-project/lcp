@@ -131,7 +131,7 @@ class TestMyApp(FiliationTesting):
 
         # Try delete without authorization:
         result = self.simulate_delete("/filiation/1324")
-        #assert(result.status == "401 Unauthorized")
+        assert(result.status == "401 Unauthorized")
 
         # Try delete with authorization, but non existent
         result = self.simulate_delete(f"/filiation/{uuid}", headers=headers)
