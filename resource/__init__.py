@@ -23,7 +23,8 @@ db = (
     VirtualServer,
     SoftwareDefinition,
     SecurityFunction,
-    CloudInfrastructure
+    CloudInfrastructure,
+    DescribeDeployment
 )
 
 tags = []

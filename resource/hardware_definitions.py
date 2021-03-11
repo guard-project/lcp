@@ -10,11 +10,12 @@ from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
 from schema.hardware_definitions import VirtualServer as VirtualServerSchema
 from schema.hardware_definitions import LXCContainer as LXCContainerSchema
 import json
-import os
+from lib.lcp_config import LCPConfig
 
 __all__ = [
     'BaremetalServer',
     'VirtualServer',
+    'DescribeDeployment'
 ]
 
 
@@ -59,6 +60,19 @@ class BaremetalServer(Base_Resource):
         except ValidationError as e:
             resp.body = e.data
             req.status = HTTP_NOT_ACCEPTABLE
+
+
+class DescribeDeployment(Base_Resource):
+    data = {}
+    tag = {'name': 'hardware',
+           'description': 'Returns description of a Baremetal Server.'}
+    routes = '/self/deployment',
+
+    def on_get(self, req, resp):
+       resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
+            .validate(data={})
+
+       resp.body = json.dumps(LCPConfig().deployment)
 
 
 class VirtualServer(Base_Resource):

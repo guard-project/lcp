@@ -5,7 +5,8 @@ from utils.datetime import FORMAT
 from utils.schema import List_or_One
 
 __all__ = [
-    'LCPSonDescription'
+    'LCPSonDescription',
+    'ContextBrokerConnection'
 ]
 
 
@@ -18,3 +19,13 @@ class LCPSonDescription(Base_Schema):
                      description="URL where the Son LCP Listens")
     name = fields.Str(required=True, example="lcp:node1",
                       description="A Human readable name which could be depicted in graphs")
+
+
+class ContextBrokerConnection(Base_Schema):
+    """ Basic connection Description for LCPs to connect to Context Broker"""
+    url = fields.URL(required=True, example="http://cb.example.com:5000",
+                     description="URL where the ContextBroker Listens")
+    user = fields.Str(required=True, example="cb",
+                      description="Context Broker user with rights to set new exec-envs")
+    password = fields.Str(required=True, example="cbsecretpassword",
+                      description="Context Broker password for the user")
