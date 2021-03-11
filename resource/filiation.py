@@ -7,6 +7,7 @@ from lib.http import HTTP_Method
 from utils.sequence import is_list, wrap
 from schema.filiation import LCPSonDescription
 import json
+from lib.lcp_config import LCPConfig
 
 __all__ = [
     'FiliationById',
@@ -26,9 +27,9 @@ class Filiation(Base_Resource):
     def on_get(self, req, resp):
         resp_Data, valid = LCPSonDescription(method=HTTP_Method.GET) \
         .validate(data={})
-        child_nodes = []
-        for k in Filiation.data:
-            child_nodes.append(Filiation.data[k])
+        child_nodes = LCPConfig().sons
+        # for k in Filiation.data:
+        #    child_nodes.append(Filiation.data[k])
         resp.body = json.dumps(child_nodes)
 
     @docstring(source="filiation/post.yaml")
