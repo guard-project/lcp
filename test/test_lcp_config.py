@@ -2,8 +2,8 @@ from falcon import testing
 from api import api
 from reader.arg import Arg_Reader
 from about import project, title, version
-
 from lib.lcp_config import LCPConfig
+import os
 
 class SecurityFunctionDefinitionTesting(testing.TestCase):
     def setUp(self):
@@ -15,9 +15,12 @@ class SecurityFunctionDefinitionTesting(testing.TestCase):
 
 class TestMyApp(SecurityFunctionDefinitionTesting):
     def test_load_file(self):
-        c = LCPConfig()
+        print(os.getcwd())
+        c = LCPConfig("examples/TestConfigFile.yaml")
+        c.testing = True
         print(c.lcp)
         print(c.sons)
         print(c.getDataForRegisterOnCB())
         print("------------------------------------------")
-        print(c.config['deployment'])
+        print(c.deployment)
+

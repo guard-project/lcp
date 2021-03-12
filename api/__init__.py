@@ -11,6 +11,7 @@ from reader.arg import Arg_Reader
 from resource import routes
 from swagger_ui import falcon_api_doc
 from utils.json import loads, dumps
+import os
 
 import falcon
 
@@ -20,15 +21,18 @@ __all__ = [
 
 
 def api(title, version, dev_username, dev_password):
-    instance = API(middleware=[
-        Falcon_Auth_Middleware(Basic_Auth_Backend_Middleware(dev_username, dev_password),
-                               exempt_routes=['/api/doc', '/api/doc/swagger.json']),
-        Negotiation_Middleware() # ,
-        # Elastic_Apm_Middleware(
-        #     service_name='lcp-apm',
-        #     server_url=Arg_Reader.db.apm_server
-        # )
-    ])
+    if 'DEBUG_LCP' in os.environ and os.environ['DEBUG_LCP'] == "true":
+        instance = API()
+    else:
+        instance = API(middleware=[
+            Falcon_Auth_Middleware(Basic_Auth_Backend_Middleware(dev_username, dev_password),
+                                   exempt_routes=['/api/doc', '/api/doc/swagger.json']),
+            Negotiation_Middleware() # ,
+            # Elastic_Apm_Middleware(
+            #     service_name='lcp-apm',
+            #     server_url=Arg_Reader.db.apm_server
+            # )
+        ])
 
     media_handlers = {
         falcon.MEDIA_JSON: JSON_Handler(loads=loads,

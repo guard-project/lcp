@@ -156,8 +156,9 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 /config	swagger/schema.json	/^    "\/config": {$/;"	o	object:paths
 /filiation	swagger/schema.json	/^    "\/filiation": {$/;"	o	object:paths
 /filiation/{id}	swagger/schema.json	/^    "\/filiation\/{id}": {$/;"	o	object:paths
-/lcp_deployment	swagger/schema.json	/^    "\/lcp_deployment": {$/;"	o	object:paths
 /securityFunctions	swagger/schema.json	/^    "\/securityFunctions": {$/;"	o	object:paths
+/self	swagger/schema.json	/^    "\/self": {$/;"	o	object:paths
+/self/deployment	swagger/schema.json	/^    "\/self\/deployment": {$/;"	o	object:paths
 /software	swagger/schema.json	/^    "\/software": {$/;"	o	object:paths
 /status	swagger/schema.json	/^    "\/status": {$/;"	o	object:paths
 /virtualserver	swagger/schema.json	/^    "\/virtualserver": {$/;"	o	object:paths
@@ -320,6 +321,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 1.0.3	CHANGELOG.md	/^## 1.0.3$/;"	s	chapter:Changelog
 1.0.3	docs/CHANGELOG.md	/^## 1.0.3$/;"	s	chapter:Changelog
 10	swagger/schema.json	/^    {$/;"	o	array:tags
+11	swagger/schema.json	/^    {$/;"	o	array:tags
 1oHlnqBzpkmllMTCak6boyy1dL8	.idea/workspace.xml	/^  <component name="ProjectId" id="1oHlnqBzpkmllMTCak6boyy1dL8" \/>$/;"	i
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
@@ -527,6 +529,7 @@ BaremetalServer	schema/hardware_definitions.py	/^class BaremetalServer(Base_Sche
 BaremetalServer	swagger/schema.json	/^    "BaremetalServer": {$/;"	o	object:definitions
 BaremetalServerResource	test/baremetal_server_test.py	/^from resource.hardware_definitions import BaremetalServer as BaremetalServerResource$/;"	x	nameref:unknown:BaremetalServer
 BaremetalServerSchema	resource/hardware_definitions.py	/^from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema$/;"	x	nameref:unknown:BaremetalServer
+BaremetalServerSchema	resource/self_data.py	/^from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema$/;"	x	nameref:unknown:BaremetalServer
 BaremetalServerTesting	test/baremetal_server_test.py	/^class BaremetalServerTesting(testing.TestCase):$/;"	c
 Base_Handler	api/error_handler.py	/^class Base_Handler(object):$/;"	c
 Base_Resource	resource/base.py	/^class Base_Resource(object):$/;"	c
@@ -588,7 +591,8 @@ Date_Time	schema/config.py	/^from marshmallow.fields import Boolean, Constant, D
 Date_Time	schema/status.py	/^from marshmallow.fields import DateTime as Date_Time, Str$/;"	x	nameref:unknown:DateTime
 Datetime	docs/api.rst	/^Datetime$/;"	S	section:Utils
 Default	.idea/workspace.xml	/^    <task active="true" id="Default" summary="Default task">$/;"	i
-DescribeDeployment	resource/hardware_definitions.py	/^class DescribeDeployment(Base_Resource):$/;"	c
+DescribeDeployment	resource/self_data.py	/^class DescribeDeployment(Base_Resource):$/;"	c
+DescribeSelf	resource/self_data.py	/^class DescribeSelf(Base_Resource):$/;"	c
 Disk	schema/hardware_definitions.py	/^class Disk(Base_Schema):$/;"	c
 Disk	swagger/schema.json	/^    "Disk": {$/;"	o	object:definitions
 DiskPartition	schema/hardware_definitions.py	/^class DiskPartition(Base_Schema):$/;"	c
@@ -831,6 +835,7 @@ __all__	resource/code.py	/^__all__ = [$/;"	v
 __all__	resource/config.py	/^__all__ = [$/;"	v
 __all__	resource/filiation.py	/^__all__ = [$/;"	v
 __all__	resource/hardware_definitions.py	/^__all__ = [$/;"	v
+__all__	resource/self_data.py	/^__all__ = [$/;"	v
 __all__	resource/software_definition.py	/^__all__ = [$/;"	v
 __all__	resource/status.py	/^__all__ = [$/;"	v
 __all__	schema/base.py	/^__all__ = [$/;"	v
@@ -1048,8 +1053,8 @@ data	resource/filiation.py	/^    data = {}$/;"	v	class:Filiation
 data	resource/hardware_definitions.py	/^    data = []$/;"	v	class:BaremetalServer
 data	resource/hardware_definitions.py	/^    data = []$/;"	v	class:LXCContainer
 data	resource/hardware_definitions.py	/^    data = []$/;"	v	class:VirtualServer
-data	resource/hardware_definitions.py	/^    data = {}$/;"	v	class:DescribeDeployment
-data	resource/security_functions.py	/^    data = []$/;"	v	class:SecurityFunction
+data	resource/self_data.py	/^    data = {}$/;"	v	class:DescribeDeployment
+data	resource/self_data.py	/^    data = {}$/;"	v	class:DescribeSelf
 data	resource/software_definition.py	/^    data = []$/;"	v	class:SoftwareDefinition
 data	schema/config.py	/^    data = Raw(description='Configuration data.')$/;"	v	class:Config_Response_Schema
 data	schema/validate.py	/^        def data():$/;"	f	member:In.apply	file:
@@ -1359,6 +1364,7 @@ description	swagger/schema.json	/^      "description": "Describes a \\"son\\" LC
 description	swagger/schema.json	/^      "description": "Describes a \\"son\\" LCP linked in this service chain."$/;"	s	object:tags.4
 description	swagger/schema.json	/^      "description": "Description of a Cloud Infrastructure"$/;"	s	object:tags.9
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.10
+description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.11
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.5
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.6
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.8
@@ -1558,7 +1564,8 @@ get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./securityFunctions
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./software
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./status
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./virtualserver
-get	swagger/schema.json	/^      "get": {}$/;"	o	object:paths./lcp_deployment
+get	swagger/schema.json	/^      "get": {}$/;"	o	object:paths./self
+get	swagger/schema.json	/^      "get": {},$/;"	o	object:paths./self/deployment
 get	utils/log.py	/^    def get(cls, name):$/;"	m	class:Log
 getAuthorizationHeaders	test/test_utils.py	/^def getAuthorizationHeaders():$/;"	f
 getDataForRegisterOnCB	lib/lcp_config.py	/^        def getDataForRegisterOnCB(self):$/;"	m	class:LCPConfig.__LCPConfig
@@ -1807,6 +1814,7 @@ name	swagger/schema.json	/^      "name": "config",$/;"	s	object:tags.1
 name	swagger/schema.json	/^      "name": "filiation",$/;"	s	object:tags.3
 name	swagger/schema.json	/^      "name": "filiation",$/;"	s	object:tags.4
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.10
+name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.11
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.5
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.6
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.9
@@ -1856,10 +1864,11 @@ on_get	resource/cloud_resource.py	/^    def on_get(self, req, resp):$/;"	m	class
 on_get	resource/filiation.py	/^    def on_get(self, req, resp):$/;"	m	class:Filiation
 on_get	resource/filiation.py	/^    def on_get(self, req, resp, id):$/;"	m	class:FiliationById
 on_get	resource/hardware_definitions.py	/^    def on_get(self, req, resp):$/;"	m	class:BaremetalServer
-on_get	resource/hardware_definitions.py	/^    def on_get(self, req, resp):$/;"	m	class:DescribeDeployment
 on_get	resource/hardware_definitions.py	/^    def on_get(self, req, resp):$/;"	m	class:LXCContainer
 on_get	resource/hardware_definitions.py	/^    def on_get(self, req, resp):$/;"	m	class:VirtualServer
 on_get	resource/security_functions.py	/^    def on_get(self, req, resp):$/;"	m	class:SecurityFunction
+on_get	resource/self_data.py	/^    def on_get(self, req, resp):$/;"	m	class:DescribeDeployment
+on_get	resource/self_data.py	/^    def on_get(self, req, resp):$/;"	m	class:DescribeSelf
 on_get	resource/software_definition.py	/^    def on_get(self, req, resp):$/;"	m	class:SoftwareDefinition
 on_get	resource/status.py	/^    def on_get(self, req, resp):$/;"	m	class:Status_Resource
 on_post	resource/cloud_resource.py	/^    def on_post(self, req, resp):$/;"	m	class:CloudInfrastructure
@@ -1870,6 +1879,7 @@ on_post	resource/hardware_definitions.py	/^    def on_post(self, req, resp):$/;"
 on_post	resource/hardware_definitions.py	/^    def on_post(self, req, resp):$/;"	m	class:LXCContainer
 on_post	resource/hardware_definitions.py	/^    def on_post(self, req, resp):$/;"	m	class:VirtualServer
 on_post	resource/security_functions.py	/^    def on_post(self, req, resp):$/;"	m	class:SecurityFunction
+on_post	resource/self_data.py	/^    def on_post(self, req, resp):$/;"	m	class:DescribeDeployment
 on_post	resource/software_definition.py	/^    def on_post(self, req, resp):$/;"	m	class:SoftwareDefinition
 on_post	resource/status.py	/^    def on_post(self, req, resp):$/;"	m	class:Status_Resource
 on_put	resource/code.py	/^    def on_put(self, req, resp, id=None):$/;"	m	class:Code_Resource
@@ -1949,6 +1959,7 @@ post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./securityFunctions
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./software
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./status
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./virtualserver
+post	swagger/schema.json	/^      "post": {}$/;"	o	object:paths./self/deployment
 post_register	lib/ContextBrokerThread.py	/^        def post_register(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
 post_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x	nameref:unknown:post
 process_request	api/middleware.py	/^    def process_request(self, req, resp):$/;"	m	class:Negotiation_Middleware
@@ -2075,13 +2086,15 @@ routes	resource/config.py	/^    routes = '\/config',$/;"	v	class:Config_Resource
 routes	resource/filiation.py	/^    routes = '\/filiation',$/;"	v	class:Filiation
 routes	resource/filiation.py	/^    routes = '\/filiation\/{id}',$/;"	v	class:FiliationById
 routes	resource/hardware_definitions.py	/^    routes = '\/baremetal',$/;"	v	class:BaremetalServer
-routes	resource/hardware_definitions.py	/^    routes = '\/lcp_deployment',$/;"	v	class:DescribeDeployment
 routes	resource/hardware_definitions.py	/^    routes = '\/lxc',$/;"	v	class:LXCContainer
 routes	resource/hardware_definitions.py	/^    routes = '\/virtualserver',$/;"	v	class:VirtualServer
 routes	resource/security_functions.py	/^    routes = '\/securityFunctions',$/;"	v	class:SecurityFunction
+routes	resource/self_data.py	/^    routes = '\/self',$/;"	v	class:DescribeSelf
+routes	resource/self_data.py	/^    routes = '\/self\/deployment',$/;"	v	class:DescribeDeployment
 routes	resource/software_definition.py	/^    routes = '\/software'$/;"	v	class:SoftwareDefinition
 routes	resource/status.py	/^    routes = '\/status',$/;"	v	class:Status_Resource
 running	docs/running.rst	/^.. _running:$/;"	T
+save	lib/lcp_config.py	/^        def save(self):$/;"	m	class:LCPConfig.__LCPConfig
 schema	schema/config.py	/^    schema = Str(required=True, enum=PARAMETER_SCHEMAS, example='yaml',$/;"	v	class:Config_Parameter_Request_Schema
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.delete.responses.422.500
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.post.responses.422.500
@@ -2227,6 +2240,8 @@ schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./virtual
 schema	swagger/schema.json	/^        "schema": {$/;"	o	object:definitions.Config_Parameter_Request.properties
 send_tree	utils/signal.py	/^def send_tree(pid, sig=SIGTERM, include_parent=True, timeout=None, on_terminate=None):$/;"	f
 server	config.ini	/^server = http:\/\/localhost:8200$/;"	k	section:elastic-apm
+setAgent	lib/lcp_config.py	/^        def setAgent(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setDeployment	lib/lcp_config.py	/^        def setDeployment(self, dictDeployment):$/;"	m	class:LCPConfig.__LCPConfig
 setUp	test/baremetal_server_test.py	/^    def setUp(self):$/;"	m	class:BaremetalServerTesting
 setUp	test/cloud_infrastructure_test.py	/^    def setUp(self):$/;"	m	class:CloudInfrastructureTesting
 setUp	test/filiation_tests.py	/^    def setUp(self):$/;"	m	class:FiliationTesting
@@ -2327,10 +2342,11 @@ tag	resource/config.py	/^    tag = dict(name='config', description='Configuratio
 tag	resource/filiation.py	/^    tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service cha/;"	v	class:Filiation
 tag	resource/filiation.py	/^    tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service cha/;"	v	class:FiliationById
 tag	resource/hardware_definitions.py	/^    tag = {'name': 'hardware',$/;"	v	class:BaremetalServer
-tag	resource/hardware_definitions.py	/^    tag = {'name': 'hardware',$/;"	v	class:DescribeDeployment
 tag	resource/hardware_definitions.py	/^    tag = {'name': 'hardware',$/;"	v	class:LXCContainer
 tag	resource/hardware_definitions.py	/^    tag = {'name': 'hardware',$/;"	v	class:VirtualServer
 tag	resource/security_functions.py	/^    tag = {'name': 'software',$/;"	v	class:SecurityFunction
+tag	resource/self_data.py	/^    tag = {'name': 'hardware',$/;"	v	class:DescribeDeployment
+tag	resource/self_data.py	/^    tag = {'name': 'hardware',$/;"	v	class:DescribeSelf
 tag	resource/software_definition.py	/^    tag = {'name': 'software',$/;"	v	class:SoftwareDefinition
 tag	resource/status.py	/^    tag = dict(name='status', description='Status data of the LCP.')$/;"	v	class:Status_Resource
 tags	resource/__init__.py	/^tags = []$/;"	v
@@ -2570,7 +2586,7 @@ type	test/examples/cloud-infrastructure-example.json	/^        {"type": "Baremet
 type	test/examples/cloud-infrastructure-example.json	/^        {"type": "BaremetalServer", "controller_id": "8ce76f65-c2b0-484d-a7b8-e2c99ea6c13b"},$/;"	s	object:compute_nodes.1
 type	test/examples/cloud-infrastructure-example.json	/^        {"type": "BaremetalServer", "controller_id": "94c2bfb4-b9ce-4c9c-a07f-b82bbd7c211c"}$/;"	s	object:controllers.0
 type	test/examples/security-function-example.json	/^      "type": "Int",$/;"	s	object:parameters.0
-type	test/examples/security-function-example.json	/^  "type": "PROBE",$/;"	s
+type	test/examples/security-function-example.json	/^  "type": "monitoring",$/;"	s
 update	lib/polycube.py	/^    def update(self, cube, code, interface, metrics):$/;"	m	class:Polycube
 update	lib/response.py	/^    def update(self, **kwargs):$/;"	m	class:Base_Response
 update_data	resource/cloud_resource.py	/^    def update_data(cls, elem):$/;"	m	class:CloudInfrastructure

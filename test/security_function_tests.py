@@ -10,6 +10,8 @@ from resource.software_definition import SoftwareDefinition as SoftwareDefinitio
 from marshmallow.exceptions import ValidationError
 from test_utils import *
 
+from lib.lcp_config import LCPConfig
+
 
 class SecurityFunctionDefinitionTesting(testing.TestCase):
     def setUp(self):
@@ -39,8 +41,10 @@ class TestMyApp(SecurityFunctionDefinitionTesting):
 
     def test_get_security_function(self):
         sf_dict = loadExampleFile("security-function-example.json")
+        config = getLCPConfig()
+
         headers = getAuthorizationHeaders()
-        SecurityFunctionResource.data = []
+        config.dropAllAgents()
 
         result = self.simulate_get("/securityFunctions")
         assert(result.status_code == 401)
@@ -51,8 +55,8 @@ class TestMyApp(SecurityFunctionDefinitionTesting):
         assert (type(body) is list)
         assert len(body) == 0
 
-        SecurityFunctionResource.data.append(sf_dict)
-        d = SecurityFunctionResource.data
+        config.setAgent(sf_dict)
+        d = config.agents
 
         result = self.simulate_get("/securityFunctions", headers=headers)
         assert (result.status == "200 OK")
@@ -64,22 +68,23 @@ class TestMyApp(SecurityFunctionDefinitionTesting):
 
     def test_post_security_function(self):
         sf_dict = loadExampleFile("security-function-example.json")
+        config = getLCPConfig()
         headers = getAuthorizationHeaders()
-        SecurityFunctionResource.data = []
+        config.dropAllAgents()
 
         body = json.dumps(sf_dict)
         result = self.simulate_post("/securityFunctions", headers=headers,
                                     body=body)
         assert(result.status_code == 201)
-        assert len(SecurityFunctionResource.data) == 1
-        assert SecurityFunctionResource.data[0]["id"] == sf_dict["id"]
+        assert len(config.agents) == 1
+        assert config.agents[0]["id"] == sf_dict["id"]
 
         sf_dict["vendor"] = "GUARD-Project.eu"
         body = json.dumps(sf_dict)
         result = self.simulate_post("/securityFunctions", headers=headers,
                                     body=body)
         assert(result.status_code == 201)
-        assert len(SecurityFunctionResource.data) == 1
-        assert SecurityFunctionResource.data[0]["vendor"] == sf_dict["vendor"]
+        assert len(config.agents) == 1
+        assert config.agents[0]["vendor"] == sf_dict["vendor"]
 
 

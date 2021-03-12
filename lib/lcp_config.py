@@ -16,9 +16,16 @@ class LCPConfig(object):
             self.contextBroker = None
             self.user = ""
             self.password = ""
-            self.deployment = None
-
+            self.deployment = {}
+            self.agents = []
+            self.testing = False
             self.reload(self.filename)
+
+        def save(self):
+            if self.testing:
+                return
+            with open(self.filename, "w") as f:
+                yaml.dump(self.config, f, default_flow_style=False)
 
         def reload(self, filename=None):
             if filename is not None:
@@ -65,7 +72,30 @@ class LCPConfig(object):
             except KeyError:
                 pass
 
-            self.deployment = self.config['deployment'] if 'deployment' in self.config else None
+            self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
+
+
+        def setDeployment(self, dictDeployment):
+            self.config['deployment'] = dictDeployment
+            self.save()
+
+
+        def setAgent(self, elem):
+            updated = False
+            for i in range(0, len(self.agents)):
+                if self.agents[i]["id"] == elem["id"]:
+                    updated = True
+                    self.agents[i] = elem
+            if not updated:
+                self.agents.append(elem)
+            self.save()
+
+
+        def dropAllAgents(self):
+            self.config['agents'] = []
+            self.agents = self.config['agents']
+            self.save()
+
 
         def getDataForRegisterOnCB(self):
             parsed_uri = urlparse(self.lcp['url'])

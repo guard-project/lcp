@@ -14,9 +14,7 @@ from lib.lcp_config import LCPConfig
 
 __all__ = [
     'BaremetalServer',
-    'VirtualServer',
-    'DescribeDeployment',
-    'DescribeSelf'
+    'VirtualServer'
 ]
 
 
@@ -61,32 +59,6 @@ class BaremetalServer(Base_Resource):
         except ValidationError as e:
             resp.body = e.data
             req.status = HTTP_NOT_ACCEPTABLE
-
-
-class DescribeDeployment(Base_Resource):
-    data = {}
-    tag = {'name': 'hardware',
-           'description': 'Returns description of a Baremetal Server.'}
-    routes = '/self/deployment',
-
-    def on_get(self, req, resp):
-       resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
-            .validate(data={})
-
-       resp.body = json.dumps(LCPConfig().deployment)
-
-
-class DescribeSelf(Base_Resource):
-    data = {}
-    tag = {'name': 'hardware',
-           'description': 'Returns description of a Baremetal Server.'}
-    routes = '/self',
-
-    def on_get(self, req, resp):
-    # TODO: Organizar este codigo bien, con el esquema que corresponda!
-       resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
-            .validate(data={})
-       resp.body = json.dumps(LCPConfig().lcp)
 
 
 
