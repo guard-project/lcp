@@ -1557,6 +1557,8 @@ paths:
       - hardware
   /self/deployment:
     get: {}
+  /self:
+    get: {}
 produces:
 - application/json
 swagger: '2.0'
@@ -1580,6 +1582,8 @@ tags:
 - description: Returns description of a Baremetal Server.
   name: software
 - description: Description of a Cloud Infrastructure
+  name: hardware
+- description: Returns description of a Baremetal Server.
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: hardware

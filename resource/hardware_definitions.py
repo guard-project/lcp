@@ -15,7 +15,8 @@ from lib.lcp_config import LCPConfig
 __all__ = [
     'BaremetalServer',
     'VirtualServer',
-    'DescribeDeployment'
+    'DescribeDeployment',
+    'DescribeSelf'
 ]
 
 
@@ -73,6 +74,20 @@ class DescribeDeployment(Base_Resource):
             .validate(data={})
 
        resp.body = json.dumps(LCPConfig().deployment)
+
+
+class DescribeSelf(Base_Resource):
+    data = {}
+    tag = {'name': 'hardware',
+           'description': 'Returns description of a Baremetal Server.'}
+    routes = '/self',
+
+    def on_get(self, req, resp):
+    # TODO: Organizar este codigo bien, con el esquema que corresponda!
+       resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
+            .validate(data={})
+       resp.body = json.dumps(LCPConfig().lcp)
+
 
 
 class VirtualServer(Base_Resource):

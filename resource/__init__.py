@@ -24,7 +24,8 @@ db = (
     SoftwareDefinition,
     SecurityFunction,
     CloudInfrastructure,
-    DescribeDeployment
+    DescribeDeployment,
+    DescribeSelf
 )
 
 tags = []
