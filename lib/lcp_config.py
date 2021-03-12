@@ -69,6 +69,8 @@ class LCPConfig(object):
             if 'agents' not in self.config:
                 self.config['agents'] = []
                 self.agents = self.config['agents']
+            else:
+                self.agents = self.config['agents']
 
             try:
                 self.user = self.config['user']
