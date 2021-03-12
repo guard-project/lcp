@@ -66,6 +66,10 @@ class LCPConfig(object):
                 cb_schema.load(self.config['context_broker'])
                 self.contextBroker = self.config['context_broker']
 
+            if 'agents' not in self.config:
+                self.config['agents'] = []
+                self.agents = self.config['agents']
+
             try:
                 self.user = self.config['user']
                 self.password = self.config['password']

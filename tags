@@ -1401,6 +1401,7 @@ diskPartitions	test/examples/bare-metal-server-example.json	/^            "diskP
 diskPartitions	test/examples/virtual-server-example.json	/^            "diskPartitions": [$/;"	a	object:diskDevices.0
 docstring	docstring/__init__.py	/^def docstring(source):$/;"	f
 doctest	docs/Makefile	/^doctest:$/;"	t
+dropAllAgents	lib/lcp_config.py	/^        def dropAllAgents(self):$/;"	m	class:LCPConfig.__LCPConfig
 dumps	utils/json.py	/^def dumps(data, *args, **kwargs):$/;"	f
 duration	schema/config.py	/^    duration = Float(description='Execution time of the action (in seconds')$/;"	v	class:Config_Action_Response_Schema
 elastic-apm	config.ini	/^[elastic-apm]$/;"	s
@@ -1569,6 +1570,7 @@ get	swagger/schema.json	/^      "get": {},$/;"	o	object:paths./self/deployment
 get	utils/log.py	/^    def get(cls, name):$/;"	m	class:Log
 getAuthorizationHeaders	test/test_utils.py	/^def getAuthorizationHeaders():$/;"	f
 getDataForRegisterOnCB	lib/lcp_config.py	/^        def getDataForRegisterOnCB(self):$/;"	m	class:LCPConfig.__LCPConfig
+getLCPConfig	test/test_utils.py	/^def getLCPConfig():$/;"	f
 get_levels	utils/log.py	/^    def get_levels():$/;"	m	class:Log
 get_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x	nameref:unknown:get
 get_seconds	utils/time.py	/^def get_seconds(text, to_int=False):$/;"	f
@@ -2593,7 +2595,6 @@ update_data	resource/cloud_resource.py	/^    def update_data(cls, elem):$/;"	m	c
 update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/;"	m	class:BaremetalServer
 update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/;"	m	class:LXCContainer
 update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/;"	m	class:VirtualServer
-update_data	resource/security_functions.py	/^    def update_data(cls, elem):$/;"	m	class:SecurityFunction
 update_data	resource/software_definition.py	/^    def update_data(cls, elem):$/;"	m	class:SoftwareDefinition
 url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/cb.example.com:5000",$/;"	v	class:ContextBrokerConnection
 url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi.example.com:4000",$/;"	v	class:LCPSonDescription
