@@ -19,6 +19,8 @@ IPV6_RE = r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:
 IPV4_RE = r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$"
 MACADDR_RE = r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"
 
+EXEC_ENV_TYPE = ['bare-metal', 'lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
+                 'mobile', 'gateway', 'application']
 
 class DiskPartition(Base_Schema):
     """Define a Disk partition schema"""
@@ -108,6 +110,8 @@ class VirtualServer(BaremetalServer):
                           description="Cloud ID -- Maybe None if somehow hosted")
     host_id = fields.Str(required=False, example="39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
                          description="ID of underlying Baremetal Server")
+    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,
+                                    description="List of Network Interfaces in the Virtual Host")
 
 
 class DockerContainer(Base_Schema):

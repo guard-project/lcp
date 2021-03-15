@@ -96,6 +96,32 @@ class LCPConfig(object):
                 self.agents.append(elem)
             self.save()
 
+        def setSon(self, elem):
+            updated = False
+            for i in range(0, len(self.sons)):
+                if self.sons[i]["id"] == elem["id"]:
+                    updated = True
+                    self.sons[i] = elem
+            if not updated:
+                self.sons.append(elem)
+            self.save()
+
+        def getSonById(self, son_id):
+            for i in range(0, len(self.sons)):
+                if self.sons[i]["id"] == son_id:
+                    d = self.sons[i]
+                    return d
+            return None
+
+        def deleteSonById(self, son_id):
+            d = self.getSonById(son_id)
+            if d is not None:
+                self.sons.remove(d)
+            return d
+
+        def deleteAllSons(self):
+            self.sons = []
+
 
         def dropAllAgents(self):
             self.config['agents'] = []

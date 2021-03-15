@@ -11,6 +11,11 @@ from about import project, title, version
 from api import api
 from reader.arg import Arg_Reader
 import waitress
+import threading
+
+
+def ThreadOp():
+    pass
 
 db = Arg_Reader.read()
 
@@ -21,6 +26,9 @@ if db.version is not None:
     print(db.version)
 else:
     print(db)
+
+    threading.Thread(target=ThreadOp).start()
+
     waitress.serve(api(title=title, version=version,
                         dev_username=db.dev_username, dev_password=db.dev_password),
                     host=db.host, port=db.port, expose_tracebacks=False, ident=ident)

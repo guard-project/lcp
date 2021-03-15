@@ -31,23 +31,27 @@ class TestMyApp(FiliationTesting):
 
     def _setFiliationData(self):
         uuid, url, body_dict = self._getFiliationData()
-        Filiation.data[uuid] = body_dict
+        cfg = getLCPConfig()
+        cfg.setSon(body_dict)
         return uuid, url, body_dict
 
     def _setMultiFiliationData(self):
         uuids = ["49157b82-1962-4054-9862-989d61c4ff02", "04400853-c48d-47f7-9472-efdb8e877991", "066c121c-279d-4877-9e0b-ccd5f2a2d858"]
         urls = ["http://hst1.domain1.com", "http://hst2.domain2.com", "http://hst3.domain3.com"]
         names = ["lcp:host01", "lcp:host02", "lcp:host03"]
+        cfg = getLCPConfig()
         for i in range(3):
-            Filiation.data[uuids[i]] = {"id": uuids[i], "url": urls[i], "name": names[i]}
+            cfg.setSon({"id": uuids[i], "url": urls[i], "name": names[i]})
 
-    def test_get_messages(self):
+    def test_get_filiation(self):
         headers = self._getAuthorizationHeaders()
         Filiation.data = {}
+        config = getLCPConfig()
+        config.deleteAllSons()
 
         # No Authorization for request:
         result = self.simulate_get("/filiation")
-        # assert (result.status == "401 Unauthorized")
+        assert (result.status == "401 Unauthorized")
 
         # With Authorization header, get empy list:
         result = self.simulate_get("/filiation", headers=headers)
@@ -71,7 +75,7 @@ class TestMyApp(FiliationTesting):
         assert len(sons) == 4
 
 
-    def test_get_messages_by_id(self):
+    def test_get_filiation_by_id(self):
         headers = self._getAuthorizationHeaders()
 
         result = self.simulate_get("/filiation/134", headers=headers)
@@ -85,7 +89,7 @@ class TestMyApp(FiliationTesting):
         assert(payload['url'] == url)
 
 
-    def test_post_message(self):
+    def test_post_filiation(self):
         # No Authorization for request:
         id, url, body_dict = self._getFiliationData()
         lcp_info = LCPSonDescription()
@@ -99,8 +103,8 @@ class TestMyApp(FiliationTesting):
         headers = self._getAuthorizationHeaders()
         print(body)
         result = self.simulate_post("/filiation", headers=headers, body=json.dumps(body))
-        print(result.status)
-        print(result.json)
+        print("STATUS:", result.status)
+        print("JSON:", result.json)
         assert(result.status == "201 Created")
 
         # Fake thing. Not a correct data -- Expected: 406 Not Acceptable
@@ -128,21 +132,22 @@ class TestMyApp(FiliationTesting):
     def test_delete_message(self):
         uuid, url, body_dict = self._getFiliationData()
         headers = self._getAuthorizationHeaders()
+        cfg = getLCPConfig()
 
         # Try delete without authorization:
         result = self.simulate_delete("/filiation/1324")
         assert(result.status == "401 Unauthorized")
 
         # Try delete with authorization, but non existent
-        result = self.simulate_delete(f"/filiation/{uuid}", headers=headers)
+        result = self.simulate_delete(f"/filiation/12345", headers=headers)
         assert (result.status == "404 Not Found")
 
         self._setMultiFiliationData()
         self._setFiliationData()
-        assert (uuid in Filiation.data)
+        assert cfg.getSonById(uuid) is not None
         result = self.simulate_delete(f"/filiation/{uuid}", headers=headers)
         assert (result.status == "200 OK")
-        assert (uuid not in Filiation.data)
+        assert cfg.getSonById(uuid) is None
 
 
     def test_other(self):
@@ -159,9 +164,3 @@ class TestMyApp(FiliationTesting):
         except ValidationError as err:
             # pprint(err.messages)
             pass
-
-    def testFoo(self):
-        uuid, url, body = self._getFiliationData()
-        print(uuid)
-        print(url)
-        print(body)

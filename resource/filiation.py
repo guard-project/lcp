@@ -16,7 +16,7 @@ __all__ = [
 
 
 class Filiation(Base_Resource):
-    data = {}
+    # data = {}
     tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service chain.'}
     routes = '/filiation',
 
@@ -26,7 +26,7 @@ class Filiation(Base_Resource):
     @docstring(source='filiation/get.yaml')
     def on_get(self, req, resp):
         resp_Data, valid = LCPSonDescription(method=HTTP_Method.GET) \
-        .validate(data={})
+           .validate(data={})
         child_nodes = LCPConfig().sons
         # for k in Filiation.data:
         #    child_nodes.append(Filiation.data[k])
@@ -37,13 +37,13 @@ class Filiation(Base_Resource):
         resp_Data, valid = LCPSonDescription(method=HTTP_Method.POST) \
             .validate(data={})
         payload = req.media if isinstance(req.media, list) else [req.media]
+        cfg = LCPConfig()
         try:
             lcp = LCPSonDescription(many=True)
             lcp.load(payload)
             valid = lcp.validate(payload)
             for f in payload:
-                print(f)
-                Filiation.data[f['id']] = f
+                cfg.setSon(f)
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
@@ -62,24 +62,24 @@ class FiliationById(Base_Resource):
     def on_get(self, req, resp, id):
         resp_Data, valid = LCPSonDescription(method=HTTP_Method.GET) \
             .validate(data={}, id=id)
-        if id in Filiation.data:
-            o = Filiation.data[id]
-            resp.body = json.dumps(o)
-            return
-        else:
+        cfg = LCPConfig()
+        son = cfg.getSonById(id)
+
+        if son is None:
             resp.status = HTTP_NOT_FOUND
+        else:
+            resp.body = json.dumps(son)
 
     @docstring(source='filiation/get.yaml')
     def on_delete(self, req, resp, id):
         resp_Data, valid = LCPSonDescription(method=HTTP_Method.DELETE) \
             .validate(data={}, id=id)
-        if id in Filiation.data:
-            o = Filiation.data
-            Filiation.data.pop(id)
-            resp.body = json.dumps(o)
+        cfg = LCPConfig()
+        d = cfg.deleteSonById(id)
+        if d is not None:
+            resp.body = json.dumps(d)
             resp.status = HTTP_OK
         else:
-
             resp.status = HTTP_NOT_FOUND
 
 

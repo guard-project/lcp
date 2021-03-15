@@ -602,6 +602,7 @@ DockerContainer	schema/hardware_definitions.py	/^class DockerContainer(Base_Sche
 Docstring	docs/api.rst	/^Docstring$/;"	s	chapter:API
 Documentation	docs/index.rst	/^Documentation$/;"	c
 EXAMPLE_FILENAME	schema/config.py	/^EXAMPLE_FILENAME = 'firewall.xml'$/;"	v
+EXEC_ENV_TYPE	schema/hardware_definitions.py	/^EXEC_ENV_TYPE = ['bare-metal', 'lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',$/;"	v
 Elastic_Apm_Middleware	api/__init__.py	/^from falcon_elastic_apm import ElasticApmMiddleware as Elastic_Apm_Middleware$/;"	x	nameref:unknown:ElasticApmMiddleware
 Enforcement	CONTRIBUTING.md	/^### Enforcement$/;"	S	section:Contributing""Code of Conduct
 Enforcement	docs/CONTRIBUTING.md	/^### Enforcement$/;"	S	section:Contributing""Code of Conduct
@@ -787,6 +788,7 @@ TestMyApp	test/security_function_tests.py	/^class TestMyApp(SecurityFunctionDefi
 TestMyApp	test/software_definition_tests.py	/^class TestMyApp(SoftwareDefinitionsTesting):$/;"	c
 TestMyApp	test/test_lcp_config.py	/^class TestMyApp(SecurityFunctionDefinitionTesting):$/;"	c
 TestMyApp	test/virtual_server_test.py	/^class TestMyApp(VirtualServerTesting):$/;"	c
+ThreadOp	main.py	/^def ThreadOp():$/;"	f
 Time	docs/api.rst	/^Time$/;"	S	section:Utils
 Timeout_Error	lib/polycube.py	/^from requests.exceptions import ConnectionError as Connection_Error, Timeout as Timeout_Error$/;"	x	nameref:unknown:Timeout
 Unauthorized_Response	lib/response.py	/^class Unauthorized_Response(Base_Response):$/;"	c
@@ -1274,8 +1276,8 @@ description	swagger/schema.json	/^          "description": "List of CIDR for IPv
 description	swagger/schema.json	/^          "description": "List of CIDR for IPv6 values",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses
 description	swagger/schema.json	/^          "description": "List of Cloud Controllers",$/;"	s	object:definitions.CloudSchema.properties.controllers
 description	swagger/schema.json	/^          "description": "List of Cloud compute nodes",$/;"	s	object:definitions.CloudSchema.properties.compute_nodes
+description	swagger/schema.json	/^          "description": "List of Network Interfaces in the Virtual Host",$/;"	s	object:definitions.VirtualServer.properties.networkInterfaces
 description	swagger/schema.json	/^          "description": "List of Network Interfaces in the host",$/;"	s	object:definitions.BaremetalServer.properties.networkInterfaces
-description	swagger/schema.json	/^          "description": "List of Network Interfaces in the host",$/;"	s	object:definitions.VirtualServer.properties.networkInterfaces
 description	swagger/schema.json	/^          "description": "List of actions.",$/;"	s	object:definitions.Config_Request.properties.actions
 description	swagger/schema.json	/^          "description": "List of configuration parameters used",$/;"	s	object:definitions.SecurityFunction.properties.parameters
 description	swagger/schema.json	/^          "description": "List of opened TCP Ports",$/;"	s	object:definitions.SoftwareDefinition.properties.openTCPPorts
@@ -1852,6 +1854,7 @@ name	test/examples/virtual-server-example.json	/^            "name": "ens3",$/;"
 name	test/examples/virtual-server-example.json	/^            "name": "vda",$/;"	s	object:diskDevices.0
 networkInterfaces	schema/hardware_definitions.py	/^    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,$/;"	v	class:BaremetalServer
 networkInterfaces	schema/hardware_definitions.py	/^    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,$/;"	v	class:LXCContainer
+networkInterfaces	schema/hardware_definitions.py	/^    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,$/;"	v	class:VirtualServer
 networkInterfaces	swagger/schema.json	/^        "networkInterfaces": {$/;"	o	object:definitions.BaremetalServer.properties
 networkInterfaces	swagger/schema.json	/^        "networkInterfaces": {$/;"	o	object:definitions.VirtualServer.properties
 networkInterfaces	test/examples/bare-metal-server-example.json	/^    "networkInterfaces": [$/;"	a

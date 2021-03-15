@@ -648,7 +648,7 @@ definitions:
         example: ed5bd35a-7213-47a9-ae6e-76212e62a157
         type: string
       networkInterfaces:
-        description: List of Network Interfaces in the host
+        description: List of Network Interfaces in the Virtual Host
         items:
           $ref: '#/definitions/NetworkInterface'
         type: array
