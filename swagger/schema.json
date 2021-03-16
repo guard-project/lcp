@@ -688,20 +688,20 @@
     "Exception_Response": {
       "type": "object",
       "properties": {
-        "filename": {
+        "reason": {
           "type": "string",
-          "example": "lib/connection.py",
-          "description": "Filename where the exception is raised."
+          "example": "Connection timeout",
+          "description": "Exception reason."
         },
         "line": {
           "type": "integer",
           "example": 80,
           "description": "Line where the exception is raised."
         },
-        "reason": {
+        "filename": {
           "type": "string",
-          "example": "Connection timeout",
-          "description": "Exception reason."
+          "example": "lib/connection.py",
+          "description": "Filename where the exception is raised."
         }
       },
       "required": [
@@ -713,9 +713,6 @@
     "No_Content_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "No Content"
-        },
         "error": {
           "default": false
         },
@@ -734,6 +731,9 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "status": {
+          "default": "No Content"
         }
       },
       "required": [
@@ -743,9 +743,6 @@
     "Bad_Request_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Bad Request"
-        },
         "error": {
           "default": true
         },
@@ -764,6 +761,9 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "status": {
+          "default": "Bad Request"
         }
       },
       "required": [
@@ -773,9 +773,6 @@
     "Unauthorized_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Unauthorized"
-        },
         "error": {
           "default": true
         },
@@ -794,6 +791,9 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "status": {
+          "default": "Unauthorized"
         }
       },
       "required": [
@@ -803,9 +803,6 @@
     "Not_Acceptable_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Not Acceptable"
-        },
         "error": {
           "default": true
         },
@@ -824,6 +821,9 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "status": {
+          "default": "Not Acceptable"
         }
       },
       "required": [
@@ -833,9 +833,6 @@
     "Ok_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "OK"
-        },
         "error": {
           "default": false
         },
@@ -854,6 +851,9 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "status": {
+          "default": "OK"
         }
       },
       "required": [
@@ -863,9 +863,6 @@
     "Unsupported_Media_Type_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Unsupported Media Type"
-        },
         "error": {
           "default": true
         },
@@ -884,6 +881,9 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "status": {
+          "default": "Unsupported Media Type"
         }
       },
       "required": [
@@ -893,9 +893,6 @@
     "Internal_Server_Error_Response": {
       "type": "object",
       "properties": {
-        "status": {
-          "default": "Internal Server Error"
-        },
         "error": {
           "default": true
         },
@@ -914,54 +911,13 @@
               "$ref": "#/definitions/Exception_Response"
             }
           ]
+        },
+        "status": {
+          "default": "Internal Server Error"
         }
       },
       "required": [
         "message"
-      ]
-    },
-    "Config_Parameter_Request": {
-      "type": "object",
-      "properties": {
-        "source": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "Source filename."
-        },
-        "path": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "example": "period",
-            "description": "Key path."
-          }
-        },
-        "id": {
-          "type": "string",
-          "example": "period",
-          "description": "Id of the parameter."
-        },
-        "schema": {
-          "type": "string",
-          "enum": [
-            "json",
-            "properties",
-            "xml",
-            "yaml"
-          ],
-          "example": "yaml",
-          "description": "Scheme."
-        },
-        "value": {
-          "example": "10s",
-          "description": "Parameter new value."
-        }
-      },
-      "required": [
-        "id",
-        "schema",
-        "source",
-        "value"
       ]
     },
     "Config_Resource_Request": {
@@ -991,6 +947,11 @@
     "Config_Action_Request": {
       "type": "object",
       "properties": {
+        "args": {
+          "type": "string",
+          "example": "-al",
+          "description": "Single command argument."
+        },
         "cmd": {
           "type": "string",
           "description": "Command."
@@ -1014,11 +975,6 @@
           "type": "boolean",
           "example": true,
           "description": "Execute the command as daemon."
-        },
-        "args": {
-          "type": "string",
-          "example": "-al",
-          "description": "Single command argument."
         }
       },
       "required": [
@@ -1026,16 +982,53 @@
         "id"
       ]
     },
+    "Config_Parameter_Request": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "type": "string",
+          "enum": [
+            "json",
+            "properties",
+            "xml",
+            "yaml"
+          ],
+          "example": "yaml",
+          "description": "Scheme."
+        },
+        "id": {
+          "type": "string",
+          "example": "period",
+          "description": "Id of the parameter."
+        },
+        "source": {
+          "type": "string",
+          "example": "firewall.xml",
+          "description": "Source filename."
+        },
+        "value": {
+          "example": "10s",
+          "description": "Parameter new value."
+        },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "period",
+            "description": "Key path."
+          }
+        }
+      },
+      "required": [
+        "id",
+        "schema",
+        "source",
+        "value"
+      ]
+    },
     "Config_Request": {
       "type": "object",
       "properties": {
-        "parameters": {
-          "description": "List of parameters.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Parameter_Request"
-          }
-        },
         "resources": {
           "description": "List of resources.",
           "type": "array",
@@ -1049,36 +1042,43 @@
           "items": {
             "$ref": "#/definitions/Config_Action_Request"
           }
+        },
+        "parameters": {
+          "description": "List of parameters.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Config_Parameter_Request"
+          }
         }
       }
     },
     "Status_Response": {
       "type": "object",
       "properties": {
+        "started": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2019/02/14 15:23:30",
+          "description": "Timestamp when the LCP is started"
+        },
         "last_heartbeat": {
           "type": "string",
           "format": "date-time",
           "example": "2019/02/14 15:23:33",
           "description": "Timestamp of the expiration of the API access configuration."
         },
-        "password": {
-          "type": "string",
-          "description": "Password for the CB to connect to this LCP."
-        },
-        "username": {
-          "type": "string",
-          "description": "Username for the CB to connect to this LCP."
-        },
         "id": {
           "type": "string",
           "example": "apache",
           "description": "ID of the execution environment."
         },
-        "started": {
+        "username": {
           "type": "string",
-          "format": "date-time",
-          "example": "2019/02/14 15:23:30",
-          "description": "Timestamp when the LCP is started"
+          "description": "Username for the CB to connect to this LCP."
+        },
+        "password": {
+          "type": "string",
+          "description": "Password for the CB to connect to this LCP."
         }
       },
       "required": [
