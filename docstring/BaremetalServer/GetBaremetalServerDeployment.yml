@@ -6,10 +6,8 @@ description: |
 tags: [hardware]
 responses:
   200:
-    description: Get the Server's configuration information from LCP
-    schema:
-      type: array
-      items: BaremetalServer
+    description: Get the Server's configuration information from LCP where it is deployed
+    schema: BaremetalServer
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

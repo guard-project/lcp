@@ -349,7 +349,7 @@ definitions:
     required:
     - message
     type: object
-  LCPSonDescription:
+  LCPDescription:
     properties:
       id:
         description: Unique ID for the Son LCP
@@ -1086,7 +1086,7 @@ paths:
       summary: Status set.
       tags:
       - status
-  /filiation/{id}:
+  /lcp_son/{id}:
     delete:
       description: 'Gets a list of next links in the service chain filiated (as son
         childs) with
@@ -1099,7 +1099,7 @@ paths:
           description: Status data of the LCP.
           schema:
             items:
-              $ref: '#/definitions/LCPSonDescription'
+              $ref: '#/definitions/LCPDescription'
             type: array
         '400':
           description: Request not valid.
@@ -1139,7 +1139,7 @@ paths:
         '200':
           description: Status data of the LCP.
           schema:
-            $ref: '#/definitions/LCPSonDescription'
+            $ref: '#/definitions/LCPDescription'
         '400':
           description: Request not valid.
           schema:
@@ -1159,7 +1159,7 @@ paths:
       summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
       tags:
       - filiation
-  /filiation:
+  /lcp_son:
     get:
       description: 'Gets a list of next links in the service chain filiated (as son
         childs) with
@@ -1172,7 +1172,7 @@ paths:
           description: Status data of the LCP.
           schema:
             items:
-              $ref: '#/definitions/LCPSonDescription'
+              $ref: '#/definitions/LCPDescription'
             type: array
         '400':
           description: Request not valid.
@@ -1205,7 +1205,7 @@ paths:
         name: payload
         required: true
         schema:
-          $ref: '#/definitions/LCPSonDescription'
+          $ref: '#/definitions/LCPDescription'
       responses:
         '200':
           description: Status data of the LCP.
@@ -1235,7 +1235,7 @@ paths:
         '
       responses:
         '200':
-          description: Get the Server's configuration infromation from LCP
+          description: Get the Server's configuration information from LCP
           schema:
             items:
               $ref: '#/definitions/BaremetalServer'
@@ -1555,11 +1555,137 @@ paths:
       summary: Post the Description of one Cloud Infrastructure
       tags:
       - hardware
-  /self/deployment:
-    get: {}
-    post: {}
+  /self/deployment/bare-metal:
+    get:
+      description: 'Gets the information of the Server where the LCP is deployed
+
+        '
+      responses:
+        '200':
+          description: Get the Server's configuration information from LCP where it
+            is deployed
+          schema:
+            $ref: '#/definitions/BaremetalServer'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Baremetal server where the LCP is deployed on.
+      tags:
+      - hardware
+    post:
+      description: 'Posts the information of the Server where the LCP is deployed
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/BaremetalServer'
+      responses:
+        '201':
+          description: The BaremetalServer where LCP is deployed has been successfully
+            updated.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: POST the Baremetal server where the LCP is deployed on.
+      tags:
+      - hardware
+  /self/deployment/vm:
+    get:
+      description: 'Gets the information of the Server where the LCP is deployed
+
+        '
+      responses:
+        '200':
+          description: Get the Virtual Server's configuration information of the Virtual
+            Server where LCP Is deployed.
+          schema:
+            $ref: '#/definitions/VirtualServer'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Virtual server where the LCP is deployed on.
+      tags:
+      - hardware
+    post:
+      description: 'Posts the information of the Server where the LCP is deployed
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/VirtualServer'
+      responses:
+        '201':
+          description: The VirtualServer where the LCP is deployed has been correctly
+            updated.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: POST the Baremetal server where the LCP is deployed on.
+      tags:
+      - hardware
   /self:
     get: {}
+  /lcp_parent:
+    get: {}
+    post: {}
 produces:
 - application/json
 swagger: '2.0'
@@ -1573,7 +1699,7 @@ tags:
 - description: Describes a "son" LCP linked in this service chain.
   name: filiation
 - description: Describes a "son" LCP linked in this service chain.
-  name: filiation
+  name: lcp_relationships
 - description: Returns description of a Baremetal Server.
   name: hardware
 - description: Returns description of a Baremetal Server.
@@ -1584,7 +1710,11 @@ tags:
   name: software
 - description: Description of a Cloud Infrastructure
   name: hardware
-- description: Returns description of a Baremetal Server.
+- description: Returns description of a Baremetal Server where LCP is deployed.
+  name: hardware
+- description: Returns description of a Virtual Server where LCP is deployed
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: hardware
+- description: Describes a "son" LCP linked in this service chain.
+  name: lcp relationships

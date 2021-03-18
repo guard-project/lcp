@@ -11,7 +11,7 @@ responses:
     description: Status data of the LCP.
     schema:
       type: array
-      items: LCPSonDescription
+      items: LCPDescription
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

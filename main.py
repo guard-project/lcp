@@ -11,11 +11,22 @@ from about import project, title, version
 from api import api
 from reader.arg import Arg_Reader
 import waitress
-import threading
+from threading import Thread
+from RestClients.LCPClient import *
+import time
+from lib.lcp_config import LCPConfig
 
 
-def ThreadOp():
-    pass
+def threadOp():
+    time.sleep(3) # Let Falkon start first...
+    lcp_client = LCPClient()
+    config = LCPConfig
+    for p in config.parents:
+        msg = LCPMessages(BetweenLCPMessages.ConnectLCPParent, {"url": p})
+        lcp_client.send(msg)
+
+    lcp_client.__qread()
+
 
 db = Arg_Reader.read()
 
@@ -27,7 +38,7 @@ if db.version is not None:
 else:
     print(db)
 
-    threading.Thread(target=ThreadOp).start()
+    Thread(target=threadOp).start()
 
     waitress.serve(api(title=title, version=version,
                         dev_username=db.dev_username, dev_password=db.dev_password),

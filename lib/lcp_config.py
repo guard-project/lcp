@@ -1,9 +1,11 @@
 import os
 import yaml
 
-from schema.filiation import LCPSonDescription
+from schema.filiation import LCPDescription
 from schema.filiation import ContextBrokerConnection
 from urllib.parse import urlparse
+
+CONTEXT_BROKER='context_broker'
 
 class LCPConfig(object):
     class __LCPConfig:
@@ -40,7 +42,7 @@ class LCPConfig(object):
             with open(self.filename, "r") as f:
                 self.config = yaml.load(f, Loader=yaml.FullLoader)
 
-            lcp_schema = LCPSonDescription(many=False)
+            lcp_schema = LCPDescription(many=False)
 
             # Debe contener al menos los datos de este LCP
             lcp_schema.load(self.config['lcp'])
@@ -54,17 +56,17 @@ class LCPConfig(object):
 
             # Sons:
             if 'lcp_sons' in self.config and len(self.config['lcp_sons']) > 0:
-                lcp_schema = LCPSonDescription(many=True)
+                lcp_schema = LCPDescription(many=True)
                 lcp_schema.load(self.config['lcp_sons'])
                 self.sons = self.config['lcp_sons']
 
             self.lcp = self.config['lcp']
 
             # Context Broker
-            if 'context_broker' in self.config and len(self.config['context_broker']) > 0:
+            if CONTEXT_BROKER in self.config and len(self.config[CONTEXT_BROKER]) > 0:
                 cb_schema = ContextBrokerConnection(many=False)
-                cb_schema.load(self.config['context_broker'])
-                self.contextBroker = self.config['context_broker']
+                cb_schema.load(self.config[CONTEXT_BROKER])
+                self.contextBroker = self.config[CONTEXT_BROKER]
 
             if 'agents' not in self.config:
                 self.config['agents'] = []
@@ -96,6 +98,14 @@ class LCPConfig(object):
                 self.agents.append(elem)
             self.save()
 
+        def setParent(self, elem):
+            updated = False
+            if not elem['url'] in self.parents:
+                self.parents.append(elem['url'])
+                self.config['parents'] = self.parents
+                updated = True
+            self.save()
+
         def setSon(self, elem):
             updated = False
             for i in range(0, len(self.sons)):
@@ -117,15 +127,22 @@ class LCPConfig(object):
             d = self.getSonById(son_id)
             if d is not None:
                 self.sons.remove(d)
+                self.save()
             return d
 
         def deleteAllSons(self):
             self.sons = []
+            self.save()
 
 
         def dropAllAgents(self):
             self.config['agents'] = []
             self.agents = self.config['agents']
+            self.save()
+
+        def setContextBroker(self, data):
+            self.config[CONTEXT_BROKER] = data
+            self.contextBroker = self.config[CONTEXT_BROKER]
             self.save()
 
 

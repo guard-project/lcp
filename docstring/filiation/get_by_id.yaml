@@ -15,7 +15,7 @@ tags: [filiation]
 responses:
   200:
     description: Status data of the LCP.
-    schema: LCPSonDescription
+    schema: LCPDescription
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

@@ -18,15 +18,17 @@ db = (
     Code_Resource,
     Config_Resource,
     Status_Resource,
-    FiliationById,
-    Filiation,
+    SonRequestIdentificationById,
+    SonLCPIdentification,
     BaremetalServer,
     VirtualServer,
     SoftwareDefinition,
     SecurityFunction,
     CloudInfrastructure,
-    DescribeDeployment,
-    DescribeSelf
+    DescribeDeploymentBareMetal,
+    DescribeDeploymentVM,
+    DescribeSelf,
+    ParentLCPIdentification
 )
 
 tags = []
