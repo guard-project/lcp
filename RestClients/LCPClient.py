@@ -32,20 +32,17 @@ class LCPClient(object):
 
         def getHeaders(self):
             headers = {'content-type': 'application/json'}
-            auth = self.config['user'] + ":" + self.config['password']
-            auth_b64 = base64.b64encode(auth)
-            headers['Authorization'] = "Basic " + auth_b64
+            auth = self.config.user + ":" + self.config.password
+            auth_b64 = base64.b64encode(auth.encode('utf-8'))
+            headers['Authorization'] = "Basic " + str(auth_b64, "utf-8")
             return headers
 
-        def postLcpSon(self):
-            if len(self.config.parents) > 0:
-                parent = self.config.parents[0]
-
+        def postLcpSon(self, parent):
             headers = self.getHeaders()
             payload = self.config.lcp
             try:
                 resp = requests.post(parent['url'] + "/lcp_son", headers=headers,
-                                data=json.dumps(payload), timeout=5)
+                                     data=json.dumps(payload), timeout=5)
                 if resp.status_code == 200:
                     data = resp.json()
                     cb_schema = ContextBrokerConnectionSchema()
@@ -82,16 +79,16 @@ class LCPClient(object):
                 err = True
 
             if err:
-                threading.Timer(15, self.postLcpSonToParent, [requested_children_url]).start()
+                threading.Timer(15, self.postLcpParentToSon, [requested_children_url]).start()
 
 
         def qread(self):
             while True:
                 message = self.q.get()
 
-                if message.message_type == BetweenLCPMessages.ConnectLCPSon:
+                if message.message_type == BetweenLCPMessages.PostLCPSon:
                     self.postLcpSon(message.data)
-                elif message.message_type == BetweenLCPMessages.ConnectLCPParent:
+                elif message.message_type == BetweenLCPMessages.PostLCPParent:
                     self.postLcpSon(message.data)
 
         def send(self, message: LCPMessages):

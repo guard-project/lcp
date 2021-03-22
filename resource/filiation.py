@@ -70,7 +70,7 @@ class ParentLCPIdentification(Base_Resource):
             parent.validate(payload)
             for f in payload:
                 cfg.setParent(f)
-                LCPClient().send(LCPMessages(BetweenLCPMessages.ConnectLCPParent, f))
+                LCPClient().send(LCPMessages(BetweenLCPMessages.PostLCPSon, f))
             resp.status = HTTP_ACCEPTED
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE

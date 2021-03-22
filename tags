@@ -2084,7 +2084,7 @@ post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./virtualserver
 post	swagger/schema.json	/^      "post": {}$/;"	o	object:paths./lcp_parent
 post	test/test_utils.py	/^    def post(self):$/;"	m	class:TerminateHttpServer
 post	test/test_utils.py	/^    def post(self):$/;"	m	class:TestLCPSonFiliationRequest
-postLcpParentToSon	RestClients/LCPClient.py	/^        def postLcpParentToSon(self, parent_url):  # I am your faher$/;"	m	class:LCPClient.__LCPClient
+postLcpParentToSon	RestClients/LCPClient.py	/^        def postLcpParentToSon(self, requested_children_url):  # I am your faher$/;"	m	class:LCPClient.__LCPClient
 postLcpSon	RestClients/LCPClient.py	/^        def postLcpSon(self):$/;"	m	class:LCPClient.__LCPClient
 post_register	lib/ContextBrokerThread.py	/^        def post_register(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
 post_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x	nameref:unknown:post
