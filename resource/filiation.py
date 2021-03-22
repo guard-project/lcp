@@ -16,7 +16,6 @@ __all__ = [
     'ParentLCPIdentification'
 ]
 
-
 class SonLCPIdentification(Base_Resource):
     # data = {}
     tag = {'name': 'lcp_relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}

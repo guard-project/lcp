@@ -21,6 +21,7 @@ class LCPConfig(object):
             self.deployment = {}
             self.agents = []
             self.testing = False
+            self.children_requested = []
             self.reload(self.filename)
 
         def save(self):
@@ -77,6 +78,11 @@ class LCPConfig(object):
             try:
                 self.user = self.config['user']
                 self.password = self.config['password']
+            except KeyError:
+                pass
+
+            try:
+                self.children_requested = self.config['lcp_request_as_sons']
             except KeyError:
                 pass
 

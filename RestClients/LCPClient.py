@@ -54,7 +54,8 @@ class LCPClient(object):
             except (Timeout, ValidationError) as e:
                 threading.Timer(15, self.filiate).start()
 
-        def postLcpParent(self, message):
+
+        def postLcpParentToSon(self, requested_children_url):  # I am your faher
             """
             When a /lcp_parent request is recieved, this LCP, as son, will send its data to
             parent LCP in order to get the information of the parent. --- It filiates itself.
@@ -64,29 +65,32 @@ class LCPClient(object):
             :param parent: dictionary containing 'url' of parent's
             :return: Nothing.
             """
+            err = False
             data = {"url": self.config.lcp['url']}
             headers = self.getHeaders()
             try:
-                url = parent['url'] +"/lcp_parent"
+                url = requested_children_url +"/lcp_parent"
 
-                j = json.dumps(self.config.lcp)
+                j = json.dumps({"url": self.config.lcp['url']})
                 resp = requests.post(url, headers=headers,
                                      json=j, timeout=5000)
-                if resp.status_code == 202: #Accepted
-                    message = LCPMessages(BetweenLCPMessages.ConnectLCPSon, self.config.lcp)
-                    self.send(message)
+                if resp.status_code != 202: #Accepted
+                    err = True
                 else:
                     raise Timeout
             except Timeout as e:
-                print(e)
-                threading.Timer(15, self.postLcpParent(), [parent]).start()
+                err = True
+
+            if err:
+                threading.Timer(15, self.postLcpSonToParent, [requested_children_url]).start()
 
 
         def qread(self):
             while True:
-                message = self.q.read()
+                message = self.q.get()
+
                 if message.message_type == BetweenLCPMessages.ConnectLCPSon:
-                    self.postLcpSon()
+                    self.postLcpSon(message.data)
                 elif message.message_type == BetweenLCPMessages.ConnectLCPParent:
                     self.postLcpSon(message.data)
 

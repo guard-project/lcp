@@ -21,8 +21,8 @@ def threadOp():
     time.sleep(3) # Let Falkon start first...
     lcp_client = LCPClient()
     config = LCPConfig()
-    for p in config.parents:
-        msg = LCPMessages(BetweenLCPMessages.PostLCPSon, {"url": p})
+    for children_requested in config.children_requested:
+        msg = LCPMessages(BetweenLCPMessages.PostLCPParent, children_requested)
         lcp_client.send(msg)
 
     lcp_client.qread()
