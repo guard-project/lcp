@@ -20,12 +20,12 @@ from lib.lcp_config import LCPConfig
 def threadOp():
     time.sleep(3) # Let Falkon start first...
     lcp_client = LCPClient()
-    config = LCPConfig
+    config = LCPConfig()
     for p in config.parents:
-        msg = LCPMessages(BetweenLCPMessages.ConnectLCPParent, {"url": p})
+        msg = LCPMessages(BetweenLCPMessages.PostLCPSon, {"url": p})
         lcp_client.send(msg)
 
-    lcp_client.__qread()
+    lcp_client.qread()
 
 
 db = Arg_Reader.read()

@@ -102,7 +102,7 @@ class LCPConfig(object):
             updated = False
             if not elem['url'] in self.parents:
                 self.parents.append(elem['url'])
-                self.config['parents'] = self.parents
+                self.config['lcp_parents'] = self.parents
                 updated = True
             self.save()
 
@@ -114,6 +114,7 @@ class LCPConfig(object):
                     self.sons[i] = elem
             if not updated:
                 self.sons.append(elem)
+            self.config['lcp_sons'] = self.sons
             self.save()
 
         def getSonById(self, son_id):

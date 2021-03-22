@@ -8,13 +8,13 @@ from marshmallow import ValidationError
 
 from queue import Queue
 import enum
-
+import base64
 from threading import Thread
 
 
 class BetweenLCPMessages(enum.Enum):
-    ConnectLCPSon = 1
-    ConnectLCPParent = 2
+    PostLCPSon = 1
+    PostLCPParent = 2
 
 
 class LCPMessages:
@@ -30,11 +30,18 @@ class LCPClient(object):
             self.filated = False
             self.q = Queue()
 
-        def filiate(self):
+        def getHeaders(self):
+            headers = {'content-type': 'application/json'}
+            auth = self.config['user'] + ":" + self.config['password']
+            auth_b64 = base64.b64encode(auth)
+            headers['Authorization'] = "Basic " + auth_b64
+            return headers
+
+        def postLcpSon(self):
             if len(self.config.parents) > 0:
                 parent = self.config.parents[0]
 
-            headers = {"content-type: application/json"}
+            headers = self.getHeaders()
             payload = self.config.lcp
             try:
                 resp = requests.post(parent['url'] + "/lcp_son", headers=headers,
@@ -47,7 +54,7 @@ class LCPClient(object):
             except (Timeout, ValidationError) as e:
                 threading.Timer(15, self.filiate).start()
 
-        def messageLcpParent(self, parent):
+        def postLcpParent(self, message):
             """
             When a /lcp_parent request is recieved, this LCP, as son, will send its data to
             parent LCP in order to get the information of the parent. --- It filiates itself.
@@ -58,10 +65,11 @@ class LCPClient(object):
             :return: Nothing.
             """
             data = {"url": self.config.lcp['url']}
-            headers = {"content-type": "application/json"}
+            headers = self.getHeaders()
             try:
-                url = parent['url'] +"/lcp_son"
-                j = json.dumps(LCPConfig().lcp)
+                url = parent['url'] +"/lcp_parent"
+
+                j = json.dumps(self.config.lcp)
                 resp = requests.post(url, headers=headers,
                                      json=j, timeout=5000)
                 if resp.status_code == 202: #Accepted
@@ -71,16 +79,16 @@ class LCPClient(object):
                     raise Timeout
             except Timeout as e:
                 print(e)
-                threading.Timer(15, self.sendParentMessageToLCPSon, [parent]).start()
+                threading.Timer(15, self.postLcpParent(), [parent]).start()
 
 
-        def __qread(self):
+        def qread(self):
             while True:
                 message = self.q.read()
                 if message.message_type == BetweenLCPMessages.ConnectLCPSon:
-                    self.filiate()
+                    self.postLcpSon()
                 elif message.message_type == BetweenLCPMessages.ConnectLCPParent:
-                    self.messageLcpParent(message.data)
+                    self.postLcpSon(message.data)
 
         def send(self, message: LCPMessages):
             self.q.put(message)
