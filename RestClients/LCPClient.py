@@ -37,6 +37,10 @@ class LCPClient(object):
             headers['Authorization'] = "Basic " + str(auth_b64, "utf-8")
             return headers
 
+        def reenqueuePostLcpSon(self, parent):
+            message = LCPMessages(BetweenLCPMessages.PostLCPSon, parent)
+            self.send(message)
+
         def postLcpSon(self, parent):
             headers = self.getHeaders()
             payload = self.config.lcp
@@ -49,8 +53,12 @@ class LCPClient(object):
                     self.config.setContextBroker()
                     cb_schema.validate(resp.json())
             except (Timeout, ValidationError) as e:
-                threading.Timer(15, self.filiate).start()
+                threading.Timer(15, self.postLcpSon).start()
 
+
+        def reenqueueLcpParentToSon(self, requested_children_url):
+            message = LCPMessages(BetweenLCPMessages.PostLCPParent, requested_children_url)
+            self.send(message)
 
         def postLcpParentToSon(self, requested_children_url):  # I am your faher
             """
@@ -70,16 +78,14 @@ class LCPClient(object):
 
                 j = json.dumps({"url": self.config.lcp['url']})
                 resp = requests.post(url, headers=headers,
-                                     json=j, timeout=5000)
+                                     json=data, timeout=5000)
                 if resp.status_code != 202: #Accepted
                     err = True
-                else:
-                    raise Timeout
             except Timeout as e:
                 err = True
 
             if err:
-                threading.Timer(15, self.postLcpParentToSon, [requested_children_url]).start()
+                threading.Timer(15, self.reenqueueLcpParentToSon, [requested_children_url]).start()
 
 
         def qread(self):
@@ -89,7 +95,7 @@ class LCPClient(object):
                 if message.message_type == BetweenLCPMessages.PostLCPSon:
                     self.postLcpSon(message.data)
                 elif message.message_type == BetweenLCPMessages.PostLCPParent:
-                    self.postLcpSon(message.data)
+                    self.postLcpParentToSon(message.data)
 
         def send(self, message: LCPMessages):
             self.q.put(message)
