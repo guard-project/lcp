@@ -23,7 +23,7 @@ class SoftwareDefinition(Base_Schema):
                                description="List of opened UDP Ports")
     vendor = fields.Str(required=False, example="Oracle Coorporation",
                         description="Name of the Vendor for this software"),
-    connected = fields.List(required=False, example="[]",
+    connected = fields.List(fields.Str, required=False, example="[]",
                             description="List of Known connected/related Software")
 
 class ContainerSchema(Base_Schema):

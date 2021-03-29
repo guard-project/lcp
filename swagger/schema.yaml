@@ -548,6 +548,12 @@ definitions:
     type: object
   SoftwareDefinition:
     properties:
+      connected:
+        description: List of Known connected/related Software
+        example: '[]'
+        items:
+          type: string
+        type: array
       id:
         description: ID of this Software Instance
         example: a406874b-dea7-4cd1-9d4e-b82a18ec993b
@@ -568,10 +574,6 @@ definitions:
         items:
           type: integer
         type: array
-      vendor:
-        description: Name of the Vendor for this software
-        example: Oracle Coorporation
-        type: string
       version:
         description: Version of the Piece of Software installed
         example: 5.8+1.0.5ubuntu2
