@@ -28,7 +28,8 @@ db = (
     DescribeDeploymentBareMetal,
     DescribeDeploymentVM,
     DescribeSelf,
-    ParentLCPIdentification
+    ParentLCPIdentification,
+    ContainerDefinition
 )
 
 tags = []

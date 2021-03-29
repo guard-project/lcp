@@ -1720,6 +1720,72 @@ paths:
   /lcp_parent:
     get: {}
     post: {}
+  /self/container:
+    get:
+      description: 'Gets the information of the Server software that LCP Knows.
+
+        '
+      responses:
+        '200':
+          description: Get the Description of the Software controlled by the LCP
+          schema:
+            $ref: '#/definitions/SoftwareDefinition'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Software installed and controlled and known by the LCP
+      tags:
+      - software
+    post:
+      description: 'Posts the information of some Security Functions that LCP must
+        be aware of.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/SecurityFunction'
+          type: array
+      responses:
+        '201':
+          description: The Security Function definition has been successfully updated
+            there.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post the Description and configuration parameters of Security Agents
+        deployed with LCP
+      tags:
+      - software
 produces:
 - application/json
 swagger: '2.0'
@@ -1752,3 +1818,5 @@ tags:
   name: hardware
 - description: Describes a "son" LCP linked in this service chain.
   name: lcp relationships
+- description: Returns the description of software installed in containers
+  name: software

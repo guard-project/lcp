@@ -3,7 +3,8 @@ from api import api
 from reader.arg import Arg_Reader
 from about import project, title, version
 
-from schema.hardware_definitions import Disk, DiskPartition
+from schema.hardware_definitions import Disk, DiskPartition, Container as ContainerSchema
+from test_utils import *
 
 
 class HardwareDefinitionsTesting(testing.TestCase):
@@ -55,3 +56,6 @@ class TestMyApp(HardwareDefinitionsTesting):
         assert(valid)
         disk = dsk.dumps(dict_disk) #disk es str!!
         print(disk)
+
+
+

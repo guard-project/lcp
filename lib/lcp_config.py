@@ -23,6 +23,7 @@ class LCPConfig(object):
             self.testing = False
             self.children_requested = []
             self.self_software = []
+            self.self_containers = []
             self.reload(self.filename)
 
         def save(self):
@@ -88,6 +89,11 @@ class LCPConfig(object):
                 self.config["self_software"] = self.self_software
 
             try:
+                self.self_containers = self.config["self_containers"]
+            except KeyError:
+                self.config["self_containers"] = self.self_containers
+
+            try:
                 self.children_requested = self.config['lcp_request_as_sons']
             except KeyError:
                 pass
@@ -120,6 +126,19 @@ class LCPConfig(object):
             if not updated:
                 self.self_software.append(elem)
             self.config["self_software"] = self.self_software
+            self.save()
+
+
+        def setContainers(self, elem):
+            updated = False
+            for i in range(0, len(self.self_containers)):
+                if self.self_containers[i]["id"] == elem["id"]:
+                    updated = True
+                    self.self_containers[i] = elem
+                    break
+            if not updated:
+                self.self_containers.append(elem)
+            self.config["self_containers"] = self.self_containers
             self.save()
 
 

@@ -1,8 +1,12 @@
 from marshmallow import fields, Schema, validate
 from schema.base import Base_Schema
 
+
+CONTAINER_TECHNOLOGY = ["lxc", "docker", "k8s", "rkt"]
+
 __all__ = [
-    'SoftwareDefinition'
+    'SoftwareDefinition',
+    'ContainerSchema'
 ]
 
 class SoftwareDefinition(Base_Schema):
@@ -19,3 +23,11 @@ class SoftwareDefinition(Base_Schema):
                                description="List of opened UDP Ports")
     vendor = fields.Str(required=False, example="Oracle Coorporation",
                         description="Name of the Vendor for this software")
+
+class ContainerSchema(Base_Schema):
+    id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",
+                    description="Id of the Container.")
+    technology = fields.Str(required=True, enum=CONTAINER_TECHNOLOGY, example="docker",
+                            description="Description of the Container")
+    software = fields.List(fields.Nested(SoftwareDefinition), required=True,
+                           description="Description of the Software contained in the container")

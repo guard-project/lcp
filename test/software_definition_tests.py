@@ -4,10 +4,11 @@ from reader.arg import Arg_Reader
 from about import project, title, version
 import os
 import json
-from schema.software_definitions import SoftwareDefinition
+from schema.software_definitions import SoftwareDefinition, ContainerSchema
 from resource.software_definition import SoftwareDefinition as SoftwareDefinitionResource
 from marshmallow.exceptions import ValidationError
 from test_utils import *
+
 
 class SoftwareDefinitionsTesting(testing.TestCase):
     def setUp(self):
@@ -65,7 +66,6 @@ class TestMyApp(SoftwareDefinitionsTesting):
                 software_schema.load(s)
                 assert True
             except ValidationError as e:
-                print(e)
                 raise e
 
 
@@ -95,6 +95,73 @@ class TestMyApp(SoftwareDefinitionsTesting):
             assert False
 
 
+    def test_container_definitions(self):
+        container_schema = ContainerSchema()
+        dict_container = loadExampleFile("SoftwareInContainer.json")
+
+        try:
+            container_schema.validate(dict_container)
+        except ValidationError:
+            assert(False)
+
+        dict_container['technology'] = 'InvalidOne'
+        try:
+            container_schema.validate(dict_container)
+        except ValidationError:
+            assert(True)
 
 
+    def test_get_containers(self):
+        headers = getAuthorizationHeaders()
 
+        example = loadExampleFile("SoftwareInContainer.json")
+
+        result = self.simulate_get("/self/container")
+        assert (result.status == "401 Unauthorized")
+
+        result = self.simulate_get("/self/container", headers=headers)
+        assert (result.status == "200 OK")
+        body = result.json
+        assert (type(body) is list)
+        assert len(body) == 0
+
+        LCPConfig().setContainers(example)
+        result = self.simulate_get("/self/container", headers=headers)
+        assert (result.status == "200 OK")
+        body = result.json
+        assert len(body) == 1
+
+        for s in body:
+            software_schema = ContainerSchema(many=False)
+            try:
+                software_schema.load(s)
+                assert True
+            except ValidationError as e:
+                print(e)
+                raise e
+
+
+    def test_post_container(self):
+        headers = getAuthorizationHeaders()
+        container_dict = loadExampleFile("SoftwareInContainer.json")
+
+        try:
+            # Test - Post
+            resp = self.simulate_post("/self/container", headers=headers,
+                                  body=json.dumps(container_dict))
+            self_containers = LCPConfig().self_containers
+            assert len(self_containers) == 1
+            assert self_containers[0]["id"] == container_dict["id"]
+            assert resp.status_code == 201
+
+            # Test - Update
+            container_dict["technology"] = "docker"
+            resp = self.simulate_post("/self/software", headers=headers,
+                                      body=json.dumps(container_dict))
+            assert len(self_containers) == 1
+            assert self_containers[0]["id"] == container_dict["id"]
+            assert resp.status_code == 201
+
+        except ValidationError as e:
+            print(e)
+            assert False

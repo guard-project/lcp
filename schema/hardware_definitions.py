@@ -1,6 +1,7 @@
 from marshmallow import fields, Schema, validate
 from schema.base import Base_Schema
 from utils.schema import List_or_One
+from schema.software_definitions import SoftwareDefinition
 import re
 
 __all__ = [
@@ -15,12 +16,14 @@ __all__ = [
     'IPv6CIDR'
 ]
 
+
 IPV6_RE = r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$"
 IPV4_RE = r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$"
 MACADDR_RE = r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"
 
 EXEC_ENV_TYPE = ['bare-metal', 'lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
                  'mobile', 'gateway', 'application']
+
 
 class DiskPartition(Base_Schema):
     """Define a Disk partition schema"""
@@ -112,6 +115,9 @@ class VirtualServer(BaremetalServer):
                          description="ID of underlying Baremetal Server")
     networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,
                                     description="List of Network Interfaces in the Virtual Host")
+
+
+
 
 
 class DockerContainer(Base_Schema):

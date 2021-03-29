@@ -27,7 +27,8 @@ $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPDescripti
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/LCPDescription"$/;"	s	object:paths./lcp_son/{id}.delete.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code.put.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/Ok_Response"$/;"	s	object:paths./code/{id}.put.responses.200.schema.items
-$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/SecurityFunction"$/;"	s	object:paths./software.post.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/SecurityFunction"$/;"	s	object:paths./self/container.post.parameters.0.schema.items
+$ref	swagger/schema.json	/^                "$ref": "#\/definitions\/SecurityFunction"$/;"	s	object:paths./self/software.post.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/SoftwareDefinition"$/;"	s	object:paths./securityFunctions.post.parameters.0.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/VirtualServer"$/;"	s	object:paths./virtualserver.get.responses.200.schema.items
 $ref	swagger/schema.json	/^                "$ref": "#\/definitions\/VirtualServer"$/;"	s	object:paths./virtualserver.post.parameters.0.schema.items
@@ -48,12 +49,14 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Re
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./lcp_son/{id}.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./securityFunctions.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./securityFunctions.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/container.get.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/container.post.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/deployment/bare-metal.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/deployment/bare-metal.post.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/deployment/vm.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/deployment/vm.post.responses.400.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./software.get.responses.400.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./software.post.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/software.get.responses.400.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./self/software.post.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./status.get.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./status.post.responses.400.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Bad_Request_Response"$/;"	s	object:paths./virtualserver.get.responses.400.schema
@@ -79,12 +82,14 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Serve
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./lcp_son/{id}.delete.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./lcp_son/{id}.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./securityFunctions.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/container.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/container.post.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/deployment/bare-metal.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/deployment/bare-metal.post.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/deployment/vm.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/deployment/vm.post.responses.500.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./software.get.responses.500.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./software.post.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/software.get.responses.500.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./self/software.post.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./status.get.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./status.post.responses.500.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Internal_Server_Error_Response"$/;"	s	object:paths./virtualserver.get.responses.500.schema
@@ -116,18 +121,21 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./lcp_son/{id}.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./securityFunctions.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./securityFunctions.post.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/container.get.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/container.post.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/deployment/bare-metal.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/deployment/bare-metal.post.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/deployment/vm.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/deployment/vm.post.responses.406.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./software.get.responses.406.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./software.post.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/software.get.responses.406.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./self/software.post.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./status.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./status.post.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./virtualserver.get.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Not_Acceptable_Response"$/;"	s	object:paths./virtualserver.post.responses.406.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/SecurityFunction"$/;"	s	object:paths./securityFunctions.get.responses.200.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/SoftwareDefinition"$/;"	s	object:paths./software.get.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/SoftwareDefinition"$/;"	s	object:paths./self/container.get.responses.200.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/SoftwareDefinition"$/;"	s	object:paths./self/software.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./status.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Status_Response"$/;"	s	object:paths./status.post.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./baremetal.get.responses.401.schema
@@ -147,12 +155,14 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_R
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./lcp_son/{id}.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./securityFunctions.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./securityFunctions.post.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/container.get.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/container.post.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/deployment/bare-metal.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/deployment/bare-metal.post.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/deployment/vm.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/deployment/vm.post.responses.401.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./software.get.responses.401.schema
-$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./software.post.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/software.get.responses.401.schema
+$ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./self/software.post.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./status.get.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./status.post.responses.401.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unauthorized_Response"$/;"	s	object:paths./virtualserver.get.responses.401.schema
@@ -180,9 +190,10 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 /lcp_son/{id}	swagger/schema.json	/^    "\/lcp_son\/{id}": {$/;"	o	object:paths
 /securityFunctions	swagger/schema.json	/^    "\/securityFunctions": {$/;"	o	object:paths
 /self	swagger/schema.json	/^    "\/self": {$/;"	o	object:paths
+/self/container	swagger/schema.json	/^    "\/self\/container": {$/;"	o	object:paths
 /self/deployment/bare-metal	swagger/schema.json	/^    "\/self\/deployment\/bare-metal": {$/;"	o	object:paths
 /self/deployment/vm	swagger/schema.json	/^    "\/self\/deployment\/vm": {$/;"	o	object:paths
-/software	swagger/schema.json	/^    "\/software": {$/;"	o	object:paths
+/self/software	swagger/schema.json	/^    "\/self\/software": {$/;"	o	object:paths
 /status	swagger/schema.json	/^    "\/status": {$/;"	o	object:paths
 /virtualserver	swagger/schema.json	/^    "\/virtualserver": {$/;"	o	object:paths
 0	swagger/schema.json	/^                  "Created_Response_Schema",$/;"	s	array:paths./code.delete.responses.422.schema.items.oneOf
@@ -236,8 +247,10 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 0	swagger/schema.json	/^          "hardware"$/;"	s	array:paths./virtualserver.post.tags
 0	swagger/schema.json	/^          "software"$/;"	s	array:paths./securityFunctions.get.tags
 0	swagger/schema.json	/^          "software"$/;"	s	array:paths./securityFunctions.post.tags
-0	swagger/schema.json	/^          "software"$/;"	s	array:paths./software.get.tags
-0	swagger/schema.json	/^          "software"$/;"	s	array:paths./software.post.tags
+0	swagger/schema.json	/^          "software"$/;"	s	array:paths./self/container.get.tags
+0	swagger/schema.json	/^          "software"$/;"	s	array:paths./self/container.post.tags
+0	swagger/schema.json	/^          "software"$/;"	s	array:paths./self/software.get.tags
+0	swagger/schema.json	/^          "software"$/;"	s	array:paths./self/software.post.tags
 0	swagger/schema.json	/^          "status"$/;"	s	array:paths./status.get.tags
 0	swagger/schema.json	/^          "status"$/;"	s	array:paths./status.post.tags
 0	swagger/schema.json	/^          {$/;"	o	array:paths./baremetal.post.parameters
@@ -252,9 +265,10 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 0	swagger/schema.json	/^          {$/;"	o	array:paths./lcp_son.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./lcp_son/{id}.get.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./securityFunctions.post.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./self/container.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./self/deployment/bare-metal.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./self/deployment/vm.post.parameters
-0	swagger/schema.json	/^          {$/;"	o	array:paths./software.post.parameters
+0	swagger/schema.json	/^          {$/;"	o	array:paths./self/software.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./virtualserver.post.parameters
 0	swagger/schema.json	/^        "cmd",$/;"	s	array:definitions.AgentActionSchema.required
 0	swagger/schema.json	/^        "cmd",$/;"	s	array:definitions.Config_Action_Request.required
@@ -286,6 +300,8 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 0	swagger/schema.json	/^    "application\/json"$/;"	s	array:produces
 0	swagger/schema.json	/^    {$/;"	o	array:tags
 0	test/examples/FiliatedLCPs.json	/^{$/;"	o
+0	test/examples/SoftwareInContainer.json	/^        "openTCPPorts": [3306],$/;"	n	array:software.0.openTCPPorts
+0	test/examples/SoftwareInContainer.json	/^    "software": [{$/;"	o	array:software
 0	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	o	array:diskDevices.0.diskPartitions
 0	test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	o	array:diskDevices.1.diskPartitions
 0	test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["10.0.3.1\/24"],$/;"	s	array:networkInterfaces.2.IPv4Addresses
@@ -359,6 +375,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 11	swagger/schema.json	/^    {$/;"	o	array:tags
 12	swagger/schema.json	/^    {$/;"	o	array:tags
 13	swagger/schema.json	/^    {$/;"	o	array:tags
+14	swagger/schema.json	/^    {$/;"	o	array:tags
 1oHlnqBzpkmllMTCak6boyy1dL8	.idea/workspace.xml	/^  <component name="ProjectId" id="1oHlnqBzpkmllMTCak6boyy1dL8" \/>$/;"	i
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
@@ -399,18 +416,20 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./lcp_son/{id}.delete.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./lcp_son/{id}.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./securityFunctions.get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./self/container.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./self/deployment/vm.get.responses
-200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./software.get.responses
+200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./self/software.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./status.get.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./status.post.responses
 200	swagger/schema.json	/^          "200": {$/;"	o	object:paths./virtualserver.get.responses
 201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./baremetal.post.responses
 201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./cloud.post.responses
 201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./securityFunctions.post.responses
+201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./self/container.post.responses
 201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./self/deployment/bare-metal.post.responses
 201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./self/deployment/vm.post.responses
-201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./software.post.responses
+201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./self/software.post.responses
 201	swagger/schema.json	/^          "201": {$/;"	o	object:paths./virtualserver.post.responses
 204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code.delete.responses
 204	swagger/schema.json	/^          "204": {$/;"	o	object:paths./code.post.responses
@@ -453,12 +472,14 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./lcp_son/{id}.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./securityFunctions.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./securityFunctions.post.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/container.get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/container.post.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/deployment/bare-metal.post.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/deployment/vm.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/deployment/vm.post.responses
-400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./software.get.responses
-400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./software.post.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/software.get.responses
+400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./self/software.post.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./status.get.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./status.post.responses
 400	swagger/schema.json	/^          "400": {$/;"	o	object:paths./virtualserver.get.responses
@@ -480,12 +501,14 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./lcp_son/{id}.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./securityFunctions.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./securityFunctions.post.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/container.get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/container.post.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/deployment/bare-metal.post.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/deployment/vm.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/deployment/vm.post.responses
-401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./software.get.responses
-401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./software.post.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/software.get.responses
+401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./self/software.post.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./status.get.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./status.post.responses
 401	swagger/schema.json	/^          "401": {$/;"	o	object:paths./virtualserver.get.responses
@@ -507,12 +530,14 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./lcp_son/{id}.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./securityFunctions.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./securityFunctions.post.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/container.get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/container.post.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/deployment/bare-metal.post.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/deployment/vm.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/deployment/vm.post.responses
-406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./software.get.responses
-406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./software.post.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/software.get.responses
+406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./self/software.post.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./status.get.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./status.post.responses
 406	swagger/schema.json	/^          "406": {$/;"	o	object:paths./virtualserver.get.responses
@@ -546,12 +571,14 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./lcp_son/{id}.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./securityFunctions.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./securityFunctions.post.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/container.get.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/container.post.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/deployment/bare-metal.post.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/deployment/vm.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/deployment/vm.post.responses
-500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./software.get.responses
-500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./software.post.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/software.get.responses
+500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./self/software.post.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./status.get.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./status.post.responses
 500	swagger/schema.json	/^          "500": {$/;"	o	object:paths./virtualserver.get.responses
@@ -602,6 +629,7 @@ Basic_Auth_Backend	api/middleware.py	/^from falcon_auth import BasicAuthBackend 
 Basic_Auth_Backend_Middleware	api/middleware.py	/^class Basic_Auth_Backend_Middleware(Basic_Auth_Backend):$/;"	c
 Basic_Interpolation	reader/config.py	/^from configparser import BasicInterpolation as Basic_Interpolation, ConfigParser as Config_Parse/;"	x	nameref:unknown:BasicInterpolation
 BetweenLCPMessages	RestClients/LCPClient.py	/^class BetweenLCPMessages(enum.Enum):$/;"	c
+CONTAINER_TECHNOLOGY	schema/software_definitions.py	/^CONTAINER_TECHNOLOGY = ["lxc", "docker", "k8s", "rkt"]$/;"	v
 CONTEXT_BROKER	lib/lcp_config.py	/^CONTEXT_BROKER='context_broker'$/;"	v
 Changelog	CHANGELOG.md	/^# Changelog$/;"	c
 Changelog	docs/CHANGELOG.md	/^# Changelog$/;"	c
@@ -641,6 +669,9 @@ Configuration	README.md	/^## Configuration$/;"	s	chapter:Local Control Plane
 Conflict_Response	lib/response.py	/^class Conflict_Response(Base_Response):$/;"	c
 Conflict_Response_Schema	schema/response.py	/^class Conflict_Response_Schema(Base_Response_Schema):$/;"	c
 Connection_Error	lib/polycube.py	/^from requests.exceptions import ConnectionError as Connection_Error, Timeout as Timeout_Error$/;"	x	nameref:unknown:ConnectionError
+ContainerDefinition	resource/software_definition.py	/^class ContainerDefinition(Base_Resource):$/;"	c
+ContainerSchema	schema/software_definitions.py	/^class ContainerSchema(Base_Schema):$/;"	c
+ContainerSchema	test/hardware_definition_tests.py	/^from schema.hardware_definitions import Disk, DiskPartition, Container as ContainerSchema$/;"	x	nameref:unknown:Container
 Content_Response	lib/response.py	/^class Content_Response(Ok_Response):$/;"	c
 Content_Response_Schema	schema/response.py	/^class Content_Response_Schema(Ok_Response_Schema):$/;"	c
 ContextBrokerConnection	schema/filiation.py	/^class ContextBrokerConnection(Base_Schema):$/;"	c
@@ -993,6 +1024,7 @@ __init__	resource/hardware_definitions.py	/^    def __init__(self):$/;"	m	class:
 __init__	resource/hardware_definitions.py	/^    def __init__(self):$/;"	m	class:LXCContainer
 __init__	resource/hardware_definitions.py	/^    def __init__(self):$/;"	m	class:VirtualServer
 __init__	resource/security_functions.py	/^    def __init__(self):$/;"	m	class:SecurityFunction
+__init__	resource/software_definition.py	/^    def __init__(self):$/;"	m	class:ContainerDefinition
 __init__	resource/software_definition.py	/^    def __init__(self):$/;"	m	class:SoftwareDefinition
 __init__	resource/status.py	/^    def __init__(self):$/;"	m	class:Status_Resource
 __init__	schema/base.py	/^    def __init__(self, *args, method=None, check_unique_id=False, **kwargs):$/;"	m	class:Base_Schema
@@ -1146,7 +1178,6 @@ data	resource/hardware_definitions.py	/^    data = []$/;"	v	class:BaremetalServe
 data	resource/hardware_definitions.py	/^    data = []$/;"	v	class:LXCContainer
 data	resource/hardware_definitions.py	/^    data = []$/;"	v	class:VirtualServer
 data	resource/self_data.py	/^    data = {}$/;"	v	class:DescribeSelf
-data	resource/software_definition.py	/^    data = []$/;"	v	class:SoftwareDefinition
 data	schema/config.py	/^    data = Raw(description='Configuration data.')$/;"	v	class:Config_Response_Schema
 data	schema/validate.py	/^        def data():$/;"	f	member:In.apply	file:
 datetime_from_str	utils/datetime.py	/^def datetime_from_str(date_time_str, format=FORMAT):$/;"	f
@@ -1212,12 +1243,14 @@ description	swagger/schema.json	/^            "description": "Authentication fai
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./lcp_son/{id}.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./securityFunctions.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./securityFunctions.post.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/container.get.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/container.post.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/deployment/bare-metal.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/deployment/bare-metal.post.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/deployment/vm.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/deployment/vm.post.responses.401
-description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./software.get.responses.401
-description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./software.post.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/software.get.responses.401
+description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./self/software.post.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./status.get.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./status.post.responses.401
 description	swagger/schema.json	/^            "description": "Authentication failed.",$/;"	s	object:paths./virtualserver.get.responses.401
@@ -1230,7 +1263,8 @@ description	swagger/schema.json	/^            "description": "Configuration chan
 description	swagger/schema.json	/^            "description": "Disk Partitions for the Disk",$/;"	s	object:definitions.Disk.properties.diskPartitions.items
 description	swagger/schema.json	/^            "description": "Disks installed in the Server",$/;"	s	object:definitions.BaremetalServer.properties.diskDevices.items
 description	swagger/schema.json	/^            "description": "Disks installed in the Server",$/;"	s	object:definitions.VirtualServer.properties.diskDevices.items
-description	swagger/schema.json	/^            "description": "Get the Description of the Software controlled by the LCP",$/;"	s	object:paths./software.get.responses.200
+description	swagger/schema.json	/^            "description": "Get the Description of the Software controlled by the LCP",$/;"	s	object:paths./self/container.get.responses.200
+description	swagger/schema.json	/^            "description": "Get the Description of the Software controlled by the LCP",$/;"	s	object:paths./self/software.get.responses.200
 description	swagger/schema.json	/^            "description": "Get the Server's configuration information from LCP where it is depl/;"	s	object:paths./self/deployment/bare-metal.get.responses.200
 description	swagger/schema.json	/^            "description": "Get the Server's configuration information from LCP",$/;"	s	object:paths./baremetal.get.responses.200
 description	swagger/schema.json	/^            "description": "Get the Server's configuration infromation from LCP",$/;"	s	object:paths./securityFunctions.get.responses.200
@@ -1272,12 +1306,14 @@ description	swagger/schema.json	/^            "description": "Request not valid.
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./lcp_son/{id}.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./securityFunctions.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./securityFunctions.post.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/container.get.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/container.post.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/deployment/bare-metal.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/deployment/bare-metal.post.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/deployment/vm.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/deployment/vm.post.responses.400
-description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./software.get.responses.400
-description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./software.post.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/software.get.responses.400
+description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./self/software.post.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./status.get.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./status.post.responses.400
 description	swagger/schema.json	/^            "description": "Request not valid.",$/;"	s	object:paths./virtualserver.get.responses.400
@@ -1299,12 +1335,14 @@ description	swagger/schema.json	/^            "description": "Request validation
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./lcp_son/{id}.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./securityFunctions.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./securityFunctions.post.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/container.get.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/container.post.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/deployment/bare-metal.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/deployment/bare-metal.post.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/deployment/vm.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/deployment/vm.post.responses.406
-description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./software.get.responses.406
-description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./software.post.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/software.get.responses.406
+description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./self/software.post.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./status.get.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./status.post.responses.406
 description	swagger/schema.json	/^            "description": "Request validation failed.",$/;"	s	object:paths./virtualserver.get.responses.406
@@ -1322,12 +1360,14 @@ description	swagger/schema.json	/^            "description": "Server not availab
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./lcp_son/{id}.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./securityFunctions.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./securityFunctions.post.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/container.get.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/container.post.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/deployment/bare-metal.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/deployment/bare-metal.post.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/deployment/vm.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/deployment/vm.post.responses.500
-description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./software.get.responses.500
-description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./software.post.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/software.get.responses.500
+description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./self/software.post.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./status.get.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./status.post.responses.500
 description	swagger/schema.json	/^            "description": "Server not available to satisfy the request.",$/;"	s	object:paths./virtualserver.get.responses.500
@@ -1340,7 +1380,8 @@ description	swagger/schema.json	/^            "description": "Status data of the
 description	swagger/schema.json	/^            "description": "The BaremetalServer has been successfully updated."$/;"	s	object:paths./baremetal.post.responses.201
 description	swagger/schema.json	/^            "description": "The BaremetalServer where LCP is deployed has been successfully upda/;"	s	object:paths./self/deployment/bare-metal.post.responses.201
 description	swagger/schema.json	/^            "description": "The Cloud Infrastructure has been successfully updated"$/;"	s	object:paths./cloud.post.responses.201
-description	swagger/schema.json	/^            "description": "The Security Function definition has been successfully updated there/;"	s	object:paths./software.post.responses.201
+description	swagger/schema.json	/^            "description": "The Security Function definition has been successfully updated there/;"	s	object:paths./self/container.post.responses.201
+description	swagger/schema.json	/^            "description": "The Security Function definition has been successfully updated there/;"	s	object:paths./self/software.post.responses.201
 description	swagger/schema.json	/^            "description": "The VirtualServer has been successfully updated."$/;"	s	object:paths./virtualserver.post.responses.201
 description	swagger/schema.json	/^            "description": "The VirtualServer where the LCP is deployed has been correctly updat/;"	s	object:paths./self/deployment/vm.post.responses.201
 description	swagger/schema.json	/^            "description": "The software definition has been successfully updated there."$/;"	s	object:paths./securityFunctions.post.responses.201
@@ -1459,7 +1500,8 @@ description	swagger/schema.json	/^        "description": "Gets a list of next li
 description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./lcp_son/{id}.get
 description	swagger/schema.json	/^        "description": "Gets the information of one cloud Infrastrucutre\\n",$/;"	s	object:paths./cloud.get
 description	swagger/schema.json	/^        "description": "Gets the information of the SecurityFunctions deployed along with the LC/;"	s	object:paths./securityFunctions.get
-description	swagger/schema.json	/^        "description": "Gets the information of the Server software that LCP Knows.\\n",$/;"	s	object:paths./software.get
+description	swagger/schema.json	/^        "description": "Gets the information of the Server software that LCP Knows.\\n",$/;"	s	object:paths./self/container.get
+description	swagger/schema.json	/^        "description": "Gets the information of the Server software that LCP Knows.\\n",$/;"	s	object:paths./self/software.get
 description	swagger/schema.json	/^        "description": "Gets the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./baremetal.get
 description	swagger/schema.json	/^        "description": "Gets the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./self/deployment/bare-metal.get
 description	swagger/schema.json	/^        "description": "Gets the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./self/deployment/vm.get
@@ -1469,7 +1511,8 @@ description	swagger/schema.json	/^        "description": "Inject code at run-tim
 description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code/{id}.delete
 description	swagger/schema.json	/^        "description": "Inject code at run-time in the local environment.",$/;"	s	object:paths./code/{id}.post
 description	swagger/schema.json	/^        "description": "Posts the information of one cloud Infrastrucutre\\n",$/;"	s	object:paths./cloud.post
-description	swagger/schema.json	/^        "description": "Posts the information of some Security Functions that LCP must be aware /;"	s	object:paths./software.post
+description	swagger/schema.json	/^        "description": "Posts the information of some Security Functions that LCP must be aware /;"	s	object:paths./self/container.post
+description	swagger/schema.json	/^        "description": "Posts the information of some Security Functions that LCP must be aware /;"	s	object:paths./self/software.post
 description	swagger/schema.json	/^        "description": "Posts the information of the Server software that LCP must be aware of.\\/;"	s	object:paths./securityFunctions.post
 description	swagger/schema.json	/^        "description": "Posts the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./baremetal.post
 description	swagger/schema.json	/^        "description": "Posts the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./self/deployment/bare-metal.post
@@ -1492,6 +1535,7 @@ description	swagger/schema.json	/^      "description": "Returns description of a
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.6
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.8
 description	swagger/schema.json	/^      "description": "Returns description of a Virtual Server where LCP is deployed"$/;"	s	object:tags.11
+description	swagger/schema.json	/^      "description": "Returns the description of software installed in containers"$/;"	s	object:tags.14
 description	swagger/schema.json	/^      "description": "Returns the description of software installed"$/;"	s	object:tags.7
 description	swagger/schema.json	/^      "description": "Status data of the LCP."$/;"	s	object:tags.2
 description	test/examples/cloud-infrastructure-example.json	/^    "description": "Openstack Node with FIWARE Lab Features",$/;"	s
@@ -1693,9 +1737,10 @@ get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./cloud
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./lcp_son
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./lcp_son/{id}
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./securityFunctions
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./self/container
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./self/deployment/bare-metal
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./self/deployment/vm
-get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./software
+get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./self/software
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./status
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./virtualserver
 get	swagger/schema.json	/^      "get": {}$/;"	o	object:paths./self
@@ -1749,6 +1794,7 @@ id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="
 id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",$/;"	v	class:BaremetalServer
 id	schema/security_functions.py	/^    id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",$/;"	v	class:SecurityFunction
 id	schema/security_functions.py	/^    id = fields.Str(required=True, example='start',$/;"	v	class:AgentActionSchema
+id	schema/software_definitions.py	/^    id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",$/;"	v	class:ContainerSchema
 id	schema/software_definitions.py	/^    id = fields.Str(required=True, example="a406874b-dea7-4cd1-9d4e-b82a18ec993b",$/;"	v	class:SoftwareDefinition
 id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Request_Schema
 id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Response_Schema
@@ -1769,6 +1815,8 @@ id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.VirtualServer.
 id	test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-01:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	object:0
 id	test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-02:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	object:1
 id	test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-03:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	object:2
+id	test/examples/SoftwareInContainer.json	/^        "id": "oracle:mysql:5.8.1.0.5ubuntu2",$/;"	s	object:software.0
+id	test/examples/SoftwareInContainer.json	/^    "id": "dockermaria",$/;"	s
 id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:docker0",$/;"	s	object:networkInterfaces.4
 id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:enx503eaaddcbeb",$/;"	s	object:networkInterfaces.0
 id	test/examples/bare-metal-server-example.json	/^            "id": "nwiface:lo",$/;"	s	object:networkInterfaces.3
@@ -1797,9 +1845,10 @@ in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code/{id}
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./config.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./lcp_son.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./securityFunctions.post.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./self/container.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./self/deployment/bare-metal.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./self/deployment/vm.post.parameters.0
-in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./software.post.parameters.0
+in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./self/software.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./virtualserver.post.parameters.0
 in	swagger/schema.json	/^            "in": "path",$/;"	s	object:paths./lcp_son/{id}.get.parameters.0
 info	docs/Makefile	/^info:$/;"	t
@@ -1847,7 +1896,8 @@ items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./config.
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./lcp_son.get.responses.200.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./lcp_son/{id}.delete.responses.200.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./securityFunctions.post.parameters.0.schema
-items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./software.post.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./self/container.post.parameters.0.schema
+items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./self/software.post.parameters.0.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./virtualserver.get.responses.200.schema
 items	swagger/schema.json	/^              "items": {$/;"	o	object:paths./virtualserver.post.parameters.0.schema
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.BaremetalServer.properties.diskDevices
@@ -1882,7 +1932,6 @@ line	schema/response.py	/^    line = Integer(required=True, example=80,$/;"	v	cl
 line	swagger/schema.json	/^        "line": {$/;"	o	object:definitions.Exception_Response.properties
 linkcheck	docs/Makefile	/^linkcheck:$/;"	t
 loadExampleFile	test/test_utils.py	/^def loadExampleFile(filename):$/;"	f
-load_test_file	resource/software_definition.py	/^    def load_test_file(self):$/;"	m	class:SoftwareDefinition
 loads	utils/json.py	/^def loads(data, *args, **kwargs):$/;"	f
 local-control-plane	config.ini	/^[local-control-plane]$/;"	s
 log	config.ini	/^[log]$/;"	s
@@ -1945,9 +1994,10 @@ name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./co
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./config.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./lcp_son.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./securityFunctions.post.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./self/container.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./self/deployment/bare-metal.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./self/deployment/vm.post.parameters.0
-name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./software.post.parameters.0
+name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./self/software.post.parameters.0
 name	swagger/schema.json	/^            "name": "payload",$/;"	s	object:paths./virtualserver.post.parameters.0
 name	swagger/schema.json	/^        "name": {$/;"	o	object:definitions.AgentParameter.properties
 name	swagger/schema.json	/^        "name": {$/;"	o	object:definitions.CloudSchema.properties
@@ -1968,12 +2018,14 @@ name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.6
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.9
 name	swagger/schema.json	/^      "name": "lcp relationships",$/;"	s	object:tags.13
 name	swagger/schema.json	/^      "name": "lcp_relationships",$/;"	s	object:tags.4
+name	swagger/schema.json	/^      "name": "software",$/;"	s	object:tags.14
 name	swagger/schema.json	/^      "name": "software",$/;"	s	object:tags.7
 name	swagger/schema.json	/^      "name": "software",$/;"	s	object:tags.8
 name	swagger/schema.json	/^      "name": "status",$/;"	s	object:tags.2
 name	test/examples/FiliatedLCPs.json	/^  "name": "lcp:compute-01"$/;"	s	object:0
 name	test/examples/FiliatedLCPs.json	/^  "name": "lcp:compute-01"$/;"	s	object:1
 name	test/examples/FiliatedLCPs.json	/^  "name": "lcp:compute-01"$/;"	s	object:2
+name	test/examples/SoftwareInContainer.json	/^        "name": "MySQL",$/;"	s	object:software.0
 name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	s	object:diskDevices.0.diskPartitions.0
 name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	s	object:diskDevices.0.diskPartitions.1
 name	test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	s	object:diskDevices.0.diskPartitions.2
@@ -2023,6 +2075,7 @@ on_get	resource/security_functions.py	/^    def on_get(self, req, resp):$/;"	m	c
 on_get	resource/self_data.py	/^    def on_get(self, req, resp):$/;"	m	class:DescribeDeploymentBareMetal
 on_get	resource/self_data.py	/^    def on_get(self, req, resp):$/;"	m	class:DescribeDeploymentVM
 on_get	resource/self_data.py	/^    def on_get(self, req, resp):$/;"	m	class:DescribeSelf
+on_get	resource/software_definition.py	/^    def on_get(self, req, resp):$/;"	m	class:ContainerDefinition
 on_get	resource/software_definition.py	/^    def on_get(self, req, resp):$/;"	m	class:SoftwareDefinition
 on_get	resource/status.py	/^    def on_get(self, req, resp):$/;"	m	class:Status_Resource
 on_post	resource/cloud_resource.py	/^    def on_post(self, req, resp):$/;"	m	class:CloudInfrastructure
@@ -2036,6 +2089,7 @@ on_post	resource/hardware_definitions.py	/^    def on_post(self, req, resp):$/;"
 on_post	resource/security_functions.py	/^    def on_post(self, req, resp):$/;"	m	class:SecurityFunction
 on_post	resource/self_data.py	/^    def on_post(self, req, resp):$/;"	m	class:DescribeDeploymentBareMetal
 on_post	resource/self_data.py	/^    def on_post(self, req, resp):$/;"	m	class:DescribeDeploymentVM
+on_post	resource/software_definition.py	/^    def on_post(self, req, resp):$/;"	m	class:ContainerDefinition
 on_post	resource/software_definition.py	/^    def on_post(self, req, resp):$/;"	m	class:SoftwareDefinition
 on_post	resource/status.py	/^    def on_post(self, req, resp):$/;"	m	class:Status_Resource
 on_put	resource/code.py	/^    def on_put(self, req, resp, id=None):$/;"	m	class:Code_Resource
@@ -2055,6 +2109,7 @@ oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./code/{i
 oneOf	swagger/schema.json	/^              "oneOf": [$/;"	a	object:paths./config.post.responses.200.schema
 openTCPPorts	schema/software_definitions.py	/^    openTCPPorts = fields.List(fields.Int, required=False, example="[3306]",$/;"	v	class:SoftwareDefinition
 openTCPPorts	swagger/schema.json	/^        "openTCPPorts": {$/;"	o	object:definitions.SoftwareDefinition.properties
+openTCPPorts	test/examples/SoftwareInContainer.json	/^        "openTCPPorts": [3306],$/;"	a	object:software.0
 openTCPPorts	test/examples/software-artifact-example.json	/^    "openTCPPorts": [3306],$/;"	a
 openUDPPorts	schema/software_definitions.py	/^    openUDPPorts = fields.List(fields.Int, required=False, example="[33066]",$/;"	v	class:SoftwareDefinition
 openUDPPorts	swagger/schema.json	/^        "openUDPPorts": {$/;"	o	object:definitions.SoftwareDefinition.properties
@@ -2080,9 +2135,10 @@ parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./con
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./lcp_son.post
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./lcp_son/{id}.get
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./securityFunctions.post
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./self/container.post
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./self/deployment/bare-metal.post
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./self/deployment/vm.post
-parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./software.post
+parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./self/software.post
 parameters	swagger/schema.json	/^        "parameters": [$/;"	a	object:paths./virtualserver.post
 parameters	swagger/schema.json	/^        "parameters": {$/;"	o	object:definitions.Config_Request.properties
 parameters	swagger/schema.json	/^        "parameters": {$/;"	o	object:definitions.SecurityFunction.properties
@@ -2115,9 +2171,10 @@ post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./code/{id}
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./config
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./lcp_son
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./securityFunctions
+post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./self/container
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./self/deployment/bare-metal
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./self/deployment/vm
-post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./software
+post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./self/software
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./status
 post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./virtualserver
 post	swagger/schema.json	/^      "post": {}$/;"	o	object:paths./lcp_parent
@@ -2192,9 +2249,10 @@ required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths.
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./config.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./lcp_son.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./securityFunctions.post.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./self/container.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./self/deployment/bare-metal.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./self/deployment/vm.post.parameters.0
-required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./software.post.parameters.0
+required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./self/software.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./virtualserver.post.parameters.0
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.AgentActionSchema
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.AgentParameter
@@ -2244,12 +2302,14 @@ responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./lcp_s
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./lcp_son/{id}.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./securityFunctions.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./securityFunctions.post
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/container.get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/container.post
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/deployment/bare-metal.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/deployment/bare-metal.post
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/deployment/vm.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/deployment/vm.post
-responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./software.get
-responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./software.post
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/software.get
+responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./self/software.post
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./status.get
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./status.post
 responses	swagger/schema.json	/^        "responses": {$/;"	o	object:paths./virtualserver.get
@@ -2270,7 +2330,8 @@ routes	resource/security_functions.py	/^    routes = '\/securityFunctions',$/;"	
 routes	resource/self_data.py	/^    routes = '\/self',$/;"	v	class:DescribeSelf
 routes	resource/self_data.py	/^    routes = '\/self\/deployment\/bare-metal',$/;"	v	class:DescribeDeploymentBareMetal
 routes	resource/self_data.py	/^    routes = '\/self\/deployment\/vm',$/;"	v	class:DescribeDeploymentVM
-routes	resource/software_definition.py	/^    routes = '\/software'$/;"	v	class:SoftwareDefinition
+routes	resource/software_definition.py	/^    routes = "\/self\/container"$/;"	v	class:ContainerDefinition
+routes	resource/software_definition.py	/^    routes = '\/self\/software'$/;"	v	class:SoftwareDefinition
 routes	resource/status.py	/^    routes = '\/status',$/;"	v	class:Status_Resource
 running	docs/running.rst	/^.. _running:$/;"	T
 save	lib/lcp_config.py	/^        def save(self):$/;"	m	class:LCPConfig.__LCPConfig
@@ -2386,6 +2447,16 @@ schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./securit
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./securityFunctions.post.responses.401
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./securityFunctions.post.responses.406
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./securityFunctions.post.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.get.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.post.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.post.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.post.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.post.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/container.post.responses.500
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses.200
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses.400
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/deployment/bare-metal.get.responses.401
@@ -2406,16 +2477,16 @@ schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/de
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/deployment/vm.post.responses.401
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/deployment/vm.post.responses.406
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/deployment/vm.post.responses.500
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.get.responses.200
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.get.responses.400
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.get.responses.401
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.get.responses.406
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.get.responses.500
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.post.parameters.0
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.post.responses.400
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.post.responses.401
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.post.responses.406
-schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./software.post.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.get.responses.200
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.get.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.get.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.get.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.get.responses.500
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.post.parameters.0
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.post.responses.400
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.post.responses.401
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.post.responses.406
+schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./self/software.post.responses.500
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.200
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.400
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./status.get.responses.401
@@ -2441,9 +2512,11 @@ send	RestClients/LCPClient.py	/^        def send(self, message: LCPMessages):$/;
 send_tree	utils/signal.py	/^def send_tree(pid, sig=SIGTERM, include_parent=True, timeout=None, on_terminate=None):$/;"	f
 server	config.ini	/^server = http:\/\/localhost:8200$/;"	k	section:elastic-apm
 setAgent	lib/lcp_config.py	/^        def setAgent(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setContainers	lib/lcp_config.py	/^        def setContainers(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
 setContextBroker	lib/lcp_config.py	/^        def setContextBroker(self, data):$/;"	m	class:LCPConfig.__LCPConfig
 setDeployment	lib/lcp_config.py	/^        def setDeployment(self, dictDeployment):$/;"	m	class:LCPConfig.__LCPConfig
 setParent	lib/lcp_config.py	/^        def setParent(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setSoftware	lib/lcp_config.py	/^        def setSoftware(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
 setSon	lib/lcp_config.py	/^        def setSon(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
 setUp	test/baremetal_server_test.py	/^    def setUp(self):$/;"	m	class:BaremetalServerTesting
 setUp	test/cloud_infrastructure_test.py	/^    def setUp(self):$/;"	m	class:CloudInfrastructureTesting
@@ -2472,18 +2545,16 @@ size	test/examples/virtual-server-example.json	/^                {"name": "\/dev
 size	test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda14", "size": 0.004},$/;"	n	object:diskDevices.0.diskPartitions.1
 size	test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda15", "size": 0.1}$/;"	n	object:diskDevices.0.diskPartitions.2
 size	test/examples/virtual-server-example.json	/^            "size": 80.0,$/;"	n	object:diskDevices.0
+software	schema/software_definitions.py	/^    software = fields.List(fields.Nested(SoftwareDefinition), required=True,$/;"	v	class:ContainerSchema
+software	test/examples/SoftwareInContainer.json	/^    "software": [{$/;"	a
 software_id	schema/hardware_definitions.py	/^    software_id = fields.Str(required=False, example="82cd4399-1d95-4d67-831f-5724c47e577a",$/;"	v	class:DockerContainer
 source	schema/config.py	/^    source = Str(required=True, example=EXAMPLE_FILENAME,$/;"	v	class:Config_Parameter_Request_Schema
 source	swagger/schema.json	/^        "source": {$/;"	o	object:definitions.Config_Parameter_Request.properties
 source_suffix	docs/conf.py	/^source_suffix = {$/;"	v
 sp	resource/config.py	/^import subprocess as sp$/;"	I	nameref:module:subprocess
-ssl_ca	main.py	/^    ssl_ca = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/rootcertificate\/jicg.root.c/;"	v
 ssl_ca	main2.py	/^    ssl_ca = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/rootcertificate\/jicg.root.c/;"	v
-ssl_cert_reqs	main.py	/^    ssl_cert_reqs = 1$/;"	v
 ssl_cert_reqs	main2.py	/^    ssl_cert_reqs = 1$/;"	v
-ssl_certfile	main.py	/^    ssl_certfile = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/https_cert\/httpscert./;"	v
 ssl_certfile	main2.py	/^    ssl_certfile = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/https_cert\/httpscert./;"	v
-ssl_keyfile	main.py	/^    ssl_keyfile = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/https_cert\/httpscert.k/;"	v
 start_http_server	test/test_utils.py	/^def start_http_server():$/;"	f
 started	schema/status.py	/^    started = Date_Time(format=FORMAT, required=True, example='2019\/02\/14 15:23:30',$/;"	v	class:Status_Response_Schema
 started	swagger/schema.json	/^        "started": {$/;"	o	object:definitions.Status_Response.properties
@@ -2535,7 +2606,8 @@ summary	swagger/schema.json	/^        "summary": "Get the Baremetal server where
 summary	swagger/schema.json	/^        "summary": "Get the Baremetal server where the LCP is deployed on.",$/;"	s	object:paths./self/deployment/bare-metal.get
 summary	swagger/schema.json	/^        "summary": "Get the Description and configuration parameters of Security Agents deployed/;"	s	object:paths./securityFunctions.get
 summary	swagger/schema.json	/^        "summary": "Get the Description of one Cloud Infrastructure",$/;"	s	object:paths./cloud.get
-summary	swagger/schema.json	/^        "summary": "Get the Software installed and controlled and known by the LCP",$/;"	s	object:paths./software.get
+summary	swagger/schema.json	/^        "summary": "Get the Software installed and controlled and known by the LCP",$/;"	s	object:paths./self/container.get
+summary	swagger/schema.json	/^        "summary": "Get the Software installed and controlled and known by the LCP",$/;"	s	object:paths./self/software.get
 summary	swagger/schema.json	/^        "summary": "Get the Virtual server where the LCP is deployed on.",$/;"	s	object:paths./self/deployment/vm.get
 summary	swagger/schema.json	/^        "summary": "Get the Virtual server where the LCP is deployed on.",$/;"	s	object:paths./virtualserver.get
 summary	swagger/schema.json	/^        "summary": "Get the \\"filiated\\" (or legitimated LCP childs) for this Service Chain",$/;"	s	object:paths./lcp_son.get
@@ -2547,7 +2619,8 @@ summary	swagger/schema.json	/^        "summary": "POST the Baremetal server wher
 summary	swagger/schema.json	/^        "summary": "POST the Baremetal server where the LCP is deployed on.",$/;"	s	object:paths./self/deployment/vm.post
 summary	swagger/schema.json	/^        "summary": "POST the Baremetal server where the LCP is deployed on.",$/;"	s	object:paths./virtualserver.post
 summary	swagger/schema.json	/^        "summary": "Post Software description of a new Software installed in the System",$/;"	s	object:paths./securityFunctions.post
-summary	swagger/schema.json	/^        "summary": "Post the Description and configuration parameters of Security Agents deploye/;"	s	object:paths./software.post
+summary	swagger/schema.json	/^        "summary": "Post the Description and configuration parameters of Security Agents deploye/;"	s	object:paths./self/container.post
+summary	swagger/schema.json	/^        "summary": "Post the Description and configuration parameters of Security Agents deploye/;"	s	object:paths./self/software.post
 summary	swagger/schema.json	/^        "summary": "Post the Description of one Cloud Infrastructure",$/;"	s	object:paths./cloud.post
 summary	swagger/schema.json	/^        "summary": "Status info",$/;"	s	object:paths./status.get
 summary	swagger/schema.json	/^        "summary": "Status set.",$/;"	s	object:paths./status.post
@@ -2568,6 +2641,7 @@ tag	resource/security_functions.py	/^    tag = {'name': 'software',$/;"	v	class:
 tag	resource/self_data.py	/^    tag = {'name': 'hardware',$/;"	v	class:DescribeDeploymentBareMetal
 tag	resource/self_data.py	/^    tag = {'name': 'hardware',$/;"	v	class:DescribeDeploymentVM
 tag	resource/self_data.py	/^    tag = {'name': 'hardware',$/;"	v	class:DescribeSelf
+tag	resource/software_definition.py	/^    tag = {'name': 'software',$/;"	v	class:ContainerDefinition
 tag	resource/software_definition.py	/^    tag = {'name': 'software',$/;"	v	class:SoftwareDefinition
 tag	resource/status.py	/^    tag = dict(name='status', description='Status data of the LCP.')$/;"	v	class:Status_Resource
 tags	resource/__init__.py	/^tags = []$/;"	v
@@ -2588,28 +2662,34 @@ tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./lcp_son/{id}.de
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./lcp_son/{id}.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./securityFunctions.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./securityFunctions.post
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/container.get
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/container.post
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/deployment/bare-metal.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/deployment/bare-metal.post
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/deployment/vm.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/deployment/vm.post
-tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./software.get
-tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./software.post
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/software.get
+tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./self/software.post
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./status.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./status.post
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./virtualserver.get
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./virtualserver.post
 tags	swagger/schema.json	/^  "tags": [$/;"	a
+technology	schema/software_definitions.py	/^    technology = fields.Str(required=True, enum=CONTAINER_TECHNOLOGY, example="docker",$/;"	v	class:ContainerSchema
+technology	test/examples/SoftwareInContainer.json	/^    "technology": "docker",$/;"	s
 templates_path	docs/conf.py	/^templates_path = ['_templates']$/;"	v
 testAgentActions	test/security_function_tests.py	/^    def testAgentActions(self):$/;"	m	class:TestMyApp
 testAgentParameters	test/security_function_tests.py	/^    def testAgentParameters(self):$/;"	m	class:TestMyApp
 test_baremetal_server	test/baremetal_server_test.py	/^    def test_baremetal_server(self):$/;"	m	class:TestMyApp
 test_chk	test/baremetal_server_test.py	/^    def test_chk(self):$/;"	m	class:TestMyApp
 test_cloud_infrastructure	test/cloud_infrastructure_test.py	/^    def test_cloud_infrastructure(self):$/;"	m	class:TestMyApp
+test_container_definitions	test/software_definition_tests.py	/^    def test_container_definitions(self):$/;"	m	class:TestMyApp
 test_delete_message	test/filiation_tests.py	/^    def test_delete_message(self):$/;"	m	class:TestMyApp
 test_disk_definitions	test/hardware_definition_tests.py	/^    def test_disk_definitions(self):$/;"	m	class:TestMyApp
 test_disk_definitions	test/network_definitions_test.py	/^    def test_disk_definitions(self):$/;"	m	class:TestMyApp
 test_get_baremetal_server	test/baremetal_server_test.py	/^    def test_get_baremetal_server(self):$/;"	m	class:TestMyApp
 test_get_cloud_infrastructure	test/cloud_infrastructure_test.py	/^    def test_get_cloud_infrastructure(self):$/;"	m	class:TestMyApp
+test_get_containers	test/software_definition_tests.py	/^    def test_get_containers(self):$/;"	m	class:TestMyApp
 test_get_filiation_by_id	test/filiation_tests.py	/^    def test_get_filiation_by_id(self):$/;"	m	class:TestMyApp
 test_get_security_function	test/security_function_tests.py	/^    def test_get_security_function(self):$/;"	m	class:TestMyApp
 test_get_software	test/software_definition_tests.py	/^    def test_get_software(self):$/;"	m	class:TestMyApp
@@ -2619,6 +2699,7 @@ test_http_server	test/filiation_tests.py	/^    def test_http_server(self):$/;"	m
 test_load_file	test/test_lcp_config.py	/^    def test_load_file(self):$/;"	m	class:TestMyApp
 test_other	test/filiation_tests.py	/^    def test_other(self):$/;"	m	class:TestMyApp
 test_post_baremetal_server	test/baremetal_server_test.py	/^    def test_post_baremetal_server(self):$/;"	m	class:TestMyApp
+test_post_container	test/software_definition_tests.py	/^    def test_post_container(self):$/;"	m	class:TestMyApp
 test_post_filiation	test/filiation_tests.py	/^    def test_post_filiation(self):$/;"	m	class:TestMyApp
 test_post_multi	test/filiation_tests.py	/^    def test_post_multi(self):$/;"	m	class:TestMyApp
 test_post_parent	test/filiation_tests.py	/^    def test_post_parent(self):$/;"	m	class:TestMyApp
@@ -2675,7 +2756,8 @@ type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./co
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./lcp_son.get.responses.200.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./lcp_son/{id}.delete.responses.200.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./securityFunctions.post.parameters.0.schema
-type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./software.post.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./self/container.post.parameters.0.schema
+type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./self/software.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./virtualserver.get.responses.200.schema
 type	swagger/schema.json	/^              "type": "array",$/;"	s	object:paths./virtualserver.post.parameters.0.schema
 type	swagger/schema.json	/^              "type": "string"$/;"	s	object:paths./lcp_son/{id}.get.parameters.0.schema
@@ -2830,7 +2912,6 @@ update_data	resource/cloud_resource.py	/^    def update_data(cls, elem):$/;"	m	c
 update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/;"	m	class:BaremetalServer
 update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/;"	m	class:LXCContainer
 update_data	resource/hardware_definitions.py	/^    def update_data(cls, elem):$/;"	m	class:VirtualServer
-update_data	resource/software_definition.py	/^    def update_data(cls, elem):$/;"	m	class:SoftwareDefinition
 url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/cb.example.com:5000",$/;"	v	class:ContextBrokerConnection
 url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi.example.com:4000",$/;"	v	class:LCPDescription
 url	schema/filiation.py	/^    url = fields.URL(required=True, example="http:\/\/lcpapi.example.com:4000",$/;"	v	class:LCPFatherURL
@@ -2856,6 +2937,7 @@ vendor	schema/software_definitions.py	/^    vendor = fields.Str(required=False, 
 vendor	swagger/schema.json	/^        "vendor": {$/;"	o	object:definitions.CloudSchema.properties
 vendor	swagger/schema.json	/^        "vendor": {$/;"	o	object:definitions.SecurityFunction.properties
 vendor	swagger/schema.json	/^        "vendor": {$/;"	o	object:definitions.SoftwareDefinition.properties
+vendor	test/examples/SoftwareInContainer.json	/^        "vendor": "Oracle Corporation"$/;"	s	object:software.0
 vendor	test/examples/cloud-infrastructure-example.json	/^    "vendor": "Openstack",$/;"	s
 vendor	test/examples/security-function-example.json	/^  "vendor": "FIWARE Foundation e.V.",$/;"	s
 vendor	test/examples/software-artifact-example.json	/^    "vendor": "Oracle Corporation"$/;"	s
@@ -2867,6 +2949,7 @@ version	swagger/schema.json	/^        "version": {$/;"	o	object:definitions.Clou
 version	swagger/schema.json	/^        "version": {$/;"	o	object:definitions.SecurityFunction.properties
 version	swagger/schema.json	/^        "version": {$/;"	o	object:definitions.SoftwareDefinition.properties
 version	swagger/schema.json	/^    "version": "1.0.3"$/;"	s	object:info
+version	test/examples/SoftwareInContainer.json	/^        "version": "5.8+1.0.5ubuntu2",$/;"	s	object:software.0
 version	test/examples/cloud-infrastructure-example.json	/^    "version": "queens",$/;"	s
 version	test/examples/security-function-example.json	/^  "version": "1.0.1",$/;"	s
 version	test/examples/software-artifact-example.json	/^    "version": "5.8+1.0.5ubuntu2",$/;"	s
