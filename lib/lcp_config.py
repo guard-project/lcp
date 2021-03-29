@@ -22,6 +22,7 @@ class LCPConfig(object):
             self.agents = []
             self.testing = False
             self.children_requested = []
+            self.self_software = []
             self.reload(self.filename)
 
         def save(self):
@@ -82,6 +83,11 @@ class LCPConfig(object):
                 pass
 
             try:
+                self.self_software = self.config["self_software"]
+            except KeyError:
+                self.config["self_software"] = self.self_software
+
+            try:
                 self.children_requested = self.config['lcp_request_as_sons']
             except KeyError:
                 pass
@@ -103,6 +109,19 @@ class LCPConfig(object):
             if not updated:
                 self.agents.append(elem)
             self.save()
+
+        def setSoftware(self, elem):
+            updated = False
+            for i in range(0, len(self.self_software)):
+                if self.self_software[i]["id"] == elem["id"]:
+                    updated = True
+                    self.self_software[i] = elem
+                    break
+            if not updated:
+                self.self_software.append(elem)
+            self.config["self_software"] = self.self_software
+            self.save()
+
 
         def setParent(self, elem):
             updated = False

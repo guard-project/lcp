@@ -32,7 +32,7 @@ class TestMyApp(SoftwareDefinitionsTesting):
         software_dict = self._getSoftwareExample()
         software_schema = SoftwareDefinition(many=False)
         try:
-            d = software_schema.load(software_dict)
+            d = loadExampleFile("software-artifact-example.json")
             print(d)
             assert (True)
         except ValidationError as ve:
@@ -42,17 +42,23 @@ class TestMyApp(SoftwareDefinitionsTesting):
     def test_get_software(self):
         headers = getAuthorizationHeaders()
 
-        SoftwareDefinitionResource.load_test_file()
+        example = loadExampleFile("software-artifact-example.json")
 
-        result = self.simulate_get("/software")
+        result = self.simulate_get("/self/software")
         assert (result.status == "401 Unauthorized")
-        print(result)
 
-        result = self.simulate_get("/software", headers=headers)
+        result = self.simulate_get("/self/software", headers=headers)
         assert (result.status == "200 OK")
-
         body = result.json
         assert (type(body) is list)
+        assert len(body) == 0
+
+        LCPConfig().setSoftware(example)
+        result = self.simulate_get("/self/software", headers=headers)
+        assert (result.status == "200 OK")
+        body = result.json
+        assert len(body) == 1
+
         for s in body:
             software_schema = SoftwareDefinition(many=False)
             try:
@@ -62,24 +68,26 @@ class TestMyApp(SoftwareDefinitionsTesting):
                 print(e)
                 raise e
 
+
     def test_post_software(self):
         headers = getAuthorizationHeaders()
-        software_dict = self._getSoftwareExample()
+        software_dict = loadExampleFile("software-artifact-example.json")
 
         try:
             # Test - Post
-            resp = self.simulate_post("/software", headers=headers,
+            resp = self.simulate_post("/self/software", headers=headers,
                                   body=json.dumps(software_dict))
-            assert len(SoftwareDefinitionResource.data)==1
-            assert SoftwareDefinitionResource.data[0]["id"] == software_dict["id"]
+            self_software = LCPConfig().self_software
+            assert len(self_software) == 1
+            assert self_software[0]["id"] == software_dict["id"]
             assert resp.status_code == 201
 
             # Test - Update
             software_dict["name"]="MySQL Server"
-            resp = self.simulate_post("/software", headers=headers,
+            resp = self.simulate_post("/self/software", headers=headers,
                                       body=json.dumps(software_dict))
-            assert len(SoftwareDefinitionResource.data)==1
-            assert SoftwareDefinitionResource.data[0]["name"] == software_dict["name"]
+            assert len(self_software) == 1
+            assert self_software[0]["name"] == software_dict["name"]
             assert resp.status_code == 201
 
         except ValidationError as e:

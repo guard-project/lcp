@@ -1391,7 +1391,7 @@ paths:
       summary: POST the Baremetal server where the LCP is deployed on.
       tags:
       - hardware
-  /software:
+  /self/software:
     get:
       description: 'Gets the information of the Server software that LCP Knows.
 
