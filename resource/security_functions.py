@@ -18,14 +18,14 @@ class SecurityFunction(Base_Resource):
 
     @docstring(source='SecurityFunctions/GetSecurityFunctions.yml')
     def on_get(self, req, resp):
-        resp_data, valid = SecurityFunctionSchema(method=HTTP_Method.GET) \
-            .validate(data={})
+        # resp_data, valid = SecurityFunctionSchema(method=HTTP_Method.GET) \
+        #    .validate(data={})
         resp.body = json.dumps(LCPConfig().agents)
 
     @docstring(source='SecurityFunctions/PostSecurityFunctions.yml')
     def on_post(self, req, resp):
-        resp_data, valid = SecurityFunctionSchema(method=HTTP_Method.POST) \
-            .validate(data={})
+        # resp_data, valid = SecurityFunctionSchema(method=HTTP_Method.POST) \
+        #    .validate(data={})
 
         payload = req.media if isinstance(req.media, list) else [req.media]
         try:

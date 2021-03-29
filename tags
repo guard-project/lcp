@@ -161,6 +161,7 @@ $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unsupported_Me
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/Unsupported_Media_Type_Response"$/;"	s	object:paths./code/{id}.put.responses.415.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/VirtualServer"$/;"	s	object:paths./self/deployment/vm.get.responses.200.schema
 $ref	swagger/schema.json	/^              "$ref": "#\/definitions\/VirtualServer"$/;"	s	object:paths./self/deployment/vm.post.parameters.0.schema
+$ref	swagger/schema.json	/^            "$ref": "#\/definitions\/AgentActionSchema"$/;"	s	object:definitions.SecurityFunction.properties.actions.items
 $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/AgentParameter"$/;"	s	object:definitions.SecurityFunction.properties.parameters.items
 $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/CloudCompute"$/;"	s	object:definitions.CloudSchema.properties.compute_nodes.items
 $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/CloudController"$/;"	s	object:definitions.CloudSchema.properties.controllers.items
@@ -203,6 +204,8 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 0	swagger/schema.json	/^              {$/;"	o	array:definitions.VirtualServer.properties.diskDevices.items.allOf
 0	swagger/schema.json	/^            "json",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
 0	swagger/schema.json	/^            "plain",$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
+0	swagger/schema.json	/^            "started",$/;"	s	array:definitions.AgentActionSchema.properties.status.enum
+0	swagger/schema.json	/^            "started",$/;"	s	array:definitions.SecurityFunction.properties.status.enum
 0	swagger/schema.json	/^            {$/;"	o	array:definitions.Bad_Request_Response.properties.exception.allOf
 0	swagger/schema.json	/^            {$/;"	o	array:definitions.Internal_Server_Error_Response.properties.exception.allOf
 0	swagger/schema.json	/^            {$/;"	o	array:definitions.No_Content_Response.properties.exception.allOf
@@ -253,6 +256,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 0	swagger/schema.json	/^          {$/;"	o	array:paths./self/deployment/vm.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./software.post.parameters
 0	swagger/schema.json	/^          {$/;"	o	array:paths./virtualserver.post.parameters
+0	swagger/schema.json	/^        "cmd",$/;"	s	array:definitions.AgentActionSchema.required
 0	swagger/schema.json	/^        "cmd",$/;"	s	array:definitions.Config_Action_Request.required
 0	swagger/schema.json	/^        "code",$/;"	s	array:definitions.Code_Request.required
 0	swagger/schema.json	/^        "content",$/;"	s	array:definitions.Config_Resource_Request.required
@@ -312,8 +316,11 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 1	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./config.post.responses.422.schema.items.oneOf
 1	swagger/schema.json	/^            "lines",$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
 1	swagger/schema.json	/^            "properties",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
+1	swagger/schema.json	/^            "stopped",$/;"	s	array:definitions.AgentActionSchema.properties.status.enum
+1	swagger/schema.json	/^            "stopped",$/;"	s	array:definitions.SecurityFunction.properties.status.enum
 1	swagger/schema.json	/^        "hostname",$/;"	s	array:definitions.BaremetalServer.required
 1	swagger/schema.json	/^        "hostname",$/;"	s	array:definitions.VirtualServer.required
+1	swagger/schema.json	/^        "id"$/;"	s	array:definitions.AgentActionSchema.required
 1	swagger/schema.json	/^        "id"$/;"	s	array:definitions.Code_Request.required
 1	swagger/schema.json	/^        "id"$/;"	s	array:definitions.Config_Action_Request.required
 1	swagger/schema.json	/^        "id",$/;"	s	array:definitions.Config_Resource_Request.required
@@ -356,6 +363,8 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
 2	swagger/schema.json	/^            "json"$/;"	s	array:definitions.Config_Action_Request.properties.output_format.enum
+2	swagger/schema.json	/^            "unknown"$/;"	s	array:definitions.AgentActionSchema.properties.status.enum
+2	swagger/schema.json	/^            "unknown"$/;"	s	array:definitions.SecurityFunction.properties.status.enum
 2	swagger/schema.json	/^            "xml",$/;"	s	array:definitions.Config_Parameter_Request.properties.schema.enum
 2	swagger/schema.json	/^        "hypervisor",$/;"	s	array:definitions.VirtualServer.required
 2	swagger/schema.json	/^        "id",$/;"	s	array:definitions.BaremetalServer.required
@@ -553,6 +562,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 7	swagger/schema.json	/^    {$/;"	o	array:tags
 8	swagger/schema.json	/^    {$/;"	o	array:tags
 9	swagger/schema.json	/^    {$/;"	o	array:tags
+AGENT_STATUS	schema/security_functions.py	/^AGENT_STATUS = ['started', 'stopped', 'unknown']$/;"	v
 ALLSPHINXOPTS	docs/Makefile	/^ALLSPHINXOPTS   = -d $(BUILDDIR)\/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .$/;"	m
 ALLSPHINXOPTS	docs/make.bat	/^	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%$/;"	v
 ALLSPHINXOPTS	docs/make.bat	/^set ALLSPHINXOPTS=-d %BUILDDIR%\/doctrees %SPHINXOPTS% .$/;"	v
@@ -561,6 +571,8 @@ API Reference	docs/index.rst	/^API Reference$/;"	s	chapter:Documentation
 API_Spec	api/spec.py	/^from apispec import APISpec as API_Spec$/;"	x	nameref:unknown:APISpec
 Add	.idea/workspace.xml	/^    <ConfirmationsSetting value="1" id="Add" \/>$/;"	i
 Additional Notes	docs/index.rst	/^Additional Notes$/;"	s	chapter:Documentation
+AgentActionSchema	schema/security_functions.py	/^class AgentActionSchema(Base_Schema):$/;"	c
+AgentActionSchema	swagger/schema.json	/^    "AgentActionSchema": {$/;"	o	object:definitions
 AgentParameter	schema/security_functions.py	/^class AgentParameter(Base_Schema):$/;"	c
 AgentParameter	swagger/schema.json	/^    "AgentParameter": {$/;"	o	object:definitions
 Arg_Reader	reader/arg.py	/^class Arg_Reader:$/;"	c
@@ -638,6 +650,7 @@ Contributing	CONTRIBUTING.md	/^# Contributing$/;"	c
 Contributing	docs/CONTRIBUTING.md	/^# Contributing$/;"	c
 Created_Response	lib/response.py	/^class Created_Response(Base_Response):$/;"	c
 Created_Response_Schema	schema/response.py	/^class Created_Response_Schema(Base_Response_Schema):$/;"	c
+CustomWorker	main2.py	/^class CustomWorker(SyncWorker):$/;"	c
 DELETE	lib/http.py	/^    DELETE = 'delete'$/;"	v	class:HTTP_Method
 Date_Time	schema/code.py	/^from marshmallow.fields import Bool, DateTime as Date_Time, Nested, Str$/;"	x	nameref:unknown:DateTime
 Date_Time	schema/config.py	/^from marshmallow.fields import Boolean, Constant, DateTime as Date_Time, Float, Integer, List, N/;"	x	nameref:unknown:DateTime
@@ -712,6 +725,7 @@ IPv6Addresses	test/examples/bare-metal-server-example.json	/^            "IPv6Ad
 IPv6Addresses	test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["fe80::dc07:b5e4:d87f:2538\/64"],$/;"	a	object:networkInterfaces.0
 IPv6CIDR	schema/hardware_definitions.py	/^class IPv6CIDR(fields.Str):$/;"	c
 Import_Error	main.py	/^Import_Error = ImportError$/;"	v
+Import_Error	main2.py	/^Import_Error = ImportError$/;"	v
 In	schema/validate.py	/^class In(object):$/;"	c
 Indices and tables	docs/index.rst	/^Indices and tables$/;"	c
 Installation	README.md	/^## Installation$/;"	s	chapter:Local Control Plane
@@ -782,6 +796,8 @@ PAPER	docs/make.bat	/^	echo.  latex      to make LaTeX files, you can set PAPER=
 PAPEROPT_a4	docs/Makefile	/^PAPEROPT_a4     = -D latex_paper_size=a4$/;"	m
 PAPEROPT_letter	docs/Makefile	/^PAPEROPT_letter = -D latex_paper_size=letter$/;"	m
 PARAMETER_SCHEMAS	schema/config.py	/^PARAMETER_SCHEMAS = ['json', 'properties', 'xml', 'yaml']$/;"	v
+PARAMETER_SCHEMAS	schema/security_functions.py	/^PARAMETER_SCHEMAS = ['properties', 'json', 'xml', 'yaml']$/;"	v
+PARAMETER_TYPES	schema/security_functions.py	/^PARAMETER_TYPES = ['binary', 'boolean', 'choice',$/;"	v
 POST	lib/http.py	/^    POST = 'post'$/;"	v	class:HTTP_Method
 PUT	lib/http.py	/^    PUT = 'put'$/;"	v	class:HTTP_Method
 ParentLCPIdentification	resource/filiation.py	/^class ParentLCPIdentification(Base_Resource):$/;"	c
@@ -1018,7 +1034,9 @@ _getTestingPartitionsHD2	test/hardware_definition_tests.py	/^    def _getTesting
 _setFiliationData	test/filiation_tests.py	/^    def _setFiliationData(self):$/;"	m	class:TestMyApp
 _setMultiFiliationData	test/filiation_tests.py	/^    def _setMultiFiliationData(self):$/;"	m	class:TestMyApp
 actions	schema/config.py	/^    actions = Nested(Config_Action_Request_Schema, many=True, unknown='INCLUDE',$/;"	v	class:Config_Request_Schema
+actions	schema/security_functions.py	/^    actions = List_or_One(fields.Nested(AgentActionSchema), required=False)$/;"	v	class:SecurityFunction
 actions	swagger/schema.json	/^        "actions": {$/;"	o	object:definitions.Config_Request.properties
+actions	swagger/schema.json	/^        "actions": {$/;"	o	object:definitions.SecurityFunction.properties
 add	lib/response.py	/^    def add(self, resp):$/;"	m	class:Base_Response
 allOf	swagger/schema.json	/^            "allOf": [$/;"	a	object:definitions.BaremetalServer.properties.diskDevices.items
 allOf	swagger/schema.json	/^            "allOf": [$/;"	a	object:definitions.Disk.properties.diskPartitions.items
@@ -1053,6 +1071,8 @@ cloud_id	schema/hardware_definitions.py	/^    cloud_id = fields.Str(required=Fal
 cloud_id	swagger/schema.json	/^        "cloud_id": {$/;"	o	object:definitions.VirtualServer.properties
 cloud_id	test/examples/virtual-server-example.json	/^    "cloud_id": "28f67bd9-0ace-4b09-a561-0ec137b77bcc"$/;"	s
 cmd	schema/config.py	/^    cmd = Str(required=True,$/;"	v	class:Config_Action_Request_Schema
+cmd	schema/security_functions.py	/^    cmd = fields.Str(required=True, example='service filebeat start',$/;"	v	class:AgentActionSchema
+cmd	swagger/schema.json	/^        "cmd": {$/;"	o	object:definitions.AgentActionSchema.properties
 cmd	swagger/schema.json	/^        "cmd": {$/;"	o	object:definitions.Config_Action_Request.properties
 code	lib/response.py	/^    code = HTTP_Status.BAD_REQUEST$/;"	v	class:Bad_Request_Response
 code	lib/response.py	/^    code = HTTP_Status.CONFLICT$/;"	v	class:Conflict_Response
@@ -1132,6 +1152,7 @@ data	schema/validate.py	/^        def data():$/;"	f	member:In.apply	file:
 datetime_from_str	utils/datetime.py	/^def datetime_from_str(date_time_str, format=FORMAT):$/;"	f
 datetime_to_str	utils/datetime.py	/^def datetime_to_str(date_time=None, format=FORMAT):$/;"	f
 db	main.py	/^db = Arg_Reader.read()$/;"	v
+db	main2.py	/^db = Arg_Reader.read()$/;"	v
 db	reader/arg.py	/^    db = None$/;"	v	class:Arg_Reader
 db	resource/__init__.py	/^db = ($/;"	v
 decorator	docstring/__init__.py	/^    def decorator(self):$/;"	f	function:docstring	file:
@@ -1327,6 +1348,8 @@ description	swagger/schema.json	/^            "description": "Update for one or 
 description	swagger/schema.json	/^            "description": "Update for one or more codes not necessary.",$/;"	s	object:paths./code/{id}.put.responses.304
 description	swagger/schema.json	/^            "description": "id of LCP son to be queried",$/;"	s	object:paths./lcp_son/{id}.get.parameters.0
 description	swagger/schema.json	/^          "description": "A Human readable name which could be depicted in graphs"$/;"	s	object:definitions.LCPDescription.properties.name
+description	swagger/schema.json	/^          "description": "Action command."$/;"	s	object:definitions.AgentActionSchema.properties.cmd
+description	swagger/schema.json	/^          "description": "Action name"$/;"	s	object:definitions.AgentActionSchema.properties.id
 description	swagger/schema.json	/^          "description": "CPU Cores in the Server"$/;"	s	object:definitions.BaremetalServer.properties.cpus
 description	swagger/schema.json	/^          "description": "CPU Cores in the Server"$/;"	s	object:definitions.VirtualServer.properties.cpus
 description	swagger/schema.json	/^          "description": "Cloud ID -- Maybe None if somehow hosted"$/;"	s	object:definitions.VirtualServer.properties.cloud_id
@@ -1422,6 +1445,8 @@ description	swagger/schema.json	/^          "description": "Type of the Security
 description	swagger/schema.json	/^          "description": "URL if some to configure the Parameters."$/;"	s	object:definitions.SecurityFunction.properties.endpoint_url
 description	swagger/schema.json	/^          "description": "URL where the Son LCP Listens"$/;"	s	object:definitions.LCPDescription.properties.url
 description	swagger/schema.json	/^          "description": "Unique ID for the Son LCP"$/;"	s	object:definitions.LCPDescription.properties.id
+description	swagger/schema.json	/^          "description": "Update the status the of the agent-instance according to cmd condition/;"	s	object:definitions.AgentActionSchema.properties.status
+description	swagger/schema.json	/^          "description": "Update the status the of the agent-instance if the command is executed/;"	s	object:definitions.SecurityFunction.properties.status
 description	swagger/schema.json	/^          "description": "Username for the CB to connect to this LCP."$/;"	s	object:definitions.Status_Response.properties.username
 description	swagger/schema.json	/^          "description": "Value of the Parameter to be configured"$/;"	s	object:definitions.AgentParameter.properties.value
 description	swagger/schema.json	/^          "description": "Version of the Piece of Software installed"$/;"	s	object:definitions.SoftwareDefinition.properties.version
@@ -1433,7 +1458,7 @@ description	swagger/schema.json	/^        "description": "Gets a list of next li
 description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./lcp_son/{id}.delete
 description	swagger/schema.json	/^        "description": "Gets a list of next links in the service chain filiated (as son childs) /;"	s	object:paths./lcp_son/{id}.get
 description	swagger/schema.json	/^        "description": "Gets the information of one cloud Infrastrucutre\\n",$/;"	s	object:paths./cloud.get
-description	swagger/schema.json	/^        "description": "Gets the information of the SecurityFunctions deployed with\\n",$/;"	s	object:paths./securityFunctions.get
+description	swagger/schema.json	/^        "description": "Gets the information of the SecurityFunctions deployed along with the LC/;"	s	object:paths./securityFunctions.get
 description	swagger/schema.json	/^        "description": "Gets the information of the Server software that LCP Knows.\\n",$/;"	s	object:paths./software.get
 description	swagger/schema.json	/^        "description": "Gets the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./baremetal.get
 description	swagger/schema.json	/^        "description": "Gets the information of the Server where the LCP is deployed\\n",$/;"	s	object:paths./self/deployment/bare-metal.get
@@ -1487,6 +1512,7 @@ deviceType	test/examples/virtual-server-example.json	/^            "deviceType":
 deviceType	test/examples/virtual-server-example.json	/^            "deviceType": "ethernet"$/;"	s	object:networkInterfaces.0
 dict_to_xml	api/media_handler.py	/^from dicttoxml import dicttoxml as dict_to_xml$/;"	x	nameref:unknown:dicttoxml
 dir_path	main.py	/^dir_path = os.path.dirname(path)$/;"	v
+dir_path	main2.py	/^dir_path = os.path.dirname(path)$/;"	v
 dirhtml	docs/Makefile	/^dirhtml:$/;"	t
 diskDevices	schema/hardware_definitions.py	/^    diskDevices = List_or_One(fields.Nested(Disk, required=False,$/;"	v	class:BaremetalServer
 diskDevices	swagger/schema.json	/^        "diskDevices": {$/;"	o	object:definitions.BaremetalServer.properties
@@ -1510,8 +1536,10 @@ end	docs/make.bat	/^:end$/;"	l
 endpoint_url	schema/security_functions.py	/^    endpoint_url = fields.URL(required=False,$/;"	v	class:SecurityFunction
 endpoint_url	swagger/schema.json	/^        "endpoint_url": {$/;"	o	object:definitions.SecurityFunction.properties
 endpoint_url	test/examples/security-function-example.json	/^  "endpoint_url": "http:\/\/example.com:4250\/v1\/config",$/;"	s
+enum	swagger/schema.json	/^          "enum": [$/;"	a	object:definitions.AgentActionSchema.properties.status
 enum	swagger/schema.json	/^          "enum": [$/;"	a	object:definitions.Config_Action_Request.properties.output_format
 enum	swagger/schema.json	/^          "enum": [$/;"	a	object:definitions.Config_Parameter_Request.properties.schema
+enum	swagger/schema.json	/^          "enum": [$/;"	a	object:definitions.SecurityFunction.properties.status
 epub	docs/Makefile	/^epub:$/;"	t
 error	api/error_handler.py	/^    error = HTTP_Bad_Request$/;"	v	class:Bad_Request_Handler
 error	api/error_handler.py	/^    error = HTTP_Internal_Server_Error$/;"	v	class:Internal_Server_Error_Handler
@@ -1577,7 +1605,6 @@ example	swagger/schema.json	/^          "example": "Connection timeout",$/;"	s	o
 example	swagger/schema.json	/^          "example": "FIWARE Foundation e.V.",$/;"	s	object:definitions.SecurityFunction.properties.vendor
 example	swagger/schema.json	/^          "example": "FIWARE Lab Wolfsburg node",$/;"	s	object:definitions.CloudSchema.properties.description
 example	swagger/schema.json	/^          "example": "HeartbeatTime",$/;"	s	object:definitions.AgentParameter.properties.name
-example	swagger/schema.json	/^          "example": "Int",$/;"	s	object:definitions.AgentParameter.properties.type
 example	swagger/schema.json	/^          "example": "KBG30ZMV512G TOSHIBA",$/;"	s	object:definitions.Disk.properties.model
 example	swagger/schema.json	/^          "example": "KVM",$/;"	s	object:definitions.VirtualServer.properties.hypervisor
 example	swagger/schema.json	/^          "example": "MySQL",$/;"	s	object:definitions.SoftwareDefinition.properties.name
@@ -1618,6 +1645,7 @@ example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:
 example	swagger/schema.json	/^          "example": "firewall.xml",$/;"	s	object:definitions.Config_Resource_Request.properties.path
 example	swagger/schema.json	/^          "example": "http:\/\/example.com:4250\/v1\/config",$/;"	s	object:definitions.SecurityFunction.properties.endpoint_url
 example	swagger/schema.json	/^          "example": "http:\/\/lcpapi.example.com:4000",$/;"	s	object:definitions.LCPDescription.properties.url
+example	swagger/schema.json	/^          "example": "integer",$/;"	s	object:definitions.AgentParameter.properties.type
 example	swagger/schema.json	/^          "example": "lcp:node1",$/;"	s	object:definitions.LCPDescription.properties.name
 example	swagger/schema.json	/^          "example": "lib\/connection.py",$/;"	s	object:definitions.Exception_Response.properties.filename
 example	swagger/schema.json	/^          "example": "lines",$/;"	s	object:definitions.Config_Action_Request.properties.output_format
@@ -1625,7 +1653,11 @@ example	swagger/schema.json	/^          "example": "nveme0n1p6",$/;"	s	object:de
 example	swagger/schema.json	/^          "example": "nvme0n1",$/;"	s	object:definitions.Disk.properties.name
 example	swagger/schema.json	/^          "example": "period",$/;"	s	object:definitions.Config_Parameter_Request.properties.id
 example	swagger/schema.json	/^          "example": "queens",$/;"	s	object:definitions.CloudSchema.properties.version
+example	swagger/schema.json	/^          "example": "service filebeat start",$/;"	s	object:definitions.AgentActionSchema.properties.cmd
+example	swagger/schema.json	/^          "example": "start",$/;"	s	object:definitions.AgentActionSchema.properties.id
 example	swagger/schema.json	/^          "example": "start",$/;"	s	object:definitions.Config_Action_Request.properties.id
+example	swagger/schema.json	/^          "example": "started",$/;"	s	object:definitions.AgentActionSchema.properties.status
+example	swagger/schema.json	/^          "example": "started",$/;"	s	object:definitions.SecurityFunction.properties.status
 example	swagger/schema.json	/^          "example": "yaml",$/;"	s	object:definitions.Config_Parameter_Request.properties.schema
 example	swagger/schema.json	/^          "example": 80,$/;"	n	object:definitions.Exception_Response.properties.line
 example	swagger/schema.json	/^          "example": true,$/;"	b	object:definitions.Config_Action_Request.properties.daemon
@@ -1678,6 +1710,7 @@ get_levels	utils/log.py	/^    def get_levels():$/;"	m	class:Log
 get_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x	nameref:unknown:get
 get_seconds	utils/time.py	/^def get_seconds(text, to_int=False):$/;"	f
 gettext	docs/Makefile	/^gettext:$/;"	t
+handle_request	main2.py	/^    def handle_request(self, listener, req, client, addr):$/;"	m	class:CustomWorker
 handler	api/error_handler.py	/^    def handler(cls, req, resp, ex, params):$/;"	m	class:Base_Handler
 hash	utils/hash.py	/^def hash(text):$/;"	f
 help	docs/Makefile	/^help:$/;"	t
@@ -1715,9 +1748,11 @@ id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="
 id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="d450f1ce-95a1-4c3d-9e01-6e37f3d0c584",$/;"	v	class:NetworkInterface
 id	schema/hardware_definitions.py	/^    id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",$/;"	v	class:BaremetalServer
 id	schema/security_functions.py	/^    id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",$/;"	v	class:SecurityFunction
+id	schema/security_functions.py	/^    id = fields.Str(required=True, example='start',$/;"	v	class:AgentActionSchema
 id	schema/software_definitions.py	/^    id = fields.Str(required=True, example="a406874b-dea7-4cd1-9d4e-b82a18ec993b",$/;"	v	class:SoftwareDefinition
 id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Request_Schema
 id	schema/status.py	/^    id = Str(required=True, example='apache',$/;"	v	class:Status_Response_Schema
+id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.AgentActionSchema.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.BaremetalServer.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.CloudSchema.properties
 id	swagger/schema.json	/^        "id": {$/;"	o	object:definitions.Code_Request.properties
@@ -1750,6 +1785,7 @@ id	test/examples/virtual-server-example.json	/^            "id": "nwiface:ens3",
 id	test/examples/virtual-server-example.json	/^            "id": "urn:HardDiskDevice:vda"$/;"	s	object:diskDevices.0
 id	test/examples/virtual-server-example.json	/^    "id": "029b97e0-4498-4013-acd1-1b585cf6e85a",$/;"	s
 ident	main.py	/^ident = f'{project} - {title} v:{version}'$/;"	v
+ident	main2.py	/^ident = f'{project} - {title} v:{version}'$/;"	v
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./baremetal.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./cloud.post.parameters.0
 in	swagger/schema.json	/^            "in": "body",$/;"	s	object:paths./code.delete.parameters.0
@@ -1826,6 +1862,7 @@ items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Config
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Disk.properties.diskPartitions
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.NetworkInterface.properties.IPv4Addresses
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.NetworkInterface.properties.IPv6Addresses
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SecurityFunction.properties.actions
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SecurityFunction.properties.parameters
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SoftwareDefinition.properties.openTCPPorts
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SoftwareDefinition.properties.openUDPPorts
@@ -1887,6 +1924,7 @@ mtu	test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	
 mtu	test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	object:networkInterfaces.4
 mtu	test/examples/virtual-server-example.json	/^            "mtu": 1400,$/;"	n	object:networkInterfaces.1
 mtu	test/examples/virtual-server-example.json	/^            "mtu": 1450,$/;"	n	object:networkInterfaces.0
+myapi	main2.py	/^myapi = api(title=title, version=version,$/;"	v
 name	schema/cloudschema.py	/^    name = fields.Str(required=True, example="Wolfsburg-FIWARE-Lab-Cloud",$/;"	v	class:CloudSchema
 name	schema/filiation.py	/^    name = fields.Str(required=True, example="lcp:node1",$/;"	v	class:LCPDescription
 name	schema/hardware_definitions.py	/^    name = fields.Str(required=True, example="nveme0n1p6",$/;"	v	class:DiskPartition
@@ -2056,6 +2094,7 @@ password	schema/status.py	/^    password = Str(allow_none=True,$/;"	v	class:Stat
 password	schema/status.py	/^    password = Str(description='Password for the CB to connect to this LCP.')$/;"	v	class:Status_Response_Schema
 password	swagger/schema.json	/^        "password": {$/;"	o	object:definitions.Status_Response.properties
 path	main.py	/^path = os.path.abspath(__file__)$/;"	v
+path	main2.py	/^path = os.path.abspath(__file__)$/;"	v
 path	reader/config.py	/^    path = Path(__file__).parent \/ '..\/config.ini'$/;"	v	class:Config_Reader
 path	schema/config.py	/^    path = List(Str(required=True, example='period',$/;"	v	class:Config_Parameter_Request_Schema
 path	schema/config.py	/^    path = Str(required=True, example=EXAMPLE_FILENAME,$/;"	v	class:Config_Resource_Request_Schema
@@ -2085,13 +2124,14 @@ post	swagger/schema.json	/^      "post": {}$/;"	o	object:paths./lcp_parent
 post	test/test_utils.py	/^    def post(self):$/;"	m	class:TerminateHttpServer
 post	test/test_utils.py	/^    def post(self):$/;"	m	class:TestLCPSonFiliationRequest
 postLcpParentToSon	RestClients/LCPClient.py	/^        def postLcpParentToSon(self, requested_children_url):  # I am your faher$/;"	m	class:LCPClient.__LCPClient
-postLcpSon	RestClients/LCPClient.py	/^        def postLcpSon(self):$/;"	m	class:LCPClient.__LCPClient
+postLcpSon	RestClients/LCPClient.py	/^        def postLcpSon(self, parent):$/;"	m	class:LCPClient.__LCPClient
 post_register	lib/ContextBrokerThread.py	/^        def post_register(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
 post_req	lib/polycube.py	/^from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTT/;"	x	nameref:unknown:post
 process_request	api/middleware.py	/^    def process_request(self, req, resp):$/;"	m	class:Negotiation_Middleware
 produces	swagger/schema.json	/^  "produces": [$/;"	a
 project	about.py	/^project = 'GUARD'$/;"	v
 project	docs/conf.py	/^project = 'LCP'$/;"	v
+properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.AgentActionSchema
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.AgentParameter
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.Bad_Request_Response
 properties	swagger/schema.json	/^      "properties": {$/;"	o	object:definitions.BaremetalServer
@@ -2136,6 +2176,8 @@ read	reader/arg.py	/^    def read(cls):$/;"	m	class:Arg_Reader
 read	reader/config.py	/^    def read(self):$/;"	m	class:Config_Reader
 reason	schema/response.py	/^    reason = Str(required=True, example='Connection timeout',$/;"	v	class:Exception_Response_Schema
 reason	swagger/schema.json	/^        "reason": {$/;"	o	object:definitions.Exception_Response.properties
+reenqueueLcpParentToSon	RestClients/LCPClient.py	/^        def reenqueueLcpParentToSon(self, requested_children_url):$/;"	m	class:LCPClient.__LCPClient
+reenqueuePostLcpSon	RestClients/LCPClient.py	/^        def reenqueuePostLcpSon(self, parent):$/;"	m	class:LCPClient.__LCPClient
 reload	lib/lcp_config.py	/^        def reload(self, filename=None):$/;"	m	class:LCPConfig.__LCPConfig
 requiered	swagger/schema.json	/^            "requiered": true,$/;"	b	object:paths./lcp_son/{id}.get.parameters.0
 required	swagger/schema.json	/^            "required": true$/;"	b	object:paths./lcp_son/{id}.get.parameters.0
@@ -2154,6 +2196,7 @@ required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths.
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./self/deployment/vm.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./software.post.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./virtualserver.post.parameters.0
+required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.AgentActionSchema
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.AgentParameter
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Bad_Request_Response
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.BaremetalServer
@@ -2434,6 +2477,13 @@ source	schema/config.py	/^    source = Str(required=True, example=EXAMPLE_FILENA
 source	swagger/schema.json	/^        "source": {$/;"	o	object:definitions.Config_Parameter_Request.properties
 source_suffix	docs/conf.py	/^source_suffix = {$/;"	v
 sp	resource/config.py	/^import subprocess as sp$/;"	I	nameref:module:subprocess
+ssl_ca	main.py	/^    ssl_ca = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/rootcertificate\/jicg.root.c/;"	v
+ssl_ca	main2.py	/^    ssl_ca = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/rootcertificate\/jicg.root.c/;"	v
+ssl_cert_reqs	main.py	/^    ssl_cert_reqs = 1$/;"	v
+ssl_cert_reqs	main2.py	/^    ssl_cert_reqs = 1$/;"	v
+ssl_certfile	main.py	/^    ssl_certfile = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/https_cert\/httpscert./;"	v
+ssl_certfile	main2.py	/^    ssl_certfile = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/https_cert\/httpscert./;"	v
+ssl_keyfile	main.py	/^    ssl_keyfile = "\/home\/jicg\/GUARD\/Development\/Integration\/certs\/https_cert\/httpscert.k/;"	v
 start_http_server	test/test_utils.py	/^def start_http_server():$/;"	f
 started	schema/status.py	/^    started = Date_Time(format=FORMAT, required=True, example='2019\/02\/14 15:23:30',$/;"	v	class:Status_Response_Schema
 started	swagger/schema.json	/^        "started": {$/;"	o	object:definitions.Status_Response.properties
@@ -2462,11 +2512,15 @@ status	schema/response.py	/^    status = Constant(Unsupported_Media_Type_Respons
 status	schema/response.py	/^    status = Constant(constant=Bad_Request_Response.status())$/;"	v	class:Bad_Request_Response_Schema
 status	schema/response.py	/^    status = Constant(constant=Conflict_Response.status())$/;"	v	class:Conflict_Response_Schema
 status	schema/response.py	/^    status = Str(required=True, enum=RESPONSE_STATUS,$/;"	v	class:Base_Response_Schema
+status	schema/security_functions.py	/^    status = fields.Str(enum=AGENT_STATUS, example=AGENT_STATUS[0],$/;"	v	class:AgentActionSchema
+status	schema/security_functions.py	/^    status = fields.Str(enum=AGENT_STATUS, example=AGENT_STATUS[0],$/;"	v	class:SecurityFunction
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.AgentActionSchema.properties
 status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Bad_Request_Response.properties
 status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Internal_Server_Error_Response.properties
 status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.No_Content_Response.properties
 status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Not_Acceptable_Response.properties
 status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Ok_Response.properties
+status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.SecurityFunction.properties
 status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Unauthorized_Response.properties
 status	swagger/schema.json	/^        "status": {$/;"	o	object:definitions.Unsupported_Media_Type_Response.properties
 stderr	schema/config.py	/^    stderr = Raw(description='Standard error output of the execution.')$/;"	v	class:Config_Action_Response_Schema
@@ -2546,6 +2600,8 @@ tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./virtualserver.g
 tags	swagger/schema.json	/^        "tags": [$/;"	a	object:paths./virtualserver.post
 tags	swagger/schema.json	/^  "tags": [$/;"	a
 templates_path	docs/conf.py	/^templates_path = ['_templates']$/;"	v
+testAgentActions	test/security_function_tests.py	/^    def testAgentActions(self):$/;"	m	class:TestMyApp
+testAgentParameters	test/security_function_tests.py	/^    def testAgentParameters(self):$/;"	m	class:TestMyApp
 test_baremetal_server	test/baremetal_server_test.py	/^    def test_baremetal_server(self):$/;"	m	class:TestMyApp
 test_chk	test/baremetal_server_test.py	/^    def test_chk(self):$/;"	m	class:TestMyApp
 test_cloud_infrastructure	test/cloud_infrastructure_test.py	/^    def test_cloud_infrastructure(self):$/;"	m	class:TestMyApp
@@ -2576,6 +2632,7 @@ test_virtual_server	test/virtual_server_test.py	/^    def test_virtual_server(se
 texinfo	docs/Makefile	/^texinfo:$/;"	t
 text	docs/Makefile	/^text:$/;"	t
 threadOp	main.py	/^def threadOp():$/;"	f
+threadOp	main2.py	/^def threadOp():$/;"	f
 timeout	config.ini	/^timeout = 20s$/;"	k	section:polycube
 timestamp	schema/config.py	/^    timestamp = Date_Time(format=FORMAT, required=True,$/;"	v	class:Config_Response_Schema
 title	about.py	/^title = 'Local Control Plane'$/;"	v
@@ -2586,8 +2643,8 @@ type	schema/cloudschema.py	/^    type = fields.Str(required=True, example="Barem
 type	schema/cloudschema.py	/^    type = fields.Str(required=True, example="BaremetalServer",$/;"	v	class:CloudController
 type	schema/config.py	/^    type = Str(enum=RESPONSE_TYPES, example=RESPONSE_TYPES[0],$/;"	v	class:Config_Response_Schema
 type	schema/hardware_definitions.py	/^    type = fields.Str(required=False, example='ext4',$/;"	v	class:DiskPartition
-type	schema/security_functions.py	/^    type = fields.Str(required=True, example="Int",$/;"	v	class:AgentParameter
 type	schema/security_functions.py	/^    type = fields.Str(required=True, example="PROBE",$/;"	v	class:SecurityFunction
+type	schema/security_functions.py	/^    type = fields.Str(required=True, example="integer",$/;"	v	class:AgentParameter
 type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code.delete.responses.200.schema.oneOf.0
 type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code.post.responses.200.schema.oneOf.0
 type	swagger/schema.json	/^                  "type": "array",$/;"	s	object:paths./code/{id}.delete.responses.200.schema.oneOf.0
@@ -2640,6 +2697,7 @@ type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.C
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.Disk.properties.diskPartitions
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.NetworkInterface.properties.IPv4Addresses
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SecurityFunction.properties.actions
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SecurityFunction.properties.parameters
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SoftwareDefinition.properties.openTCPPorts
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SoftwareDefinition.properties.openUDPPorts
@@ -2654,6 +2712,9 @@ type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions
 type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.VirtualServer.properties.cpus
 type	swagger/schema.json	/^          "type": "integer",$/;"	s	object:definitions.VirtualServer.properties.ram
 type	swagger/schema.json	/^          "type": "number",$/;"	s	object:definitions.DiskPartition.properties.size
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.AgentActionSchema.properties.cmd
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.AgentActionSchema.properties.id
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.AgentActionSchema.properties.status
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.AgentParameter.properties.description
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.AgentParameter.properties.name
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.AgentParameter.properties.type
@@ -2704,6 +2765,7 @@ type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.endpoint_url
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.id
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.name
+type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.status
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.type
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.vendor
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.version
@@ -2729,6 +2791,7 @@ type	swagger/schema.json	/^        "type": {$/;"	o	object:definitions.CloudCompu
 type	swagger/schema.json	/^        "type": {$/;"	o	object:definitions.CloudController.properties
 type	swagger/schema.json	/^        "type": {$/;"	o	object:definitions.DiskPartition.properties
 type	swagger/schema.json	/^        "type": {$/;"	o	object:definitions.SecurityFunction.properties
+type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.AgentActionSchema
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.AgentParameter
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.Bad_Request_Response
 type	swagger/schema.json	/^      "type": "object",$/;"	s	object:definitions.BaremetalServer

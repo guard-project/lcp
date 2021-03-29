@@ -1,6 +1,29 @@
 consumes:
 - application/json
 definitions:
+  AgentActionSchema:
+    properties:
+      cmd:
+        description: Action command.
+        example: service filebeat start
+        type: string
+      id:
+        description: Action name
+        example: start
+        type: string
+      status:
+        description: Update the status the of the agent-instance according to cmd
+          condition
+        enum: &id001
+        - started
+        - stopped
+        - unknown
+        example: started
+        type: string
+    required:
+    - cmd
+    - id
+    type: object
   AgentParameter:
     properties:
       description:
@@ -13,7 +36,7 @@ definitions:
         type: string
       type:
         description: 'Type of the Parameter: Int, Number, String...'
-        example: Int
+        example: integer
         type: string
       value:
         description: Value of the Parameter to be configured
@@ -476,6 +499,10 @@ definitions:
     type: object
   SecurityFunction:
     properties:
+      actions:
+        items:
+          $ref: '#/definitions/AgentActionSchema'
+        type: array
       endpoint_url:
         description: URL if some to configure the Parameters.
         example: http://example.com:4250/v1/config
@@ -494,6 +521,12 @@ definitions:
         items:
           $ref: '#/definitions/AgentParameter'
         type: array
+      status:
+        description: Update the status the of the agent-instance if the command is
+          executed correctly.
+        enum: *id001
+        example: started
+        type: string
       type:
         description: Type of the Security Function Associated with the LCP
         example: PROBE
@@ -1426,7 +1459,8 @@ paths:
       - software
   /securityFunctions:
     get:
-      description: 'Gets the information of the SecurityFunctions deployed with
+      description: 'Gets the information of the SecurityFunctions deployed along with
+        the LCP
 
         '
       responses:

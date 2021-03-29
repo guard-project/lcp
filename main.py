@@ -18,7 +18,7 @@ from lib.lcp_config import LCPConfig
 
 
 def threadOp():
-    time.sleep(3) # Let Falkon start first...
+    time.sleep(3)  # Let Falkon start first...
     lcp_client = LCPClient()
     config = LCPConfig()
     for children_requested in config.children_requested:
@@ -36,15 +36,26 @@ def threadOp():
 db = Arg_Reader.read()
 
 ident = f'{project} - {title} v:{version}'
-print(ident)
 
 if db.version is not None:
     print(db.version)
 else:
-    print(db)
-
     Thread(target=threadOp).start()
 
     waitress.serve(api(title=title, version=version,
                         dev_username=db.dev_username, dev_password=db.dev_password),
-                    host=db.host, port=db.port, expose_tracebacks=False, ident=ident)
+                   host=db.host, port=db.port, expose_tracebacks=False, ident=ident)
+
+    # ssl_keyfile = "/home/jicg/GUARD/Development/Integration/certs/https_cert/httpscert.key"
+    # ssl_certfile = "/home/jicg/GUARD/Development/Integration/certs/https_cert/httpscert.pem"
+    # ssl_ca = "/home/jicg/GUARD/Development/Integration/certs/rootcertificate/jicg.root.crt"
+
+    # ssl_cert_reqs = 1
+
+    #
+    #uvicorn.run(api(title=title, version=version,
+    #               dev_username=db.dev_username, dev_password=db.dev_password),
+    #           host=db.host, port=db.port,
+    #           ssl_keyfile=ssl_keyfile, ssl_certfile=ssl_certfile, ssl_ca_certs=ssl_ca,
+    #           ssl_cert_reqs=ssl.CERT_OPTIONAL, # worker_class="CustomWorker",
+    #           interface="wsgi")

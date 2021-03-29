@@ -163,7 +163,7 @@ class TestMyApp(FiliationTesting):
         assert result.status == "202 Accepted"
         try:
             message = lcp_client.q.get(timeout=3)
-            assert message.message_type == BetweenLCPMessages.ConnectLCPParent
+            assert message.message_type == BetweenLCPMessages.PostLCPSon
             assert message.data['url'] == parent['url']
             assert len(cfg.parents) == 1
             assert cfg.parents[0] == parent['url']
@@ -181,20 +181,20 @@ class TestMyApp(FiliationTesting):
         :return:
         """
         cfg = getLCPConfig()
-        parent = {"url": "http://localhost:4884"}
+        parent = "http://localhost:4884"
         lcp_client = LCPClient()
         start_http_server()
         try:
-            message = LCPMessages(BetweenLCPMessages.ConnectLCPParent, parent)
-            lcp_client.messageLcpParent(message.data)
+            message = LCPMessages(BetweenLCPMessages.PostLCPSon, parent)
+            lcp_client.postLcpSon(message.data)
             try:
-                d = TestHttpServer.q.get(timeout=5)
+                d = TestHttpServer.q.get(timeout=6000)
                 assert d['id'] == cfg.lcp['id']
                 assert d['url'] == cfg.lcp['url']
                 resp_message = lcp_client.q.get(timeout=3)
                 assert resp_message.data['url'] == d['url']
                 assert resp_message.data['id'] == d['id']
-                assert resp_message.message_type == BetweenLCPMessages.ConnectLCPSon
+                assert resp_message.message_type == BetweenLCPMessages.PostLCPSon
             except Empty:
                 assert False
         finally:

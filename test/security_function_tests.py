@@ -4,7 +4,7 @@ from reader.arg import Arg_Reader
 from about import project, title, version
 import os
 import json
-from schema.security_functions import SecurityFunction
+from schema.security_functions import *
 from resource.security_functions import SecurityFunction as SecurityFunctionResource
 from resource.software_definition import SoftwareDefinition as SoftwareDefinitionResource
 from marshmallow.exceptions import ValidationError
@@ -86,5 +86,62 @@ class TestMyApp(SecurityFunctionDefinitionTesting):
         assert(result.status_code == 201)
         assert len(config.agents) == 1
         assert config.agents[0]["vendor"] == sf_dict["vendor"]
+
+    def testAgentParameters(self):
+        sf_dict = loadExampleFile("security-function-example.json")
+        ag_params = [
+            {
+                "name": "qemu_connect",
+                "type": "string",
+                "value": "qemu:///system",
+                "description": "Quemu Connection Strings to extract data from Libvirt"
+            },
+            {
+                "name": "elastik_search_url",
+                "type": "string",
+                "value": "http://admtools.lab.fiware.org:9200/",
+                "description": "Elastik Search endpoint where to send Service's data"
+            }
+            ]
+        sf_dict['parameters'] = ag_params
+        agp = AgentParameter(many=True)
+        try:
+            agp.validate(ag_params)
+        except ValidationError:
+            assert False
+
+        sf = SecurityFunction(many=False)
+        try:
+            sf.validate(sf_dict)
+        except ValidationError:
+            assert False
+
+    def testAgentActions(self):
+        agent_actions = [{
+            "id": "start",
+            "cmd": "sudo systemctl start goroku",
+            "status": "started",
+        },
+        {
+            "id": "stop",
+            "cmd": "sudo systemctl stop goroku",
+            "status": "stopped",
+        }]
+        sf_actions = AgentActionSchema()
+        try:
+            sf_actions.validate(agent_actions)
+        except ValidationError:
+            assert False
+
+        sf_dict = loadExampleFile("security-function-example.json")
+        sf = SecurityFunction()
+        sf_dict['actions'] = agent_actions
+        try:
+            sf.validate(sf_dict)
+        except ValidationError:
+            assert False
+
+
+
 
 

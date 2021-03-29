@@ -2,7 +2,7 @@ Get Description of the Security Agents deployed with LCP
 ---
 summary: Get the Description and configuration parameters of Security Agents deployed with LCP
 description: |
-  Gets the information of the SecurityFunctions deployed with
+  Gets the information of the SecurityFunctions deployed along with the LCP
 tags: [software]
 responses:
   200:

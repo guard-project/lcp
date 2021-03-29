@@ -6,5 +6,7 @@ __pycache__
 *.pyc
 config.ini
 start
+start2
+main2.py
 stop
 swagger/*

@@ -22,7 +22,12 @@ class Arg_Reader:
                                  description=f'{title}: {description}')
         add = cls.ap.add_argument
 
-
+        add('--cert-reqs', type=int, default=None)
+        add('--certfile', type=str, default=None)
+        add('--keyfile', type=str, default=None)
+        add('--ca-certs', type=str, default=None)
+        add('--bind', type=str, default=None)
+        add('--worker-class', type=str, default=None)
         add('--host', '-o', type=str,
             help='Hostname/IP of the REST Server', default=cls.cr.lcp_host)
         add('--port', '-p', type=int,
@@ -54,7 +59,8 @@ class Arg_Reader:
             help='Write options to config.ini', action='store_true')
         add('--version', '-v', help='Show version',
             action='store_const', const=version)
-        return cls.ap
+
+        add("main2.myapi", nargs='?', default="main2.myapi")
 
     @classmethod
     def read(cls):

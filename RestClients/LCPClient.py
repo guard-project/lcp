@@ -74,7 +74,8 @@ class LCPClient(object):
             data = {"url": self.config.lcp['url']}
             headers = self.getHeaders()
             try:
-                url = requested_children_url +"/lcp_parent"
+                url = requested_children_url +"/lcp_son"
+                print("Post ", url)
 
                 j = json.dumps({"url": self.config.lcp['url']})
                 resp = requests.post(url, headers=headers,
