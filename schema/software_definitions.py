@@ -22,7 +22,7 @@ class SoftwareDefinition(Base_Schema):
     openUDPPorts = fields.List(fields.Int, required=False, example="[33066]",
                                description="List of opened UDP Ports")
     vendor = fields.Str(required=False, example="Oracle Coorporation",
-                        description="Name of the Vendor for this software")
+                        description="Name of the Vendor for this software"),
     connected = fields.List(required=False, example="[]",
                             description="List of Known connected/related Software")
 
