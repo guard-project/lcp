@@ -1,11 +1,4 @@
-import os
 import sys
-from pathlib import Path
-
-__all__ = [
-    'extract_info',
-    'to_str'
-]
 
 
 def extract_info(exception):

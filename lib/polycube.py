@@ -1,13 +1,17 @@
-from falcon.errors import HTTPGatewayTimeout as HTTP_Gateway_Timeout, HTTPServiceUnavailable as HTTP_Service_Unavailable
 from json import loads
-from reader.arg import Arg_Reader
-from requests import get as get_req, post as post_req, put as put_req, delete as delete_req, HTTPError as HTTP_Error
-from requests.exceptions import ConnectionError as Connection_Error, Timeout as Timeout_Error
-from utils.log import Log
 
-__all__ = [
-    'Polycube'
-]
+from falcon.errors import HTTPGatewayTimeout as HTTP_Gateway_Timeout
+from falcon.errors import HTTPServiceUnavailable as HTTP_Service_Unavailable
+from requests import HTTPError as HTTP_Error
+from requests import delete as delete_req
+from requests import get as get_req
+from requests import post as post_req
+from requests import put as put_req
+from requests.exceptions import ConnectionError as Connection_Error
+from requests.exceptions import Timeout as Timeout_Error
+
+from reader.arg import Arg_Reader
+from utils.log import Log
 
 
 class Polycube:
@@ -43,7 +47,7 @@ class Polycube:
             attached_info = {}
             try:
                 resp_req = put_req(f'{self.endpoint}/dynmon/{cube}',
-                                   json={ 'dataplane-config': self.__dataplane_config(cube, code, metrics) },
+                                   json={'dataplane-config': self.__dataplane_config(cube, code, metrics)},
                                    timeout=self.timeout)
                 attached_info = self.__attach(cube, interface)
                 return dict(status='created',
@@ -151,5 +155,4 @@ class Polycube:
             self.log.exception(msg, e)
             if resp_req.content:
                 self.log.error(f'Response: {resp_req.content}')
-            raise HTTP_Gateway_Timeout(
-                title='Polycube Unavailable', description=msg)
+            raise HTTP_Gateway_Timeout(title='Polycube Unavailable', description=msg)

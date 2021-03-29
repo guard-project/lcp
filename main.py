@@ -5,10 +5,11 @@ path = os.path.abspath(__file__)
 dir_path = os.path.dirname(path)
 os.chdir(dir_path)
 
-from about import project, title, version
-from api import api
-from reader.arg import Arg_Reader
-import waitress
+import waitress  # noqa: E402
+
+from about import project, title, version  # noqa: E402
+from api import api  # noqa: E402
+from reader.arg import Arg_Reader  # noqa: E402
 
 db = Arg_Reader.read()
 
@@ -18,6 +19,4 @@ print(ident)
 if db.version is not None:
     print(db.version)
 else:
-    waitress.serve(api(title=title, version=version,
-                        dev_username=db.dev_username, dev_password=db.dev_password),
-                    host=db.host, port=db.port, expose_tracebacks=False, ident=ident)
+    waitress.serve(api(title=title, version=version), host=db.host, port=db.port, expose_tracebacks=False, ident=ident)
