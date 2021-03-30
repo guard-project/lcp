@@ -29,7 +29,7 @@ def api(title, version):
 
     if Arg_Reader.db.auth:
         log.info('HTTP authentication enabled')
-        middlewares.append(Falcon_Auth_Middleware(JWT_Auth_Backend(user_loader=lambda token: dict(user=token),
+        middlewares.append(Falcon_Auth_Middleware(JWT_Auth_Backend(user_loader=lambda token: {'user': token},
                                                   secret_key=Arg_Reader.auth_secret_key, auth_header_prefix=Arg_Reader.auth_header_prefix),
                            exempt_routes=['/api/doc', '/api/doc/swagger.json']))
     else:

@@ -41,7 +41,7 @@ class Polycube:
             return None
 
     def create(self, cube, code, interface, metrics):
-        data = dict(name=cube, code=code, interface=interface, metrics=metrics)
+        data = {'name': cube, 'code': code, 'interface': interface, 'metrics': metrics}
         if self.get(cube) is None:
             self.log.info(f'Create cube {cube}.')
             attached_info = {}
@@ -50,37 +50,31 @@ class Polycube:
                                    json={'dataplane-config': self.__dataplane_config(cube, code, metrics)},
                                    timeout=self.timeout)
                 attached_info = self.__attach(cube, interface)
-                return dict(status='created',
-                            attached_info=attached_info, detached_info={},
+                return dict(status='created', attached_info=attached_info, detached_info={},
                             data=data, **self.__from_resp(resp_req))
             except Exception as e:
                 self.log.exception(f'Cube {cube} not created', e)
-                return dict(status='error',
-                            interface=attached_info, detached_info={},
+                return dict(status='error', interface=attached_info, detached_info={},
                             data=data, **self.__from_resp(resp_req, error=True))
         else:
-            return dict(error=True, description=f'Cube {cube} found.', data=data)
+            return {'error': True, 'description': f'Cube {cube} found.', 'data': data}
 
     def delete(self, cube):
-        data = dict(cube=cube)
+        data = {'cube': cube}
         if self.get(cube) is not None:
             self.log.info(f'Delete cube {cube}.')
             try:
-                resp_req = delete_req(f'{self.endpoint}/dynmon/{cube}',
-                                      timeout=self.timeout)
+                resp_req = delete_req(f'{self.endpoint}/dynmon/{cube}', timeout=self.timeout)
                 self.__manager(resp_req)
-
-                return dict(status='deleted',
-                            data=data, **self.__from_resp(resp_req))
+                return dict(status='deleted', data=data, **self.__from_resp(resp_req))
             except Exception as e:
                 self.log.exception(f'Cube {cube} not deleted', e)
-                return dict(error=True,
-                            data=data, **self.__from_resp(resp_req, error=True))
+                return dict(error=True, data=data, **self.__from_resp(resp_req, error=True))
         else:
-            return dict(error=True, description=f'Cube {cube} not found.', data=data)
+            return {'error': True, 'description': f'Cube {cube} not found.', 'data': data}
 
     def update(self, cube, code, interface, metrics):
-        data = dict(name=cube, code=code, interface=interface, metrics=metrics)
+        data = {'name': cube, 'code': code, 'interface': interface, 'metrics': metrics}
         service = self.get(cube)
         if service is not None:
             self.log.info(f'Update cube {cube}.')
@@ -104,7 +98,7 @@ class Polycube:
                 return dict(status='error', attached_info=attached_info, detached_info=detached_info,
                             data=data, **self.__from_resp(resp_req, error=True))
         else:
-            return dict(error=True, description=f'Cube {cube} not found.', data=data)
+            return {'error': True, 'description': f'Cube {cube} not found.', 'data': data}
 
     @staticmethod
     def __dataplane_config(cube, code, metrics):
@@ -122,23 +116,19 @@ class Polycube:
             try:
                 return loads(resp.content)
             except Exception:
-                return dict(error=error if error is not None else resp.status_code >= 400, message=resp.content.decode("utf-8"))
+                return {'error': error if error is not None else resp.status_code >= 400, 'message': resp.content.decode("utf-8")}
         else:
-            return dict(error=error if error is not None else resp.status_code >= 400)
+            return {'error': error if error is not None else resp.status_code >= 400}
 
     def __detach(self, cube, interface):
-        resp_req = post_req(f'{self.endpoint}/detach',
-                            json=dict(cube=cube, port=interface), timeout=self.timeout)
+        resp_req = post_req(f'{self.endpoint}/detach', json={'cube': cube, 'port': interface}, timeout=self.timeout)
         self.__manager(resp_req)
-        return dict(status='detached', data=dict(cube=cube, interface=interface),
-                    **self.__from_resp(resp_req))
+        return dict(status='detached', data={'cube': cube, 'interface': interface}, **self.__from_resp(resp_req))
 
     def __attach(self, cube, interface):
-        resp_req = post_req(f'{self.endpoint}/attach',
-                            json=dict(cube=cube, port=interface), timeout=self.timeout)
+        resp_req = post_req(f'{self.endpoint}/attach', json={'cube': cube, 'port': interface}, timeout=self.timeout)
         self.__manager(resp_req)
-        return dict(status='attached', data=dict(cube=cube, interface=interface),
-                    **self.__from_resp(resp_req))
+        return dict(status='attached', data={'cube': cube, 'interface': interface}, **self.__from_resp(resp_req))
 
     def __manager(self, resp_req):
         try:
