@@ -1147,6 +1147,8 @@ code_priority_order	lib/http.py	/^code_priority_order = cpo = {$/;"	v
 compute_nodes	schema/cloudschema.py	/^    compute_nodes = fields.List(fields.Nested(CloudCompute), required=False,$/;"	v	class:CloudSchema
 compute_nodes	swagger/schema.json	/^        "compute_nodes": {$/;"	o	object:definitions.CloudSchema.properties
 compute_nodes	test/examples/cloud-infrastructure-example.json	/^    "compute_nodes": [$/;"	a
+connected	schema/software_definitions.py	/^    connected = fields.List(fields.Str, required=False, example="[]",$/;"	v	class:SoftwareDefinition
+connected	swagger/schema.json	/^        "connected": {$/;"	o	object:definitions.SoftwareDefinition.properties
 connectionpool	config.ini	/^urllib3.connectionpool = CRITICAL$/;"	k	section:log
 consumes	swagger/schema.json	/^  "consumes": [$/;"	a
 content	schema/config.py	/^    content = Str(required=True,$/;"	v	class:Config_Resource_Request_Schema
@@ -1431,6 +1433,7 @@ description	swagger/schema.json	/^          "description": "List of CIDR for IPv
 description	swagger/schema.json	/^          "description": "List of CIDR for IPv6 values",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses
 description	swagger/schema.json	/^          "description": "List of Cloud Controllers",$/;"	s	object:definitions.CloudSchema.properties.controllers
 description	swagger/schema.json	/^          "description": "List of Cloud compute nodes",$/;"	s	object:definitions.CloudSchema.properties.compute_nodes
+description	swagger/schema.json	/^          "description": "List of Known connected\/related Software",$/;"	s	object:definitions.SoftwareDefinition.properties.connected
 description	swagger/schema.json	/^          "description": "List of Network Interfaces in the Virtual Host",$/;"	s	object:definitions.VirtualServer.properties.networkInterfaces
 description	swagger/schema.json	/^          "description": "List of Network Interfaces in the host",$/;"	s	object:definitions.BaremetalServer.properties.networkInterfaces
 description	swagger/schema.json	/^          "description": "List of actions.",$/;"	s	object:definitions.Config_Request.properties.actions
@@ -1448,7 +1451,6 @@ description	swagger/schema.json	/^          "description": "Message of the occur
 description	swagger/schema.json	/^          "description": "Message of the occurred exception.",$/;"	s	object:definitions.Unsupported_Media_Type_Response.properties.exception
 description	swagger/schema.json	/^          "description": "Name of the Agent Catalog"$/;"	s	object:definitions.SecurityFunction.properties.name
 description	swagger/schema.json	/^          "description": "Name of the Parameter"$/;"	s	object:definitions.AgentParameter.properties.name
-description	swagger/schema.json	/^          "description": "Name of the Vendor for this software"$/;"	s	object:definitions.SoftwareDefinition.properties.vendor
 description	swagger/schema.json	/^          "description": "Name of the vendor providing the security Function"$/;"	s	object:definitions.SecurityFunction.properties.vendor
 description	swagger/schema.json	/^          "description": "Name of this piece of Software instance"$/;"	s	object:definitions.SoftwareDefinition.properties.name
 description	swagger/schema.json	/^          "description": "Network Card UUID."$/;"	s	object:definitions.BaremetalServer.properties.id
@@ -1653,7 +1655,6 @@ example	swagger/schema.json	/^          "example": "KBG30ZMV512G TOSHIBA",$/;"	s
 example	swagger/schema.json	/^          "example": "KVM",$/;"	s	object:definitions.VirtualServer.properties.hypervisor
 example	swagger/schema.json	/^          "example": "MySQL",$/;"	s	object:definitions.SoftwareDefinition.properties.name
 example	swagger/schema.json	/^          "example": "Openstack",$/;"	s	object:definitions.CloudSchema.properties.vendor
-example	swagger/schema.json	/^          "example": "Oracle Coorporation",$/;"	s	object:definitions.SoftwareDefinition.properties.vendor
 example	swagger/schema.json	/^          "example": "PROBE",$/;"	s	object:definitions.SecurityFunction.properties.type
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Bad_Request_Response.properties.message
 example	swagger/schema.json	/^          "example": "Request not valid: two ids provided.",$/;"	s	object:definitions.Internal_Server_Error_Response.properties.message
@@ -1670,6 +1671,7 @@ example	swagger/schema.json	/^          "example": "VM Sensor Probe",$/;"	s	obje
 example	swagger/schema.json	/^          "example": "Wolfsburg-FIWARE-Lab-Cloud",$/;"	s	object:definitions.CloudSchema.properties.name
 example	swagger/schema.json	/^          "example": "[33066]",$/;"	s	object:definitions.SoftwareDefinition.properties.openUDPPorts
 example	swagger/schema.json	/^          "example": "[3306]",$/;"	s	object:definitions.SoftwareDefinition.properties.openTCPPorts
+example	swagger/schema.json	/^          "example": "[]",$/;"	s	object:definitions.SoftwareDefinition.properties.connected
 example	swagger/schema.json	/^          "example": "a2:bc:14:43:ff:43",$/;"	s	object:definitions.NetworkInterface.properties.MacAddress
 example	swagger/schema.json	/^          "example": "a406874b-dea7-4cd1-9d4e-b82a18ec993b",$/;"	s	object:definitions.SoftwareDefinition.properties.id
 example	swagger/schema.json	/^          "example": "a4518fe5-9da9-43a5-8bc6-1433e28935f1",$/;"	s	object:definitions.VirtualServer.properties.cloud_id
@@ -1914,6 +1916,7 @@ items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.Networ
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.NetworkInterface.properties.IPv6Addresses
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SecurityFunction.properties.actions
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SecurityFunction.properties.parameters
+items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SoftwareDefinition.properties.connected
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SoftwareDefinition.properties.openTCPPorts
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.SoftwareDefinition.properties.openUDPPorts
 items	swagger/schema.json	/^          "items": {$/;"	o	object:definitions.VirtualServer.properties.diskDevices
@@ -2764,6 +2767,7 @@ type	swagger/schema.json	/^              "type": "string"$/;"	s	object:paths./lc
 type	swagger/schema.json	/^            "type": "integer"$/;"	s	object:definitions.SoftwareDefinition.properties.openTCPPorts.items
 type	swagger/schema.json	/^            "type": "integer"$/;"	s	object:definitions.SoftwareDefinition.properties.openUDPPorts.items
 type	swagger/schema.json	/^            "type": "string"$/;"	s	object:definitions.Code_Request.properties.code.items
+type	swagger/schema.json	/^            "type": "string"$/;"	s	object:definitions.SoftwareDefinition.properties.connected.items
 type	swagger/schema.json	/^            "type": "string",$/;"	s	object:definitions.Config_Parameter_Request.properties.path.items
 type	swagger/schema.json	/^            "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.IPv4Addresses.items
 type	swagger/schema.json	/^            "type": "string",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses.items
@@ -2781,6 +2785,7 @@ type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.N
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.NetworkInterface.properties.IPv6Addresses
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SecurityFunction.properties.actions
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SecurityFunction.properties.parameters
+type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SoftwareDefinition.properties.connected
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SoftwareDefinition.properties.openTCPPorts
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.SoftwareDefinition.properties.openUDPPorts
 type	swagger/schema.json	/^          "type": "array",$/;"	s	object:definitions.VirtualServer.properties.diskDevices
@@ -2853,7 +2858,6 @@ type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SecurityFunction.properties.version
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SoftwareDefinition.properties.id
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SoftwareDefinition.properties.name
-type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SoftwareDefinition.properties.vendor
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.SoftwareDefinition.properties.version
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.id
 type	swagger/schema.json	/^          "type": "string",$/;"	s	object:definitions.Status_Response.properties.last_heartbeat
@@ -2936,7 +2940,6 @@ vendor	schema/security_functions.py	/^    vendor = fields.Str(required=True, exa
 vendor	schema/software_definitions.py	/^    vendor = fields.Str(required=False, example="Oracle Coorporation",$/;"	v	class:SoftwareDefinition
 vendor	swagger/schema.json	/^        "vendor": {$/;"	o	object:definitions.CloudSchema.properties
 vendor	swagger/schema.json	/^        "vendor": {$/;"	o	object:definitions.SecurityFunction.properties
-vendor	swagger/schema.json	/^        "vendor": {$/;"	o	object:definitions.SoftwareDefinition.properties
 vendor	test/examples/SoftwareInContainer.json	/^        "vendor": "Oracle Corporation"$/;"	s	object:software.0
 vendor	test/examples/cloud-infrastructure-example.json	/^    "vendor": "Openstack",$/;"	s
 vendor	test/examples/security-function-example.json	/^  "vendor": "FIWARE Foundation e.V.",$/;"	s
