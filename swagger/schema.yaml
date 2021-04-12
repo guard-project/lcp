@@ -392,6 +392,34 @@ definitions:
     - name
     - url
     type: object
+  LXCContainer:
+    properties:
+      host_id:
+        description: ID of underlying Baremetal or Virtual Server
+        example: 39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c
+        type: string
+      hostname:
+        description: LXC's name for the underlying example
+        example: lxc_kafka
+        type: string
+      id:
+        description: Id of the LXC Container.
+        example: bf9aff0c-6185-4b9f-8d39-c5f8e1b522e9
+        type: string
+      networkInterfaces:
+        description: List of Network Interfaces in the lxc container
+        items:
+          $ref: '#/definitions/NetworkInterface'
+        type: array
+      operatingSystem:
+        description: Emulated OS in the container
+        example: Ubuntu Linux 20.04.2 LTS
+        type: string
+    required:
+    - hostname
+    - id
+    - operatingSystem
+    type: object
   NetworkInterface:
     properties:
       IPv4Addresses:
@@ -548,12 +576,6 @@ definitions:
     type: object
   SoftwareDefinition:
     properties:
-      connected:
-        description: List of Known connected/related Software
-        example: '[]'
-        items:
-          type: string
-        type: array
       id:
         description: ID of this Software Instance
         example: a406874b-dea7-4cd1-9d4e-b82a18ec993b
@@ -574,6 +596,10 @@ definitions:
         items:
           type: integer
         type: array
+      vendor:
+        description: Name of the Vendor for this software
+        example: Oracle Coorporation
+        type: string
       version:
         description: Version of the Piece of Software installed
         example: 5.8+1.0.5ubuntu2
@@ -594,16 +620,10 @@ definitions:
         example: 2019/02/14 15:23:33
         format: date-time
         type: string
-      password:
-        description: Password for the CB to connect to this LCP.
-        type: string
       started:
         description: Timestamp when the LCP is started
         example: 2019/02/14 15:23:30
         format: date-time
-        type: string
-      username:
-        description: Username for the CB to connect to this LCP.
         type: string
     required:
     - id
@@ -705,7 +725,7 @@ definitions:
     type: object
 info:
   title: Local Control Plane
-  version: 1.0.3
+  version: 1.0.4
 paths:
   /code:
     delete:
@@ -1121,6 +1141,203 @@ paths:
       summary: Status set.
       tags:
       - status
+  /self/software:
+    get:
+      description: 'Gets the information of the Server software that LCP Knows.
+
+        '
+      responses:
+        '200':
+          description: Get the Description of the Software controlled by the LCP
+          schema:
+            $ref: '#/definitions/SoftwareDefinition'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Software installed and controlled and known by the LCP
+      tags:
+      - software
+    post:
+      description: 'Posts the information of some Security Functions that LCP must
+        be aware of.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/SecurityFunction'
+          type: array
+      responses:
+        '201':
+          description: The Security Function definition has been successfully updated
+            there.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post the Description and configuration parameters of Security Agents
+        deployed with LCP
+      tags:
+      - software
+  /self/container:
+    get:
+      description: 'Gets the information of the Server software that LCP Knows.
+
+        '
+      responses:
+        '200':
+          description: Get the Description of the Software controlled by the LCP
+          schema:
+            $ref: '#/definitions/SoftwareDefinition'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Software installed and controlled and known by the LCP
+      tags:
+      - software
+    post:
+      description: 'Posts the information of some Security Functions that LCP must
+        be aware of.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/SecurityFunction'
+          type: array
+      responses:
+        '201':
+          description: The Security Function definition has been successfully updated
+            there.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post the Description and configuration parameters of Security Agents
+        deployed with LCP
+      tags:
+      - software
+  /lxc:
+    get:
+      description: 'Gets the information of an LXC Container
+
+        '
+      responses:
+        '200':
+          description: Get LXC Container's server Description
+          schema:
+            items:
+              $ref: '#/definitions/LXCContainer'
+            type: array
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the LXC description of an LCP
+      tags:
+      - hardware
+    post:
+      description: 'Posts the information of the Server
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/LXCContainer'
+          type: array
+      responses:
+        '201':
+          description: The LXCContainer has been successfully updated.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: POST the LXC Container where
+      tags:
+      - hardware
   /lcp_son/{id}:
     delete:
       description: 'Gets a list of next links in the service chain filiated (as son
@@ -1263,6 +1480,9 @@ paths:
       summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
       tags:
       - filiation
+  /lcp_parent:
+    get: {}
+    post: {}
   /baremetal:
     get:
       description: 'Gets the information of the Server where the LCP is deployed
@@ -1393,138 +1613,6 @@ paths:
       summary: POST the Baremetal server where the LCP is deployed on.
       tags:
       - hardware
-  /self/software:
-    get:
-      description: 'Gets the information of the Server software that LCP Knows.
-
-        '
-      responses:
-        '200':
-          description: Get the Description of the Software controlled by the LCP
-          schema:
-            $ref: '#/definitions/SoftwareDefinition'
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Software installed and controlled and known by the LCP
-      tags:
-      - software
-    post:
-      description: 'Posts the information of some Security Functions that LCP must
-        be aware of.
-
-        '
-      parameters:
-      - in: body
-        name: payload
-        required: true
-        schema:
-          items:
-            $ref: '#/definitions/SecurityFunction'
-          type: array
-      responses:
-        '201':
-          description: The Security Function definition has been successfully updated
-            there.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Post the Description and configuration parameters of Security Agents
-        deployed with LCP
-      tags:
-      - software
-  /securityFunctions:
-    get:
-      description: 'Gets the information of the SecurityFunctions deployed along with
-        the LCP
-
-        '
-      responses:
-        '200':
-          description: Get the Server's configuration infromation from LCP
-          schema:
-            $ref: '#/definitions/SecurityFunction'
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Description and configuration parameters of Security Agents
-        deployed with LCP
-      tags:
-      - software
-    post:
-      description: 'Posts the information of the Server software that LCP must be
-        aware of.
-
-        '
-      parameters:
-      - in: body
-        name: payload
-        required: true
-        schema:
-          items:
-            $ref: '#/definitions/SoftwareDefinition'
-          type: array
-      responses:
-        '201':
-          description: The software definition has been successfully updated there.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
-      summary: Post Software description of a new Software installed in the System
-      tags:
-      - software
   /cloud:
     get:
       description: 'Gets the information of one cloud Infrastrucutre
@@ -1591,17 +1679,17 @@ paths:
       summary: Post the Description of one Cloud Infrastructure
       tags:
       - hardware
-  /self/deployment/bare-metal:
+  /securityFunctions:
     get:
-      description: 'Gets the information of the Server where the LCP is deployed
+      description: 'Gets the information of the SecurityFunctions deployed along with
+        the LCP
 
         '
       responses:
         '200':
-          description: Get the Server's configuration information from LCP where it
-            is deployed
+          description: Get the Server's configuration infromation from LCP
           schema:
-            $ref: '#/definitions/BaremetalServer'
+            $ref: '#/definitions/SecurityFunction'
         '400':
           description: Request not valid.
           schema:
@@ -1618,142 +1706,13 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Baremetal server where the LCP is deployed on.
-      tags:
-      - hardware
-    post:
-      description: 'Posts the information of the Server where the LCP is deployed
-
-        '
-      parameters:
-      - in: body
-        name: payload
-        required: true
-        schema:
-          $ref: '#/definitions/BaremetalServer'
-      responses:
-        '201':
-          description: The BaremetalServer where LCP is deployed has been successfully
-            updated.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: POST the Baremetal server where the LCP is deployed on.
-      tags:
-      - hardware
-  /self/deployment/vm:
-    get:
-      description: 'Gets the information of the Server where the LCP is deployed
-
-        '
-      responses:
-        '200':
-          description: Get the Virtual Server's configuration information of the Virtual
-            Server where LCP Is deployed.
-          schema:
-            $ref: '#/definitions/VirtualServer'
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Virtual server where the LCP is deployed on.
-      tags:
-      - hardware
-    post:
-      description: 'Posts the information of the Server where the LCP is deployed
-
-        '
-      parameters:
-      - in: body
-        name: payload
-        required: true
-        schema:
-          $ref: '#/definitions/VirtualServer'
-      responses:
-        '201':
-          description: The VirtualServer where the LCP is deployed has been correctly
-            updated.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: POST the Baremetal server where the LCP is deployed on.
-      tags:
-      - hardware
-  /self:
-    get: {}
-  /lcp_parent:
-    get: {}
-    post: {}
-  /self/container:
-    get:
-      description: 'Gets the information of the Server software that LCP Knows.
-
-        '
-      responses:
-        '200':
-          description: Get the Description of the Software controlled by the LCP
-          schema:
-            $ref: '#/definitions/SoftwareDefinition'
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Software installed and controlled and known by the LCP
+      summary: Get the Description and configuration parameters of Security Agents
+        deployed with LCP
       tags:
       - software
     post:
-      description: 'Posts the information of some Security Functions that LCP must
-        be aware of.
+      description: 'Posts the information of the Server software that LCP must be
+        aware of.
 
         '
       parameters:
@@ -1762,12 +1721,11 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/SecurityFunction'
+            $ref: '#/definitions/SoftwareDefinition'
           type: array
       responses:
         '201':
-          description: The Security Function definition has been successfully updated
-            there.
+          description: The software definition has been successfully updated there.
         '400':
           description: Request not valid.
           schema:
@@ -1783,9 +1741,8 @@ paths:
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Post the Description and configuration parameters of Security Agents
-        deployed with LCP
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Post Software description of a new Software installed in the System
       tags:
       - software
 produces:
@@ -1798,27 +1755,25 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
+- &id002
+  description: Returns the description of software installed
+  name: software
+- description: Returns the description of software installed in containers
+  name: software
+- description: Returns description of a LXCContainer.
+  name: hardware
 - description: Describes a "son" LCP linked in this service chain.
   name: filiation
 - description: Describes a "son" LCP linked in this service chain.
   name: lcp_relationships
-- description: Returns description of a Baremetal Server.
-  name: hardware
-- description: Returns description of a Baremetal Server.
-  name: hardware
-- description: Returns the description of software installed
-  name: software
-- description: Returns description of a Baremetal Server.
-  name: software
-- description: Description of a Cloud Infrastructure
-  name: hardware
-- description: Returns description of a Baremetal Server where LCP is deployed.
-  name: hardware
-- description: Returns description of a Virtual Server where LCP is deployed
-  name: hardware
-- description: Returns description of a Baremetal Server.
-  name: hardware
 - description: Describes a "son" LCP linked in this service chain.
   name: lcp relationships
-- description: Returns the description of software installed in containers
+- description: Returns description of a Baremetal Server.
+  name: hardware
+- description: Returns description of a Baremetal Server.
+  name: hardware
+- description: Description of a Cloud Infrastructure
+  name: hardware
+- description: Returns description of a Baremetal Server.
   name: software
+- *id002

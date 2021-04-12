@@ -10,8 +10,17 @@ CONTEXT_BROKER='context_broker'
 class LCPConfig(object):
     class __LCPConfig:
         def __init__(self, filename):
-            self.config = None
             self.filename = filename
+            self.reset()
+
+        def save(self):
+            if self.testing:
+                return
+            with open(self.filename, "w") as f:
+                yaml.dump(self.config, f, default_flow_style=False)
+
+        def reset(self):
+            self.config = None
             self.lcp = None
             self.sons = []
             self.parents = []
@@ -26,11 +35,6 @@ class LCPConfig(object):
             self.self_containers = []
             self.reload(self.filename)
 
-        def save(self):
-            if self.testing:
-                return
-            with open(self.filename, "w") as f:
-                yaml.dump(self.config, f, default_flow_style=False)
 
         def reload(self, filename=None):
             if filename is not None:
@@ -125,7 +129,6 @@ class LCPConfig(object):
                     break
             if not updated:
                 self.self_software.append(elem)
-            self.config["self_software"] = self.self_software
             self.save()
 
 

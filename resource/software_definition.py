@@ -2,16 +2,10 @@ from resource.base import Base_Resource
 from docstring import docstring
 from schema.software_definitions import SoftwareDefinition as SoftwareDefinitionSchema
 from schema.software_definitions import ContainerSchema
-from lib.http import HTTP_Method
 from marshmallow.exceptions import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK
 import json
 from lib.lcp_config import LCPConfig
-
-__all__ = [
-    'SoftwareDefinition',
-    'ContainerDefinition'
-]
 
 
 class SoftwareDefinition(Base_Resource):

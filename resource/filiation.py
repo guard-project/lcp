@@ -10,11 +10,7 @@ import json
 from lib.lcp_config import LCPConfig
 from RestClients.LCPClient import LCPClient, LCPMessages, BetweenLCPMessages
 
-__all__ = [
-    'SonRequestIdentificationById',
-    'SonLCPIdentification',
-    'ParentLCPIdentification'
-]
+
 
 class SonLCPIdentification(Base_Resource):
     # data = {}

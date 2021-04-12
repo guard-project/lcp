@@ -8,17 +8,20 @@ from resource.hardware_definitions import BaremetalServer as BaremetalServerReso
 import json
 import os
 from test_utils import *
+from utils.log import Log  # noqa: E402
+from test.testbase import LCPTestBase
+
+# class BaremetalServerTesting(testing.TestCase):
+#    def setUp(self):
+#        super(BaremetalServerTesting, self).setUp()
+#        self.db = Arg_Reader.read()
+#        Log.init(config="../"+self.db.log_config)
+#        log = Log.get('api')
+#        self.app = api(title=title, version=version)
+#            # , dev_username=self.db.dev_username, dev_password=self.db.dev_password)
 
 
-class BaremetalServerTesting(testing.TestCase):
-    def setUp(self):
-        super(BaremetalServerTesting, self).setUp()
-        self.db = Arg_Reader.read()
-        self.app = api(title=title, version=version,
-                       dev_username=self.db.dev_username, dev_password=self.db.dev_password)
-
-
-class TestMyApp(BaremetalServerTesting):
+class TestMyApp(LCPTestBase):
     def _getBaremetalServer(self):
         json_file = os.path.dirname(
             __file__) + "/examples/bare-metal-server-example.json"

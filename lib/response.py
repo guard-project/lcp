@@ -4,23 +4,6 @@ from utils.log import Log
 from utils.sequence import expand, is_list
 from utils.stack import info
 
-__all__ = [
-    'Bad_Request_Response',
-    'Conflict_Response',
-    'Content_Response',
-    'Created_Response',
-    'Internal_Server_Error_Response',
-    'No_Content_Response',
-    'Not_Acceptable_Response',
-    'Not_Found_Response',
-    'Not_Modified_Response',
-    'Ok_Response',
-    'Reset_Content_Response',
-    'Unauthorized_Response',
-    'Unprocessable_Entity_Response',
-    'Unsupported_Media_Type_Response'
-]
-
 
 class Base_Response(object):
     error = False
@@ -28,7 +11,7 @@ class Base_Response(object):
 
     def __init__(self, message, error=False, exception=None, **kwargs):
         self.log = Log.get(self.__class__.__name__)
-        self.data = dict(message=message)
+        self.data = {'message': message}
         if exception is not None:
             self.data.update(exception=extract_info(exception))
         self.data.update(kwargs)
@@ -52,7 +35,7 @@ class Base_Response(object):
             self.log.notice(f'@{i.filename}:{i.lineno}')
             msg = self.data.get("message", "No message")
             if e is not None:
-                self.log.exception(e, msg)
+                self.log.exception(msg, e)
             else:
                 getattr(self.log, self.log_level)(msg)
 
@@ -113,9 +96,8 @@ class Internal_Server_Error_Response(Base_Response):
     error = True
     log_level = 'error'
 
-    def __init__(self, exception=None, **kwargs):
-        super().__init__(exception.title if exception is not None else 'Server not available to satisfy the request',
-                         exception=exception, **kwargs)
+    def __init__(self, message, **kwargs):
+        super().__init__(message, **kwargs)
 
 
 class Not_Acceptable_Response(Base_Response):
@@ -169,15 +151,6 @@ class Content_Response(Ok_Response):
     def apply(self, resp):
         resp.media = self.data
         resp.status = f'{self.code} {self}'
-
-
-class Internal_Server_Error_Response(Base_Response):
-    code = HTTP_Status.INTERNAL_SERVER_ERROR
-    error = True
-    log_level = 'error'
-
-    def __init__(self, message, **kwargs):
-        super().__init__(message, **kwargs)
 
 
 class Reset_Content_Response(Base_Response):

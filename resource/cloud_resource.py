@@ -6,10 +6,6 @@ from lib.http import HTTP_Method
 from marshmallow.exceptions import ValidationError
 from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE
 
-__all__ = [
-    'CloudInfrastructure'
-]
-
 
 class CloudInfrastructure(Base_Resource):
     data = []

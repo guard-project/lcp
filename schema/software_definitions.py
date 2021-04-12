@@ -22,9 +22,11 @@ class SoftwareDefinition(Base_Schema):
     openUDPPorts = fields.List(fields.Int, required=False, example="[33066]",
                                description="List of opened UDP Ports")
     vendor = fields.Str(required=False, example="Oracle Coorporation",
-                        description="Name of the Vendor for this software"),
-    connected = fields.List(fields.Str, required=False, example="[]",
-                            description="List of Known connected/related Software")
+                        description="Name of the Vendor for this software")
+    # connected = fields.List(fields.Str, required=False, example="[]",
+    #                        description="List of Known connected/related Software")
+    # vendor = fields.Str(required=True, example="Oracle Coorporation",
+    #                    description="Name of the Vendor for this software"),
 
 class ContainerSchema(Base_Schema):
     id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",

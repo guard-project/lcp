@@ -11,17 +11,10 @@ from marshmallow.exceptions import ValidationError
 from test_utils import *
 
 from lib.lcp_config import LCPConfig
+from test.testbase import LCPTestBase
 
 
-class SecurityFunctionDefinitionTesting(testing.TestCase):
-    def setUp(self):
-        super(SecurityFunctionDefinitionTesting, self).setUp()
-        self.db = Arg_Reader.read()
-        self.app = api(title=title, version=version,
-                       dev_username=self.db.dev_username, dev_password=self.db.dev_password)
-
-
-class TestMyApp(SecurityFunctionDefinitionTesting):
+class TestMyApp(LCPTestBase):
     def _getSecurityFucntionExample(self):
         json_file = os.path.dirname(__file__) + \
                     "/examples/security-function-example.json"
@@ -45,9 +38,6 @@ class TestMyApp(SecurityFunctionDefinitionTesting):
 
         headers = getAuthorizationHeaders()
         config.dropAllAgents()
-
-        result = self.simulate_get("/securityFunctions")
-        assert(result.status_code == 401)
 
         result = self.simulate_get("/securityFunctions", headers=headers)
         assert (result.status == "200 OK")

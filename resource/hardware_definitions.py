@@ -12,11 +12,6 @@ from schema.hardware_definitions import LXCContainer as LXCContainerSchema
 import json
 from lib.lcp_config import LCPConfig
 
-__all__ = [
-    'BaremetalServer',
-    'VirtualServer'
-]
-
 
 class BaremetalServer(Base_Resource):
     data = []

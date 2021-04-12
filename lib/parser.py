@@ -1,18 +1,12 @@
-from jproperties import Properties
-from utils.log import Log
-from utils.sequence import iterate
-from yaml import FullLoader as Full_Loader
-
 import json
+
 import xmltodict as xml_to_dict
 import yaml
+from jproperties import Properties
+from yaml import FullLoader as Full_Loader
 
-__all__ = [
-    'json_parser',
-    'property_parser',
-    'xml_parser',
-    'yaml_parser'
-]
+from utils.log import Log
+from utils.sequence import iterate
 
 NO_CHANGE_NEEDED = 'No change needed'
 
@@ -26,9 +20,9 @@ def json_parser(schema, source, path, value):
             d[path[-1]] = value
             with open(source, 'w') as file:
                 json.dump(content, file, sort_keys=True, indent=3)
-                return dict(value=dict(new=value, old=old_value))
+                return {'value': {'new': value, 'old': old_value}}
         else:
-            return dict(note=NO_CHANGE_NEEDED)
+            return {'note': NO_CHANGE_NEEDED}
 
 
 def property_parser(schema, source, path, value):
@@ -45,9 +39,9 @@ def property_parser(schema, source, path, value):
             content[k] = value
             with open(source, 'wb') as file:
                 content.store(file, encoding='utf-8')
-                return dict(value=dict(new=value, old=old_value))
+                return {'value': {'new': value, 'old': old_value}}
         else:
-            return dict(note=NO_CHANGE_NEEDED)
+            return {'note': NO_CHANGE_NEEDED}
 
 
 def xml_parser(schema, source, path, value):
@@ -59,9 +53,9 @@ def xml_parser(schema, source, path, value):
             d[path[-1]] = value
             with open(source, 'w') as file:
                 xml_to_dict.unparse(content, output=file, pretty=True)
-                return dict(value=dict(new=value, old=old_value))
+                return {'value': {'new': value, 'old': old_value}}
         else:
-            return dict(note=NO_CHANGE_NEEDED)
+            return {'note': NO_CHANGE_NEEDED}
 
 
 def yaml_parser(schema, source, path, value):
@@ -73,6 +67,6 @@ def yaml_parser(schema, source, path, value):
             d[path[-1]] = value
             with open(source, 'w') as file:
                 yaml.dump(content, file, sort_keys=True, indent=3)
-                return dict(value=dict(new=value, old=old_value))
+                return {'value': {'new': value, 'old': old_value}}
         else:
-            return dict(note=NO_CHANGE_NEEDED)
+            return{'note': NO_CHANGE_NEEDED}

@@ -1,36 +1,22 @@
-from resource.code import *
-from resource.config import *
-from resource.status import *
-from resource.filiation import *
-from resource.hardware_definitions import *
-from resource.software_definition import *
-from resource.security_functions import *
-from resource.cloud_resource import *
-from resource.self_data import *
+from resource.code import Code_Resource
+from resource.config import Config_Resource
+from resource.status import Status_Resource
+from resource.software_definition import SoftwareDefinition, ContainerDefinition
+from resource.filiation import SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification
+from resource.hardware_definitions import BaremetalServer, VirtualServer, LXCContainer
+from resource.cloud_resource import CloudInfrastructure
+from resource.security_functions import SecurityFunction
 from utils.log import Log
 from utils.sequence import wrap
 
-__all__ = [
-    'routes'
-]
 
-db = (
-    Code_Resource,
-    Config_Resource,
-    Status_Resource,
-    SonRequestIdentificationById,
-    SonLCPIdentification,
-    BaremetalServer,
-    VirtualServer,
-    SoftwareDefinition,
-    SecurityFunction,
-    CloudInfrastructure,
-    DescribeDeploymentBareMetal,
-    DescribeDeploymentVM,
-    DescribeSelf,
-    ParentLCPIdentification,
-    ContainerDefinition
-)
+db = (Code_Resource, Config_Resource, Status_Resource,
+      SoftwareDefinition, ContainerDefinition, LXCContainer,
+      SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification,
+      BaremetalServer, VirtualServer,
+      CloudInfrastructure,
+      SecurityFunction,
+      SoftwareDefinition)
 
 tags = []
 for Resource in db:

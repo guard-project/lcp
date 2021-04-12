@@ -5,17 +5,18 @@ from about import project, title, version
 
 from schema.hardware_definitions import Disk, DiskPartition, Container as ContainerSchema
 from test_utils import *
+from test.testbase import LCPTestBase
 
 
-class HardwareDefinitionsTesting(testing.TestCase):
-    def setUp(self):
-        super(HardwareDefinitionsTesting, self).setUp()
-        self.db = Arg_Reader.read()
-        self.app = api(title=title, version=version,
-                        dev_username=self.db.dev_username, dev_password=self.db.dev_password)
+# class HardwareDefinitionsTesting(testing.TestCase):
+#    def setUp(self):
+#        super(HardwareDefinitionsTesting, self).setUp()
+#        self.db = Arg_Reader.read()
+#        self.app = api(title=title, version=version,
+#                        dev_username=self.db.dev_username, dev_password=self.db.dev_password)
 
 
-class TestMyApp(HardwareDefinitionsTesting):
+class TestMyApp(LCPTestBase):
     def _getTestingPartitionsHD2(self):
         partitionsHD2 = {"id": "2200328d-c1ac-4788-8690-c973bcae9985", "name": "mmcblk0p1", "size": 0, type: "ext4"}
         return partitionsHD2

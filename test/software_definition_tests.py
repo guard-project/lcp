@@ -1,24 +1,15 @@
-from falcon import testing
-from api import api
-from reader.arg import Arg_Reader
-from about import project, title, version
-import os
-import json
 from schema.software_definitions import SoftwareDefinition, ContainerSchema
-from resource.software_definition import SoftwareDefinition as SoftwareDefinitionResource
 from marshmallow.exceptions import ValidationError
+from test_utils import *
+from test.testbase import LCPTestBase
+from marshmallow.exceptions import ValidationError
+
+from schema.software_definitions import SoftwareDefinition, ContainerSchema
+from test.testbase import LCPTestBase
 from test_utils import *
 
 
-class SoftwareDefinitionsTesting(testing.TestCase):
-    def setUp(self):
-        super(SoftwareDefinitionsTesting, self).setUp()
-        self.db = Arg_Reader.read()
-        self.app = api(title=title, version=version,
-                       dev_username=self.db.dev_username, dev_password=self.db.dev_password)
-
-
-class TestMyApp(SoftwareDefinitionsTesting):
+class TestMyApp(LCPTestBase):
     def _getSoftwareExample(self):
         json_file = os.path.dirname(__file__) + \
                     "/examples/software-artifact-example.json"
@@ -42,11 +33,7 @@ class TestMyApp(SoftwareDefinitionsTesting):
 
     def test_get_software(self):
         headers = getAuthorizationHeaders()
-
         example = loadExampleFile("software-artifact-example.json")
-
-        result = self.simulate_get("/self/software")
-        assert (result.status == "401 Unauthorized")
 
         result = self.simulate_get("/self/software", headers=headers)
         assert (result.status == "200 OK")
@@ -78,6 +65,7 @@ class TestMyApp(SoftwareDefinitionsTesting):
             resp = self.simulate_post("/self/software", headers=headers,
                                   body=json.dumps(software_dict))
             self_software = LCPConfig().self_software
+            print("len self_software", len(self_software))
             assert len(self_software) == 1
             assert self_software[0]["id"] == software_dict["id"]
             assert resp.status_code == 201
@@ -115,9 +103,6 @@ class TestMyApp(SoftwareDefinitionsTesting):
         headers = getAuthorizationHeaders()
 
         example = loadExampleFile("SoftwareInContainer.json")
-
-        result = self.simulate_get("/self/container")
-        assert (result.status == "401 Unauthorized")
 
         result = self.simulate_get("/self/container", headers=headers)
         assert (result.status == "200 OK")

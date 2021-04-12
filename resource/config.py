@@ -1,33 +1,26 @@
-from docstring import docstring
-from lib.http import HTTP_Method
-from lib.parser import *
-from lib.response import *
-from resource.base import Base_Resource
-from schema.config import *
-from schema.response import *
-from utils.datetime import datetime_to_str
-from utils.json import loads
-from utils.sequence import is_list, wrap
-from os.path import expanduser as expand_user
-from utils.exception import extract_info
-
 import subprocess as sp
 import time
+from os.path import expanduser as expand_user
+from resource.base import Base_Resource
+
+from docstring import docstring
+from lib.http import HTTP_Method
+from lib.parser import json_parser, property_parser, xml_parser, yaml_parser
+from lib.response import Bad_Request_Response, Base_Response, Content_Response, No_Content_Response, Not_Found_Response
+from schema.config import (Config_Action_Response_Schema, Config_Parameter_Response_Schema, Config_Request_Schema,
+                           Config_Resource_Response_Schema)
+from utils.datetime import datetime_to_str
+from utils.exception import extract_info
+from utils.json import loads
+from utils.sequence import is_list, wrap
 
 File_Not_Found_Error = FileNotFoundError
 
-__all__ = [
-    'Config_Resource'
-]
-
 
 class Config_Resource(Base_Resource):
-    tag = dict(name='config', description='Configuration at run-time.')
+    tag = {'name': 'config', 'description': 'Configuration at run-time.'}
     routes = '/config',
-    parsers = dict(json=json_parser,
-                   properties=property_parser,
-                   xml=xml_parser,
-                   yaml=yaml_parser)
+    parsers = {'json': json_parser, 'properties': property_parser, 'xml': xml_parser, 'yaml': yaml_parser}
 
     @docstring(source='config/post.yaml')
     def on_post(self, req, resp):
@@ -50,18 +43,20 @@ class Config_Resource(Base_Resource):
                             elif cfg == 'resources':
                                 output = self.__resources(data)
                                 schema = Config_Resource_Response_Schema
-                            output_data = data.copy()
-                            id = output_data.pop('id', None)
-                            output.update(id=id,
-                                          data=output_data, timestamp=datetime_to_str())
-                            resp_data, valid = schema(
-                                many=False, method=HTTP_Method.POST, unknown='INCLUDE').validate(data=output)
-                            if valid:
-                                Content_Response(output).add(resp)
+                            if isinstance(output, Base_Response):
+                                output.add(resp)
                             else:
-                                resp_data.add(resp)
+                                output_data = data.copy()
+                                id = output_data.pop('id', None)
+                                output.update(id=id, data=output_data, timestamp=datetime_to_str())
+                                resp_data, valid = schema(many=False, method=HTTP_Method.POST,
+                                                          unknown='INCLUDE').validate(data=output)
+                                if valid:
+                                    Content_Response(output).add(resp)
+                                else:
+                                    resp_data.add(resp)
             else:
-                msg = f'No content to apply configurations with the {{request}}'
+                msg = 'No content to apply configurations with the {{request}}'
                 No_Content_Response(msg, request=req_data).apply(resp)
         else:
             resp_data.apply(resp)
@@ -70,7 +65,7 @@ class Config_Resource(Base_Resource):
         cmd = data.get('cmd', None)
         daemon = data.get('daemon', False)
         output_format = data.get('output_format', 'plain')
-        output = dict(type='action')
+        output = {'type': 'action'}
         run = ' '.join([cmd] + wrap(data.get('args', [])))
         start = time.time()
         proc = self.__run_cmd(cmd=run, daemon=daemon, output=output)
@@ -88,42 +83,38 @@ class Config_Resource(Base_Resource):
         source = data.get('source', None)
         path = wrap(data.get('path', []))
         value = data.get('value', None)
-        output = dict(type='parameter')
+        output = {'type': 'parameter'}
         try:
             source = expand_user(source)
-            output.update(self.parsers.get(schema)
-                          (schema, source, path, value))
+            output.update(self.parsers.get(schema)(schema, source, path, value))
+            return output
         except File_Not_Found_Error as e:
             msg = f'Source {source} not found'
             self.log.exception(msg, e)
-            output.update(error=True, description=msg,
-                          exception=extract_info(e))
+            return Not_Found_Response(msg, e, type='parameter', data=data)
         except Exception as e:
             msg = f'Source {source} not accessible'
             self.log.exception(msg, e)
-            output.update(error=True, description=msg,
-                          exception=extract_info(e))
-        return output
+            return Bad_Request_Response(e, message=msg, type='parameter', data=data)
 
     def __resources(self, data):
         path = data.get('path', None)
         content = data.get('content', None)
-        output = dict(type='resource')
+        output = {'type': 'resource'}
         try:
             fix_path = expand_user(path)
             with open(fix_path, "w") as file:
                 file.write(content)
+            output.update(path=path, content=content)
+            return output
         except FileNotFoundError as e:
             msg = f'Path {path} not found'
             self.log.exception(msg, e)
-            output.update(error=True, description=msg,
-                          exception=extract_info(e))
+            return Not_Found_Response(msg, e, type='resource', data=data)
         except Exception as e:
             msg = f'Path {path} not accessible'
             self.log.exception(msg, e)
-            output.update(error=True, description=msg,
-                          exception=extract_info(e))
-        return output
+            return Bad_Request_Response(e, message=msg, type='resource', data=data)
 
     def __set_std(self, data, output, key, output_format):
         if data:

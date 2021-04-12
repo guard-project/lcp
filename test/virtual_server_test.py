@@ -8,17 +8,9 @@ from resource.hardware_definitions import VirtualServer as VirtualServerResource
 import json
 import os
 from test_utils import *
+from test.testbase import LCPTestBase
 
-
-class VirtualServerTesting(testing.TestCase):
-    def setUp(self):
-        super(VirtualServerTesting, self).setUp()
-        self.db = Arg_Reader.read()
-        self.app = api(title=title, version=version,
-                       dev_username=self.db.dev_username, dev_password=self.db.dev_password)
-
-
-class TestMyApp(VirtualServerTesting):
+class TestMyApp(LCPTestBase):
     def test_virtual_server(self):
         server = loadExampleFile("virtual-server-example.json")
         bm_server = VirtualServer(many=False)

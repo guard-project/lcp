@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import os
 
 Import_Error = ImportError
@@ -7,14 +5,23 @@ path = os.path.abspath(__file__)
 dir_path = os.path.dirname(path)
 os.chdir(dir_path)
 
-from about import project, title, version
-from api import api
-from reader.arg import Arg_Reader
-import waitress
-from threading import Thread
+import waitress  # noqa: E402
+from rich import pretty, traceback  # noqa: E402
+from rich.console import Console  # noqa: E402
+from rich.panel import Panel  # noqa: E402
+
 from RestClients.LCPClient import *
 import time
 from lib.lcp_config import LCPConfig
+
+
+pretty.install()
+traceback.install(show_locals=False)
+
+from about import project, title, version  # noqa: E402
+from api import api  # noqa: E402
+from reader.arg import Arg_Reader  # noqa: E402
+from utils.log import Log  # noqa: E402
 
 
 def threadOp():
@@ -33,29 +40,19 @@ def threadOp():
     lcp_client.qread()
 
 
-db = Arg_Reader.read()
 
-ident = f'{project} - {title} v:{version}'
+db = Arg_Reader.read()
 
 if db.version is not None:
     print(db.version)
 else:
+    ident = f'{project} - {title} v:{version}'
+    console = Console()
+    console.print(Panel.fit(ident))
+    Log.init(config=db.log_config)
+    api_instance = api(title=title, version=version)
+    Log.get('api').success(f'Accept requests at {db.host}:{db.port}')
+
     Thread(target=threadOp).start()
 
-    waitress.serve(api(title=title, version=version,
-                        dev_username=db.dev_username, dev_password=db.dev_password),
-                   host=db.host, port=db.port, expose_tracebacks=False, ident=ident)
-
-    # ssl_keyfile = "/home/jicg/GUARD/Development/Integration/certs/https_cert/httpscert.key"
-    # ssl_certfile = "/home/jicg/GUARD/Development/Integration/certs/https_cert/httpscert.pem"
-    # ssl_ca = "/home/jicg/GUARD/Development/Integration/certs/rootcertificate/jicg.root.crt"
-
-    # ssl_cert_reqs = 1
-
-    #
-    #uvicorn.run(api(title=title, version=version,
-    #               dev_username=db.dev_username, dev_password=db.dev_password),
-    #           host=db.host, port=db.port,
-    #           ssl_keyfile=ssl_keyfile, ssl_certfile=ssl_certfile, ssl_ca_certs=ssl_ca,
-    #           ssl_cert_reqs=ssl.CERT_OPTIONAL, # worker_class="CustomWorker",
-    #           interface="wsgi")
+    waitress.serve(api_instance, host=db.host, port=db.port, expose_tracebacks=False, ident=ident, _quiet=True)

@@ -5,16 +5,9 @@ from about import project, title, version
 
 from schema.hardware_definitions import NetworkInterface, IPv4CIDR, IPv6CIDR, IPV4_RE
 import re
+from test.testbase import LCPTestBase
 
-class NetworkDefinitionsTesting(testing.TestCase):
-    def setUp(self):
-        super(NetworkDefinitionsTesting, self).setUp()
-        self.db = Arg_Reader.read()
-        self.app = api(title=title, version=version,
-                        dev_username=self.db.dev_username, dev_password=self.db.dev_password)
-
-
-class TestMyApp(NetworkDefinitionsTesting):
+class TestMyApp(LCPTestBase):
     def _getTestingNetwork(self):
         net_interface = {
             "id": "NetworkInterface1",
