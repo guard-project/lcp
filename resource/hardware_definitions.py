@@ -10,8 +10,8 @@ from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
 from schema.hardware_definitions import VirtualServer as VirtualServerSchema
 from schema.hardware_definitions import LXCContainer as LXCContainerSchema
 import json
-from lib.lcp_config import LCPConfig
-
+from falcon import HTTPError
+import falcon
 
 class BaremetalServer(Base_Resource):
     data = []
@@ -52,9 +52,7 @@ class BaremetalServer(Base_Resource):
                 BaremetalServer.update_data(e)
             resp.status = HTTP_CREATED
         except ValidationError as e:
-            resp.body = e.data
-            req.status = HTTP_NOT_ACCEPTABLE
-
+            raise HTTPError(falcon.HTTP_406, 'Error', e.messages)
 
 
 class VirtualServer(Base_Resource):
@@ -96,8 +94,7 @@ class VirtualServer(Base_Resource):
                 VirtualServer.update_data(e)
             resp.status = HTTP_CREATED
         except ValidationError as e:
-            resp.body = e.data
-            req.status = HTTP_NOT_ACCEPTABLE
+            raise HTTPError(falcon.HTTP_406, 'Error', e.messages)
 
 
 class LXCContainer(Base_Resource):
@@ -116,8 +113,6 @@ class LXCContainer(Base_Resource):
         if not updated:
             LXCContainer.data.append(elem)
 
-    def __init__(self):
-        pass
 
     @docstring(source='LXCContainer/GetLXCContainer.yml')
     def on_get(self, req, resp):
@@ -128,7 +123,6 @@ class LXCContainer(Base_Resource):
 
     @docstring(source='LXCContainer/PostLXCContainer.yml')
     def on_post(self, req, resp):
-        print("Ahora en el on_post")
         resp_data, valid = LXCContainerSchema(method=HTTP_Method.POST) \
             .validate(data={})
 
@@ -140,5 +134,22 @@ class LXCContainer(Base_Resource):
                 LXCContainer.update_data(e)
             resp.status = HTTP_CREATED
         except ValidationError as e:
-            resp.body = e.data
-            req.status = HTTP_NOT_ACCEPTABLE
+            raise HTTPError(falcon.HTTP_406, 'Error', e.messages)
+
+
+class SomethingToPost(Base_Resource):
+    @docstring(source='LXCContainer/PostLXCContainer.yml')
+    def on_post(self, req, resp):
+        resp_data, valid = LXCContainerSchema(method=HTTP_Method.POST) \
+            .validate(data={})
+
+        payload = req.media if isinstance(req.media, list) else [req.media]
+
+        try:
+            bm_schema = LXCContainerSchema(many=True)
+            bm_schema.load(payload)
+            for e in payload:
+                LXCContainer.update_data(e)
+            resp.status = HTTP_CREATED
+        except ValidationError as e:
+            raise HTTPError(falcon.HTTP_406, 'Error', e.messages)

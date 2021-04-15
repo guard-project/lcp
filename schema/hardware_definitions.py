@@ -1,8 +1,11 @@
+import marshmallow.validate
 from marshmallow import fields, Schema, validate
 from schema.base import Base_Schema
 from utils.schema import List_or_One
 from schema.software_definitions import SoftwareDefinition
 import re
+from lib.response import Not_Acceptable_Response, Ok_Response
+from marshmallow.exceptions import ValidationError
 
 __all__ = [
     'Disk',
@@ -16,14 +19,15 @@ __all__ = [
     'IPv6CIDR'
 ]
 
-
 IPV6_RE = r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$"
 IPV4_RE = r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$"
 MACADDR_RE = r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"
 
-EXEC_ENV_TYPE = ['bare-metal', 'lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
+EXEC_ENV_TYPE = ['bare-metal', 'contailer-lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
                  'mobile', 'gateway', 'application']
 
+HYPERVISORS = ['kvm', 'xen', 'parallels', 'virtualbox', 'vmware-esxi', 'hyper-v', 'qemu', 'vmware-player',
+               'unknown']
 
 class DiskPartition(Base_Schema):
     """Define a Disk partition schema"""
@@ -106,18 +110,29 @@ class BaremetalServer(Base_Schema):
                                             description="Disks installed in the Server"))
 
 
-class VirtualServer(BaremetalServer):
-    hypervisor = fields.Str(required=True, example='KVM',
+class VirtualServer(Base_Schema):
+    id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
+                    description="Network Card UUID.")
+    hostname = fields.Str(required=True, example='corporario.example.com',
+                          description="Network interface Name in the OS")
+    hypervisor = fields.Str(required=True, example='kvm', validate=marshmallow.validate.OneOf(HYPERVISORS),
                             description="Hypervisor name/technology")
     cloud_id = fields.Str(required=False, example="a4518fe5-9da9-43a5-8bc6-1433e28935f1",
                           description="Cloud ID -- Maybe None if somehow hosted")
     host_id = fields.Str(required=False, example="39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
                          description="ID of underlying Baremetal Server")
+    operatingSystem = fields.Str(required=True, example='Ubuntu Linux 20.04.2 LTS',
+                                 description="Network interface Name in the OS")
     networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,
                                     description="List of Network Interfaces in the Virtual Host")
-
-
-
+    diskDevices = List_or_One(fields.Nested(Disk, required=False,
+                                            description="Disks installed in the Server"))
+    cpus = fields.Int(required=True, example="8",
+                      description="CPU Cores in the Server")
+    ram = fields.Int(required=True, example="8",
+                     description="RAM installed in the Server in Megabytes")
+    operatingSystem = fields.Str(required=True, example='Ubuntu Linux 20.04.2 LTS',
+                                 description="Network interface Name in the OS")
 
 
 class DockerContainer(Base_Schema):
@@ -128,7 +143,7 @@ class DockerContainer(Base_Schema):
     host_id = fields.Str(required=False, example="e501d0d8-49bf-4db3-83ba-37c8cbdac6ba",
                          description="ID of underlying Baremetal, LXC or Virtual Server")
     software_id = fields.Str(required=False, example="82cd4399-1d95-4d67-831f-5724c47e577a",
-                         description="Software Installed in Docker, if declared")
+                             description="Software Installed in Docker, if declared")
 
 
 class LXCContainer(Base_Schema):
@@ -142,3 +157,36 @@ class LXCContainer(Base_Schema):
                                     description="List of Network Interfaces in the lxc container")
     host_id = fields.Str(required=False, example="39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
                          description="ID of underlying Baremetal or Virtual Server")
+
+
+class ExecutionEnvironment(Base_Schema):
+    type = fields.Str(required=True, example="bare-metal",
+                      description="Type of Exec. Env. Deployment",
+                      validate=validate.OneOf(EXEC_ENV_TYPE))
+    environment = fields.Dict(required=True,
+                              description="Definition of environment hardware. Can be LXCContainer, " \
+                                          "DockerContainer, VirtualServer, BaremetalServer")
+
+    def load(self, data):
+        ee_type = data['type']
+        env = data['environment']
+
+        if ee_type == "bare-metal":
+            schema = BaremetalServer()
+        elif ee_type == "vm":
+            schema = VirtualServer()
+        elif ee_type =="container-docker":
+            schema = DockerContainer()
+        elif ee_type == "container-lxc":
+            schema = LXCContainer()
+        elif ee_type == "container-k8s" or ee_type == "cloud" or ee_type == "mobile" \
+            or ee_type == "gateway" or ee_type == "application":
+            raise ValidationError("Not implemented " + ee_type)
+        else:
+            raise ValidationError("Unknown type " + ee_type)
+
+        schema.load(env)
+
+        # EXEC_ENV_TYPE = ['bare-metal', 'contailer-lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
+        #         'mobile', 'gateway', 'application']
+

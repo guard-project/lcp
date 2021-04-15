@@ -696,7 +696,17 @@ definitions:
         type: string
       hypervisor:
         description: Hypervisor name/technology
-        example: KVM
+        enum:
+        - kvm
+        - xen
+        - parallels
+        - virtualbox
+        - vmware-esxi
+        - hyper-v
+        - qemu
+        - vmware-player
+        - unknown
+        example: kvm
         type: string
       id:
         description: Network Card UUID.
@@ -1745,6 +1755,69 @@ paths:
       summary: Post Software description of a new Software installed in the System
       tags:
       - software
+  /self/deployment:
+    get:
+      description: 'Gets the information of the Server where the LCP is deployed
+
+        '
+      responses:
+        '200':
+          description: Get the Server's configuration information from LCP where it
+            is deployed
+          schema:
+            $ref: '#/definitions/BaremetalServer'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Baremetal server where the LCP is deployed on.
+      tags:
+      - hardware
+    post:
+      description: 'Posts the information of the Server where the LCP is deployed
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/BaremetalServer'
+      responses:
+        '201':
+          description: The BaremetalServer where LCP is deployed has been successfully
+            updated.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: POST the Baremetal server where the LCP is deployed on.
+      tags:
+      - hardware
 produces:
 - application/json
 swagger: '2.0'
@@ -1755,12 +1828,13 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
-- &id002
+- &id003
   description: Returns the description of software installed
   name: software
 - description: Returns the description of software installed in containers
   name: software
-- description: Returns description of a LXCContainer.
+- &id002
+  description: Returns description of a LXCContainer.
   name: hardware
 - description: Describes a "son" LCP linked in this service chain.
   name: filiation
@@ -1772,8 +1846,11 @@ tags:
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: hardware
+- *id002
 - description: Description of a Cloud Infrastructure
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: software
-- *id002
+- *id003
+- description: Returns description of a Baremetal Server where LCP is deployed.
+  name: hardware

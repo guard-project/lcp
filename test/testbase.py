@@ -3,7 +3,7 @@ from falcon import testing
 from api import api
 from reader.arg import Arg_Reader
 from about import title, version
-from lib.lcp_config import LCPConfig
+from extra.lcp_config import LCPConfig
 
 class LCPTestBase(testing.TestCase):
     log = None

@@ -1,11 +1,10 @@
 from schema.security_functions import SecurityFunction as SecurityFunctionSchema
 from docstring import docstring
 from resource.base import Base_Resource
-from lib.http import HTTP_Method
 import json
 from marshmallow.exceptions import ValidationError
 from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE
-from lib.lcp_config import LCPConfig
+from extra.lcp_config import LCPConfig
 
 
 class SecurityFunction(Base_Resource):

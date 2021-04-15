@@ -1,10 +1,11 @@
-from lib.lcp_config import LCPConfig
+from extra.lcp_config import LCPConfig
 from docstring import docstring
 from resource.base import Base_Resource
 from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
 from schema.hardware_definitions import VirtualServer as VirtualServerSchema
+from schema.hardware_definitions import ExecutionEnvironment as ExcutionEnvironmentSchema
 from lib.http import HTTP_Method
-from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK
+from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED
 from marshmallow import ValidationError
 import json
 
@@ -19,12 +20,16 @@ __all__ = [
 class DescribeDeploymentBareMetal(Base_Resource):
     tag = {'name': 'hardware',
            'description': 'Returns description of a Baremetal Server where LCP is deployed.'}
-    routes = '/self/deployment/bare-metal',
+    routes = '/self/deployment',
 
     @docstring(source="BaremetalServer/GetBaremetalServerDeployment.yml")
     def on_get(self, req, resp):
        resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
             .validate(data={})
+
+       lcp_config = LCPConfig()
+
+       r = {"type": lcp_config.exec_env_type, "environment": lcp_config.deployment}
 
        resp.body = json.dumps(LCPConfig().deployment)
 
@@ -35,9 +40,8 @@ class DescribeDeploymentBareMetal(Base_Resource):
         payload = req.media
         try:
             cfg = LCPConfig()
-            bm_schema = BaremetalServerSchema(many=False)
-            bm_schema.load(payload)
-            cfg.type = "bare-metal"
+            ee_schema = ExcutionEnvironmentSchema(many=False)
+            ee_schema.load(payload)
             cfg.setDeployment(payload)
             resp.status = HTTP_CREATED
         except ValidationError as e:

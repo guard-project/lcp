@@ -1,0 +1,61 @@
+from marshmallow.exceptions import ValidationError
+from schema.hardware_definitions import VirtualServer, ExecutionEnvironment
+from test_utils import *
+from test.testbase import LCPTestBase
+from marshmallow.exceptions import ValidationError
+
+from schema.hardware_definitions import VirtualServer, ExecutionEnvironment, LXCContainer, BaremetalServer
+from test.testbase import LCPTestBase
+from test_utils import *
+
+
+class TestMyApp(LCPTestBase):
+    def setUp(self):
+        super().setUp()
+        self.v_server_dict = loadExampleFile("virtual-server-example.json")
+        self.bm_server_dict = loadExampleFile("bare-metal-server-example.json")
+        self.lxc_container_dict = loadExampleFile("lxc-example.json")
+
+    def testCrossedCastings(self):
+        bm_schema = BaremetalServer()
+        vs_schema = VirtualServer()
+        lxc_schema = LXCContainer()
+
+        try:
+            lxc_schema.load(self.v_server_dict)
+        except ValidationError as ve:
+            print(ve.messages)
+        try:
+            lxc_schema.load(self.lxc_container_dict)
+            print("OK!!")
+        except ValidationError as ve:
+            print(ve.messages)
+
+    def testExecutionEnvironment(self):
+        virtual_server_schema = VirtualServer()
+        ee_type = "vm"
+
+        data = {"type": ee_type, "environment": self.v_server_dict}
+
+        ee_schema = ExecutionEnvironment()
+
+        try:
+            ee_schema.load(self.v_server_dict)
+        except ValidationError:
+            assert True
+
+        ee_schema = ExecutionEnvironment()
+        try:
+            ee_schema.load(data)
+        except ValidationError:
+            assert False
+
+        ee_schema = ExecutionEnvironment()
+        data = {"type": ee_type, "environment": self.bm_server_dict}
+        try:
+            d, ok = ee_schema.load(data)
+            print("ee_schema ", d)
+            print("ok ", ok)
+        except ValidationError as e:
+            print(e.messages)
+            assert True

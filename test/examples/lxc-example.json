@@ -1,0 +1,16 @@
+{
+    "id": "d5076827-7ffb-4413-aba2-230507bd9008",
+    "hostname": "lxclcp-container",
+    "operatingSystem": "Ubuntu 20.04.2",
+    "networkInterfaces": [
+        {
+            "id": "nwiface:eth0",
+            "name": "eth0",
+            "mtu": 1500,
+            "MacAddress": "00:16:3e:df:7d:fc",
+            "IPv4Addresses": ["10.0.3.135/24"],
+            "state": "UP",
+            "deviceType": "ethernet"
+        }
+    ]
+}

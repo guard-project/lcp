@@ -3,9 +3,9 @@ from docstring import docstring
 from schema.software_definitions import SoftwareDefinition as SoftwareDefinitionSchema
 from schema.software_definitions import ContainerSchema
 from marshmallow.exceptions import ValidationError
-from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK
+from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED
 import json
-from lib.lcp_config import LCPConfig
+from extra.lcp_config import LCPConfig
 
 
 class SoftwareDefinition(Base_Resource):

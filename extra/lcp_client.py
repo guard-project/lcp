@@ -1,4 +1,4 @@
-from lib.lcp_config import LCPConfig
+from extra.lcp_config import LCPConfig
 import requests
 from requests.exceptions import Timeout
 import threading
@@ -9,7 +9,6 @@ from marshmallow import ValidationError
 from queue import Queue
 import enum
 import base64
-from threading import Thread
 
 
 class BetweenLCPMessages(enum.Enum):

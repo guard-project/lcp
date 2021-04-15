@@ -1,14 +1,12 @@
 from docstring import docstring
 from resource.base import Base_Resource
 from marshmallow import ValidationError
-from schema.response import Created_Response
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK, HTTP_ACCEPTED
 from lib.http import HTTP_Method
-from utils.sequence import is_list, wrap
 from schema.filiation import LCPDescription, LCPFatherURL
 import json
-from lib.lcp_config import LCPConfig
-from RestClients.LCPClient import LCPClient, LCPMessages, BetweenLCPMessages
+from extra.lcp_config import LCPConfig
+from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
 
 
 

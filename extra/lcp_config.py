@@ -5,7 +5,8 @@ from schema.filiation import LCPDescription
 from schema.filiation import ContextBrokerConnection
 from urllib.parse import urlparse
 
-CONTEXT_BROKER='context_broker'
+CONTEXT_BROKER = 'context_broker'
+
 
 class LCPConfig(object):
     class __LCPConfig:
@@ -34,7 +35,7 @@ class LCPConfig(object):
             self.self_software = []
             self.self_containers = []
             self.reload(self.filename)
-
+            self.exec_env_type = None
 
         def reload(self, filename=None):
             if filename is not None:
@@ -104,11 +105,11 @@ class LCPConfig(object):
 
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
-
         def setDeployment(self, dictDeployment):
-            self.config['deployment'] = dictDeployment
+            self.deployment = dictDeployment['environment']
+            self.config['deployment'] = self.deployment
+            self.exec_env_type = dictDeployment['type']
             self.save()
-
 
         def setAgent(self, elem):
             updated = False
@@ -131,7 +132,6 @@ class LCPConfig(object):
                 self.self_software.append(elem)
             self.save()
 
-
         def setContainers(self, elem):
             updated = False
             for i in range(0, len(self.self_containers)):
@@ -143,7 +143,6 @@ class LCPConfig(object):
                 self.self_containers.append(elem)
             self.config["self_containers"] = self.self_containers
             self.save()
-
 
         def setParent(self, elem):
             updated = False
@@ -182,7 +181,6 @@ class LCPConfig(object):
             self.sons = []
             self.save()
 
-
         def dropAllAgents(self):
             self.config['agents'] = []
             self.agents = self.config['agents']
@@ -192,7 +190,6 @@ class LCPConfig(object):
             self.config[CONTEXT_BROKER] = data
             self.contextBroker = self.config[CONTEXT_BROKER]
             self.save()
-
 
         def getDataForRegisterOnCB(self):
             parsed_uri = urlparse(self.lcp['url'])

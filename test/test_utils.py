@@ -1,6 +1,5 @@
-import json
 import os
-from lib.lcp_config import LCPConfig
+from extra.lcp_config import LCPConfig
 from flask import Flask, request
 from flask_restful import Resource, Api
 from threading import Thread

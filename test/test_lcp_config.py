@@ -1,8 +1,8 @@
 from falcon import testing
 from api import api
 from reader.arg import Arg_Reader
-from about import project, title, version
-from lib.lcp_config import LCPConfig
+from about import title, version
+from extra.lcp_config import LCPConfig
 import os
 
 class SecurityFunctionDefinitionTesting(testing.TestCase):

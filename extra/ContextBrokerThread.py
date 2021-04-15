@@ -1,4 +1,4 @@
-from lib.lcp_config import LCPConfig
+from extra.lcp_config import LCPConfig
 
 class ContextBrokerThread(object):
     class __ContextBrokerThread:

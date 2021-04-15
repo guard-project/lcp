@@ -1,16 +1,7 @@
-from falcon import testing
-from api import api
-from reader.arg import Arg_Reader
-from about import project, title, version
-import os
-import json
 from schema.security_functions import *
-from resource.security_functions import SecurityFunction as SecurityFunctionResource
-from resource.software_definition import SoftwareDefinition as SoftwareDefinitionResource
 from marshmallow.exceptions import ValidationError
 from test_utils import *
 
-from lib.lcp_config import LCPConfig
 from test.testbase import LCPTestBase
 
 

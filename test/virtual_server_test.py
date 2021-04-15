@@ -3,7 +3,7 @@ from api import api
 from reader.arg import Arg_Reader
 from about import project, title, version
 from marshmallow.exceptions import ValidationError
-from schema.hardware_definitions import VirtualServer, Disk, DiskPartition
+from schema.hardware_definitions import VirtualServer, Disk, DiskPartition, ExecutionEnvironment
 from resource.hardware_definitions import VirtualServer as VirtualServerResource
 import json
 import os
@@ -61,5 +61,6 @@ class TestMyApp(LCPTestBase):
         assert result.status_code == 201
         assert len(VirtualServerResource.data) == 1
         assert VirtualServerResource.data[0]["id"] == bm_server_dict["id"]
+
 
 

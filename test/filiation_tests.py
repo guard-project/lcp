@@ -1,15 +1,7 @@
-from falcon import testing, HTTP_ACCEPTED
-from api import api
-from reader.arg import Arg_Reader
-from about import project, title, version
 from schema.filiation import LCPDescription
-from marshmallow import ValidationError
-from pprint import pprint
-import json
-from utils.sequence import is_list, wrap
 from resource import SonLCPIdentification
 from test_utils import *
-from RestClients.LCPClient import LCPClient, LCPMessages, BetweenLCPMessages
+from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
 from queue import Empty
 import requests
 from test.testbase import LCPTestBase

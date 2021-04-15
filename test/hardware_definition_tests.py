@@ -3,9 +3,12 @@ from api import api
 from reader.arg import Arg_Reader
 from about import project, title, version
 
-from schema.hardware_definitions import Disk, DiskPartition, Container as ContainerSchema
+from schema.hardware_definitions import Disk, DiskPartition, \
+    VirtualServer, BaremetalServer, LXCContainer
 from test_utils import *
 from test.testbase import LCPTestBase
+from test.test_utils import loadExampleFile
+from marshmallow import ValidationError
 
 
 # class HardwareDefinitionsTesting(testing.TestCase):
@@ -58,5 +61,53 @@ class TestMyApp(LCPTestBase):
         disk = dsk.dumps(dict_disk) #disk es str!!
         print(disk)
 
+    def test_various_things(self):
+        baremetal_server = loadExampleFile("bare-metal-server-example.json")
+        virtual_server = loadExampleFile("virtual-server-example.json")
+        lxc_container = loadExampleFile("lxc-example.json")
+
+        print("... Validate: lxc_container as VirtualServer")
+        vs_schema = VirtualServer()
+        try:
+            vs_schema.load(lxc_container)
+        except ValidationError as ve:
+            print(ve)
+
+        print("... Validate: lxc_container as BaremetalServer")
+        bm_schema = BaremetalServer()
+        try:
+            bm_schema.load(lxc_container)
+        except ValidationError as ve:
+            print(ve)
+
+        print("... Validate: lxc_container as LXCContainer")
+        lxc_schema = LXCContainer()
+        try:
+            lxc_schema.load(lxc_container)
+        except ValidationError as ve:
+            print(ve)
+
+        print("... Validate: BaremetalServer as LXC_container")
+        try:
+            lxc_schema.load(baremetal_server)
+        except ValidationError as ve:
+            print(ve)
+
+        print("... Validate: BaremetalServer as VirtualServer")
+        try:
+            vs_schema.load(baremetal_server)
+        except ValidationError as ve:
+            print(ve)
 
 
+        print("... Validate: VirtualServer as LXCOntainer")
+        try:
+            lxc_schema.load(VirtualServer)
+        except ValidationError as ve:
+            print(ve)
+
+        print("... Validate: VirtualServer as Baremetar")
+        try:
+            bm_schema.load(virtual_server)
+        except ValidationError as ve:
+            print(ve)
