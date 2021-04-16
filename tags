@@ -191,6 +191,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 /lcp_son/{id}	swagger/schema.json	/^    "\/lcp_son\/{id}": {$/;"	o	object:paths
 /lxc	swagger/schema.json	/^    "\/lxc": {$/;"	o	object:paths
 /securityFunctions	swagger/schema.json	/^    "\/securityFunctions": {$/;"	o	object:paths
+/self	swagger/schema.json	/^    "\/self": {$/;"	o	object:paths
 /self/container	swagger/schema.json	/^    "\/self\/container": {$/;"	o	object:paths
 /self/deployment	swagger/schema.json	/^    "\/self\/deployment": {$/;"	o	object:paths
 /self/software	swagger/schema.json	/^    "\/self\/software": {$/;"	o	object:paths
@@ -383,6 +384,7 @@ $ref	swagger/schema.json	/^            "$ref": "#\/definitions\/NetworkInterface
 13	swagger/schema.json	/^    {$/;"	o	array:tags
 14	swagger/schema.json	/^    {$/;"	o	array:tags
 15	swagger/schema.json	/^    {$/;"	o	array:tags
+16	swagger/schema.json	/^    {$/;"	o	array:tags
 1oHlnqBzpkmllMTCak6boyy1dL8	.idea/workspace.xml	/^  <component name="ProjectId" id="1oHlnqBzpkmllMTCak6boyy1dL8" \/>$/;"	i
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code.put.responses.422.schema.items.oneOf
 2	swagger/schema.json	/^                  "Unprocessable_Entity_Response_Schema"$/;"	s	array:paths./code/{id}.put.responses.422.schema.items.oneOf
@@ -612,7 +614,7 @@ API	docs/api.rst	/^API$/;"	c
 API Reference	docs/index.rst	/^API Reference$/;"	s	chapter:Documentation
 API_Spec	api/spec.py	/^from apispec import APISpec as API_Spec$/;"	x	nameref:unknown:APISpec
 Add	.idea/workspace.xml	/^    <ConfirmationsSetting value="1" id="Add" \/>$/;"	i
-AddExecEnvironment	extra/cbClient.py	/^    AddExecEnvironment = 1$/;"	v	class:ToContextBrokerMessages
+AddExecEnvironment	extra/cb_client.py	/^    AddExecEnvironment = 1$/;"	v	class:ToContextBrokerMessages
 Additional Notes	docs/index.rst	/^Additional Notes$/;"	s	chapter:Documentation
 AgentActionSchema	schema/security_functions.py	/^class AgentActionSchema(Base_Schema):$/;"	c
 AgentActionSchema	swagger/schema.json	/^    "AgentActionSchema": {$/;"	o	object:definitions
@@ -642,10 +644,10 @@ Base_Response	lib/response.py	/^class Base_Response(object):$/;"	c
 Base_Response_Schema	schema/response.py	/^class Base_Response_Schema(Schema):$/;"	c
 Base_Schema	schema/base.py	/^class Base_Schema(Schema):$/;"	c
 Basic_Interpolation	reader/config.py	/^from configparser import BasicInterpolation as Basic_Interpolation$/;"	x	nameref:unknown:BasicInterpolation
-BetweenLCPMessages	extra/lcpClient.py	/^class BetweenLCPMessages(enum.Enum):$/;"	c
-CBClient	extra/cbClient.py	/^class CBClient:$/;"	c
+BetweenLCPMessages	extra/lcp_client.py	/^class BetweenLCPMessages(enum.Enum):$/;"	c
+CBClient	extra/cb_client.py	/^class CBClient:$/;"	c
 CONTAINER_TECHNOLOGY	schema/software_definitions.py	/^CONTAINER_TECHNOLOGY = ["lxc", "docker", "k8s", "rkt"]$/;"	v
-CONTEXT_BROKER	lib/lcp_config.py	/^CONTEXT_BROKER = 'context_broker'$/;"	v
+CONTEXT_BROKER	extra/lcp_config.py	/^CONTEXT_BROKER = 'context_broker'$/;"	v
 Changelog	CHANGELOG.md	/^# Changelog$/;"	c
 Changelog	docs/CHANGELOG.md	/^# Changelog$/;"	c
 CloudCompute	schema/cloudschema.py	/^class CloudCompute(Base_Schema):$/;"	c
@@ -689,9 +691,8 @@ ContainerSchema	schema/software_definitions.py	/^class ContainerSchema(Base_Sche
 Content_Response	lib/response.py	/^class Content_Response(Ok_Response):$/;"	c
 Content_Response_Schema	schema/response.py	/^class Content_Response_Schema(Ok_Response_Schema):$/;"	c
 ContextBrokerConnection	schema/filiation.py	/^class ContextBrokerConnection(Base_Schema):$/;"	c
-ContextBrokerConnectionSchema	extra/cbClient.py	/^from schema.filiation import ContextBrokerConnection as ContextBrokerConnectionSchema$/;"	x	nameref:unknown:ContextBrokerConnection
-ContextBrokerConnectionSchema	extra/lcpClient.py	/^from schema.filiation import ContextBrokerConnection as ContextBrokerConnectionSchema$/;"	x	nameref:unknown:ContextBrokerConnection
-ContextBrokerThread	lib/ContextBrokerThread.py	/^class ContextBrokerThread(object):$/;"	c
+ContextBrokerConnectionSchema	extra/lcp_client.py	/^from schema.filiation import ContextBrokerConnection as ContextBrokerConnectionSchema$/;"	x	nameref:unknown:ContextBrokerConnection
+ContextBrokerThread	extra/ContextBrokerThread.py	/^class ContextBrokerThread(object):$/;"	c
 Contributing	CONTRIBUTING.md	/^# Contributing$/;"	c
 Contributing	docs/CONTRIBUTING.md	/^# Contributing$/;"	c
 Created_Response	lib/response.py	/^class Created_Response(Base_Response):$/;"	c
@@ -774,6 +775,7 @@ Import_Error	main.py	/^Import_Error = ImportError$/;"	v
 Import_Error	main2.py	/^Import_Error = ImportError$/;"	v
 In	schema/validate.py	/^class In(object):$/;"	c
 Indices and tables	docs/index.rst	/^Indices and tables$/;"	c
+InitialConfiguration	extra/autoconfig/initial_configuration.py	/^class InitialConfiguration:$/;"	c
 Installation	README.md	/^## Installation$/;"	s	chapter:Local Control Plane
 Installation	docs/installation.rst	/^Installation$/;"	c
 Internal_Server_Error_Handler	api/error_handler.py	/^class Internal_Server_Error_Handler(Base_Handler):$/;"	c
@@ -784,12 +786,12 @@ JSON	docs/api.rst	/^JSON$/;"	S	section:Utils
 JSON_Handler	api/__init__.py	/^from falcon.media import JSONHandler as JSON_Handler$/;"	x	nameref:unknown:JSONHandler
 JSON_Handler	api/media_handler.py	/^from falcon.media import JSONHandler as JSON_Handler$/;"	x	nameref:unknown:JSONHandler
 JWT_Auth_Backend	api/__init__.py	/^from falcon_auth import JWTAuthBackend as JWT_Auth_Backend$/;"	x	nameref:unknown:JWTAuthBackend
-LCPClient	extra/lcpClient.py	/^class LCPClient(object):$/;"	c
-LCPConfig	lib/lcp_config.py	/^class LCPConfig(object):$/;"	c
+LCPClient	extra/lcp_client.py	/^class LCPClient(object):$/;"	c
+LCPConfig	extra/lcp_config.py	/^class LCPConfig(object):$/;"	c
 LCPDescription	schema/filiation.py	/^class LCPDescription(Base_Schema):$/;"	c
 LCPDescription	swagger/schema.json	/^    "LCPDescription": {$/;"	o	object:definitions
 LCPFatherURL	schema/filiation.py	/^class LCPFatherURL(Base_Schema):$/;"	c
-LCPMessages	extra/lcpClient.py	/^class LCPMessages:$/;"	c
+LCPMessages	extra/lcp_client.py	/^class LCPMessages:$/;"	c
 LCPTestBase	test/testbase.py	/^class LCPTestBase(testing.TestCase):$/;"	c
 LXCContainer	resource/hardware_definitions.py	/^class LXCContainer(Base_Resource):$/;"	c
 LXCContainer	schema/hardware_definitions.py	/^class LXCContainer(Base_Schema):$/;"	c
@@ -852,11 +854,11 @@ PUT	lib/http.py	/^    PUT = 'put'$/;"	v	class:HTTP_Method
 ParentLCPIdentification	resource/filiation.py	/^class ParentLCPIdentification(Base_Resource):$/;"	c
 Parser_Error	api/media_handler.py	/^from yaml.parser import ParserError as Parser_Error$/;"	x	nameref:unknown:ParserError
 Polycube	lib/polycube.py	/^class Polycube:$/;"	c
-PostLCPParent	extra/lcpClient.py	/^    PostLCPParent = 2$/;"	v	class:BetweenLCPMessages
-PostLCPSon	extra/lcpClient.py	/^    PostLCPSon = 1$/;"	v	class:BetweenLCPMessages
+PostLCPParent	extra/lcp_client.py	/^    PostLCPParent = 2$/;"	v	class:BetweenLCPMessages
+PostLCPSon	extra/lcp_client.py	/^    PostLCPSon = 1$/;"	v	class:BetweenLCPMessages
 Pull Request Process	CONTRIBUTING.md	/^## Pull Request Process$/;"	s	chapter:Contributing
 Pull Request Process	docs/CONTRIBUTING.md	/^## Pull Request Process$/;"	s	chapter:Contributing
-QueryExecEnvironments	extra/cbClient.py	/^    def QueryExecEnvironments(self):$/;"	m	class:CBClient
+QueryExecEnvironments	extra/cb_client.py	/^    def QueryExecEnvironments(self):$/;"	m	class:CBClient
 RESPONSE_CODES	schema/response.py	/^RESPONSE_CODES = [$/;"	v
 RESPONSE_STATUS	schema/response.py	/^RESPONSE_STATUS = [$/;"	v
 RESPONSE_TYPES	schema/config.py	/^RESPONSE_TYPES = ['action', 'parameter', 'resource']$/;"	v
@@ -880,7 +882,6 @@ SecurityFunction	resource/security_functions.py	/^class SecurityFunction(Base_Re
 SecurityFunction	schema/security_functions.py	/^class SecurityFunction(Base_Schema):$/;"	c
 SecurityFunction	swagger/schema.json	/^    "SecurityFunction": {$/;"	o	object:definitions
 SecurityFunctionDefinitionTesting	test/test_lcp_config.py	/^class SecurityFunctionDefinitionTesting(testing.TestCase):$/;"	c
-SecurityFunctionResource	test/security_function_tests.py	/^from resource.security_functions import SecurityFunction as SecurityFunctionResource$/;"	x	nameref:unknown:SecurityFunction
 SecurityFunctionSchema	resource/security_functions.py	/^from schema.security_functions import SecurityFunction as SecurityFunctionSchema$/;"	x	nameref:unknown:SecurityFunction
 Sequence	docs/api.rst	/^Sequence$/;"	S	section:Utils
 Signal	docs/api.rst	/^Signal$/;"	S	section:Utils
@@ -888,7 +889,6 @@ SoftwareDefinition	resource/software_definition.py	/^class SoftwareDefinition(Ba
 SoftwareDefinition	schema/software_definitions.py	/^class SoftwareDefinition(Base_Schema):$/;"	c
 SoftwareDefinition	swagger/schema.json	/^    "SoftwareDefinition": {$/;"	o	object:definitions
 SoftwareDefinitionResource	test/cloud_infrastructure_test.py	/^from resource.software_definition import SoftwareDefinition as SoftwareDefinitionResource$/;"	x	nameref:unknown:SoftwareDefinition
-SoftwareDefinitionResource	test/security_function_tests.py	/^from resource.software_definition import SoftwareDefinition as SoftwareDefinitionResource$/;"	x	nameref:unknown:SoftwareDefinition
 SoftwareDefinitionSchema	resource/software_definition.py	/^from schema.software_definitions import SoftwareDefinition as SoftwareDefinitionSchema$/;"	x	nameref:unknown:SoftwareDefinition
 SomethingToPost	resource/hardware_definitions.py	/^class SomethingToPost(Base_Resource):$/;"	c
 SonLCPIdentification	resource/filiation.py	/^class SonLCPIdentification(Base_Resource):$/;"	c
@@ -918,7 +918,7 @@ TestMyApp	test/test_lcp_config.py	/^class TestMyApp(SecurityFunctionDefinitionTe
 TestMyApp	test/virtual_server_test.py	/^class TestMyApp(LCPTestBase):$/;"	c
 Time	docs/api.rst	/^Time$/;"	S	section:Utils
 Timeout_Error	lib/polycube.py	/^from requests.exceptions import Timeout as Timeout_Error$/;"	x	nameref:unknown:Timeout
-ToContextBrokerMessages	extra/cbClient.py	/^class ToContextBrokerMessages(enum.Enum):$/;"	c
+ToContextBrokerMessages	extra/cb_client.py	/^class ToContextBrokerMessages(enum.Enum):$/;"	c
 Unauthorized_Response	lib/response.py	/^class Unauthorized_Response(Base_Response):$/;"	c
 Unauthorized_Response	swagger/schema.json	/^    "Unauthorized_Response": {$/;"	o	object:definitions
 Unauthorized_Response_Schema	schema/response.py	/^class Unauthorized_Response_Schema(Base_Response_Schema):$/;"	c
@@ -943,9 +943,9 @@ VirtualServerSchema	resource/self_data.py	/^from schema.hardware_definitions imp
 Welcome to LCP documentation!	docs/index.rst	/^Welcome to LCP documentation!$/;"	c
 XML_Handler	api/media_handler.py	/^class XML_Handler(JSON_Handler):$/;"	c
 YAML_Handler	api/media_handler.py	/^class YAML_Handler(JSON_Handler):$/;"	c
-__ContextBrokerThread	lib/ContextBrokerThread.py	/^    class __ContextBrokerThread:$/;"	c	class:ContextBrokerThread	file:
-__LCPClient	extra/lcpClient.py	/^    class __LCPClient:$/;"	c	class:LCPClient	file:
-__LCPConfig	lib/lcp_config.py	/^    class __LCPConfig:$/;"	c	class:LCPConfig	file:
+__ContextBrokerThread	extra/ContextBrokerThread.py	/^    class __ContextBrokerThread:$/;"	c	class:ContextBrokerThread	file:
+__LCPClient	extra/lcp_client.py	/^    class __LCPClient:$/;"	c	class:LCPClient	file:
+__LCPConfig	extra/lcp_config.py	/^    class __LCPConfig:$/;"	c	class:LCPConfig	file:
 __Q	utils/time.py	/^__Q = __ureg.Quantity$/;"	v
 __actions	resource/config.py	/^    def __actions(self, data):$/;"	m	class:Config_Resource	file:
 __all__	resource/self_data.py	/^__all__ = [$/;"	v
@@ -965,19 +965,20 @@ __eq	lib/http.py	/^def __eq(code_a, code_b):$/;"	f
 __from_resp	lib/polycube.py	/^    def __from_resp(self, resp, error=None):$/;"	m	class:Polycube	file:
 __get	lib/http.py	/^def __get(code):$/;"	f
 __get	schema/validate.py	/^        def __get(values):$/;"	f	member:Unique_List.apply	file:
-__getattr__	extra/lcpClient.py	/^    def __getattr__(self, name):$/;"	m	class:LCPClient
-__getattr__	lib/ContextBrokerThread.py	/^    def __getattr__(self, name):$/;"	m	class:ContextBrokerThread
-__getattr__	lib/lcp_config.py	/^    def __getattr__(self, name):$/;"	m	class:LCPConfig
+__getattr__	extra/ContextBrokerThread.py	/^    def __getattr__(self, name):$/;"	m	class:ContextBrokerThread
+__getattr__	extra/lcp_client.py	/^    def __getattr__(self, name):$/;"	m	class:LCPClient
+__getattr__	extra/lcp_config.py	/^    def __getattr__(self, name):$/;"	m	class:LCPConfig
 __gt	lib/http.py	/^def __gt(code_a, code_b):$/;"	f
 __gte	lib/http.py	/^def __gte(code_a, code_b):$/;"	f
 __init__	api/media_handler.py	/^    def __init__(self, dumps=None, loads=None):$/;"	m	class:XML_Handler
 __init__	api/media_handler.py	/^    def __init__(self, dumps=None, loads=None):$/;"	m	class:YAML_Handler
 __init__	api/spec.py	/^    def __init__(self, api, title, version):$/;"	m	class:Spec
-__init__	extra/cbClient.py	/^    def __init__(self, message_type: ToContextBrokerMessages, data):$/;"	m	class:CBClient
-__init__	extra/lcpClient.py	/^        def __init__(self):$/;"	m	class:LCPClient.__LCPClient
-__init__	extra/lcpClient.py	/^    def __init__(self, message_type:BetweenLCPMessages, data):$/;"	m	class:LCPMessages
-__init__	lib/ContextBrokerThread.py	/^        def __init__(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
-__init__	lib/lcp_config.py	/^        def __init__(self, filename):$/;"	m	class:LCPConfig.__LCPConfig
+__init__	extra/ContextBrokerThread.py	/^        def __init__(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
+__init__	extra/autoconfig/initial_configuration.py	/^    def __init__(self, filename):$/;"	m	class:InitialConfiguration
+__init__	extra/cb_client.py	/^    def __init__(self, message_type: ToContextBrokerMessages, data):$/;"	m	class:CBClient
+__init__	extra/lcp_client.py	/^        def __init__(self):$/;"	m	class:LCPClient.__LCPClient
+__init__	extra/lcp_client.py	/^    def __init__(self, message_type:BetweenLCPMessages, data):$/;"	m	class:LCPMessages
+__init__	extra/lcp_config.py	/^        def __init__(self, filename):$/;"	m	class:LCPConfig.__LCPConfig
 __init__	lib/polycube.py	/^    def __init__(self):$/;"	m	class:Polycube
 __init__	lib/response.py	/^    def __init__(self):$/;"	m	class:Unauthorized_Response
 __init__	lib/response.py	/^    def __init__(self, content):$/;"	m	class:Content_Response
@@ -1016,18 +1017,18 @@ __log	lib/response.py	/^    def __log(self):$/;"	m	class:Base_Response	file:
 __lt	lib/http.py	/^def __lt(code_a, code_b):$/;"	f
 __lte	lib/http.py	/^def __lte(code_a, code_b):$/;"	f
 __manager	lib/polycube.py	/^    def __manager(self, resp_req):$/;"	m	class:Polycube	file:
-__new__	extra/lcpClient.py	/^    def __new__(cls, *args, **kwargs):$/;"	m	class:LCPClient
-__new__	lib/ContextBrokerThread.py	/^    def __new__(cls, *args, **kwargs):$/;"	m	class:ContextBrokerThread
-__new__	lib/lcp_config.py	/^    def __new__(cls, filename=None, *args, **kwargs):$/;"	m	class:LCPConfig
+__new__	extra/ContextBrokerThread.py	/^    def __new__(cls, *args, **kwargs):$/;"	m	class:ContextBrokerThread
+__new__	extra/lcp_client.py	/^    def __new__(cls, *args, **kwargs):$/;"	m	class:LCPClient
+__new__	extra/lcp_config.py	/^    def __new__(cls, filename=None, *args, **kwargs):$/;"	m	class:LCPConfig
 __norm	schema/base.py	/^            def __norm(block):$/;"	f	member:Base_Schema.validate	file:
 __parameters	resource/config.py	/^    def __parameters(self, data):$/;"	m	class:Config_Resource	file:
 __resources	resource/config.py	/^    def __resources(self, data):$/;"	m	class:Config_Resource	file:
 __run_cmd	resource/config.py	/^    def __run_cmd(self, cmd, daemon, output):$/;"	m	class:Config_Resource	file:
 __schema_name_resolver	api/spec.py	/^    def __schema_name_resolver(schema):$/;"	m	class:Spec	file:
 __set_std	resource/config.py	/^    def __set_std(self, data, output, key, output_format):$/;"	m	class:Config_Resource	file:
-__setattr__	extra/lcpClient.py	/^    def __setattr__(self, name):$/;"	m	class:LCPClient
-__setattr__	lib/ContextBrokerThread.py	/^    def __setattr__(self, name):$/;"	m	class:ContextBrokerThread
-__setattr__	lib/lcp_config.py	/^    def __setattr__(self, name):$/;"	m	class:LCPConfig
+__setattr__	extra/ContextBrokerThread.py	/^    def __setattr__(self, name):$/;"	m	class:ContextBrokerThread
+__setattr__	extra/lcp_client.py	/^    def __setattr__(self, name):$/;"	m	class:LCPClient
+__setattr__	extra/lcp_config.py	/^    def __setattr__(self, name):$/;"	m	class:LCPConfig
 __str__	lib/response.py	/^    def __str__(self):$/;"	m	class:Base_Response
 __ureg	utils/time.py	/^__ureg = Unit_Registry()$/;"	v
 __validate_readonly	schema/base.py	/^    def __validate_readonly(self, data, **kwargs):$/;"	m	class:Base_Schema	file:
@@ -1200,8 +1201,8 @@ delete	lib/polycube.py	/^    def delete(self, cube):$/;"	m	class:Polycube
 delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./code
 delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./code/{id}
 delete	swagger/schema.json	/^      "delete": {$/;"	o	object:paths./lcp_son/{id}
-deleteAllSons	lib/lcp_config.py	/^        def deleteAllSons(self):$/;"	m	class:LCPConfig.__LCPConfig
-deleteSonById	lib/lcp_config.py	/^        def deleteSonById(self, son_id):$/;"	m	class:LCPConfig.__LCPConfig
+deleteAllSons	extra/lcp_config.py	/^        def deleteAllSons(self):$/;"	m	class:LCPConfig.__LCPConfig
+deleteSonById	extra/lcp_config.py	/^        def deleteSonById(self, son_id):$/;"	m	class:LCPConfig.__LCPConfig
 delete_req	lib/polycube.py	/^from requests import delete as delete_req$/;"	x	nameref:unknown:delete
 description	about.py	/^description = """In each local agent, the control plane is responsible for programmability, i.e./;"	v
 description	schema/cloudschema.py	/^    description = fields.Str(required=False, example="FIWARE Lab Wolfsburg node",$/;"	v	class:CloudSchema
@@ -1521,6 +1522,7 @@ description	swagger/schema.json	/^      "description": "Description of a Cloud I
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server where LCP is deployed."$/;"	s	object:tags.15
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.10
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.13
+description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.16
 description	swagger/schema.json	/^      "description": "Returns description of a Baremetal Server."$/;"	s	object:tags.9
 description	swagger/schema.json	/^      "description": "Returns description of a LXCContainer."$/;"	s	object:tags.11
 description	swagger/schema.json	/^      "description": "Returns description of a LXCContainer."$/;"	s	object:tags.5
@@ -1562,7 +1564,7 @@ diskPartitions	test/examples/bare-metal-server-example.json	/^            "diskP
 diskPartitions	test/examples/virtual-server-example.json	/^            "diskPartitions": [$/;"	a	object:diskDevices.0
 docstring	docstring/__init__.py	/^def docstring(source):$/;"	f
 doctest	docs/Makefile	/^doctest:$/;"	t
-dropAllAgents	lib/lcp_config.py	/^        def dropAllAgents(self):$/;"	m	class:LCPConfig.__LCPConfig
+dropAllAgents	extra/lcp_config.py	/^        def dropAllAgents(self):$/;"	m	class:LCPConfig.__LCPConfig
 dumps	utils/json.py	/^def dumps(data, *args, **kwargs):$/;"	f
 duration	schema/config.py	/^    duration = Float(description='Execution time of the action (in seconds')$/;"	v	class:Config_Action_Response_Schema
 elastic-apm	config.ini	/^[elastic-apm]$/;"	s
@@ -1744,13 +1746,14 @@ get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./self/deployment
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./self/software
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./status
 get	swagger/schema.json	/^      "get": {$/;"	o	object:paths./virtualserver
+get	swagger/schema.json	/^      "get": {}$/;"	o	object:paths./self
 get	swagger/schema.json	/^      "get": {},$/;"	o	object:paths./lcp_parent
 get	utils/log.py	/^    def get(cls, name=about_name):$/;"	m	class:Log
 getAuthorizationHeaders	test/test_utils.py	/^def getAuthorizationHeaders():$/;"	f
-getDataForRegisterOnCB	lib/lcp_config.py	/^        def getDataForRegisterOnCB(self):$/;"	m	class:LCPConfig.__LCPConfig
-getHeaders	extra/lcpClient.py	/^        def getHeaders(self):$/;"	m	class:LCPClient.__LCPClient
+getDataForRegisterOnCB	extra/lcp_config.py	/^        def getDataForRegisterOnCB(self):$/;"	m	class:LCPConfig.__LCPConfig
+getHeaders	extra/lcp_client.py	/^        def getHeaders(self):$/;"	m	class:LCPClient.__LCPClient
 getLCPConfig	test/test_utils.py	/^def getLCPConfig():$/;"	f
-getSonById	lib/lcp_config.py	/^        def getSonById(self, son_id):$/;"	m	class:LCPConfig.__LCPConfig
+getSonById	extra/lcp_config.py	/^        def getSonById(self, son_id):$/;"	m	class:LCPConfig.__LCPConfig
 get_levels	utils/log.py	/^    def get_levels():$/;"	m	class:Log
 get_req	lib/polycube.py	/^from requests import get as get_req$/;"	x	nameref:unknown:get
 get_seconds	utils/time.py	/^def get_seconds(text, to_int=False):$/;"	f
@@ -1864,13 +1867,14 @@ info	utils/log.py	/^    def info(name):$/;"	m	class:Formatter
 info	utils/stack.py	/^def info(level):$/;"	f
 init	reader/arg.py	/^    def init(cls):$/;"	m	class:Arg_Reader
 init	utils/log.py	/^    def init(cls, config):$/;"	m	class:Log
+initialInfo	extra/autoconfig/initial_configuration.py	/^    def initialInfo(self):$/;"	m	class:InitialConfiguration
 installation	docs/installation.rst	/^.. _installation:$/;"	T
-instance	extra/lcpClient.py	/^    instance = None$/;"	v	class:LCPClient
-instance	lib/ContextBrokerThread.py	/^    instance = None$/;"	v	class:ContextBrokerThread
-instance	lib/lcp_config.py	/^    instance = None$/;"	v	class:LCPConfig
+instance	extra/ContextBrokerThread.py	/^    instance = None$/;"	v	class:ContextBrokerThread
+instance	extra/lcp_client.py	/^    instance = None$/;"	v	class:LCPClient
+instance	extra/lcp_config.py	/^    instance = None$/;"	v	class:LCPConfig
 is_dict	utils/sequence.py	/^def is_dict(obj):$/;"	f
 is_list	utils/sequence.py	/^def is_list(obj):$/;"	f
-is_registered	lib/ContextBrokerThread.py	/^        def is_registered(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
+is_registered	extra/ContextBrokerThread.py	/^        def is_registered(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
 is_str	utils/string.py	/^def is_str(obj):$/;"	f
 issues_github_path	docs/conf.py	/^issues_github_path = "guard-project\/lcp"$/;"	v
 item_getter	resource/code.py	/^from operator import itemgetter as item_getter$/;"	x	nameref:unknown:itemgetter
@@ -2029,6 +2033,7 @@ name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.10
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.11
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.12
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.15
+name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.16
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.5
 name	swagger/schema.json	/^      "name": "hardware",$/;"	s	object:tags.9
 name	swagger/schema.json	/^      "name": "lcp relationships",$/;"	s	object:tags.8
@@ -2200,10 +2205,10 @@ post	swagger/schema.json	/^      "post": {$/;"	o	object:paths./virtualserver
 post	swagger/schema.json	/^      "post": {}$/;"	o	object:paths./lcp_parent
 post	test/test_utils.py	/^    def post(self):$/;"	m	class:TerminateHttpServer
 post	test/test_utils.py	/^    def post(self):$/;"	m	class:TestLCPSonFiliationRequest
-postLcpParentToSon	extra/lcpClient.py	/^        def postLcpParentToSon(self, requested_children_url):  # I am your faher$/;"	m	class:LCPClient.__LCPClient
-postLcpSon	extra/lcpClient.py	/^        def postLcpSon(self, parent):$/;"	m	class:LCPClient.__LCPClient
+postLcpParentToSon	extra/lcp_client.py	/^        def postLcpParentToSon(self, requested_children_url):  # I am your faher$/;"	m	class:LCPClient.__LCPClient
+postLcpSon	extra/lcp_client.py	/^        def postLcpSon(self, parent):$/;"	m	class:LCPClient.__LCPClient
 post_end_server	test/filiation_tests.py	/^    def post_end_server(self):$/;"	m	class:TestMyApp
-post_register	lib/ContextBrokerThread.py	/^        def post_register(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
+post_register	extra/ContextBrokerThread.py	/^        def post_register(self):$/;"	m	class:ContextBrokerThread.__ContextBrokerThread
 post_req	lib/polycube.py	/^from requests import post as post_req$/;"	x	nameref:unknown:post
 prefix	config.ini	/^header-prefix = GUARD$/;"	k	section:auth
 process_request	api/middleware.py	/^    def process_request(self, req, resp):$/;"	m	class:Negotiation_Middleware
@@ -2244,7 +2249,7 @@ put	swagger/schema.json	/^      "put": {$/;"	o	object:paths./code
 put	swagger/schema.json	/^      "put": {$/;"	o	object:paths./code/{id}
 put_req	lib/polycube.py	/^from requests import put as put_req$/;"	x	nameref:unknown:put
 q	test/test_utils.py	/^    q = Queue()$/;"	v	class:TestHttpServer
-qread	extra/lcpClient.py	/^        def qread(self):$/;"	m	class:LCPClient.__LCPClient
+qread	extra/lcp_client.py	/^        def qread(self):$/;"	m	class:LCPClient.__LCPClient
 qthelp	docs/Makefile	/^qthelp:$/;"	t
 ram	schema/hardware_definitions.py	/^    ram = fields.Int(required=True, example="8",$/;"	v	class:BaremetalServer
 ram	schema/hardware_definitions.py	/^    ram = fields.Int(required=True, example="8",$/;"	v	class:VirtualServer
@@ -2257,9 +2262,9 @@ read	reader/arg.py	/^    def read(cls):$/;"	m	class:Arg_Reader
 read	reader/config.py	/^    def read(self):$/;"	m	class:Config_Reader
 reason	schema/response.py	/^    reason = Str(required=True, example='Connection timeout', description='Exception reason.')$/;"	v	class:Exception_Response_Schema
 reason	swagger/schema.json	/^        "reason": {$/;"	o	object:definitions.Exception_Response.properties
-reenqueueLcpParentToSon	extra/lcpClient.py	/^        def reenqueueLcpParentToSon(self, requested_children_url):$/;"	m	class:LCPClient.__LCPClient
-reenqueuePostLcpSon	extra/lcpClient.py	/^        def reenqueuePostLcpSon(self, parent):$/;"	m	class:LCPClient.__LCPClient
-reload	lib/lcp_config.py	/^        def reload(self, filename=None):$/;"	m	class:LCPConfig.__LCPConfig
+reenqueueLcpParentToSon	extra/lcp_client.py	/^        def reenqueueLcpParentToSon(self, requested_children_url):$/;"	m	class:LCPClient.__LCPClient
+reenqueuePostLcpSon	extra/lcp_client.py	/^        def reenqueuePostLcpSon(self, parent):$/;"	m	class:LCPClient.__LCPClient
+reload	extra/lcp_config.py	/^        def reload(self, filename=None):$/;"	m	class:LCPConfig.__LCPConfig
 requiered	swagger/schema.json	/^            "requiered": true,$/;"	b	object:paths./lcp_son/{id}.get.parameters.0
 required	swagger/schema.json	/^            "required": true$/;"	b	object:paths./lcp_son/{id}.get.parameters.0
 required	swagger/schema.json	/^            "required": true,$/;"	b	object:paths./baremetal.post.parameters.0
@@ -2305,7 +2310,7 @@ required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Stat
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Unauthorized_Response
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.Unsupported_Media_Type_Response
 required	swagger/schema.json	/^      "required": [$/;"	a	object:definitions.VirtualServer
-reset	lib/lcp_config.py	/^        def reset(self):$/;"	m	class:LCPConfig.__LCPConfig
+reset	extra/lcp_config.py	/^        def reset(self):$/;"	m	class:LCPConfig.__LCPConfig
 resources	schema/config.py	/^    resources = Nested(Config_Resource_Request_Schema, many=True, unknown='INCLUDE', description/;"	v	class:Config_Request_Schema
 resources	swagger/schema.json	/^        "resources": {$/;"	o	object:definitions.Config_Request.properties
 response	api/error_handler.py	/^    response = Bad_Request_Response$/;"	v	class:Bad_Request_Handler
@@ -2360,7 +2365,7 @@ routes	resource/software_definition.py	/^    routes = "\/self\/container"$/;"	v	
 routes	resource/software_definition.py	/^    routes = '\/self\/software'$/;"	v	class:SoftwareDefinition
 routes	resource/status.py	/^    routes = '\/status',$/;"	v	class:Status_Resource
 running	docs/running.rst	/^.. _running:$/;"	T
-save	lib/lcp_config.py	/^        def save(self):$/;"	m	class:LCPConfig.__LCPConfig
+save	extra/lcp_config.py	/^        def save(self):$/;"	m	class:LCPConfig.__LCPConfig
 schema	schema/config.py	/^    schema = Str(required=True, enum=PARAMETER_SCHEMAS, example='yaml',$/;"	v	class:Config_Parameter_Request_Schema
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.delete.responses.422.500
 schema	swagger/schema.json	/^              "schema": "Internal_Server_Error_Response_Schema"$/;"	s	object:paths./code.post.responses.422.500
@@ -2534,16 +2539,16 @@ schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./virtual
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./virtualserver.post.responses.406
 schema	swagger/schema.json	/^            "schema": {$/;"	o	object:paths./virtualserver.post.responses.500
 schema	swagger/schema.json	/^        "schema": {$/;"	o	object:definitions.Config_Parameter_Request.properties
-send	extra/lcpClient.py	/^        def send(self, message: LCPMessages):$/;"	m	class:LCPClient.__LCPClient
+send	extra/lcp_client.py	/^        def send(self, message: LCPMessages):$/;"	m	class:LCPClient.__LCPClient
 send_tree	utils/signal.py	/^def send_tree(pid, sig=SIGTERM, include_parent=True, timeout=None, on_terminate=None):$/;"	f
 server	config.ini	/^server = http:\/\/localhost:8200$/;"	k	section:elastic-apm
-setAgent	lib/lcp_config.py	/^        def setAgent(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
-setContainers	lib/lcp_config.py	/^        def setContainers(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
-setContextBroker	lib/lcp_config.py	/^        def setContextBroker(self, data):$/;"	m	class:LCPConfig.__LCPConfig
-setDeployment	lib/lcp_config.py	/^        def setDeployment(self, dictDeployment):$/;"	m	class:LCPConfig.__LCPConfig
-setParent	lib/lcp_config.py	/^        def setParent(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
-setSoftware	lib/lcp_config.py	/^        def setSoftware(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
-setSon	lib/lcp_config.py	/^        def setSon(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setAgent	extra/lcp_config.py	/^        def setAgent(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setContainers	extra/lcp_config.py	/^        def setContainers(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setContextBroker	extra/lcp_config.py	/^        def setContextBroker(self, data):$/;"	m	class:LCPConfig.__LCPConfig
+setDeployment	extra/lcp_config.py	/^        def setDeployment(self, dictDeployment):$/;"	m	class:LCPConfig.__LCPConfig
+setParent	extra/lcp_config.py	/^        def setParent(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setSoftware	extra/lcp_config.py	/^        def setSoftware(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
+setSon	extra/lcp_config.py	/^        def setSon(self, elem):$/;"	m	class:LCPConfig.__LCPConfig
 setUp	test/execution_environment_validation_test.py	/^    def setUp(self):$/;"	m	class:TestMyApp
 setUp	test/test_lcp_config.py	/^    def setUp(self):$/;"	m	class:SecurityFunctionDefinitionTesting
 setUp	test/testbase.py	/^    def setUp(self):$/;"	m	class:LCPTestBase
@@ -2953,6 +2958,7 @@ url	test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-02.l
 url	test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-03.lab.fiware.org",$/;"	s	object:2
 user	schema/filiation.py	/^    user = fields.Str(required=True, example="cb",$/;"	v	class:ContextBrokerConnection
 username	config.ini	/^username = lcp$/;"	k	section:dev
+uuid	extra/autoconfig/initial_configuration.py	/^def uuid(cls):$/;"	f
 validate	schema/base.py	/^    def validate(self, data, response_type=Ok_Response, id=None):$/;"	m	class:Base_Schema
 value	schema/config.py	/^    value = Nested(Config_Parameter_Value_Response_Schema)$/;"	v	class:Config_Parameter_Response_Schema
 value	schema/config.py	/^    value = Raw(required=True, example='10s', description='Parameter new value.')$/;"	v	class:Config_Parameter_Request_Schema

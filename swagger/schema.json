@@ -69,6 +69,10 @@
     {
       "name": "hardware",
       "description": "Returns description of a Baremetal Server where LCP is deployed."
+    },
+    {
+      "name": "hardware",
+      "description": "Returns description of a Baremetal Server."
     }
   ],
   "paths": {
@@ -1626,6 +1630,9 @@
           }
         }
       }
+    },
+    "/self": {
+      "get": {}
     }
   },
   "info": {
@@ -1683,8 +1690,13 @@
     "No_Content_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": false
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "message": {
           "type": "string",
@@ -1694,13 +1706,8 @@
         "code": {
           "default": 204
         },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
+        "error": {
+          "default": false
         },
         "status": {
           "default": "No Content"
@@ -1713,8 +1720,13 @@
     "Bad_Request_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "message": {
           "type": "string",
@@ -1724,13 +1736,8 @@
         "code": {
           "default": 400
         },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
+        "error": {
+          "default": true
         },
         "status": {
           "default": "Bad Request"
@@ -1743,8 +1750,13 @@
     "Unauthorized_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "message": {
           "type": "string",
@@ -1754,13 +1766,8 @@
         "code": {
           "default": 401
         },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
+        "error": {
+          "default": true
         },
         "status": {
           "default": "Unauthorized"
@@ -1773,8 +1780,13 @@
     "Not_Acceptable_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "message": {
           "type": "string",
@@ -1784,13 +1796,8 @@
         "code": {
           "default": 406
         },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
+        "error": {
+          "default": true
         },
         "status": {
           "default": "Not Acceptable"
@@ -1803,8 +1810,13 @@
     "Ok_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": false
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "message": {
           "type": "string",
@@ -1814,13 +1826,8 @@
         "code": {
           "default": 200
         },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
+        "error": {
+          "default": false
         },
         "status": {
           "default": "OK"
@@ -1833,8 +1840,13 @@
     "Unsupported_Media_Type_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "message": {
           "type": "string",
@@ -1844,13 +1856,8 @@
         "code": {
           "default": 415
         },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
+        "error": {
+          "default": true
         },
         "status": {
           "default": "Unsupported Media Type"
@@ -1863,8 +1870,13 @@
     "Internal_Server_Error_Response": {
       "type": "object",
       "properties": {
-        "error": {
-          "default": true
+        "exception": {
+          "description": "Message of the occurred exception.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Exception_Response"
+            }
+          ]
         },
         "message": {
           "type": "string",
@@ -1874,13 +1886,8 @@
         "code": {
           "default": 500
         },
-        "exception": {
-          "description": "Message of the occurred exception.",
-          "allOf": [
-            {
-              "$ref": "#/definitions/Exception_Response"
-            }
-          ]
+        "error": {
+          "default": true
         },
         "status": {
           "default": "Internal Server Error"
@@ -1890,42 +1897,28 @@
         "message"
       ]
     },
-    "Config_Action_Request": {
+    "Config_Resource_Request": {
       "type": "object",
       "properties": {
-        "args": {
+        "content": {
           "type": "string",
-          "example": "-al",
-          "description": "Single command argument."
-        },
-        "daemon": {
-          "type": "boolean",
-          "example": true,
-          "description": "Execute the command as daemon."
+          "description": "Resource content."
         },
         "id": {
           "type": "string",
-          "example": "start",
-          "description": "Id of the action."
+          "example": "filebeat-config",
+          "description": "Id of the resource."
         },
-        "cmd": {
+        "path": {
           "type": "string",
-          "description": "Command."
-        },
-        "output_format": {
-          "type": "string",
-          "enum": [
-            "plain",
-            "lines",
-            "json"
-          ],
-          "example": "lines",
-          "description": "Format of the output of the command."
+          "example": "firewall.xml",
+          "description": "File path"
         }
       },
       "required": [
-        "cmd",
-        "id"
+        "content",
+        "id",
+        "path"
       ]
     },
     "Config_Parameter_Request": {
@@ -1948,11 +1941,6 @@
           "example": "firewall.xml",
           "description": "Source filename."
         },
-        "id": {
-          "type": "string",
-          "example": "period",
-          "description": "Id of the parameter."
-        },
         "schema": {
           "type": "string",
           "enum": [
@@ -1963,6 +1951,11 @@
           ],
           "example": "yaml",
           "description": "Scheme."
+        },
+        "id": {
+          "type": "string",
+          "example": "period",
+          "description": "Id of the parameter."
         }
       },
       "required": [
@@ -1972,38 +1965,52 @@
         "value"
       ]
     },
-    "Config_Resource_Request": {
+    "Config_Action_Request": {
       "type": "object",
       "properties": {
+        "daemon": {
+          "type": "boolean",
+          "example": true,
+          "description": "Execute the command as daemon."
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "plain",
+            "lines",
+            "json"
+          ],
+          "example": "lines",
+          "description": "Format of the output of the command."
+        },
+        "args": {
+          "type": "string",
+          "example": "-al",
+          "description": "Single command argument."
+        },
+        "cmd": {
+          "type": "string",
+          "description": "Command."
+        },
         "id": {
           "type": "string",
-          "example": "filebeat-config",
-          "description": "Id of the resource."
-        },
-        "path": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "File path"
-        },
-        "content": {
-          "type": "string",
-          "description": "Resource content."
+          "example": "start",
+          "description": "Id of the action."
         }
       },
       "required": [
-        "content",
-        "id",
-        "path"
+        "cmd",
+        "id"
       ]
     },
     "Config_Request": {
       "type": "object",
       "properties": {
-        "actions": {
-          "description": "List of actions.",
+        "resources": {
+          "description": "List of resources.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Config_Action_Request"
+            "$ref": "#/definitions/Config_Resource_Request"
           }
         },
         "parameters": {
@@ -2013,11 +2020,11 @@
             "$ref": "#/definitions/Config_Parameter_Request"
           }
         },
-        "resources": {
-          "description": "List of resources.",
+        "actions": {
+          "description": "List of actions.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Config_Resource_Request"
+            "$ref": "#/definitions/Config_Action_Request"
           }
         }
       }
@@ -2025,11 +2032,6 @@
     "Status_Response": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "apache",
-          "description": "ID of the execution environment."
-        },
         "last_heartbeat": {
           "type": "string",
           "format": "date-time",
@@ -2041,6 +2043,11 @@
           "format": "date-time",
           "example": "2019/02/14 15:23:30",
           "description": "Timestamp when the LCP is started"
+        },
+        "id": {
+          "type": "string",
+          "example": "apache",
+          "description": "ID of the execution environment."
         }
       },
       "required": [
@@ -2052,18 +2059,10 @@
     "SoftwareDefinition": {
       "type": "object",
       "properties": {
-        "vendor": {
+        "version": {
           "type": "string",
-          "example": "Oracle Coorporation",
-          "description": "Name of the Vendor for this software"
-        },
-        "openTCPPorts": {
-          "type": "array",
-          "example": "[3306]",
-          "description": "List of opened TCP Ports",
-          "items": {
-            "type": "integer"
-          }
+          "example": "5.8+1.0.5ubuntu2",
+          "description": "Version of the Piece of Software installed"
         },
         "name": {
           "type": "string",
@@ -2078,15 +2077,23 @@
             "type": "integer"
           }
         },
+        "vendor": {
+          "type": "string",
+          "example": "Oracle Coorporation",
+          "description": "Name of the Vendor for this software"
+        },
         "id": {
           "type": "string",
           "example": "a406874b-dea7-4cd1-9d4e-b82a18ec993b",
           "description": "ID of this Software Instance"
         },
-        "version": {
-          "type": "string",
-          "example": "5.8+1.0.5ubuntu2",
-          "description": "Version of the Piece of Software installed"
+        "openTCPPorts": {
+          "type": "array",
+          "example": "[3306]",
+          "description": "List of opened TCP Ports",
+          "items": {
+            "type": "integer"
+          }
         }
       },
       "required": [
@@ -2098,16 +2105,6 @@
     "AgentActionSchema": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "start",
-          "description": "Action name"
-        },
-        "cmd": {
-          "type": "string",
-          "example": "service filebeat start",
-          "description": "Action command."
-        },
         "status": {
           "type": "string",
           "enum": [
@@ -2117,6 +2114,16 @@
           ],
           "example": "started",
           "description": "Update the status the of the agent-instance according to cmd condition"
+        },
+        "id": {
+          "type": "string",
+          "example": "start",
+          "description": "Action name"
+        },
+        "cmd": {
+          "type": "string",
+          "example": "service filebeat start",
+          "description": "Action command."
         }
       },
       "required": [
@@ -2132,20 +2139,20 @@
           "example": "integer",
           "description": "Type of the Parameter: Int, Number, String..."
         },
-        "description": {
+        "name": {
           "type": "string",
-          "example": "Time between Heartbeats",
-          "description": "Some description explaining the parameter"
+          "example": "HeartbeatTime",
+          "description": "Name of the Parameter"
         },
         "value": {
           "type": "string",
           "example": "30",
           "description": "Value of the Parameter to be configured"
         },
-        "name": {
+        "description": {
           "type": "string",
-          "example": "HeartbeatTime",
-          "description": "Name of the Parameter"
+          "example": "Time between Heartbeats",
+          "description": "Some description explaining the parameter"
         }
       },
       "required": [
@@ -2157,20 +2164,16 @@
     "SecurityFunction": {
       "type": "object",
       "properties": {
-        "vendor": {
+        "endpoint_url": {
           "type": "string",
-          "example": "FIWARE Foundation e.V.",
-          "description": "Name of the vendor providing the security Function"
+          "format": "url",
+          "example": "http://example.com:4250/v1/config",
+          "description": "URL if some to configure the Parameters."
         },
-        "status": {
+        "version": {
           "type": "string",
-          "enum": [
-            "started",
-            "stopped",
-            "unknown"
-          ],
-          "example": "started",
-          "description": "Update the status the of the agent-instance if the command is executed correctly."
+          "example": "1.0.1",
+          "description": "Version of the Security Property associated"
         },
         "name": {
           "type": "string",
@@ -2183,26 +2186,10 @@
             "$ref": "#/definitions/AgentActionSchema"
           }
         },
-        "id": {
-          "type": "string",
-          "example": "5db06770-8c64-4693-9724-ff318b02f897",
-          "description": "Security Function ID."
-        },
         "type": {
           "type": "string",
           "example": "PROBE",
           "description": "Type of the Security Function Associated with the LCP"
-        },
-        "endpoint_url": {
-          "type": "string",
-          "format": "url",
-          "example": "http://example.com:4250/v1/config",
-          "description": "URL if some to configure the Parameters."
-        },
-        "version": {
-          "type": "string",
-          "example": "1.0.1",
-          "description": "Version of the Security Property associated"
         },
         "parameters": {
           "type": "array",
@@ -2210,6 +2197,26 @@
           "items": {
             "$ref": "#/definitions/AgentParameter"
           }
+        },
+        "vendor": {
+          "type": "string",
+          "example": "FIWARE Foundation e.V.",
+          "description": "Name of the vendor providing the security Function"
+        },
+        "id": {
+          "type": "string",
+          "example": "5db06770-8c64-4693-9724-ff318b02f897",
+          "description": "Security Function ID."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "started",
+            "stopped",
+            "unknown"
+          ],
+          "example": "started",
+          "description": "Update the status the of the agent-instance if the command is executed correctly."
         }
       },
       "required": [
@@ -2223,32 +2230,6 @@
     "NetworkInterface": {
       "type": "object",
       "properties": {
-        "IPv4Addresses": {
-          "type": "array",
-          "description": "List of CIDR for IPv4 values",
-          "items": {
-            "type": "string",
-            "pattern": "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$"
-          }
-        },
-        "IPv6Addresses": {
-          "type": "array",
-          "description": "List of CIDR for IPv6 values",
-          "items": {
-            "type": "string",
-            "pattern": "^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$"
-          }
-        },
-        "deviceType": {
-          "type": "string",
-          "example": "ethernet",
-          "description": "Type of Network device"
-        },
-        "state": {
-          "type": "string",
-          "example": "UP",
-          "description": "Network Interface state in the OS"
-        },
         "name": {
           "type": "string",
           "example": "enx503eaaddcbeb",
@@ -2259,16 +2240,42 @@
           "example": "1500",
           "description": "Network Interface MTU value"
         },
-        "id": {
+        "IPv6Addresses": {
+          "type": "array",
+          "description": "List of CIDR for IPv6 values",
+          "items": {
+            "type": "string",
+            "pattern": "^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$"
+          }
+        },
+        "state": {
           "type": "string",
-          "example": "d450f1ce-95a1-4c3d-9e01-6e37f3d0c584",
-          "description": "Network Card UUID."
+          "example": "UP",
+          "description": "Network Interface state in the OS"
         },
         "MacAddress": {
           "type": "string",
           "pattern": "^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$",
           "example": "a2:bc:14:43:ff:43",
           "description": "Network Interface's Mac Address"
+        },
+        "IPv4Addresses": {
+          "type": "array",
+          "description": "List of CIDR for IPv4 values",
+          "items": {
+            "type": "string",
+            "pattern": "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$"
+          }
+        },
+        "id": {
+          "type": "string",
+          "example": "d450f1ce-95a1-4c3d-9e01-6e37f3d0c584",
+          "description": "Network Card UUID."
+        },
+        "deviceType": {
+          "type": "string",
+          "example": "ethernet",
+          "description": "Type of Network device"
         }
       },
       "required": [
@@ -2281,15 +2288,15 @@
     "LXCContainer": {
       "type": "object",
       "properties": {
+        "host_id": {
+          "type": "string",
+          "example": "39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
+          "description": "ID of underlying Baremetal or Virtual Server"
+        },
         "operatingSystem": {
           "type": "string",
           "example": "Ubuntu Linux 20.04.2 LTS",
           "description": "Emulated OS in the container"
-        },
-        "id": {
-          "type": "string",
-          "example": "bf9aff0c-6185-4b9f-8d39-c5f8e1b522e9",
-          "description": "Id of the LXC Container."
         },
         "networkInterfaces": {
           "type": "array",
@@ -2298,10 +2305,10 @@
             "$ref": "#/definitions/NetworkInterface"
           }
         },
-        "host_id": {
+        "id": {
           "type": "string",
-          "example": "39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
-          "description": "ID of underlying Baremetal or Virtual Server"
+          "example": "bf9aff0c-6185-4b9f-8d39-c5f8e1b522e9",
+          "description": "Id of the LXC Container."
         },
         "hostname": {
           "type": "string",
@@ -2318,10 +2325,10 @@
     "LCPDescription": {
       "type": "object",
       "properties": {
-        "id": {
+        "name": {
           "type": "string",
-          "example": "15d41167-79d3-48bf-b8db-9db0c8cc8d54",
-          "description": "Unique ID for the Son LCP"
+          "example": "lcp:node1",
+          "description": "A Human readable name which could be depicted in graphs"
         },
         "url": {
           "type": "string",
@@ -2329,10 +2336,10 @@
           "example": "http://lcpapi.example.com:4000",
           "description": "URL where the Son LCP Listens"
         },
-        "name": {
+        "id": {
           "type": "string",
-          "example": "lcp:node1",
-          "description": "A Human readable name which could be depicted in graphs"
+          "example": "15d41167-79d3-48bf-b8db-9db0c8cc8d54",
+          "description": "Unique ID for the Son LCP"
         }
       },
       "required": [
@@ -2344,11 +2351,6 @@
     "DiskPartition": {
       "type": "object",
       "properties": {
-        "size": {
-          "type": "number",
-          "example": "314461424",
-          "description": "Partition Size in Kilo Bytes"
-        },
         "type": {
           "type": "string",
           "example": "ext4",
@@ -2358,6 +2360,11 @@
           "type": "string",
           "example": "nveme0n1p6",
           "description": "Partition name in the OS"
+        },
+        "size": {
+          "type": "number",
+          "example": "314461424",
+          "description": "Partition Size in Kilo Bytes"
         }
       },
       "required": [
@@ -2368,22 +2375,6 @@
     "Disk": {
       "type": "object",
       "properties": {
-        "diskPartitions": {
-          "type": "array",
-          "items": {
-            "description": "Disk Partitions for the Disk",
-            "allOf": [
-              {
-                "$ref": "#/definitions/DiskPartition"
-              }
-            ]
-          }
-        },
-        "size": {
-          "type": "integer",
-          "example": "314461424",
-          "description": "Complete Disk Size in Kilo Bytes"
-        },
         "model": {
           "type": "string",
           "example": "KBG30ZMV512G TOSHIBA",
@@ -2394,10 +2385,26 @@
           "example": "nvme0n1",
           "description": "Disk Name in the OS"
         },
+        "size": {
+          "type": "integer",
+          "example": "314461424",
+          "description": "Complete Disk Size in Kilo Bytes"
+        },
         "id": {
           "type": "string",
           "example": "5db06770-8c64-4693-9724-ff318b02f897",
           "description": "Disk UUID."
+        },
+        "diskPartitions": {
+          "type": "array",
+          "items": {
+            "description": "Disk Partitions for the Disk",
+            "allOf": [
+              {
+                "$ref": "#/definitions/DiskPartition"
+              }
+            ]
+          }
         }
       },
       "required": [
@@ -2409,11 +2416,6 @@
     "BaremetalServer": {
       "type": "object",
       "properties": {
-        "operatingSystem": {
-          "type": "string",
-          "example": "Ubuntu Linux 20.04.2 LTS",
-          "description": "Network interface Name in the OS"
-        },
         "diskDevices": {
           "type": "array",
           "items": {
@@ -2425,10 +2427,20 @@
             ]
           }
         },
-        "id": {
+        "ram": {
+          "type": "integer",
+          "example": "8",
+          "description": "RAM installed in the Server in Megabytes"
+        },
+        "cpus": {
+          "type": "integer",
+          "example": "8",
+          "description": "CPU Cores in the Server"
+        },
+        "operatingSystem": {
           "type": "string",
-          "example": "ed5bd35a-7213-47a9-ae6e-76212e62a157",
-          "description": "Network Card UUID."
+          "example": "Ubuntu Linux 20.04.2 LTS",
+          "description": "Network interface Name in the OS"
         },
         "networkInterfaces": {
           "type": "array",
@@ -2437,15 +2449,10 @@
             "$ref": "#/definitions/NetworkInterface"
           }
         },
-        "cpus": {
-          "type": "integer",
-          "example": "8",
-          "description": "CPU Cores in the Server"
-        },
-        "ram": {
-          "type": "integer",
-          "example": "8",
-          "description": "RAM installed in the Server in Megabytes"
+        "id": {
+          "type": "string",
+          "example": "ed5bd35a-7213-47a9-ae6e-76212e62a157",
+          "description": "Network Card UUID."
         },
         "hostname": {
           "type": "string",
@@ -2464,11 +2471,6 @@
     "VirtualServer": {
       "type": "object",
       "properties": {
-        "operatingSystem": {
-          "type": "string",
-          "example": "Ubuntu Linux 20.04.2 LTS",
-          "description": "Network interface Name in the OS"
-        },
         "cloud_id": {
           "type": "string",
           "example": "a4518fe5-9da9-43a5-8bc6-1433e28935f1",
@@ -2485,17 +2487,20 @@
             ]
           }
         },
-        "id": {
-          "type": "string",
-          "example": "ed5bd35a-7213-47a9-ae6e-76212e62a157",
-          "description": "Network Card UUID."
+        "ram": {
+          "type": "integer",
+          "example": "8",
+          "description": "RAM installed in the Server in Megabytes"
         },
-        "networkInterfaces": {
-          "type": "array",
-          "description": "List of Network Interfaces in the Virtual Host",
-          "items": {
-            "$ref": "#/definitions/NetworkInterface"
-          }
+        "cpus": {
+          "type": "integer",
+          "example": "8",
+          "description": "CPU Cores in the Server"
+        },
+        "host_id": {
+          "type": "string",
+          "example": "39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
+          "description": "ID of underlying Baremetal Server"
         },
         "hypervisor": {
           "type": "string",
@@ -2513,20 +2518,22 @@
           "example": "kvm",
           "description": "Hypervisor name/technology"
         },
-        "host_id": {
+        "operatingSystem": {
           "type": "string",
-          "example": "39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
-          "description": "ID of underlying Baremetal Server"
+          "example": "Ubuntu Linux 20.04.2 LTS",
+          "description": "Network interface Name in the OS"
         },
-        "cpus": {
-          "type": "integer",
-          "example": "8",
-          "description": "CPU Cores in the Server"
+        "networkInterfaces": {
+          "type": "array",
+          "description": "List of Network Interfaces in the Virtual Host",
+          "items": {
+            "$ref": "#/definitions/NetworkInterface"
+          }
         },
-        "ram": {
-          "type": "integer",
-          "example": "8",
-          "description": "RAM installed in the Server in Megabytes"
+        "id": {
+          "type": "string",
+          "example": "ed5bd35a-7213-47a9-ae6e-76212e62a157",
+          "description": "Network Card UUID."
         },
         "hostname": {
           "type": "string",
@@ -2546,15 +2553,15 @@
     "CloudCompute": {
       "type": "object",
       "properties": {
-        "controller_id": {
-          "type": "string",
-          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
-          "description": "ID of the Compute host. The controller could act as compute"
-        },
         "type": {
           "type": "string",
           "example": "BaremetalServer",
           "description": "Type of server acting as CloudController"
+        },
+        "controller_id": {
+          "type": "string",
+          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
+          "description": "ID of the Compute host. The controller could act as compute"
         }
       },
       "required": [
@@ -2565,15 +2572,15 @@
     "CloudController": {
       "type": "object",
       "properties": {
-        "controller_id": {
-          "type": "string",
-          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
-          "description": "ID of the Controller host"
-        },
         "type": {
           "type": "string",
           "example": "BaremetalServer",
           "description": "Type of server acting as CloudController"
+        },
+        "controller_id": {
+          "type": "string",
+          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
+          "description": "ID of the Controller host"
         }
       },
       "required": [
@@ -2584,21 +2591,6 @@
     "CloudSchema": {
       "type": "object",
       "properties": {
-        "vendor": {
-          "type": "string",
-          "example": "Openstack",
-          "description": "Cloud Vendor Name"
-        },
-        "name": {
-          "type": "string",
-          "example": "Wolfsburg-FIWARE-Lab-Cloud",
-          "description": "Human readable Cloud name"
-        },
-        "id": {
-          "type": "string",
-          "example": "f9e6ee65-517a-44da-854d-fdd058fcf2dd",
-          "description": "Cloud ID"
-        },
         "compute_nodes": {
           "type": "array",
           "description": "List of Cloud compute nodes",
@@ -2611,6 +2603,16 @@
           "example": "queens",
           "description": "Cloud release code name"
         },
+        "name": {
+          "type": "string",
+          "example": "Wolfsburg-FIWARE-Lab-Cloud",
+          "description": "Human readable Cloud name"
+        },
+        "description": {
+          "type": "string",
+          "example": "FIWARE Lab Wolfsburg node",
+          "description": "Some description of the Cloud"
+        },
         "controllers": {
           "type": "array",
           "description": "List of Cloud Controllers",
@@ -2618,10 +2620,15 @@
             "$ref": "#/definitions/CloudController"
           }
         },
-        "description": {
+        "vendor": {
           "type": "string",
-          "example": "FIWARE Lab Wolfsburg node",
-          "description": "Some description of the Cloud"
+          "example": "Openstack",
+          "description": "Cloud Vendor Name"
+        },
+        "id": {
+          "type": "string",
+          "example": "f9e6ee65-517a-44da-854d-fdd058fcf2dd",
+          "description": "Cloud ID"
         }
       },
       "required": [

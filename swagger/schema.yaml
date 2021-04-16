@@ -1818,6 +1818,8 @@ paths:
       summary: POST the Baremetal server where the LCP is deployed on.
       tags:
       - hardware
+  /self:
+    get: {}
 produces:
 - application/json
 swagger: '2.0'
@@ -1853,4 +1855,6 @@ tags:
   name: software
 - *id003
 - description: Returns description of a Baremetal Server where LCP is deployed.
+  name: hardware
+- description: Returns description of a Baremetal Server.
   name: hardware

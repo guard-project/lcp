@@ -1,6 +1,7 @@
 import time
 from extra.lcp_config import LCPConfig
 from extra.lcp_client import BetweenLCPMessages, LCPMessages, LCPClient
+from threading import Thread
 
 
 def threadLCP():
@@ -19,5 +20,4 @@ def threadLCP():
     lcp_client.qread()
 
 
-# Thread(target=threadLCP).start()
-print(" --- HOLA MUNDO --- ")
+Thread(target=threadLCP).start()

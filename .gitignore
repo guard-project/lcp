@@ -10,3 +10,4 @@ start2
 main2.py
 stop
 swagger/*
+log/lcp.log
