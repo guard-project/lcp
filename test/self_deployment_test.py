@@ -27,6 +27,8 @@ class TestMyApp(LCPTestBase):
         print(lcp_config.deployment)
         assert lcp_config.deployment['id'] == bm_server_dict['id']
         assert lcp_config.config['deployment']['id'] == bm_server_dict['id']
+        assert lcp_config.config['type'] == 'bare-metal'
+        assert lcp_config.exec_env_type == 'bare-metal'
 
     def test_post_execenv_virtual_server(self):
         v_server_dict = loadExampleFile("virtual-server-example.json")
@@ -47,6 +49,8 @@ class TestMyApp(LCPTestBase):
         print(lcp_config.deployment)
         assert lcp_config.deployment['id'] == v_server_dict['id']
         assert lcp_config.config['deployment']['id'] == v_server_dict['id']
+        assert lcp_config.config['type'] == 'vm'
+        assert lcp_config.exec_env_type == 'vm'
 
     def test_post_execenv_lxc(self):
         lxc_server_dict = loadExampleFile("lxc-example.json")
@@ -68,3 +72,11 @@ class TestMyApp(LCPTestBase):
         print(lcp_config.deployment)
         assert lcp_config.deployment['id'] == lxc_server_dict['id']
         assert lcp_config.config['deployment']['id'] == lxc_server_dict['id']
+        assert lcp_config.config['type'] == 'container-lxc'
+        assert lcp_config.exec_env_type == 'container-lxc'
+
+    def test_get_exec_env(self):
+        lcp_config = getLCPConfig()
+        print("Exec_env: ", lcp_config.exec_env_type)
+        print("Exec_env: ", lcp_config.config['type'])
+        assert lcp_config.exec_env_type == 'bare-metal'

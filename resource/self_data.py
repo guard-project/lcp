@@ -55,6 +55,8 @@ class DescribeSelf(Base_Resource):
     # TODO: Organizar este codigo bien, con el esquema que corresponda!
        resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
             .validate(data={})
+
+       print(json.dumps(LCPConfig().lcp))
        resp.body = json.dumps(LCPConfig().lcp)
 
        payload = req.media if isinstance(req.media, list) else [req.media]

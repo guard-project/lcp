@@ -34,8 +34,8 @@ class LCPConfig(object):
             self.children_requested = []
             self.self_software = []
             self.self_containers = []
-            self.reload(self.filename)
             self.exec_env_type = None
+            self.reload(self.filename)
 
         def reload(self, filename=None):
             if filename is not None:
@@ -103,11 +103,17 @@ class LCPConfig(object):
             except KeyError:
                 pass
 
+            try:
+                self.exec_env_type = self.config['type']
+            except KeyError:
+                pass
+
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
         def setDeployment(self, dictDeployment):
             self.deployment = dictDeployment['environment']
             self.config['deployment'] = self.deployment
+            self.config['type'] = dictDeployment['type']
             self.exec_env_type = dictDeployment['type']
             self.save()
 
