@@ -25,7 +25,7 @@ class DescribeDeployment(Base_Resource):
 
        r = {"type": lcp_config.exec_env_type, "environment": lcp_config.deployment}
 
-       resp.body = json.dumps(LCPConfig().deployment)
+       resp.body = json.dumps(r)
 
     @docstring(source="BaremetalServer/PostBaremetalServerDeployment.yml")
     def on_post(self, req, resp):
