@@ -10,14 +10,8 @@ from marshmallow import ValidationError
 import json
 
 
-__all__ = [
-    'DescribeDeploymentBareMetal',
-    'DescribeDeploymentVM',
-    'DescribeSelf'
-]
 
-
-class DescribeDeploymentBareMetal(Base_Resource):
+class DescribeDeployment(Base_Resource):
     tag = {'name': 'hardware',
            'description': 'Returns description of a Baremetal Server where LCP is deployed.'}
     routes = '/self/deployment',
@@ -48,34 +42,6 @@ class DescribeDeploymentBareMetal(Base_Resource):
             resp.body = e.data
             req.status = HTTP_NOT_ACCEPTABLE
 
-
-class DescribeDeploymentVM(Base_Resource):
-    tag = {'name': 'hardware',
-           'description': 'Returns description of a Virtual Server where LCP is deployed'}
-    routes = '/self/deployment/vm',
-
-    @docstring(source="VirtualServer/GetVirtualServerDeployment.yml")
-    def on_get(self, req, resp):
-       resp_Data, valid = VirtualServerSchema(method=HTTP_Method.GET) \
-            .validate(data={})
-
-       resp.body = json.dumps(LCPConfig().deployment)
-
-    @docstring(source="VirtualServer/PostVirtualServerDeployment.yml")
-    def on_post(self, req, resp):
-        resp_Data, valid = VirtualServerSchema(method=HTTP_Method.GET) \
-            .validate(data={})
-        payload = req.media
-        try:
-            cfg = LCPConfig()
-            bm_schema = VirtualServerSchema(many=False)
-            bm_schema.load(payload)
-            cfg.type = "vm"
-            cfg.setDeployment(payload)
-            resp.status = HTTP_CREATED
-        except ValidationError as e:
-            resp.body = e.data
-            req.status = HTTP_NOT_ACCEPTABLE
 
 
 class DescribeSelf(Base_Resource):
