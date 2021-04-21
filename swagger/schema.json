@@ -685,44 +685,13 @@
         "id"
       ]
     },
-    "Config_Resource_Request": {
-      "type": "object",
-      "properties": {
-        "content": {
-          "type": "string",
-          "description": "Resource content."
-        },
-        "path": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "File path"
-        },
-        "id": {
-          "type": "string",
-          "example": "filebeat-config",
-          "description": "Id of the resource."
-        }
-      },
-      "required": [
-        "content",
-        "id",
-        "path"
-      ]
-    },
     "Config_Parameter_Request": {
       "type": "object",
       "properties": {
-        "path": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "example": "period",
-            "description": "Key path."
-          }
-        },
-        "value": {
-          "example": "10s",
-          "description": "Parameter new value."
+        "id": {
+          "type": "string",
+          "example": "period",
+          "description": "Id of the parameter."
         },
         "schema": {
           "type": "string",
@@ -735,15 +704,22 @@
           "example": "yaml",
           "description": "Scheme."
         },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "period",
+            "description": "Key path."
+          }
+        },
         "source": {
           "type": "string",
           "example": "firewall.xml",
           "description": "Source filename."
         },
-        "id": {
-          "type": "string",
-          "example": "period",
-          "description": "Id of the parameter."
+        "value": {
+          "example": "10s",
+          "description": "Parameter new value."
         }
       },
       "required": [
@@ -753,18 +729,42 @@
         "value"
       ]
     },
+    "Config_Resource_Request": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "Resource content."
+        },
+        "id": {
+          "type": "string",
+          "example": "filebeat-config",
+          "description": "Id of the resource."
+        },
+        "path": {
+          "type": "string",
+          "example": "firewall.xml",
+          "description": "File path"
+        }
+      },
+      "required": [
+        "content",
+        "id",
+        "path"
+      ]
+    },
     "Config_Action_Request": {
       "type": "object",
       "properties": {
-        "output_format": {
+        "id": {
           "type": "string",
-          "enum": [
-            "plain",
-            "lines",
-            "json"
-          ],
-          "example": "lines",
-          "description": "Format of the output of the command."
+          "example": "start",
+          "description": "Id of the action."
+        },
+        "daemon": {
+          "type": "boolean",
+          "example": true,
+          "description": "Execute the command as daemon."
         },
         "args": {
           "type": "string",
@@ -775,15 +775,15 @@
           "type": "string",
           "description": "Command."
         },
-        "daemon": {
-          "type": "boolean",
-          "example": true,
-          "description": "Execute the command as daemon."
-        },
-        "id": {
+        "output_format": {
           "type": "string",
-          "example": "start",
-          "description": "Id of the action."
+          "enum": [
+            "plain",
+            "lines",
+            "json"
+          ],
+          "example": "lines",
+          "description": "Format of the output of the command."
         }
       },
       "required": [
@@ -794,18 +794,18 @@
     "Config_Request": {
       "type": "object",
       "properties": {
-        "resources": {
-          "description": "List of resources.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Resource_Request"
-          }
-        },
         "parameters": {
           "description": "List of parameters.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Config_Parameter_Request"
+          }
+        },
+        "resources": {
+          "description": "List of resources.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Config_Resource_Request"
           }
         },
         "actions": {
@@ -820,11 +820,10 @@
     "Status_Response": {
       "type": "object",
       "properties": {
-        "started": {
+        "id": {
           "type": "string",
-          "format": "date-time",
-          "example": "2019/02/14 15:23:30",
-          "description": "Timestamp when the LCP is started"
+          "example": "apache",
+          "description": "ID of the execution environment."
         },
         "last_heartbeat": {
           "type": "string",
@@ -832,10 +831,11 @@
           "example": "2019/02/14 15:23:33",
           "description": "Timestamp of the expiration of the API access configuration."
         },
-        "id": {
+        "started": {
           "type": "string",
-          "example": "apache",
-          "description": "ID of the execution environment."
+          "format": "date-time",
+          "example": "2019/02/14 15:23:30",
+          "description": "Timestamp when the LCP is started"
         }
       },
       "required": [
