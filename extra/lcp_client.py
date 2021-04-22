@@ -87,6 +87,10 @@ class LCPClient(object):
             if err:
                 threading.Timer(15, self.reenqueueLcpParentToSon, [requested_children_url]).start()
 
+        def get_exec_env_data(self):
+            d = {}
+            d['id'] = self.config.lcp
+
 
         def qread(self):
             while True:
@@ -97,8 +101,6 @@ class LCPClient(object):
                 elif message.message_type == BetweenLCPMessages.PostLCPParent:
                     self.postLcpParentToSon(message.data)
 
-        def send(self, message: LCPMessages):
-            self.q.put(message)
 
 
     instance = None

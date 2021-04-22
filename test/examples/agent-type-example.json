@@ -1,0 +1,29 @@
+{
+    "id": "demoagenttype",
+    "description": "Description of this demoagenttype",
+    "partner": "guard-partner",
+    "schema": "yaml",
+    "source": "/etc/example_agent/config.yaml",
+    "actions": [
+        {
+            "id": "start",
+            "cmd": "systemctl start example_agent",
+            "status": "started"
+        },
+        {
+            "id": "stop",
+            "cmd": "systemctl stop example_agent",
+            "status": "stopped"
+        }
+    ],
+    "resources": [
+        {
+            "path": "timeout",
+            "description": "Timeout value in connections"
+        },
+        {
+            "path": "time_between_probes",
+            "description": "Time between different resource probes"
+        }
+    ]
+}

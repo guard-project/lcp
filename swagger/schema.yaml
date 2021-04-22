@@ -14,7 +14,7 @@ definitions:
       status:
         description: Update the status the of the agent-instance according to cmd
           condition
-        enum: &id001
+        enum:
         - started
         - stopped
         - unknown
@@ -46,6 +46,67 @@ definitions:
     - name
     - type
     - value
+    type: object
+  AgentResource:
+    properties:
+      description:
+        description: Description of the Resource
+        example: This is the config file for an agent
+        type: string
+      example:
+        description: Config file example
+        example: points to an example config file
+        type: string
+      path:
+        description: Path of the Agent config file
+        example: /etc/myagent/config.yaml
+        type: string
+    required:
+    - path
+    type: object
+  AgentType:
+    properties:
+      actions:
+        description: List of actions and expected result fro this agent
+        items:
+          $ref: '#/definitions/AgentActionSchema'
+        type: array
+      description:
+        description: Description of the Agent type
+        example: Example agent
+        type: string
+      id:
+        description: Agent Type ID.
+        example: 5db06770-8c64-4693-9724-ff318b02f897
+        type: string
+      parameters:
+        description: List of configuration parameters used
+        items:
+          $ref: '#/definitions/AgentParameter'
+        type: array
+      partner:
+        description: Name of the Partner who created the resource
+        example: guard-partner
+        type: string
+      resources:
+        description: List of agents Resources that could be used
+        items:
+          $ref: '#/definitions/AgentResource'
+        type: array
+      schema:
+        description: Type of configuration file (json, yaml, etc.)
+        example: yaml
+        type: string
+      source:
+        description: The config file where parameters are configured
+        example: /etc/example_agent/config.yaml
+        type: string
+    required:
+    - actions
+    - id
+    - partner
+    - schema
+    - source
     type: object
   Bad_Request_Response:
     properties:
@@ -524,55 +585,6 @@ definitions:
         default: OK
     required:
     - message
-    type: object
-  SecurityFunction:
-    properties:
-      actions:
-        items:
-          $ref: '#/definitions/AgentActionSchema'
-        type: array
-      endpoint_url:
-        description: URL if some to configure the Parameters.
-        example: http://example.com:4250/v1/config
-        format: url
-        type: string
-      id:
-        description: Security Function ID.
-        example: 5db06770-8c64-4693-9724-ff318b02f897
-        type: string
-      name:
-        description: Name of the Agent Catalog
-        example: VM Sensor Probe
-        type: string
-      parameters:
-        description: List of configuration parameters used
-        items:
-          $ref: '#/definitions/AgentParameter'
-        type: array
-      status:
-        description: Update the status the of the agent-instance if the command is
-          executed correctly.
-        enum: *id001
-        example: started
-        type: string
-      type:
-        description: Type of the Security Function Associated with the LCP
-        example: PROBE
-        type: string
-      vendor:
-        description: Name of the vendor providing the security Function
-        example: FIWARE Foundation e.V.
-        type: string
-      version:
-        description: Version of the Security Property associated
-        example: 1.0.1
-        type: string
-    required:
-    - id
-    - name
-    - type
-    - vendor
-    - version
     type: object
   SoftwareDefinition:
     properties:
@@ -1755,6 +1767,71 @@ paths:
       summary: Post Software description of a new Software installed in the System
       tags:
       - software
+  /agent_type:
+    get:
+      description: 'Gets the information of the Agent Types known by this LCP and
+        the data got.
+
+        '
+      responses:
+        '200':
+          description: Data relative to the Agents known by this LCP agent
+          schema:
+            $ref: '#/definitions/AgentType'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get data relative to the Security Agents defined to be used this LCP
+      tags:
+      - software
+    post:
+      description: 'Posts the information of an Agent Type that so that an agent can
+        register later to belong this kind
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/AgentType'
+          type: array
+      responses:
+        '201':
+          description: The software definition has been successfully updated there.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Post an Agent type
+      tags:
+      - software
   /self/deployment:
     get:
       description: 'Gets the information of the Server where the LCP is deployed
@@ -1830,12 +1907,12 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
-- &id003
+- &id002
   description: Returns the description of software installed
   name: software
 - description: Returns the description of software installed in containers
   name: software
-- &id002
+- &id001
   description: Returns description of a LXCContainer.
   name: hardware
 - description: Describes a "son" LCP linked in this service chain.
@@ -1848,12 +1925,14 @@ tags:
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: hardware
-- *id002
+- *id001
 - description: Description of a Cloud Infrastructure
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: software
-- *id003
+- description: Returns description of a Baremetal Server.
+  name: software
+- *id002
 - description: Returns description of a Baremetal Server where LCP is deployed.
   name: hardware
 - description: Returns description of a Baremetal Server.

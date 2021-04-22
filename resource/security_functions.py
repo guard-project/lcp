@@ -1,4 +1,5 @@
-from schema.security_functions import SecurityFunction as SecurityFunctionSchema
+from schema.security_functions import Agent as AgentSchema
+from schema.security_functions import AgentType
 from docstring import docstring
 from resource.base import Base_Resource
 import json
@@ -23,12 +24,12 @@ class SecurityFunction(Base_Resource):
 
     @docstring(source='SecurityFunctions/PostSecurityFunctions.yml')
     def on_post(self, req, resp):
-        # resp_data, valid = SecurityFunctionSchema(method=HTTP_Method.POST) \
+        # resp_data, valid = AgentSchema(method=HTTP_Method.POST) \
         #    .validate(data={})
 
         payload = req.media if isinstance(req.media, list) else [req.media]
         try:
-            sf_schema = SecurityFunctionSchema(many=True)
+            sf_schema = AgentSchema(many=True)
             d = sf_schema.load(payload)
             for e in payload:
                 LCPConfig().setAgent(e)
@@ -37,4 +38,29 @@ class SecurityFunction(Base_Resource):
         except ValidationError as e:
             resp.body = e.data
             req.status = HTTP_NOT_ACCEPTABLE
+
+
+class AgentTypeResource(Base_Resource):
+    tag = {'name': 'software',
+           'description': 'Returns description of a Baremetal Server.'}
+    routes = '/agent_type',
+
+    @docstring(source="Agents/GetAgentTypeResource.yml")
+    def on_get(self, req, resp):
+        resp.body = json.dumps(LCPConfig().agent_types)
+
+    @docstring(source="Agents/PostAgentTypeResource.yml")
+    def on_post(self, req, resp):
+        payload = req.media if isinstance(req.media, list) else [req.media]
+
+        try:
+            at_schema = AgentType(many=True)
+            d = at_schema.load(payload)
+            for e in payload:
+                LCPConfig().setAgentType(e)
+            resp.status = HTTP_CREATED
+        except ValidationError as e:
+            resp.body = e.data
+            req.status = HTTP_NOT_ACCEPTABLE
+
 

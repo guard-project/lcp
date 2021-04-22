@@ -7,7 +7,7 @@
 export COMPONENT=lcp
 export VERSION=master
 export PROJECT=guard
-export INSTALLATION_PATH=/home/jicg/GUARD/Development/Integration/lcp
+export INSTALLATION_PATH=~/GUARD/Integration/lcp
 
 export TMP_PATH=/tmp
 export PIDFILE=$TMP_PATH/$COMPONENT.pid
@@ -23,9 +23,7 @@ export LCP_DEV_USERNAME=lcp
 export LCP_DEV_PASSWORD=a9d4034da07d8ef31db1cd4119b6a4552fdfbd19787e2848e71c8ee3b47703a7
 export LCP_LOG_LEVEL=DEBUG
 
-source ~/.venv/carrega/bin/activate
-
-rm $PIDFILE
+source ~/.venv/lcp/bin/activate
 
 if [ -f $PIDFILE ] ; then
     echo "Error: $COMPONENT already started"
@@ -33,5 +31,5 @@ if [ -f $PIDFILE ] ; then
 else
     cd $INSTALLATION_PATH
     python3 main.py &
-    echo $$ > $PIDFILE
+    echo $! > $PIDFILE
 fi

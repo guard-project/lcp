@@ -1,0 +1,28 @@
+Post a description of an Agent Type which can be used to deploy some different agents.
+---
+summary: Post an Agent type
+description: |
+  Posts the information of an Agent Type that so that an agent can register later to belong this kind
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: array
+      items: AgentType
+tags: [software]
+responses:
+  201:
+    description: The software definition has been successfully updated there.
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schem

@@ -1,4 +1,5 @@
 from schema.security_functions import *
+from schema.security_functions import AgentType
 from marshmallow.exceptions import ValidationError
 from test_utils import *
 
@@ -15,7 +16,7 @@ class TestMyApp(LCPTestBase):
 
     def test_security_function(self):
         sf_dict = loadExampleFile("security-function-example.json")
-        sf_schema = SecurityFunction(many=False)
+        sf_schema = Agent(many=False)
         try:
             d = sf_schema.load(sf_dict)
             assert(True)
@@ -91,7 +92,7 @@ class TestMyApp(LCPTestBase):
         except ValidationError:
             assert False
 
-        sf = SecurityFunction(many=False)
+        sf = Agent(many=False)
         try:
             sf.validate(sf_dict)
         except ValidationError:
@@ -115,14 +116,51 @@ class TestMyApp(LCPTestBase):
             assert False
 
         sf_dict = loadExampleFile("security-function-example.json")
-        sf = SecurityFunction()
+        sf = Agent()
         sf_dict['actions'] = agent_actions
         try:
             sf.validate(sf_dict)
         except ValidationError:
             assert False
 
+    def testAgentTypesPost(self):
+        at_dict = loadExampleFile("agent-type-example.json")
+        config = getLCPConfig()
+        headers = getAuthorizationHeaders()
+        schema_agent_type = AgentType()
+        assert len(config.agent_types) == 0
 
+        try:
+            schema_agent_type.validate(at_dict)
+            assert(True)
+        except ValidationError as e:
+            print(e)
+            assert(False)
 
+        body = json.dumps(at_dict)
+        print(body)
+        result = self.simulate_post("/agent_type", headers=headers,
+                                    body=body)
 
+        assert result.status_code == 201
+        assert len(config.agent_types) == 1
 
+    def testAgentTypeGet(self):
+        at_dict = loadExampleFile("agent-type-example.json")
+        config = getLCPConfig()
+        headers = getAuthorizationHeaders()
+        schema_agent_type = AgentType()
+
+        config.setAgentType(at_dict)
+
+        assert len(config.agent_types) == 1
+        result = self.simulate_get("/agent_type", headers=headers)
+
+        assert result.status_code == 200
+        body = result.json
+
+        print(len(body))
+        assert (type(body) is list)
+        assert len(body) == 1
+        assert body[0]['id'] == config.agent_types[0]["id"]
+        assert body[0]['id'] == config.config['agent_types'][0]["id"]

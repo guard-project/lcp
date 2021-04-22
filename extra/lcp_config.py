@@ -4,6 +4,7 @@ import yaml
 from schema.filiation import LCPDescription
 from schema.filiation import ContextBrokerConnection
 from urllib.parse import urlparse
+from extra.extra_utils import UrlSchemaData
 
 CONTEXT_BROKER = 'context_broker'
 
@@ -35,6 +36,7 @@ class LCPConfig(object):
             self.self_software = []
             self.self_containers = []
             self.exec_env_type = None
+            self.agent_types = []
             self.reload(self.filename)
 
         def reload(self, filename=None):
@@ -108,6 +110,11 @@ class LCPConfig(object):
             except KeyError:
                 pass
 
+            try:
+                self.agent_types = self.config['agent_types']
+            except KeyError:
+                pass
+
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
         def setDeployment(self, dictDeployment):
@@ -115,6 +122,18 @@ class LCPConfig(object):
             self.config['deployment'] = self.deployment
             self.config['type'] = dictDeployment['type']
             self.exec_env_type = dictDeployment['type']
+            self.save()
+
+        def setAgentType(self, elem):
+            updated = False
+            for i in range(0, len(self.agent_types)):
+                if self.agent_types[i]['id'] == elem['id']:
+                    updated = True
+                    self.agents[i] = elem
+            if not updated:
+                self.agent_types.append(elem)
+                self.config['agent_types'] = self.agent_types
+
             self.save()
 
         def setAgent(self, elem):
@@ -227,6 +246,44 @@ class LCPConfig(object):
             else:
                 data['type'] = 'unknown'
             return data
+
+        def exec_env_register_data(self):
+            d = {}
+            lcp_info = {}
+            d['id'] = self.lcp['id']
+            d['enabled'] = True
+            d['hostname'] = self.deployment['hostname']
+            d['description'] = self.lcp['name']
+            # TODO - Change the partner!
+            d['stage'] = ""
+            d['lcp'] = lcp_info
+            d['partner'] = "FIWARE Foundation e.V."
+            d['type_id'] = self.exec_env_type
+
+            usd = UrlSchemaData(self.lcp['url'])
+            lcp_info['port'] = usd.port
+            lcp_info['https'] = usd.https
+            d['hostname'] = usd.host
+
+            return d
+
+        def agent_register_data(self):
+            res = []
+            if not len(self.agents) > 0:
+                return []
+
+            for a in self.agents:
+                agent = {}
+                if 'description' in a:
+                    agent['description'] = a['description']
+                agent['id'] = a['id']
+
+        def agent_catalog_register(self):
+            res = []
+            if not len(self.agents) > 0:
+                return []
+
+
 
     instance = None
 

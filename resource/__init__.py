@@ -5,7 +5,7 @@ from resource.software_definition import SoftwareDefinition, ContainerDefinition
 from resource.filiation import SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification
 from resource.hardware_definitions import BaremetalServer, VirtualServer, LXCContainer
 from resource.cloud_resource import CloudInfrastructure
-from resource.security_functions import SecurityFunction
+from resource.security_functions import SecurityFunction, AgentTypeResource
 from resource.self_data import DescribeDeployment, DescribeSelf
 from utils.log import Log
 from utils.sequence import wrap
@@ -16,7 +16,7 @@ db = (Code_Resource, Config_Resource, Status_Resource,
       SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification,
       BaremetalServer, VirtualServer, LXCContainer,
       CloudInfrastructure,
-      SecurityFunction,
+      SecurityFunction, AgentTypeResource,
       SoftwareDefinition,
       DescribeDeployment, DescribeSelf)
 
