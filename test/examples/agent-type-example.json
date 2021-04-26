@@ -16,14 +16,16 @@
             "status": "stopped"
         }
     ],
-    "resources": [
+    "parameters": [
         {
-            "path": "timeout",
-            "description": "Timeout value in connections"
+            "path": "timers.timeout",
+            "description": "Timeout value in connections",
+            "type": "integer"
         },
         {
-            "path": "time_between_probes",
-            "description": "Time between different resource probes"
+            "path": "timers.time_between_probes",
+            "description": "Time between different resource probes",
+            "type": "integer"
         }
     ]
 }

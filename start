@@ -7,7 +7,7 @@
 export COMPONENT=lcp
 export VERSION=master
 export PROJECT=guard
-export INSTALLATION_PATH=~/GUARD/Integration/lcp
+export INSTALLATION_PATH=~/GUARD/Development/Integration/lcp
 
 export TMP_PATH=/tmp
 export PIDFILE=$TMP_PATH/$COMPONENT.pid

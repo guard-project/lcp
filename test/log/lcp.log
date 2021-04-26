@@ -1,16 +1,16 @@
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: 💪   SUCCESS                                                💻 log.py@init:75 ⏰ 0:00:00.767290
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: 👀   WARN                                                   💻 log.py@init:75 ⏰ 0:00:00.768075
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: 🔖   INFO                                                   💻 log.py@init:75 ⏰ 0:00:00.768508
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: ❌   ERROR                                                  💻 log.py@init:75 ⏰ 0:00:00.768909
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: 🎯   NOTICE                                                 💻 log.py@init:75 ⏰ 0:00:00.769313
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: 💩   SPAM                                                   💻 log.py@init:75 ⏰ 0:00:00.769703
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: 📝   VERBOSE                                                💻 log.py@init:75 ⏰ 0:00:00.770086
-2021-04-21 at 15:01:24 🔖   INFO     Found additional log level customization: 💥   CRITICAL                                               💻 log.py@init:75 ⏰ 0:00:00.770477
-2021-04-21 at 15:01:24 🎯   NOTICE   JWT authentication disabled                                                                          💻 __init__.py@api:38 ⏰ 0:00:00.771123
-2021-04-21 at 15:01:24 🎯   NOTICE   HTTPS not set                                                                                        💻 __init__.py@api:44 ⏰ 0:00:00.774509
-2021-04-21 at 15:01:24 🎯   NOTICE   Elastic APM disabled                                                                                 💻 __init__.py@api:50 ⏰ 0:00:00.775085
-2021-04-21 at 15:01:24 🔖   INFO     Check connection to http://localhost:9000/polycube/v1                                                💻 polycube.py@__init__:25 ⏰ 0:00:00.783466
-2021-04-21 at 15:01:24 ❌   ERROR    Connection with polycube at localhost:9000 not possible                                              💻 polycube.py@__init__:31 ⏰ 0:00:00.787877
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: 💪   SUCCESS                                                💻 log.py@init:75 ⏰ 0:00:00.773774
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: 👀   WARN                                                   💻 log.py@init:75 ⏰ 0:00:00.774398
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: 🔖   INFO                                                   💻 log.py@init:75 ⏰ 0:00:00.774744
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: ❌   ERROR                                                  💻 log.py@init:75 ⏰ 0:00:00.775056
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: 🎯   NOTICE                                                 💻 log.py@init:75 ⏰ 0:00:00.775365
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: 💩   SPAM                                                   💻 log.py@init:75 ⏰ 0:00:00.775650
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: 📝   VERBOSE                                                💻 log.py@init:75 ⏰ 0:00:00.775931
+2021-04-26 at 09:52:33 🔖   INFO     Found additional log level customization: 💥   CRITICAL                                               💻 log.py@init:75 ⏰ 0:00:00.776218
+2021-04-26 at 09:52:33 🎯   NOTICE   JWT authentication disabled                                                                          💻 __init__.py@api:38 ⏰ 0:00:00.776617
+2021-04-26 at 09:52:33 🎯   NOTICE   HTTPS not set                                                                                        💻 __init__.py@api:44 ⏰ 0:00:00.776898
+2021-04-26 at 09:52:33 🎯   NOTICE   Elastic APM disabled                                                                                 💻 __init__.py@api:50 ⏰ 0:00:00.777170
+2021-04-26 at 09:52:33 🔖   INFO     Check connection to http://localhost:9000/polycube/v1                                                💻 polycube.py@__init__:25 ⏰ 0:00:00.784795
+2021-04-26 at 09:52:33 ❌   ERROR    Connection with polycube at localhost:9000 not possible                                              💻 polycube.py@__init__:31 ⏰ 0:00:00.788711
 Traceback (most recent call last):
   File "/home/jicg/.venv/lcp/lib/python3.9/site-packages/urllib3/connection.py", line 159, in _new_conn
     conn = connection.create_connection(
@@ -41,7 +41,7 @@ Traceback (most recent call last):
     conn = self._new_conn()
   File "/home/jicg/.venv/lcp/lib/python3.9/site-packages/urllib3/connection.py", line 171, in _new_conn
     raise NewConnectionError(
-urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7ff83bca6280>: Failed to establish a new connection: [Errno 111] Connection refused
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7fbcbfe93b50>: Failed to establish a new connection: [Errno 111] Connection refused
 
 During handling of the above exception, another exception occurred:
 
@@ -54,7 +54,7 @@ Traceback (most recent call last):
     retries = retries.increment(
   File "/home/jicg/.venv/lcp/lib/python3.9/site-packages/urllib3/util/retry.py", line 446, in increment
     raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=9000): Max retries exceeded with url: /polycube/v1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7ff83bca6280>: Failed to establish a new connection: [Errno 111] Connection refused'))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=9000): Max retries exceeded with url: /polycube/v1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fbcbfe93b50>: Failed to establish a new connection: [Errno 111] Connection refused'))
 
 During handling of the above exception, another exception occurred:
 
@@ -73,23 +73,23 @@ Traceback (most recent call last):
     r = adapter.send(request, **kwargs)
   File "/home/jicg/.venv/lcp/lib/python3.9/site-packages/requests/adapters.py", line 516, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=9000): Max retries exceeded with url: /polycube/v1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7ff83bca6280>: Failed to establish a new connection: [Errno 111] Connection refused'))
-2021-04-21 at 15:01:24 💪   SUCCESS  /code endpoint configured                                                                            💻 __init__.py@routes:35 ⏰ 0:00:00.821707
-2021-04-21 at 15:01:24 💪   SUCCESS  /code/{id} endpoint configured                                                                       💻 __init__.py@routes:35 ⏰ 0:00:00.848328
-2021-04-21 at 15:01:24 💪   SUCCESS  /config endpoint configured                                                                          💻 __init__.py@routes:35 ⏰ 0:00:00.858753
-2021-04-21 at 15:01:24 💪   SUCCESS  /status endpoint configured                                                                          💻 __init__.py@routes:35 ⏰ 0:00:00.869297
-2021-04-21 at 15:01:24 💪   SUCCESS  /self/software endpoint configured                                                                   💻 __init__.py@routes:35 ⏰ 0:00:00.880996
-2021-04-21 at 15:01:24 💪   SUCCESS  /self/container endpoint configured                                                                  💻 __init__.py@routes:35 ⏰ 0:00:00.892179
-2021-04-21 at 15:01:24 💪   SUCCESS  /lxc endpoint configured                                                                             💻 __init__.py@routes:35 ⏰ 0:00:00.904538
-2021-04-21 at 15:01:24 💪   SUCCESS  /lcp_son/{id} endpoint configured                                                                    💻 __init__.py@routes:35 ⏰ 0:00:00.916188
-2021-04-21 at 15:01:24 💪   SUCCESS  /lcp_son endpoint configured                                                                         💻 __init__.py@routes:35 ⏰ 0:00:00.927312
-2021-04-21 at 15:01:24 💪   SUCCESS  /lcp_parent endpoint configured                                                                      💻 __init__.py@routes:35 ⏰ 0:00:00.928581
-2021-04-21 at 15:01:24 💪   SUCCESS  /baremetal endpoint configured                                                                       💻 __init__.py@routes:35 ⏰ 0:00:00.941343
-2021-04-21 at 15:01:24 💪   SUCCESS  /virtualserver endpoint configured                                                                   💻 __init__.py@routes:35 ⏰ 0:00:00.954297
-2021-04-21 at 15:01:24 💪   SUCCESS  /lxc endpoint configured                                                                             💻 __init__.py@routes:35 ⏰ 0:00:00.965463
-2021-04-21 at 15:01:24 💪   SUCCESS  /cloud endpoint configured                                                                           💻 __init__.py@routes:35 ⏰ 0:00:00.980126
-2021-04-21 at 15:01:24 💪   SUCCESS  /securityFunctions endpoint configured                                                               💻 __init__.py@routes:35 ⏰ 0:00:00.991452
-2021-04-21 at 15:01:24 💪   SUCCESS  /agent_type endpoint configured                                                                      💻 __init__.py@routes:35 ⏰ 0:00:01.005132
-2021-04-21 at 15:01:24 💪   SUCCESS  /self/software endpoint configured                                                                   💻 __init__.py@routes:35 ⏰ 0:00:01.016588
-2021-04-21 at 15:01:24 💪   SUCCESS  /self/deployment endpoint configured                                                                 💻 __init__.py@routes:35 ⏰ 0:00:01.029238
-2021-04-21 at 15:01:24 💪   SUCCESS  /self endpoint configured                                                                            💻 __init__.py@routes:35 ⏰ 0:00:01.030809
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=9000): Max retries exceeded with url: /polycube/v1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fbcbfe93b50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2021-04-26 at 09:52:33 💪   SUCCESS  /code endpoint configured                                                                            💻 __init__.py@routes:35 ⏰ 0:00:00.822289
+2021-04-26 at 09:52:33 💪   SUCCESS  /code/{id} endpoint configured                                                                       💻 __init__.py@routes:35 ⏰ 0:00:00.848864
+2021-04-26 at 09:52:33 💪   SUCCESS  /config endpoint configured                                                                          💻 __init__.py@routes:35 ⏰ 0:00:00.864386
+2021-04-26 at 09:52:33 💪   SUCCESS  /status endpoint configured                                                                          💻 __init__.py@routes:35 ⏰ 0:00:00.882875
+2021-04-26 at 09:52:33 💪   SUCCESS  /self/software endpoint configured                                                                   💻 __init__.py@routes:35 ⏰ 0:00:00.899284
+2021-04-26 at 09:52:33 💪   SUCCESS  /self/container endpoint configured                                                                  💻 __init__.py@routes:35 ⏰ 0:00:00.916291
+2021-04-26 at 09:52:33 💪   SUCCESS  /lxc endpoint configured                                                                             💻 __init__.py@routes:35 ⏰ 0:00:00.935152
+2021-04-26 at 09:52:33 💪   SUCCESS  /lcp_son/{id} endpoint configured                                                                    💻 __init__.py@routes:35 ⏰ 0:00:00.953119
+2021-04-26 at 09:52:33 💪   SUCCESS  /lcp_son endpoint configured                                                                         💻 __init__.py@routes:35 ⏰ 0:00:00.968840
+2021-04-26 at 09:52:33 💪   SUCCESS  /lcp_parent endpoint configured                                                                      💻 __init__.py@routes:35 ⏰ 0:00:00.969838
+2021-04-26 at 09:52:33 💪   SUCCESS  /baremetal endpoint configured                                                                       💻 __init__.py@routes:35 ⏰ 0:00:00.981655
+2021-04-26 at 09:52:33 💪   SUCCESS  /virtualserver endpoint configured                                                                   💻 __init__.py@routes:35 ⏰ 0:00:00.994789
+2021-04-26 at 09:52:33 💪   SUCCESS  /lxc endpoint configured                                                                             💻 __init__.py@routes:35 ⏰ 0:00:01.005831
+2021-04-26 at 09:52:33 💪   SUCCESS  /cloud endpoint configured                                                                           💻 __init__.py@routes:35 ⏰ 0:00:01.017946
+2021-04-26 at 09:52:33 💪   SUCCESS  /securityFunctions endpoint configured                                                               💻 __init__.py@routes:35 ⏰ 0:00:01.027834
+2021-04-26 at 09:52:33 💪   SUCCESS  /agent_type endpoint configured                                                                      💻 __init__.py@routes:35 ⏰ 0:00:01.038797
+2021-04-26 at 09:52:33 💪   SUCCESS  /self/software endpoint configured                                                                   💻 __init__.py@routes:35 ⏰ 0:00:01.049864
+2021-04-26 at 09:52:33 💪   SUCCESS  /self/deployment endpoint configured                                                                 💻 __init__.py@routes:35 ⏰ 0:00:01.059892
+2021-04-26 at 09:52:33 💪   SUCCESS  /self endpoint configured                                                                            💻 __init__.py@routes:35 ⏰ 0:00:01.061659

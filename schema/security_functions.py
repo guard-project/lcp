@@ -23,6 +23,8 @@ class AgentParameter(Base_Schema):
                        description="Value of the Parameter to be configured")
     description = fields.Str(required=False, example="Time between Heartbeats",
                              description="Some description explaining the parameter")
+    list = fields.Boolean(required=False, example="true",
+                          description="Marks whether a parameter is list or not")
 
 
 class AgentActionSchema(Base_Schema):
@@ -43,6 +45,9 @@ class AgentResource(Base_Schema):
                          description="Config file example")
 
 
+class AgentConfig(Base_Schema):
+    pass
+
 class AgentType(Base_Schema):
     id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",
                     description="Agent Type ID.")
@@ -60,6 +65,8 @@ class AgentType(Base_Schema):
                           description="List of actions and expected result fro this agent")
     resources = List_or_One(fields.Nested(AgentResource), required=False,
                           description="List of agents Resources that could be used")
+    config = List_or_One(fields.Nested(AgentConfig), required=True,
+                            description="List of configurations of Agents")
 
 
 

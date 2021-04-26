@@ -24,12 +24,19 @@ definitions:
     - cmd
     - id
     type: object
+  AgentConfig:
+    properties: {}
+    type: object
   AgentParameter:
     properties:
       description:
         description: Some description explaining the parameter
         example: Time between Heartbeats
         type: string
+      list:
+        description: Marks whether a parameter is list or not
+        example: 'true'
+        type: boolean
       name:
         description: Name of the Parameter
         example: HeartbeatTime
@@ -71,6 +78,11 @@ definitions:
         items:
           $ref: '#/definitions/AgentActionSchema'
         type: array
+      config:
+        description: List of configurations of Agents
+        items:
+          $ref: '#/definitions/AgentConfig'
+        type: array
       description:
         description: Description of the Agent type
         example: Example agent
@@ -103,6 +115,7 @@ definitions:
         type: string
     required:
     - actions
+    - config
     - id
     - partner
     - schema
