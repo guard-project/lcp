@@ -6,7 +6,7 @@ from resource.filiation import SonRequestIdentificationById, SonLCPIdentificatio
 from resource.hardware_definitions import BaremetalServer, VirtualServer, LXCContainer
 from resource.cloud_resource import CloudInfrastructure
 from resource.security_functions import SecurityFunction, AgentTypeResource
-from resource.self_data import DescribeDeployment, DescribeSelf
+from resource.self_data import DescribeDeployment, DescribeSelf, InitialSelfConfiguration, SelfAutoConfig
 from utils.log import Log
 from utils.sequence import wrap
 
@@ -18,7 +18,7 @@ db = (Code_Resource, Config_Resource, Status_Resource,
       CloudInfrastructure,
       SecurityFunction, AgentTypeResource,
       SoftwareDefinition,
-      DescribeDeployment, DescribeSelf)
+      DescribeDeployment, DescribeSelf, InitialSelfConfiguration, SelfAutoConfig)
 
 tags = []
 for Resource in db:

@@ -1,17 +1,9 @@
-import time
-from extra.lcp_client import BetweenLCPMessages, LCPMessages, LCPClient
-from threading import Thread
 from extra.lcp_config import LCPConfig
+from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
+import time
 
-
-class ThreadLCP:
-    thread_started = False
-
-    @classmethod
-    def thread_lcp(cls):
-        if ThreadLCP.thread_started:
-            return
-        ThreadLCP.thread_started = False
+class LCPThread:
+    def foo(self):
         time.sleep(3)  # Let Falkon start first...
         lcp_client = LCPClient()
         config = LCPConfig()
@@ -23,17 +15,4 @@ class ThreadLCP:
         for parent in config.parents:
             msg = LCPMessages(BetweenLCPMessages.PostLCPSon, {"url": parent})
             lcp_client.send(msg)
-
-        lcp_client.qread()
-
-
-def startup_lcp_thread():
-    Thread(target=ThreadLCP.thread_lcp).start()
-
-
-try:
-    config = LCPConfig()
-    if config.extra_enable:
-        startup_lcp_thread()
-except Exception:
-    pass
+            lcp_client.qread()

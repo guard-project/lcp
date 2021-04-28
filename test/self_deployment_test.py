@@ -80,3 +80,4 @@ class TestMyApp(LCPTestBase):
         print("Exec_env: ", lcp_config.exec_env_type)
         print("Exec_env: ", lcp_config.config['type'])
         assert lcp_config.exec_env_type == 'bare-metal'
+

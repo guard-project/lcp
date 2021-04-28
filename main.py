@@ -18,16 +18,16 @@ from api import api  # noqa: E402
 from reader.arg import Arg_Reader  # noqa: E402
 from utils.log import Log  # noqa: E402
 
+if __name__ == "__main__":
+    db = Arg_Reader.read()
 
-db = Arg_Reader.read()
-
-if db.version is not None:
-    print(db.version)
-else:
-    ident = f'{project} - {title} v:{version}'
-    console = Console()
-    console.print(Panel.fit(ident))
-    Log.init(config=db.log_config)
-    api_instance = api(title=title, version=version)
-    Log.get('api').success(f'Accept requests at {db.host}:{db.port}')
-    waitress.serve(api_instance, host=db.host, port=db.port, expose_tracebacks=False, ident=ident, _quiet=True)
+    if db.version is not None:
+        print(db.version)
+    else:
+        ident = f'{project} - {title} v:{version}'
+        console = Console()
+        console.print(Panel.fit(ident))
+        Log.init(config=db.log_config)
+        api_instance = api(title=title, version=version)
+        Log.get('api').success(f'Accept requests at {db.host}:{db.port}')
+        waitress.serve(api_instance, host=db.host, port=db.port, expose_tracebacks=False, ident=ident, _quiet=True)

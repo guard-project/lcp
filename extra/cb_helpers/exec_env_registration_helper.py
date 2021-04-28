@@ -18,13 +18,14 @@ class ContextBrokerThread(object):
 
         def is_lcp_registered(self):
             # query = CB_URL + "/exec-env/" + self.cfg.lcp['id']
-            query = CB_URL + "/exec-env/frontend"
+            query = CB_URL + "/exec-env/" + self.cfg.lcp['id']
             try:
                 resp = requests.get(query, headers=AUTH_HEADER)
             except (Timeout):
                 pass
 
-            if resp.status_code != 200:
+            if resp.status_code == 200:
+                print("Ya existe!!")
                 return True
 
             return False
@@ -33,7 +34,7 @@ class ContextBrokerThread(object):
             if self.is_lcp_registered():
                 return
             data = self.cfg.exec_env_register_data()
-            query = CB_URL + "/exec-env/"
+            query = CB_URL + "/exec-env"
             try:
                 resp = requests.post(query, data=json.dumps(data), headers=AUTH_HEADER)
             except (Timeout):
@@ -60,4 +61,4 @@ class ContextBrokerThread(object):
 
 if __name__ =="__main__":
     cb = ContextBrokerThread()
-    cb.agents_register()
+    cb.lcp_post_register()

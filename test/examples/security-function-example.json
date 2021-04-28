@@ -4,13 +4,5 @@
   "version": "1.0.1",
   "endpoint_url": "http://example.com:4250/v1/config",
   "name": "VM Sensor Probe",
-  "type": "monitoring",
-  "parameters": [
-    {
-      "description": "Time between Heartbeats",
-      "value": "30",
-      "type": "Int",
-      "name": "HeartbeatTime"
-    }
-  ]
+  "type": "monitoring"
 }

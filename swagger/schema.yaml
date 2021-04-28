@@ -1714,7 +1714,7 @@ paths:
       summary: Post the Description of one Cloud Infrastructure
       tags:
       - hardware
-  /securityFunctions:
+  /agent/instance:
     get:
       description: 'Gets the information of the SecurityFunctions deployed along with
         the LCP
@@ -1780,7 +1780,7 @@ paths:
       summary: Post Software description of a new Software installed in the System
       tags:
       - software
-  /agent_type:
+  /agent/type:
     get:
       description: 'Gets the information of the Agent Types known by this LCP and
         the data got.
@@ -1910,6 +1910,10 @@ paths:
       - hardware
   /self:
     get: {}
+  /self/configuration:
+    post: {}
+  /self/autoconfig:
+    post: {}
 produces:
 - application/json
 swagger: '2.0'
@@ -1943,10 +1947,14 @@ tags:
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: software
-- description: Returns description of a Baremetal Server.
+- description: Sets/Returns description of a type of Agent.
   name: software
 - *id002
 - description: Returns description of a Baremetal Server where LCP is deployed.
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: hardware
+- description: This method does the initial configuration
+  name: initial_configuration
+- description: This method does the initial configuration
+  name: initial_configuration

@@ -101,6 +101,8 @@ class LCPClient(object):
                 elif message.message_type == BetweenLCPMessages.PostLCPParent:
                     self.postLcpParentToSon(message.data)
 
+        def send(self, message: LCPMessages):
+            self.q.put(message)
 
 
     instance = None

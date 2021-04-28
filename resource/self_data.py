@@ -5,10 +5,12 @@ from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
 from schema.hardware_definitions import VirtualServer as VirtualServerSchema
 from schema.hardware_definitions import ExecutionEnvironment as ExcutionEnvironmentSchema
 from lib.http import HTTP_Method
-from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED
+from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_INTERNAL_SERVER_ERROR
 from marshmallow import ValidationError
+from schema.filiation import InitialConfigurationSchema
 import json
 
+from extra.hw_helpers.host_info import HostInfoToLcpHelper
 
 
 class DescribeDeployment(Base_Resource):
@@ -52,11 +54,61 @@ class DescribeSelf(Base_Resource):
 
 
     def on_get(self, req, resp):
-    # TODO: Organizar este codigo bien, con el esquema que corresponda!
-       resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
+        # TODO: Organizar este codigo bien, con el esquema que corresponda!
+        resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
             .validate(data={})
 
-       print(json.dumps(LCPConfig().lcp))
-       resp.body = json.dumps(LCPConfig().lcp)
+        lcp = json.dumps(LCPConfig().lcp)
+        if lcp == "null":
+            resp.body = None
+            resp.status = HTTP_NOT_FOUND
+        else:
+            resp.body = lcp
+            payload = req.media if isinstance(req.media, list) else [req.media]
 
-       payload = req.media if isinstance(req.media, list) else [req.media]
+
+class InitialSelfConfiguration(Base_Resource):
+    data = {}
+    tag = {'name': 'initial_configuration',
+           'description': 'This method does the initial configuration'}
+    routes = '/self/configuration',
+
+    def on_post(self, req, resp):
+        resp_Data, valid = InitialConfigurationSchema(method=HTTP_Method.POST) \
+            .validate(data={})
+        payload = req.media
+        try:
+            cfg = LCPConfig()
+            ic_schema = InitialConfigurationSchema(many=False)
+            ic_schema.load(payload)
+            should_restart = cfg.setInitialConfiguration(payload)
+            if should_restart:
+                from extra import startup_lcp_thread
+                startup_lcp_thread()
+            resp.status = HTTP_CREATED
+        except ValidationError as e:
+            resp.body = e.data
+            resp.status = HTTP_NOT_ACCEPTABLE
+
+
+class SelfAutoConfig(Base_Resource):
+    data = {}
+    tag = {'name': 'initial_configuration',
+           'description': 'This method does the initial configuration'}
+    routes = '/self/autoconfig'
+
+    def on_post(self, req, resp):
+        payload = req.media
+        if payload is not None:
+            resp.body = '{"error": "No payload expected"}'
+            resp.status = HTTP_NOT_ACCEPTABLE
+
+        #try:
+        cfg = LCPConfig()
+        host_info = HostInfoToLcpHelper().js_info
+        cfg.setDeployment(host_info)
+        # except Exception as e:
+        #    print(e)
+        #    resp.body = '{"error": "Could not autoconfigure"}'
+        #    resp.status = HTTP_INTERNAL_SERVER_ERROR
+

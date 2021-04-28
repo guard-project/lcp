@@ -1,0 +1,12 @@
+{
+    "lcp": {
+        "id": "testing-lcp-01",
+        "name": "lcp for testing",
+        "url": "http://localhost:4000"
+    },
+    "context_broker": {
+        "url": "http://localhost:5000",
+        "auth_header": "Basic sdlk3124j0f9pij"
+    },
+    "extra_enable": true
+}

@@ -7,7 +7,8 @@ from utils.schema import List_or_One
 __all__ = [
     'LCPDescription',
     'ContextBrokerConnection',
-    'LCPFatherURL'
+    'LCPFatherURL',
+    'InitialConfigurationSchema'
 ]
 
 
@@ -32,7 +33,19 @@ class ContextBrokerConnection(Base_Schema):
     """ Basic connection Description for LCPs to connect to Context Broker"""
     url = fields.URL(required=True, example="http://cb.example.com:5000",
                      description="URL where the ContextBroker Listens")
-    user = fields.Str(required=True, example="cb",
-                      description="Context Broker user with rights to set new exec-envs")
-    password = fields.Str(required=True, example="cbsecretpassword",
-                      description="Context Broker password for the user")
+    auth_header = fields.Str(required=True,
+                             example="Basic Z3VhcmQ6cGFzc3dvcmQK")
+    # user = fields.Str(required=True, example="cb",
+    #                   description="Context Broker user with rights to set new exec-envs")
+    # password = fields.Str(required=True, example="cbsecretpassword",
+    #                  description="Context Broker password for the user")
+
+
+
+class InitialConfigurationSchema(Base_Schema):
+    lcp = fields.Nested(LCPDescription, required=True,
+                        description="Initial LCP configuration. Requisite to enable extra_features")
+    context_broker = fields.Nested(ContextBrokerConnection, required=False,
+                                   description="Connection to Context broker if one required")
+    extra_enable = fields.Boolean(required=True, example="true",
+                                  description="Describe if extra features are anabled or not")

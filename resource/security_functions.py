@@ -11,26 +11,28 @@ from extra.lcp_config import LCPConfig
 class SecurityFunction(Base_Resource):
     tag = {'name': 'software',
            'description': 'Returns description of a Baremetal Server.'}
-    routes = '/securityFunctions',
+    routes = '/agent/instance',
 
     def __init__(self):
         pass
 
-    @docstring(source='SecurityFunctions/GetSecurityFunctions.yml')
+    @docstring(source='Agents/GetAgentInstanceResource.yml')
     def on_get(self, req, resp):
         # resp_data, valid = SecurityFunctionSchema(method=HTTP_Method.GET) \
         #    .validate(data={})
         resp.body = json.dumps(LCPConfig().agents)
 
-    @docstring(source='SecurityFunctions/PostSecurityFunctions.yml')
+    @docstring(source='Agents/PostAgentInstanceResource.yml')
     def on_post(self, req, resp):
         # resp_data, valid = AgentSchema(method=HTTP_Method.POST) \
         #    .validate(data={})
 
         payload = req.media if isinstance(req.media, list) else [req.media]
         try:
-            sf_schema = AgentSchema(many=True)
-            d = sf_schema.load(payload)
+            ag_schema = AgentSchema(many=True)
+            d = ag_schema.load(payload)
+
+            # TODO - Validate that payload type exists as AgentType
             for e in payload:
                 LCPConfig().setAgent(e)
 
@@ -42,8 +44,8 @@ class SecurityFunction(Base_Resource):
 
 class AgentTypeResource(Base_Resource):
     tag = {'name': 'software',
-           'description': 'Returns description of a Baremetal Server.'}
-    routes = '/agent_type',
+           'description': 'Sets/Returns description of a type of Agent.'}
+    routes = '/agent/type',
 
     @docstring(source="Agents/GetAgentTypeResource.yml")
     def on_get(self, req, resp):
@@ -55,12 +57,11 @@ class AgentTypeResource(Base_Resource):
 
         try:
             at_schema = AgentType(many=True)
-            d = at_schema.load(payload)
+            d = at_schema.validate(payload)
+
             for e in payload:
                 LCPConfig().setAgentType(e)
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.body = e.data
             req.status = HTTP_NOT_ACCEPTABLE
-
-

@@ -4,8 +4,10 @@ from utils.schema import List_or_One
 
 __all__ = [
     'Agent',
+    'AgentType',
     'AgentParameter',
-    'AgentActionSchema'
+    'AgentActionSchema',
+    'AgentResource'
 ]
 
 AGENT_STATUS = ['started', 'stopped', 'unknown']
@@ -29,9 +31,9 @@ class AgentParameter(Base_Schema):
 
 class AgentActionSchema(Base_Schema):
     id = fields.Str(required=True, example='start',
-             description='Action name')
+                    description='Action name')
     cmd = fields.Str(required=True, example='service filebeat start',
-              description='Action command.')
+                     description='Action command.')
     status = fields.Str(enum=AGENT_STATUS, example=AGENT_STATUS[0],
                         description='Update the status the of the agent-instance according to cmd condition')
 
@@ -48,6 +50,7 @@ class AgentResource(Base_Schema):
 class AgentConfig(Base_Schema):
     pass
 
+
 class AgentType(Base_Schema):
     id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",
                     description="Agent Type ID.")
@@ -58,16 +61,15 @@ class AgentType(Base_Schema):
     partner = fields.Str(required=True, example="guard-partner",
                          description="Name of the Partner who created the resource")
     schema = fields.Str(required=True, example="yaml",
-                         description="Type of configuration file (json, yaml, etc.)")
+                        description="Type of configuration file (json, yaml, etc.)")
     source = fields.Str(required=True, example="/etc/example_agent/config.yaml",
                         description="The config file where parameters are configured")
     actions = List_or_One(fields.Nested(AgentActionSchema), required=True,
                           description="List of actions and expected result fro this agent")
     resources = List_or_One(fields.Nested(AgentResource), required=False,
-                          description="List of agents Resources that could be used")
+                            description="List of agents Resources that could be used")
     config = List_or_One(fields.Nested(AgentConfig), required=True,
-                            description="List of configurations of Agents")
-
+                         description="List of configurations of Agents")
 
 
 class Agent(Base_Schema):

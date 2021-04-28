@@ -1,5 +1,6 @@
 import os
 import yaml
+from pathlib import Path
 
 from schema.filiation import LCPDescription
 from schema.filiation import ContextBrokerConnection
@@ -13,20 +14,12 @@ class LCPConfig(object):
     class __LCPConfig:
         def __init__(self, filename):
             self.filename = filename
-            self.reset()
-
-        def save(self):
-            if self.testing:
-                return
-            with open(self.filename, "w") as f:
-                yaml.dump(self.config, f, default_flow_style=False)
-
-        def reset(self):
-            self.config = None
+            self.extra_enable = False
+            self.config = {}
             self.lcp = None
             self.sons = []
             self.parents = []
-            self.contextBroker = None
+            self.context_broker = None
             self.user = ""
             self.password = ""
             self.deployment = {}
@@ -37,7 +30,47 @@ class LCPConfig(object):
             self.self_containers = []
             self.exec_env_type = None
             self.agent_types = []
+            self.context_broker = None
+
+            self.reset()
+
+        def save(self):
+            print("FIlename:", self.filename)
+            if self.testing or not self.extra_enable:
+                return
+            if not os.path.exists(self.filename):
+                try:
+                    os.mkdir(os.path.dirname(self.filename))
+                except FileExistsError:
+                    pass
+
+            with open(self.filename, "w") as f:
+                yaml.dump(self.config, f, default_flow_style=False)
+
+        def reset(self):
+            self.extra_enable = False
+            self.config = {}
+            self.lcp = None
+            self.sons = []
+            self.parents = []
+            self.context_broker = None
+            self.user = ""
+            self.password = ""
+            self.deployment = {}
+            self.agents = []
+            self.testing = False
+            self.children_requested = []
+            self.self_software = []
+            self.self_containers = []
+            self.exec_env_type = None
+            self.agent_types = []
+            self.context_broker = None
             self.reload(self.filename)
+
+        def has_extra_features(self):
+            if self.lcp is not None and 'lcp' in self.lcp and self.extra_enable == True:
+                return True
+            return False
 
         def reload(self, filename=None):
             if filename is not None:
@@ -49,12 +82,21 @@ class LCPConfig(object):
                 else:
                     self.filename = "config/LCPConfig.yaml"
 
-            with open(self.filename, "r") as f:
-                self.config = yaml.load(f, Loader=yaml.FullLoader)
+            try:
+                print("FILENAME: ", self.filename)
+                with open(self.filename, "r") as f:
+                    self.config = yaml.load(f, Loader=yaml.FullLoader)
+            except Exception:
+                return
+
+            # Should at least contain some lcp info
+            if self.config is None:
+                self.config = {}
+
+            if 'lcp' not in self.config:
+                return
 
             lcp_schema = LCPDescription(many=False)
-
-            # Debe contener al menos los datos de este LCP
             lcp_schema.load(self.config['lcp'])
             self.lcp = self.config['lcp']
 
@@ -76,7 +118,7 @@ class LCPConfig(object):
             if CONTEXT_BROKER in self.config and len(self.config[CONTEXT_BROKER]) > 0:
                 cb_schema = ContextBrokerConnection(many=False)
                 cb_schema.load(self.config[CONTEXT_BROKER])
-                self.contextBroker = self.config[CONTEXT_BROKER]
+                self.context_broker = self.config[CONTEXT_BROKER]
 
             if 'agents' not in self.config:
                 self.config['agents'] = []
@@ -117,7 +159,38 @@ class LCPConfig(object):
 
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
+            try:
+                self.extra_enable = self.config['extra_enable']
+            except KeyError:
+                pass
+
+        def setInitialConfiguration(self, dict_cfg):
+            should_start_thread = False
+            if 'lcp' in dict_cfg:
+                if self.lcp is None:
+                    self.lcp = {}
+                d = dict_cfg['lcp']
+                self.lcp = {**self.lcp, **d}
+                self.config['lcp'] = self.lcp
+
+            if 'context_broker' in dict_cfg:
+                d = dict_cfg['context_broker']
+                if self.context_broker is None:
+                    self.context_broker = {}
+                self.context_broker = {**self.context_broker, **d}
+                self.config['context_broker'] = self.context_broker
+
+            if 'extra_enable' in dict_cfg:
+                prev_extra = self.extra_enable
+                self.extra_enable = dict_cfg['extra_enable']
+                if not prev_extra and self.extra_enable:
+                    should_start_thread = True
+                self.config['extra_enable'] = self.extra_enable
+            self.save()
+            return should_start_thread
+
         def setDeployment(self, dictDeployment):
+            print(dictDeployment)
             self.deployment = dictDeployment['environment']
             self.config['deployment'] = self.deployment
             self.config['type'] = dictDeployment['type']
@@ -135,6 +208,12 @@ class LCPConfig(object):
                 self.config['agent_types'] = self.agent_types
 
             self.save()
+
+        def findAgentType(self, id):
+            for i in range(0, len(self.agent_types)):
+                if self.agent_types[i]['id'] == id:
+                    return self.agent_types[i]
+            return None
 
         def setAgent(self, elem):
             updated = False
@@ -213,7 +292,7 @@ class LCPConfig(object):
 
         def setContextBroker(self, data):
             self.config[CONTEXT_BROKER] = data
-            self.contextBroker = self.config[CONTEXT_BROKER]
+            self.context_broker = self.config[CONTEXT_BROKER]
             self.save()
 
         def getDataForRegisterOnCB(self):
@@ -283,12 +362,11 @@ class LCPConfig(object):
             if not len(self.agents) > 0:
                 return []
 
-
-
     instance = None
 
     def __new__(cls, filename=None, *args, **kwargs):
         if LCPConfig.instance is None:
+            print("LCPConfig is None")
             LCPConfig.instance = LCPConfig.__LCPConfig(filename)
         return LCPConfig.instance
 

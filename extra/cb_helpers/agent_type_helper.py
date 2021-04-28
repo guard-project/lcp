@@ -11,14 +11,12 @@ class AgentTypeForCBHelper:
         self.load_actions_dict()
         self.load_parameters_dict()
 
-
     def dumps(self):
         return json.dumps(self.od)
 
     def load_into_dict(self, key):
         if key in self.data:
             self.od[key] = self.data[key]
-
 
     def load_actions_dict(self):
         if not 'actions' in self.data:
@@ -30,7 +28,7 @@ class AgentTypeForCBHelper:
         source = self.data['source']
 
         for a in actions:
-            da = {'config':  {'cmd': a['cmd']},
+            da = {'config': {'cmd': a['cmd']},
                   'id': a['id'],
                   'status': a['status'],
                   'source': source}

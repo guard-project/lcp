@@ -1,5 +1,5 @@
 from schema.security_functions import *
-from schema.security_functions import AgentType
+from schema.security_functions import AgentType, Agent as AgentSchema
 from marshmallow.exceptions import ValidationError
 from test_utils import *
 
@@ -7,16 +7,9 @@ from test.testbase import LCPTestBase
 
 
 class TestMyApp(LCPTestBase):
-    def _getSecurityFucntionExample(self):
-        json_file = os.path.dirname(__file__) + \
-                    "/examples/security-function-example.json"
-        with open(json_file) as f:
-            file_data = f.read()
-        return json.loads(file_data)
-
     def test_security_function(self):
         sf_dict = loadExampleFile("security-function-example.json")
-        sf_schema = Agent(many=False)
+        sf_schema = AgentSchema(many=False)
         try:
             d = sf_schema.load(sf_dict)
             assert(True)
@@ -31,7 +24,8 @@ class TestMyApp(LCPTestBase):
         headers = getAuthorizationHeaders()
         config.dropAllAgents()
 
-        result = self.simulate_get("/securityFunctions", headers=headers)
+        result = self.simulate_get("/agent/instance", headers=headers)
+        print(result.status)
         assert (result.status == "200 OK")
         body = result.json
         assert (type(body) is list)
@@ -40,7 +34,7 @@ class TestMyApp(LCPTestBase):
         config.setAgent(sf_dict)
         d = config.agents
 
-        result = self.simulate_get("/securityFunctions", headers=headers)
+        result = self.simulate_get("/agent/instance", headers=headers)
         assert (result.status == "200 OK")
         body = result.json
         assert (type(body) is list)
@@ -55,7 +49,7 @@ class TestMyApp(LCPTestBase):
         config.dropAllAgents()
 
         body = json.dumps(sf_dict)
-        result = self.simulate_post("/securityFunctions", headers=headers,
+        result = self.simulate_post("/agent/instance", headers=headers,
                                     body=body)
         assert(result.status_code == 201)
         assert len(config.agents) == 1
@@ -63,7 +57,7 @@ class TestMyApp(LCPTestBase):
 
         sf_dict["vendor"] = "GUARD-Project.eu"
         body = json.dumps(sf_dict)
-        result = self.simulate_post("/securityFunctions", headers=headers,
+        result = self.simulate_post("/agent/instance", headers=headers,
                                     body=body)
         assert(result.status_code == 201)
         assert len(config.agents) == 1
@@ -127,23 +121,32 @@ class TestMyApp(LCPTestBase):
         at_dict = loadExampleFile("agent-type-example.json")
         config = getLCPConfig()
         headers = getAuthorizationHeaders()
-        schema_agent_type = AgentType()
+        schema_agent_type = AgentType(many=True)
         assert len(config.agent_types) == 0
 
         try:
-            schema_agent_type.validate(at_dict)
+            schema_agent_type.validate([at_dict])
             assert(True)
         except ValidationError as e:
             print(e)
             assert(False)
 
         body = json.dumps(at_dict)
-        print(body)
-        result = self.simulate_post("/agent_type", headers=headers,
+        result = self.simulate_post("/agent/type", headers=headers,
                                     body=body)
 
         assert result.status_code == 201
         assert len(config.agent_types) == 1
+
+    def testAgentTypeFileContent(self):
+        at_dict = loadExampleFile("agent-type-example.json")
+        config = getLCPConfig()
+        headers = getAuthorizationHeaders()
+        schema_agent_type = AgentType(many=True)
+        try:
+            schema_agent_type.validate([at_dict])
+        except ValidationError as e:
+            print(e.messages)
 
     def testAgentTypeGet(self):
         at_dict = loadExampleFile("agent-type-example.json")
@@ -154,12 +157,11 @@ class TestMyApp(LCPTestBase):
         config.setAgentType(at_dict)
 
         assert len(config.agent_types) == 1
-        result = self.simulate_get("/agent_type", headers=headers)
+        result = self.simulate_get("/agent/type", headers=headers)
 
         assert result.status_code == 200
         body = result.json
 
-        print(len(body))
         assert (type(body) is list)
         assert len(body) == 1
         assert body[0]['id'] == config.agent_types[0]["id"]
