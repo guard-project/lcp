@@ -14,24 +14,6 @@ class LCPConfig(object):
     class __LCPConfig:
         def __init__(self, filename):
             self.filename = filename
-            self.extra_enable = False
-            self.config = {}
-            self.lcp = None
-            self.sons = []
-            self.parents = []
-            self.context_broker = None
-            self.user = ""
-            self.password = ""
-            self.deployment = {}
-            self.agents = []
-            self.testing = False
-            self.children_requested = []
-            self.self_software = []
-            self.self_containers = []
-            self.exec_env_type = None
-            self.agent_types = []
-            self.context_broker = None
-
             self.reset()
 
         def save(self):
@@ -331,7 +313,7 @@ class LCPConfig(object):
             lcp_info = {}
             d['id'] = self.lcp['id']
             d['enabled'] = True
-            d['hostname'] = self.deployment['hostname']
+            # d['hostname'] = self.deployment['hostname']
             d['description'] = self.lcp['name']
             # TODO - Change the partner!
             d['stage'] = ""

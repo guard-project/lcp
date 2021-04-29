@@ -2,13 +2,13 @@ from extra.lcp_config import LCPConfig
 from docstring import docstring
 from resource.base import Base_Resource
 from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
-from schema.hardware_definitions import VirtualServer as VirtualServerSchema
 from schema.hardware_definitions import ExecutionEnvironment as ExcutionEnvironmentSchema
 from lib.http import HTTP_Method
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_INTERNAL_SERVER_ERROR
 from marshmallow import ValidationError
 from schema.filiation import InitialConfigurationSchema
 import json
+from extra.cb_client import CBClient, CBMessages, ToContextBrokerMessages
 
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
 
@@ -83,8 +83,11 @@ class InitialSelfConfiguration(Base_Resource):
             ic_schema.load(payload)
             should_restart = cfg.setInitialConfiguration(payload)
             if should_restart:
-                from extra import startup_lcp_thread
-                startup_lcp_thread()
+                from extra import startup_client_threads
+                startup_client_threads()
+            elif 'context-broker' in payload:
+                from extra import ThreadCB
+                ThreadCB.send_cb_messages()
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.body = e.data
