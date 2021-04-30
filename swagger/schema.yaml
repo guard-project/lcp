@@ -24,9 +24,6 @@ definitions:
     - cmd
     - id
     type: object
-  AgentConfig:
-    properties: {}
-    type: object
   AgentParameter:
     properties:
       description:
@@ -37,7 +34,7 @@ definitions:
         description: Marks whether a parameter is list or not
         example: 'true'
         type: boolean
-      name:
+      path:
         description: Name of the Parameter
         example: HeartbeatTime
         type: string
@@ -45,14 +42,9 @@ definitions:
         description: 'Type of the Parameter: Int, Number, String...'
         example: integer
         type: string
-      value:
-        description: Value of the Parameter to be configured
-        example: '30'
-        type: string
     required:
-    - name
+    - path
     - type
-    - value
     type: object
   AgentResource:
     properties:
@@ -77,11 +69,6 @@ definitions:
         description: List of actions and expected result fro this agent
         items:
           $ref: '#/definitions/AgentActionSchema'
-        type: array
-      config:
-        description: List of configurations of Agents
-        items:
-          $ref: '#/definitions/AgentConfig'
         type: array
       description:
         description: Description of the Agent type
@@ -115,7 +102,6 @@ definitions:
         type: string
     required:
     - actions
-    - config
     - id
     - partner
     - schema

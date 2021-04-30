@@ -4,8 +4,9 @@ from docstring import docstring
 from resource.base import Base_Resource
 import json
 from marshmallow.exceptions import ValidationError
-from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE
+from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE, HTTP_NOT_FOUND
 from extra.lcp_config import LCPConfig
+from extra.cb_client import CBClient, ToContextBrokerMessages, CBMessages
 
 
 class SecurityFunction(Base_Resource):
@@ -30,11 +31,25 @@ class SecurityFunction(Base_Resource):
         payload = req.media if isinstance(req.media, list) else [req.media]
         try:
             ag_schema = AgentSchema(many=True)
+
+            print("Previous to load..")
             d = ag_schema.load(payload)
 
-            # TODO - Validate that payload type exists as AgentType
+            config = LCPConfig()
+
             for e in payload:
-                LCPConfig().setAgent(e)
+                type = e['type']
+                agent_type = config.get_agent_type_by_id(type)
+                if agent_type is None:
+                    resp.body = '{"error": "agent_type "' + type + ' not found"}'
+                    resp.status = HTTP_NOT_FOUND
+                    return
+
+                config.setAgent(e)
+                if config.extra_enable:
+                    message = CBMessages(ToContextBrokerMessages.AddAgentInstance, e)
+                    CBClient().send(message)
+
 
             resp.status = HTTP_CREATED
         except ValidationError as e:
@@ -54,13 +69,17 @@ class AgentTypeResource(Base_Resource):
     @docstring(source="Agents/PostAgentTypeResource.yml")
     def on_post(self, req, resp):
         payload = req.media if isinstance(req.media, list) else [req.media]
+        config = LCPConfig()
 
         try:
             at_schema = AgentType(many=True)
             d = at_schema.validate(payload)
-
             for e in payload:
-                LCPConfig().setAgentType(e)
+                config.setAgentType(e)
+                if config.extra_enable:
+                    message = CBMessages(ToContextBrokerMessages.AddAgentType, e)
+                    CBClient().send(message)
+
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.body = e.data

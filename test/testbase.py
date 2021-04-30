@@ -10,6 +10,7 @@ class LCPTestBase(testing.TestCase):
 
     def setUp(self):
         super(LCPTestBase, self).setUp()
+        LCPConfig.__drop_it__()
         lcp = LCPConfig("examples/LCPConfig.yaml")
         lcp.reset()
         lcp.testing = True

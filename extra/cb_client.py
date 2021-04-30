@@ -5,6 +5,9 @@ from extra.lcp_config import LCPConfig
 import requests
 import traceback
 import json
+from utils.log import Log
+from extra.cb_helpers.agent_type_helper import AgentTypeForCBHelper
+from extra.cb_helpers.agent_instance_helper import AgentInstanceHelper
 
 TIMEOUT = 5
 
@@ -25,6 +28,7 @@ class CBClient:
         def __init__(self):
             self.config = LCPConfig()
             self.q = Queue()
+            self.log = Log.get('CBClient')
 
         def headers(self):
             headers = {"content-type": "application/json"}
@@ -46,8 +50,8 @@ class CBClient:
             try:
                 headers = self.headers()
                 resp = requests.get(query, headers=headers, timeout=TIMEOUT)
-            except TimeoutError:
-                return False
+            except TimeoutError as e:
+                self.log.exception(e)
 
             if resp.status_code == 200:
                 return True
@@ -66,24 +70,55 @@ class CBClient:
                     resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                          data=json.dumps(data))
                 else:
-                    print("YA CREADO!")
                     return
             except TimeoutError as e:
                 traceback.print_exc()
                 return False
 
-            if resp.status_code in (200, 201):
-                pass
+            if resp.status_code in (200, 201, 406):
+                return
             else:
                 message = CBMessages(ToContextBrokerMessages.AddExecEnvironment, data)
                 threading.Timer(15, self.send, [message]).start() #Retry in 15 secs.
 
 
-        def post_agent_type(self, data):
-            pass
+        def post_agent_type(self, agent):
+            if not 'context_broker' in self.config.config:
+                return False
+            query = self.config.context_broker['url'] + '/catalog/agent'
+            data = AgentTypeForCBHelper(agent).dumps()
 
-        def post_agent_instance(self, data):
-            pass
+            try:
+                resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
+                                     data=data)
+            except TimeoutError:
+                return False
+
+            if resp.status_code in (200, 201, 406):
+                return
+            else:
+                message = CBMessages(ToContextBrokerMessages.AddAgentType, agent)
+                threading.Timer(15, self.send, [message]).start() #Retry in 15 secs.
+
+        def post_agent_instance(self, agent_instance):
+            if not 'context_broker' in self.config.config:
+                return False
+            query = self.config.context_broker['url'] + '/instance/agent'
+            data = AgentInstanceHelper(agent_instance).dumps()
+            print(data)
+            try:
+                resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
+                                     data=data)
+            except TimeoutError:
+                return False
+
+            print("post_agent_instance - resp.status_code", resp.status_code)
+
+            if resp.status_code in (200, 201, 406):
+                return
+            else:
+                message = CBMessages(ToContextBrokerMessages.AddAgentInstance, agent_instance)
+                threading.Timer(15, self.send, [message]).start() #Retry in 15 secs.
 
         def qread(self):
             while True:

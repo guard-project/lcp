@@ -3,5 +3,5 @@
     "agent_catalog_id": "demoagenttype",
     "description": "demoagenttype for lcp d73f8a66-3ce6-4e23-9cdf-977a103c969d",
     "id": "demoagenttype@d73f8a66-3ce6-4e23-9cdf-977a103c969d",
-    "exec_env_id": "d73f8a66-3ce6-4e23-9cdf-977a103c969d"
+    "exec_env_id": "testing-lcp-01"
 }

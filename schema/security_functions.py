@@ -17,12 +17,12 @@ PARAMETER_TYPES = ['binary', 'boolean', 'choice',
 
 
 class AgentParameter(Base_Schema):
-    name = fields.Str(required=True, example="HeartbeatTime",
+    path = fields.Str(required=True, example="HeartbeatTime",
                       description="Name of the Parameter")
     type = fields.Str(required=True, example="integer",
                       description="Type of the Parameter: Int, Number, String...")
-    value = fields.Str(required=True, example="30",
-                       description="Value of the Parameter to be configured")
+    # value = fields.Str(required=True, example="30",
+    #                   description="Value of the Parameter to be configured")
     description = fields.Str(required=False, example="Time between Heartbeats",
                              description="Some description explaining the parameter")
     list = fields.Boolean(required=False, example="true",
@@ -47,10 +47,6 @@ class AgentResource(Base_Schema):
                          description="Config file example")
 
 
-class AgentConfig(Base_Schema):
-    pass
-
-
 class AgentType(Base_Schema):
     id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",
                     description="Agent Type ID.")
@@ -68,8 +64,6 @@ class AgentType(Base_Schema):
                           description="List of actions and expected result fro this agent")
     resources = List_or_One(fields.Nested(AgentResource), required=False,
                             description="List of agents Resources that could be used")
-    config = List_or_One(fields.Nested(AgentConfig), required=True,
-                         description="List of configurations of Agents")
 
 
 class Agent(Base_Schema):
@@ -77,11 +71,11 @@ class Agent(Base_Schema):
                     description="Security Function ID.")
     type = fields.Str(required=True, example="PROBE",
                       description="Type of the Security Function Associated with the LCP")
-    name = fields.Str(required=True, example="VM Sensor Probe",
-                      description="Name of the Agent Catalog")
-    version = fields.Str(required=True, example="1.0.1",
+    # name = fields.Str(required=False, example="VM Sensor Probe",
+    #                  description="Name of the Agent Catalog")
+    version = fields.Str(required=False, example="1.0.1",
                          description="Version of the Security Property associated")
-    vendor = fields.Str(required=True, example="FIWARE Foundation e.V.",
+    vendor = fields.Str(required=False, example="FIWARE Foundation e.V.",
                         description="Name of the vendor providing the security Function")
     description = fields.Str(required=False, example="Example agent",
                              description="Description of the Agent")
@@ -90,6 +84,6 @@ class Agent(Base_Schema):
     endpoint_url = fields.URL(required=False,
                               example="http://example.com:4250/v1/config",
                               description="URL if some to configure the Parameters.")
-    status = fields.Str(enum=AGENT_STATUS, example=AGENT_STATUS[0],
+    status = fields.Str(required=True, enum=AGENT_STATUS, example=AGENT_STATUS[0],
                         description='Update the status the of the agent-instance if the command is executed correctly.',
                         validate=validate.OneOf(AGENT_STATUS))

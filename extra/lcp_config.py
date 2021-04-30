@@ -7,6 +7,8 @@ from schema.filiation import ContextBrokerConnection
 from urllib.parse import urlparse
 from extra.extra_utils import UrlSchemaData
 
+from utils.log import Log
+
 CONTEXT_BROKER = 'context_broker'
 
 
@@ -14,6 +16,7 @@ class LCPConfig(object):
     class __LCPConfig:
         def __init__(self, filename):
             self.filename = filename
+            self.log = Log.get('LCPConfig')
             self.reset()
 
         def save(self):
@@ -184,12 +187,18 @@ class LCPConfig(object):
             for i in range(0, len(self.agent_types)):
                 if self.agent_types[i]['id'] == elem['id']:
                     updated = True
-                    self.agents[i] = elem
+                    self.agent_types[i] = elem
             if not updated:
                 self.agent_types.append(elem)
                 self.config['agent_types'] = self.agent_types
 
             self.save()
+
+        def get_agent_type_by_id(self, id):
+            for a in self.agent_types:
+                if a['id'] == id:
+                    return a
+            return None
 
         def findAgentType(self, id):
             for i in range(0, len(self.agent_types)):
@@ -346,7 +355,7 @@ class LCPConfig(object):
 
     instance = None
 
-    def __new__(cls, filename=None, *args, **kwargs):
+    def __new__(cls, filename=None):
         if LCPConfig.instance is None:
             print("LCPConfig is None")
             LCPConfig.instance = LCPConfig.__LCPConfig(filename)
@@ -357,3 +366,7 @@ class LCPConfig(object):
 
     def __setattr__(self, name):
         return setattr(self.instance, name)
+
+    @classmethod
+    def __drop_it__(self):
+        LCPConfig.instance = None

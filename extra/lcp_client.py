@@ -5,7 +5,7 @@ import threading
 import json
 from schema.filiation import ContextBrokerConnection as ContextBrokerConnectionSchema
 from marshmallow import ValidationError
-
+from extra.cb_helpers.agent_type_helper import AgentTypeForCBHelper
 from queue import Queue
 import enum
 import base64

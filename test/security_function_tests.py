@@ -4,6 +4,8 @@ from marshmallow.exceptions import ValidationError
 from test_utils import *
 
 from test.testbase import LCPTestBase
+import traceback
+from extra.cb_helpers.agent_instance_helper import AgentInstanceHelper
 
 
 class TestMyApp(LCPTestBase):
@@ -103,18 +105,19 @@ class TestMyApp(LCPTestBase):
             "cmd": "sudo systemctl stop goroku",
             "status": "stopped",
         }]
-        sf_actions = AgentActionSchema()
+        sf_actions = AgentActionSchema(many=True)
         try:
-            sf_actions.validate(agent_actions)
-        except ValidationError:
+            sf_actions.load(agent_actions)
+        except ValidationError as e:
+            traceback.print_exc(e)
             assert False
 
         sf_dict = loadExampleFile("security-function-example.json")
         sf = Agent()
-        sf_dict['actions'] = agent_actions
         try:
-            sf.validate(sf_dict)
-        except ValidationError:
+            sf.load(sf_dict)
+        except ValidationError as e:
+            traceback.print_exc(e)
             assert False
 
     def testAgentTypesPost(self):
@@ -144,7 +147,7 @@ class TestMyApp(LCPTestBase):
         headers = getAuthorizationHeaders()
         schema_agent_type = AgentType(many=True)
         try:
-            schema_agent_type.validate([at_dict])
+            schema_agent_type.load([at_dict])
         except ValidationError as e:
             print(e.messages)
 
@@ -166,3 +169,17 @@ class TestMyApp(LCPTestBase):
         assert len(body) == 1
         assert body[0]['id'] == config.agent_types[0]["id"]
         assert body[0]['id'] == config.config['agent_types'][0]["id"]
+
+    def testAgentTypeExample(self):
+        at_dict = loadExampleFile("agent-type-example.json")
+        config = getLCPConfig()
+
+        schema_agent_type = AgentType()
+        schema_agent_type.load(at_dict)
+
+        a_dict = loadExampleFile("agent-instance-example-for-lcp.json")
+        schema_agent = Agent()
+        schema_agent.load(a_dict)
+
+        aih = AgentInstanceHelper(a_dict)
+        print(aih.dumps())
