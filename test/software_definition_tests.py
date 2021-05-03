@@ -130,7 +130,10 @@ class TestMyApp(LCPTestBase):
         headers = getAuthorizationHeaders()
         container_dict = loadExampleFile("SoftwareInContainer.json")
 
+        cs = ContainerSchema()
+
         try:
+            cs.load(container_dict)
             # Test - Post
             resp = self.simulate_post("/self/container", headers=headers,
                                   body=json.dumps(container_dict))
@@ -150,3 +153,4 @@ class TestMyApp(LCPTestBase):
         except ValidationError as e:
             print(e)
             assert False
+
