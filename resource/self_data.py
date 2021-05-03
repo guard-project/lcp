@@ -81,6 +81,9 @@ class InitialSelfConfiguration(Base_Resource):
             cfg = LCPConfig()
             ic_schema = InitialConfigurationSchema(many=False)
             ic_schema.load(payload)
+            if cfg.exec_env_type is None:
+                host_info = HostInfoToLcpHelper().js_info
+                cfg.setDeployment(host_info)
             should_restart = cfg.setInitialConfiguration(payload)
             if should_restart:
                 from extra import startup_client_threads
