@@ -2,6 +2,7 @@ import multiprocessing
 import platform
 import psutil
 import subprocess
+from subprocess import PIPE
 import json
 from pathlib import Path
 from extra.hw_helpers.network_information import NetworkInterfacesInfo
@@ -105,7 +106,7 @@ class HostInformation:
 
     def retrieve_disk_info(self):
         command_str = ["lsblk","-Jb"]
-        cmd_res = subprocess.run(command_str, capture_output=True)
+        cmd_res = subprocess.run(command_str, stdout=PIPE, stderr=PIPE)
         js_str_data = cmd_res.stdout.decode('utf-8')
 
         dict_partitions = json.loads(js_str_data)
@@ -139,8 +140,11 @@ class HostInformation:
             return "docker-container"
 
         command_str = ["systemd-detect-virt"]
-        cmd_res = subprocess.run(command_str, capture_output=True)
-        js_str_data = cmd_res.stdout.decode('utf-8').strip()
+        cmd_res = subprocess.run(command_str, stdout=PIPE, stderr=PIPE)
+        if cmd_res.returncode != 0:
+            js_str_data = "none"
+        else:
+            js_str_data = cmd_res.stdout.decode('utf-8').strip()
 
 
         if js_str_data == "none":
