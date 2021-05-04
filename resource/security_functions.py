@@ -32,7 +32,6 @@ class SecurityFunction(Base_Resource):
         try:
             ag_schema = AgentSchema(many=True)
 
-            print("Previous to load..")
             d = ag_schema.load(payload)
 
             config = LCPConfig()

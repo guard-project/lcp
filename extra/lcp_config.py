@@ -20,7 +20,6 @@ class LCPConfig(object):
             self.reset()
 
         def save(self):
-            print("FIlename:", self.filename)
             if self.testing or not self.extra_enable:
                 return
             if not os.path.exists(self.filename):
