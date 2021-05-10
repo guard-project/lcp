@@ -14,11 +14,11 @@ from extra.hw_helpers.host_info import HostInfoToLcpHelper
 
 
 class DescribeDeployment(Base_Resource):
-    tag = {'name': 'hardware',
-           'description': 'Returns description of a Baremetal Server where LCP is deployed.'}
+    tag = {'name': 'self',
+           'description': 'This method does the initial configuration'}
     routes = '/self/deployment',
 
-    @docstring(source="BaremetalServer/GetBaremetalServerDeployment.yml")
+    @docstring(source="self/self_deployment.yaml")
     def on_get(self, req, resp):
        resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
             .validate(data={})
@@ -69,10 +69,11 @@ class DescribeSelf(Base_Resource):
 
 class InitialSelfConfiguration(Base_Resource):
     data = {}
-    tag = {'name': 'initial_configuration',
-           'description': 'This method does the initial configuration'}
+    tag = {'name': 'self',
+           'description': 'Initial configuration for the LCP'}
     routes = '/self/configuration',
 
+    @docstring(source="self/post.yaml")
     def on_post(self, req, resp):
         resp_Data, valid = InitialConfigurationSchema(method=HTTP_Method.POST) \
             .validate(data={})
@@ -99,7 +100,7 @@ class InitialSelfConfiguration(Base_Resource):
 
 class SelfAutoConfig(Base_Resource):
     data = {}
-    tag = {'name': 'initial_configuration',
+    tag = {'name': 'self',
            'description': 'This method does the initial configuration'}
     routes = '/self/autoconfig'
 

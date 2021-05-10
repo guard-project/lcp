@@ -23,8 +23,6 @@ class SonLCPIdentification(Base_Resource):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
            .validate(data={})
         child_nodes = LCPConfig().sons
-        # for k in Filiation.data:
-        #    child_nodes.append(Filiation.data[k])
         resp.body = json.dumps(child_nodes)
 
     @docstring(source="filiation/post.yaml")

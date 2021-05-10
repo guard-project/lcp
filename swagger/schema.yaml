@@ -346,6 +346,20 @@ definitions:
     - id
     - path
     type: object
+  ContextBrokerConnection:
+    properties:
+      auth_header:
+        example: Basic Z3VhcmQ6cGFzc3dvcmQK
+        type: string
+      url:
+        description: URL where the ContextBroker Listens
+        example: http://cb.example.com:5000
+        format: url
+        type: string
+    required:
+    - auth_header
+    - url
+    type: object
   Disk:
     properties:
       diskPartitions:
@@ -412,6 +426,48 @@ definitions:
     - line
     - reason
     type: object
+  ExecutionEnvironment:
+    properties:
+      environment:
+        description: Definition of environment hardware. Can be LXCContainer, DockerContainer,
+          VirtualServer, BaremetalServer
+        type: object
+      type:
+        description: Type of Exec. Env. Deployment
+        enum:
+        - bare-metal
+        - contailer-lxc
+        - vm
+        - container-k8s
+        - container-docker
+        - cloud
+        - mobile
+        - gateway
+        - application
+        example: bare-metal
+        type: string
+    required:
+    - environment
+    - type
+    type: object
+  InitialConfigurationSchema:
+    properties:
+      context_broker:
+        allOf:
+        - $ref: '#/definitions/ContextBrokerConnection'
+        description: Connection to Context broker if one required
+      extra_enable:
+        description: Describe if extra features are anabled or not
+        example: 'true'
+        type: boolean
+      lcp:
+        allOf:
+        - $ref: '#/definitions/LCPDescription'
+        description: Initial LCP configuration. Requisite to enable extra_features
+    required:
+    - extra_enable
+    - lcp
+    type: object
   Internal_Server_Error_Response:
     properties:
       code:
@@ -451,34 +507,6 @@ definitions:
     - id
     - name
     - url
-    type: object
-  LXCContainer:
-    properties:
-      host_id:
-        description: ID of underlying Baremetal or Virtual Server
-        example: 39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c
-        type: string
-      hostname:
-        description: LXC's name for the underlying example
-        example: lxc_kafka
-        type: string
-      id:
-        description: Id of the LXC Container.
-        example: bf9aff0c-6185-4b9f-8d39-c5f8e1b522e9
-        type: string
-      networkInterfaces:
-        description: List of Network Interfaces in the lxc container
-        items:
-          $ref: '#/definitions/NetworkInterface'
-        type: array
-      operatingSystem:
-        description: Emulated OS in the container
-        example: Ubuntu Linux 20.04.2 LTS
-        type: string
-    required:
-    - hostname
-    - id
-    - operatingSystem
     type: object
   NetworkInterface:
     properties:
@@ -680,69 +708,6 @@ definitions:
         default: Unsupported Media Type
     required:
     - message
-    type: object
-  VirtualServer:
-    properties:
-      cloud_id:
-        description: Cloud ID -- Maybe None if somehow hosted
-        example: a4518fe5-9da9-43a5-8bc6-1433e28935f1
-        type: string
-      cpus:
-        description: CPU Cores in the Server
-        example: '8'
-        type: integer
-      diskDevices:
-        items:
-          allOf:
-          - $ref: '#/definitions/Disk'
-          description: Disks installed in the Server
-        type: array
-      host_id:
-        description: ID of underlying Baremetal Server
-        example: 39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c
-        type: string
-      hostname:
-        description: Network interface Name in the OS
-        example: corporario.example.com
-        type: string
-      hypervisor:
-        description: Hypervisor name/technology
-        enum:
-        - kvm
-        - xen
-        - parallels
-        - virtualbox
-        - vmware-esxi
-        - hyper-v
-        - qemu
-        - vmware-player
-        - unknown
-        example: kvm
-        type: string
-      id:
-        description: Network Card UUID.
-        example: ed5bd35a-7213-47a9-ae6e-76212e62a157
-        type: string
-      networkInterfaces:
-        description: List of Network Interfaces in the Virtual Host
-        items:
-          $ref: '#/definitions/NetworkInterface'
-        type: array
-      operatingSystem:
-        description: Network interface Name in the OS
-        example: Ubuntu Linux 20.04.2 LTS
-        type: string
-      ram:
-        description: RAM installed in the Server in Megabytes
-        example: '8'
-        type: integer
-    required:
-    - cpus
-    - hostname
-    - hypervisor
-    - id
-    - operatingSystem
-    - ram
     type: object
 info:
   title: Local Control Plane
@@ -1294,71 +1259,6 @@ paths:
         deployed with LCP
       tags:
       - software
-  /lxc:
-    get:
-      description: 'Gets the information of an LXC Container
-
-        '
-      responses:
-        '200':
-          description: Get LXC Container's server Description
-          schema:
-            items:
-              $ref: '#/definitions/LXCContainer'
-            type: array
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the LXC description of an LCP
-      tags:
-      - hardware
-    post:
-      description: 'Posts the information of the Server
-
-        '
-      parameters:
-      - in: body
-        name: payload
-        required: true
-        schema:
-          items:
-            $ref: '#/definitions/LXCContainer'
-          type: array
-      responses:
-        '201':
-          description: The LXCContainer has been successfully updated.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: POST the LXC Container where
-      tags:
-      - hardware
   /lcp_son/{id}:
     delete:
       description: 'Gets a list of next links in the service chain filiated (as son
@@ -1390,7 +1290,7 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      summary: Get the "filiated" (or legitimated LCP childs) for the Service Chain
       tags:
       - filiation
     get:
@@ -1463,7 +1363,7 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      summary: Get the "filiated" (or legitimated LCP childs) for the Service Chain
       tags:
       - filiation
     post:
@@ -1504,136 +1404,6 @@ paths:
   /lcp_parent:
     get: {}
     post: {}
-  /baremetal:
-    get:
-      description: 'Gets the information of the Server where the LCP is deployed
-
-        '
-      responses:
-        '200':
-          description: Get the Server's configuration information from LCP
-          schema:
-            items:
-              $ref: '#/definitions/BaremetalServer'
-            type: array
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Baremetal server where the LCP is deployed on.
-      tags:
-      - hardware
-    post:
-      description: 'Posts the information of the Server where the LCP is deployed
-
-        '
-      parameters:
-      - in: body
-        name: payload
-        required: true
-        schema:
-          items:
-            $ref: '#/definitions/BaremetalServer'
-          type: array
-      responses:
-        '201':
-          description: The BaremetalServer has been successfully updated.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: POST the Baremetal server where the LCP is deployed on.
-      tags:
-      - hardware
-  /virtualserver:
-    get:
-      description: 'Gets the information of the Server where the LCP is deployed
-
-        '
-      responses:
-        '200':
-          description: Get the Server's configuration infromation from LCP
-          schema:
-            items:
-              $ref: '#/definitions/VirtualServer'
-            type: array
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Virtual server where the LCP is deployed on.
-      tags:
-      - hardware
-    post:
-      description: 'Posts the information of the Server where the LCP is deployed
-
-        '
-      parameters:
-      - in: body
-        name: payload
-        required: true
-        schema:
-          items:
-            $ref: '#/definitions/VirtualServer'
-          type: array
-      responses:
-        '201':
-          description: The VirtualServer has been successfully updated.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: POST the Baremetal server where the LCP is deployed on.
-      tags:
-      - hardware
   /cloud:
     get:
       description: 'Gets the information of one cloud Infrastrucutre
@@ -1833,15 +1603,23 @@ paths:
       - software
   /self/deployment:
     get:
-      description: 'Gets the information of the Server where the LCP is deployed
+      description: 'Gets the information of the Server where the LCP is deployed.
 
         '
       responses:
         '200':
-          description: Get the Server's configuration information from LCP where it
-            is deployed
+          description: 'Get'' the description of the execution environment. The value
+            for the
+
+            environment return value could be one of BaremetalServer, LXC Container,
+
+            Docker container, VirtualServer depending on the value for the "type"
+
+            of the execution environment.
+
+            '
           schema:
-            $ref: '#/definitions/BaremetalServer'
+            $ref: '#/definitions/ExecutionEnvironment'
         '400':
           description: Request not valid.
           schema:
@@ -1858,9 +1636,9 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Baremetal server where the LCP is deployed on.
+      summary: Get the execution environment deployment for the LCP
       tags:
-      - hardware
+      - self
     post:
       description: 'Posts the information of the Server where the LCP is deployed
 
@@ -1897,7 +1675,63 @@ paths:
   /self:
     get: {}
   /self/configuration:
-    post: {}
+    post:
+      description: 'Post initial configuration for the LCP. This includes information
+        about itself
+
+        like the execution environment ID (lcp.id), the URL where the LCP can be
+
+        contacted and a huma readable name.
+
+
+        Another parameter could be the GUARD''s Context Broker data including it''s
+        URL
+
+        and it''s authorization string.
+
+
+        It could also recieve a parameter to enable the extra features of LCP which
+
+        will enable the extra features such as self registering to GUARD''s Context
+
+        Broker.
+
+
+        This request will trigger a "self discovery" of the deployment of the
+
+        execution environment (baremental, container, vm), network configuration,
+
+        disks, cpus, ram, etc
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/InitialConfigurationSchema'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post initial configuration for the LCP.
+      tags:
+      - self
   /self/autoconfig:
     post: {}
 produces:
@@ -1910,37 +1744,29 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
-- &id002
+- &id001
   description: Returns the description of software installed
   name: software
 - description: Returns the description of software installed in containers
   name: software
-- &id001
-  description: Returns description of a LXCContainer.
-  name: hardware
 - description: Describes a "son" LCP linked in this service chain.
   name: filiation
 - description: Describes a "son" LCP linked in this service chain.
   name: lcp_relationships
 - description: Describes a "son" LCP linked in this service chain.
   name: lcp relationships
-- description: Returns description of a Baremetal Server.
-  name: hardware
-- description: Returns description of a Baremetal Server.
-  name: hardware
-- *id001
 - description: Description of a Cloud Infrastructure
   name: hardware
 - description: Returns description of a Baremetal Server.
   name: software
 - description: Sets/Returns description of a type of Agent.
   name: software
-- *id002
-- description: Returns description of a Baremetal Server where LCP is deployed.
-  name: hardware
+- *id001
+- description: This method does the initial configuration
+  name: self
 - description: Returns description of a Baremetal Server.
   name: hardware
+- description: Initial configuration for the LCP
+  name: self
 - description: This method does the initial configuration
-  name: initial_configuration
-- description: This method does the initial configuration
-  name: initial_configuration
+  name: self

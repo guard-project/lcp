@@ -1,0 +1,41 @@
+Post initial configuration for the LCP.
+---
+summary: Post initial configuration for the LCP.
+description: |
+  Post initial configuration for the LCP. This includes information about itself
+  like the execution environment ID (lcp.id), the URL where the LCP can be
+  contacted and a huma readable name.
+
+  Another parameter could be the GUARD's Context Broker data including it's URL
+  and it's authorization string.
+
+  It could also recieve a parameter to enable the extra features of LCP which
+  will enable the extra features such as self registering to GUARD's Context
+  Broker.
+
+  This request will trigger a "self discovery" of the deployment of the
+  execution environment (baremental, container, vm), network configuration,
+  disks, cpus, ram, etc
+
+
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema: InitialConfigurationSchema
+tags: [self]
+responses:
+  201:
+    description: Created
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

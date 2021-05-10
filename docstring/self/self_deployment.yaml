@@ -1,0 +1,27 @@
+Description of the Deployment for the execution environment
+---
+summary: Get the execution environment deployment for the LCP
+description: |
+  Gets the information of the Server where the LCP is deployed.
+tags: [self]
+responses:
+  200:
+    description: |
+      Get' the description of the execution environment. The value for the
+      environment return value could be one of BaremetalServer, LXC Container,
+      Docker container, VirtualServer depending on the value for the "type"
+      of the execution environment.
+
+    schema: ExecutionEnvironment
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema
