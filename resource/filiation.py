@@ -3,11 +3,10 @@ from resource.base import Base_Resource
 from marshmallow import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK, HTTP_ACCEPTED
 from lib.http import HTTP_Method
-from schema.filiation import LCPDescription, LCPFatherURL
+from schema.filiation import LCPDescription, LCPFatherConnection
 import json
 from extra.lcp_config import LCPConfig
 from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
-
 
 
 class SonLCPIdentification(Base_Resource):
@@ -18,10 +17,9 @@ class SonLCPIdentification(Base_Resource):
     def __init__(self):
         pass
 
-    @docstring(source='filiation/get.yaml')
     def on_get(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
-           .validate(data={})
+          .validate(data={})
         child_nodes = LCPConfig().sons
         resp.body = json.dumps(child_nodes)
 
@@ -57,7 +55,7 @@ class ParentLCPIdentification(Base_Resource):
         cfg = LCPConfig()
 
         try:
-            parent = LCPFatherURL(many=True)
+            parent = LCPFatherConnection(many=True)
             parent.load(payload)
             parent.validate(payload)
             for f in payload:

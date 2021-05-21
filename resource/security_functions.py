@@ -45,9 +45,8 @@ class SecurityFunction(Base_Resource):
                     return
 
                 config.setAgent(e)
-                if config.extra_enable:
-                    message = CBMessages(ToContextBrokerMessages.AddAgentInstance, e)
-                    CBClient().send(message)
+                message = CBMessages(ToContextBrokerMessages.AddAgentInstance, e)
+                CBClient().send(message)
 
 
             resp.status = HTTP_CREATED
@@ -75,9 +74,8 @@ class AgentTypeResource(Base_Resource):
             d = at_schema.validate(payload)
             for e in payload:
                 config.setAgentType(e)
-                if config.extra_enable:
-                    message = CBMessages(ToContextBrokerMessages.AddAgentType, e)
-                    CBClient().send(message)
+                message = CBMessages(ToContextBrokerMessages.AddAgentType, e)
+                CBClient().send(message)
 
             resp.status = HTTP_CREATED
         except ValidationError as e:

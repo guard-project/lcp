@@ -1,6 +1,6 @@
 from extra.lcp_config import LCPConfig
 import requests
-from requests.exceptions import Timeout
+from requests.exceptions import Timeout, ConnectionError
 import threading
 import json
 from schema.filiation import ContextBrokerConnection as ContextBrokerConnectionSchema
@@ -14,6 +14,7 @@ import base64
 class BetweenLCPMessages(enum.Enum):
     PostLCPSon = 1
     PostLCPParent = 2
+    END_THREAD = 100
 
 
 class LCPMessages:
@@ -46,12 +47,12 @@ class LCPClient(object):
             try:
                 resp = requests.post(parent['url'] + "/lcp_son", headers=headers,
                                      data=json.dumps(payload), timeout=5)
-                if resp.status_code == 200:
+                if resp.status_code == 200 or resp.status_code == 202:
                     data = resp.json()
                     cb_schema = ContextBrokerConnectionSchema()
-                    self.config.setContextBroker()
-                    cb_schema.validate(resp.json())
-            except (Timeout, ValidationError) as e:
+                    cb_schema.validate(data)
+                    self.config.setContextBroker(data)
+            except (Timeout, ValidationError, ConnectionError) as e:
                 threading.Timer(15, self.postLcpSon).start()
 
 
@@ -81,7 +82,7 @@ class LCPClient(object):
                                      json=data, timeout=5000)
                 if resp.status_code != 202: #Accepted
                     err = True
-            except Timeout as e:
+            except (Timeout, ConnectionError) as e:
                 err = True
 
             if err:
@@ -95,11 +96,14 @@ class LCPClient(object):
         def qread(self):
             while True:
                 message = self.q.get()
+                print("Got message", message)
 
                 if message.message_type == BetweenLCPMessages.PostLCPSon:
                     self.postLcpSon(message.data)
                 elif message.message_type == BetweenLCPMessages.PostLCPParent:
                     self.postLcpParentToSon(message.data)
+                elif message.message_type == BetweenLCPMessages.END_THREAD:
+                    break
 
         def send(self, message: LCPMessages):
             self.q.put(message)

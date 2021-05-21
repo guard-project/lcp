@@ -20,7 +20,7 @@ class LCPConfig(object):
             self.reset()
 
         def save(self):
-            if self.testing or not self.extra_enable:
+            if self.testing:
                 return
             if not os.path.exists(self.filename):
                 try:
@@ -32,7 +32,6 @@ class LCPConfig(object):
                 yaml.dump(self.config, f, default_flow_style=False)
 
         def reset(self):
-            self.extra_enable = False
             self.config = {}
             self.lcp = None
             self.sons = []
@@ -52,7 +51,7 @@ class LCPConfig(object):
             self.reload(self.filename)
 
         def has_extra_features(self):
-            if self.lcp is not None and 'lcp' in self.lcp and self.extra_enable == True:
+            if self.lcp is not None and 'lcp' in self.lcp:
                 return True
             return False
 
@@ -143,10 +142,6 @@ class LCPConfig(object):
 
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
-            try:
-                self.extra_enable = self.config['extra_enable']
-            except KeyError:
-                pass
 
         def setInitialConfiguration(self, dict_cfg):
             should_start_thread = False
@@ -164,12 +159,6 @@ class LCPConfig(object):
                 self.context_broker = {**self.context_broker, **d}
                 self.config['context_broker'] = self.context_broker
 
-            if 'extra_enable' in dict_cfg:
-                prev_extra = self.extra_enable
-                self.extra_enable = dict_cfg['extra_enable']
-                if not prev_extra and self.extra_enable:
-                    should_start_thread = True
-                self.config['extra_enable'] = self.extra_enable
             self.save()
             return should_start_thread
 
@@ -317,12 +306,13 @@ class LCPConfig(object):
             return data
 
         def exec_env_register_data(self):
+            print("..self:", self)
             d = {}
             lcp_info = {}
             d['id'] = self.lcp['id']
+            d['description'] = self.lcp['description']
             d['enabled'] = True
             # d['hostname'] = self.deployment['hostname']
-            d['description'] = self.lcp['name']
             # TODO - Change the partner!
             d['stage'] = ""
             d['lcp'] = lcp_info
@@ -367,5 +357,8 @@ class LCPConfig(object):
         return setattr(self.instance, name)
 
     @classmethod
-    def __drop_it__(self):
-        LCPConfig.instance = None
+    def __drop_it__(self, filename):
+        if LCPConfig.instance is None:
+            LCPConfig(filename)
+        LCPConfig.instance.filename
+        LCPConfig.instance.reload

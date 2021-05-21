@@ -6,18 +6,8 @@ from queue import Empty
 import requests
 from test.testbase import LCPTestBase
 
-# class FiliationTesting(testing.TestCase):
-#    def setUp(self):
-#        super(FiliationTesting, self).setUp()
-#        self.db = Arg_Reader.read()
-#        self.app = api(title=title, version=version,
-#                        dev_username=self.db.dev_username, dev_password=self.db.dev_password)
-
 
 class TestMyApp(LCPTestBase):
-    def _getAuthorizationHeaders(self):
-        return {"Authorization": "Basic bGNwOmd1YXJk"}
-
     def _getFiliationData(self):
         uuid = "94216230-ae26-464c-9541-cc0ca62cd1ce"
         url = "https://example.url.com:4443"
@@ -40,7 +30,7 @@ class TestMyApp(LCPTestBase):
             cfg.setSon({"id": uuids[i], "url": urls[i], "name": names[i]})
 
     def test_get_sons(self):
-        headers = self._getAuthorizationHeaders()
+        headers = getAuthorizationHeaders()
         SonLCPIdentification.data = {}
         config = getLCPConfig()
         config.deleteAllSons()
@@ -66,9 +56,8 @@ class TestMyApp(LCPTestBase):
         sons = result.json
         assert len(sons) == 4
 
-
     def test_get_filiation_by_id(self):
-        headers = self._getAuthorizationHeaders()
+        headers = getAuthorizationHeaders()
 
         result = self.simulate_get("/lcp_son/134", headers=headers)
         assert (result.status == "404 Not Found")
@@ -80,7 +69,6 @@ class TestMyApp(LCPTestBase):
         assert(payload['id'] == uuid)
         assert(payload['url'] == url)
 
-
     def test_post_filiation(self):
         # No Authorization for request:
         id, url, body_dict = self._getFiliationData()
@@ -88,7 +76,7 @@ class TestMyApp(LCPTestBase):
         body = lcp_info.dump(body_dict)
 
         # With Authorization header + OK data -- Expected: 201 Created
-        headers = self._getAuthorizationHeaders()
+        headers = getAuthorizationHeaders()
         print(body)
         result = self.simulate_post("/lcp_son", headers=headers, body=json.dumps(body))
         print("STATUS:", result.status)
@@ -112,14 +100,15 @@ class TestMyApp(LCPTestBase):
 
         result = self.simulate_post("/lcp_son", headers=headers,
                                     body=json.dumps(body))
+        print(result.status)
         assert result.status == "201 Created"
 
         result = self.simulate_get("/lcp_son", headers=headers)
-        print(result)
+        assert result.status == "200 OK"
 
     def test_delete_message(self):
         uuid, url, body_dict = self._getFiliationData()
-        headers = self._getAuthorizationHeaders()
+        headers = getAuthorizationHeaders()
         cfg = getLCPConfig()
 
         # Try delete with authorization, but non existent
@@ -133,17 +122,19 @@ class TestMyApp(LCPTestBase):
         assert (result.status == "200 OK")
         assert cfg.getSonById(uuid) is None
 
-
     def test_post_parent(self):
         parent = {"url": "http://example.com"}
         lcp_client = LCPClient()
         headers = getAuthorizationHeaders()
         cfg = getLCPConfig()
 
+        lcp_client.q.queue.clear()
+
         result = self.simulate_post("/lcp_parent", headers=headers, body=json.dumps(parent))
         assert result.status == "202 Accepted"
         try:
             message = lcp_client.q.get(timeout=3)
+            print("Message.message_type:",message.message_type)
             assert message.message_type == BetweenLCPMessages.PostLCPSon
             assert message.data['url'] == parent['url']
             assert len(cfg.parents) == 1
@@ -162,33 +153,68 @@ class TestMyApp(LCPTestBase):
         :return:
         """
         cfg = getLCPConfig()
-        parent = "http://localhost:4884"
+        parent = {"url": "http://localhost:4884"}
         lcp_client = LCPClient()
-        start_http_server()
+        start_mock_http_server()
+
         try:
-            message = LCPMessages(BetweenLCPMessages.PostLCPSon, parent)
+            message = LCPMessages(BetweenLCPMessages.PostLCPParent, parent)
             lcp_client.postLcpSon(message.data)
             try:
-                d = TestHttpServer.q.get(timeout=6000)
+                d = TestHttpServer.q.get(timeout=3)
+                # So, the LCP Son has called our mock server?
                 assert d['id'] == cfg.lcp['id']
                 assert d['url'] == cfg.lcp['url']
-                resp_message = lcp_client.q.get(timeout=3)
-                assert resp_message.data['url'] == d['url']
-                assert resp_message.data['id'] == d['id']
-                assert resp_message.message_type == BetweenLCPMessages.PostLCPSon
             except Empty:
                 assert False
         finally:
-            self.post_end_server()
+            stop_mock_http_server()
+            # from extra import end_client_threads
+            # end_client_threads()
         assert True
+
+    def test_post_parent_message_to_lcp(self):
+        """
+        This summulate that we are an LCP parent with our own http server on localhost:4884
+        This simulates the complete loop parent -> son , son -> parent
+        1. Simulate http POST to LCPSon as a parent to it
+        2. Reads within 5 seconds if the LCPSon, after the POST method is triggered sends a /lcp_son
+           op to the parent url (localhost:4884)
+        3. Compares if the SON LCP's data is what we expected.
+        4. Assert that
+        :return:
+        """
+        cfg = getLCPConfig()
+        parent = {"url": "http://localhost:4884"}
+        lcp_client = LCPClient()
+        start_mock_http_server()
+        headers = getAuthorizationHeaders()
+        from extra.clients_starter import startup_client_threads
+        startup_client_threads()
+
+        try:
+            result = self.simulate_post("/lcp_parent", headers=headers,
+                                        body=json.dumps(parent))
+            try:
+                d = TestHttpServer.q.get(timeout=3)
+                # So, the LCP Son has called our mock server?
+                assert d['id'] == cfg.lcp['id']
+                assert d['url'] == cfg.lcp['url']
+            except Empty:
+                assert False
+        finally:
+            stop_mock_http_server()
+            # from extra.clients_starter import end_client_threads
+            # end_client_threads()
+        assert True
+
 
     def test_http_server(self):
         headers = getAuthorizationHeaders()
         headers['content-type'] = "application/json"
         print(headers)
-        start_http_server()
-        requests.post("http://localhost:4884/terminate",json=json.dumps({"hola":"mundo"}),
-                      headers=headers, )
+        start_mock_http_server()
+        stop_mock_http_server()
 
         try:
             # Tests that the Http server is closed...
@@ -196,10 +222,3 @@ class TestMyApp(LCPTestBase):
             assert False
         except requests.exceptions.ConnectionError:
             assert True
-
-    def post_end_server(self):
-        headers = getAuthorizationHeaders()
-        headers['content-type'] = "application/json"
-        requests.post("http://localhost:4884/terminate",json=json.dumps({"hola":"mundo"}),
-                      headers=headers, )
-

@@ -7,7 +7,7 @@ from utils.schema import List_or_One
 __all__ = [
     'LCPDescription',
     'ContextBrokerConnection',
-    'LCPFatherURL',
+    'LCPFatherConnection',
     'InitialConfigurationSchema'
 ]
 
@@ -19,21 +19,23 @@ class LCPDescription(Base_Schema):
                     description="Unique ID for the Son LCP")
     url = fields.URL(required=True, example="http://lcpapi.example.com:4000",
                      description="URL where the Son LCP Listens")
-    name = fields.Str(required=True, example="lcp:node1",
-                      description="A Human readable name which could be depicted in graphs")
+    description = fields.Str(required=False, example="Testing LCP in localhost",
+                             description="A Human readable description, so it is easy to identify")
 
 
-class LCPFatherURL(Base_Schema):
+class LCPFatherConnection(Base_Schema):
     """Father sends the URL to their sons so they can send their "filiation" requests """
     url = fields.URL(required=True, example="http://lcpapi.example.com:4000",
                  description="URL where the Son LCP Listens")
+    authMethod = fields.Str(required=False, example="none",
+                            description="validation Method for this LCP")
 
 
 class ContextBrokerConnection(Base_Schema):
     """ Basic connection Description for LCPs to connect to Context Broker"""
     url = fields.URL(required=True, example="http://cb.example.com:5000",
                      description="URL where the ContextBroker Listens")
-    auth_header = fields.Str(required=True,
+    auth_header = fields.Str(required=False,
                              example="Basic Z3VhcmQ6cGFzc3dvcmQK")
     # user = fields.Str(required=True, example="cb",
     #                   description="Context Broker user with rights to set new exec-envs")
@@ -47,5 +49,3 @@ class InitialConfigurationSchema(Base_Schema):
                         description="Initial LCP configuration. Requisite to enable extra_features")
     context_broker = fields.Nested(ContextBrokerConnection, required=False,
                                    description="Connection to Context broker if one required")
-    extra_enable = fields.Boolean(required=True, example="true",
-                                  description="Describe if extra features are anabled or not")

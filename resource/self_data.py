@@ -11,7 +11,7 @@ import json
 from extra.cb_client import CBClient, CBMessages, ToContextBrokerMessages
 
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
-
+from extra.controller import LCPController
 
 class DescribeDeployment(Base_Resource):
     tag = {'name': 'self',
@@ -79,19 +79,11 @@ class InitialSelfConfiguration(Base_Resource):
             .validate(data={})
         payload = req.media
         try:
-            cfg = LCPConfig()
+            controller = LCPController()
             ic_schema = InitialConfigurationSchema(many=False)
             ic_schema.load(payload)
-            if cfg.exec_env_type is None:
-                host_info = HostInfoToLcpHelper().js_info
-                cfg.setDeployment(host_info)
-            should_restart = cfg.setInitialConfiguration(payload)
-            if should_restart:
-                from extra import startup_client_threads
-                startup_client_threads()
-            elif 'context-broker' in payload:
-                from extra import ThreadCB
-                ThreadCB.send_cb_messages()
+            res = controller.set_self_initial_configuration(payload)
+
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.body = e.data

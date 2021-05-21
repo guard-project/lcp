@@ -1,4 +1,8 @@
 lcp:
   id: d73f8a66-3ce6-4e23-9cdf-977a103c969d
-  name: test-guard-local-lcp
+  description: test guard local lcp
   url: http://localhost:4000
+context_broker:
+  url: http://localhost:5000
+  auth_header: Basic Z3VhcmQ6cGFzc3dvcmQK
+type: bare-metal

@@ -16,6 +16,7 @@ class ToContextBrokerMessages(enum.Enum):
     AddExecEnvironment = 1
     AddAgentType = 2
     AddAgentInstance = 3
+    END_THREAD = 100
 
 
 class CBMessages:
@@ -130,6 +131,8 @@ class CBClient:
                     self.post_agent_type(message.data)
                 elif message.message_type == ToContextBrokerMessages.AddAgentInstance:
                     self.post_agent_instance(message.data)
+                elif message.message_type == ToContextBrokerMessages.END_THREAD:
+                    break
 
         def send(self, message: CBMessages):
             self.q.put(message)

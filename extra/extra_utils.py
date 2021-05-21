@@ -1,7 +1,8 @@
 from urllib.parse import urlparse
 
-HTTP_SCHEME  = "http"
+HTTP_SCHEME = "http"
 HTTPS_SCHEME = "https"
+
 
 class UrlSchemaData:
     def __init__(self, url):

@@ -12,12 +12,6 @@ from test_utils import *
 
 from test.testbase import LCPTestBase
 
-# class CloudInfrastructureTesting(testing.TestCase):
-#   def setUp(self):
-#        super(CloudInfrastructureTesting, self).setUp()
-#        self.db = Arg_Reader.read()
-#        self.app = api(title=title, version=version,
-#                       dev_username=self.db.dev_username, dev_password=self.db.dev_password)
 
 class TestMyApp(LCPTestBase):
     def _getSecurityFucntionExample(self):

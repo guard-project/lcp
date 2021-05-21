@@ -18,6 +18,8 @@ from api import api  # noqa: E402
 from reader.arg import Arg_Reader  # noqa: E402
 from utils.log import Log  # noqa: E402
 
+from extra.controller import LCPController
+
 if __name__ == "__main__":
     db = Arg_Reader.read()
 
@@ -30,4 +32,7 @@ if __name__ == "__main__":
         Log.init(config=db.log_config)
         api_instance = api(title=title, version=version)
         Log.get('api').success(f'Accept requests at {db.host}:{db.port}')
+
+        LCPController().start_threads()
+
         waitress.serve(api_instance, host=db.host, port=db.port, expose_tracebacks=False, ident=ident, _quiet=True)

@@ -41,18 +41,24 @@ class TestMyApp(LCPTestBase):
         body = result.json
         assert (type(body) is list)
         assert len(body) == 1
-        assert body[0]['name'] == "VM Sensor Probe"
 
 
     def test_post_security_function(self):
         sf_dict = loadExampleFile("security-function-example.json")
+        sft_dict = loadExampleFile("agent-type-example.json")
         config = getLCPConfig()
         headers = getAuthorizationHeaders()
         config.dropAllAgents()
 
+        body = json.dumps(sft_dict)
+        result = self.simulate_post("/agent/type", headers=headers,
+                                    body=body)
+        print("SFT: ", result.status_code)
+
         body = json.dumps(sf_dict)
         result = self.simulate_post("/agent/instance", headers=headers,
                                     body=body)
+        print(result.status_code)
         assert(result.status_code == 201)
         assert len(config.agents) == 1
         assert config.agents[0]["id"] == sf_dict["id"]

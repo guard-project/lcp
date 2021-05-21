@@ -11,15 +11,6 @@ from test_utils import *
 from utils.log import Log  # noqa: E402
 from test.testbase import LCPTestBase
 
-# class BaremetalServerTesting(testing.TestCase):
-#    def setUp(self):
-#        super(BaremetalServerTesting, self).setUp()
-#        self.db = Arg_Reader.read()
-#        Log.init(config="../"+self.db.log_config)
-#        log = Log.get('api')
-#        self.app = api(title=title, version=version)
-#            # , dev_username=self.db.dev_username, dev_password=self.db.dev_password)
-
 
 class TestMyApp(LCPTestBase):
     def _getBaremetalServer(self):
@@ -35,10 +26,10 @@ class TestMyApp(LCPTestBase):
         try:
             d = bm_server.load(server)
             print(d)
-            assert(True)
+            assert (True)
         except ValidationError as ve:
             print(ve)
-            assert(False)
+            assert (False)
 
         """ dict_disk_partitions =self._getTestingPartitionsHD2()
         valid = dp.validate(dict_disk_partitions)
@@ -85,6 +76,7 @@ class TestMyApp(LCPTestBase):
         BaremetalServerResource.data = []
 
         result = self.simulate_get("/baremetal", headers=headers)
+        print(result.status)
         assert (result.status == "200 OK")
         body = result.json
         assert (type(body) is list)
@@ -105,7 +97,6 @@ class TestMyApp(LCPTestBase):
             print(ve)
             assert False
 
-
     def test_post_baremetal_server(self):
         bm_server_dict = loadExampleFile("bare-metal-server-example.json")
         headers = getAuthorizationHeaders()
@@ -117,5 +108,3 @@ class TestMyApp(LCPTestBase):
         assert result.status_code == 201
         assert len(BaremetalServerResource.data) == 1
         assert BaremetalServerResource.data[0]["id"] == bm_server_dict["id"]
-
-

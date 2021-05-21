@@ -1,0 +1,11 @@
+{
+    "lcp": {
+        "id": "lcptestdemo",
+        "description": "This is a initial configuration of LCP for demos",
+        "url": "http://localhost:4000"
+    },
+    "context_broker": {
+        "url": "http://localhost:5000",
+        "auth_header": "Basic Z3VhcmQ6cGFzc3dvcmQK"
+    }
+}

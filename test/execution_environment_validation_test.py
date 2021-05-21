@@ -16,7 +16,7 @@ class TestMyApp(LCPTestBase):
         self.bm_server_dict = loadExampleFile("bare-metal-server-example.json")
         self.lxc_container_dict = loadExampleFile("lxc-example.json")
 
-    def testCrossedCastings(self):
+    def test_crossed_castings(self):
         bm_schema = BaremetalServer()
         vs_schema = VirtualServer()
         lxc_schema = LXCContainer()
@@ -31,7 +31,14 @@ class TestMyApp(LCPTestBase):
         except ValidationError as ve:
             print(ve.messages)
 
-    def testExecutionEnvironment(self):
+    def test_execution_environment(self):
+        """
+        Test loading different cases of execution environments and its loading and validation.
+
+        :return:
+        """
+
+        # Test for VirtualServer Schema type
         virtual_server_schema = VirtualServer()
         ee_type = "vm"
 
@@ -40,7 +47,7 @@ class TestMyApp(LCPTestBase):
         ee_schema = ExecutionEnvironment()
 
         try:
-            ee_schema.load(self.v_server_dict)
+            ee_schema.load(data)
         except ValidationError:
             assert True
 
@@ -50,6 +57,7 @@ class TestMyApp(LCPTestBase):
         except ValidationError:
             assert False
 
+        # Test for validation of bare-metal server type declaring a VirtualServer -
         ee_schema = ExecutionEnvironment()
         data = {"type": ee_type, "environment": self.bm_server_dict}
         try:

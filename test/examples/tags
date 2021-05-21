@@ -1,0 +1,30 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^{$/;"	o	language:JSON
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^{$/;"	o	language:JSON
+2	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^{$/;"	o	language:JSON
+auth_header	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "auth_header": "Basic Z3VhcmQ6cGFzc3dvcmQK"$/;"	s	language:JSON	object:context_broker
+context_broker	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^    "context_broker": {$/;"	o	language:JSON
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01"$/;"	s	language:JSON	object:0
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01"$/;"	s	language:JSON	object:1
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01"$/;"	s	language:JSON	object:2
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "description": "This is a initial configuration of LCP for demos",$/;"	s	language:JSON	object:lcp
+endpoint_url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "endpoint_url": "http:\/\/example.com:4250\/v1\/config",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-01:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-02:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:1
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-03:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:2
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "id": "lcptestdemo",$/;"	s	language:JSON	object:lcp
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "id": "lcptestdemo",$/;"	s	language:JSON	object:lcp
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "id": "5db06770-8c64-4693-9724-ff318b02f897",$/;"	s	language:JSON
+lcp	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^    "lcp": {$/;"	o	language:JSON
+lcp	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^    "lcp": {$/;"	o	language:JSON
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "name": "test-guard-local-lcp",$/;"	s	language:JSON	object:lcp
+status	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "status": "stopped"$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "type": "demoagenttype",$/;"	s	language:JSON
+url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-01.lab.fiware.org",$/;"	s	language:JSON	object:0
+url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-02.lab.fiware.org",$/;"	s	language:JSON	object:1
+url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-03.lab.fiware.org",$/;"	s	language:JSON	object:2
+url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "url": "http:\/\/localhost:4000"$/;"	s	language:JSON	object:lcp
+url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "url": "http:\/\/localhost:5000",$/;"	s	language:JSON	object:context_broker
+url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "url": "http:\/\/localhost:4000"$/;"	s	language:JSON	object:lcp
+vendor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "vendor": "FIWARE Foundation e.V.",$/;"	s	language:JSON
+version	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "version": "1.0.1",$/;"	s	language:JSON

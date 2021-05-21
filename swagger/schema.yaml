@@ -357,7 +357,6 @@ definitions:
         format: url
         type: string
     required:
-    - auth_header
     - url
     type: object
   Disk:
@@ -456,16 +455,11 @@ definitions:
         allOf:
         - $ref: '#/definitions/ContextBrokerConnection'
         description: Connection to Context broker if one required
-      extra_enable:
-        description: Describe if extra features are anabled or not
-        example: 'true'
-        type: boolean
       lcp:
         allOf:
         - $ref: '#/definitions/LCPDescription'
         description: Initial LCP configuration. Requisite to enable extra_features
     required:
-    - extra_enable
     - lcp
     type: object
   Internal_Server_Error_Response:
@@ -490,13 +484,13 @@ definitions:
     type: object
   LCPDescription:
     properties:
+      description:
+        description: A Human readable description, so it is easy to identify
+        example: Testing LCP in localhost
+        type: string
       id:
         description: Unique ID for the Son LCP
         example: 15d41167-79d3-48bf-b8db-9db0c8cc8d54
-        type: string
-      name:
-        description: A Human readable name which could be depicted in graphs
-        example: lcp:node1
         type: string
       url:
         description: URL where the Son LCP Listens
@@ -505,7 +499,6 @@ definitions:
         type: string
     required:
     - id
-    - name
     - url
     type: object
   NetworkInterface:
@@ -1333,39 +1326,7 @@ paths:
       tags:
       - filiation
   /lcp_son:
-    get:
-      description: 'Gets a list of next links in the service chain filiated (as son
-        childs) with
-
-        this Execution Environment.
-
-        '
-      responses:
-        '200':
-          description: Status data of the LCP.
-          schema:
-            items:
-              $ref: '#/definitions/LCPDescription'
-            type: array
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the "filiated" (or legitimated LCP childs) for the Service Chain
-      tags:
-      - filiation
+    get: {}
     post:
       description: 'Gets a list of next links in the service chain filiated (as son
         childs) with

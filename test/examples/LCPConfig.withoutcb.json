@@ -1,0 +1,7 @@
+{
+    "lcp": {
+        "id": "lcptestdemo",
+        "name": "test-guard-local-lcp",
+        "url": "http://localhost:4000"
+    }
+}
