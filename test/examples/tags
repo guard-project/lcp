@@ -9,6 +9,7 @@ description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/example
 description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01"$/;"	s	language:JSON	object:2
 description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "description": "This is a initial configuration of LCP for demos",$/;"	s	language:JSON	object:lcp
 endpoint_url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "endpoint_url": "http:\/\/example.com:4250\/v1\/config",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "id": "demoagenttype@lcp",$/;"	s	language:JSON
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-01:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:0
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-02:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:1
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-03:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:2
@@ -18,7 +19,10 @@ id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/securit
 lcp	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^    "lcp": {$/;"	o	language:JSON
 lcp	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^    "lcp": {$/;"	o	language:JSON
 name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "name": "test-guard-local-lcp",$/;"	s	language:JSON	object:lcp
+partner	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "partner": "FIWARE Foundation e.V.",$/;"	s	language:JSON
+status	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "status": "started"$/;"	s	language:JSON
 status	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "status": "stopped"$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "type": "demoagenttype_afoo",$/;"	s	language:JSON
 type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "type": "demoagenttype",$/;"	s	language:JSON
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-01.lab.fiware.org",$/;"	s	language:JSON	object:0
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-02.lab.fiware.org",$/;"	s	language:JSON	object:1
@@ -26,5 +30,7 @@ url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/Filiat
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "url": "http:\/\/localhost:4000"$/;"	s	language:JSON	object:lcp
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "url": "http:\/\/localhost:5000",$/;"	s	language:JSON	object:context_broker
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "url": "http:\/\/localhost:4000"$/;"	s	language:JSON	object:lcp
+vendor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "vendor": "GUARD Project",$/;"	s	language:JSON
 vendor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "vendor": "FIWARE Foundation e.V.",$/;"	s	language:JSON
+version	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "version": "1.1.0",$/;"	s	language:JSON
 version	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "version": "1.0.1",$/;"	s	language:JSON

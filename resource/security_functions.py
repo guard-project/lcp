@@ -7,7 +7,7 @@ from marshmallow.exceptions import ValidationError
 from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE, HTTP_NOT_FOUND
 from extra.lcp_config import LCPConfig
 from extra.cb_client import CBClient, ToContextBrokerMessages, CBMessages
-
+from extra.controller import LCPController
 
 class SecurityFunction(Base_Resource):
     tag = {'name': 'software',
@@ -31,23 +31,17 @@ class SecurityFunction(Base_Resource):
         payload = req.media if isinstance(req.media, list) else [req.media]
         try:
             ag_schema = AgentSchema(many=True)
+            ag_schema.load(payload)
 
-            d = ag_schema.load(payload)
-
-            config = LCPConfig()
+            controller = LCPController()
 
             for e in payload:
-                type = e['type']
-                agent_type = config.get_agent_type_by_id(type)
-                if agent_type is None:
-                    resp.body = '{"error": "agent_type "' + type + ' not found"}'
+                try:
+                    controller.set_agent_instance(e)
+                except KeyError:
+                    resp.body = '{"error": "agent_type "' + e['type'] + ' not found"}'
                     resp.status = HTTP_NOT_FOUND
                     return
-
-                config.setAgent(e)
-                message = CBMessages(ToContextBrokerMessages.AddAgentInstance, e)
-                CBClient().send(message)
-
 
             resp.status = HTTP_CREATED
         except ValidationError as e:
@@ -67,16 +61,13 @@ class AgentTypeResource(Base_Resource):
     @docstring(source="Agents/PostAgentTypeResource.yml")
     def on_post(self, req, resp):
         payload = req.media if isinstance(req.media, list) else [req.media]
-        config = LCPConfig()
+        controller = LCPController()
 
         try:
             at_schema = AgentType(many=True)
             d = at_schema.validate(payload)
             for e in payload:
-                config.setAgentType(e)
-                message = CBMessages(ToContextBrokerMessages.AddAgentType, e)
-                CBClient().send(message)
-
+                controller.set_agent_type(e)
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.body = e.data

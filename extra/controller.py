@@ -48,6 +48,10 @@ class LCPController:
                                      agent_type)
                 cb_client.send(message)
 
+            # In case of new registered LCP, let logstash have some time
+            # to finish its task...
+            time.sleep(1)
+
             # Register Agents
             for agent in self.config.agents:
                 message = CBMessages(ToContextBrokerMessages.AddAgentInstance, agent)
@@ -85,6 +89,21 @@ class LCPController:
             if 'lcp' in payload and not self.initial_messages_to_lcp_sent:
                 self.send_initial_messages_lcp()
 
+        def set_agent_type(self, playload):
+            self.config.setAgentType(playload)
+            if self.config.context_broker is not None:
+                message = CBMessages(ToContextBrokerMessages.AddAgentType, playload)
+                CBClient().send(message)
+
+        def set_agent_instance(self, payload):
+            req_agent_type = payload['type']
+            agent_type = self.config.get_agent_type_by_id(req_agent_type)
+            if agent_type is None:
+                raise KeyError()
+            self.config.setAgent(payload)
+            if self.config.context_broker is not None:
+                message = CBMessages(ToContextBrokerMessages.AddAgentInstance, payload)
+                CBClient().send(message)
 
 
     instance = None

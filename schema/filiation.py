@@ -19,6 +19,8 @@ class LCPDescription(Base_Schema):
                     description="Unique ID for the Son LCP")
     url = fields.URL(required=True, example="http://lcpapi.example.com:4000",
                      description="URL where the Son LCP Listens")
+    name = fields.Str(required=True, example="lcp-example",
+                      description="Name for the LCP in readable human format")
     description = fields.Str(required=False, example="Testing LCP in localhost",
                              description="A Human readable description, so it is easy to identify")
 
