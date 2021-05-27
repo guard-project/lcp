@@ -667,17 +667,17 @@
     "Code_Request": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "example": "firewall",
+          "description": "Code id."
+        },
         "code": {
           "type": "array",
           "description": "Code source",
           "items": {
             "type": "string"
           }
-        },
-        "id": {
-          "type": "string",
-          "example": "firewall",
-          "description": "Code id."
         }
       },
       "required": [
@@ -685,61 +685,55 @@
         "id"
       ]
     },
-    "Config_Parameter_Request": {
+    "Config_Action_Request": {
       "type": "object",
       "properties": {
+        "cmd": {
+          "type": "string",
+          "description": "Command."
+        },
+        "daemon": {
+          "type": "boolean",
+          "example": true,
+          "description": "Execute the command as daemon."
+        },
         "id": {
           "type": "string",
-          "example": "period",
-          "description": "Id of the parameter."
+          "example": "start",
+          "description": "Id of the action."
         },
-        "schema": {
+        "output_format": {
           "type": "string",
           "enum": [
-            "json",
-            "properties",
-            "xml",
-            "yaml"
+            "plain",
+            "lines",
+            "json"
           ],
-          "example": "yaml",
-          "description": "Scheme."
+          "example": "lines",
+          "description": "Format of the output of the command."
         },
-        "path": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "example": "period",
-            "description": "Key path."
-          }
-        },
-        "source": {
+        "args": {
           "type": "string",
-          "example": "firewall.xml",
-          "description": "Source filename."
-        },
-        "value": {
-          "example": "10s",
-          "description": "Parameter new value."
+          "example": "-al",
+          "description": "Single command argument."
         }
       },
       "required": [
-        "id",
-        "schema",
-        "source",
-        "value"
+        "cmd",
+        "id"
       ]
     },
     "Config_Resource_Request": {
       "type": "object",
       "properties": {
-        "content": {
-          "type": "string",
-          "description": "Resource content."
-        },
         "id": {
           "type": "string",
           "example": "filebeat-config",
           "description": "Id of the resource."
+        },
+        "content": {
+          "type": "string",
+          "description": "Resource content."
         },
         "path": {
           "type": "string",
@@ -753,52 +747,58 @@
         "path"
       ]
     },
-    "Config_Action_Request": {
+    "Config_Parameter_Request": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "example": "start",
-          "description": "Id of the action."
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "period",
+            "description": "Key path."
+          }
         },
-        "daemon": {
-          "type": "boolean",
-          "example": true,
-          "description": "Execute the command as daemon."
-        },
-        "args": {
-          "type": "string",
-          "example": "-al",
-          "description": "Single command argument."
-        },
-        "cmd": {
-          "type": "string",
-          "description": "Command."
-        },
-        "output_format": {
+        "schema": {
           "type": "string",
           "enum": [
-            "plain",
-            "lines",
-            "json"
+            "json",
+            "properties",
+            "xml",
+            "yaml"
           ],
-          "example": "lines",
-          "description": "Format of the output of the command."
+          "example": "yaml",
+          "description": "Scheme."
+        },
+        "id": {
+          "type": "string",
+          "example": "period",
+          "description": "Id of the parameter."
+        },
+        "value": {
+          "example": "10s",
+          "description": "Parameter new value."
+        },
+        "source": {
+          "type": "string",
+          "example": "firewall.xml",
+          "description": "Source filename."
         }
       },
       "required": [
-        "cmd",
-        "id"
+        "id",
+        "schema",
+        "source",
+        "value"
       ]
     },
     "Config_Request": {
       "type": "object",
       "properties": {
-        "parameters": {
-          "description": "List of parameters.",
+        "actions": {
+          "description": "List of actions.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Config_Parameter_Request"
+            "$ref": "#/definitions/Config_Action_Request"
           }
         },
         "resources": {
@@ -808,11 +808,11 @@
             "$ref": "#/definitions/Config_Resource_Request"
           }
         },
-        "actions": {
-          "description": "List of actions.",
+        "parameters": {
+          "description": "List of parameters.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Config_Action_Request"
+            "$ref": "#/definitions/Config_Parameter_Request"
           }
         }
       }
@@ -825,17 +825,17 @@
           "example": "apache",
           "description": "ID of the execution environment."
         },
-        "last_heartbeat": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2019/02/14 15:23:33",
-          "description": "Timestamp of the expiration of the API access configuration."
-        },
         "started": {
           "type": "string",
           "format": "date-time",
           "example": "2019/02/14 15:23:30",
           "description": "Timestamp when the LCP is started"
+        },
+        "last_heartbeat": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2019/02/14 15:23:33",
+          "description": "Timestamp of the expiration of the API access configuration."
         }
       },
       "required": [
