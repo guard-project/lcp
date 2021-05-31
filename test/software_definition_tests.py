@@ -71,11 +71,11 @@ class TestMyApp(LCPTestBase):
             assert resp.status_code == 201
 
             # Test - Update
-            software_dict["name"]="MySQL Server"
+            software_dict["product"]="MySQL Server"
             resp = self.simulate_post("/self/software", headers=headers,
                                       body=json.dumps(software_dict))
             assert len(self_software) == 1
-            assert self_software[0]["name"] == software_dict["name"]
+            assert self_software[0]["product"] == software_dict["product"]
             assert resp.status_code == 201
 
         except ValidationError as e:

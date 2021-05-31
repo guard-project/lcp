@@ -1,9 +1,8 @@
-Get info about the status of the LCP in the execution environment.
+Removes an LCP as a son of the queried LCP.
 ---
-summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+summary: Removes an LCP Son given its ID
 description: |
-  Gets a list of next links in the service chain filiated (as son childs) with
-  this Execution Environment.
+  Removes one Son of the queried LCP given its ID.
 parameters:
   - name: id
     requiered: true
@@ -11,7 +10,7 @@ parameters:
     schema:
         type: string
     description: id of LCP son to be queried
-tags: [filiation]
+tags: [lcp_relationships]
 responses:
   200:
     description: Status data of the LCP.

@@ -3,7 +3,7 @@ from resource.base import Base_Resource
 from marshmallow import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK, HTTP_ACCEPTED
 from lib.http import HTTP_Method
-from schema.filiation import LCPDescription, LCPFatherConnection
+from schema.lcp_schemas import LCPDescription, LCPFatherConnection
 import json
 from extra.lcp_config import LCPConfig
 from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
@@ -17,13 +17,14 @@ class SonLCPIdentification(Base_Resource):
     def __init__(self):
         pass
 
+    @docstring(source="filiation/get_lcp_son.yaml")
     def on_get(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
           .validate(data={})
         child_nodes = LCPConfig().sons
         resp.body = json.dumps(child_nodes)
 
-    @docstring(source="filiation/post.yaml")
+    @docstring(source="filiation/post_lcp_son.yaml")
     def on_post(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.POST) \
             .validate(data={})
@@ -42,12 +43,13 @@ class SonLCPIdentification(Base_Resource):
 
 
 class ParentLCPIdentification(Base_Resource):
-    tag = {'name': 'lcp relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}
+    tag = {'name': 'lcp_relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}
     routes = '/lcp_parent'
 
     def __init__(self):
         pass
 
+    @docstring(source="filiation/post_lcp_parent.yaml")
     def on_post(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.POST) \
             .validate(data={})
@@ -66,6 +68,7 @@ class ParentLCPIdentification(Base_Resource):
             resp.status = HTTP_NOT_ACCEPTABLE
             resp.body = json.dumps(e.messages)
 
+    @docstring(source="filiation/get_lcp_parents.yaml")
     def on_get(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
            .validate(data={})
@@ -74,13 +77,13 @@ class ParentLCPIdentification(Base_Resource):
 
 
 class SonRequestIdentificationById(Base_Resource):
-    tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service chain.'}
+    tag = {'name': 'lcp_relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}
     routes = '/lcp_son/{id}',
 
     def __init__(self):
         pass
 
-    @docstring(source='filiation/get_by_id.yaml')
+    @docstring(source='filiation/get_lcp_son_by_id.yaml')
     def on_get(self, req, resp, id):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
             .validate(data={}, id=id)
@@ -92,7 +95,7 @@ class SonRequestIdentificationById(Base_Resource):
         else:
             resp.body = json.dumps(son)
 
-    @docstring(source='filiation/get.yaml')
+    @docstring(source='filiation/delete_lcp_son_by_id.yaml')
     def on_delete(self, req, resp, id):
         resp_Data, valid = LCPDescription(method=HTTP_Method.DELETE) \
             .validate(data={}, id=id)

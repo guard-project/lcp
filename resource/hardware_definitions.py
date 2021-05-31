@@ -1,6 +1,6 @@
 from docstring import docstring
 from resource.base import Base_Resource
-from schema.filiation import LCPDescription
+from schema.lcp_schemas import LCPDescription
 from marshmallow import ValidationError
 from schema.response import Created_Response
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK

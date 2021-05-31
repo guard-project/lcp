@@ -2,11 +2,11 @@ from resource.code import Code_Resource
 from resource.config import Config_Resource
 from resource.status import Status_Resource
 from resource.software_definition import SoftwareDefinition, ContainerDefinition
-from resource.filiation import SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification
+from resource.lcp_resources import SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification
 from resource.hardware_definitions import LXCContainer
 from resource.cloud_resource import CloudInfrastructure
 from resource.security_functions import SecurityFunction, AgentTypeResource
-from resource.self_data import DescribeDeployment, DescribeSelf, InitialSelfConfiguration, SelfAutoConfig
+from resource.self_data import DescribeDeployment, DescribeSelf, InitialSelfConfiguration
 from utils.log import Log
 from utils.sequence import wrap
 
@@ -17,7 +17,7 @@ db = (Code_Resource, Config_Resource, Status_Resource,
       CloudInfrastructure,
       SecurityFunction, AgentTypeResource,
       SoftwareDefinition,
-      DescribeDeployment, DescribeSelf, InitialSelfConfiguration, SelfAutoConfig)
+      DescribeDeployment, DescribeSelf, InitialSelfConfiguration)
 
 tags = []
 for Resource in db:

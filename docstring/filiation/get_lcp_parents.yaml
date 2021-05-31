@@ -1,17 +1,16 @@
-Get info about the status of the LCP in the execution environment.
+Get lcp parent of a given LCP
 ---
-summary: Get the "filiated" (or legitimated LCP childs) for the Service Chain
+summary: Get the LCP parent of a LCP
 description: |
-  Gets a list of next links in the service chain filiated (as son childs) with
-  this Execution Environment.
+  Gets a list of previous links in the service chain (LCP parents) to a given execution environment.
 
 tags: [lcp_relationships]
 responses:
   200:
-    description: Status data of the LCP.
+    description: List of LCP Sons of the queried LCP.
     schema:
       type: array
-      items: LCPDescription
+      items: LCPFatherConnection
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

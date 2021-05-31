@@ -1,18 +1,20 @@
 Get info about the status of the LCP in the execution environment.
 ---
-summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+summary: Get a LCP Son given its ID
 description: |
-  Gets a list of next links in the service chain filiated (as son childs) with
-  this Execution Environment.
+  Gets one Son of the queried LCP given its ID.
 parameters:
-  - name: payload
-    in: body
-    required: true
-    schema: LCPDescription
-tags: [filiation]
+  - name: id
+    requiered: true
+    in: path
+    schema:
+        type: string
+    description: id of LCP son to be queried
+tags: [lcp_relationships]
 responses:
   200:
     description: Status data of the LCP.
+    schema: LCPDescription
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

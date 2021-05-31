@@ -1,0 +1,29 @@
+Post info to add the LCP Parent to a LCP
+---
+summary: Add the LCP parent to a given LCP. Once the LCP Son knows its parent, it can connect
+  it so it can get the Context Broker connection data.
+description: |
+  A LCP presents itself as the parent to another LCP. Once the LCP knows its parent, it can
+  register itself using /lcp_son POST to the parent LCP, and getting back the Context Broker
+  connection data.
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema: LCPFatherConnection
+tags: [lcp_relationships]
+responses:
+  201:
+    description: Created
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

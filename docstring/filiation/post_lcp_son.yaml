@@ -1,0 +1,28 @@
+Post info to add a new Son to an LCP.
+---
+summary: Add a new LCP Son to a given LCP, so a service chain can be depicted.
+description: |
+  Post a new LCP Son to a given LCP. Once the LCP knows a new children it could post an
+  /lcp_parent operation to the children LCP so the children LCP can know which is its
+  parent LCP and get data to connect the Context Broker.
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema: LCPDescription
+tags: [lcp_relationships]
+responses:
+  201:
+    description: Created
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

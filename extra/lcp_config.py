@@ -2,8 +2,8 @@ import os
 import yaml
 from pathlib import Path
 
-from schema.filiation import LCPDescription
-from schema.filiation import ContextBrokerConnection
+from schema.lcp_schemas import LCPDescription
+from schema.lcp_schemas import ContextBrokerConnection
 from urllib.parse import urlparse
 from extra.extra_utils import UrlSchemaData
 

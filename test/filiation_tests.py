@@ -1,4 +1,4 @@
-from schema.filiation import LCPDescription
+from schema.lcp_schemas import LCPDescription
 from resource import SonLCPIdentification
 from test_utils import *
 from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages

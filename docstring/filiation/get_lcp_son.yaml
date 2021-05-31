@@ -1,14 +1,14 @@
-Get info about the status of the LCP in the execution environment.
+Get lcp sons of the queried LCP
 ---
-summary: Get the "filiated" (or legitimated LCP childs) for the Service Chain
+summary: Get the LCP Sons of a LCP
 description: |
-  Gets a list of next links in the service chain filiated (as son childs) with
-  this Execution Environment.
+  Gets a list of next links in the service chain (LCP sons) to a given execution environment.
+  Following the LCP Sons the service chain can be quite accurately be depicted.
 
 tags: [lcp_relationships]
 responses:
   200:
-    description: Status data of the LCP.
+    description: List of LCP Sons of the queried LCP.
     schema:
       type: array
       items: LCPDescription

@@ -506,6 +506,20 @@ definitions:
     - name
     - url
     type: object
+  LCPFatherConnection:
+    properties:
+      authMethod:
+        description: validation Method for this LCP
+        example: none
+        type: string
+      url:
+        description: URL where the Son LCP Listens
+        example: http://lcpapi.example.com:4000
+        format: url
+        type: string
+    required:
+    - url
+    type: object
   NetworkInterface:
     properties:
       IPv4Addresses:
@@ -617,10 +631,6 @@ definitions:
         description: ID of this Software Instance
         example: a406874b-dea7-4cd1-9d4e-b82a18ec993b
         type: string
-      name:
-        description: Name of this piece of Software instance
-        example: MySQL
-        type: string
       openTCPPorts:
         description: List of opened TCP Ports
         example: '[3306]'
@@ -633,17 +643,21 @@ definitions:
         items:
           type: integer
         type: array
+      product:
+        description: Name of this piece of Software instance
+        example: MySQL
+        type: string
       vendor:
         description: Name of the Vendor for this software
         example: Oracle Coorporation
         type: string
       version:
         description: Version of the Piece of Software installed
-        example: 5.8+1.0.5ubuntu2
+        example: 5.8.1
         type: string
     required:
     - id
-    - name
+    - product
     - version
     type: object
   Status_Response:
@@ -1259,43 +1273,7 @@ paths:
       - software
   /lcp_son/{id}:
     delete:
-      description: 'Gets a list of next links in the service chain filiated (as son
-        childs) with
-
-        this Execution Environment.
-
-        '
-      responses:
-        '200':
-          description: Status data of the LCP.
-          schema:
-            items:
-              $ref: '#/definitions/LCPDescription'
-            type: array
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
-          schema:
-            $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
-        '500':
-          description: Server not available to satisfy the request.
-          schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the "filiated" (or legitimated LCP childs) for the Service Chain
-      tags:
-      - filiation
-    get:
-      description: 'Gets a list of next links in the service chain filiated (as son
-        childs) with
-
-        this Execution Environment.
+      description: 'Removes one Son of the queried LCP given its ID.
 
         '
       parameters:
@@ -1327,27 +1305,26 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      summary: Removes an LCP Son given its ID
       tags:
-      - filiation
-  /lcp_son:
-    get: {}
-    post:
-      description: 'Gets a list of next links in the service chain filiated (as son
-        childs) with
-
-        this Execution Environment.
+      - lcp_relationships
+    get:
+      description: 'Gets one Son of the queried LCP given its ID.
 
         '
       parameters:
-      - in: body
-        name: payload
+      - description: id of LCP son to be queried
+        in: path
+        name: id
+        requiered: true
         required: true
         schema:
-          $ref: '#/definitions/LCPDescription'
+          type: string
       responses:
         '200':
           description: Status data of the LCP.
+          schema:
+            $ref: '#/definitions/LCPDescription'
         '400':
           description: Request not valid.
           schema:
@@ -1364,12 +1341,152 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the "filiated" (or legitimated LCP childs) for this Service Chain
+      summary: Get a LCP Son given its ID
       tags:
-      - filiation
+      - lcp_relationships
+  /lcp_son:
+    get:
+      description: 'Gets a list of next links in the service chain (LCP sons) to a
+        given execution environment.
+
+        Following the LCP Sons the service chain can be quite accurately be depicted.
+
+        '
+      responses:
+        '200':
+          description: List of LCP Sons of the queried LCP.
+          schema:
+            items:
+              $ref: '#/definitions/LCPDescription'
+            type: array
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the LCP Sons of a LCP
+      tags:
+      - lcp_relationships
+    post:
+      description: 'Post a new LCP Son to a given LCP. Once the LCP knows a new children
+        it could post an
+
+        /lcp_parent operation to the children LCP so the children LCP can know which
+        is its
+
+        parent LCP and get data to connect the Context Broker.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/LCPDescription'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Add a new LCP Son to a given LCP, so a service chain can be depicted.
+      tags:
+      - lcp_relationships
   /lcp_parent:
-    get: {}
-    post: {}
+    get:
+      description: 'Gets a list of previous links in the service chain (LCP parents)
+        to a given execution environment.
+
+        '
+      responses:
+        '200':
+          description: List of LCP Sons of the queried LCP.
+          schema:
+            items:
+              $ref: '#/definitions/LCPFatherConnection'
+            type: array
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the LCP parent of a LCP
+      tags:
+      - lcp_relationships
+    post:
+      description: 'A LCP presents itself as the parent to another LCP. Once the LCP
+        knows its parent, it can
+
+        register itself using /lcp_son POST to the parent LCP, and getting back the
+        Context Broker
+
+        connection data.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/LCPFatherConnection'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Add the LCP parent to a given LCP. Once the LCP Son knows its parent,
+        it can connect it so it can get the Context Broker connection data.
+      tags:
+      - lcp_relationships
   /cloud:
     get:
       description: 'Gets the information of one cloud Infrastrucutre
@@ -1698,8 +1815,6 @@ paths:
       summary: Post initial configuration for the LCP.
       tags:
       - self
-  /self/autoconfig:
-    post: {}
 produces:
 - application/json
 swagger: '2.0'
@@ -1716,11 +1831,11 @@ tags:
 - description: Returns the description of software installed in containers
   name: software
 - description: Describes a "son" LCP linked in this service chain.
-  name: filiation
+  name: lcp_relationships
 - description: Describes a "son" LCP linked in this service chain.
   name: lcp_relationships
 - description: Describes a "son" LCP linked in this service chain.
-  name: lcp relationships
+  name: lcp_relationships
 - description: Description of a Cloud Infrastructure
   name: hardware
 - description: Returns description of a Baremetal Server.
@@ -1733,6 +1848,4 @@ tags:
 - description: Returns description of a Baremetal Server.
   name: hardware
 - description: Initial configuration for the LCP
-  name: self
-- description: This method does the initial configuration
   name: self

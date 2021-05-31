@@ -6,7 +6,7 @@ from schema.hardware_definitions import ExecutionEnvironment as ExcutionEnvironm
 from lib.http import HTTP_Method
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_INTERNAL_SERVER_ERROR
 from marshmallow import ValidationError
-from schema.filiation import InitialConfigurationSchema
+from schema.lcp_schemas import InitialConfigurationSchema
 import json
 from extra.cb_client import CBClient, CBMessages, ToContextBrokerMessages
 
@@ -88,26 +88,3 @@ class InitialSelfConfiguration(Base_Resource):
         except ValidationError as e:
             resp.body = e.data
             resp.status = HTTP_NOT_ACCEPTABLE
-
-
-class SelfAutoConfig(Base_Resource):
-    data = {}
-    tag = {'name': 'self',
-           'description': 'This method does the initial configuration'}
-    routes = '/self/autoconfig'
-
-    def on_post(self, req, resp):
-        payload = req.media
-        if payload is not None:
-            resp.body = '{"error": "No payload expected"}'
-            resp.status = HTTP_NOT_ACCEPTABLE
-
-        #try:
-        cfg = LCPConfig()
-        host_info = HostInfoToLcpHelper().js_info
-        cfg.setDeployment(host_info)
-        # except Exception as e:
-        #    print(e)
-        #    resp.body = '{"error": "Could not autoconfigure"}'
-        #    resp.status = HTTP_INTERNAL_SERVER_ERROR
-
