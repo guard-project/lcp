@@ -7,6 +7,7 @@ from schema.lcp_schemas import LCPDescription, LCPFatherConnection
 import json
 from extra.lcp_config import LCPConfig
 from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
+from utils.log import Log
 
 
 class SonLCPIdentification(Base_Resource):
@@ -15,7 +16,7 @@ class SonLCPIdentification(Base_Resource):
     routes = '/lcp_son',
 
     def __init__(self):
-        pass
+        self.log = Log.get('SonLCPIdentification')
 
     @docstring(source="filiation/get_lcp_son.yaml")
     def on_get(self, req, resp):
@@ -30,12 +31,16 @@ class SonLCPIdentification(Base_Resource):
             .validate(data={})
         payload = req.media if isinstance(req.media, list) else [req.media]
         cfg = LCPConfig()
+        self.log("POST /lcp_son -- ")
         try:
             lcp = LCPDescription(many=True)
             lcp.load(payload)
             valid = lcp.validate(payload)
             for f in payload:
                 cfg.setSon(f)
+                if cfg.context_broker is not None:
+                    resp.body = json.dumps(cfg.context_broker)
+
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE

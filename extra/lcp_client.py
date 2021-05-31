@@ -50,6 +50,8 @@ class LCPClient(object):
         def postLcpSon(self, parent):
             headers = self.getHeaders()
             payload = self.config.lcp
+            must_retry = False
+
             try:
                 resp = requests.post(parent['url'] + "/lcp_son", headers=headers,
                                      data=json.dumps(payload), timeout=5)
@@ -60,7 +62,12 @@ class LCPClient(object):
                     cb_schema = ContextBrokerConnectionSchema()
                     cb_schema.validate(data)
                     self.controller.set_context_broker(data)
+                if resp.status_code >= 500:
+                    must_retry = True
             except (Timeout, ValidationError, ConnectionError) as e:
+                must_retry = True
+
+            if must_retry:
                 threading.Timer(15, self.postLcpSon).start()
 
 
