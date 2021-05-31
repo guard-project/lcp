@@ -5,9 +5,9 @@ from extra.lcp_config import LCPConfig
 import requests
 import traceback
 import json
-from utils.log import Log
 from extra.cb_helpers.agent_type_helper import AgentTypeForCBHelper
 from extra.cb_helpers.agent_instance_helper import AgentInstanceHelper
+from utils.log import Log
 
 TIMEOUT = 5
 
@@ -30,6 +30,10 @@ class CBClient:
             self.config = LCPConfig()
             self.q = Queue()
             self.log = Log.get('CBClient')
+            self.controller = None
+
+        def set_controller(self, controller):
+            self.controller = controller
 
         def headers(self):
             headers = {"content-type": "application/json"}
@@ -51,6 +55,7 @@ class CBClient:
             try:
                 headers = self.headers()
                 resp = requests.get(query, headers=headers, timeout=TIMEOUT)
+                self.log.notice("get  to %s  - rep %d" % (query, resp.status_code))
             except TimeoutError as e:
                 self.log.exception(e)
 
@@ -70,6 +75,7 @@ class CBClient:
                 if not self.is_lcp_registered():
                     resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                          data=json.dumps(data))
+                    self.log.notice("post  to %s  - resp %d" % (query, resp.status_code))
                 else:
                     return
             except TimeoutError as e:
@@ -92,6 +98,7 @@ class CBClient:
             try:
                 resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                      data=data)
+                self.log.notice("post  to %s  - resp %d" % (query, resp.status_code))
             except TimeoutError:
                 return False
 
@@ -110,10 +117,9 @@ class CBClient:
             try:
                 resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                      data=data)
+                self.log.notice("post  to %s  - resp %d" % (query, resp.status_code))
             except TimeoutError:
                 return False
-
-            print("post_agent_instance - resp.status_code", resp.status_code)
 
             if resp.status_code in (200, 201, 406):
                 return

@@ -9,6 +9,7 @@ from extra.cb_helpers.agent_type_helper import AgentTypeForCBHelper
 from queue import Queue
 import enum
 import base64
+from utils.log import Log
 
 
 class BetweenLCPMessages(enum.Enum):
@@ -28,7 +29,12 @@ class LCPClient(object):
         def __init__(self):
             self.config = LCPConfig()
             self.filated = False
+            self.controller = None
             self.q = Queue()
+            self.log = Log.get('LCPClient')
+
+        def set_controller(self, controller):
+            self.controller = controller
 
         def getHeaders(self):
             headers = {'content-type': 'application/json'}
@@ -47,11 +53,13 @@ class LCPClient(object):
             try:
                 resp = requests.post(parent['url'] + "/lcp_son", headers=headers,
                                      data=json.dumps(payload), timeout=5)
+                self.log.notice("post  to %s/lcp_son -- %d" %
+                                (parent['url'], resp.status_code))
                 if resp.status_code == 200 or resp.status_code == 202:
                     data = resp.json()
                     cb_schema = ContextBrokerConnectionSchema()
                     cb_schema.validate(data)
-                    self.config.setContextBroker(data)
+                    self.controller.set_context_broker(data)
             except (Timeout, ValidationError, ConnectionError) as e:
                 threading.Timer(15, self.postLcpSon).start()
 
@@ -75,11 +83,11 @@ class LCPClient(object):
             headers = self.getHeaders()
             try:
                 url = requested_children_url +"/lcp_son"
-                print("Post ", url)
 
                 j = json.dumps({"url": self.config.lcp['url']})
                 resp = requests.post(url, headers=headers,
                                      json=data, timeout=5000)
+                self.log.notice("post to %s/lcp_son - resp %d " % (url, resp.status_code))
                 if resp.status_code != 202: #Accepted
                     err = True
             except (Timeout, ConnectionError) as e:
@@ -96,7 +104,6 @@ class LCPClient(object):
         def qread(self):
             while True:
                 message = self.q.get()
-                print("Got message", message)
 
                 if message.message_type == BetweenLCPMessages.PostLCPSon:
                     self.postLcpSon(message.data)

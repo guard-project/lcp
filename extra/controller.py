@@ -15,6 +15,9 @@ class LCPController:
             self.initial_messages_to_lcp_sent = False
             self.initial_messages_to_cb_sent = False
 
+            CBClient().set_controller(self)
+            LCPClient().set_controller(self)
+
         def build_environment(self):
             if self.config.exec_env_type is None:
                 host_info = HostInfoToLcpHelper().js_info
@@ -105,6 +108,10 @@ class LCPController:
                 message = CBMessages(ToContextBrokerMessages.AddAgentInstance, payload)
                 CBClient().send(message)
 
+        def set_context_broker(self, payload):
+            self.config.setContextBroker(payload)
+            if self.config.context_broker is not None:
+                self.send_initial_messages_cb()
 
     instance = None
 
