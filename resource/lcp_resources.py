@@ -22,6 +22,7 @@ class SonLCPIdentification(Base_Resource):
     def on_get(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
           .validate(data={})
+        self.log.notice("GET /lcp_son -- ")
         child_nodes = LCPConfig().sons
         resp.body = json.dumps(child_nodes)
 
@@ -31,7 +32,7 @@ class SonLCPIdentification(Base_Resource):
             .validate(data={})
         payload = req.media if isinstance(req.media, list) else [req.media]
         cfg = LCPConfig()
-        self.log("POST /lcp_son -- ")
+        self.log.notice("POST /lcp_son -- ")
         try:
             lcp = LCPDescription(many=True)
             lcp.load(payload)
@@ -52,7 +53,8 @@ class ParentLCPIdentification(Base_Resource):
     routes = '/lcp_parent'
 
     def __init__(self):
-        pass
+        self.log = Log.get('SonLCPIdentification')
+
 
     @docstring(source="filiation/post_lcp_parent.yaml")
     def on_post(self, req, resp):
@@ -60,6 +62,7 @@ class ParentLCPIdentification(Base_Resource):
             .validate(data={})
         payload = req.media if isinstance(req.media, list) else [req.media]
         cfg = LCPConfig()
+        self.log.notice("POST /lcp_parent -- ")
 
         try:
             parent = LCPFatherConnection(many=True)
@@ -77,6 +80,7 @@ class ParentLCPIdentification(Base_Resource):
     def on_get(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
            .validate(data={})
+        self.log.notice("GET /lcp_parent -- ")
         parents_urls = LCPConfig().parents
         resp.body = json.dumps(parents_urls)
 
