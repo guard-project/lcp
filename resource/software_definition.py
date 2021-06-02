@@ -51,12 +51,10 @@ class ContainerDefinition(Base_Resource):
 
     @docstring(source="Software/PostSoftware.yml")
     def on_post(self, req, resp):
-        payload = req.media
+        payload = req.media if isinstance(req.media, list) else [req.media]
         try:
-            many = isinstance(payload, list)
-            if not many:
-                payload = [payload]
             software_schema = ContainerSchema(many=True)
+            software_schema.load(payload)
             resp.status = HTTP_CREATED
 
             for e in payload:

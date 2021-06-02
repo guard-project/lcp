@@ -57,7 +57,7 @@ class LCPClient(object):
                                      data=json.dumps(payload), timeout=5)
                 self.log.notice("post  to %s/lcp_son -- %d" %
                                 (parent['url'], resp.status_code))
-                if resp.status_code == 200 or resp.status_code == 202:
+                if resp.status_code in (200, 201, 202):
                     data = resp.json()
                     cb_schema = ContextBrokerConnectionSchema()
                     cb_schema.validate(data)
@@ -68,7 +68,7 @@ class LCPClient(object):
                 must_retry = True
 
             if must_retry:
-                threading.Timer(15, self.postLcpSon).start()
+                threading.Timer(15, self.postLcpSon, [parent]).start()
 
 
         def reenqueueLcpParentToSon(self, requested_children_url):

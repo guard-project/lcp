@@ -217,6 +217,9 @@ class LCPConfig(object):
 
         def setContainers(self, elem):
             updated = False
+            if self.self_containers is None:
+                self.self_containers = []
+
             for i in range(0, len(self.self_containers)):
                 if self.self_containers[i]["id"] == elem["id"]:
                     updated = True
