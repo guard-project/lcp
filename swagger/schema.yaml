@@ -627,6 +627,12 @@ definitions:
     type: object
   SoftwareDefinition:
     properties:
+      connections:
+        description: List of Known connected/related Software
+        example: '[]'
+        items:
+          type: string
+        type: array
       id:
         description: ID of this Software Instance
         example: a406874b-dea7-4cd1-9d4e-b82a18ec993b

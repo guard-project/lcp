@@ -6,6 +6,7 @@ from marshmallow.exceptions import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED
 import json
 from extra.lcp_config import LCPConfig
+import traceback
 
 
 class SoftwareDefinition(Base_Resource):
@@ -35,6 +36,7 @@ class SoftwareDefinition(Base_Resource):
 
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
+            resp.body = e.messages
 
 
 class ContainerDefinition(Base_Resource):
@@ -61,4 +63,6 @@ class ContainerDefinition(Base_Resource):
                 LCPConfig().setContainers(e)
 
         except ValidationError as e:
+            traceback.print_exc()
+            resp.body = e.messages
             resp.status = HTTP_NOT_ACCEPTABLE

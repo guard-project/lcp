@@ -55,7 +55,7 @@ class CBClient:
             try:
                 headers = self.headers()
                 resp = requests.get(query, headers=headers, timeout=TIMEOUT)
-                self.log.notice("get  to %s  - rep %d" % (query, resp.status_code))
+                self.log.notice("get  to %s  - rep %d - %s" % (query, resp.status_code, resp.json()))
             except TimeoutError as e:
                 self.log.exception(e)
 
@@ -66,7 +66,6 @@ class CBClient:
 
         def post_exec_environment(self, data):
             if not 'context_broker' in self.config.config:
-                print("Not context_broker!!!")
                 return False
             query = self.config.context_broker['url'] + '/exec-env'
             data = self.config.exec_env_register_data()
@@ -75,7 +74,7 @@ class CBClient:
                 if not self.is_lcp_registered():
                     resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                          data=json.dumps(data))
-                    self.log.notice("post  to %s  - resp %d" % (query, resp.status_code))
+                    self.log.notice("post  to %s  - resp %d - %s" % (query, resp.status_code, resp.josn()))
                 else:
                     return
             except TimeoutError as e:
@@ -98,7 +97,7 @@ class CBClient:
             try:
                 resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                      data=data)
-                self.log.notice("post  to %s  - resp %d" % (query, resp.status_code))
+                self.log.notice("post  to %s  - resp %d - %s" % (query, resp.status_code, resp.json()))
             except TimeoutError:
                 return False
 
@@ -113,11 +112,10 @@ class CBClient:
                 return False
             query = self.config.context_broker['url'] + '/instance/agent'
             data = AgentInstanceHelper(agent_instance).dumps()
-            print(data)
             try:
                 resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                      data=data)
-                self.log.notice("post  to %s  - resp %d" % (query, resp.status_code))
+                self.log.notice("post  to %s  - resp %d - %s" % (query, resp.status_code, resp.json()))
             except TimeoutError:
                 return False
 
