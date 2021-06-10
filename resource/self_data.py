@@ -41,7 +41,7 @@ class DescribeDeployment(Base_Resource):
             cfg.setDeployment(payload)
             resp.status = HTTP_CREATED
         except ValidationError as e:
-            resp.body = e.data
+            resp.body = json.dumps(e.messages)
             req.status = HTTP_NOT_ACCEPTABLE
 
 
@@ -86,5 +86,5 @@ class InitialSelfConfiguration(Base_Resource):
 
             resp.status = HTTP_CREATED
         except ValidationError as e:
-            resp.body = e.data
+            resp.body = json.dumps(e.messages)
             resp.status = HTTP_NOT_ACCEPTABLE

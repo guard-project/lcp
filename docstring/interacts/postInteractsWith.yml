@@ -1,0 +1,28 @@
+Post the description of the elements a host with an LCP is interacting with.
+---
+summary: Post the description of the elements a host with an LCP is interacting with.
+description: |
+  Post a description of the components that the host is working with according to a classical client/server
+  paradigm. This includes relationship with other components like publish-subscribe, connection to databases,
+  external storage drives (NFS, iSCSI, Dropbox), etc.
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema: InteractsWithSchema
+tags: [interacts]
+responses:
+  201:
+    description: The external components which our node is interacting with has been successfully updated.
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schem

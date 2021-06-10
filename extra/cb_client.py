@@ -1,5 +1,6 @@
 import enum
 import threading
+import time
 from queue import Queue
 from extra.lcp_config import LCPConfig
 import requests
@@ -58,23 +59,68 @@ class CBClient:
                 self.log.notice("get  to %s  - rep %d - %s" % (query, resp.status_code, resp.json()))
             except TimeoutError as e:
                 self.log.exception(e)
+                return False
 
             if resp.status_code == 200:
                 return True
 
             return False
 
+        def exists_exec_env_type(self):
+            cb = self.config.context_broker
+            if not 'context_broker' in self.config.config:
+                return False
+            query = self.config.context_broker['url'] + '/exec-env-type/' + self.config.exec_env_type
+
+            try:
+                headers = self.headers()
+                resp = requests.get(query, headers=headers, timeout=TIMEOUT)
+                self.log.notice("get  to %s  - rep %d - %s" % (query, resp.status_code, resp.json()))
+            except (ConnectionError, TimeoutError) as e:
+                self.log.exception(e)
+                return False
+
+            if resp.status_code == 200:
+                return True
+
+            return False
+
+        def post_exec_env_type(self):
+            cb = self.config.context_broker
+            if not 'context_broker' in self.config.config:
+                return False
+            query = self.config.context_broker['url'] + '/type/exec-env'
+            data = {"id": self.config.exec_env_type, "name": self.config.exec_env_type}
+
+            try:
+                headers = self.headers()
+                resp = requests.post(query, headers=headers, timeout=TIMEOUT,
+                                     data = json.dumps(data))
+                self.log.notice("Post  to %s  - rep %d - %s" % (query, resp.status_code, resp.json()))
+                if resp.status_code in (200,201):
+                    time.sleep(1) ## Ensure data is stored in elastic
+            except (ConnectionError, TimeoutError) as e:
+                self.log.exception(e)
+
+        def ensure_exec_environment_type(self):
+            if not self.exists_exec_env_type():
+                self.post_exec_env_type()
+
         def post_exec_environment(self, data):
             if not 'context_broker' in self.config.config:
                 return False
+
+            self.ensure_exec_environment_type()
+
             query = self.config.context_broker['url'] + '/exec-env'
             data = self.config.exec_env_register_data()
+            print(data)
 
             try:
                 if not self.is_lcp_registered():
                     resp = requests.post(query, headers=self.headers(), timeout=TIMEOUT,
                                          data=json.dumps(data))
-                    self.log.notice("post  to %s  - resp %d - %s" % (query, resp.status_code, resp.josn()))
+                    self.log.notice("post  to %s  - resp %d - %s" % (query, resp.status_code, resp.json()))
                 else:
                     return
             except TimeoutError as e:

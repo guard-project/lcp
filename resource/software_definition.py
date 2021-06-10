@@ -29,6 +29,7 @@ class SoftwareDefinition(Base_Resource):
             if not many:
                 payload = [payload]
             software_schema = SoftwareDefinitionSchema(many=True)
+            software_schema.load(payload)
             resp.status = HTTP_CREATED
 
             for e in payload:
@@ -36,7 +37,7 @@ class SoftwareDefinition(Base_Resource):
 
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
-            resp.body = e.messages
+            resp.body = json.dumps(e.messages)
 
 
 class ContainerDefinition(Base_Resource):
@@ -63,6 +64,5 @@ class ContainerDefinition(Base_Resource):
                 LCPConfig().setContainers(e)
 
         except ValidationError as e:
-            traceback.print_exc()
-            resp.body = e.messages
+            resp.body = json.dumps(e.messages)
             resp.status = HTTP_NOT_ACCEPTABLE

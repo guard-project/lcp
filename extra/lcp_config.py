@@ -48,7 +48,15 @@ class LCPConfig(object):
             self.exec_env_type = None
             self.agent_types = []
             self.context_broker = None
+            self.interactions = {"softwareArtifacts": [], "externalStorage": []}
             self.reload(self.filename)
+
+
+        def merge_dicts(d1, d2):
+            if d1 == d2:
+                return False
+            d1.update(d2)
+            return True
 
         def has_extra_features(self):
             if self.lcp is not None and 'lcp' in self.lcp:
@@ -140,10 +148,37 @@ class LCPConfig(object):
             except KeyError:
                 pass
 
+            try:
+                if 'interactions' in self.config:
+                    self.interactions = self.config['interactions']
+            except KeyError:
+                pass
+
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
 
-        def setInitialConfiguration(self, dict_cfg):
+        def add_external_storage_interaction(self, storage):
+            updated = False
+            for s in self.interactions['externalStorage']:
+                if s['id'] == storage['id']:
+                    s['id'].update(storage['id'])
+                    updated = True
+            if not updated:
+                self.interactions['externalStorage'].append(storage)
+            self.config['interactions'] = self.interactions
+
+        def add_external_software_interaction(self, software):
+            updated = False
+            for s in self.interactions['softwareArtifacts']:
+                if s['id'] == software['id']:
+                    s['id'].update(software['id'])
+                    updated = True
+            if not updated:
+                self.interactions['softwareArtifacts'].append(software)
+            self.config['interactions'] = self.interactions
+
+
+        def set_initial_configuration(self, dict_cfg):
             should_start_thread = False
             if 'lcp' in dict_cfg:
                 if self.lcp is None:

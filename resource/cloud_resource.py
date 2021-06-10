@@ -46,7 +46,7 @@ class CloudInfrastructure(Base_Resource):
             for e in payload:
                 CloudInfrastructure.update_data(e)
         except ValidationError as ve:
-            resp.body = ve.data
+            resp.body = json.dumps(ve.messages)
             req.status = HTTP_NOT_ACCEPTABLE
 
 

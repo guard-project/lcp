@@ -107,26 +107,6 @@ definitions:
     - schema
     - source
     type: object
-  Bad_Request_Response:
-    properties:
-      code:
-        default: !!python/object/apply:http.HTTPStatus
-        - 400
-      error:
-        default: true
-      exception:
-        allOf:
-        - $ref: '#/definitions/Exception_Response'
-        description: Message of the occurred exception.
-      message:
-        description: Human readable message that describes the status of the operation.
-        example: 'Request not valid: two ids provided.'
-        type: string
-      status:
-        default: Bad Request
-    required:
-    - message
-    type: object
   BaremetalServer:
     properties:
       cpus:
@@ -406,25 +386,6 @@ definitions:
     - name
     - size
     type: object
-  Exception_Response:
-    properties:
-      filename:
-        description: Filename where the exception is raised.
-        example: lib/connection.py
-        type: string
-      line:
-        description: Line where the exception is raised.
-        example: 80
-        type: integer
-      reason:
-        description: Exception reason.
-        example: Connection timeout
-        type: string
-    required:
-    - filename
-    - line
-    - reason
-    type: object
   ExecutionEnvironment:
     properties:
       environment:
@@ -449,6 +410,37 @@ definitions:
     - environment
     - type
     type: object
+  ExternalStorageSchema:
+    properties:
+      description:
+        description: High level description for this remote storage drive
+        example: remote nfs drive
+        type: string
+      id:
+        description: ID of this external Storage type
+        example: a406874b-dea7-4cd1-9d4e-b82a18ec993b
+        type: string
+      storageType:
+        description: Type of storage type.
+        enum:
+        - S3
+        - NFS
+        - iSCSI
+        - Swift
+        - CEPH
+        - GlusterFS
+        - SSH-FS
+        example: NFS
+        type: string
+      url:
+        description: URL for this remote resource
+        example: nfs://192.168.10.245:2049/data
+        type: string
+    required:
+    - id
+    - storageType
+    - url
+    type: object
   InitialConfigurationSchema:
     properties:
       context_broker:
@@ -462,25 +454,18 @@ definitions:
     required:
     - lcp
     type: object
-  Internal_Server_Error_Response:
+  InteractsWithSchema:
     properties:
-      code:
-        default: !!python/object/apply:http.HTTPStatus
-        - 500
-      error:
-        default: true
-      exception:
-        allOf:
-        - $ref: '#/definitions/Exception_Response'
-        description: Message of the occurred exception.
-      message:
-        description: Human readable message that describes the status of the operation.
-        example: 'Request not valid: two ids provided.'
-        type: string
-      status:
-        default: Internal Server Error
-    required:
-    - message
+      externalStorage:
+        description: External storage devices description
+        items:
+          $ref: '#/definitions/ExternalStorageSchema'
+        type: array
+      softwareArtifacts:
+        description: Software artifacts interacting with this LCP
+        items:
+          $ref: '#/definitions/SoftwareDefinition'
+        type: array
     type: object
   LCPDescription:
     properties:
@@ -565,66 +550,6 @@ definitions:
     - name
     - state
     type: object
-  No_Content_Response:
-    properties:
-      code:
-        default: !!python/object/apply:http.HTTPStatus
-        - 204
-      error:
-        default: false
-      exception:
-        allOf:
-        - $ref: '#/definitions/Exception_Response'
-        description: Message of the occurred exception.
-      message:
-        description: Human readable message that describes the status of the operation.
-        example: 'Request not valid: two ids provided.'
-        type: string
-      status:
-        default: No Content
-    required:
-    - message
-    type: object
-  Not_Acceptable_Response:
-    properties:
-      code:
-        default: !!python/object/apply:http.HTTPStatus
-        - 406
-      error:
-        default: true
-      exception:
-        allOf:
-        - $ref: '#/definitions/Exception_Response'
-        description: Message of the occurred exception.
-      message:
-        description: Human readable message that describes the status of the operation.
-        example: 'Request not valid: two ids provided.'
-        type: string
-      status:
-        default: Not Acceptable
-    required:
-    - message
-    type: object
-  Ok_Response:
-    properties:
-      code:
-        default: !!python/object/apply:http.HTTPStatus
-        - 200
-      error:
-        default: false
-      exception:
-        allOf:
-        - $ref: '#/definitions/Exception_Response'
-        description: Message of the occurred exception.
-      message:
-        description: Human readable message that describes the status of the operation.
-        example: 'Request not valid: two ids provided.'
-        type: string
-      status:
-        default: OK
-    required:
-    - message
-    type: object
   SoftwareDefinition:
     properties:
       connections:
@@ -687,46 +612,6 @@ definitions:
     - last_heartbeat
     - started
     type: object
-  Unauthorized_Response:
-    properties:
-      code:
-        default: !!python/object/apply:http.HTTPStatus
-        - 401
-      error:
-        default: true
-      exception:
-        allOf:
-        - $ref: '#/definitions/Exception_Response'
-        description: Message of the occurred exception.
-      message:
-        description: Human readable message that describes the status of the operation.
-        example: 'Request not valid: two ids provided.'
-        type: string
-      status:
-        default: Unauthorized
-    required:
-    - message
-    type: object
-  Unsupported_Media_Type_Response:
-    properties:
-      code:
-        default: !!python/object/apply:http.HTTPStatus
-        - 415
-      error:
-        default: true
-      exception:
-        allOf:
-        - $ref: '#/definitions/Exception_Response'
-        description: Message of the occurred exception.
-      message:
-        description: Human readable message that describes the status of the operation.
-        example: 'Request not valid: two ids provided.'
-        type: string
-      status:
-        default: Unsupported Media Type
-    required:
-    - message
-    type: object
 info:
   title: Local Control Plane
   version: 1.0.4
@@ -752,19 +637,19 @@ paths:
         '204':
           description: No content to inject codes based on the request.
           schema:
-            $ref: '#/definitions/No_Content_Response'
+            $ref: '#/definitions/No_Content_Response_Schema'
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '422':
           description: Not possible to inject one or more codes.
           schema:
@@ -799,19 +684,19 @@ paths:
         '204':
           description: No content to inject codes based on the request.
           schema:
-            $ref: '#/definitions/No_Content_Response'
+            $ref: '#/definitions/No_Content_Response_Schema'
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '422':
           description: Not possible to inject one or more codes.
           schema:
@@ -841,12 +726,12 @@ paths:
           description: All injected code correctly updated.
           schema:
             items:
-              $ref: '#/definitions/Ok_Response'
+              $ref: '#/definitions/Ok_Response_Schema'
             type: array
         '204':
           description: No content to update codes based on the request.
           schema:
-            $ref: '#/definitions/No_Content_Response'
+            $ref: '#/definitions/No_Content_Response_Schema'
         '304':
           description: Update for one or more codes not necessary.
           schema:
@@ -858,19 +743,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '415':
           description: Media type not supported.
           schema:
-            $ref: '#/definitions/Unsupported_Media_Type_Response'
+            $ref: '#/definitions/Unsupported_Media_Type_Response_Schema'
         '422':
           description: Not possible to update one or more codes based on the request.
           schema:
@@ -883,7 +768,7 @@ paths:
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Update injected code
       tags:
       - code
@@ -908,19 +793,19 @@ paths:
         '204':
           description: No content to inject codes based on the request.
           schema:
-            $ref: '#/definitions/No_Content_Response'
+            $ref: '#/definitions/No_Content_Response_Schema'
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '422':
           description: Not possible to inject one or more codes.
           schema:
@@ -955,19 +840,19 @@ paths:
         '204':
           description: No content to inject codes based on the request.
           schema:
-            $ref: '#/definitions/No_Content_Response'
+            $ref: '#/definitions/No_Content_Response_Schema'
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '422':
           description: Not possible to inject one or more codes.
           schema:
@@ -997,12 +882,12 @@ paths:
           description: All injected code correctly updated.
           schema:
             items:
-              $ref: '#/definitions/Ok_Response'
+              $ref: '#/definitions/Ok_Response_Schema'
             type: array
         '204':
           description: No content to update codes based on the request.
           schema:
-            $ref: '#/definitions/No_Content_Response'
+            $ref: '#/definitions/No_Content_Response_Schema'
         '304':
           description: Update for one or more codes not necessary.
           schema:
@@ -1014,19 +899,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '415':
           description: Media type not supported.
           schema:
-            $ref: '#/definitions/Unsupported_Media_Type_Response'
+            $ref: '#/definitions/Unsupported_Media_Type_Response_Schema'
         '422':
           description: Not possible to update one or more codes based on the request.
           schema:
@@ -1039,7 +924,7 @@ paths:
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Update injected code
       tags:
       - code
@@ -1064,19 +949,19 @@ paths:
         '204':
           description: No content to configure based on the request.
           schema:
-            $ref: '#/definitions/No_Content_Response'
+            $ref: '#/definitions/No_Content_Response_Schema'
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '422':
           description: Not possible to change one or more configurations.
           schema:
@@ -1088,7 +973,7 @@ paths:
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Configuration update
       tags:
       - config
@@ -1103,19 +988,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Status info
       tags:
       - status
@@ -1129,19 +1014,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Status set.
       tags:
       - status
@@ -1158,19 +1043,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get the Software installed and controlled and known by the LCP
       tags:
       - software
@@ -1194,19 +1079,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Post the Description and configuration parameters of Security Agents
         deployed with LCP
       tags:
@@ -1224,19 +1109,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get the Software installed and controlled and known by the LCP
       tags:
       - software
@@ -1260,19 +1145,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Post the Description and configuration parameters of Security Agents
         deployed with LCP
       tags:
@@ -1298,19 +1183,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Removes an LCP Son given its ID
       tags:
       - lcp_relationships
@@ -1334,19 +1219,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get a LCP Son given its ID
       tags:
       - lcp_relationships
@@ -1368,19 +1253,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get the LCP Sons of a LCP
       tags:
       - lcp_relationships
@@ -1406,19 +1291,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Add a new LCP Son to a given LCP, so a service chain can be depicted.
       tags:
       - lcp_relationships
@@ -1438,19 +1323,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get the LCP parent of a LCP
       tags:
       - lcp_relationships
@@ -1476,19 +1361,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Add the LCP parent to a given LCP. Once the LCP Son knows its parent,
         it can connect it so it can get the Context Broker connection data.
       tags:
@@ -1509,19 +1394,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get the Description of one Cloud Infrastructure
       tags:
       - hardware
@@ -1543,19 +1428,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Post the Description of one Cloud Infrastructure
       tags:
       - hardware
@@ -1573,19 +1458,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get the Description and configuration parameters of Security Agents
         deployed with LCP
       tags:
@@ -1609,15 +1494,15 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
@@ -1639,19 +1524,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get data relative to the Security Agents defined to be used this LCP
       tags:
       - software
@@ -1674,15 +1559,15 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
@@ -1712,19 +1597,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Get the execution environment deployment for the LCP
       tags:
       - self
@@ -1745,19 +1630,19 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: POST the Baremetal server where the LCP is deployed on.
       tags:
       - hardware
@@ -1805,22 +1690,98 @@ paths:
         '400':
           description: Request not valid.
           schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            $ref: '#/definitions/Bad_Request_Response_Schema'
         '401':
           description: Authentication failed.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Unauthorized_Response_Schema'
         '406':
           description: Request validation failed.
           schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
         '500':
           description: Server not available to satisfy the request.
           schema:
-            $ref: '#/definitions/Internal_Server_Error_Response'
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
       summary: Post initial configuration for the LCP.
       tags:
       - self
+  /interacts:
+    get:
+      description: 'Gets a description of the components known that the host is working
+        with according to a classical client/server
+
+        paradigm. This includes relationship with other components like publish-subscribe,
+        connection to databases,
+
+        external storage drives (NFS, iSCSI, Dropbox), etc.
+
+        '
+      responses:
+        '200':
+          description: Get the Server's configuration infromation from LCP
+          schema:
+            $ref: '#/definitions/InteractsWithSchema'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response_Schema'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response_Schema'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
+      summary: Gets the description of the known elements that a host with a LCP is
+        interacting with.
+      tags:
+      - interacts
+    post:
+      description: 'Post a description of the components that the host is working
+        with according to a classical client/server
+
+        paradigm. This includes relationship with other components like publish-subscribe,
+        connection to databases,
+
+        external storage drives (NFS, iSCSI, Dropbox), etc.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/InteractsWithSchema'
+      responses:
+        '201':
+          description: The external components which our node is interacting with
+            has been successfully updated.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response_Schema'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response_Schema'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Post the description of the elements a host with an LCP is interacting
+        with.
+      tags:
+      - interacts
 produces:
 - application/json
 swagger: '2.0'
@@ -1855,3 +1816,5 @@ tags:
   name: hardware
 - description: Initial configuration for the LCP
   name: self
+- description: Describes a "son" LCP linked in this service chain.
+  name: interacts

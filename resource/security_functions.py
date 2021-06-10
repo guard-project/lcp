@@ -45,7 +45,7 @@ class SecurityFunction(Base_Resource):
 
             resp.status = HTTP_CREATED
         except ValidationError as e:
-            resp.body = e.data
+            resp.body = json.dumps(e.messages)
             req.status = HTTP_NOT_ACCEPTABLE
 
 
@@ -70,5 +70,5 @@ class AgentTypeResource(Base_Resource):
                 controller.set_agent_type(e)
             resp.status = HTTP_CREATED
         except ValidationError as e:
-            resp.body = e.data
+            resp.body = json.dumps(e.messages)
             req.status = HTTP_NOT_ACCEPTABLE

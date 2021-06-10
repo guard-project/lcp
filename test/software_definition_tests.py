@@ -65,7 +65,6 @@ class TestMyApp(LCPTestBase):
             resp = self.simulate_post("/self/software", headers=headers,
                                   body=json.dumps(software_dict))
             self_software = LCPConfig().self_software
-            print("len self_software", len(self_software))
             assert len(self_software) == 1
             assert self_software[0]["id"] == software_dict["id"]
             assert resp.status_code == 201
@@ -77,6 +76,12 @@ class TestMyApp(LCPTestBase):
             assert len(self_software) == 1
             assert self_software[0]["product"] == software_dict["product"]
             assert resp.status_code == 201
+
+            # Test - Unaceptable
+            software_dict['mistake'] = "nas"
+            resp = self.simulate_post("/self/software", headers=headers,
+                                      body=json.dumps(software_dict))
+            assert resp.status_code == 406
 
         except ValidationError as e:
             print(e)
@@ -144,12 +149,17 @@ class TestMyApp(LCPTestBase):
 
             # Test - Update
             container_dict["technology"] = "docker"
-            resp = self.simulate_post("/self/software", headers=headers,
+            resp = self.simulate_post("/self/container", headers=headers,
                                       body=json.dumps(container_dict))
             assert len(self_containers) == 1
             assert self_containers[0]["id"] == container_dict["id"]
             assert resp.status_code == 201
 
+            # Test - Unaceptable
+            container_dict['software'][0]['mistake'] = "nas"
+            resp = self.simulate_post("/self/container", headers=headers,
+                                      body=json.dumps(container_dict))
+            assert resp.status_code == 406
         except ValidationError as e:
             print(e)
             assert False
