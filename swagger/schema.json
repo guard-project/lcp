@@ -688,19 +688,14 @@
     "Config_Action_Request": {
       "type": "object",
       "properties": {
-        "cmd": {
-          "type": "string",
-          "description": "Command."
-        },
-        "daemon": {
-          "type": "boolean",
-          "example": true,
-          "description": "Execute the command as daemon."
-        },
         "id": {
           "type": "string",
           "example": "start",
           "description": "Id of the action."
+        },
+        "cmd": {
+          "type": "string",
+          "description": "Command."
         },
         "output_format": {
           "type": "string",
@@ -716,11 +711,60 @@
           "type": "string",
           "example": "-al",
           "description": "Single command argument."
+        },
+        "daemon": {
+          "type": "boolean",
+          "example": true,
+          "description": "Execute the command as daemon."
         }
       },
       "required": [
         "cmd",
         "id"
+      ]
+    },
+    "Config_Parameter_Request": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "period",
+          "description": "Id of the parameter."
+        },
+        "source": {
+          "type": "string",
+          "example": "firewall.xml",
+          "description": "Source filename."
+        },
+        "value": {
+          "example": "10s",
+          "description": "Parameter new value."
+        },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": "period",
+            "description": "Key path."
+          }
+        },
+        "schema": {
+          "type": "string",
+          "enum": [
+            "json",
+            "properties",
+            "xml",
+            "yaml"
+          ],
+          "example": "yaml",
+          "description": "Scheme."
+        }
+      },
+      "required": [
+        "id",
+        "schema",
+        "source",
+        "value"
       ]
     },
     "Config_Resource_Request": {
@@ -747,50 +791,6 @@
         "path"
       ]
     },
-    "Config_Parameter_Request": {
-      "type": "object",
-      "properties": {
-        "path": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "example": "period",
-            "description": "Key path."
-          }
-        },
-        "schema": {
-          "type": "string",
-          "enum": [
-            "json",
-            "properties",
-            "xml",
-            "yaml"
-          ],
-          "example": "yaml",
-          "description": "Scheme."
-        },
-        "id": {
-          "type": "string",
-          "example": "period",
-          "description": "Id of the parameter."
-        },
-        "value": {
-          "example": "10s",
-          "description": "Parameter new value."
-        },
-        "source": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "Source filename."
-        }
-      },
-      "required": [
-        "id",
-        "schema",
-        "source",
-        "value"
-      ]
-    },
     "Config_Request": {
       "type": "object",
       "properties": {
@@ -801,18 +801,18 @@
             "$ref": "#/definitions/Config_Action_Request"
           }
         },
-        "resources": {
-          "description": "List of resources.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Resource_Request"
-          }
-        },
         "parameters": {
           "description": "List of parameters.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Config_Parameter_Request"
+          }
+        },
+        "resources": {
+          "description": "List of resources.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Config_Resource_Request"
           }
         }
       }
