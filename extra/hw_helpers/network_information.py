@@ -92,11 +92,14 @@ class NetworkInterfacesInfo:
             return None
 
         ipv6 = []
-        for ipv6_ifaz in netifaces.ifaddresses(ifaz)[AF_INET6]:
-            mask = ipv6_ifaz['netmask']
-            bits = IPv6Network(mask).prefixlen
+        try:
+            for ipv6_ifaz in netifaces.ifaddresses(ifaz)[AF_INET6]:
+                mask = ipv6_ifaz['netmask']
+                bits = IPv6Network(mask).prefixlen
 
-            ipv6.append(ipv6_ifaz['addr'].split('%')[0] + "/" + str(bits))
+                ipv6.append(ipv6_ifaz['addr'].split('%')[0] + "/" + str(bits))
+        except KeyError:
+            pass
 
         return ipv6
 

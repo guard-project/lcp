@@ -1,6 +1,7 @@
 apispec==4.0.0
 bunch==1.0.1
 dicttoxml==1.7.4
+dpath==2.0.1
 emoji==0.6.0
 falcon==2.0.0
 falcon-apispec==0.3.0
@@ -16,6 +17,7 @@ psutil==5.6.7
 pyjwt[crypto]==2.0.1
 pyyaml==5.4
 requests==2.24.0
+:q
 rich==9.2.0
 swagger-ui-py==0.2.0
 toolz==0.10.0
