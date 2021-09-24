@@ -6,7 +6,7 @@ from marshmallow.exceptions import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED
 import json
 from extra.lcp_config import LCPConfig
-import traceback
+# import traceback
 
 
 class SoftwareDefinition(Base_Resource):
@@ -15,7 +15,7 @@ class SoftwareDefinition(Base_Resource):
     routes = '/self/software'
 
     def __init__(self):
-        pass
+        super().__init__()
 
     @docstring(source="Software/GetSoftware.yml")
     def on_get(self, req, resp):
@@ -46,7 +46,7 @@ class ContainerDefinition(Base_Resource):
     routes = "/self/container"
 
     def __init__(self):
-        pass
+        super().__init__()
 
     @docstring(source="Software/GetSoftware.yml")
     def on_get(self, req, resp):

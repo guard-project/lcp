@@ -100,12 +100,19 @@ definitions:
         description: The config file where parameters are configured
         example: /etc/example_agent/config.yaml
         type: string
+      type:
+        description: Data type AgentType. Must be 'AgentType'
+        enum:
+        - AgentType
+        example: AgentType
+        type: string
     required:
     - actions
     - id
     - partner
     - schema
     - source
+    - type
     type: object
   BaremetalServer:
     properties:
@@ -326,19 +333,6 @@ definitions:
     - id
     - path
     type: object
-  ContextBrokerConnection:
-    properties:
-      auth_header:
-        example: Basic Z3VhcmQ6cGFzc3dvcmQK
-        type: string
-      url:
-        description: URL where the ContextBroker Listens
-        example: http://cb.example.com:5000
-        format: url
-        type: string
-    required:
-    - url
-    type: object
   Disk:
     properties:
       diskPartitions:
@@ -441,19 +435,6 @@ definitions:
     - storageType
     - url
     type: object
-  InitialConfigurationSchema:
-    properties:
-      context_broker:
-        allOf:
-        - $ref: '#/definitions/ContextBrokerConnection'
-        description: Connection to Context broker if one required
-      lcp:
-        allOf:
-        - $ref: '#/definitions/LCPDescription'
-        description: Initial LCP configuration. Requisite to enable extra_features
-    required:
-    - lcp
-    type: object
   InteractsWithSchema:
     properties:
       externalStorage:
@@ -481,6 +462,12 @@ definitions:
         description: Name for the LCP in readable human format
         example: lcp-example
         type: string
+      type:
+        description: 'FIWARE''s type for this class: LCPDescription'
+        enum:
+        - LCPDescription
+        example: LCPDescription
+        type: string
       url:
         description: URL where the Son LCP Listens
         example: http://lcpapi.example.com:4000
@@ -489,6 +476,7 @@ definitions:
     required:
     - id
     - name
+    - type
     - url
     type: object
   LCPFatherConnection:
@@ -1683,7 +1671,7 @@ paths:
         name: payload
         required: true
         schema:
-          $ref: '#/definitions/InitialConfigurationSchema'
+          $ref: '#/definitions/LCPDescription'
       responses:
         '201':
           description: Created

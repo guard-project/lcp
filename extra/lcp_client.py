@@ -3,7 +3,6 @@ import requests
 from requests.exceptions import Timeout, ConnectionError
 import threading
 import json
-from schema.lcp_schemas import ContextBrokerConnection as ContextBrokerConnectionSchema
 from marshmallow import ValidationError
 from extra.cb_helpers.agent_type_helper import AgentTypeForCBHelper
 from queue import Queue
@@ -58,10 +57,8 @@ class LCPClient(object):
                 self.log.notice("post  to %s/lcp_son -- %d" %
                                 (parent['url'], resp.status_code))
                 if resp.status_code in (200, 201, 202):
-                    data = resp.json()
-                    cb_schema = ContextBrokerConnectionSchema()
-                    cb_schema.validate(data)
-                    self.controller.set_context_broker(data)
+                    # data = resp.json()
+                    pass
                 if resp.status_code >= 500:
                     must_retry = True
             except (Timeout, ValidationError, ConnectionError) as e:
@@ -89,7 +86,7 @@ class LCPClient(object):
             data = {"url": self.config.lcp['url']}
             headers = self.getHeaders()
             try:
-                url = requested_children_url +"/lcp_son"
+                url = requested_children_url +"/lcp_parent"
 
                 j = json.dumps({"url": self.config.lcp['url']})
                 resp = requests.post(url, headers=headers,

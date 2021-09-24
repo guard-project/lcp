@@ -172,7 +172,8 @@ class HostInfoToLcpHelper:
         return json.dumps(self.js_info)
 
     def get_execution_environment(self):
-        self.js_info['type'] = self.host_info.environment
+        self.js_info['type'] = 'ExecutionEnvironment'
+        self.js_info['executionType'] = self.host_info.environment
         self.deployment={ 'hostname': self.hostname,
                           'operatingSystem': self.host_info.operating_system,
                           'cpus': self.cpus,

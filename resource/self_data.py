@@ -6,9 +6,8 @@ from schema.hardware_definitions import ExecutionEnvironment as ExcutionEnvironm
 from lib.http import HTTP_Method
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_INTERNAL_SERVER_ERROR
 from marshmallow import ValidationError
-from schema.lcp_schemas import InitialConfigurationSchema
+from schema.lcp_schemas import LCPDescription
 import json
-from extra.cb_client import CBClient, CBMessages, ToContextBrokerMessages
 
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
 from extra.controller import LCPController
@@ -75,12 +74,12 @@ class InitialSelfConfiguration(Base_Resource):
 
     @docstring(source="self/post.yaml")
     def on_post(self, req, resp):
-        resp_Data, valid = InitialConfigurationSchema(method=HTTP_Method.POST) \
+        resp_Data, valid = LCPDescription(method=HTTP_Method.POST) \
             .validate(data={})
         payload = req.media
         try:
             controller = LCPController()
-            ic_schema = InitialConfigurationSchema(many=False)
+            ic_schema = LCPDescription(many=False)
             ic_schema.load(payload)
             res = controller.set_self_initial_configuration(payload)
 

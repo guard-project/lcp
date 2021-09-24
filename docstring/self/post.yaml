@@ -22,7 +22,7 @@ parameters:
   - name: payload
     in: body
     required: true
-    schema: InitialConfigurationSchema
+    schema: LCPDescription
 tags: [self]
 responses:
   201:

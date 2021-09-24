@@ -13,19 +13,19 @@ from utils.log import Log
 TIMEOUT = 5
 
 
-class ToContextBrokerMessages(enum.Enum):
+class DeleteThisToContextBrokerMessages(enum.Enum):
     AddExecEnvironment = 1
     AddAgentType = 2
     AddAgentInstance = 3
     END_THREAD = 100
 
 
-class CBMessages:
-    def __init__(self, message_type: ToContextBrokerMessages, data):
+class DeleteThisCBMessages:
+    def __init__(self, message_type: DeleteThisToContextBrokerMessages, data):
         self.message_type = message_type
         self.data = data
 
-class CBClient:
+class DeleteThisCBClient:
     class __CBClient:
         def __init__(self):
             self.config = LCPConfig()
@@ -130,7 +130,7 @@ class CBClient:
             if resp.status_code in (200, 201, 406):
                 return
             else:
-                message = CBMessages(ToContextBrokerMessages.AddExecEnvironment, data)
+                message = DeleteThisCBMessages(DeleteThisToContextBrokerMessages.AddExecEnvironment, data)
                 threading.Timer(15, self.send, [message]).start() #Retry in 15 secs.
 
 
@@ -150,7 +150,7 @@ class CBClient:
             if resp.status_code in (200, 201, 406):
                 return
             else:
-                message = CBMessages(ToContextBrokerMessages.AddAgentType, agent)
+                message = DeleteThisCBMessages(DeleteThisToContextBrokerMessages.AddAgentType, agent)
                 threading.Timer(15, self.send, [message]).start() #Retry in 15 secs.
 
         def post_agent_instance(self, agent_instance):
@@ -168,31 +168,31 @@ class CBClient:
             if resp.status_code in (200, 201, 406):
                 return
             else:
-                message = CBMessages(ToContextBrokerMessages.AddAgentInstance, agent_instance)
+                message = DeleteThisCBMessages(DeleteThisToContextBrokerMessages.AddAgentInstance, agent_instance)
                 threading.Timer(15, self.send, [message]).start() #Retry in 15 secs.
 
         def qread(self):
             while True:
                 message = self.q.get()
 
-                if message.message_type == ToContextBrokerMessages.AddExecEnvironment:
+                if message.message_type ==DeleteThisToContextBrokerMessages.AddExecEnvironment:
                     self.post_exec_environment(message.data)
-                elif message.message_type == ToContextBrokerMessages.AddAgentType:
+                elif message.message_type == DeleteThisToContextBrokerMessages.AddAgentType:
                     self.post_agent_type(message.data)
-                elif message.message_type == ToContextBrokerMessages.AddAgentInstance:
+                elif message.message_type == DeleteThisToContextBrokerMessages.AddAgentInstance:
                     self.post_agent_instance(message.data)
-                elif message.message_type == ToContextBrokerMessages.END_THREAD:
+                elif message.message_type == DeleteThisToContextBrokerMessages.END_THREAD:
                     break
 
-        def send(self, message: CBMessages):
+        def send(self, message: DeleteThisCBMessages):
             self.q.put(message)
 
     instance = None
 
     def __new__(cls, *args, **kwargs):
-        if CBClient.instance is None:
-            CBClient.instance = CBClient.__CBClient()
-        return CBClient.instance
+        if DeleteThisCBClient.instance is None:
+            DeleteThisCBClient.instance = DeleteThisCBClient.__CBClient()
+        return DeleteThisCBClient.instance
 
     def __getattr__(self, name):
         return getattr(self.instance, name)

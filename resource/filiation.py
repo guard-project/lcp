@@ -7,8 +7,6 @@ from schema.lcp_schemas import LCPDescription, LCPFatherConnection
 import json
 from extra.lcp_config import LCPConfig
 from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
-from utils.log import Log
-import requests
 
 
 class SonLCPIdentification(Base_Resource):
@@ -17,76 +15,53 @@ class SonLCPIdentification(Base_Resource):
     routes = '/lcp_son',
 
     def __init__(self):
-        self.log = Log.get('SonLCPIdentification')
+        pass
 
-    @docstring(source="filiation/get_lcp_son.yaml")
+    @docstring(source='filiation/get.yaml')
     def on_get(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
-          .validate(data={})
-        self.log.notice("GET /lcp_son -- ")
+            .validate(data={})
         child_nodes = LCPConfig().sons
+        # for k in Filiation.data:
+        #    child_nodes.append(Filiation.data[k])
         resp.body = json.dumps(child_nodes)
 
-    @docstring(source="filiation/post_lcp_son.yaml")
+    @docstring(source="filiation/post.yaml")
     def on_post(self, req, resp):
         self_lcp = LCPConfig().lcp
         if self_lcp is None:
             resp.status = HTTP_FAILED_DEPENDENCY
-            resp.body = json.dumps({"messages": "Unconfigured LCP"})
+            resp.body = {"messages": "LCP not configured yet"}
             return
 
         resp_Data, valid = LCPDescription(method=HTTP_Method.POST) \
             .validate(data={})
         payload = req.media if isinstance(req.media, list) else [req.media]
         cfg = LCPConfig()
-        self.log.notice("POST /lcp_son -- ")
         try:
             lcp = LCPDescription(many=True)
             lcp.load(payload)
             valid = lcp.validate(payload)
             for f in payload:
                 cfg.setSon(f)
-                self.test_if_im_in(f['url'])
-                # TODO - Notify the parent about this, please.
-
             resp.status = HTTP_CREATED
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
             resp.body = json.dumps(e.messages)
 
-    def test_if_im_in(self, url):
-        r = requests.get(url + "/lcp_parent")
-        self_url = LCPConfig().lcp['url']
-        parents = r.json()
-        for p in parents:
-            if p == self_url:
-                return
-
-        message = LCPMessages(BetweenLCPMessages.PostLCPParent, url)
-        LCPClient().send(message)
-
-
 
 class ParentLCPIdentification(Base_Resource):
-    tag = {'name': 'lcp_relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}
+    tag = {'name': 'lcp relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}
     routes = '/lcp_parent'
 
     def __init__(self):
-        self.log = Log.get('SonLCPIdentification')
+        pass
 
-
-    @docstring(source="filiation/post_lcp_parent.yaml")
     def on_post(self, req, resp):
-        self_lcp = LCPConfig().lcp
-        if self_lcp is None:
-            resp.status = HTTP_FAILED_DEPENDENCY
-            resp.body = json.dumps({"messages": "Unconfigured LCP"})
-            return
         resp_Data, valid = LCPDescription(method=HTTP_Method.POST) \
             .validate(data={})
         payload = req.media if isinstance(req.media, list) else [req.media]
         cfg = LCPConfig()
-        self.log.notice("POST /lcp_parent -- ")
 
         try:
             parent = LCPFatherConnection(many=True)
@@ -100,23 +75,21 @@ class ParentLCPIdentification(Base_Resource):
             resp.status = HTTP_NOT_ACCEPTABLE
             resp.body = json.dumps(e.messages)
 
-    @docstring(source="filiation/get_lcp_parents.yaml")
     def on_get(self, req, resp):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
-           .validate(data={})
-        self.log.notice("GET /lcp_parent -- ")
+            .validate(data={})
         parents_urls = LCPConfig().parents
         resp.body = json.dumps(parents_urls)
 
 
 class SonRequestIdentificationById(Base_Resource):
-    tag = {'name': 'lcp_relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}
+    tag = {'name': 'filiation', 'description': 'Describes a "son" LCP linked in this service chain.'}
     routes = '/lcp_son/{id}',
 
     def __init__(self):
         pass
 
-    @docstring(source='filiation/get_lcp_son_by_id.yaml')
+    @docstring(source='filiation/get_by_id.yaml')
     def on_get(self, req, resp, id):
         resp_Data, valid = LCPDescription(method=HTTP_Method.GET) \
             .validate(data={}, id=id)
@@ -128,7 +101,7 @@ class SonRequestIdentificationById(Base_Resource):
         else:
             resp.body = json.dumps(son)
 
-    @docstring(source='filiation/delete_lcp_son_by_id.yaml')
+    @docstring(source='filiation/get.yaml')
     def on_delete(self, req, resp, id):
         resp_Data, valid = LCPDescription(method=HTTP_Method.DELETE) \
             .validate(data={}, id=id)
@@ -139,6 +112,3 @@ class SonRequestIdentificationById(Base_Resource):
             resp.status = HTTP_OK
         else:
             resp.status = HTTP_NOT_FOUND
-
-
-

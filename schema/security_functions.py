@@ -15,6 +15,8 @@ PARAMETER_SCHEMAS = ['properties', 'json', 'xml', 'yaml']
 PARAMETER_TYPES = ['binary', 'boolean', 'choice',
                    'integer', 'number', 'time-duration', 'string']
 
+AgentTypeEnum = ['AgentType']
+AgentInstanceEnum = ['AgentInstance']
 
 class AgentParameter(Base_Schema):
     path = fields.Str(required=True, example="HeartbeatTime",
@@ -50,6 +52,8 @@ class AgentResource(Base_Schema):
 class AgentType(Base_Schema):
     id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",
                     description="Agent Type ID.")
+    type = fields.Str(required=True, enum=AgentTypeEnum, example="AgentType",
+                      description="Data type AgentType. Must be 'AgentType'")
     description = fields.Str(required=False, example="Example agent",
                              description="Description of the Agent type")
     parameters = List_or_One(fields.Nested(AgentParameter), required=False,
@@ -69,8 +73,10 @@ class AgentType(Base_Schema):
 class Agent(Base_Schema):
     id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",
                     description="Security Function ID.")
-    type = fields.Str(required=True, example="PROBE",
-                      description="Type of the Security Function Associated with the LCP")
+    type = fields.Str(required=True, enum=AgentInstanceEnum, example="AgentInstance",
+                      description="Data type AgentInstance. Must be 'AgentInstance'")
+    hasAgentType = fields.Str(required=True, example="PROBE",
+                      description="Id of the Agent Type Associated with this Agent Instance")
     # name = fields.Str(required=False, example="VM Sensor Probe",
     #                  description="Name of the Agent Catalog")
     version = fields.Str(required=False, example="1.0.1",

@@ -6,8 +6,8 @@ import json
 from marshmallow.exceptions import ValidationError
 from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE, HTTP_NOT_FOUND
 from extra.lcp_config import LCPConfig
-from extra.cb_client import CBClient, ToContextBrokerMessages, CBMessages
 from extra.controller import LCPController
+
 
 class SecurityFunction(Base_Resource):
     tag = {'name': 'software',
@@ -66,6 +66,8 @@ class AgentTypeResource(Base_Resource):
         try:
             at_schema = AgentType(many=True)
             d = at_schema.validate(payload)
+            if d[1] == False:
+                raise ValidationError("Not acceptable")
             for e in payload:
                 controller.set_agent_type(e)
             resp.status = HTTP_CREATED

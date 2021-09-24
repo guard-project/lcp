@@ -6,6 +6,7 @@ from resource.lcp_resources import SonRequestIdentificationById, SonLCPIdentific
 from resource.cloud_resource import CloudInfrastructure
 from resource.security_functions import SecurityFunction, AgentTypeResource
 from resource.self_data import DescribeDeployment, DescribeSelf, InitialSelfConfiguration
+from resource.poll_cb import PollContextBroker
 from resource.interacts import Interacts
 from utils.log import Log
 from utils.sequence import wrap
@@ -18,7 +19,7 @@ db = (Code_Resource, Config_Resource, Status_Resource,
       SecurityFunction, AgentTypeResource,
       SoftwareDefinition,
       DescribeDeployment, DescribeSelf, InitialSelfConfiguration,
-      Interacts)
+      Interacts, PollContextBroker)
 
 tags = []
 for Resource in db:

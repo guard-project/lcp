@@ -4,7 +4,7 @@ from schema.cloudschema import CloudSchema
 import json
 from lib.http import HTTP_Method
 from marshmallow.exceptions import ValidationError
-from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE
+from falcon import HTTP_NOT_ACCEPTABLE
 
 
 class CloudInfrastructure(Base_Resource):
@@ -15,7 +15,7 @@ class CloudInfrastructure(Base_Resource):
     routes = "/cloud"
 
     def __init__(self):
-        pass
+        super().__init__()
 
     @classmethod
     def update_data(cls, elem):
@@ -29,7 +29,7 @@ class CloudInfrastructure(Base_Resource):
 
     @docstring(source="Cloud/GetCloudInfrastructure.yml")
     def on_get(self, req, resp):
-        resp_Data, valid = CloudSchema(method=HTTP_Method.GET) \
+        resp_data, valid = CloudSchema(method=HTTP_Method.GET) \
         .validate(data={})
 
         resp.body = json.dumps(CloudInfrastructure.data)
@@ -48,6 +48,3 @@ class CloudInfrastructure(Base_Resource):
         except ValidationError as ve:
             resp.body = json.dumps(ve.messages)
             req.status = HTTP_NOT_ACCEPTABLE
-
-
-

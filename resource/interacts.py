@@ -1,20 +1,19 @@
 from docstring import docstring
 from resource.base import Base_Resource
 from marshmallow import ValidationError
-from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK, HTTP_ACCEPTED
-from lib.http import HTTP_Method
-from schema.lcp_schemas import LCPDescription, LCPFatherConnection
+from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_OK
 import json
 from extra.lcp_config import LCPConfig
-from extra.lcp_client import LCPClient, LCPMessages, BetweenLCPMessages
 from schema.artifacts import InteractsWithSchema
 from utils.log import Log
+
 
 class Interacts(Base_Resource):
     tag = {'name': 'interacts', 'description': 'Describes a "son" LCP linked in this service chain.'}
     routes = '/interacts',
 
     def __init__(self):
+        super().__init__()
         self.log = Log.get('Interacts')
 
     @docstring(source="interacts/postInteractsWith.yml")
@@ -34,8 +33,9 @@ class Interacts(Base_Resource):
                     for elem in payload['softwareArtifacts']:
                         cfg.add_external_software_interaction(elem)
             resp.status = HTTP_CREATED
-        except ValidationError:
-            pass
+        except ValidationError as ve:
+            resp.body = json.dumps(ve.messages)
+            req.status = HTTP_NOT_ACCEPTABLE
 
     @docstring(source="interacts/getInteractsWith.yml")
     def on_get(self, req, resp):

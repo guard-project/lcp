@@ -2,8 +2,10 @@ from extra.lcp_config import LCPConfig
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
 from extra.clients_starter import startup_client_threads
 from extra.lcp_client import BetweenLCPMessages, LCPMessages, LCPClient
-from extra.cb_client import ToContextBrokerMessages, CBMessages, CBClient
+from schema.hardware_definitions import ExecutionEnvironment
+from marshmallow import ValidationError
 import time
+import json
 
 
 class LCPController:
@@ -13,54 +15,29 @@ class LCPController:
             self.build_environment()
 
             self.initial_messages_to_lcp_sent = False
-            self.initial_messages_to_cb_sent = False
 
-            CBClient().set_controller(self)
             LCPClient().set_controller(self)
 
         def build_environment(self):
             if self.config.exec_env_type is None:
                 host_info = HostInfoToLcpHelper().js_info
-                print(host_info)
+                try:
+                    ExecutionEnvironment(many=False).validate(host_info)
+                except ValidationError as ve:
+                    print(ve.messages)
+                    raise ve
+                print("----------------")
+                print(json.dumps(host_info))
+                print("----------------")
                 self.config.setDeployment(host_info)
 
         def start_threads(self):
             startup_client_threads()
             time.sleep(2)  # Let Falkon start first...
-            self.send_initial_messages_cb()
             self.send_initial_messages_lcp()
 
         def send_msg_cb(self):
             pass
-
-        def send_initial_messages_cb(self):
-            cb = self.config.context_broker
-            if cb is None:
-                # No CB is configured. Can't end messages
-                return
-
-            # Register this LCP to ContextBroker
-            message = CBMessages(ToContextBrokerMessages.AddExecEnvironment,
-                                 self.config.exec_env_register_data())
-            cb_client = CBClient()
-            cb_client.send(message)
-
-            # Register AgentTypes
-            for agent_type in self.config.agent_types:
-                message = CBMessages(ToContextBrokerMessages.AddAgentType,
-                                     agent_type)
-                cb_client.send(message)
-
-            # In case of new registered LCP, let logstash have some time
-            # to finish its task...
-            time.sleep(1)
-
-            # Register Agents
-            for agent in self.config.agents:
-                message = CBMessages(ToContextBrokerMessages.AddAgentInstance, agent)
-                cb_client.send(message)
-
-            self.initial_messages_to_cb_sent = True
 
         def send_initial_messages_lcp(self):
             lcp = self.config.lcp
@@ -86,27 +63,18 @@ class LCPController:
         def set_self_initial_configuration(self, payload):
             self.config.setInitialConfiguration(payload)
 
-            if 'context_broker' in payload and not self.initial_messages_to_cb_sent:
-                self.send_initial_messages_cb()
-
             if 'lcp' in payload and not self.initial_messages_to_lcp_sent:
                 self.send_initial_messages_lcp()
 
         def set_agent_type(self, playload):
             self.config.setAgentType(playload)
-            if self.config.context_broker is not None:
-                message = CBMessages(ToContextBrokerMessages.AddAgentType, playload)
-                CBClient().send(message)
 
         def set_agent_instance(self, payload):
-            req_agent_type = payload['type']
+            req_agent_type = payload['hasAgentType']
             agent_type = self.config.get_agent_type_by_id(req_agent_type)
             if agent_type is None:
                 raise KeyError()
             self.config.setAgent(payload)
-            if self.config.context_broker is not None:
-                message = CBMessages(ToContextBrokerMessages.AddAgentInstance, payload)
-                CBClient().send(message)
 
         def set_context_broker(self, payload):
             self.config.setContextBroker(payload)

@@ -1,4 +1,4 @@
-from marshmallow import fields, Schema, validate
+from marshmallow import fields
 from schema.base import Base_Schema
 from schema.software_definitions import SoftwareDefinition
 

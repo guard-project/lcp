@@ -1,5 +1,5 @@
 import marshmallow.validate
-from marshmallow import fields, Schema, validate
+from marshmallow import fields, validate
 from schema.base import Base_Schema
 from utils.schema import List_or_One
 from schema.software_definitions import SoftwareDefinition
@@ -26,8 +26,11 @@ MACADDR_RE = r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"
 EXEC_ENV_TYPE = ['bare-metal', 'contailer-lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
                  'mobile', 'gateway', 'application']
 
+ExecutionEnvironmentEnum = ['ExecutionEnvironment']
+
 HYPERVISORS = ['kvm', 'xen', 'parallels', 'virtualbox', 'vmware-esxi', 'hyper-v', 'qemu', 'vmware-player',
                'unknown']
+
 
 class DiskPartition(Base_Schema):
     """Define a Disk partition schema"""
@@ -160,7 +163,11 @@ class LXCContainer(Base_Schema):
 
 
 class ExecutionEnvironment(Base_Schema):
-    type = fields.Str(required=True, example="bare-metal",
+    id = fields.Str(required=True, example="bc2e2eff-fda1-45be-b7f1-93485b756470",
+                    description="This execution environment ID.")
+    type = fields.Str(required=True, example="ExecutionEnvironment", enum=ExecutionEnvironmentEnum,
+                      description="Class ExecutionEnvironment. The value must be ExecutionEnvironment")
+    executionType = fields.Str(required=True, example="bare-metal",
                       description="Type of Exec. Env. Deployment",
                       validate=validate.OneOf(EXEC_ENV_TYPE))
     environment = fields.Dict(required=True,
@@ -168,14 +175,14 @@ class ExecutionEnvironment(Base_Schema):
                                           "DockerContainer, VirtualServer, BaremetalServer")
 
     def load(self, data):
-        ee_type = data['type']
+        ee_type = data['executionType']
         env = data['environment']
 
         if ee_type == "bare-metal":
             schema = BaremetalServer()
         elif ee_type == "vm":
             schema = VirtualServer()
-        elif ee_type =="container-docker":
+        elif ee_type == "container-docker":
             schema = DockerContainer()
         elif ee_type == "container-lxc":
             schema = LXCContainer()
@@ -189,4 +196,3 @@ class ExecutionEnvironment(Base_Schema):
 
         # EXEC_ENV_TYPE = ['bare-metal', 'contailer-lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
         #         'mobile', 'gateway', 'application']
-

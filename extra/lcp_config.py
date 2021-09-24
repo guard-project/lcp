@@ -3,7 +3,6 @@ import yaml
 from pathlib import Path
 
 from schema.lcp_schemas import LCPDescription
-from schema.lcp_schemas import ContextBrokerConnection
 from urllib.parse import urlparse
 from extra.extra_utils import UrlSchemaData
 
@@ -36,7 +35,6 @@ class LCPConfig(object):
             self.lcp = None
             self.sons = []
             self.parents = []
-            self.context_broker = None
             self.user = ""
             self.password = ""
             self.deployment = {}
@@ -47,10 +45,8 @@ class LCPConfig(object):
             self.self_containers = []
             self.exec_env_type = None
             self.agent_types = []
-            self.context_broker = None
             self.interactions = {"softwareArtifacts": [], "externalStorage": []}
             self.reload(self.filename)
-
 
         def merge_dicts(d1, d2):
             if d1 == d2:
@@ -74,7 +70,7 @@ class LCPConfig(object):
                     self.filename = "config/LCPConfig.yaml"
 
             try:
-                print("FILENAME: ", self.filename)
+                print("FILENAME: ", os.getcwd(), "/", self.filename)
                 with open(self.filename, "r") as f:
                     self.config = yaml.load(f, Loader=yaml.FullLoader)
             except Exception:
@@ -104,12 +100,6 @@ class LCPConfig(object):
                 self.sons = self.config['lcp_sons']
 
             self.lcp = self.config['lcp']
-
-            # Context Broker
-            if CONTEXT_BROKER in self.config and len(self.config[CONTEXT_BROKER]) > 0:
-                cb_schema = ContextBrokerConnection(many=False)
-                cb_schema.load(self.config[CONTEXT_BROKER])
-                self.context_broker = self.config[CONTEXT_BROKER]
 
             if 'agents' not in self.config:
                 self.config['agents'] = []
@@ -156,7 +146,6 @@ class LCPConfig(object):
 
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
-
         def add_external_storage_interaction(self, storage):
             updated = False
             for s in self.interactions['externalStorage']:
@@ -177,22 +166,13 @@ class LCPConfig(object):
                 self.interactions['softwareArtifacts'].append(software)
             self.config['interactions'] = self.interactions
 
-
-        def set_initial_configuration(self, dict_cfg):
+        def setInitialConfiguration(self, dict_cfg):
             should_start_thread = False
-            if 'lcp' in dict_cfg:
-                if self.lcp is None:
-                    self.lcp = {}
-                d = dict_cfg['lcp']
-                self.lcp = {**self.lcp, **d}
-                self.config['lcp'] = self.lcp
-
-            if 'context_broker' in dict_cfg:
-                d = dict_cfg['context_broker']
-                if self.context_broker is None:
-                    self.context_broker = {}
-                self.context_broker = {**self.context_broker, **d}
-                self.config['context_broker'] = self.context_broker
+            if self.lcp is None:
+                self.lcp = {}
+            d = dict_cfg
+            self.lcp = {**self.lcp, **d}
+            self.config['lcp'] = self.lcp
 
             self.save()
             return should_start_thread
@@ -201,8 +181,8 @@ class LCPConfig(object):
             print(dictDeployment)
             self.deployment = dictDeployment['environment']
             self.config['deployment'] = self.deployment
-            self.config['type'] = dictDeployment['type']
-            self.exec_env_type = dictDeployment['type']
+            self.config['type'] = dictDeployment['executionType']
+            self.exec_env_type = dictDeployment['executionType']
             self.save()
 
         def setAgentType(self, elem):
@@ -266,6 +246,7 @@ class LCPConfig(object):
             self.save()
 
         def setParent(self, elem):
+            print('--- setParent: ', elem)
             updated = False
             if not elem['url'] in self.parents:
                 self.parents.append(elem['url'])
@@ -305,11 +286,6 @@ class LCPConfig(object):
         def dropAllAgents(self):
             self.config['agents'] = []
             self.agents = self.config['agents']
-            self.save()
-
-        def setContextBroker(self, data):
-            self.config[CONTEXT_BROKER] = data
-            self.context_broker = self.config[CONTEXT_BROKER]
             self.save()
 
         def getDataForRegisterOnCB(self):
@@ -363,6 +339,9 @@ class LCPConfig(object):
             d['hostname'] = usd.host
 
             return d
+
+        def dump(self):
+            pass
 
         def agent_register_data(self):
             res = []

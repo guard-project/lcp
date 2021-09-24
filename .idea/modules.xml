@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$USER_HOME$/Dropbox/Code/Python/GuessDeployment/.idea/GuessDeployment.iml" filepath="$USER_HOME$/Dropbox/Code/Python/GuessDeployment/.idea/GuessDeployment.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/lcp.iml" filepath="$PROJECT_DIR$/.idea/lcp.iml" />
+      <module fileurl="file://$USER_HOME$/GUARD/Development/qa-lcp/.idea/qa-lcp.iml" filepath="$USER_HOME$/GUARD/Development/qa-lcp/.idea/qa-lcp.iml" />
     </modules>
   </component>
 </project>
