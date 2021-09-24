@@ -178,6 +178,7 @@ class LCPConfig(object):
             return should_start_thread
 
         def setDeployment(self, dictDeployment):
+            # raise KeyError("No tal error")
             print(dictDeployment)
             self.deployment = dictDeployment['environment']
             self.config['deployment'] = self.deployment

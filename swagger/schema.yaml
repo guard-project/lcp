@@ -386,7 +386,7 @@ definitions:
         description: Definition of environment hardware. Can be LXCContainer, DockerContainer,
           VirtualServer, BaremetalServer
         type: object
-      type:
+      executionType:
         description: Type of Exec. Env. Deployment
         enum:
         - bare-metal
@@ -400,8 +400,20 @@ definitions:
         - application
         example: bare-metal
         type: string
+      id:
+        description: This execution environment ID.
+        example: bc2e2eff-fda1-45be-b7f1-93485b756470
+        type: string
+      type:
+        description: Class ExecutionEnvironment. The value must be ExecutionEnvironment
+        enum:
+        - ExecutionEnvironment
+        example: ExecutionEnvironment
+        type: string
     required:
     - environment
+    - executionType
+    - id
     - type
     type: object
   ExternalStorageSchema:
@@ -481,10 +493,6 @@ definitions:
     type: object
   LCPFatherConnection:
     properties:
-      authMethod:
-        description: validation Method for this LCP
-        example: none
-        type: string
       url:
         description: URL where the Son LCP Listens
         example: http://lcpapi.example.com:4000
@@ -540,7 +548,7 @@ definitions:
     type: object
   SoftwareDefinition:
     properties:
-      connections:
+      hasSoftwareConnections:
         description: List of Known connected/related Software
         example: '[]'
         items:
@@ -566,6 +574,12 @@ definitions:
         description: Name of this piece of Software instance
         example: MySQL
         type: string
+      type:
+        description: Class SoftwareDefinition. The value must be SoftwareDefinition
+        enum:
+        - SoftwareDefinition
+        example: SoftwareDefinition
+        type: string
       vendor:
         description: Name of the Vendor for this software
         example: Oracle Coorporation
@@ -577,6 +591,7 @@ definitions:
     required:
     - id
     - product
+    - type
     - version
     type: object
   Status_Response:
@@ -1770,6 +1785,8 @@ paths:
         with.
       tags:
       - interacts
+  /poll:
+    get: {}
 produces:
 - application/json
 swagger: '2.0'
@@ -1806,3 +1823,5 @@ tags:
   name: self
 - description: Describes a "son" LCP linked in this service chain.
   name: interacts
+- description: Retrieves data from LCP to the Context Broker
+  name: cb integration

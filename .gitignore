@@ -12,3 +12,4 @@ stop
 swagger/*
 log/lcp.log
 config
+config/*

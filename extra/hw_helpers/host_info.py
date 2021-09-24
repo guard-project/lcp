@@ -171,8 +171,23 @@ class HostInfoToLcpHelper:
     def dumps(self):
         return json.dumps(self.js_info)
 
+    def getObjectType(self, env_type):
+        if env_type == 'lxc-container':
+            self.js_info['type'] = 'LXCContainer'
+        elif env_type == 'bare-metal':
+            self.js_info['type'] = 'BaremetalServer'
+        elif env_type == 'container-docker':
+            self.js_info['type'] = 'DockerContainer'
+        elif env_type == 'vm':
+            self.js_info['type'] = 'VirtualServer'
+
     def get_execution_environment(self):
-        self.js_info['type'] = 'ExecutionEnvironment'
+        # self.js_info['type'] = 'ExecutionEnvironment'
+        self.js_info['executionType'] = self.host_info.environment
+        env_type = self.js_info['executionType']
+
+        self.getObjectType(env_type)
+
         self.js_info['executionType'] = self.host_info.environment
         self.deployment={ 'hostname': self.hostname,
                           'operatingSystem': self.host_info.operating_system,

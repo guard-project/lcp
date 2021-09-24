@@ -31,6 +31,11 @@ ExecutionEnvironmentEnum = ['ExecutionEnvironment']
 HYPERVISORS = ['kvm', 'xen', 'parallels', 'virtualbox', 'vmware-esxi', 'hyper-v', 'qemu', 'vmware-player',
                'unknown']
 
+BaremetalServerDefinitionEnum = ["BaremetalServer"]
+VirtualServerDefinitionEnum = ["VirtualServer"]
+DockerContainerDefinitionEnum = ["DockerContainer"]
+LXCContainerDefinitionEnum = ["LXCContainer"]
+
 
 class DiskPartition(Base_Schema):
     """Define a Disk partition schema"""
@@ -99,6 +104,8 @@ class BaremetalServer(Base_Schema):
     """
     id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
                     description="Network Card UUID.")
+    type = fields.Str(required=True, example="BaremetalServer", enum=BaremetalServerDefinitionEnum,
+                      description="Type of the object. It must be BaremetalServer")
     hostname = fields.Str(required=True, example='corporario.example.com',
                           description="Network interface Name in the OS")
     cpus = fields.Int(required=True, example="8",
@@ -116,6 +123,8 @@ class BaremetalServer(Base_Schema):
 class VirtualServer(Base_Schema):
     id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
                     description="Network Card UUID.")
+    type = fields.Str(required=True, example="VirtualServer", enum=VirtualServerDefinitionEnum,
+                      description="Type of the object. It must be VirtualServer")
     hostname = fields.Str(required=True, example='corporario.example.com',
                           description="Network interface Name in the OS")
     hypervisor = fields.Str(required=True, example='kvm', validate=marshmallow.validate.OneOf(HYPERVISORS),
@@ -141,25 +150,29 @@ class VirtualServer(Base_Schema):
 class DockerContainer(Base_Schema):
     id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",
                     description="Id of the Docker Container.")
+    type = fields.Str(required=True, example="DockerContainer", enum=DockerContainerDefinitionEnum,
+                      description="Type of the object. It must be DockerContainer")
     hostname = fields.Str(required=True, example='lcpdocker',
                           description="Docker name")
     host_id = fields.Str(required=False, example="e501d0d8-49bf-4db3-83ba-37c8cbdac6ba",
                          description="ID of underlying Baremetal, LXC or Virtual Server")
-    software_id = fields.Str(required=False, example="82cd4399-1d95-4d67-831f-5724c47e577a",
-                             description="Software Installed in Docker, if declared")
+    # software_id = fields.Str(required=False, example="82cd4399-1d95-4d67-831f-5724c47e577a",
+    #                         description="Software Installed in Docker, if declared")
 
 
 class LXCContainer(Base_Schema):
     id = fields.Str(required=True, example="bf9aff0c-6185-4b9f-8d39-c5f8e1b522e9",
                     description="Id of the LXC Container.")
+    type = fields.Str(required=True, example="LXCContainer", enum=LXCContainerDefinitionEnum,
+                      description="Type of the object. It must be LXCContainer")
     hostname = fields.Str(required=True, example='lxc_kafka',
                           description="LXC's name for the underlying example")
     operatingSystem = fields.Str(required=True, example='Ubuntu Linux 20.04.2 LTS',
                                  description="Emulated OS in the container")
     networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,
                                     description="List of Network Interfaces in the lxc container")
-    host_id = fields.Str(required=False, example="39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
-                         description="ID of underlying Baremetal or Virtual Server")
+    # host_id = fields.Str(required=False, example="39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
+    #                     description="ID of underlying Baremetal or Virtual Server")
 
 
 class ExecutionEnvironment(Base_Schema):
@@ -171,7 +184,7 @@ class ExecutionEnvironment(Base_Schema):
                       description="Type of Exec. Env. Deployment",
                       validate=validate.OneOf(EXEC_ENV_TYPE))
     environment = fields.Dict(required=True,
-                              description="Definition of environment hardware. Can be LXCContainer, " \
+                              description="Definition of environment hardware. Can be one of the types LXCContainer, " \
                                           "DockerContainer, VirtualServer, BaremetalServer")
 
     def load(self, data):

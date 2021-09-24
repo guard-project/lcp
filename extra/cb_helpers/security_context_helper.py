@@ -29,7 +29,7 @@ class SecurityContextHelper:
 
         if len(config.agent_types) > 0:
             self.security_context['agentType'] = config.agent_types.copy()
-            if (config.agents) > 0:
+            if len(config.agents) > 0:
                 self.security_context['agentInstance'] = config.agents.copy()
 
 

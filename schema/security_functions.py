@@ -68,6 +68,8 @@ class AgentType(Base_Schema):
                           description="List of actions and expected result fro this agent")
     resources = List_or_One(fields.Nested(AgentResource), required=False,
                             description="List of agents Resources that could be used")
+    jsonSchema = fields.Str(required=False, example="https://json-schema.org/draft/2020-12/schema",
+                                  description="Pointer for the json describing the data from this kind of agents")
 
 
 class Agent(Base_Schema):
