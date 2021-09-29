@@ -26,24 +26,21 @@ class TestMyApp(LCPTestBase):
     def test_get_virtual_server(self):
         bm_server = loadExampleFile("virtual-server-example.json")
         headers = getAuthorizationHeaders()
-        VirtualServerResource.data = []
 
-        result = self.simulate_get("/virtualserver", headers=headers)
+        cfg = LCPConfig()
+        data = {"executionType": "vm", "environment": bm_server}
+        cfg.setDeployment(data)
+
+        result = self.simulate_get("/self/deployment", headers=headers)
         assert (result.status == "200 OK")
         body = result.json
-        assert (type(body) is list)
-        assert len(body) == 0
-
-        VirtualServerResource.update_data(bm_server)
-        result = self.simulate_get("/virtualserver", headers=headers)
-        assert (result.status == "200 OK")
-        body = result.json
-        assert (type(body) is list)
-        assert len(body) == 1
+        print(body)
+        assert body['executionType'] == "vm"
+        assert body['environment'] == bm_server
 
         try:
-            bm_schema = VirtualServer(many=True)
-            bm_schema.load(body)
+            bm_schema = VirtualServer(many=False)
+            bm_schema.load(body['environment'])
             assert True
         except ValidationError as ve:
             print(ve)
@@ -53,14 +50,12 @@ class TestMyApp(LCPTestBase):
     def test_post_virtual_server(self):
         bm_server_dict = loadExampleFile("virtual-server-example.json")
         headers = getAuthorizationHeaders()
-        VirtualServerResource.data = []
+        data = {"executionType": "vm", "environment": bm_server_dict}
 
-        body = json.dumps(bm_server_dict)
-        result = self.simulate_post("/virtualserver", headers=headers,
+        body = json.dumps(data)
+        result = self.simulate_post("/self/deployment", headers=headers,
                                     body=body)
         assert result.status_code == 201
-        assert len(VirtualServerResource.data) == 1
-        assert VirtualServerResource.data[0]["id"] == bm_server_dict["id"]
 
 
 

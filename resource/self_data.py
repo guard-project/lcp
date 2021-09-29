@@ -19,19 +19,16 @@ class DescribeDeployment(Base_Resource):
 
     @docstring(source="self/self_deployment.yaml")
     def on_get(self, req, resp):
-       resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
-            .validate(data={})
-
        lcp_config = LCPConfig()
 
-       r = {"type": lcp_config.exec_env_type, "environment": lcp_config.deployment}
+       r = {"executionType": lcp_config.exec_env_type, "environment": lcp_config.deployment}
 
        resp.body = json.dumps(r)
 
     @docstring(source="BaremetalServer/PostBaremetalServerDeployment.yml")
     def on_post(self, req, resp):
-        resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
-            .validate(data={})
+        resp_Data, valid = ExcutionEnvironmentSchema(method=HTTP_Method.GET) \
+            .validate(req.media)
         payload = req.media
         try:
             cfg = LCPConfig()

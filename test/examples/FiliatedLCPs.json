@@ -2,16 +2,22 @@
 {
   "url": "https://wolfsburg-compute-01.lab.fiware.org",
   "id": "wolfsburg-compute-01:01697379-9bcd-469f-8b78-ab9d03d11af7",
-  "description": "lcp:compute-01"
+  "type": "LCPDescription",
+  "description": "lcp:compute-01",
+  "name": "LCP Wolfsburg compute 01"
 },
 {
   "url": "https://wolfsburg-compute-02.lab.fiware.org",
   "id": "wolfsburg-compute-02:01697379-9bcd-469f-8b78-ab9d03d11af7",
-  "description": "lcp:compute-01"
+  "type": "LCPDescription",
+  "description": "lcp:compute-02",
+  "name": "LCP Wolfsburg compute 02"
 },
 {
   "url": "https://wolfsburg-compute-03.lab.fiware.org",
   "id": "wolfsburg-compute-03:01697379-9bcd-469f-8b78-ab9d03d11af7",
-  "description": "lcp:compute-01"
+  "type": "LCPDescription",
+  "description": "lcp:compute-01",
+  "name": "LCP Wolfsburg compute 03"
 }
 ]

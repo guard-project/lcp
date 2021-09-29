@@ -9,7 +9,8 @@ from queue import Queue
 import enum
 import base64
 from utils.log import Log
-
+from reader.arg import Arg_Reader
+from lib.token import create_token
 
 class BetweenLCPMessages(enum.Enum):
     PostLCPSon = 1
@@ -37,9 +38,10 @@ class LCPClient(object):
 
         def getHeaders(self):
             headers = {'content-type': 'application/json'}
-            auth = self.config.user + ":" + self.config.password
-            auth_b64 = base64.b64encode(auth.encode('utf-8'))
-            headers['Authorization'] = "Basic " + str(auth_b64, "utf-8")
+            if Arg_Reader.db.auth:
+                token = create_token()
+                headers['Authorization'] = token
+
             return headers
 
         def reenqueuePostLcpSon(self, parent):
@@ -62,6 +64,7 @@ class LCPClient(object):
                 if resp.status_code >= 500:
                     must_retry = True
             except (Timeout, ValidationError, ConnectionError) as e:
+                print(" E X C E P T I O N\n", e)
                 must_retry = True
 
             if must_retry:
@@ -108,7 +111,7 @@ class LCPClient(object):
         def qread(self):
             while True:
                 message = self.q.get()
-
+                print("QUEUE:", self.q.qsize())
                 if message.message_type == BetweenLCPMessages.PostLCPSon:
                     self.postLcpSon(message.data)
                 elif message.message_type == BetweenLCPMessages.PostLCPParent:

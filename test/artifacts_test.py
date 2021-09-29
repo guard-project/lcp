@@ -49,6 +49,10 @@ class TestMyApp(LCPTestBase):
 
         result = self.simulate_get("/interacts", headers=headers)
 
+        print("---------------------")
+        print("Status Code:", result.status_code)
+        print("---------------------")
+
         assert result.status_code == 200
         body = result.json
         assert type(body) is dict

@@ -75,23 +75,28 @@ class TestMyApp(LCPTestBase):
         headers = getAuthorizationHeaders()
         BaremetalServerResource.data = []
 
-        result = self.simulate_get("/baremetal", headers=headers)
-        print(result.status)
+        # result = self.simulate_get("/baremetal", headers=headers)
+        result = self.simulate_get("/self/deployment", headers=headers)
         assert (result.status == "200 OK")
         body = result.json
-        assert (type(body) is list)
-        assert len(body) == 0
+        assert (body['environment'] == {})
 
-        BaremetalServerResource.update_data(bm_server)
-        result = self.simulate_get("/baremetal", headers=headers)
+        cfg = LCPConfig()
+        data = {"executionType": "bare-metal", "environment": bm_server}
+        cfg.setDeployment(data)
+
+        result = self.simulate_get("/self/deployment", headers=headers)
         assert (result.status == "200 OK")
         body = result.json
-        assert (type(body) is list)
-        assert len(body) == 1
+        assert body['executionType'] == 'bare-metal'
+        assert body['environment'] == bm_server
+
+        print(json.dumps(bm_server))
+        print()
 
         try:
-            bm_schema = BaremetalServer(many=True)
-            bm_schema.load(body)
+            bm_schema = BaremetalServer(many=False)
+            bm_schema.load(body['environment'])
             assert True
         except ValidationError as ve:
             print(ve)
@@ -100,11 +105,10 @@ class TestMyApp(LCPTestBase):
     def test_post_baremetal_server(self):
         bm_server_dict = loadExampleFile("bare-metal-server-example.json")
         headers = getAuthorizationHeaders()
-        BaremetalServerResource.data = []
 
-        body = json.dumps(bm_server_dict)
-        result = self.simulate_post("/baremetal", headers=headers,
+        data = {"executionType": "bare-metal", "environment": bm_server_dict}
+
+        body = json.dumps(data)
+        result = self.simulate_post("/self/deployment", headers=headers,
                                     body=body)
         assert result.status_code == 201
-        assert len(BaremetalServerResource.data) == 1
-        assert BaremetalServerResource.data[0]["id"] == bm_server_dict["id"]

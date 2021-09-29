@@ -1,5 +1,6 @@
 {
     "id": "hostid:a8c01000",
+    "type": "BaremetalServer",
     "hostname": "corporario",
     "operatingSystem": "Ubuntu 20.04.1 LTS",
     "cpus": 8,

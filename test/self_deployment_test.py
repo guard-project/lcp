@@ -11,8 +11,8 @@ from schema.hardware_definitions import  ExecutionEnvironment
 class TestMyApp(LCPTestBase):
     def test_post_execenv_baremental(self):
         bm_server_dict = loadExampleFile("bare-metal-server-example.json")
-        headers = {"content-type": "application/json"}
-        data = {"type": "bare-metal", "environment": bm_server_dict}
+        headers = getAuthorizationHeaders()
+        data = {"executionType": "bare-metal", "environment": bm_server_dict}
         lcp_config = getLCPConfig()
 
         ExecutionEnvironment.load(self, data)
@@ -32,8 +32,8 @@ class TestMyApp(LCPTestBase):
 
     def test_post_execenv_virtual_server(self):
         v_server_dict = loadExampleFile("virtual-server-example.json")
-        headers = {"content-type": "application/json"}
-        data = {"type": "vm", "environment": v_server_dict}
+        headers = getAuthorizationHeaders()
+        data = {"executionType": "vm", "environment": v_server_dict}
         lcp_config = getLCPConfig()
         vs = VirtualServer()
         vs.load(v_server_dict)
@@ -54,8 +54,8 @@ class TestMyApp(LCPTestBase):
 
     def test_post_execenv_lxc(self):
         lxc_server_dict = loadExampleFile("lxc-example.json")
-        headers = {"content-type": "application/json"}
-        data = {"type": "container-lxc", "environment": lxc_server_dict}
+        headers = getAuthorizationHeaders()
+        data = {"executionType": "container-lxc", "environment": lxc_server_dict}
         lcp_config = getLCPConfig()
         lxc_s = LXCContainer()
         ee_schema = ExecutionEnvironment()
@@ -74,10 +74,4 @@ class TestMyApp(LCPTestBase):
         assert lcp_config.config['deployment']['id'] == lxc_server_dict['id']
         assert lcp_config.config['type'] == 'container-lxc'
         assert lcp_config.exec_env_type == 'container-lxc'
-
-    def test_get_exec_env(self):
-        lcp_config = getLCPConfig()
-        print("Exec_env: ", lcp_config.exec_env_type)
-        print("Exec_env: ", lcp_config.config['type'])
-        assert lcp_config.exec_env_type == 'bare-metal'
 

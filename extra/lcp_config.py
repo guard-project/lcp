@@ -70,7 +70,6 @@ class LCPConfig(object):
                     self.filename = "config/LCPConfig.yaml"
 
             try:
-                print("FILENAME: ", os.getcwd(), "/", self.filename)
                 with open(self.filename, "r") as f:
                     self.config = yaml.load(f, Loader=yaml.FullLoader)
             except Exception:
@@ -178,8 +177,6 @@ class LCPConfig(object):
             return should_start_thread
 
         def setDeployment(self, dictDeployment):
-            # raise KeyError("No tal error")
-            print(dictDeployment)
             self.deployment = dictDeployment['environment']
             self.config['deployment'] = self.deployment
             self.config['type'] = dictDeployment['executionType']
@@ -247,7 +244,6 @@ class LCPConfig(object):
             self.save()
 
         def setParent(self, elem):
-            print('--- setParent: ', elem)
             updated = False
             if not elem['url'] in self.parents:
                 self.parents.append(elem['url'])
@@ -321,7 +317,6 @@ class LCPConfig(object):
             return data
 
         def exec_env_register_data(self):
-            print("..self:", self)
             d = {}
             lcp_info = {}
             d['id'] = self.lcp['id']
@@ -364,7 +359,6 @@ class LCPConfig(object):
 
     def __new__(cls, filename=None):
         if LCPConfig.instance is None:
-            print("LCPConfig is None")
             LCPConfig.instance = LCPConfig.__LCPConfig(filename)
         return LCPConfig.instance
 

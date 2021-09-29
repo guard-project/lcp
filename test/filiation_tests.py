@@ -12,7 +12,9 @@ class TestMyApp(LCPTestBase):
         uuid = "94216230-ae26-464c-9541-cc0ca62cd1ce"
         url = "https://example.url.com:4443"
         name = "lcp:example"
-        body_dict = {"id": uuid, "url": url, "name": name}
+        d_type = "LCPDescription"
+        description = "Some descriptiont goes here"
+        body_dict = {"id": uuid, "type": d_type, "url": url, "name": name, "description": description}
         return uuid, url, body_dict
 
     def _setFiliationData(self):
@@ -27,7 +29,7 @@ class TestMyApp(LCPTestBase):
         names = ["lcp:host01", "lcp:host02", "lcp:host03"]
         cfg = getLCPConfig()
         for i in range(3):
-            cfg.setSon({"id": uuids[i], "url": urls[i], "name": names[i]})
+            cfg.setSon({"id": uuids[i], "url": urls[i], "name": names[i], "type": "LCPDescrition"})
 
     def test_get_sons(self):
         headers = getAuthorizationHeaders()

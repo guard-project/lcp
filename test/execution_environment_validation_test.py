@@ -25,11 +25,13 @@ class TestMyApp(LCPTestBase):
             lxc_schema.load(self.v_server_dict)
         except ValidationError as ve:
             print(ve.messages)
+
         try:
             lxc_schema.load(self.lxc_container_dict)
             print("OK!!")
         except ValidationError as ve:
             print(ve.messages)
+            assert False
 
     def test_execution_environment(self):
         """
@@ -42,7 +44,7 @@ class TestMyApp(LCPTestBase):
         virtual_server_schema = VirtualServer()
         ee_type = "vm"
 
-        data = {"type": ee_type, "environment": self.v_server_dict}
+        data = {"executionType": ee_type, "environment": self.v_server_dict}
 
         ee_schema = ExecutionEnvironment()
 
@@ -59,7 +61,7 @@ class TestMyApp(LCPTestBase):
 
         # Test for validation of bare-metal server type declaring a VirtualServer -
         ee_schema = ExecutionEnvironment()
-        data = {"type": ee_type, "environment": self.bm_server_dict}
+        data = {"executionType": ee_type, "environment": self.bm_server_dict}
         try:
             d, ok = ee_schema.load(data)
             print("ee_schema ", d)

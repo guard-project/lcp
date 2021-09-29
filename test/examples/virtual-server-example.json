@@ -1,5 +1,6 @@
 {
     "id": "029b97e0-4498-4013-acd1-1b585cf6e85a",
+    "type": "VirtualServer",
     "hostname": "corporario",
     "operatingSystem": "Ubuntu 18.04.1 LTS",
     "cpus": 4,

@@ -1,5 +1,6 @@
 {
     "id": "d5076827-7ffb-4413-aba2-230507bd9008",
+    "type": "LXCContainer",
     "hostname": "lxclcp-container",
     "operatingSystem": "Ubuntu 20.04.2",
     "networkInterfaces": [

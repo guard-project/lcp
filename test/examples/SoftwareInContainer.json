@@ -1,8 +1,10 @@
 {
     "id": "dockermaria",
     "technology": "docker",
+    "type": "ContainerDefinition",
     "software": [{
         "id": "oracle:mysql:5.8.1.0.5ubuntu2",
+        "type": "SoftwareDefinition",
         "product": "mysql",
         "version": "5.8.1",
         "openTCPPorts": [3306],

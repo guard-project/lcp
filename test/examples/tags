@@ -1,29 +1,221 @@
 !_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^        {$/;"	o	language:JSON	array:actions
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^        {$/;"	o	language:JSON	array:parameters
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	o	language:JSON	array:diskDevices.1.diskPartitions
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["10.0.3.1\/24"],$/;"	s	language:JSON	array:networkInterfaces.2.IPv4Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["127.0.0.1\/8","169.254.169.254\/24"],$/;"	s	language:JSON	array:networkInterfaces.3.IPv4Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["172.17.0.1"],$/;"	s	language:JSON	array:networkInterfaces.4.IPv4Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["192.168.0.16\/24"],$/;"	s	language:JSON	array:networkInterfaces.0.IPv4Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["::1\/128"],$/;"	s	language:JSON	array:networkInterfaces.3.IPv6Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["fe80::dc07:b5e4:d87f:2538\/64"],$/;"	s	language:JSON	array:networkInterfaces.0.IPv6Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^        {$/;"	o	language:JSON	array:diskDevices
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
 0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^{$/;"	o	language:JSON
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "IPv4Addresses": ["10.0.3.135\/24"],$/;"	s	language:JSON	array:networkInterfaces.0.IPv4Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/software-artifact-example.json	/^    "openTCPPorts": [3306],$/;"	n	language:JSON	array:openTCPPorts
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^        "openTCPPorts": [3306],$/;"	n	language:JSON	array:software.0.openTCPPorts
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^    "software": [{$/;"	o	language:JSON	array:software
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda1", "size": 79.9},$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "IPv4Addresses": ["10.202.254.11\/24", "46.17.108.64\/32"],$/;"	s	language:JSON	array:networkInterfaces.0.IPv4Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "IPv4Addresses": ["172.17.0.1\/16"],$/;"	s	language:JSON	array:networkInterfaces.1.IPv4Addresses
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^        {$/;"	o	language:JSON	array:diskDevices
+0	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^        {$/;"	o	language:JSON	array:actions
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^        {$/;"	o	language:JSON	array:parameters
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["127.0.0.1\/8","169.254.169.254\/24"],$/;"	s	language:JSON	array:networkInterfaces.3.IPv4Addresses
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^        {$/;"	o	language:JSON	array:diskDevices
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
 1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^{$/;"	o	language:JSON
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda14", "size": 0.004},$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "IPv4Addresses": ["10.202.254.11\/24", "46.17.108.64\/32"],$/;"	s	language:JSON	array:networkInterfaces.0.IPv4Addresses
+1	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
+2	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+2	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
 2	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^{$/;"	o	language:JSON
+2	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda15", "size": 0.1}$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+3	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p4", "size": 0.482},$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+3	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
+4	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p5", "size": 16},$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+4	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^        {$/;"	o	language:JSON	array:networkInterfaces
+5	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p6", "size": 305.7}$/;"	o	language:JSON	array:diskDevices.0.diskPartitions
+actions	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "actions": [$/;"	a	language:JSON
 auth_header	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "auth_header": "Basic Z3VhcmQ6cGFzc3dvcmQK"$/;"	s	language:JSON	object:context_broker
+cloud_id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "cloud_id": "28f67bd9-0ace-4b09-a561-0ec137b77bcc"$/;"	s	language:JSON
+cmd	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "cmd": "systemctl start example_agent",$/;"	s	language:JSON	object:actions.0
+cmd	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "cmd": "systemctl stop example_agent",$/;"	s	language:JSON	object:actions.1
 context_broker	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^    "context_broker": {$/;"	o	language:JSON
-description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01"$/;"	s	language:JSON	object:0
-description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01"$/;"	s	language:JSON	object:1
-description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01"$/;"	s	language:JSON	object:2
+cpus	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "cpus": 8,$/;"	n	language:JSON
+cpus	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "cpus": 4,$/;"	n	language:JSON
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "description": "Time between different resource probes",$/;"	s	language:JSON	object:parameters.1
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "description": "Timeout value in connections",$/;"	s	language:JSON	object:parameters.0
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "description": "Description of this demoagenttype",$/;"	s	language:JSON
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01",$/;"	s	language:JSON	object:0
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-01",$/;"	s	language:JSON	object:2
+description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "description": "lcp:compute-02",$/;"	s	language:JSON	object:1
 description	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "description": "This is a initial configuration of LCP for demos",$/;"	s	language:JSON	object:lcp
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "deviceType": "bridge"$/;"	s	language:JSON	object:networkInterfaces.2
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "deviceType": "bridge"$/;"	s	language:JSON	object:networkInterfaces.4
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "deviceType": "ethernet"$/;"	s	language:JSON	object:networkInterfaces.0
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "deviceType": "loopback"$/;"	s	language:JSON	object:networkInterfaces.3
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "deviceType": "wifi"$/;"	s	language:JSON	object:networkInterfaces.1
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "deviceType": "ethernet"$/;"	s	language:JSON	object:networkInterfaces.0
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "deviceType": "bridge"$/;"	s	language:JSON	object:networkInterfaces.1
+deviceType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "deviceType": "ethernet"$/;"	s	language:JSON	object:networkInterfaces.0
+diskDevices	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "diskDevices": [$/;"	a	language:JSON
+diskDevices	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "diskDevices": [$/;"	a	language:JSON
+diskPartitions	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "diskPartitions": [$/;"	a	language:JSON	object:diskDevices.0
+diskPartitions	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "diskPartitions": [$/;"	a	language:JSON	object:diskDevices.1
+diskPartitions	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "diskPartitions": [$/;"	a	language:JSON	object:diskDevices.0
 endpoint_url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "endpoint_url": "http:\/\/example.com:4250\/v1\/config",$/;"	s	language:JSON
+hasAgentType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "hasAgentType": "demoagenttype_afoo",$/;"	s	language:JSON
+hasAgentType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "hasAgentType": "demoagenttype",$/;"	s	language:JSON
+hostname	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "hostname": "corporario",$/;"	s	language:JSON
+hostname	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^    "hostname": "lxclcp-container",$/;"	s	language:JSON
+hostname	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "hostname": "corporario",$/;"	s	language:JSON
+host_id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "host_id": "wolfsburg-compute-03",$/;"	s	language:JSON
+hypervisor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "hypervisor": "kvm",$/;"	s	language:JSON
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "id": "demoagenttype@lcp",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "id": "start",$/;"	s	language:JSON	object:actions.0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "id": "stop",$/;"	s	language:JSON	object:actions.1
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "id": "demoagenttype",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "nwiface:docker0",$/;"	s	language:JSON	object:networkInterfaces.4
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "nwiface:enx503eaaddcbeb",$/;"	s	language:JSON	object:networkInterfaces.0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "nwiface:lo",$/;"	s	language:JSON	object:networkInterfaces.3
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "nwiface:lxcbr0",$/;"	s	language:JSON	object:networkInterfaces.2
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "nwiface:wlo1",$/;"	s	language:JSON	object:networkInterfaces.1
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "urn:HardDiskDevice:mmcblk0"$/;"	s	language:JSON	object:diskDevices.1
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "urn:HardDiskDevice:nvme0n1"$/;"	s	language:JSON	object:diskDevices.0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "id": "hostid:a8c01000",$/;"	s	language:JSON
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-01:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:0
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-02:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:1
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-03:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:2
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^        "id": "lcptestdemo",$/;"	s	language:JSON	object:lcp
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "id": "lcptestdemo",$/;"	s	language:JSON	object:lcp
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "id": "nwiface:eth0",$/;"	s	language:JSON	object:networkInterfaces.0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^    "id": "d5076827-7ffb-4413-aba2-230507bd9008",$/;"	s	language:JSON
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "id": "5db06770-8c64-4693-9724-ff318b02f897",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/software-artifact-example.json	/^    "id": "oracle:mysql:5.8.1.0.5ubuntu2",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^        "id": "oracle:mysql:5.8.1.0.5ubuntu2",$/;"	s	language:JSON	object:software.0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^    "id": "dockermaria",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "id": "nwiface:docker0",$/;"	s	language:JSON	object:networkInterfaces.1
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "id": "nwiface:ens3",$/;"	s	language:JSON	object:networkInterfaces.0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "id": "urn:HardDiskDevice:vda"$/;"	s	language:JSON	object:diskDevices.0
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "id": "029b97e0-4498-4013-acd1-1b585cf6e85a",$/;"	s	language:JSON
+IPv4Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["10.0.3.1\/24"],$/;"	a	language:JSON	object:networkInterfaces.2
+IPv4Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["127.0.0.1\/8","169.254.169.254\/24"],$/;"	a	language:JSON	object:networkInterfaces.3
+IPv4Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["172.17.0.1"],$/;"	a	language:JSON	object:networkInterfaces.4
+IPv4Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv4Addresses": ["192.168.0.16\/24"],$/;"	a	language:JSON	object:networkInterfaces.0
+IPv4Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "IPv4Addresses": ["10.0.3.135\/24"],$/;"	a	language:JSON	object:networkInterfaces.0
+IPv4Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "IPv4Addresses": ["10.202.254.11\/24", "46.17.108.64\/32"],$/;"	a	language:JSON	object:networkInterfaces.0
+IPv4Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "IPv4Addresses": ["172.17.0.1\/16"],$/;"	a	language:JSON	object:networkInterfaces.1
+IPv6Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["::1\/128"],$/;"	a	language:JSON	object:networkInterfaces.3
+IPv6Addresses	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "IPv6Addresses": ["fe80::dc07:b5e4:d87f:2538\/64"],$/;"	a	language:JSON	object:networkInterfaces.0
 lcp	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withcb.json	/^    "lcp": {$/;"	o	language:JSON
 lcp	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^    "lcp": {$/;"	o	language:JSON
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "MacAddress": "00:16:3e:00:00:00",$/;"	s	language:JSON	object:networkInterfaces.2
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "MacAddress": "00:16:3e:00:00:00",$/;"	s	language:JSON	object:networkInterfaces.3
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "MacAddress": "02:42:08:91:8b:98",$/;"	s	language:JSON	object:networkInterfaces.4
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "MacAddress": "50:3e:aa:dd:cb:eb",$/;"	s	language:JSON	object:networkInterfaces.0
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "MacAddress": "c0:b5:d7:73:5e:25",$/;"	s	language:JSON	object:networkInterfaces.1
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "MacAddress": "00:16:3e:df:7d:fc",$/;"	s	language:JSON	object:networkInterfaces.0
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "MacAddress": "02:42:a1:96:d8:c6",$/;"	s	language:JSON	object:networkInterfaces.1
+MacAddress	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "MacAddress": "fa:16:3e:e0:58:23",$/;"	s	language:JSON	object:networkInterfaces.0
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	language:JSON	object:networkInterfaces.0
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	language:JSON	object:networkInterfaces.1
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	language:JSON	object:networkInterfaces.2
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	language:JSON	object:networkInterfaces.3
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "mtu": 1500,$/;"	n	language:JSON	object:networkInterfaces.4
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "mtu": 1500,$/;"	n	language:JSON	object:networkInterfaces.0
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "mtu": 1400,$/;"	n	language:JSON	object:networkInterfaces.1
+mtu	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "mtu": 1450,$/;"	n	language:JSON	object:networkInterfaces.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	s	language:JSON	object:diskDevices.1.diskPartitions.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.1
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.2
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p4", "size": 0.482},$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.3
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p5", "size": 16},$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.4
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p6", "size": 305.7}$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.5
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "name": "docker0",$/;"	s	language:JSON	object:networkInterfaces.4
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "name": "enx503eaaddcbeb",$/;"	s	language:JSON	object:networkInterfaces.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "name": "lxcbr0",$/;"	s	language:JSON	object:networkInterfaces.2
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "name": "lxcbr0",$/;"	s	language:JSON	object:networkInterfaces.3
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "name": "mmcblk0",$/;"	s	language:JSON	object:diskDevices.1
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "name": "nvme0n1",$/;"	s	language:JSON	object:diskDevices.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "name": "wlo1",$/;"	s	language:JSON	object:networkInterfaces.1
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "name": "LCP Wolfsburg compute 01"$/;"	s	language:JSON	object:0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "name": "LCP Wolfsburg compute 02"$/;"	s	language:JSON	object:1
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "name": "LCP Wolfsburg compute 03"$/;"	s	language:JSON	object:2
 name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "name": "test-guard-local-lcp",$/;"	s	language:JSON	object:lcp
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "name": "eth0",$/;"	s	language:JSON	object:networkInterfaces.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda1", "size": 79.9},$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda14", "size": 0.004},$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.1
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda15", "size": 0.1}$/;"	s	language:JSON	object:diskDevices.0.diskPartitions.2
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "name": "docker0",$/;"	s	language:JSON	object:networkInterfaces.1
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "name": "ens3",$/;"	s	language:JSON	object:networkInterfaces.0
+name	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "name": "vda",$/;"	s	language:JSON	object:diskDevices.0
+networkInterfaces	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "networkInterfaces": [$/;"	a	language:JSON
+networkInterfaces	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^    "networkInterfaces": [$/;"	a	language:JSON
+networkInterfaces	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "networkInterfaces": [$/;"	a	language:JSON
+openTCPPorts	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/software-artifact-example.json	/^    "openTCPPorts": [3306],$/;"	a	language:JSON
+openTCPPorts	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^        "openTCPPorts": [3306],$/;"	a	language:JSON	object:software.0
+operatingSystem	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "operatingSystem": "Ubuntu 20.04.1 LTS",$/;"	s	language:JSON
+operatingSystem	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^    "operatingSystem": "Ubuntu 20.04.2",$/;"	s	language:JSON
+operatingSystem	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "operatingSystem": "Ubuntu 18.04.1 LTS",$/;"	s	language:JSON
+parameters	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "parameters": [$/;"	a	language:JSON
 partner	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "partner": "FIWARE Foundation e.V.",$/;"	s	language:JSON
+partner	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "partner": "guard-partner",$/;"	s	language:JSON
+path	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "path": "timers.timeout",$/;"	s	language:JSON	object:parameters.0
+path	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "path": "timers.time_between_probes",$/;"	s	language:JSON	object:parameters.1
+product	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/software-artifact-example.json	/^    "product": "MySQL",$/;"	s	language:JSON
+product	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^        "product": "mysql",$/;"	s	language:JSON	object:software.0
+ram	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "ram": 16120776,$/;"	n	language:JSON
+ram	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "ram": 8167560,$/;"	n	language:JSON
+schema	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "schema": "yaml",$/;"	s	language:JSON
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "mmcblk0p1", "size": 238.7}$/;"	n	language:JSON	object:diskDevices.1.diskPartitions.0
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p1", "size": 0.26},$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.0
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p2", "size": 0.016},$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.1
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p3", "size": 154.5},$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.2
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p4", "size": 0.482},$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.3
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p5", "size": 16},$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.4
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^                {"name": "\/dev\/nvme0n1p6", "size": 305.7}$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.5
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "size": 238.77,$/;"	n	language:JSON	object:diskDevices.1
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "size": 476.96,$/;"	n	language:JSON	object:diskDevices.0
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda1", "size": 79.9},$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.0
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda14", "size": 0.004},$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.1
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^                {"name": "\/dev\/vda15", "size": 0.1}$/;"	n	language:JSON	object:diskDevices.0.diskPartitions.2
+size	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "size": 80.0,$/;"	n	language:JSON	object:diskDevices.0
+software	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^    "software": [{$/;"	a	language:JSON
+source	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "source": "\/etc\/example_agent\/config.yaml",$/;"	s	language:JSON
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "state": "DOWN",$/;"	s	language:JSON	object:networkInterfaces.1
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "state": "LOWER_UP",$/;"	s	language:JSON	object:networkInterfaces.3
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "state": "UP",$/;"	s	language:JSON	object:networkInterfaces.0
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "state": "UP",$/;"	s	language:JSON	object:networkInterfaces.2
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "state": "UP",$/;"	s	language:JSON	object:networkInterfaces.4
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^            "state": "UP",$/;"	s	language:JSON	object:networkInterfaces.0
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "state": "UP",$/;"	s	language:JSON	object:networkInterfaces.0
+state	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^            "state": "UP",$/;"	s	language:JSON	object:networkInterfaces.1
 status	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "status": "started"$/;"	s	language:JSON
+status	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "status": "started"$/;"	s	language:JSON	object:actions.0
+status	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "status": "stopped"$/;"	s	language:JSON	object:actions.1
 status	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "status": "stopped"$/;"	s	language:JSON
-type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "type": "demoagenttype_afoo",$/;"	s	language:JSON
-type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "type": "demoagenttype",$/;"	s	language:JSON
+technology	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^    "technology": "docker",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "type": "AgentInstance",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "type": "integer"$/;"	s	language:JSON	object:parameters.0
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "type": "integer"$/;"	s	language:JSON	object:parameters.1
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "type": "AgentType",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "type": "BaremetalServer",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "type": "LCPDescription",$/;"	s	language:JSON	object:0
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "type": "LCPDescription",$/;"	s	language:JSON	object:1
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "type": "LCPDescription",$/;"	s	language:JSON	object:2
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^    "type": "LXCContainer",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "type": "AgentInstance",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/software-artifact-example.json	/^    "type": "SoftwareDefinition",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^        "type": "SoftwareDefinition",$/;"	s	language:JSON	object:software.0
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^    "type": "ContainerDefinition",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "type": "VirtualServer",$/;"	s	language:JSON
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-01.lab.fiware.org",$/;"	s	language:JSON	object:0
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-02.lab.fiware.org",$/;"	s	language:JSON	object:1
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "url": "https:\/\/wolfsburg-compute-03.lab.fiware.org",$/;"	s	language:JSON	object:2
@@ -32,5 +224,9 @@ url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPCon
 url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/LCPConfig.withoutcb.json	/^        "url": "http:\/\/localhost:4000"$/;"	s	language:JSON	object:lcp
 vendor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "vendor": "GUARD Project",$/;"	s	language:JSON
 vendor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "vendor": "FIWARE Foundation e.V.",$/;"	s	language:JSON
+vendor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/software-artifact-example.json	/^    "vendor": "Oracle Corporation"$/;"	s	language:JSON
+vendor	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^        "vendor": "Oracle Corporation"$/;"	s	language:JSON	object:software.0
 version	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "version": "1.1.0",$/;"	s	language:JSON
 version	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "version": "1.0.1",$/;"	s	language:JSON
+version	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/software-artifact-example.json	/^    "version": "5.8.1",$/;"	s	language:JSON
+version	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/SoftwareInContainer.json	/^        "version": "5.8.1",$/;"	s	language:JSON	object:software.0

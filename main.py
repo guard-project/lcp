@@ -23,6 +23,8 @@ from extra.controller import LCPController
 if __name__ == "__main__":
     db = Arg_Reader.read()
 
+    print(db)
+
     if db.version is not None:
         print(db.version)
     else:

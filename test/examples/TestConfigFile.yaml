@@ -1,11 +1,8 @@
 lcp:
   id: d73f8a66-3ce6-4e23-9cdf-977a103c969d
-  description: guard-local-lcp
+  name: guard-local-lcp
   url: http://localhost:4000
+  description: Test config file for LCP
+  type: LCPDescription
 
-description: Test config file for LCP
 type: bare-metal
-
-context_broker:
-  url: http://testbed.guard-project.eu:5000
-  auth_header: cb bla bla bla

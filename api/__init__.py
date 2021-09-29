@@ -28,9 +28,6 @@ def api(title, version):
         Negotiation_Middleware()
     ]
 
-    print("------------------------------------")
-    print("db.auth:", Arg_Reader.db.auth)
-    print("------------------------------------")
     if Arg_Reader.db.auth:
         log.notice('JWT authentication enabled')
         middlewares.append(Falcon_Auth_Middleware(JWT_Auth_Backend(user_loader=lambda token: {'user': token},

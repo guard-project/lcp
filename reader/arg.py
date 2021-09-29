@@ -46,8 +46,11 @@ class Arg_Reader:
 
         cls.db = cls.ap.parse_args()
         cls.db.config = cls.cr
+
         for field in ['polycube_timeout']:
             setattr(cls.db, field, get_seconds(getattr(cls.db, field)))
+
+        cls.db.auth = cls.db.auth or cls.cr.auth
 
         if cls.db.write_config:
             cls.cr.write(cls.db)

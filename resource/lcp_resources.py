@@ -55,12 +55,16 @@ class SonLCPIdentification(Base_Resource):
             resp.body = json.dumps(e.messages)
 
     def test_if_im_in(self, url):
-        r = requests.get(url + "/lcp_parent")
-        self_url = LCPConfig().lcp['url']
-        parents = r.json()
-        for p in parents:
-            if p == self_url:
-                return
+        try:
+            r = requests.get(url + "/lcp_parent")
+            self_url = LCPConfig().lcp['url']
+            parents = r.json()
+            for p in parents:
+                if p == self_url:
+                    return
+        except:
+            pass
+            ## Gues it's not ready... but send messages until it is ready.
 
         message = LCPMessages(BetweenLCPMessages.PostLCPParent, url)
         LCPClient().send(message)
@@ -73,6 +77,7 @@ class ParentLCPIdentification(Base_Resource):
 
     def __init__(self):
         self.log = Log.get('SonLCPIdentification')
+        self.notified = []
 
 
     @docstring(source="filiation/post_lcp_parent.yaml")
@@ -94,7 +99,9 @@ class ParentLCPIdentification(Base_Resource):
             parent.validate(payload)
             for f in payload:
                 cfg.setParent(f)
-                LCPClient().send(LCPMessages(BetweenLCPMessages.PostLCPSon, f))
+                if f not in self.notified:
+                    self.notified.append(f)
+                    LCPClient().send(LCPMessages(BetweenLCPMessages.PostLCPSon, f))
             resp.status = HTTP_ACCEPTED
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE

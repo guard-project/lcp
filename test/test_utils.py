@@ -7,6 +7,7 @@ import time
 from queue import Queue
 import json
 import requests
+from lib.token import create_token
 
 
 def loadExampleFile(filename):
@@ -18,8 +19,8 @@ def loadExampleFile(filename):
 
 
 def getAuthorizationHeaders():
-    return {"Authorization": "Basic bGNwOmd1YXJk",
-            "content-type": "application/json"}
+    return {"Authorization": create_token(),
+           "content-type": "application/json"}
 
 
 def getLCPConfig():
