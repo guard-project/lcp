@@ -187,6 +187,53 @@ definitions:
     required:
     - message
     type: object
+  BaremetalServer:
+    properties:
+      cpus:
+        description: CPU Cores in the Server
+        example: '8'
+        type: integer
+      diskDevices:
+        items:
+          allOf:
+          - $ref: '#/definitions/Disk'
+          description: Disks installed in the Server
+        type: array
+      hostname:
+        description: Network interface Name in the OS
+        example: corporario.example.com
+        type: string
+      id:
+        description: Network Card UUID.
+        example: ed5bd35a-7213-47a9-ae6e-76212e62a157
+        type: string
+      networkInterfaces:
+        description: List of Network Interfaces in the host
+        items:
+          $ref: '#/definitions/NetworkInterface'
+        type: array
+      operatingSystem:
+        description: Network interface Name in the OS
+        example: Ubuntu Linux 20.04.2 LTS
+        type: string
+      ram:
+        description: RAM installed in the Server in Megabytes
+        example: '8'
+        type: integer
+      type:
+        description: Type of the object. It must be BaremetalServer
+        enum:
+        - BaremetalServer
+        example: BaremetalServer
+        type: string
+    required:
+    - cpus
+    - hostname
+    - id
+    - operatingSystem
+    - ram
+    - type
+    type: object
   CloudCompute:
     properties:
       controller_id:
@@ -405,6 +452,53 @@ definitions:
     - technology
     - type
     type: object
+  Disk:
+    properties:
+      diskPartitions:
+        items:
+          allOf:
+          - $ref: '#/definitions/DiskPartition'
+          description: Disk Partitions for the Disk
+        type: array
+      id:
+        description: Disk UUID.
+        example: 5db06770-8c64-4693-9724-ff318b02f897
+        type: string
+      model:
+        description: Disk Model/Vendor
+        example: KBG30ZMV512G TOSHIBA
+        type: string
+      name:
+        description: Disk Name in the OS
+        example: nvme0n1
+        type: string
+      size:
+        description: Complete Disk Size in Kilo Bytes
+        example: '314461424'
+        type: integer
+    required:
+    - id
+    - name
+    - size
+    type: object
+  DiskPartition:
+    properties:
+      name:
+        description: Partition name in the OS
+        example: nveme0n1p6
+        type: string
+      size:
+        description: Partition Size in Kilo Bytes
+        example: '314461424'
+        type: number
+      type:
+        description: Partition type or Filesystem
+        example: ext4
+        type: string
+    required:
+    - name
+    - size
+    type: object
   Exception_Response:
     properties:
       filename:
@@ -531,6 +625,58 @@ definitions:
     required:
     - message
     type: object
+  LCPConnection:
+    properties: {}
+    type: object
+  LCPContextBrokerDefinition:
+    properties:
+      description:
+        description: A Human readable description, so it is easy to identify
+        example: Testing LCP in localhost
+        type: string
+      enabled:
+        description: Describes if the LCP is enabled or not
+        example: true
+        type: boolean
+      hasSons:
+        example:
+        - lpc:son:id:1
+        - lcp:son:id:2
+        items:
+          type: string
+        type: array
+      hostname:
+        description: Hostname of the Host where the LCP can be contacted. If a proxy
+          is behind the LCP, the value should be the proxy host
+        example: localhost
+        type: string
+      id:
+        description: Unique ID for the Son LCP
+        example: 15d41167-79d3-48bf-b8db-9db0c8cc8d54
+        type: string
+      lcp:
+        $ref: '#/definitions/LCPConnection'
+      type_id:
+        description: Type of execution environment
+        enum: &id003
+        - bare-metal
+        - contailer-lxc
+        - vm
+        - container-k8s
+        - container-docker
+        - cloud
+        - mobile
+        - gateway
+        - application
+        example: bare-metal
+        type: string
+    required:
+    - enabled
+    - hostname
+    - id
+    - lcp
+    - type_id
+    type: object
   LCPDescription:
     properties:
       description:
@@ -576,6 +722,51 @@ definitions:
         type: string
     required:
     - url
+    type: object
+  NetworkInterface:
+    properties:
+      IPv4Addresses:
+        description: List of CIDR for IPv4 values
+        items:
+          pattern: ^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$
+          type: string
+        type: array
+      IPv6Addresses:
+        description: List of CIDR for IPv6 values
+        items:
+          pattern: ^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$
+          type: string
+        type: array
+      MacAddress:
+        description: Network Interface's Mac Address
+        example: a2:bc:14:43:ff:43
+        pattern: ^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$
+        type: string
+      deviceType:
+        description: Type of Network device
+        example: ethernet
+        type: string
+      id:
+        description: Network Card UUID.
+        example: d450f1ce-95a1-4c3d-9e01-6e37f3d0c584
+        type: string
+      mtu:
+        description: Network Interface MTU value
+        example: '1500'
+        type: integer
+      name:
+        description: Network interface Name in the OS
+        example: enx503eaaddcbeb
+        type: string
+      state:
+        description: Network Interface state in the OS
+        example: UP
+        type: string
+    required:
+    - id
+    - mtu
+    - name
+    - state
     type: object
   No_Content_Response:
     properties:
@@ -636,6 +827,44 @@ definitions:
         default: OK
     required:
     - message
+    type: object
+  PollSchema:
+    properties:
+      container:
+        items:
+          $ref: '#/definitions/ContainerSchema'
+        type: array
+      executionEnvironment:
+        allOf:
+        - $ref: '#/definitions/BaremetalServer'
+        description: One of BaremetalServer, VirtualServer, DockerContainer or LXCContainer
+          schemas
+      executionEnvironmentType:
+        description: Type of execution environment
+        enum: *id003
+        example: bare-metal
+        type: string
+      lcp:
+        allOf:
+        - $ref: '#/definitions/LCPContextBrokerDefinition'
+        description: LCP Description as required by the CB
+      lcpParent:
+        description: URL where the parent LCP Listens.
+        example: http://lcpapi.example.com:4000
+        format: url
+        type: string
+      lcpSons:
+        items:
+          $ref: '#/definitions/LCPContextBrokerDefinition'
+        type: array
+      software:
+        items:
+          $ref: '#/definitions/SoftwareDefinition'
+        type: array
+    required:
+    - executionEnvironmentType
+    - lcp
+    - lcpParent
     type: object
   SoftwareDefinition:
     properties:
@@ -1740,7 +1969,7 @@ paths:
         '
       responses:
         '200':
-          description: 'Get'' the description of the execution environment. The value
+          description: 'Gets the description of the execution environment. The value
             for the
 
             environment return value could be one of BaremetalServer, LXC Container,
@@ -1772,32 +2001,14 @@ paths:
       tags:
       - self
     post:
-      description: 'Post initial configuration for the LCP. This includes information
-        about itself
+      description: 'Post the description of the execution environment. The value for
+        the
 
-        like the execution environment ID (lcp.id), the URL where the LCP can be
+        environment value could be one of BaremetalServer, LXC Container,
 
-        contacted and a human readable name.
+        Docker container, VirtualServer depending on the value for the "type"
 
-
-        Another parameter could be the GUARD''s Context Broker data including it''s
-        URL
-
-        and it''s authorization string.
-
-
-        It could also recieve a parameter to enable the extra features of LCP which
-
-        will enable the extra features such as self registering to GUARD''s Context
-
-        Broker.
-
-
-        This request will trigger a "self discovery" of the deployment of the
-
-        execution environment (baremental, container, vm), network configuration,
-
-        disks, cpus, ram, etc
+        of the execution environment.
 
         '
       parameters:
@@ -1805,8 +2016,41 @@ paths:
         name: payload
         required: true
         schema:
-          $ref: '#/definitions/LCPDescription'
+          $ref: '#/definitions/ExecutionEnvironment'
       responses:
+        '201':
+          description: Created
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post the description of the Deployment for the execution environment
+        overriding that calculated
+      tags:
+      - self
+  /self:
+    get:
+      description: 'Gets the initial configuration for the LCP. This includes information
+        about itself
+
+        like the execution environment ID (lcp.id), the URL where the LCP can be
+
+        contacted and a human readable name.
+
+        '
+      responses:
+        '200':
+          description: Gets the LCP basic information.
+          schema:
+            $ref: '#/definitions/LCPDescription'
         '201':
           description: Created
         '400':
@@ -1825,11 +2069,9 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Post initial configuration for the LCP.
+      summary: Getst the initial configuration for the LCP.
       tags:
       - self
-  /self:
-    get: {}
   /self/configuration:
     post:
       description: 'Post initial configuration for the LCP. This includes information
@@ -1838,19 +2080,6 @@ paths:
         like the execution environment ID (lcp.id), the URL where the LCP can be
 
         contacted and a human readable name.
-
-
-        Another parameter could be the GUARD''s Context Broker data including it''s
-        URL
-
-        and it''s authorization string.
-
-
-        It could also recieve a parameter to enable the extra features of LCP which
-
-        will enable the extra features such as self registering to GUARD''s Context
-
-        Broker.
 
 
         This request will trigger a "self discovery" of the deployment of the
@@ -1965,7 +2194,32 @@ paths:
       tags:
       - interacts
   /poll:
-    get: {}
+    get:
+      description: Gets all data the LCP has about itself and its environment. Gets
+        all data the LCP has, specially to the Context Broker, so the CB can integrate
+        this data in its knownledge base. The Context Broker will be the one to call
+        this method since there is no pushing information to the CB from the LCP.
+        This is so mainly for security reasons.
+      responses:
+        '200':
+          description: retrieves all info the LCP has about itself.
+          schema:
+            $ref: '#/definitions/PollSchema'
+        '404':
+          description: Unconfigured LCP. No data to be retrieved this way.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: null
+      tags:
+      - cb integration
 produces:
 - application/json
 swagger: '2.0'
@@ -1976,7 +2230,7 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
-- &id003
+- &id004
   description: Returns the description of software installed
   name: software
 - description: Returns the description of software installed in containers
@@ -1993,14 +2247,14 @@ tags:
   name: Agents
 - description: Describes the Agent types and Agent instances.
   name: Agents
-- *id003
+- *id004
 - description: This method does the initial configuration
   name: self
-- description: Returns description of a Baremetal Server.
-  name: hardware
+- description: Returns description of self LCP.
+  name: self
 - description: Initial configuration for the LCP
   name: self
-- description: Describes a "son" LCP linked in this service chain.
+- description: Describes interactions with other external resources.
   name: interacts
 - description: Retrieves data from LCP to the Context Broker
   name: cb integration

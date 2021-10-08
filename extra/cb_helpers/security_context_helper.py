@@ -34,6 +34,8 @@ class SecurityContextHelper:
             if len(config.agents) > 0:
                 self.security_context['agentInstance'] = config.agents.copy()
 
+        self.security_context['interactions'] = config.interactions
+
 
     def getData(self):
         return json.dumps(self.security_context)

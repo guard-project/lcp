@@ -27,9 +27,9 @@ class SoftwareDefinition(Base_Schema):
                       description="Name of this piece of Software instance")
     version = fields.Str(required=True, example="5.8.1",
                          description="Version of the Piece of Software installed")
-    openTCPPorts = fields.List(fields.Int, required=False, example="[3306]",
+    openTCPPorts = fields.List(fields.Int, required=False, example=[3306],
                                description="List of opened TCP Ports")
-    openUDPPorts = fields.List(fields.Int, required=False, example="[33066]",
+    openUDPPorts = fields.List(fields.Int, required=False, example=[33066],
                                description="List of opened UDP Ports")
     vendor = fields.Str(required=False, example="Oracle Coorporation",
                         description="Name of the Vendor for this software")

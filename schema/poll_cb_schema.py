@@ -3,6 +3,7 @@ from marshmallow import fields
 from schema.base import Base_Schema
 from schema.hardware_definitions import *
 from schema.software_definitions import ContainerSchema, SoftwareDefinition
+from schema.artifacts import InteractsWithSchema
 from schema.hardware_definitions import EXEC_ENV_TYPE
 
 __all__ = [
@@ -48,3 +49,4 @@ class PollSchema(Base_Schema):
                                          description="One of BaremetalServer, VirtualServer, DockerContainer or LXCContainer schemas")
     container = fields.List(fields.Nested(ContainerSchema), required=False)
     software = fields.List(fields.Nested(SoftwareDefinition), required=False)
+    interactions = fields.Nested(InteractsWithSchema, required=False)
