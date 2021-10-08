@@ -1,0 +1,26 @@
+Post the description of the Deployment for the execution environment overriding that calculated
+---
+summary: Post the description of the Deployment for the execution environment overriding that calculated
+description: |
+      Post the description of the execution environment. The value for the
+      environment value could be one of BaremetalServer, LXC Container,
+      Docker container, VirtualServer depending on the value for the "type"
+      of the execution environment.
+tags: [self]
+parameters:
+  - name: payload
+    in: body
+    required: true
+    schema: ExecutionEnvironment
+responses:
+  201:
+    description: Created
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

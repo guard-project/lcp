@@ -10,13 +10,10 @@ parameters:
     schema:
       type: array
       items: AgentType
-tags: [software]
+tags: [Agents]
 responses:
   201:
     description: The software definition has been successfully updated there.
-  400:
-    description: Request not valid.
-    schema: Bad_Request_Response_Schema
   401:
     description: Authentication failed.
     schema: Unauthorized_Response_Schema

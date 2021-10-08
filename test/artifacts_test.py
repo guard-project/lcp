@@ -1,5 +1,4 @@
 from marshmallow.exceptions import ValidationError
-
 from schema.software_definitions import SoftwareDefinition, ContainerSchema
 from test.testbase import LCPTestBase
 from test_utils import *
@@ -11,8 +10,10 @@ class TestMyApp(LCPTestBase):
         d_software = loadExampleFile("software-artifact-example.json")
         ess = ExternalStorageSchema()
         ess.load(d_storage, many=False)
+        ess.validate(d_storage)
         esoft_schema = SoftwareDefinition()
         esoft_schema.load(d_software, many=False)
+        esoft_schema.validate(d_software)
 
         d = {"externalStorage": [d_storage],
              "softwareArtifacts": [d_software]}

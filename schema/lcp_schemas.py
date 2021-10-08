@@ -1,3 +1,4 @@
+import marshmallow.validate
 from marshmallow import fields
 from schema.base import Base_Schema
 
@@ -21,7 +22,10 @@ class LCPDescription(Base_Schema):
     description = fields.Str(required=False, example="Testing LCP in localhost",
                              description="A Human readable description, so it is easy to identify")
     type = fields.Str(required=True, enum=LCPDescriptionEnum, example="LCPDescription",
+                      validate=marshmallow.validate.OneOf(LCPDescriptionEnum),
                       description="FIWARE's type for this class: LCPDescription")
+    exec_env_type = fields.Str(required=False, enum=LCPDescriptionEnum, example="bare-metal",
+                      description="execution environment type")
 
 
 class LCPFatherConnection(Base_Schema):

@@ -1,0 +1,23 @@
+Get Description of a container running with the LCP
+---
+summary: Get Description of a container running with the LCP
+description: |
+  Gets the information of a container (Docker, LXC, etc) running with the LCP and the information of
+  the software that the container is running. This information could help to depict the deployment in
+  the node and the Software information could be useful to query the CVE dtabase in search for known
+  vulnerabilities.
+
+  If no container is known by the LCP it would retrieve an empty array.
+tags: [software]
+responses:
+  200:
+    description: Get the Description of the containers and their software running with the LCP
+    schema:
+      type: array
+      items: ContainerSchema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

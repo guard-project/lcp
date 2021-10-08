@@ -1,22 +1,22 @@
 Get Description of a Piece of Software Installed
 ---
-summary: Get the Software installed and controlled and known by the LCP
+summary: Get the Software known by this LCP to be installed together with this LCP
 description: |
-  Gets the information of the Server software that LCP Knows.
+  Gets the information of the software that this LCP Knows. This data about software could be used
+  by an external process to query the CVE database in search for known vulnerabilities after being
+  retrieved.
+
+  If no software is known by the LCP it would retrieve an empty array.
 tags: [software]
 responses:
   200:
     description: Get the Description of the Software controlled by the LCP
-    schema: SoftwareDefinition
-  400:
-    description: Request not valid.
-    schema: Bad_Request_Response_Schema
+    schema:
+      type: array
+      items: SoftwareDefinition
   401:
     description: Authentication failed.
     schema: Unauthorized_Response_Schema
-  406:
-    description: Request validation failed.
-    schema: Not_Acceptable_Response_Schema
   500:
     description: Server not available to satisfy the request.
     schema: Internal_Server_Error_Response_Schema

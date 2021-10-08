@@ -1,23 +1,16 @@
-Post initial configuration for the LCP.
+Gets the basic data of this LCP known by the initial configuration.
 ---
-summary: Post initial configuration for the LCP.
+summary: Getst the initial configuration for the LCP.
 description: |
-  Post initial configuration for the LCP. This includes information about itself
+  Gets the initial configuration for the LCP. This includes information about itself
   like the execution environment ID (lcp.id), the URL where the LCP can be
   contacted and a human readable name.
 
-  This request will trigger a "self discovery" of the deployment of the
-  execution environment (baremental, container, vm), network configuration,
-  disks, cpus, ram, etc
-
-
-parameters:
-  - name: payload
-    in: body
-    required: true
-    schema: LCPDescription
 tags: [self]
 responses:
+  200:
+    description: Gets the LCP basic information.
+    schema: LCPDescription
   201:
     description: Created
   400:

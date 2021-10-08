@@ -1,5 +1,6 @@
 {
     "id": "example:nfs:storage",
+    "type": "ExternalStorage",
     "storageType": "NFS",
     "url": "nfs://192.168.10.245:2049/data",
     "description": "nfs definition example"

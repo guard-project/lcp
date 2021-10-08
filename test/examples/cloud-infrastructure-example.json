@@ -1,7 +1,7 @@
 {
     "id": "f9e6ee65-517a-44da-854d-fdd058fcf2dd",
     "name": "Wolfsburg Openstack",
-    "description": "Wolfsburg FIWARE Lab Node",
+    "type": "CloudDescription",
     "vendor": "Openstack",
     "version": "queens",
     "description": "Openstack Node with FIWARE Lab Features",

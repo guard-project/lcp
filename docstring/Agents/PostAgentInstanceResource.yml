@@ -1,25 +1,25 @@
 Post a description of a Piece of Software Installed
 ---
-summary: Post Software description of a new Software installed in the System
+summary: Post the description of an instance of an Agent type previously defined.
 description: |
-  Posts the information of the Server software that LCP must be aware of.
+  Post the description of an instance known its Agent type.
 parameters:
   - name: payload
     in: body
     required: true
     schema:
       type: array
-      items: SoftwareDefinition
-tags: [software]
+      items: Agent
+tags: [Agents]
 responses:
   201:
-    description: The software definition has been successfully updated there.
+    description: The Agent Instance has been successfully updated there.
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema
-  401:
-    description: Authentication failed.
-    schema: Unauthorized_Response_Schema
+  404:
+    description: Agent type not previously defined. The agent type should be defined before the Instance.
+    schema: Not_Found_Response
   406:
     description: Request validation failed.
     schema: Not_Acceptable_Response_Schema

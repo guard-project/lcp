@@ -15,6 +15,7 @@ class TestMyApp(LCPTestBase):
         self.v_server_dict = loadExampleFile("virtual-server-example.json")
         self.bm_server_dict = loadExampleFile("bare-metal-server-example.json")
         self.lxc_container_dict = loadExampleFile("lxc-example.json")
+        self.docker_container_dict = loadExampleFile("docker-container-example.json")
 
     def test_crossed_castings(self):
         bm_schema = BaremetalServer()

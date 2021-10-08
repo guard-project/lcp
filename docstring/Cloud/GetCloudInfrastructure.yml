@@ -1,12 +1,17 @@
 Get Description of a cloud Infrastrucutre
 ---
-summary: Get the Description of one Cloud Infrastructure
+summary: Get the Description of the Cloud Infrastructure
 description: |
-  Gets the information of one cloud Infrastrucutre
+  Gets the information of the cloud Infrastructure where the LCP is installed on. This description of
+  the cloud infrastructure could define as inner objects also things like:
+  * Controllers - Used to control the cloud infrastrucutre
+  * Compute Nodes - Used to control the Virtual Servers
+
+  Although this information will only be informative, not specially relevant.
 tags: [hardware]
 responses:
   200:
-    description: Get the description of a Cloud Infrastructure known by the system
+    description: Get the description of the Cloud Infrastructure known by the system
     schema:
       type: array
       items: CloudSchema

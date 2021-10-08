@@ -73,6 +73,7 @@ endpoint_url	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/exampl
 hasAgentType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-instance-example-for-lcp.json	/^    "hasAgentType": "demoagenttype_afoo",$/;"	s	language:JSON
 hasAgentType	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/security-function-example.json	/^  "hasAgentType": "demoagenttype",$/;"	s	language:JSON
 hostname	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "hostname": "corporario",$/;"	s	language:JSON
+hostname	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/docker-container-example.json	/^    "hostname": "docker001-container"$/;"	s	language:JSON
 hostname	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/lxc-example.json	/^    "hostname": "lxclcp-container",$/;"	s	language:JSON
 hostname	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "hostname": "corporario",$/;"	s	language:JSON
 host_id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/virtual-server-example.json	/^    "host_id": "wolfsburg-compute-03",$/;"	s	language:JSON
@@ -89,6 +90,7 @@ id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-me
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "urn:HardDiskDevice:mmcblk0"$/;"	s	language:JSON	object:diskDevices.1
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^            "id": "urn:HardDiskDevice:nvme0n1"$/;"	s	language:JSON	object:diskDevices.0
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "id": "hostid:a8c01000",$/;"	s	language:JSON
+id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/docker-container-example.json	/^    "id": "d5076827-7ffb-4413-aba2-230507bd9008",$/;"	s	language:JSON
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-01:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:0
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-02:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:1
 id	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "id": "wolfsburg-compute-03:01697379-9bcd-469f-8b78-ab9d03d11af7",$/;"	s	language:JSON	object:2
@@ -207,6 +209,7 @@ type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent
 type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^            "type": "integer"$/;"	s	language:JSON	object:parameters.1
 type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/agent-type-example.json	/^    "type": "AgentType",$/;"	s	language:JSON
 type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/bare-metal-server-example.json	/^    "type": "BaremetalServer",$/;"	s	language:JSON
+type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/docker-container-example.json	/^    "type": "DockerContainer",$/;"	s	language:JSON
 type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "type": "LCPDescription",$/;"	s	language:JSON	object:0
 type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "type": "LCPDescription",$/;"	s	language:JSON	object:1
 type	/data/jicg/WorkIssues/GUARD/Development/Integration/lcp/test/examples/FiliatedLCPs.json	/^  "type": "LCPDescription",$/;"	s	language:JSON	object:2

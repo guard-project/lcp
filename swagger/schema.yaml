@@ -1,6 +1,58 @@
 consumes:
 - application/json
 definitions:
+  Agent:
+    properties:
+      description:
+        description: Description of the Agent
+        example: Example agent
+        type: string
+      endpoint_url:
+        description: URL if some to configure the Parameters.
+        example: http://example.com:4250/v1/config
+        format: url
+        type: string
+      hasAgentType:
+        description: Id of the Agent Type Associated with this Agent Instance
+        example: PROBE
+        type: string
+      id:
+        description: Security Function ID.
+        example: 5db06770-8c64-4693-9724-ff318b02f897
+        type: string
+      partner:
+        description: Name of the partner/owner of the Agent
+        example: Guard Project
+        type: string
+      status:
+        description: Update the status the of the agent-instance if the command is
+          executed correctly.
+        enum: &id001
+        - started
+        - stopped
+        - unknown
+        example: started
+        type: string
+      type:
+        description: Data type AgentInstance. Must be 'AgentInstance'
+        enum:
+        - AgentInstance
+        example: AgentInstance
+        type: string
+      vendor:
+        description: Name of the vendor providing the security Function
+        example: FIWARE Foundation e.V.
+        type: string
+      version:
+        description: Version of the Security Property associated
+        example: 1.0.1
+        type: string
+    required:
+    - hasAgentType
+    - id
+    - status
+    - type
+    type: object
   AgentActionSchema:
     properties:
       cmd:
@@ -14,10 +66,7 @@ definitions:
       status:
         description: Update the status the of the agent-instance according to cmd
           condition
-        enum:
-        - started
-        - stopped
-        - unknown
+        enum: *id001
         example: started
         type: string
     required:
@@ -138,53 +187,6 @@ definitions:
     required:
     - message
     type: object
-  BaremetalServer:
-    properties:
-      cpus:
-        description: CPU Cores in the Server
-        example: '8'
-        type: integer
-      diskDevices:
-        items:
-          allOf:
-          - $ref: '#/definitions/Disk'
-          description: Disks installed in the Server
-        type: array
-      hostname:
-        description: Network interface Name in the OS
-        example: corporario.example.com
-        type: string
-      id:
-        description: Network Card UUID.
-        example: ed5bd35a-7213-47a9-ae6e-76212e62a157
-        type: string
-      networkInterfaces:
-        description: List of Network Interfaces in the host
-        items:
-          $ref: '#/definitions/NetworkInterface'
-        type: array
-      operatingSystem:
-        description: Network interface Name in the OS
-        example: Ubuntu Linux 20.04.2 LTS
-        type: string
-      ram:
-        description: RAM installed in the Server in Megabytes
-        example: '8'
-        type: integer
-      type:
-        description: Type of the object. It must be BaremetalServer
-        enum:
-        - BaremetalServer
-        example: BaremetalServer
-        type: string
-    required:
-    - cpus
-    - hostname
-    - id
-    - operatingSystem
-    - ram
-    - type
-    type: object
   CloudCompute:
     properties:
       controller_id:
@@ -237,6 +239,12 @@ definitions:
         description: Human readable Cloud name
         example: Wolfsburg-FIWARE-Lab-Cloud
         type: string
+      type:
+        description: Must be CloudDescription
+        enum:
+        - CloudDescription
+        example: CloudDescription
+        type: string
       vendor:
         description: Cloud Vendor Name
         example: Openstack
@@ -248,6 +256,7 @@ definitions:
     required:
     - id
     - name
+    - type
     - vendor
     type: object
   Code_Request:
@@ -364,52 +373,37 @@ definitions:
     - id
     - path
     type: object
-  Disk:
+  ContainerSchema:
     properties:
-      diskPartitions:
-        items:
-          allOf:
-          - $ref: '#/definitions/DiskPartition'
-          description: Disk Partitions for the Disk
-        type: array
       id:
-        description: Disk UUID.
-        example: 5db06770-8c64-4693-9724-ff318b02f897
+        description: Id of the Container.
+        example: 413216e3-169f-4638-830e-ef0607732fde
         type: string
-      model:
-        description: Disk Model/Vendor
-        example: KBG30ZMV512G TOSHIBA
+      software:
+        description: Description of the Software contained in the container
+        items:
+          $ref: '#/definitions/SoftwareDefinition'
+        type: array
+      technology:
+        description: Description of the Container
+        enum:
+        - lxc
+        - docker
+        - k8s
+        - rkt
+        example: docker
         type: string
-      name:
-        description: Disk Name in the OS
-        example: nvme0n1
+      type:
+        description: Class SoftwareDefinition. The value must be ContainerDescription
+        enum:
+        - ContainerDescription
+        example: ContainerDescription
         type: string
-      size:
-        description: Complete Disk Size in Kilo Bytes
-        example: '314461424'
-        type: integer
     required:
     - id
-    - name
-    - size
-    type: object
-  DiskPartition:
-    properties:
-      name:
-        description: Partition name in the OS
-        example: nveme0n1p6
-        type: string
-      size:
-        description: Partition Size in Kilo Bytes
-        example: '314461424'
-        type: number
-      type:
-        description: Partition type or Filesystem
-        example: ext4
-        type: string
-    required:
-    - name
-    - size
+    - software
+    - technology
+    - type
     type: object
   Exception_Response:
     properties:
@@ -488,6 +482,12 @@ definitions:
         - SSH-FS
         example: NFS
         type: string
+      type:
+        description: Type of the document. It must be External Storage
+        enum:
+        - ExternalStorage
+        example: ExternalStorage
+        type: string
       url:
         description: URL for this remote resource
         example: nfs://192.168.10.245:2049/data
@@ -495,6 +495,7 @@ definitions:
     required:
     - id
     - storageType
+    - type
     - url
     type: object
   InteractsWithSchema:
@@ -536,6 +537,12 @@ definitions:
         description: A Human readable description, so it is easy to identify
         example: Testing LCP in localhost
         type: string
+      exec_env_type:
+        description: execution environment type
+        enum: &id002
+        - LCPDescription
+        example: bare-metal
+        type: string
       id:
         description: Unique ID for the Son LCP
         example: 15d41167-79d3-48bf-b8db-9db0c8cc8d54
@@ -546,8 +553,7 @@ definitions:
         type: string
       type:
         description: 'FIWARE''s type for this class: LCPDescription'
-        enum:
-        - LCPDescription
+        enum: *id002
         example: LCPDescription
         type: string
       url:
@@ -570,51 +576,6 @@ definitions:
         type: string
     required:
     - url
-    type: object
-  NetworkInterface:
-    properties:
-      IPv4Addresses:
-        description: List of CIDR for IPv4 values
-        items:
-          pattern: ^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$
-          type: string
-        type: array
-      IPv6Addresses:
-        description: List of CIDR for IPv6 values
-        items:
-          pattern: ^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$
-          type: string
-        type: array
-      MacAddress:
-        description: Network Interface's Mac Address
-        example: a2:bc:14:43:ff:43
-        pattern: ^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$
-        type: string
-      deviceType:
-        description: Type of Network device
-        example: ethernet
-        type: string
-      id:
-        description: Network Card UUID.
-        example: d450f1ce-95a1-4c3d-9e01-6e37f3d0c584
-        type: string
-      mtu:
-        description: Network Interface MTU value
-        example: '1500'
-        type: integer
-      name:
-        description: Network interface Name in the OS
-        example: enx503eaaddcbeb
-        type: string
-      state:
-        description: Network Interface state in the OS
-        example: UP
-        type: string
-    required:
-    - id
-    - mtu
-    - name
-    - state
     type: object
   No_Content_Response:
     properties:
@@ -680,7 +641,7 @@ definitions:
     properties:
       hasSoftwareConnections:
         description: List of Known connected/related Software
-        example: '[]'
+        example: []
         items:
           type: string
         type: array
@@ -1205,36 +1166,45 @@ paths:
       - status
   /self/software:
     get:
-      description: 'Gets the information of the Server software that LCP Knows.
+      description: 'Gets the information of the software that this LCP Knows. This
+        data about software could be used
+
+        by an external process to query the CVE database in search for known vulnerabilities
+        after being
+
+        retrieved.
+
+
+        If no software is known by the LCP it would retrieve an empty array.
 
         '
       responses:
         '200':
           description: Get the Description of the Software controlled by the LCP
           schema:
-            $ref: '#/definitions/SoftwareDefinition'
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            items:
+              $ref: '#/definitions/SoftwareDefinition'
+            type: array
         '401':
           description: Authentication failed.
           schema:
             $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
         '500':
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Software installed and controlled and known by the LCP
+      summary: Get the Software known by this LCP to be installed together with this
+        LCP
       tags:
       - software
     post:
-      description: 'Posts the information of some Security Functions that LCP must
-        be aware of.
+      description: 'Posts the information of the Server software that LCP Knows. This
+        data about software could be used
+
+        by an external process to query the CVE database in search for known vulnerabilities
+        after being
+
+        retrieved from the LCP.
 
         '
       parameters:
@@ -1243,16 +1213,12 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/SecurityFunction'
+            $ref: '#/definitions/SoftwareDefinition'
           type: array
       responses:
         '201':
           description: The Security Function definition has been successfully updated
             there.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
         '401':
           description: Authentication failed.
           schema:
@@ -1271,36 +1237,51 @@ paths:
       - software
   /self/container:
     get:
-      description: 'Gets the information of the Server software that LCP Knows.
+      description: 'Gets the information of a container (Docker, LXC, etc) running
+        with the LCP and the information of
+
+        the software that the container is running. This information could help to
+        depict the deployment in
+
+        the node and the Software information could be useful to query the CVE dtabase
+        in search for known
+
+        vulnerabilities.
+
+
+        If no container is known by the LCP it would retrieve an empty array.
 
         '
       responses:
         '200':
-          description: Get the Description of the Software controlled by the LCP
+          description: Get the Description of the containers and their software running
+            with the LCP
           schema:
-            $ref: '#/definitions/SoftwareDefinition'
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
+            items:
+              $ref: '#/definitions/ContainerSchema'
+            type: array
         '401':
           description: Authentication failed.
           schema:
             $ref: '#/definitions/Unauthorized_Response'
-        '406':
-          description: Request validation failed.
-          schema:
-            $ref: '#/definitions/Not_Acceptable_Response'
         '500':
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Software installed and controlled and known by the LCP
+      summary: Get Description of a container running with the LCP
       tags:
       - software
     post:
-      description: 'Posts the information of some Security Functions that LCP must
-        be aware of.
+      description: 'Posts the information of a container (Docker, LXC, etc) running
+        with the LCP and the information of
+
+        the software that the container is running. This information could help to
+        depict the deployment in
+
+        the node and the Software information could be useful to query the CVE dtabase
+        in search for known
+
+        vulnerabilities.
 
         '
       parameters:
@@ -1309,16 +1290,12 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/SecurityFunction'
+            $ref: '#/definitions/ContainerSchema'
           type: array
       responses:
         '201':
           description: The Security Function definition has been successfully updated
             there.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
         '401':
           description: Authentication failed.
           schema:
@@ -1331,8 +1308,8 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Post the Description and configuration parameters of Security Agents
-        deployed with LCP
+      summary: Post the description of a container and the software installed inside
+        it.
       tags:
       - software
   /lcp_son/{id}:
@@ -1439,7 +1416,7 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the LCP Sons of a LCP
+      summary: Get the LCP Sons (next LCPs in Service Chain) of this LCP
       tags:
       - lcp_relationships
     post:
@@ -1553,12 +1530,22 @@ paths:
       - lcp_relationships
   /cloud:
     get:
-      description: 'Gets the information of one cloud Infrastrucutre
+      description: 'Gets the information of the cloud Infrastructure where the LCP
+        is installed on. This description of
+
+        the cloud infrastructure could define as inner objects also things like:
+
+        * Controllers - Used to control the cloud infrastrucutre
+
+        * Compute Nodes - Used to control the Virtual Servers
+
+
+        Although this information will only be informative, not specially relevant.
 
         '
       responses:
         '200':
-          description: Get the description of a Cloud Infrastructure known by the
+          description: Get the description of the Cloud Infrastructure known by the
             system
           schema:
             items:
@@ -1580,11 +1567,12 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Get the Description of one Cloud Infrastructure
+      summary: Get the Description of the Cloud Infrastructure
       tags:
       - hardware
     post:
-      description: 'Posts the information of one cloud Infrastrucutre
+      description: 'Posts the information of the cloud Infrastrucutre where the LCP
+        is installed on.
 
         '
       parameters:
@@ -1614,7 +1602,8 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: Post the Description of one Cloud Infrastructure
+      summary: Post the Description of the Cloud Infrastructure where the LCP is installed
+        on.
       tags:
       - hardware
   /agent/instance:
@@ -1627,7 +1616,7 @@ paths:
         '200':
           description: Get the Server's configuration infromation from LCP
           schema:
-            $ref: '#/definitions/SecurityFunction'
+            $ref: '#/definitions/Agent'
         '400':
           description: Request not valid.
           schema:
@@ -1647,10 +1636,9 @@ paths:
       summary: Get the Description and configuration parameters of Security Agents
         deployed with LCP
       tags:
-      - software
+      - Agents
     post:
-      description: 'Posts the information of the Server software that LCP must be
-        aware of.
+      description: 'Post the description of an instance known its Agent type.
 
         '
       parameters:
@@ -1659,19 +1647,20 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/SoftwareDefinition'
+            $ref: '#/definitions/Agent'
           type: array
       responses:
         '201':
-          description: The software definition has been successfully updated there.
+          description: The Agent Instance has been successfully updated there.
         '400':
           description: Request not valid.
           schema:
             $ref: '#/definitions/Bad_Request_Response'
-        '401':
-          description: Authentication failed.
+        '404':
+          description: Agent type not previously defined. The agent type should be
+            defined before the Instance.
           schema:
-            $ref: '#/definitions/Unauthorized_Response'
+            $ref: '#/definitions/Not_Found_Response'
         '406':
           description: Request validation failed.
           schema:
@@ -1680,9 +1669,9 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response_Schem'
-      summary: Post Software description of a new Software installed in the System
+      summary: Post the description of an instance of an Agent type previously defined.
       tags:
-      - software
+      - Agents
   /agent/type:
     get:
       description: 'Gets the information of the Agent Types known by this LCP and
@@ -1712,7 +1701,7 @@ paths:
             $ref: '#/definitions/Internal_Server_Error_Response'
       summary: Get data relative to the Security Agents defined to be used this LCP
       tags:
-      - software
+      - Agents
     post:
       description: 'Posts the information of an Agent Type that so that an agent can
         register later to belong this kind
@@ -1729,10 +1718,6 @@ paths:
       responses:
         '201':
           description: The software definition has been successfully updated there.
-        '400':
-          description: Request not valid.
-          schema:
-            $ref: '#/definitions/Bad_Request_Response'
         '401':
           description: Authentication failed.
           schema:
@@ -1747,7 +1732,7 @@ paths:
             $ref: '#/definitions/Internal_Server_Error_Response_Schem'
       summary: Post an Agent type
       tags:
-      - software
+      - Agents
   /self/deployment:
     get:
       description: 'Gets the information of the Server where the LCP is deployed.
@@ -1787,7 +1772,32 @@ paths:
       tags:
       - self
     post:
-      description: 'Posts the information of the Server where the LCP is deployed
+      description: 'Post initial configuration for the LCP. This includes information
+        about itself
+
+        like the execution environment ID (lcp.id), the URL where the LCP can be
+
+        contacted and a human readable name.
+
+
+        Another parameter could be the GUARD''s Context Broker data including it''s
+        URL
+
+        and it''s authorization string.
+
+
+        It could also recieve a parameter to enable the extra features of LCP which
+
+        will enable the extra features such as self registering to GUARD''s Context
+
+        Broker.
+
+
+        This request will trigger a "self discovery" of the deployment of the
+
+        execution environment (baremental, container, vm), network configuration,
+
+        disks, cpus, ram, etc
 
         '
       parameters:
@@ -1795,11 +1805,10 @@ paths:
         name: payload
         required: true
         schema:
-          $ref: '#/definitions/BaremetalServer'
+          $ref: '#/definitions/LCPDescription'
       responses:
         '201':
-          description: The BaremetalServer where LCP is deployed has been successfully
-            updated.
+          description: Created
         '400':
           description: Request not valid.
           schema:
@@ -1816,9 +1825,9 @@ paths:
           description: Server not available to satisfy the request.
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response'
-      summary: POST the Baremetal server where the LCP is deployed on.
+      summary: Post initial configuration for the LCP.
       tags:
-      - hardware
+      - self
   /self:
     get: {}
   /self/configuration:
@@ -1828,7 +1837,7 @@ paths:
 
         like the execution environment ID (lcp.id), the URL where the LCP can be
 
-        contacted and a huma readable name.
+        contacted and a human readable name.
 
 
         Another parameter could be the GUARD''s Context Broker data including it''s
@@ -1967,7 +1976,7 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
-- &id001
+- &id003
   description: Returns the description of software installed
   name: software
 - description: Returns the description of software installed in containers
@@ -1980,11 +1989,11 @@ tags:
   name: lcp_relationships
 - description: Description of a Cloud Infrastructure
   name: hardware
-- description: Returns description of a Baremetal Server.
-  name: software
-- description: Sets/Returns description of a type of Agent.
-  name: software
-- *id001
+- description: Describes the Agent types and Agent instances.
+  name: Agents
+- description: Describes the Agent types and Agent instances.
+  name: Agents
+- *id003
 - description: This method does the initial configuration
   name: self
 - description: Returns description of a Baremetal Server.

@@ -1,6 +1,6 @@
 Get lcp sons of the queried LCP
 ---
-summary: Get the LCP Sons of a LCP
+summary: Get the LCP Sons (next LCPs in Service Chain) of this LCP
 description: |
   Gets a list of next links in the service chain (LCP sons) to a given execution environment.
   Following the LCP Sons the service chain can be quite accurately be depicted.

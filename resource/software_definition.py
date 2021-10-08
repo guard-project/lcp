@@ -48,11 +48,11 @@ class ContainerDefinition(Base_Resource):
     def __init__(self):
         super().__init__()
 
-    @docstring(source="Software/GetSoftware.yml")
+    @docstring(source="Software/GetContainer.yml")
     def on_get(self, req, resp):
         resp.body = json.dumps(LCPConfig().self_containers)
 
-    @docstring(source="Software/PostSoftware.yml")
+    @docstring(source="Software/PostContainer.yml")
     def on_post(self, req, resp):
         payload = req.media if isinstance(req.media, list) else [req.media]
         try:

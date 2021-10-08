@@ -10,8 +10,8 @@ from extra.controller import LCPController
 
 
 class SecurityFunction(Base_Resource):
-    tag = {'name': 'software',
-           'description': 'Returns description of a Baremetal Server.'}
+    tag = {'name': 'Agents',
+           'description': 'Describes the Agent types and Agent instances.'}
     routes = '/agent/instance',
 
     def __init__(self):
@@ -50,8 +50,8 @@ class SecurityFunction(Base_Resource):
 
 
 class AgentTypeResource(Base_Resource):
-    tag = {'name': 'software',
-           'description': 'Sets/Returns description of a type of Agent.'}
+    tag = {'name': 'Agents',
+           'description': 'Describes the Agent types and Agent instances.'}
     routes = '/agent/type',
 
     @docstring(source="Agents/GetAgentTypeResource.yml")

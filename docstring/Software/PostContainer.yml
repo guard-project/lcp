@@ -1,18 +1,18 @@
-Post the Description of the Security Agents deployed with LCP
+Post the Description of a container and the software installed inside it.
 ---
-summary: Post the Description and configuration parameters of Security Agents deployed with LCP
+summary: Post the description of a container and the software installed inside it.
 description: |
-  Posts the information of the Server software that LCP Knows. This data about software could be used
-  by an external process to query the CVE database in search for known vulnerabilities after being
-  retrieved from the LCP.
-
+  Posts the information of a container (Docker, LXC, etc) running with the LCP and the information of
+  the software that the container is running. This information could help to depict the deployment in
+  the node and the Software information could be useful to query the CVE dtabase in search for known
+  vulnerabilities.
 parameters:
   - name: payload
     in: body
     required: true
     schema:
       type: array
-      items: SoftwareDefinition
+      items: ContainerSchema
 tags: [software]
 responses:
   201:

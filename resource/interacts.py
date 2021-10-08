@@ -9,7 +9,7 @@ from utils.log import Log
 
 
 class Interacts(Base_Resource):
-    tag = {'name': 'interacts', 'description': 'Describes a "son" LCP linked in this service chain.'}
+    tag = {'name': 'interacts', 'description': 'Describes interactions with other external resources.'}
     routes = '/interacts',
 
     def __init__(self):

@@ -7,6 +7,7 @@ import re
 from lib.response import Not_Acceptable_Response, Ok_Response
 from marshmallow.exceptions import ValidationError
 
+
 __all__ = [
     'Disk',
     'DiskPartition',
@@ -16,7 +17,8 @@ __all__ = [
     'LXCContainer',
     'DockerContainer',
     'IPv4CIDR',
-    'IPv6CIDR'
+    'IPv6CIDR',
+    'ExecutionEnvironment'
 ]
 
 IPV6_RE = r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$"
@@ -105,6 +107,7 @@ class BaremetalServer(Base_Schema):
     id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
                     description="Network Card UUID.")
     type = fields.Str(required=True, example="BaremetalServer", enum=BaremetalServerDefinitionEnum,
+                      validate=marshmallow.validate.OneOf(BaremetalServerDefinitionEnum),
                       description="Type of the object. It must be BaremetalServer")
     hostname = fields.Str(required=True, example='corporario.example.com',
                           description="Network interface Name in the OS")
@@ -124,6 +127,7 @@ class VirtualServer(Base_Schema):
     id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
                     description="Network Card UUID.")
     type = fields.Str(required=True, example="VirtualServer", enum=VirtualServerDefinitionEnum,
+                      validate=marshmallow.validate.OneOf(VirtualServerDefinitionEnum),
                       description="Type of the object. It must be VirtualServer")
     hostname = fields.Str(required=True, example='corporario.example.com',
                           description="Network interface Name in the OS")
@@ -151,6 +155,7 @@ class DockerContainer(Base_Schema):
     id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",
                     description="Id of the Docker Container.")
     type = fields.Str(required=True, example="DockerContainer", enum=DockerContainerDefinitionEnum,
+                      validate=marshmallow.validate.OneOf(DockerContainerDefinitionEnum),
                       description="Type of the object. It must be DockerContainer")
     hostname = fields.Str(required=True, example='lcpdocker',
                           description="Docker name")
@@ -164,6 +169,7 @@ class LXCContainer(Base_Schema):
     id = fields.Str(required=True, example="bf9aff0c-6185-4b9f-8d39-c5f8e1b522e9",
                     description="Id of the LXC Container.")
     type = fields.Str(required=True, example="LXCContainer", enum=LXCContainerDefinitionEnum,
+                      validate=marshmallow.validate.OneOf(LXCContainerDefinitionEnum),
                       description="Type of the object. It must be LXCContainer")
     hostname = fields.Str(required=True, example='lxc_kafka',
                           description="LXC's name for the underlying example")
@@ -179,6 +185,7 @@ class ExecutionEnvironment(Base_Schema):
     id = fields.Str(required=True, example="bc2e2eff-fda1-45be-b7f1-93485b756470",
                     description="This execution environment ID.")
     type = fields.Str(required=True, example="ExecutionEnvironment", enum=ExecutionEnvironmentEnum,
+                      validate=marshmallow.validate.OneOf(ExecutionEnvironmentEnum),
                       description="Class ExecutionEnvironment. The value must be ExecutionEnvironment")
     executionType = fields.Str(required=True, example="bare-metal",
                       description="Type of Exec. Env. Deployment",

@@ -1,0 +1,22 @@
+Gets all data the LCP has about itself and its environment.
+---
+summary:
+description: Gets all data the LCP has about itself and its environment.
+  Gets all data the LCP has, specially to the Context Broker, so the CB can integrate this data
+  in its knownledge base. The Context Broker will be the one to call this method since there is
+  no pushing information to the CB from the LCP. This is so mainly for security reasons.
+
+tags: [cb integration]
+responses:
+  200:
+    description: retrieves all info the LCP has about itself.
+    schema: PollSchema
+  404:
+    description: Unconfigured LCP. No data to be retrieved this way.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

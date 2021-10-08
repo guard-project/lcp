@@ -3,7 +3,7 @@ Get Description of the Security Agents deployed with LCP
 summary: Get data relative to the Security Agents defined to be used this LCP
 description: |
   Gets the information of the Agent Types known by this LCP and the data got.
-tags: [software]
+tags: [Agents]
 responses:
   200:
     description: Data relative to the Agents known by this LCP agent

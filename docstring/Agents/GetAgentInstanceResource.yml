@@ -3,11 +3,11 @@ Get Description of the Security Agents deployed with LCP
 summary: Get the Description and configuration parameters of Security Agents deployed with LCP
 description: |
   Gets the information of the SecurityFunctions deployed along with the LCP
-tags: [software]
+tags: [Agents]
 responses:
   200:
     description: Get the Server's configuration infromation from LCP
-    schema: SecurityFunction
+    schema: Agent
   400:
     description: Request not valid.
     schema: Bad_Request_Response_Schema

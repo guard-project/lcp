@@ -61,6 +61,7 @@ class LCPController:
             pass
 
         def set_self_initial_configuration(self, payload):
+            payload['exec_env_type'] = self.config.exec_env_type
             self.config.setInitialConfiguration(payload)
 
             if 'lcp' in payload and not self.initial_messages_to_lcp_sent:

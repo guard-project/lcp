@@ -2,13 +2,12 @@ from extra.lcp_config import LCPConfig
 from docstring import docstring
 from resource.base import Base_Resource
 from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
-from schema.hardware_definitions import ExecutionEnvironment as ExcutionEnvironmentSchema
+from schema.hardware_definitions import ExecutionEnvironment
 from lib.http import HTTP_Method
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_INTERNAL_SERVER_ERROR
 from marshmallow import ValidationError
 from schema.lcp_schemas import LCPDescription
 import json
-
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
 from extra.controller import LCPController
 
@@ -25,14 +24,14 @@ class DescribeDeployment(Base_Resource):
 
        resp.body = json.dumps(r)
 
-    @docstring(source="BaremetalServer/PostBaremetalServerDeployment.yml")
+    @docstring(source="self/post_self_deployment.yaml")
     def on_post(self, req, resp):
-        resp_Data, valid = ExcutionEnvironmentSchema(method=HTTP_Method.GET) \
+        resp_Data, valid = ExecutionEnvironment(method=HTTP_Method.GET) \
             .validate(req.media)
         payload = req.media
         try:
             cfg = LCPConfig()
-            ee_schema = ExcutionEnvironmentSchema(many=False)
+            ee_schema = ExecutionEnvironment(many=False)
             ee_schema.load(payload)
             cfg.setDeployment(payload)
             resp.status = HTTP_CREATED
@@ -41,14 +40,14 @@ class DescribeDeployment(Base_Resource):
             req.status = HTTP_NOT_ACCEPTABLE
 
 
-
 class DescribeSelf(Base_Resource):
     data = {}
-    tag = {'name': 'hardware',
-           'description': 'Returns description of a Baremetal Server.'}
+    tag = {'name': 'self',
+           'description': 'Returns description of self LCP.'}
     routes = '/self',
 
 
+    @docstring(source="self/get.yaml")
     def on_get(self, req, resp):
         # TODO: Organizar este codigo bien, con el esquema que corresponda!
         resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \

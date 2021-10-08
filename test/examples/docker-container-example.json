@@ -1,0 +1,5 @@
+{
+    "id": "d5076827-7ffb-4413-aba2-230507bd9008",
+    "type": "DockerContainer",
+    "hostname": "docker001-container"
+}

@@ -1,8 +1,8 @@
 Post Description of a cloud Infrastrucutre
 ---
-summary: Post the Description of one Cloud Infrastructure
+summary: Post the Description of the Cloud Infrastructure where the LCP is installed on.
 description: |
-  Posts the information of one cloud Infrastrucutre
+  Posts the information of the cloud Infrastrucutre where the LCP is installed on.
 tags: [hardware]
 parameters:
   - name: payload

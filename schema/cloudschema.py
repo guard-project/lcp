@@ -1,3 +1,4 @@
+import marshmallow.validate
 from marshmallow import fields
 from schema.base import Base_Schema
 
@@ -7,6 +8,7 @@ __all__ = [
     'CloudCompute',
 ]
 
+CloudDescriptionEnum = ["CloudDescription"]
 
 class CloudController(Base_Schema):
     type = fields.Str(required=True, example="BaremetalServer",
@@ -31,6 +33,9 @@ class CloudSchema(Base_Schema):
     """
     id = fields.Str(required=True, example="f9e6ee65-517a-44da-854d-fdd058fcf2dd",
                     description="Cloud ID")
+    type = fields.Str(required=True, example="CloudDescription", enum=CloudDescriptionEnum,
+                      description="Must be CloudDescription",
+                      validate=marshmallow.validate.OneOf(CloudDescriptionEnum))
     name = fields.Str(required=True, example="Wolfsburg-FIWARE-Lab-Cloud",
                       description="Human readable Cloud name")
     vendor = fields.Str(required=True, example="Openstack",

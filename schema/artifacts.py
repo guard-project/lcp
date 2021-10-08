@@ -1,13 +1,20 @@
+import marshmallow.validate
 from marshmallow import fields
 from schema.base import Base_Schema
 from schema.software_definitions import SoftwareDefinition
+from schema.response import Ok_Response
+from marshmallow.exceptions import ValidationError as Validation_Error
 
 STORAGE_TYPES = ["S3", "NFS", "iSCSI", "Swift", "CEPH", "GlusterFS", "SSH-FS"]
+ExternalStorageSchemaEnum = ["ExternalStorage"]
 
 
 class ExternalStorageSchema(Base_Schema):
     id = fields.Str(required=True, example="a406874b-dea7-4cd1-9d4e-b82a18ec993b",
                     description="ID of this external Storage type")
+    type = fields.Str(required=True, example="ExternalStorage", enum=ExternalStorageSchemaEnum,
+                      validate=marshmallow.validate.OneOf(ExternalStorageSchemaEnum),
+                      description="Type of the document. It must be External Storage")
     storageType = fields.Str(required=True, example="NFS", enum=STORAGE_TYPES,
                              description="Type of storage type.")
     description = fields.Str(required=False, example="remote nfs drive",
