@@ -10,6 +10,9 @@ ExternalStorageSchemaEnum = ["ExternalStorage"]
 
 
 class ExternalStorageSchema(Base_Schema):
+    """Class ExternalStorageSchema describing an external storage which is used by our system.
+    """
+
     id = fields.Str(required=True, example="a406874b-dea7-4cd1-9d4e-b82a18ec993b",
                     description="ID of this external Storage type")
     type = fields.Str(required=True, example="ExternalStorage", enum=ExternalStorageSchemaEnum,
@@ -24,6 +27,9 @@ class ExternalStorageSchema(Base_Schema):
 
 
 class InteractsWithSchema(Base_Schema):
+    """Class describing the external storage pieces and the Software Artifacts interacting with
+    our LCP system"""
+
     externalStorage = fields.List(fields.Nested(ExternalStorageSchema), required=False,
                                   description="External storage devices description")
     softwareArtifacts = fields.List(fields.Nested(SoftwareDefinition), required=False,

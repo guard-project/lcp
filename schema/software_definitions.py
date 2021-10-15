@@ -18,6 +18,7 @@ ContainerDescriptionEnum = ['ContainerDescription']
 
 class SoftwareDefinition(Base_Schema):
     """Describe a Piece of Software in terms of name, vendor, version and opened ports"""
+
     id = fields.Str(required=True, example="a406874b-dea7-4cd1-9d4e-b82a18ec993b",
                     description="ID of this Software Instance")
     type = fields.Str(required=True, example="SoftwareDefinition", enum=SoftwareDefinitionEnum,
@@ -43,6 +44,8 @@ class SoftwareDefinition(Base_Schema):
 
 
 class ContainerSchema(Base_Schema):
+    """Describe a Container Schema containing some Software"""
+
     id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",
                     description="Id of the Container.")
     type = fields.Str(required=True, example="ContainerDescription", enum=ContainerDescriptionEnum,

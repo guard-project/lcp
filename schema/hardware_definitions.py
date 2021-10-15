@@ -105,12 +105,12 @@ class BaremetalServer(Base_Schema):
     BaremetalServer Description
     """
     id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
-                    description="Network Card UUID.")
+                    description="Baremetal server ID.")
     type = fields.Str(required=True, example="BaremetalServer", enum=BaremetalServerDefinitionEnum,
                       validate=marshmallow.validate.OneOf(BaremetalServerDefinitionEnum),
                       description="Type of the object. It must be BaremetalServer")
     hostname = fields.Str(required=True, example='corporario.example.com',
-                          description="Network interface Name in the OS")
+                          description="The server hostname")
     cpus = fields.Int(required=True, example="8",
                       description="CPU Cores in the Server")
     ram = fields.Int(required=True, example="8",
@@ -125,7 +125,7 @@ class BaremetalServer(Base_Schema):
 
 class VirtualServer(Base_Schema):
     id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
-                    description="Network Card UUID.")
+                    description="Virtual Server ID.")
     type = fields.Str(required=True, example="VirtualServer", enum=VirtualServerDefinitionEnum,
                       validate=marshmallow.validate.OneOf(VirtualServerDefinitionEnum),
                       description="Type of the object. It must be VirtualServer")
