@@ -1,25 +1,25 @@
 from resource.code import Code_Resource
 from resource.config import Config_Resource
 from resource.status import Status_Resource
-from resource.software_definition import SoftwareDefinition, ContainerDefinition
+from resource.software_definition import SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition
 from resource.lcp_resources import SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification
 from resource.cloud_resource import CloudInfrastructure
-from resource.security_functions import SecurityFunction, AgentTypeResource
+from resource.security_functions import SecurityFunction, AgentTypeResource, SecurityFunctionbyId, AgentTypeResourcebyId
 from resource.self_data import DescribeDeployment, DescribeSelf, InitialSelfConfiguration
 from resource.poll_cb import PollContextBroker
-from resource.interacts import Interacts
+from resource.interacts import Interacts, InteractsById
 from utils.log import Log
 from utils.sequence import wrap
 
 
 db = (Code_Resource, Config_Resource, Status_Resource,
-      SoftwareDefinition, ContainerDefinition,
+      SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition,
       SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification,
       CloudInfrastructure,
-      SecurityFunction, AgentTypeResource,
+      SecurityFunction, AgentTypeResource, SecurityFunctionbyId, AgentTypeResourcebyId,
       SoftwareDefinition,
       DescribeDeployment, DescribeSelf, InitialSelfConfiguration,
-      Interacts, PollContextBroker)
+      Interacts, InteractsById, PollContextBroker)
 
 tags = []
 for Resource in db:

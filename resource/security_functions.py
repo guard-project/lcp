@@ -4,7 +4,7 @@ from docstring import docstring
 from resource.base import Base_Resource
 import json
 from marshmallow.exceptions import ValidationError
-from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE, HTTP_NOT_FOUND
+from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE, HTTP_NOT_FOUND, HTTP_PRECONDITION_FAILED
 from extra.lcp_config import LCPConfig
 from extra.controller import LCPController
 
@@ -49,6 +49,23 @@ class SecurityFunction(Base_Resource):
             req.status = HTTP_NOT_ACCEPTABLE
 
 
+class SecurityFunctionbyId(Base_Resource):
+    tag = {'name': 'Agents',
+           'description': 'Describes the Agent types and Agent instances.'}
+    routes = '/agent/instance/{id}',
+
+    def __init__(self):
+        pass
+
+    @docstring(source='Agents/PutAgentInstanceResource.yml')
+    def on_put(self, req, resp, id):
+        req.status = HTTP_NOT_FOUND
+
+    @docstring(source='Agents/DeleteAgentInstanceResource.yml')
+    def on_delete(self, req, resp, id):
+        req.status = HTTP_NOT_FOUND
+
+
 class AgentTypeResource(Base_Resource):
     tag = {'name': 'Agents',
            'description': 'Describes the Agent types and Agent instances.'}
@@ -74,3 +91,20 @@ class AgentTypeResource(Base_Resource):
         except ValidationError as e:
             resp.body = json.dumps(e.messages)
             req.status = HTTP_NOT_ACCEPTABLE
+
+class AgentTypeResourcebyId(Base_Resource):
+    tag = {'name': 'Agents',
+           'description': 'Describes the Agent types and Agent instances.'}
+    routes = '/agent/type/{id}',
+
+    def __init__(self):
+        pass
+
+
+    @docstring(source="Agents/PutAgentTypeResource.yml")
+    def on_put(self, req, resp, id):
+        req.status = HTTP_NOT_FOUND
+
+    @docstring(source="Agents/DeleteAgentTypeResource.yml")
+    def on_delete(self, req, resp, id):
+        req.status = HTTP_NOT_FOUND

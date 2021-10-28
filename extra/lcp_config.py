@@ -46,6 +46,7 @@ class LCPConfig(object):
             self.exec_env_type = None
             self.agent_types = []
             self.interactions = {"softwareArtifacts": [], "externalStorage": []}
+            self.parent_lcp_data = {}
             self.reload(self.filename)
 
         def merge_dicts(d1, d2):
@@ -138,6 +139,11 @@ class LCPConfig(object):
                 pass
 
             try:
+                self.parent_lcp_data = self.config['parent_lcp_data']
+            except KeyError:
+                pass
+
+            try:
                 if 'interactions' in self.config:
                     self.interactions = self.config['interactions']
             except KeyError:
@@ -149,21 +155,57 @@ class LCPConfig(object):
             updated = False
             for s in self.interactions['externalStorage']:
                 if s['id'] == storage['id']:
-                    s['id'].update(storage['id'])
+                    s.update(storage)
                     updated = True
             if not updated:
                 self.interactions['externalStorage'].append(storage)
             self.config['interactions'] = self.interactions
+            self.save()
+
+        def delete_external_storage_interaction(self, id):
+            found = False
+            for s in self.interactions['externalStorage']:
+                if s['id'] == id:
+                    self.interactions['externalStorage'].remove(s)
+                    found = True
+                    break
+            self.save()
+            return found
 
         def add_external_software_interaction(self, software):
             updated = False
             for s in self.interactions['softwareArtifacts']:
                 if s['id'] == software['id']:
-                    s['id'].update(software['id'])
+                    s.update(software)
                     updated = True
             if not updated:
                 self.interactions['softwareArtifacts'].append(software)
             self.config['interactions'] = self.interactions
+            self.save()
+
+        def delete_external_software_interaction(self, id):
+            found = False
+            for s in self.interactions['softwareArtifacts']:
+                if s['id'] == id:
+                    self.interactions['softwareArtifacts'].remove(s)
+                    found = True
+                    break
+            self.save()
+            return found
+
+        def getInteractionById(self, id):
+            for s in self.interactions['softwareArtifacts']:
+                if s['id'] == id:
+                    res = {'softwareArtifacts':  s.copy()}
+                    return res
+
+            for s in self.interactions['externalStorage']:
+                if s['id'] == id:
+                    res = {'externalStorage':  s.copy()}
+                    return res
+            return None
+
+
 
         def setInitialConfiguration(self, dict_cfg):
             should_start_thread = False
@@ -316,6 +358,23 @@ class LCPConfig(object):
                 data['type'] = 'unknown'
             return data
 
+        def get_software_by_id(self, id):
+            for s in self.self_software:
+                if s['id'] == id:
+                    return s.copy()
+            return None
+
+        def delete_software_by_id(self, id):
+            found = False
+            for s in self.self_software:
+                if s['id'] == id:
+                    self.self_software.remove(s)
+                    found = True
+                    break
+            self.save()
+            return found
+
+
         def exec_env_register_data(self):
             d = {}
             lcp_info = {}
@@ -354,6 +413,11 @@ class LCPConfig(object):
             res = []
             if not len(self.agents) > 0:
                 return []
+
+        def set_parent_lcp_data(self, data):
+            self.parent_lcp_data = data
+            self.config['parent_lcp_data'] = self.parent_lcp_data
+            self.save()
 
     instance = None
 

@@ -1,0 +1,33 @@
+Get Description of known elements that a host with an LCP is interacting with.
+---
+summary: Gets the description of the known elements that a host with a LCP is interacting with.
+description: |
+  Gets a description of the components known that the host is working with according to a classical client/server
+  paradigm. This includes relationship with other components like publish-subscribe, connection to databases,
+  external storage drives (NFS, iSCSI, Dropbox), etc.
+parameters:
+  - name: id
+    requiered: true
+    in: path
+    schema:
+        type: string
+    description: id of element to query.
+tags: [interacts]
+responses:
+  200:
+    description: Get the Server's configuration infromation from LCP, but only the required ID.
+    schema: InteractsWithSchema
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  404:
+    description: Id Not Found
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

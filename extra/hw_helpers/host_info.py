@@ -6,8 +6,9 @@ from subprocess import PIPE
 import json
 from pathlib import Path
 from extra.hw_helpers.network_information import NetworkInterfacesInfo
-
+from schema.hardware_definitions import *
 import distro
+from uuid import uuid4
 
 MEMINFO = "/proc/meminfo"
 bytes2Gb = 1024**3
@@ -30,7 +31,6 @@ class HostInformation:
         self.disk_devices = []
         if not self.is_container:
             self.retrieve_disk_info()
-
 
 
     def cpu_count(self):
@@ -124,7 +124,7 @@ class HostInformation:
             diskPartitions = []
 
             dd = {"name": dev_name, "size": dev_size, "id":id}
-            dd['partitions'] = diskPartitions
+            dd['diskPartitions'] = diskPartitions
             if 'children' in disk:
                 for partition in disk['children']:
                     part_name = partition['name']
@@ -173,32 +173,39 @@ class HostInfoToLcpHelper:
 
     def getObjectType(self, env_type):
         if env_type == 'lxc-container':
-            self.js_info['type'] = 'LXCContainer'
+            self.js_info['environment']['type'] = 'LXCContainer'
         elif env_type == 'bare-metal':
-            self.js_info['type'] = 'BaremetalServer'
+            self.js_info['environment']['type'] = 'BaremetalServer'
         elif env_type == 'container-docker':
-            self.js_info['type'] = 'DockerContainer'
+            self.js_info['environment']['type'] = 'DockerContainer'
         elif env_type == 'vm':
-            self.js_info['type'] = 'VirtualServer'
+            self.js_info['environment']['type'] = 'VirtualServer'
 
     def get_execution_environment(self):
         # self.js_info['type'] = 'ExecutionEnvironment'
         self.js_info['executionType'] = self.host_info.environment
         env_type = self.js_info['executionType']
 
+        self.js_info['environment'] = {}
         self.getObjectType(env_type)
 
         self.js_info['executionType'] = self.host_info.environment
-        self.deployment={ 'hostname': self.hostname,
+        self.deployment={ 'id': str(uuid4()),
+                          'hostname': self.hostname,
                           'operatingSystem': self.host_info.operating_system,
                           'cpus': self.cpus,
                           'ram': self.host_info.ram,
-                          'networkInterfaces': NetworkInterfacesInfo().net_info(),
+                          'networkInterfaces': NetworkInterfacesInfo().net_info()['networkInterfaces'],
                           }
         if len(self.host_info.disk_devices) > 0 and not self.host_info.is_container:
             self.deployment['diskDevices'] = self.host_info.disk_devices
-        self.js_info['environment'] = self.deployment
+            print(self.host_info.disk_devices)
+            Disk(many=True).load(self.host_info.disk_devices)
+        self.js_info['environment'].update(self.deployment)
+        self.js_info['type'] = 'ExecutionEnvironment'
 
 
 if __name__ == "__main__":
-     print(HostInfoToLcpHelper().dumps())
+    h = HostInfoToLcpHelper().js_info
+    # print(json.dumps(h['environment']['diskDevices']))
+    ExecutionEnvironment(many=False).load(h)

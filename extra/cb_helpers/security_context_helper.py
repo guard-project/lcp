@@ -1,6 +1,7 @@
 import json
 from extra.extra_utils import UrlSchemaData
-
+from schema.poll_cb_schema import LCPConnectionAsInCB, LCPContextBrokerDefinition, PollSchema
+from schema.hardware_definitions import ExecutionEnvironment
 
 class SecurityContextHelper:
     def __init__(self, config):
@@ -8,36 +9,36 @@ class SecurityContextHelper:
             raise KeyError('unconfigured LCP')
 
         self.security_context = {}
-        self.security_context['executionEnvironmentType'] = config.exec_env_type
-        self.security_context['lcp'] = self.setLcpData(config.lcp)
+        # self.security_context['executionEnvironmentType'] = config.exec_env_type
+        self.security_context['exec_env'] = self.setLcpData(config.lcp)
 
         if len(config.sons) > 0:
-            self.security_context['lcp']['hasSons'] = []
+            self.security_context['exec_env']['lcp']['sons'] = []
             self.security_context['lcpSons'] = []
             for son in config.sons:
-                print(son)
                 self.security_context['lcpSons'].append(self.setLcpData(son))
-                self.security_context['lcp']['hasSons'].append(son['id'])
+                self.security_context['exec_env']['lcp']['sons'].append(son['id'])
         if len(config.parents) > 0:
-            self.security_context['lcpParent'] = config.parents[0]
+            self.security_context['exec_env']['lcp']['father'] = config.parent_lcp_data['id']
 
         if len(config.self_software) > 0:
-            self.security_context['software'] = config.self_software.copy()
+            self.security_context['exec_env']['software'] = config.self_software.copy()
 
-        self.security_context['executionEnvironment'] = config.deployment.copy()
+        self.security_context['exec_env']['environment'] = config.deployment.copy()
 
         if len(config.self_containers) > 0:
-            self.security_context['container'] = config.self_containers.copy()
+            self.security_context['exec_env']['container'] = config.self_containers.copy()
 
         if len(config.agent_types) > 0:
             self.security_context['agentType'] = config.agent_types.copy()
             if len(config.agents) > 0:
                 self.security_context['agentInstance'] = config.agents.copy()
 
-        self.security_context['interactions'] = config.interactions
+        self.security_context['exec_env']['interactions'] = config.interactions
 
 
     def getData(self):
+        PollSchema(many=False).load(self.security_context)
         return json.dumps(self.security_context)
 
 
@@ -51,15 +52,14 @@ class SecurityContextHelper:
         # d['hostname'] = self.deployment['hostname']
         # TODO - Change the partner!
         # d['stage'] = ""
-        d['lcp'] = lcp_info
+        d['lcp'] = {}
         # d['partner'] = "FIWARE Foundation e.V."
         if "exec_env_type" in lcp:
             d['type_id'] = lcp['exec_env_type']
-        print("Testing URL:", lcp['url'])
         usd = UrlSchemaData(lcp['url'])
-        lcp_info['port'] = usd.port
-        lcp_info['https'] = usd.https
+        d['lcp']['port'] = usd.port
+        d['lcp']['https'] = usd.https
+
         d['hostname'] = usd.host
 
         return d
-

@@ -1,0 +1,15 @@
+Removes the LCP parent of this given LCP.
+---
+summary: Removes the LCP Parent of this LCP.
+description: |
+  Removes the LCP Parent of this LCP
+
+tags: [lcp_relationships]
+responses:
+  202:
+    description: Accepted for deletion
+  404:
+    description: No parent found.
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

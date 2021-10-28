@@ -87,7 +87,7 @@ class NetworkInterface(Base_Schema):
                       description="Network interface Name in the OS")
     mtu = fields.Int(required=True, example="1500",
                      description="Network Interface MTU value")
-    state = fields.Str(required=True, example="UP",
+    state = fields.Str(required=False, example="UP",
                        description="Network Interface state in the OS")
     deviceType = fields.Str(required=False, example="ethernet",
                             description="Type of Network device")

@@ -3,7 +3,7 @@ from docstring import docstring
 from schema.software_definitions import SoftwareDefinition as SoftwareDefinitionSchema
 from schema.software_definitions import ContainerSchema
 from marshmallow.exceptions import ValidationError
-from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED
+from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_204
 import json
 from extra.lcp_config import LCPConfig
 # import traceback
@@ -35,6 +35,56 @@ class SoftwareDefinition(Base_Resource):
             for e in payload:
                 LCPConfig().setSoftware(e)
 
+        except ValidationError as e:
+            resp.status = HTTP_NOT_ACCEPTABLE
+            resp.body = json.dumps(e.messages)
+
+
+class SoftwareDefinitionById(Base_Resource):
+    tag = {'name': 'software',
+           'description': 'Returns the description of software installed'}
+    routes = '/self/software/{id}'
+
+    def __init__(self):
+        super().__init__()
+
+    @docstring(source="Software/GetSoftware.yml")
+    def on_get(self, req, resp, id):
+        s = LCPConfig().get_software_by_id(id)
+        if s is None:
+            resp.status = HTTP_NOT_FOUND
+        else:
+            resp.body = json.dumps(s)
+
+    @docstring(source="Software/GetSoftware.yml")
+    def on_delete(self, req, resp, id):
+        found = LCPConfig().delete_software_by_id(id)
+        if not found:
+            resp.status = HTTP_NOT_FOUND
+        else:
+            resp.status = HTTP_204
+
+    @docstring(source="Software/PostSoftware.yml")
+    def on_put(self, req, resp, id):
+        payload = req.media
+
+        s = LCPConfig().get_software_by_id(id)
+        if s is None:
+            resp.status = HTTP_NOT_FOUND
+            return
+
+        if 'id' in payload and payload['id'] != id:
+            resp.status = HTTP_NOT_ACCEPTABLE
+            resp.body = '{"message": "ID is a read-only field"}'
+            return
+
+        s.update(payload)
+
+        try:
+            software_schema = SoftwareDefinitionSchema(many=False)
+            software_schema.load(s)
+            resp.status = HTTP_204
+            LCPConfig().setSoftware(s)
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
             resp.body = json.dumps(e.messages)

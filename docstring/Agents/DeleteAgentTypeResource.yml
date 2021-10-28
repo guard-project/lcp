@@ -1,0 +1,28 @@
+Deletes a description of an Agent Type which can't be used anymore to deploy some different agents.
+---
+summary: Deletes an Agent type.
+description: |
+  Deletes an agent type so it can not be used anymore to deploy Agent Instances. If there are known agent instances of this type, it will fail to delete the type. Instances should be deleted first.
+parameters:
+  - name: id
+    requiered: true
+    in: path
+    schema:
+        type: string
+    description: id of Agent type to be modified
+tags: [Agents]
+responses:
+  204:
+    description: The Agent Type has been successfully deleted.
+  404:
+    description: The Agent Type was not found. No deletions performed.
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+  412:
+    description: Precondition failed. There are instances of one type yet, they must be deleted first
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schem

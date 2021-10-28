@@ -1,0 +1,34 @@
+Updates the Agent Instance resource.
+---
+summary: Puts the description of an instance of an Agent instance previously defined.
+description: |
+  Updates the description of an instance known and previously defined.
+parameters:
+  - name: id
+    requiered: true
+    in: path
+    schema:
+        type: string
+    description: id of Agent Instance to be updated
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: array
+      items: Agent
+tags: [Agents]
+responses:
+  201:
+    description: The Agent Instance has been successfully updated there.
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  404:
+    description: Agent instance not previously defined. Use POST method instead.
+    schema: Not_Found_Response
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schem

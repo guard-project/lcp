@@ -59,7 +59,8 @@ class LCPClient(object):
                 self.log.notice("post  to %s/lcp_son -- %d" %
                                 (parent['url'], resp.status_code))
                 if resp.status_code in (200, 201, 202):
-                    # data = resp.json()
+                    data = resp.json()
+                    self.config.set_parent_lcp_data(data)
                     pass
                 if resp.status_code >= 500:
                     must_retry = True

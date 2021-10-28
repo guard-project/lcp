@@ -187,53 +187,6 @@ definitions:
     required:
     - message
     type: object
-  BaremetalServer:
-    properties:
-      cpus:
-        description: CPU Cores in the Server
-        example: '8'
-        type: integer
-      diskDevices:
-        items:
-          allOf:
-          - $ref: '#/definitions/Disk'
-          description: Disks installed in the Server
-        type: array
-      hostname:
-        description: Network interface Name in the OS
-        example: corporario.example.com
-        type: string
-      id:
-        description: Network Card UUID.
-        example: ed5bd35a-7213-47a9-ae6e-76212e62a157
-        type: string
-      networkInterfaces:
-        description: List of Network Interfaces in the host
-        items:
-          $ref: '#/definitions/NetworkInterface'
-        type: array
-      operatingSystem:
-        description: Network interface Name in the OS
-        example: Ubuntu Linux 20.04.2 LTS
-        type: string
-      ram:
-        description: RAM installed in the Server in Megabytes
-        example: '8'
-        type: integer
-      type:
-        description: Type of the object. It must be BaremetalServer
-        enum:
-        - BaremetalServer
-        example: BaremetalServer
-        type: string
-    required:
-    - cpus
-    - hostname
-    - id
-    - operatingSystem
-    - ram
-    - type
-    type: object
   CloudCompute:
     properties:
       controller_id:
@@ -452,53 +405,6 @@ definitions:
     - technology
     - type
     type: object
-  Disk:
-    properties:
-      diskPartitions:
-        items:
-          allOf:
-          - $ref: '#/definitions/DiskPartition'
-          description: Disk Partitions for the Disk
-        type: array
-      id:
-        description: Disk UUID.
-        example: 5db06770-8c64-4693-9724-ff318b02f897
-        type: string
-      model:
-        description: Disk Model/Vendor
-        example: KBG30ZMV512G TOSHIBA
-        type: string
-      name:
-        description: Disk Name in the OS
-        example: nvme0n1
-        type: string
-      size:
-        description: Complete Disk Size in Kilo Bytes
-        example: '314461424'
-        type: integer
-    required:
-    - id
-    - name
-    - size
-    type: object
-  DiskPartition:
-    properties:
-      name:
-        description: Partition name in the OS
-        example: nveme0n1p6
-        type: string
-      size:
-        description: Partition Size in Kilo Bytes
-        example: '314461424'
-        type: number
-      type:
-        description: Partition type or Filesystem
-        example: ext4
-        type: string
-    required:
-    - name
-    - size
-    type: object
   Exception_Response:
     properties:
       filename:
@@ -625,11 +531,38 @@ definitions:
     required:
     - message
     type: object
-  LCPConnection:
-    properties: {}
+  LCPConnectionAsInCB:
+    properties:
+      father:
+        description: ID of the LCP father.
+        example: 0597a13e-9440-4139-a6dd-87eaa9799b55
+        type: string
+      https:
+        description: Defines the protocol to connect the LCP. HTTPS if true, HTTP
+          if false
+        example: true
+        type: boolean
+      port:
+        description: Port where the LCP is listening
+        example: 4000
+        type: integer
+      sons:
+        example:
+        - lpc:son:id:1
+        - lcp:son:id:2
+        items:
+          type: string
+        type: array
+    required:
+    - https
+    - port
     type: object
   LCPContextBrokerDefinition:
     properties:
+      container:
+        items:
+          $ref: '#/definitions/ContainerSchema'
+        type: array
       description:
         description: A Human readable description, so it is easy to identify
         example: Testing LCP in localhost
@@ -638,13 +571,10 @@ definitions:
         description: Describes if the LCP is enabled or not
         example: true
         type: boolean
-      hasSons:
-        example:
-        - lpc:son:id:1
-        - lcp:son:id:2
-        items:
-          type: string
-        type: array
+      environment:
+        description: Definition of environment hardware. Can be one of the types LXCContainer,
+          DockerContainer, VirtualServer, BaremetalServer
+        type: object
       hostname:
         description: Hostname of the Host where the LCP can be contacted. If a proxy
           is behind the LCP, the value should be the proxy host
@@ -654,11 +584,17 @@ definitions:
         description: Unique ID for the Son LCP
         example: 15d41167-79d3-48bf-b8db-9db0c8cc8d54
         type: string
+      interactions:
+        $ref: '#/definitions/InteractsWithSchema'
       lcp:
-        $ref: '#/definitions/LCPConnection'
+        $ref: '#/definitions/LCPConnectionAsInCB'
+      software:
+        items:
+          $ref: '#/definitions/SoftwareDefinition'
+        type: array
       type_id:
         description: Type of execution environment
-        enum: &id003
+        enum:
         - bare-metal
         - contailer-lxc
         - vm
@@ -723,51 +659,6 @@ definitions:
     required:
     - url
     type: object
-  NetworkInterface:
-    properties:
-      IPv4Addresses:
-        description: List of CIDR for IPv4 values
-        items:
-          pattern: ^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$
-          type: string
-        type: array
-      IPv6Addresses:
-        description: List of CIDR for IPv6 values
-        items:
-          pattern: ^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/(12[0-8]|1[01][0-9]|[1-9][0-9]|[0-9])$
-          type: string
-        type: array
-      MacAddress:
-        description: Network Interface's Mac Address
-        example: a2:bc:14:43:ff:43
-        pattern: ^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$
-        type: string
-      deviceType:
-        description: Type of Network device
-        example: ethernet
-        type: string
-      id:
-        description: Network Card UUID.
-        example: d450f1ce-95a1-4c3d-9e01-6e37f3d0c584
-        type: string
-      mtu:
-        description: Network Interface MTU value
-        example: '1500'
-        type: integer
-      name:
-        description: Network interface Name in the OS
-        example: enx503eaaddcbeb
-        type: string
-      state:
-        description: Network Interface state in the OS
-        example: UP
-        type: string
-    required:
-    - id
-    - mtu
-    - name
-    - state
-    type: object
   No_Content_Response:
     properties:
       code:
@@ -830,44 +721,31 @@ definitions:
     type: object
   PollSchema:
     properties:
-      container:
+      agentInstance:
         items:
-          $ref: '#/definitions/ContainerSchema'
+          $ref: '#/definitions/Agent'
         type: array
-      executionEnvironment:
-        allOf:
-        - $ref: '#/definitions/BaremetalServer'
-        description: One of BaremetalServer, VirtualServer, DockerContainer or LXCContainer
-          schemas
-      executionEnvironmentType:
-        description: Type of execution environment
-        enum: *id003
-        example: bare-metal
-        type: string
-      lcp:
+      agentType:
+        items:
+          $ref: '#/definitions/AgentType'
+        type: array
+      exec_env:
         allOf:
         - $ref: '#/definitions/LCPContextBrokerDefinition'
         description: LCP Description as required by the CB
-      lcpParent:
-        description: URL where the parent LCP Listens.
-        example: http://lcpapi.example.com:4000
-        format: url
-        type: string
       lcpSons:
         items:
           $ref: '#/definitions/LCPContextBrokerDefinition'
         type: array
-      software:
-        items:
-          $ref: '#/definitions/SoftwareDefinition'
-        type: array
     required:
-    - executionEnvironmentType
-    - lcp
-    - lcpParent
+    - exec_env
     type: object
   SoftwareDefinition:
     properties:
+      address:
+        description: Server address or IP where the software is listening
+        example: 192.168.0.1
+        type: string
       hasSoftwareConnections:
         description: List of Known connected/related Software
         example: []
@@ -880,13 +758,15 @@ definitions:
         type: string
       openTCPPorts:
         description: List of opened TCP Ports
-        example: '[3306]'
+        example:
+        - 3306
         items:
           type: integer
         type: array
       openUDPPorts:
         description: List of opened UDP Ports
-        example: '[33066]'
+        example:
+        - 33066
         items:
           type: integer
         type: array
@@ -1464,6 +1344,109 @@ paths:
         deployed with LCP
       tags:
       - software
+  /self/software/{id}:
+    delete:
+      description: 'Gets the information of the software that this LCP Knows. This
+        data about software could be used
+
+        by an external process to query the CVE database in search for known vulnerabilities
+        after being
+
+        retrieved.
+
+
+        If no software is known by the LCP it would retrieve an empty array.
+
+        '
+      responses:
+        '200':
+          description: Get the Description of the Software controlled by the LCP
+          schema:
+            items:
+              $ref: '#/definitions/SoftwareDefinition'
+            type: array
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Software known by this LCP to be installed together with this
+        LCP
+      tags:
+      - software
+    get:
+      description: 'Gets the information of the software that this LCP Knows. This
+        data about software could be used
+
+        by an external process to query the CVE database in search for known vulnerabilities
+        after being
+
+        retrieved.
+
+
+        If no software is known by the LCP it would retrieve an empty array.
+
+        '
+      responses:
+        '200':
+          description: Get the Description of the Software controlled by the LCP
+          schema:
+            items:
+              $ref: '#/definitions/SoftwareDefinition'
+            type: array
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Get the Software known by this LCP to be installed together with this
+        LCP
+      tags:
+      - software
+    put:
+      description: 'Posts the information of the Server software that LCP Knows. This
+        data about software could be used
+
+        by an external process to query the CVE database in search for known vulnerabilities
+        after being
+
+        retrieved from the LCP.
+
+        '
+      parameters:
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/SoftwareDefinition'
+          type: array
+      responses:
+        '201':
+          description: The Security Function definition has been successfully updated
+            there.
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Post the Description and configuration parameters of Security Agents
+        deployed with LCP
+      tags:
+      - software
   /self/container:
     get:
       description: 'Gets the information of a container (Docker, LXC, etc) running
@@ -1687,6 +1670,22 @@ paths:
       tags:
       - lcp_relationships
   /lcp_parent:
+    delete:
+      description: 'Removes the LCP Parent of this LCP
+
+        '
+      responses:
+        '202':
+          description: Accepted for deletion
+        '404':
+          description: No parent found.
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Removes the LCP Parent of this LCP.
+      tags:
+      - lcp_relationships
     get:
       description: 'Gets a list of previous links in the service chain (LCP parents)
         to a given execution environment.
@@ -1962,6 +1961,156 @@ paths:
       summary: Post an Agent type
       tags:
       - Agents
+  /agent/instance/{id}:
+    delete:
+      description: 'Remove the description of a Security Agent Instance deployed with
+        LCP.
+
+        '
+      parameters:
+      - description: id of Agent Instance to be deleted
+        in: path
+        name: id
+        requiered: true
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Removed successfuly.
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '404':
+          description: Agent Instance not found.
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Remove the description of an Agent Instance deployed with LCP
+      tags:
+      - Agents
+    put:
+      description: 'Updates the description of an instance known and previously defined.
+
+        '
+      parameters:
+      - description: id of Agent Instance to be updated
+        in: path
+        name: id
+        requiered: true
+        required: true
+        schema:
+          type: string
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/Agent'
+          type: array
+      responses:
+        '201':
+          description: The Agent Instance has been successfully updated there.
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '404':
+          description: Agent instance not previously defined. Use POST method instead.
+          schema:
+            $ref: '#/definitions/Not_Found_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Puts the description of an instance of an Agent instance previously
+        defined.
+      tags:
+      - Agents
+  /agent/type/{id}:
+    delete:
+      description: 'Deletes an agent type so it can not be used anymore to deploy
+        Agent Instances. If there are known agent instances of this type, it will
+        fail to delete the type. Instances should be deleted first.
+
+        '
+      parameters:
+      - description: id of Agent type to be modified
+        in: path
+        name: id
+        requiered: true
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The Agent Type has been successfully deleted.
+        '404':
+          description: The Agent Type was not found. No deletions performed.
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+        '412':
+          description: Precondition failed. There are instances of one type yet, they
+            must be deleted first
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Deletes an Agent type.
+      tags:
+      - Agents
+    put:
+      description: 'Updates the information about an Agent Type that so that an agent
+        can register later to belong this kind
+
+        '
+      parameters:
+      - description: id of Agent type to be modified
+        in: path
+        name: id
+        requiered: true
+        required: true
+        schema:
+          type: string
+      - in: body
+        name: payload
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/AgentType'
+          type: array
+      responses:
+        '201':
+          description: The Agent Type has been successfully updated there.
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schem'
+      summary: Put an Agent type
+      tags:
+      - Agents
   /self/deployment:
     get:
       description: 'Gets the information of the Server where the LCP is deployed.
@@ -2117,7 +2266,7 @@ paths:
       summary: Post initial configuration for the LCP.
       tags:
       - self
-  /interacts:
+  /interactions:
     get:
       description: 'Gets a description of the components known that the host is working
         with according to a classical client/server
@@ -2193,6 +2342,133 @@ paths:
         with.
       tags:
       - interacts
+  /interactions/{id}:
+    delete:
+      description: 'Deletes a description of the components known that the host was
+        working with according to a classical client/server
+
+        paradigm.
+
+        '
+      parameters:
+      - description: id of element to query.
+        in: path
+        name: id
+        requiered: true
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The resource has been correctly deleted
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '404':
+          description: Id Not Found
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Deletes the description of a known element that a host with a LCP is
+        interacting with.
+      tags:
+      - interacts
+    get:
+      description: 'Gets a description of the components known that the host is working
+        with according to a classical client/server
+
+        paradigm. This includes relationship with other components like publish-subscribe,
+        connection to databases,
+
+        external storage drives (NFS, iSCSI, Dropbox), etc.
+
+        '
+      parameters:
+      - description: id of element to query.
+        in: path
+        name: id
+        requiered: true
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get the Server's configuration infromation from LCP, but only
+            the required ID.
+          schema:
+            $ref: '#/definitions/InteractsWithSchema'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '404':
+          description: Id Not Found
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Gets the description of the known elements that a host with a LCP is
+        interacting with.
+      tags:
+      - interacts
+    put:
+      description: 'UPdates a description of the components known that the host was
+        working with according to a classical client/server
+
+        paradigm.
+
+        '
+      parameters:
+      - description: id of element to query.
+        in: path
+        name: id
+        requiered: true
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The resource has been correctly updated
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response'
+        '404':
+          description: Id Not Found
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response'
+      summary: Updates the description of a known element that a host with a LCP is
+        interacting with.
+      tags:
+      - interacts
   /poll:
     get:
       description: Gets all data the LCP has about itself and its environment. Gets
@@ -2230,8 +2506,10 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
-- &id004
+- &id003
   description: Returns the description of software installed
+  name: software
+- description: Returns the description of software installed
   name: software
 - description: Returns the description of software installed in containers
   name: software
@@ -2247,13 +2525,19 @@ tags:
   name: Agents
 - description: Describes the Agent types and Agent instances.
   name: Agents
-- *id004
+- description: Describes the Agent types and Agent instances.
+  name: Agents
+- description: Describes the Agent types and Agent instances.
+  name: Agents
+- *id003
 - description: This method does the initial configuration
   name: self
 - description: Returns description of self LCP.
   name: self
 - description: Initial configuration for the LCP
   name: self
+- description: Describes interactions with other external resources.
+  name: interacts
 - description: Describes interactions with other external resources.
   name: interacts
 - description: Retrieves data from LCP to the Context Broker

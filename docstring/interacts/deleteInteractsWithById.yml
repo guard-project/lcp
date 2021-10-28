@@ -1,0 +1,31 @@
+Deletes a known element that a host with an LCP is interacting with.
+---
+summary: Deletes the description of a known element that a host with a LCP is interacting with.
+description: |
+  Deletes a description of the components known that the host was working with according to a classical client/server
+  paradigm.
+parameters:
+  - name: id
+    requiered: true
+    in: path
+    schema:
+        type: string
+    description: id of element to query.
+tags: [interacts]
+responses:
+  204:
+    description: The resource has been correctly deleted
+  400:
+    description: Request not valid.
+    schema: Bad_Request_Response_Schema
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  404:
+    description: Id Not Found
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schema

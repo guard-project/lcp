@@ -50,9 +50,11 @@ class SonLCPIdentification(Base_Resource):
                 # TODO - Notify the parent about this, please.
 
             resp.status = HTTP_CREATED
+            resp.body = json.dumps(self_lcp)
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
             resp.body = json.dumps(e.messages)
+
 
     def test_if_im_in(self, url):
         try:
@@ -103,9 +105,9 @@ class ParentLCPIdentification(Base_Resource):
                     self.notified.append(f)
                     LCPClient().send(LCPMessages(BetweenLCPMessages.PostLCPSon, f))
             resp.status = HTTP_ACCEPTED
+            resp.body = json.dumps(self_lcp)
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
-            resp.body = json.dumps(e.messages)
 
     @docstring(source="filiation/get_lcp_parents.yaml")
     def on_get(self, req, resp):
@@ -114,6 +116,11 @@ class ParentLCPIdentification(Base_Resource):
         self.log.notice("GET /lcp_parent -- ")
         parents_urls = LCPConfig().parents
         resp.body = json.dumps(parents_urls)
+
+    @docstring(source="filiation/delete_lcp_parent.yaml")
+    def on_delete(self, req, resp):
+        self.log.notice("DELETE /lcp_parent --")
+        resp.status = HTTP_NOT_FOUND
 
 
 class SonRequestIdentificationById(Base_Resource):
@@ -146,6 +153,4 @@ class SonRequestIdentificationById(Base_Resource):
             resp.status = HTTP_OK
         else:
             resp.status = HTTP_NOT_FOUND
-
-
 

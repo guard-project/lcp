@@ -1,0 +1,31 @@
+Put/correct a description of an Agent Type which can be used to deploy some different agents.
+---
+summary: Put an Agent type
+description: |
+  Updates the information about an Agent Type that so that an agent can register later to belong this kind
+parameters:
+  - name: id
+    requiered: true
+    in: path
+    schema:
+        type: string
+    description: id of Agent type to be modified
+  - name: payload
+    in: body
+    required: true
+    schema:
+      type: array
+      items: AgentType
+tags: [Agents]
+responses:
+  201:
+    description: The Agent Type has been successfully updated there.
+  401:
+    description: Authentication failed.
+    schema: Unauthorized_Response_Schema
+  406:
+    description: Request validation failed.
+    schema: Not_Acceptable_Response_Schema
+  500:
+    description: Server not available to satisfy the request.
+    schema: Internal_Server_Error_Response_Schem

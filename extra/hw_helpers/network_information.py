@@ -57,7 +57,6 @@ class NetworkInterfacesInfo:
 
         return d
 
-    # https://stackoverflow.com/questions/2761829/python-get-default-gateway-for-a-local-interface-ip-address-in-linux
     def get_default_gateway_linux(self):
         with open("/proc/net/route") as fr:
             for line in fr:
@@ -71,7 +70,6 @@ class NetworkInterfacesInfo:
 
                 return ifaz, gw
 
-    # https://stackoverflow.com/questions/6243276/how-to-get-the-physical-interface-ip-address-from-an-interface
     def get_network_ipv4(self, ifaz: str):
         if ifaz not in self.ifaces:
             return None
@@ -81,8 +79,6 @@ class NetworkInterfacesInfo:
             mask = "0.0.0.0/" + ipv4_ifaz['netmask']
             bits = IPv4Network(mask).prefixlen
 
-            ## tambien seria correcto
-            ## bits = sum(bin(int(x)).count('1') for x in mask.split('.')
             ipv4.append(ipv4_ifaz['addr'] + "/" + str(bits))
 
         return ipv4

@@ -19,6 +19,7 @@ class PollContextBroker(Base_Resource):
     def on_get(self, req, resp):
         try:
             helper = SecurityContextHelper(LCPConfig())
+            data = helper.getData()
             resp.body = helper.getData()
         except KeyError as e:
             traceback.print_exc()

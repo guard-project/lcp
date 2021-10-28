@@ -24,6 +24,8 @@ class SoftwareDefinition(Base_Schema):
     type = fields.Str(required=True, example="SoftwareDefinition", enum=SoftwareDefinitionEnum,
                       description="Class SoftwareDefinition. The value must be SoftwareDefinition",
                       validate=marshmallow.validate.OneOf(SoftwareDefinitionEnum))
+    address = fields.Str(required=False, example="192.168.0.1",
+                         description="Server address or IP where the software is listening")
     product = fields.Str(required=True, example="MySQL",
                       description="Name of this piece of Software instance")
     version = fields.Str(required=True, example="5.8.1",
