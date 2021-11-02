@@ -2,19 +2,22 @@ from json import dumps
 from pathlib import Path
 from resource import tags as rc_tags
 
-from apispec import APISpec as API_Spec
-from apispec.ext.marshmallow import MarshmallowPlugin as Marshmallow_Plugin
-from falcon_apispec import FalconPlugin as Falcon_Plugin
+from apispec import APISpec
+from apispec.ext.marshmallow import MarshmallowPlugin
+from falcon_apispec import FalconPlugin
 
 from utils.string import is_str
 
 
 class Spec:
     def __init__(self, api, title, version):
-        self.obj = API_Spec(title=title, version=version, openapi_version='2.0',
-                            produces=['application/json'], consumes=['application/json'],
-                            tags=rc_tags,
-                            plugins=[Falcon_Plugin(api), Marshmallow_Plugin(schema_name_resolver=self.__schema_name_resolver)])
+        schema_name_resolver = self.__schema_name_resolver
+        self.obj = APISpec(title=title, version=version, openapi_version='2.0',
+                           produces=['application/json'],
+                           consumes=['application/json'],
+                           tags=rc_tags,
+                           plugins=[FalconPlugin(api),
+                                    MarshmallowPlugin(schema_name_resolver)])
 
     def get(self):
         return self.obj
@@ -29,8 +32,5 @@ class Spec:
 
     @staticmethod
     def __schema_name_resolver(schema):
-        if is_str(schema):
-            ref = schema
-        else:
-            ref = schema.__class__.__name__
+        ref = schema if is_str(schema) else schema.__class__.__name__
         return ref.replace('_Schema', '')

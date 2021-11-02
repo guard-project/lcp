@@ -1,9 +1,9 @@
-from http import HTTPStatus as HTTP_Status
+from http import HTTPStatus
 
 from utils.log import Log
 
 
-class HTTP_Method(object):
+class HTTPMethod(object):
     """Constants representing various HTTP request methods."""
 
     GET = 'get'
@@ -13,15 +13,15 @@ class HTTP_Method(object):
 
 
 code_priority_order = cpo = {
-    HTTP_Status.OK: 1,
-    HTTP_Status.CREATED: 2,
-    HTTP_Status.RESET_CONTENT: 2,
-    HTTP_Status.NOT_MODIFIED: 0,
-    HTTP_Status.NOT_FOUND: 3,
-    HTTP_Status.NO_CONTENT: 4,
-    HTTP_Status.CONFLICT: 4,
-    HTTP_Status.NOT_ACCEPTABLE: 4,
-    HTTP_Status.UNPROCESSABLE_ENTITY: 4
+    HTTPStatus.OK: 1,
+    HTTPStatus.CREATED: 2,
+    HTTPStatus.RESET_CONTENT: 2,
+    HTTPStatus.NOT_MODIFIED: 0,
+    HTTPStatus.NOT_FOUND: 3,
+    HTTPStatus.NO_CONTENT: 4,
+    HTTPStatus.CONFLICT: 4,
+    HTTPStatus.NOT_ACCEPTABLE: 4,
+    HTTPStatus.UNPROCESSABLE_ENTITY: 4
 }
 
 
@@ -61,8 +61,8 @@ def __get(code):
         Log.get('http-lib').warn(f'{code} without priority order.')
 
 
-HTTP_Status.lt = __lt
-HTTP_Status.lte = __lte
-HTTP_Status.gt = __gt
-HTTP_Status.gte = __gte
-HTTP_Status.eq = __eq
+HTTPStatus.lt = __lt
+HTTPStatus.lte = __lte
+HTTPStatus.gt = __gt
+HTTPStatus.gte = __gte
+HTTPStatus.eq = __eq

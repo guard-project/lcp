@@ -16,7 +16,10 @@ def extract_info(exception):
 
 def to_str(exception):
     info = extract_info(exception)
-    if 'filename' in info and 'line' in info:
-        return f'{info["reason"]} on filename:{info["filename"]} at line:{info["line"]}'
+    reason = info["reason"]
+    filename = info.get('filename', None)
+    line = info.get('line', None)
+    if filename and line:
+        return f'{reason} on filename:{filename} at line:{line}'
     else:
-        return info["reason"]
+        return reason

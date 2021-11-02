@@ -1,16 +1,20 @@
 from operator import itemgetter as item_getter
-from resource.base import Base_Resource
+from resource.base import BaseResource
 
 from docstring import docstring
-from lib.http import HTTP_Method
+from lib.http import HTTPMethod
 from lib.polycube import Polycube
-from lib.response import (Created_Response, No_Content_Response, Ok_Response, Reset_Content_Response,
-                          Unprocessable_Entity_Response)
-from schema.code import Code_Request_Schema
+from lib.response import (CreatedResponse, NoContentResponse, OkResponse,
+                          ResetContentResponse, UnprocEntityResponse)
+from schema.code import CodeRequestSchema
 from utils.sequence import is_list, wrap
 
+MSG_OK = 'Code with the id={} correctly {}'
+MSG_NOT_POSSIBLE = 'Not possible to {} code with the id={}'
+MSG_NO_CONTENT = 'No content to {} code with the {{request}}'
 
-class Code_Resource(Base_Resource):
+
+class CodeResource(BaseResource):
     tag = {'name': 'code', 'description': 'Code injection at run-time.'}
     routes = '/code', '/code/{id}',
 
@@ -20,74 +24,84 @@ class Code_Resource(Base_Resource):
     @docstring(source='code/post.yaml')
     def on_post(self, req, resp, id=None):
         req_data = req.media or {}
-        resp_data, valid = Code_Request_Schema(many=is_list(req_data), unknown='INCLUDE',
-                                               method=HTTP_Method.POST).validate(data=req.media, id=id)
+        resp_data, valid = (CodeRequestSchema(many=is_list(req_data),
+                                              unknown='INCLUDE',
+                                              method=HTTPMethod.POST)
+                            .validate(data=req.media, id=id))
         if valid:
             req_data_wrap = wrap(req_data)
             if len(req_data_wrap) > 0:
                 for data in req_data_wrap:
                     id, code, interface, metrics = item_getter('id', 'code',
-                                                               'interface', 'metrics')(data)
+                                                               'interface',
+                                                               'metrics')(data)
                     if all([id, code, interface]):
                         if is_list(code):
                             code = '\n'.join(code)
                         pc = self.polycube.create(cube=id, code=code,
-                                                  interface=interface, metrics=metrics)
+                                                  interface=interface,
+                                                  metrics=metrics)
                         if not pc.get('error', False):
-                            msg = f'Code with the id={id} correctly injected'
-                            resp_data = Created_Response(msg)
+                            resp_data = CreatedResponse(
+                                MSG_OK.format(id, 'created'))
                         else:
-                            msg = f'Not possible to inject code with the id={id}'
-                            resp_data = Unprocessable_Entity_Response(msg)
+                            resp_data = UnprocEntityResponse(
+                                MSG_NOT_POSSIBLE.format('create', id))
                         resp_data.update(**pc)
                     else:
-                        msg = f'Not possible to inject code with the id={id}'
-                        resp_data = Unprocessable_Entity_Response(msg)
+                        resp_data = UnprocEntityResponse(
+                            MSG_NOT_POSSIBLE.format('create', id))
                     resp_data.apply(resp)
             else:
-                msg = 'No content to create code with the {{request}}'
-                No_Content_Response(msg, request=req_data).apply(resp)
+                NoContentResponse(MSG_NO_CONTENT.format(
+                    'create'), request=req_data).apply(resp)
         else:
             resp_data.apply(resp)
 
     @docstring(source='code/put.yaml')
     def on_put(self, req, resp, id=None):
         req_data = req.media or {}
-        resp_data, valid = Code_Request_Schema(many=is_list(req_data),
-                                               partial=True, method=HTTP_Method.PUT).validate(data=req.media, id=id)
+        resp_data, valid = (CodeRequestSchema(many=is_list(req_data),
+                                              partial=True,
+                                              method=HTTPMethod.PUT)
+                            .validate(data=req.media, id=id))
         if valid:
             req_data_wrap = wrap(req_data)
             if len(req_data_wrap) > 0:
                 for data in req_data_wrap:
                     id, code, interface, metrics = item_getter('id', 'code',
-                                                               'interface', 'metrics')(data)
+                                                               'interface',
+                                                               'metrics')(data)
                     if all([id, code, interface]):
                         if is_list(code):
                             code = '\n'.join(code)
                         pc = self.polycube.update(cube=id, code=code,
-                                                  interface=interface, metrics=metrics)
+                                                  interface=interface,
+                                                  metrics=metrics)
                         if not pc.get('error', False):
-                            msg = f'Code with the id={id} correctly updated'
-                            resp_data = Ok_Response(msg)
+                            resp_data = OkResponse(
+                                MSG_OK.format(id, 'updated'))
                         else:
-                            msg = f'Not possible to update code with the id={id}'
-                            resp_data = Unprocessable_Entity_Response(msg)
+                            resp_data = UnprocEntityResponse(
+                                MSG_NOT_POSSIBLE.format('update', id))
                         resp_data.update(**pc)
                     else:
-                        msg = f'Not possible to update code with the id={id}'
-                        resp_data = Unprocessable_Entity_Response(msg)
+                        resp_data = UnprocEntityResponse(
+                            MSG_NOT_POSSIBLE.format('update', id))
                     resp_data.apply(resp)
             else:
-                msg = 'No content to update code with the {{request}}'
-                No_Content_Response(msg, request=req_data).apply(resp)
+                NoContentResponse(MSG_NO_CONTENT.format(
+                    'update'), request=req_data).apply(resp)
         else:
             resp_data.apply(resp)
 
     @ docstring(source='code/post.yaml')
     def on_delete(self, req, resp, id=None):
         req_data = req.media or {}
-        resp_data, valid = Code_Request_Schema(many=is_list(req_data),
-                                               partial=True, method=HTTP_Method.DELETE).validate(data=req.media, id=id)
+        resp_data, valid = (CodeRequestSchema(many=is_list(req_data),
+                                              partial=True,
+                                              method=HTTPMethod.DELETE)
+                            .validate(data=req.media, id=id))
         if valid:
             req_data_wrap = wrap(req_data)
             if len(req_data_wrap) > 0:
@@ -96,18 +110,18 @@ class Code_Resource(Base_Resource):
                     if id is not None:
                         pc = self.polycube.delete(cube=id)
                         if not pc.get('error', False):
-                            msg = f'Code with the id={id} correctly deleted'
-                            resp_data = Reset_Content_Response(msg)
+                            resp_data = ResetContentResponse(
+                                MSG_OK.format(id, 'deleted'))
                         else:
-                            msg = f'Not possible to delete code with the id={id}'
-                            resp_data = Unprocessable_Entity_Response(msg)
+                            resp_data = UnprocEntityResponse(
+                                MSG_NOT_POSSIBLE.format('delete', id))
                         resp_data.update(**pc)
                     else:
-                        msg = f'Not possible to update code with the id={id}'
-                        resp_data = Unprocessable_Entity_Response(msg)
+                        resp_data = UnprocEntityResponse(
+                            MSG_NOT_POSSIBLE.format('update', id))
                     resp_data.apply(resp)
             else:
-                msg = 'No content to delete code with the {{request}}'
-                No_Content_Response(msg, request=req_data).apply(resp)
+                NoContentResponse(MSG_NO_CONTENT.format(
+                    'delete'), request=req_data).apply(resp)
         else:
             resp_data.apply(resp)

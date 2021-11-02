@@ -1,15 +1,13 @@
-from resource.code import Code_Resource
-from resource.config import Config_Resource
-from resource.status import Status_Resource
+from resource.code import CodeResource
+from resource.config import ConfigResource
+from resource.status import StatusResource
 
 from utils.log import Log
 from utils.sequence import wrap
 
-db = (Code_Resource, Config_Resource, Status_Resource)
+db = (CodeResource, ConfigResource, StatusResource)
 
-tags = []
-for Resource in db:
-    tags.append(Resource.tag)
+tags = [Resource.tag for Resource in db]
 
 
 def routes(api, spec):
