@@ -22,9 +22,9 @@ class SecurityContextHelper:
             self.security_context['exec_env']['lcp']['father'] = config.parent_lcp_data['id']
 
         if len(config.self_software) > 0:
-            self.security_context['exec_env']['software'] = config.self_software.copy()
+            self.security_context['exec_env']['sw_info'] = config.self_software.copy()
 
-        self.security_context['exec_env']['environment'] = config.deployment.copy()
+        self.security_context['exec_env']['hw_info'] = config.deployment.copy()
 
         if len(config.self_containers) > 0:
             self.security_context['exec_env']['container'] = config.self_containers.copy()

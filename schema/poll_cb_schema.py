@@ -38,8 +38,8 @@ class LCPContextBrokerDefinition(Base_Schema):
                           description="Hostname of the Host where the LCP can be contacted. If a proxy is behind the LCP, the value should be the proxy host")
     interactions = fields.Nested(InteractsWithSchema, required=False)
     container = fields.List(fields.Nested(ContainerSchema), required=False)
-    software = fields.List(fields.Nested(SoftwareDefinition), required=False)
-    environment = fields.Dict(required=False,
+    sw_info = fields.List(fields.Nested(SoftwareDefinition), required=False)
+    hw_info = fields.Dict(required=False,
                               description="Definition of environment hardware. Can be one of the types LXCContainer, " \
                                           "DockerContainer, VirtualServer, BaremetalServer")
 
