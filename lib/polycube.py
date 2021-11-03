@@ -29,7 +29,7 @@ class Polycube:
             resp_req = get_req(self.endpoint,
                                timeout=ArgReader.db.polycube_timeout)
             self.__manager(resp_req)
-        except (ConnectionRequestError, HTTP_Error) as e:
+        except (ConnectionError, HTTP_Error) as e:
             self.log.exception(f"""Connection with polycube at
                                    {self.host}:{self.port} not possible""", e)
 
