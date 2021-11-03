@@ -1,4 +1,5 @@
-from lib.http import HTTP_Status
+from http import HTTPStatus
+
 from utils.exception import extract_info
 from utils.log import Log
 from utils.sequence import expand, is_list
@@ -58,7 +59,7 @@ class BaseResponse(object):
                 resp.media = []
             resp.media.append(self.__data())
             resp_code = int(resp.status.split()[0])
-            if self.code is not None and HTTP_Status.gt(resp_code, self.code):
+            if self.code is not None and HTTPStatus.gt(resp_code, self.code):
                 resp.status = f'{self.code} {self.status()}'
 
     def update(self, **kwargs):
@@ -66,7 +67,7 @@ class BaseResponse(object):
 
 
 class BadRequestResponse(BaseResponse):
-    code = HTTP_Status.BAD_REQUEST
+    code = HTTPStatus.BAD_REQUEST
     error = True
     log_level = 'error'
 
@@ -77,7 +78,7 @@ class BadRequestResponse(BaseResponse):
 
 
 class ConflictResponse(BaseResponse):
-    code = HTTP_Status.CONFLICT
+    code = HTTPStatus.CONFLICT
     error = True
     log_level = 'error'
 
@@ -86,7 +87,7 @@ class ConflictResponse(BaseResponse):
 
 
 class CreatedResponse(BaseResponse):
-    code = HTTP_Status.CREATED
+    code = HTTPStatus.CREATED
     log_level = 'success'
 
     def __init__(self, message, **kwargs):
@@ -94,7 +95,7 @@ class CreatedResponse(BaseResponse):
 
 
 class InternalServerErrorResponse(BaseResponse):
-    code = HTTP_Status.INTERNAL_SERVER_ERROR
+    code = HTTPStatus.INTERNAL_SERVER_ERROR
     error = True
     log_level = 'error'
 
@@ -103,7 +104,7 @@ class InternalServerErrorResponse(BaseResponse):
 
 
 class NotAcceptableResponse(BaseResponse):
-    code = HTTP_Status.NOT_ACCEPTABLE
+    code = HTTPStatus.NOT_ACCEPTABLE
     error = True
     log_level = 'error'
 
@@ -112,7 +113,7 @@ class NotAcceptableResponse(BaseResponse):
 
 
 class NoContentResponse(BaseResponse):
-    code = HTTP_Status.NO_CONTENT
+    code = HTTPStatus.NO_CONTENT
     log_level = 'warning'
 
     def __init__(self, message, exception=None, **kwargs):
@@ -120,7 +121,7 @@ class NoContentResponse(BaseResponse):
 
 
 class NotFoundResponse(BaseResponse):
-    code = HTTP_Status.NOT_FOUND
+    code = HTTPStatus.NOT_FOUND
     error = True
     log_level = 'error'
 
@@ -129,7 +130,7 @@ class NotFoundResponse(BaseResponse):
 
 
 class NotModifiedResponse(BaseResponse):
-    code = HTTP_Status.NOT_MODIFIED
+    code = HTTPStatus.NOT_MODIFIED
     log_level = 'warning'
 
     def __init__(self, message, **kwargs):
@@ -137,7 +138,7 @@ class NotModifiedResponse(BaseResponse):
 
 
 class OkResponse(BaseResponse):
-    code = HTTP_Status.OK
+    code = HTTPStatus.OK
     log_level = 'success'
 
     def __init__(self, message, **kwargs):
@@ -156,7 +157,7 @@ class ContentResponse(OkResponse):
 
 
 class ResetContentResponse(BaseResponse):
-    code = HTTP_Status.RESET_CONTENT
+    code = HTTPStatus.RESET_CONTENT
     log_level = 'warn'
 
     def __init__(self, message, **kwargs):
@@ -164,7 +165,7 @@ class ResetContentResponse(BaseResponse):
 
 
 class UnauthorizedResponse(BaseResponse):
-    code = HTTP_Status.UNAUTHORIZED
+    code = HTTPStatus.UNAUTHORIZED
     error = True
     log_level = 'error'
 
@@ -177,7 +178,7 @@ class UnauthorizedResponse(BaseResponse):
 
 
 class UnprocEntityResponse(BaseResponse):
-    code = HTTP_Status.UNPROCESSABLE_ENTITY
+    code = HTTPStatus.UNPROCESSABLE_ENTITY
     error = True
     log_level = 'error'
 
@@ -186,7 +187,7 @@ class UnprocEntityResponse(BaseResponse):
 
 
 class UnsupportedMediaTypeResponse(BaseResponse):
-    code = HTTP_Status.UNSUPPORTED_MEDIA_TYPE
+    code = HTTPStatus.UNSUPPORTED_MEDIA_TYPE
     error = True
     log_level = 'error'
 

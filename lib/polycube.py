@@ -7,7 +7,7 @@ from requests import delete as delete_req
 from requests import get as get_req
 from requests import post as post_req
 from requests import put as put_req
-from requests.exceptions import ConnectionRequestError, Timeout
+from requests.exceptions import ConnectionError, Timeout
 
 from reader.arg import ArgReader
 from utils.log import Log
@@ -167,7 +167,7 @@ class Polycube:
     def __manager(self, resp_req):
         try:
             resp_req.raise_for_status()
-        except ConnectionRequestError as e:
+        except ConnectionError as e:
             _msg = MSG_CONN_NOT_POSSIBLE.format(self.endpoint)
             self.log.exception(_msg, e)
             if resp_req.content:
