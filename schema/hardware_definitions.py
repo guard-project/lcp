@@ -1,10 +1,10 @@
 import marshmallow.validate
 from marshmallow import fields, validate
-from schema.base import Base_Schema
-from utils.schema import List_or_One
+from schema.base import BaseSchema
+from utils.schema import ListOrOne
 from schema.software_definitions import SoftwareDefinition
 import re
-from lib.response import Not_Acceptable_Response, Ok_Response
+from lib.response import NotAcceptableResponse, OkResponse
 from marshmallow.exceptions import ValidationError
 
 
@@ -39,7 +39,7 @@ DockerContainerDefinitionEnum = ["DockerContainer"]
 LXCContainerDefinitionEnum = ["LXCContainer"]
 
 
-class DiskPartition(Base_Schema):
+class DiskPartition(BaseSchema):
     """Define a Disk partition schema"""
     size = fields.Float(required=True, example="314461424",
                         description="Partition Size in Kilo Bytes")
@@ -49,7 +49,7 @@ class DiskPartition(Base_Schema):
                       description="Partition name in the OS")
 
 
-class Disk(Base_Schema):
+class Disk(BaseSchema):
     """
     Hard Disk device Schema for one disk of the Hardware.
     """
@@ -61,7 +61,7 @@ class Disk(Base_Schema):
                       description="Complete Disk Size in Kilo Bytes")
     model = fields.Str(required=False, example="KBG30ZMV512G TOSHIBA",
                        description="Disk Model/Vendor")
-    diskPartitions = List_or_One(fields.Nested(DiskPartition, required=False,
+    diskPartitions = ListOrOne(fields.Nested(DiskPartition, required=False,
                                                description="Disk Partitions for the Disk"))
 
 
@@ -77,7 +77,7 @@ class IPv6CIDR(fields.Str):
         self._field_cache = {}
 
 
-class NetworkInterface(Base_Schema):
+class NetworkInterface(BaseSchema):
     """
     Description of a Network Interface.
     """
@@ -100,7 +100,7 @@ class NetworkInterface(Base_Schema):
                                 description="List of CIDR for IPv6 values")
 
 
-class BaremetalServer(Base_Schema):
+class BaremetalServer(BaseSchema):
     """
     BaremetalServer Description
     """
@@ -117,13 +117,13 @@ class BaremetalServer(Base_Schema):
                      description="RAM installed in the Server in Megabytes")
     operatingSystem = fields.Str(required=True, example='Ubuntu Linux 20.04.2 LTS',
                                  description="Network interface Name in the OS")
-    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,
+    networkInterfaces = ListOrOne(fields.Nested(NetworkInterface), required=False,
                                     description="List of Network Interfaces in the host")
-    diskDevices = List_or_One(fields.Nested(Disk, required=False,
+    diskDevices = ListOrOne(fields.Nested(Disk, required=False,
                                             description="Disks installed in the Server"))
 
 
-class VirtualServer(Base_Schema):
+class VirtualServer(BaseSchema):
     id = fields.Str(required=True, example="ed5bd35a-7213-47a9-ae6e-76212e62a157",
                     description="Virtual Server ID.")
     type = fields.Str(required=True, example="VirtualServer", enum=VirtualServerDefinitionEnum,
@@ -139,9 +139,9 @@ class VirtualServer(Base_Schema):
                          description="ID of underlying Baremetal Server")
     operatingSystem = fields.Str(required=True, example='Ubuntu Linux 20.04.2 LTS',
                                  description="Network interface Name in the OS")
-    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,
+    networkInterfaces = ListOrOne(fields.Nested(NetworkInterface), required=False,
                                     description="List of Network Interfaces in the Virtual Host")
-    diskDevices = List_or_One(fields.Nested(Disk, required=False,
+    diskDevices = ListOrOne(fields.Nested(Disk, required=False,
                                             description="Disks installed in the Server"))
     cpus = fields.Int(required=True, example="8",
                       description="CPU Cores in the Server")
@@ -151,7 +151,7 @@ class VirtualServer(Base_Schema):
                                  description="Network interface Name in the OS")
 
 
-class DockerContainer(Base_Schema):
+class DockerContainer(BaseSchema):
     id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",
                     description="Id of the Docker Container.")
     type = fields.Str(required=True, example="DockerContainer", enum=DockerContainerDefinitionEnum,
@@ -165,7 +165,7 @@ class DockerContainer(Base_Schema):
     #                         description="Software Installed in Docker, if declared")
 
 
-class LXCContainer(Base_Schema):
+class LXCContainer(BaseSchema):
     id = fields.Str(required=True, example="bf9aff0c-6185-4b9f-8d39-c5f8e1b522e9",
                     description="Id of the LXC Container.")
     type = fields.Str(required=True, example="LXCContainer", enum=LXCContainerDefinitionEnum,
@@ -175,13 +175,13 @@ class LXCContainer(Base_Schema):
                           description="LXC's name for the underlying example")
     operatingSystem = fields.Str(required=True, example='Ubuntu Linux 20.04.2 LTS',
                                  description="Emulated OS in the container")
-    networkInterfaces = List_or_One(fields.Nested(NetworkInterface), required=False,
+    networkInterfaces = ListOrOne(fields.Nested(NetworkInterface), required=False,
                                     description="List of Network Interfaces in the lxc container")
     # host_id = fields.Str(required=False, example="39f1f5e0-7aaa-4dd7-8e0e-8524cddb7a9c",
     #                     description="ID of underlying Baremetal or Virtual Server")
 
 
-class ExecutionEnvironment(Base_Schema):
+class ExecutionEnvironment(BaseSchema):
     id = fields.Str(required=True, example="bc2e2eff-fda1-45be-b7f1-93485b756470",
                     description="This execution environment ID.")
     type = fields.Str(required=True, example="ExecutionEnvironment", enum=ExecutionEnvironmentEnum,

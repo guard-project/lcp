@@ -21,7 +21,7 @@ from utils.log import Log  # noqa: E402
 from extra.controller import LCPController
 
 if __name__ == "__main__":
-    db = ArgReader.read()
+    db = Arg_Reader.read()
 
     print(db)
 

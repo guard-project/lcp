@@ -9,7 +9,7 @@ from queue import Queue
 import enum
 import base64
 from utils.log import Log
-from reader.arg import Arg_Reader
+from reader.arg import ArgReader
 from lib.token import create_token
 
 class BetweenLCPMessages(enum.Enum):
@@ -38,7 +38,7 @@ class LCPClient(object):
 
         def getHeaders(self):
             headers = {'content-type': 'application/json'}
-            if Arg_Reader.db.auth:
+            if ArgReader.db.auth:
                 token = create_token()
                 headers['Authorization'] = token
 

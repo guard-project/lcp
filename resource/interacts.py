@@ -1,5 +1,5 @@
 from docstring import docstring
-from resource.base import Base_Resource
+from resource.base import BaseResource
 from marshmallow import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_OK, HTTP_NOT_FOUND, HTTP_204
 import json
@@ -9,7 +9,7 @@ from schema.artifacts import SoftwareDefinition, ExternalStorageSchema
 from utils.log import Log
 
 
-class Interacts(Base_Resource):
+class Interacts(BaseResource):
     tag = {'name': 'interacts', 'description': 'Describes interactions with other external resources.'}
     routes = '/interactions',
 
@@ -45,7 +45,7 @@ class Interacts(Base_Resource):
         resp.status = HTTP_OK
 
 
-class InteractsById(Base_Resource):
+class InteractsById(BaseResource):
     tag = {'name': 'interacts', 'description': 'Describes interactions with other external resources.'}
     routes = '/interactions/{id}',
 

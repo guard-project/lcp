@@ -32,7 +32,7 @@ class TestMyApp(LCPTestBase):
         headers = getAuthorizationHeaders()
         cfg = LCPConfig()
 
-        result = self.simulate_post("/interacts", headers=headers,
+        result = self.simulate_post("/interactions", headers=headers,
                                     body=json.dumps(d))
 
         assert result.status_code == 201
@@ -48,7 +48,7 @@ class TestMyApp(LCPTestBase):
         headers = getAuthorizationHeaders()
         cfg = LCPConfig()
 
-        result = self.simulate_get("/interacts", headers=headers)
+        result = self.simulate_get("/interactions", headers=headers)
 
         print("---------------------")
         print("Status Code:", result.status_code)
@@ -67,7 +67,7 @@ class TestMyApp(LCPTestBase):
         cfg.add_external_software_interaction(d['softwareArtifacts'])
         cfg.add_external_storage_interaction(d['externalStorage'])
 
-        result = self.simulate_get("/interacts", headers=headers)
+        result = self.simulate_get("/interactions", headers=headers)
         body = result.json
         assert result.status_code == 200
         assert 'softwareArtifacts' in body

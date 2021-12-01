@@ -1,4 +1,4 @@
-from resource.base import Base_Resource
+from resource.base import BaseResource
 from docstring import docstring
 from schema.software_definitions import SoftwareDefinition as SoftwareDefinitionSchema
 from schema.software_definitions import ContainerSchema
@@ -9,7 +9,7 @@ from extra.lcp_config import LCPConfig
 # import traceback
 
 
-class SoftwareDefinition(Base_Resource):
+class SoftwareDefinition(BaseResource):
     tag = {'name': 'software',
            'description': 'Returns the description of software installed'}
     routes = '/self/software'
@@ -40,7 +40,7 @@ class SoftwareDefinition(Base_Resource):
             resp.body = json.dumps(e.messages)
 
 
-class SoftwareDefinitionById(Base_Resource):
+class SoftwareDefinitionById(BaseResource):
     tag = {'name': 'software',
            'description': 'Returns the description of software installed'}
     routes = '/self/software/{id}'
@@ -90,7 +90,7 @@ class SoftwareDefinitionById(Base_Resource):
             resp.body = json.dumps(e.messages)
 
 
-class ContainerDefinition(Base_Resource):
+class ContainerDefinition(BaseResource):
     tag = {'name': 'software',
            'description': 'Returns the description of software installed in containers'}
     routes = "/self/container"

@@ -1,7 +1,7 @@
 from schema.security_functions import Agent as AgentSchema
 from schema.security_functions import AgentType
 from docstring import docstring
-from resource.base import Base_Resource
+from resource.base import BaseResource
 import json
 from marshmallow.exceptions import ValidationError
 from falcon import HTTP_CREATED, HTTP_NOT_ACCEPTABLE, HTTP_NOT_FOUND, HTTP_PRECONDITION_FAILED
@@ -9,7 +9,7 @@ from extra.lcp_config import LCPConfig
 from extra.controller import LCPController
 
 
-class SecurityFunction(Base_Resource):
+class SecurityFunction(BaseResource):
     tag = {'name': 'Agents',
            'description': 'Describes the Agent types and Agent instances.'}
     routes = '/agent/instance',
@@ -49,7 +49,7 @@ class SecurityFunction(Base_Resource):
             req.status = HTTP_NOT_ACCEPTABLE
 
 
-class SecurityFunctionbyId(Base_Resource):
+class SecurityFunctionbyId(BaseResource):
     tag = {'name': 'Agents',
            'description': 'Describes the Agent types and Agent instances.'}
     routes = '/agent/instance/{id}',
@@ -66,7 +66,7 @@ class SecurityFunctionbyId(Base_Resource):
         req.status = HTTP_NOT_FOUND
 
 
-class AgentTypeResource(Base_Resource):
+class AgentTypeResource(BaseResource):
     tag = {'name': 'Agents',
            'description': 'Describes the Agent types and Agent instances.'}
     routes = '/agent/type',
@@ -92,7 +92,7 @@ class AgentTypeResource(Base_Resource):
             resp.body = json.dumps(e.messages)
             req.status = HTTP_NOT_ACCEPTABLE
 
-class AgentTypeResourcebyId(Base_Resource):
+class AgentTypeResourcebyId(BaseResource):
     tag = {'name': 'Agents',
            'description': 'Describes the Agent types and Agent instances.'}
     routes = '/agent/type/{id}',

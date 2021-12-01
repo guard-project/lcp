@@ -1,6 +1,6 @@
 from falcon import testing
 from api import api
-from reader.arg import Arg_Reader
+from reader.arg import ArgReader
 from about import title, version
 from extra.lcp_config import LCPConfig
 import os
@@ -10,8 +10,8 @@ from utils.log import Log  # noqa: E402
 class SecurityFunctionDefinitionTesting(testing.TestCase):
     def setUp(self):
         super(SecurityFunctionDefinitionTesting, self).setUp()
-        self.db = Arg_Reader.read()
-        db = Arg_Reader.read()
+        self.db = ArgReader.read()
+        db = ArgReader.read()
         Log.init(config="../" + db.log_config)
         Log.get('api').success(f'Accept requests at {db.host}:{db.port}')
         self.app = api(title=title, version=version)

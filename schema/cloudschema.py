@@ -1,6 +1,6 @@
 import marshmallow.validate
 from marshmallow import fields
-from schema.base import Base_Schema
+from schema.base import BaseSchema
 
 __all__ = [
     'CloudSchema',
@@ -10,21 +10,21 @@ __all__ = [
 
 CloudDescriptionEnum = ["CloudDescription"]
 
-class CloudController(Base_Schema):
+class CloudController(BaseSchema):
     type = fields.Str(required=True, example="BaremetalServer",
                     description="Type of server acting as CloudController")
     controller_id = fields.Str(required=True, example="3b3041bf-b2fb-47da-8e72-331a67ffd292",
                                description="ID of the Controller host")
 
 
-class CloudCompute(Base_Schema):
+class CloudCompute(BaseSchema):
     type = fields.Str(required=True, example="BaremetalServer",
                       description="Type of server acting as CloudController")
     controller_id = fields.Str(required=True, example="3b3041bf-b2fb-47da-8e72-331a67ffd292",
                                description="ID of the Compute host. The controller could act as compute")
 
 
-class CloudSchema(Base_Schema):
+class CloudSchema(BaseSchema):
     """
     Definition Schema for a Cloud. One Cloud is defined by a few values. It could also
     optionally include the Controllers of the Cloud and its compute nodes. However, this

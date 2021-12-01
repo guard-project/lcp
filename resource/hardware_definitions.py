@@ -1,10 +1,10 @@
 from docstring import docstring
-from resource.base import Base_Resource
+from resource.base import BaseResource
 from marshmallow import ValidationError
-from schema.response import Created_Response
+from schema.response import CreatedResponse
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK
 from utils.sequence import is_list, wrap
-from lib.http import HTTP_Method
+from lib.http import HTTPMethod
 from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
 from schema.hardware_definitions import VirtualServer as VirtualServerSchema
 from schema.hardware_definitions import LXCContainer as LXCContainerSchema
@@ -12,7 +12,8 @@ import json
 from falcon import HTTPError
 import falcon
 
-class BaremetalServer(Base_Resource):
+
+class BaremetalServer(BaseResource):
     data = []
     tag = {'name': 'hardware',
            'description': 'Returns description of a Baremetal Server.'}
@@ -33,14 +34,14 @@ class BaremetalServer(Base_Resource):
 
     @docstring(source='BaremetalServer/GetBaremetalServer.yml')
     def on_get(self, req, resp):
-        resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
+        resp_Data, valid = BaremetalServerSchema(method=HTTPMethod.GET) \
             .validate(data={})
 
         resp.body = json.dumps(BaremetalServer.data)
 
     @docstring(source='BaremetalServer/PostBaremetalServer.yml')
     def on_post(self, req, resp):
-        resp_data, valid = BaremetalServerSchema(method=HTTP_Method.POST) \
+        resp_data, valid = BaremetalServerSchema(method=HTTPMethod.POST) \
             .validate(data={})
 
         payload = req.media if isinstance(req.media, list) else [req.media]
@@ -54,7 +55,7 @@ class BaremetalServer(Base_Resource):
             raise HTTPError(falcon.HTTP_406, 'Error', e.messages)
 
 
-class VirtualServer(Base_Resource):
+class VirtualServer(BaseResource):
     data = []
     tag = {'name': 'hardware',
            'description': 'Returns description of a Baremetal Server.'}
@@ -75,14 +76,14 @@ class VirtualServer(Base_Resource):
 
     @docstring(source='VirtualServer/GetVirtualServer.yml')
     def on_get(self, req, resp):
-        resp_Data, valid = VirtualServerSchema(method=HTTP_Method.GET) \
+        resp_Data, valid = VirtualServerSchema(method=HTTPMethod.GET) \
             .validate(data={})
 
         resp.body = json.dumps(VirtualServer.data)
 
     @docstring(source='VirtualServer/PostVirtualServer.yml')
     def on_post(self, req, resp):
-        resp_data, valid = VirtualServerSchema(method=HTTP_Method.POST) \
+        resp_data, valid = VirtualServerSchema(method=HTTPMethod.POST) \
             .validate(data={})
 
         payload = req.media if isinstance(req.media, list) else [req.media]
@@ -96,7 +97,7 @@ class VirtualServer(Base_Resource):
             raise HTTPError(falcon.HTTP_406, 'Error', e.messages)
 
 
-class LXCContainer(Base_Resource):
+class LXCContainer(BaseResource):
     data = []
     tag = {'name': 'hardware',
            'description': 'Returns description of a LXCContainer.'}
@@ -115,14 +116,14 @@ class LXCContainer(Base_Resource):
 
     @docstring(source='LXCContainer/GetLXCContainer.yml')
     def on_get(self, req, resp):
-        resp_Data, valid = LXCContainerSchema(method=HTTP_Method.GET) \
+        resp_Data, valid = LXCContainerSchema(method=HTTPMethod.GET) \
             .validate(data={})
 
         resp.body = json.dumps(LXCContainer.data)
 
     @docstring(source='LXCContainer/PostLXCContainer.yml')
     def on_post(self, req, resp):
-        resp_data, valid = LXCContainerSchema(method=HTTP_Method.POST) \
+        resp_data, valid = LXCContainerSchema(method=HTTPMethod.POST) \
             .validate(data={})
 
         payload = req.media if isinstance(req.media, list) else [req.media]
@@ -136,10 +137,10 @@ class LXCContainer(Base_Resource):
             raise HTTPError(falcon.HTTP_406, 'Error', e.messages)
 
 
-class SomethingToPost(Base_Resource):
+class SomethingToPost(BaseResource):
     @docstring(source='LXCContainer/PostLXCContainer.yml')
     def on_post(self, req, resp):
-        resp_data, valid = LXCContainerSchema(method=HTTP_Method.POST) \
+        resp_data, valid = LXCContainerSchema(method=HTTPMethod.POST) \
             .validate(data={})
 
         payload = req.media if isinstance(req.media, list) else [req.media]

@@ -1,6 +1,6 @@
-from resource.code import Code_Resource
-from resource.config import Config_Resource
-from resource.status import Status_Resource
+from resource.code import CodeResource
+from resource.config import ConfigResource
+from resource.status import StatusResource
 from resource.software_definition import SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition
 from resource.lcp_resources import SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification
 from resource.cloud_resource import CloudInfrastructure
@@ -11,8 +11,7 @@ from resource.interacts import Interacts, InteractsById
 from utils.log import Log
 from utils.sequence import wrap
 
-
-db = (Code_Resource, Config_Resource, Status_Resource,
+db = (CodeResource, ConfigResource, StatusResource,
       SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition,
       SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification,
       CloudInfrastructure,
@@ -21,9 +20,8 @@ db = (Code_Resource, Config_Resource, Status_Resource,
       DescribeDeployment, DescribeSelf, InitialSelfConfiguration,
       Interacts, InteractsById, PollContextBroker)
 
-tags = []
-for Resource in db:
-    tags.append(Resource.tag)
+
+tags = [Resource.tag for Resource in db]
 
 
 def routes(api, spec):

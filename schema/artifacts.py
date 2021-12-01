@@ -1,15 +1,15 @@
 import marshmallow.validate
 from marshmallow import fields
-from schema.base import Base_Schema
+from schema.base import BaseSchema
 from schema.software_definitions import SoftwareDefinition
-from schema.response import Ok_Response
+from schema.response import OkResponse
 from marshmallow.exceptions import ValidationError as Validation_Error
 
 STORAGE_TYPES = ["S3", "NFS", "iSCSI", "Swift", "CEPH", "GlusterFS", "SSH-FS"]
 ExternalStorageSchemaEnum = ["ExternalStorage"]
 
 
-class ExternalStorageSchema(Base_Schema):
+class ExternalStorageSchema(BaseSchema):
     """Class ExternalStorageSchema describing an external storage which is used by our system.
     """
 
@@ -26,7 +26,7 @@ class ExternalStorageSchema(Base_Schema):
                      description="URL for this remote resource")
 
 
-class InteractsWithSchema(Base_Schema):
+class InteractsWithSchema(BaseSchema):
     """Class describing the external storage pieces and the Software Artifacts interacting with
     our LCP system"""
 

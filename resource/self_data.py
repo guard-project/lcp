@@ -1,9 +1,9 @@
 from extra.lcp_config import LCPConfig
 from docstring import docstring
-from resource.base import Base_Resource
+from resource.base import BaseResource
 from schema.hardware_definitions import BaremetalServer as BaremetalServerSchema
 from schema.hardware_definitions import ExecutionEnvironment
-from lib.http import HTTP_Method
+from lib.http import HTTPMethod
 from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_INTERNAL_SERVER_ERROR
 from marshmallow import ValidationError
 from schema.lcp_schemas import LCPDescription
@@ -11,7 +11,8 @@ import json
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
 from extra.controller import LCPController
 
-class DescribeDeployment(Base_Resource):
+
+class DescribeDeployment(BaseResource):
     tag = {'name': 'self',
            'description': 'This method does the initial configuration'}
     routes = '/self/deployment',
@@ -26,7 +27,7 @@ class DescribeDeployment(Base_Resource):
 
     @docstring(source="self/post_self_deployment.yaml")
     def on_post(self, req, resp):
-        resp_Data, valid = ExecutionEnvironment(method=HTTP_Method.GET) \
+        resp_Data, valid = ExecutionEnvironment(method=HTTPMethod.GET) \
             .validate(req.media)
         payload = req.media
         try:
@@ -40,7 +41,7 @@ class DescribeDeployment(Base_Resource):
             req.status = HTTP_NOT_ACCEPTABLE
 
 
-class DescribeSelf(Base_Resource):
+class DescribeSelf(BaseResource):
     data = {}
     tag = {'name': 'self',
            'description': 'Returns description of self LCP.'}
@@ -50,7 +51,7 @@ class DescribeSelf(Base_Resource):
     @docstring(source="self/get.yaml")
     def on_get(self, req, resp):
         # TODO: Organizar este codigo bien, con el esquema que corresponda!
-        resp_Data, valid = BaremetalServerSchema(method=HTTP_Method.GET) \
+        resp_Data, valid = BaremetalServerSchema(method=HTTPMethod.GET) \
             .validate(data={})
 
         lcp = json.dumps(LCPConfig().lcp)
@@ -62,7 +63,7 @@ class DescribeSelf(Base_Resource):
             payload = req.media if isinstance(req.media, list) else [req.media]
 
 
-class InitialSelfConfiguration(Base_Resource):
+class InitialSelfConfiguration(BaseResource):
     data = {}
     tag = {'name': 'self',
            'description': 'Initial configuration for the LCP'}
@@ -70,7 +71,7 @@ class InitialSelfConfiguration(Base_Resource):
 
     @docstring(source="self/post.yaml")
     def on_post(self, req, resp):
-        resp_Data, valid = LCPDescription(method=HTTP_Method.POST) \
+        resp_Data, valid = LCPDescription(method=HTTPMethod.POST) \
             .validate(data={})
         payload = req.media
         try:

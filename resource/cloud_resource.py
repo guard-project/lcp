@@ -1,13 +1,13 @@
 from docstring import docstring
-from resource.base import Base_Resource
+from resource.base import BaseResource
 from schema.cloudschema import CloudSchema
 import json
-from lib.http import HTTP_Method
+from lib.http import HTTPMethod
 from marshmallow.exceptions import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE
 
 
-class CloudInfrastructure(Base_Resource):
+class CloudInfrastructure(BaseResource):
     data = []
 
     tag = {'name': 'hardware',
@@ -29,14 +29,14 @@ class CloudInfrastructure(Base_Resource):
 
     @docstring(source="Cloud/GetCloudInfrastructure.yml")
     def on_get(self, req, resp):
-        resp_data, valid = CloudSchema(method=HTTP_Method.GET) \
+        resp_data, valid = CloudSchema(method=HTTPMethod.GET) \
         .validate(data={})
 
         resp.body = json.dumps(CloudInfrastructure.data)
 
     @docstring(source="Cloud/PostCloudInfrastructure.yml")
     def on_post(self, req, resp):
-        resp_data, valid = CloudSchema(method=HTTP_Method.POST) \
+        resp_data, valid = CloudSchema(method=HTTPMethod.POST) \
             .validate(data={})
         payload = req.media if isinstance(req.media, list) else [req.media]
 

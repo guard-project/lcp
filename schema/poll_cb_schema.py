@@ -1,6 +1,6 @@
 import marshmallow.validate
 from marshmallow import fields
-from schema.base import Base_Schema
+from schema.base import BaseSchema
 from schema.hardware_definitions import *
 from schema.software_definitions import ContainerSchema, SoftwareDefinition
 from schema.artifacts import InteractsWithSchema
@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 
-class LCPConnectionAsInCB(Base_Schema):
+class LCPConnectionAsInCB(BaseSchema):
     port = fields.Int(required=True, example=4000,
                      description="Port where the LCP is listening")
     https = fields.Boolean(required=True, example=True,
@@ -23,7 +23,7 @@ class LCPConnectionAsInCB(Base_Schema):
     father = fields.Str(required=False, example="0597a13e-9440-4139-a6dd-87eaa9799b55",
                         description="ID of the LCP father.")
 
-class LCPContextBrokerDefinition(Base_Schema):
+class LCPContextBrokerDefinition(BaseSchema):
     id = fields.Str(required=True, example='15d41167-79d3-48bf-b8db-9db0c8cc8d54',
                     description="Unique ID for the Son LCP")
     description = fields.Str(required=False, example="Testing LCP in localhost",
@@ -44,7 +44,7 @@ class LCPContextBrokerDefinition(Base_Schema):
                                           "DockerContainer, VirtualServer, BaremetalServer")
 
 
-class PollSchema(Base_Schema):
+class PollSchema(BaseSchema):
     # executionEnvironmentType = fields.Str(required=True, example="bare-metal", enum=EXEC_ENV_TYPE,
     #                                       description="Type of execution environment",
     #                                      validate=marshmallow.validate.OneOf(EXEC_ENV_TYPE))

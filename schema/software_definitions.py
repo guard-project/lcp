@@ -1,7 +1,7 @@
 import marshmallow.validate
 from marshmallow import fields
-from schema.base import Base_Schema
-from schema.response import Ok_Response
+from schema.base import BaseSchema
+from schema.response import OkResponse
 from marshmallow.exceptions import ValidationError as Validation_Error
 
 
@@ -16,7 +16,7 @@ SoftwareDefinitionEnum = ['SoftwareDefinition']
 ContainerDescriptionEnum = ['ContainerDescription']
 
 
-class SoftwareDefinition(Base_Schema):
+class SoftwareDefinition(BaseSchema):
     """Describe a Piece of Software in terms of name, vendor, version and opened ports"""
 
     id = fields.Str(required=True, example="a406874b-dea7-4cd1-9d4e-b82a18ec993b",
@@ -39,13 +39,13 @@ class SoftwareDefinition(Base_Schema):
     hasSoftwareConnections = fields.List(fields.Str, required=False, example=[],
                             description="List of Known connected/related Software")
 
-    def validate(self, data, response_type=Ok_Response, id=None):
+    def validate(self, data, response_type=OkResponse, id=None):
         super().validate(data, response_type, id)
         if data['type'] not in SoftwareDefinitionEnum:
             raise Validation_Error({'type': 'type attribute must be SoftwareDefinition'})
 
 
-class ContainerSchema(Base_Schema):
+class ContainerSchema(BaseSchema):
     """Describe a Container Schema containing some Software"""
 
     id = fields.Str(required=True, example="413216e3-169f-4638-830e-ef0607732fde",
@@ -58,7 +58,7 @@ class ContainerSchema(Base_Schema):
     software = fields.List(fields.Nested(SoftwareDefinition), required=True,
                            description="Description of the Software contained in the container")
 
-    def validate(self, data, response_type=Ok_Response, id=None):
+    def validate(self, data, response_type=OkResponse, id=None):
         super().validate(data, response_type, id)
         if data['type'] not in ContainerDescriptionEnum:
             raise Validation_Error({'type': 'type attribute must be ContainerDescription'})

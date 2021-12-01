@@ -1,7 +1,7 @@
 import marshmallow.validate
 from marshmallow import fields, Schema, validate
-from schema.base import Base_Schema
-from utils.schema import List_or_One
+from schema.base import BaseSchema
+from utils.schema import ListOrOne
 
 __all__ = [
     'Agent',
@@ -20,7 +20,7 @@ AgentTypeEnum = ['AgentType']
 AgentInstanceEnum = ['AgentInstance']
 
 
-class AgentParameter(Base_Schema):
+class AgentParameter(BaseSchema):
     path = fields.Str(required=True, example="HeartbeatTime",
                       description="Name of the Parameter")
     type = fields.Str(required=True, example="integer",
@@ -33,7 +33,7 @@ class AgentParameter(Base_Schema):
                           description="Marks whether a parameter is list or not")
 
 
-class AgentActionSchema(Base_Schema):
+class AgentActionSchema(BaseSchema):
     id = fields.Str(required=True, example='start',
                     description='Action name')
     cmd = fields.Str(required=True, example='service filebeat start',
@@ -42,7 +42,7 @@ class AgentActionSchema(Base_Schema):
                         description='Update the status the of the agent-instance according to cmd condition')
 
 
-class AgentResource(Base_Schema):
+class AgentResource(BaseSchema):
     path = fields.Str(required=True, example="/etc/myagent/config.yaml",
                       description="Path of the Agent config file")
     description = fields.Str(required=False, example="This is the config file for an agent",
@@ -51,7 +51,7 @@ class AgentResource(Base_Schema):
                          description="Config file example")
 
 
-class AgentType(Base_Schema):
+class AgentType(BaseSchema):
     id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",
                     description="Agent Type ID.")
     type = fields.Str(required=True, enum=AgentTypeEnum, example="AgentType",
@@ -59,7 +59,7 @@ class AgentType(Base_Schema):
                       description="Data type AgentType. Must be 'AgentType'")
     description = fields.Str(required=False, example="Example agent",
                              description="Description of the Agent type")
-    parameters = List_or_One(fields.Nested(AgentParameter), required=False,
+    parameters = ListOrOne(fields.Nested(AgentParameter), required=False,
                              description="List of configuration parameters used")
     partner = fields.Str(required=True, example="guard-partner",
                          description="Name of the Partner who created the resource")
@@ -67,15 +67,15 @@ class AgentType(Base_Schema):
                         description="Type of configuration file (json, yaml, etc.)")
     source = fields.Str(required=True, example="/etc/example_agent/config.yaml",
                         description="The config file where parameters are configured")
-    actions = List_or_One(fields.Nested(AgentActionSchema), required=True,
+    actions = ListOrOne(fields.Nested(AgentActionSchema), required=True,
                           description="List of actions and expected result fro this agent")
-    resources = List_or_One(fields.Nested(AgentResource), required=False,
+    resources = ListOrOne(fields.Nested(AgentResource), required=False,
                             description="List of agents Resources that could be used")
     jsonSchema = fields.Str(required=False, example="https://json-schema.org/draft/2020-12/schema",
                                   description="Pointer for the json describing the data from this kind of agents")
 
 
-class Agent(Base_Schema):
+class Agent(BaseSchema):
     id = fields.Str(required=True, example="5db06770-8c64-4693-9724-ff318b02f897",
                     description="Security Function ID.")
     type = fields.Str(required=True, enum=AgentInstanceEnum, example="AgentInstance",

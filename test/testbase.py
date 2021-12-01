@@ -1,7 +1,7 @@
 from utils.log import Log
 from falcon import testing
 from api import api
-from reader.arg import Arg_Reader
+from reader.arg import ArgReader
 from about import title, version
 from extra.lcp_config import LCPConfig
 from extra.clients_starter import end_client_threads
@@ -15,7 +15,7 @@ class LCPTestBase(testing.TestCase):
         lcp = LCPConfig()
         lcp.reset()
         lcp.testing = True
-        self.db = Arg_Reader.read()
+        self.db = ArgReader.read()
         if LCPTestBase.log is None:
             Log.init(config="../"+self.db.log_config)
             LCPTestBase.log = Log.get('api')

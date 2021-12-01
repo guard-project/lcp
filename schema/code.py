@@ -1,12 +1,12 @@
 from marshmallow.fields import Str
 
-from schema.base import Base_Schema
-from utils.schema import List_or_One
+from schema.base import BaseSchema
+from utils.schema import ListOrOne
 
 
 # FIXME add missing required fields
-class Code_Request_Schema(Base_Schema):
+class CodeRequestSchema(BaseSchema):
     """Request for code endpoint."""
 
     id = Str(required=True, example='firewall', description='Code id.')
-    code = List_or_One(Str, required=True, description='Code source')
+    code = ListOrOne(Str, required=True, description='Code source')

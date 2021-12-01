@@ -1,8 +1,4 @@
 from marshmallow.exceptions import ValidationError
-from schema.hardware_definitions import VirtualServer, ExecutionEnvironment
-from test_utils import *
-from test.testbase import LCPTestBase
-from marshmallow.exceptions import ValidationError
 
 from schema.hardware_definitions import VirtualServer, ExecutionEnvironment, LXCContainer, BaremetalServer
 from test.testbase import LCPTestBase
