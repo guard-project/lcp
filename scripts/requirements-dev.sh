@@ -1,9 +1,6 @@
+#!/bin/bash
+
 # Copyright (c) 2020-2029 GUARD Project <guard-project.eu>
 # author: Alex Carrega <alessandro.carrega@cnit.it>
 
-__pycache__
-.history
-/.tmp
-/docs/.build
-/log
-Pipfile.lock
+pipenv lock -r --dev-only > dev/requirements.txt

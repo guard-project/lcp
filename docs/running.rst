@@ -11,7 +11,7 @@ To run |LCP| using ``python3``:
     python3 main.py
 
 
-.. autoprogram:: reader.arg:Arg_Reader.init()
+.. autoprogram:: reader.arg:ArgReader.init()
 
 
 .. |LCP| replace:: :abbr:`LCP (Local Control Plane)`

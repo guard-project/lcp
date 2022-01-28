@@ -14,22 +14,22 @@ Error Handler
 
 .. currentmodule:: api.error_handler
 
-.. autoclass:: Base_Handler
+.. autoclass:: BaseHandler
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Bad_Request_Handler
+.. autoclass:: BadRequestHandler
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Internal_Server_Error_Handler
+.. autoclass:: InternalServerErrorHandler
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unsupported_Media_Type_Handler
+.. autoclass:: UnsupportedMediaTypeHandler
     :members:
     :private-members:
     :inherited-members:
@@ -40,12 +40,12 @@ Media Handler
 
 .. currentmodule:: api.media_handler
 
-.. autoclass:: XML_Handler
+.. autoclass:: XMLHandler
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: YAML_Handler
+.. autoclass:: YAMLHandler
     :members:
     :private-members:
     :inherited-members:
@@ -56,7 +56,7 @@ Middleware
 
 .. currentmodule:: api.middleware
 
-.. autoclass:: Negotiation_Middleware
+.. autoclass:: NegotiationMiddleware
     :members:
     :private-members:
     :inherited-members:
@@ -86,12 +86,12 @@ Lib
 
 .. currentmodule:: lib.http
 
-.. autoclass:: HTTP_Method
+.. autoclass:: HTTPMethod
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: HTTP_Status
+.. autoclass:: HTTPStatus
     :members:
     :private-members:
     :inherited-members:
@@ -113,77 +113,77 @@ Response
 
 .. currentmodule:: lib.response
 
-.. autoclass:: Base_Response
+.. autoclass:: BaseResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Bad_Request_Response
+.. autoclass:: BadRequestResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Conflict_Response
+.. autoclass:: ConflictResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Content_Response
+.. autoclass:: ContentResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Created_Response
+.. autoclass:: CreatedResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Internal_Server_Error_Response
+.. autoclass:: InternalServerErrorResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: No_Content_Response
+.. autoclass:: NoContentResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Not_Acceptable_Response
+.. autoclass:: NotAcceptableResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Not_Found_Response
+.. autoclass:: NotFoundResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Not_Modified_Response
+.. autoclass:: NotModifiedResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Ok_Response
+.. autoclass:: OkResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Reset_Content_Response
+.. autoclass:: ResetContentResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unauthorized_Response
+.. autoclass:: UnauthorizedResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unprocessable_Entity_Response
+.. autoclass:: UnprocessableEntityResponse
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unsupported_Media_Type_Response
+.. autoclass:: UnsupportedMediaTypeResponse
     :members:
     :private-members:
     :inherited-members:
@@ -194,14 +194,14 @@ Reader
 
 .. currentmodule:: reader.arg
 
-.. autoclass:: Arg_Reader
+.. autoclass:: ArgReader
     :members:
     :private-members:
     :inherited-members:
 
 .. currentmodule:: reader.config
 
-.. autoclass:: Config_Reader
+.. autoclass:: ConfigReader
     :members:
     :private-members:
     :inherited-members:
@@ -216,28 +216,28 @@ Resource
 
 .. currentmodule:: resource.base
 
-.. autoclass:: Base_Resource
+.. autoclass:: BaseResource
     :members:
     :private-members:
     :inherited-members:
 
 .. currentmodule:: resource.code
 
-.. autoclass:: Code_Resource
+.. autoclass:: CodeResource
     :members:
     :private-members:
     :inherited-members:
 
 .. currentmodule:: resource.config
 
-.. autoclass:: Config_Resource
+.. autoclass:: ConfigResource
     :members:
     :private-members:
     :inherited-members:
 
 .. currentmodule:: resource.status
 
-.. autoclass:: Status_Resource
+.. autoclass:: StatusResource
     :members:
     :private-members:
     :inherited-members:
@@ -252,14 +252,14 @@ Schema
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unique_List
+.. autoclass:: UniqueList
     :members:
     :private-members:
     :inherited-members:
 
 .. currentmodule:: schema.base
 
-.. autoclass:: Base_Schema
+.. autoclass:: BaseSchema
     :members:
     :private-members:
     :inherited-members:
@@ -269,7 +269,7 @@ Code
 ^^^^
 .. currentmodule:: schema.code
 
-.. autoclass:: Code_Request_Schema
+.. autoclass:: CodeRequestSchema
     :members:
     :private-members:
     :inherited-members:
@@ -283,22 +283,22 @@ Config
 Request
 """""""
 
-.. autoclass:: Config_Request_Schema
+.. autoclass:: ConfigRequestSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Config_Action_Request_Schema
+.. autoclass:: ConfigActionRequestSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Config_Parameter_Request_Schema
+.. autoclass:: ConfigParameterRequestSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Config_Resource_Request_Schema
+.. autoclass:: ConfigResourceRequestSchema
     :members:
     :private-members:
     :inherited-members:
@@ -307,22 +307,22 @@ Request
 Response
 """"""""
 
-.. autoclass:: Config_Action_Response_Schema
+.. autoclass:: ConfigActionResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Config_Parameter_Response_Schema
+.. autoclass:: ConfigParameterResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Config_Parameter_Value_Response_Schema
+.. autoclass:: ConfigParameterValueResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Config_Resource_Response_Schema
+.. autoclass:: ConfigResourceResponseSchema
     :members:
     :private-members:
     :inherited-members:
@@ -333,13 +333,13 @@ Status
 
 .. currentmodule:: schema.status
 
-.. autoclass:: Status_Request_Schema
+.. autoclass:: StatusRequestSchema
     :members:
     :private-members:
     :inherited-members:
 
 
-.. autoclass:: Status_Response_Schema
+.. autoclass:: StatusResponseSchema
     :members:
     :private-members:
     :inherited-members:
@@ -350,77 +350,77 @@ Response
 
 .. currentmodule:: schema.response
 
-.. autoclass:: Exception_Response_Schema
+.. autoclass:: ExceptionResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Base_Response_Schema
+.. autoclass:: BaseResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Bad_Request_Response_Schema
+.. autoclass:: BadRequestResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Conflict_Response_Schema
+.. autoclass:: ConflictResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Content_Response_Schema
+.. autoclass:: ContentResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Created_Response_Schema
+.. autoclass:: CreatedResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: No_Content_Response_Schema
+.. autoclass:: NoContentResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Not_Acceptable_Response_Schema
+.. autoclass:: NotAcceptableResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Not_Found_Response_Schema
+.. autoclass:: NotFoundResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Not_Modified_Response_Schema
+.. autoclass:: NotModifiedResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Ok_Response_Schema
+.. autoclass:: OkResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Reset_Content_Response_Schema
+.. autoclass:: ResetContentResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unauthorized_Response_Schema
+.. autoclass:: UnauthorizedResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unprocessable_Entity_Response_Schema
+.. autoclass:: UnprocessableEntityResponseSchema
     :members:
     :private-members:
     :inherited-members:
 
-.. autoclass:: Unsupported_Media_Type_Response_Schema
+.. autoclass:: UnsupportedMediaTypeResponseSchema
     :members:
     :private-members:
     :inherited-members:

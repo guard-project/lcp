@@ -4,5 +4,14 @@
             "path": ".",
             "name": "GUARD LCP"
         }
-    ]
+    ],
+    "settings": {
+        "cSpell.words": [
+            "autopep",
+            "codestyle",
+            "mccabe",
+            "pycallgraph",
+            "pylint"
+        ]
+    }
 }

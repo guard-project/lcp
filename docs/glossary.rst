@@ -30,7 +30,7 @@ Glossary
     ELK
         Elastic - LogStash - Kibana
 
-    Exec_Env
+    ExecEnv
         Execution Environment
 
     gRPC
