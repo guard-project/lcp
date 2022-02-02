@@ -11,6 +11,7 @@
             "codestyle",
             "mccabe",
             "pycallgraph",
+            "pyflakes",
             "pylint"
         ]
     }

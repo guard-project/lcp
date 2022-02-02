@@ -32,7 +32,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Code_Request"
+                "$ref": "#/definitions/Code_Request_Schema"
               }
             }
           }
@@ -105,7 +105,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Code_Request"
+                "$ref": "#/definitions/Code_Request_Schema"
               }
             }
           }
@@ -178,7 +178,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Code_Request"
+                "$ref": "#/definitions/Code_Request_Schema"
               }
             }
           }
@@ -272,7 +272,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Code_Request"
+                "$ref": "#/definitions/Code_Request_Schema"
               }
             }
           }
@@ -345,7 +345,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Code_Request"
+                "$ref": "#/definitions/Code_Request_Schema"
               }
             }
           }
@@ -418,7 +418,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Code_Request"
+                "$ref": "#/definitions/Code_Request_Schema"
               }
             }
           }
@@ -515,7 +515,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/Config_Request"
+                "$ref": "#/definitions/Config_Request_Schema"
               }
             }
           }
@@ -588,7 +588,7 @@
           "200": {
             "description": "Status data of the LCP.",
             "schema": {
-              "$ref": "#/definitions/Status_Response"
+              "$ref": "#/definitions/Status_Response_Schema"
             }
           },
           "400": {
@@ -627,7 +627,7 @@
           "200": {
             "description": "Heartbeat with CB-Manager correctly executed.",
             "schema": {
-              "$ref": "#/definitions/Status_Response"
+              "$ref": "#/definitions/Status_Response_Schema"
             }
           },
           "400": {
@@ -662,187 +662,5 @@
     "title": "Local Control Plane",
     "version": "1.0.4"
   },
-  "swagger": "2.0",
-  "definitions": {
-    "Code_Request": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "array",
-          "description": "Code source",
-          "items": {
-            "type": "string"
-          }
-        },
-        "id": {
-          "type": "string",
-          "example": "firewall",
-          "description": "Code id."
-        }
-      },
-      "required": [
-        "code",
-        "id"
-      ]
-    },
-    "Config_Action_Request": {
-      "type": "object",
-      "properties": {
-        "output_format": {
-          "type": "string",
-          "enum": [
-            "plain",
-            "lines",
-            "json"
-          ],
-          "example": "lines",
-          "description": "Format of the output of the command."
-        },
-        "id": {
-          "type": "string",
-          "example": "start",
-          "description": "Id of the action."
-        },
-        "daemon": {
-          "type": "boolean",
-          "example": true,
-          "description": "Execute the command as daemon."
-        },
-        "args": {
-          "type": "string",
-          "example": "-al",
-          "description": "Single command argument."
-        },
-        "cmd": {
-          "type": "string",
-          "description": "Command."
-        }
-      },
-      "required": [
-        "cmd",
-        "id"
-      ]
-    },
-    "Config_Resource_Request": {
-      "type": "object",
-      "properties": {
-        "content": {
-          "type": "string",
-          "description": "Resource content."
-        },
-        "path": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "File path"
-        },
-        "id": {
-          "type": "string",
-          "example": "filebeat-config",
-          "description": "Id of the resource."
-        }
-      },
-      "required": [
-        "content",
-        "id",
-        "path"
-      ]
-    },
-    "Config_Parameter_Request": {
-      "type": "object",
-      "properties": {
-        "schema": {
-          "type": "string",
-          "enum": [
-            "json",
-            "properties",
-            "xml",
-            "yaml"
-          ],
-          "example": "yaml",
-          "description": "Scheme."
-        },
-        "value": {
-          "example": "10s",
-          "description": "Parameter new value."
-        },
-        "id": {
-          "type": "string",
-          "example": "period",
-          "description": "Id of the parameter."
-        },
-        "source": {
-          "type": "string",
-          "example": "firewall.xml",
-          "description": "Source filename."
-        },
-        "path": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "example": "period",
-            "description": "Key path."
-          }
-        }
-      },
-      "required": [
-        "id",
-        "schema",
-        "source",
-        "value"
-      ]
-    },
-    "Config_Request": {
-      "type": "object",
-      "properties": {
-        "actions": {
-          "description": "List of actions.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Action_Request"
-          }
-        },
-        "resources": {
-          "description": "List of resources.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Resource_Request"
-          }
-        },
-        "parameters": {
-          "description": "List of parameters.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Config_Parameter_Request"
-          }
-        }
-      }
-    },
-    "Status_Response": {
-      "type": "object",
-      "properties": {
-        "started": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2019/02/14 15:23:30",
-          "description": "Timestamp when the LCP is started"
-        },
-        "last_heartbeat": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2019/02/14 15:23:33",
-          "description": "Timestamp of the expiration of the API access configuration."
-        },
-        "id": {
-          "type": "string",
-          "example": "apache",
-          "description": "ID of the execution environment."
-        }
-      },
-      "required": [
-        "id",
-        "last_heartbeat",
-        "started"
-      ]
-    }
-  }
+  "swagger": "2.0"
 }

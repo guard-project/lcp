@@ -8,5 +8,5 @@ from utils.schema import ListOrOne
 class CodeRequestSchema(BaseSchema):
     """Request for code endpoint."""
 
-    id = Str(required=True, example='firewall', description='Code id.')
-    code = ListOrOne(Str, required=True, description='Code source')
+    id = Str(required=True, example="firewall", description="Code id.")
+    code = ListOrOne(Str, required=True, description="Code source")

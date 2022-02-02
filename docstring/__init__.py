@@ -8,8 +8,9 @@ def docstring(source):
     """
 
     def decorator(self):
-        path = Path(__file__).parent / f'../docstring/{source}'
-        with path.open('r') as file:
+        path = Path(__file__).parent / f"../docstring/{source}"
+        with path.open("r") as file:
             self.__doc__ = file.read()
         return self
+
     return decorator

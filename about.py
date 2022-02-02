@@ -1,5 +1,5 @@
-project = 'GUARD'
-name = 'lcp'
-title = 'Local Control Plane'
-description = 'In each local agent, the control plane is responsible for programmability, i.e., changing the behaviour of the data plane at run-time.'  # noqa: E501
-version = '1.0.4'
+project = "GUARD"
+name = "lcp"
+title = "Local Control Plane"
+description = "In each local agent, the control plane is responsible for programmability, i.e., changing the behaviour of the data plane at run-time."  # noqa: E501
+version = "1.0.4"

@@ -9,14 +9,14 @@ from yaml import FullLoader as Full_Loader
 
 from utils.log import Log
 
-NO_CHANGE_NEEDED = 'No change needed'
+NO_CHANGE_NEEDED = "No change needed"
 
 
 def json_parser(schema, source, path, value):
     if os.stat(source).st_size == 0:
         content = {}
     else:
-        with open(source, 'r') as file:
+        with open(source, "r") as file:
             content = json.load(file)
     old_value = dpath.util.get(content, path, default=None)
     if old_value != value:
@@ -24,11 +24,11 @@ def json_parser(schema, source, path, value):
             dpath.util.new(content, path, value)
         else:
             dpath.util.set(content, path, value)
-        with open(source, 'w') as file:
+        with open(source, "w") as file:
             json.dump(content, file, sort_keys=True, indent=3)
-            return {'value': {'new': value, 'old': old_value}}
+            return {"value": {"new": value, "old": old_value}}
     else:
-        return {'note': NO_CHANGE_NEEDED}
+        return {"note": NO_CHANGE_NEEDED}
 
 
 def xml_parser(schema, source, path, value):
@@ -43,11 +43,11 @@ def xml_parser(schema, source, path, value):
             dpath.util.new(content, path, value)
         else:
             dpath.util.set(content, path, value)
-        with open(source, 'w') as file:
+        with open(source, "w") as file:
             xml_to_dict.unparse(content, output=file, pretty=True)
-            return {'value': {'new': value, 'old': old_value}}
+            return {"value": {"new": value, "old": old_value}}
     else:
-        return {'note': NO_CHANGE_NEEDED}
+        return {"note": NO_CHANGE_NEEDED}
 
 
 def yaml_parser(schema, source, path, value):
@@ -62,27 +62,27 @@ def yaml_parser(schema, source, path, value):
             dpath.util.new(content, path, value)
         else:
             dpath.util.set(content, path, value)
-        with open(source, 'w') as file:
+        with open(source, "w") as file:
             yaml.dump(content, file, sort_keys=True, indent=3)
-            return {'value': {'new': value, 'old': old_value}}
+            return {"value": {"new": value, "old": old_value}}
     else:
-        return{'note': NO_CHANGE_NEEDED}
+        return {"note": NO_CHANGE_NEEDED}
 
 
 def property_parser(schema, source, path, value):
-    with open(source, 'rb') as file:
+    with open(source, "rb") as file:
         content = Properties()
-        content.load(file, 'utf-8')
-        k = '.'.join(path)
+        content.load(file, "utf-8")
+        k = ".".join(path)
         try:
             old_value, _ = content[k]
         except Exception as e:
-            Log.get('property-parser').exception(f'Parsing property {k}', e)
+            Log.get("property-parser").exception(f"Parsing property {k}", e)
             old_value = None
         if old_value != value:
             content[k] = value
-            with open(source, 'wb') as file:
-                content.store(file, encoding='utf-8')
-                return {'value': {'new': value, 'old': old_value}}
+            with open(source, "wb") as file:
+                content.store(file, encoding="utf-8")
+                return {"value": {"new": value, "old": old_value}}
         else:
-            return {'note': NO_CHANGE_NEEDED}
+            return {"note": NO_CHANGE_NEEDED}

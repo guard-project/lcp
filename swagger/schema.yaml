@@ -1,141 +1,5 @@
 consumes:
 - application/json
-definitions:
-  Code_Request:
-    properties:
-      code:
-        description: Code source
-        items:
-          type: string
-        type: array
-      id:
-        description: Code id.
-        example: firewall
-        type: string
-    required:
-    - code
-    - id
-    type: object
-  Config_Action_Request:
-    properties:
-      args:
-        description: Single command argument.
-        example: -al
-        type: string
-      cmd:
-        description: Command.
-        type: string
-      daemon:
-        description: Execute the command as daemon.
-        example: true
-        type: boolean
-      id:
-        description: Id of the action.
-        example: start
-        type: string
-      output_format:
-        description: Format of the output of the command.
-        enum:
-        - plain
-        - lines
-        - json
-        example: lines
-        type: string
-    required:
-    - cmd
-    - id
-    type: object
-  Config_Parameter_Request:
-    properties:
-      id:
-        description: Id of the parameter.
-        example: period
-        type: string
-      path:
-        items:
-          description: Key path.
-          example: period
-          type: string
-        type: array
-      schema:
-        description: Scheme.
-        enum:
-        - json
-        - properties
-        - xml
-        - yaml
-        example: yaml
-        type: string
-      source:
-        description: Source filename.
-        example: firewall.xml
-        type: string
-      value:
-        description: Parameter new value.
-        example: 10s
-    required:
-    - id
-    - schema
-    - source
-    - value
-    type: object
-  Config_Request:
-    properties:
-      actions:
-        description: List of actions.
-        items:
-          $ref: '#/definitions/Config_Action_Request'
-        type: array
-      parameters:
-        description: List of parameters.
-        items:
-          $ref: '#/definitions/Config_Parameter_Request'
-        type: array
-      resources:
-        description: List of resources.
-        items:
-          $ref: '#/definitions/Config_Resource_Request'
-        type: array
-    type: object
-  Config_Resource_Request:
-    properties:
-      content:
-        description: Resource content.
-        type: string
-      id:
-        description: Id of the resource.
-        example: filebeat-config
-        type: string
-      path:
-        description: File path
-        example: firewall.xml
-        type: string
-    required:
-    - content
-    - id
-    - path
-    type: object
-  Status_Response:
-    properties:
-      id:
-        description: ID of the execution environment.
-        example: apache
-        type: string
-      last_heartbeat:
-        description: Timestamp of the expiration of the API access configuration.
-        example: 2019/02/14 15:23:33
-        format: date-time
-        type: string
-      started:
-        description: Timestamp when the LCP is started
-        example: 2019/02/14 15:23:30
-        format: date-time
-        type: string
-    required:
-    - id
-    - last_heartbeat
-    - started
-    type: object
 info:
   title: Local Control Plane
   version: 1.0.4
@@ -149,7 +13,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/Code_Request'
+            $ref: '#/definitions/Code_Request_Schema'
           type: array
       responses:
         '200':
@@ -196,7 +60,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/Code_Request'
+            $ref: '#/definitions/Code_Request_Schema'
           type: array
       responses:
         '200':
@@ -243,7 +107,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/Code_Request'
+            $ref: '#/definitions/Code_Request_Schema'
           type: array
       responses:
         '200':
@@ -305,7 +169,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/Code_Request'
+            $ref: '#/definitions/Code_Request_Schema'
           type: array
       responses:
         '200':
@@ -352,7 +216,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/Code_Request'
+            $ref: '#/definitions/Code_Request_Schema'
           type: array
       responses:
         '200':
@@ -399,7 +263,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/Code_Request'
+            $ref: '#/definitions/Code_Request_Schema'
           type: array
       responses:
         '200':
@@ -461,7 +325,7 @@ paths:
         required: true
         schema:
           items:
-            $ref: '#/definitions/Config_Request'
+            $ref: '#/definitions/Config_Request_Schema'
           type: array
       responses:
         '200':
@@ -508,7 +372,7 @@ paths:
         '200':
           description: Status data of the LCP.
           schema:
-            $ref: '#/definitions/Status_Response'
+            $ref: '#/definitions/Status_Response_Schema'
         '400':
           description: Request not valid.
           schema:
@@ -534,7 +398,7 @@ paths:
         '200':
           description: Heartbeat with CB-Manager correctly executed.
           schema:
-            $ref: '#/definitions/Status_Response'
+            $ref: '#/definitions/Status_Response_Schema'
         '400':
           description: Request not valid.
           schema:

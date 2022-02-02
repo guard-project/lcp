@@ -11,10 +11,10 @@ tags = [Resource.tag for Resource in db]
 
 
 def routes(api, spec):
-    log = Log.get('resource')
+    log = Log.get("resource")
     for res_class in db:
         res = res_class()
         for route in wrap(res_class.routes):
             api.add_route(route, res)
             spec.path(resource=res)
-            log.success(f'{route} endpoint configured')
+            log.success(f"{route} endpoint configured")
