@@ -8,11 +8,13 @@
     "settings": {
         "cSpell.words": [
             "autopep",
+            "autorestart",
             "codestyle",
             "mccabe",
             "pycallgraph",
             "pyflakes",
-            "pylint"
+            "pylint",
+            "watchmedo"
         ]
     }
 }
