@@ -6,19 +6,11 @@ from resource.base import BaseResource
 from docstring import docstring
 from lib.http import HTTPMethod
 from lib.parser import json_parser, property_parser, xml_parser, yaml_parser
-from lib.response import (
-    BadRequestResponse,
-    BaseResponse,
-    ContentResponse,
-    NoContentResponse,
-    NotFoundResponse,
-)
-from schema.config import (
-    ConfigActionResponseSchema,
-    ConfigParameterResponseSchema,
-    ConfigRequestSchema,
-    ConfigResourceResponseSchema,
-)
+from lib.response import (BadRequestResponse, BaseResponse, ContentResponse,
+                          NoContentResponse, NotFoundResponse)
+from schema.config import (ConfigActionResponseSchema,
+                           ConfigParameterResponseSchema, ConfigRequestSchema,
+                           ConfigResourceResponseSchema)
 from utils.datetime import datetime_to_str
 from utils.exception import extract_info
 from utils.json import loads
@@ -59,7 +51,7 @@ class ConfigResource(BaseResource):
                 for config in req_data_wrap:
                     for cfg, cfg_list in config.items():
                         for data in wrap(cfg_list):
-                            output = self.__operations(data)
+                            output = self.__operations(cfg, data)
                             if isinstance(output, BaseResponse):
                                 output.add(resp)
                             else:

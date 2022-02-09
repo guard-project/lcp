@@ -19,7 +19,7 @@ class BaseResponse(object):
 
     def __data(self):
         return expand(
-            self.data, status=self.status(), code=self.code, error=self.error
+            dict(status=self.status(), code=self.code, error=self.error), **self.data
         )
 
     def __str__(self):
@@ -51,7 +51,7 @@ class BaseResponse(object):
         resp.media = self.__data()
         resp.status = f"{self.code} {self}"
 
-    def add(self, resp):
+    def  add(self, resp):
         self.__log()
         if is_list(resp):
             resp.append(self.__data())
