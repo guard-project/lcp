@@ -26,9 +26,6 @@ class LCPController:
                 except ValidationError as ve:
                     print(ve.messages)
                     raise ve
-                print("----------------")
-                print(json.dumps(host_info))
-                print("----------------")
                 self.config.setDeployment(host_info)
 
         def start_threads(self):

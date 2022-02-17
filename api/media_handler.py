@@ -12,15 +12,16 @@ from yaml.parser import ParserError, ScannerError
 
 class XMLHandler(JSONHandler):
     def __init__(self, dumps=None, loads=None):
-        self.dumps = dumps or partial(dicttoxml, custom_root='guard',
-                                      attr_type=False)
-        self.loads = loads or partial(xmltodict.parse, force_list='item')
+        self.dumps = dumps or partial(
+            dicttoxml, custom_root="guard", attr_type=False
+        )
+        self.loads = loads or partial(xmltodict.parse, force_list="item")
 
     def deserialize(self, stream, content_type, content_length):
         try:
-            return self.loads(stream.read().decode('utf-8'))['guard']
+            return self.loads(stream.read().decode("utf-8"))["guard"]
         except ExpatError:
-            raise HTTPBadRequest('Invalid XML')
+            raise HTTPBadRequest("Invalid XML")
 
 
 class YAMLHandler(JSONHandler):
@@ -30,7 +31,7 @@ class YAMLHandler(JSONHandler):
 
     def deserialize(self, stream, content_type, content_length):
         try:
-            x = stream.read().decode('utf-8')
+            x = stream.read().decode("utf-8")
             return self.loads(x)
         except (ParserError, ScannerError):
-            raise HTTPBadRequest('Invalid YAML')
+            raise HTTPBadRequest("Invalid YAML")

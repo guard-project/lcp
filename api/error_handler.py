@@ -1,8 +1,14 @@
-from falcon.errors import (HTTPBadRequest, HTTPInternalServerError,
-                           HTTPUnsupportedMediaType)
+from falcon.errors import (
+    HTTPBadRequest,
+    HTTPInternalServerError,
+    HTTPUnsupportedMediaType,
+)
 
-from lib.response import (BadRequestResponse, InternalServerErrorResponse,
-                          UnsupportedMediaTypeResponse)
+from lib.response import (
+    BadRequestResponse,
+    InternalServerErrorResponse,
+    UnsupportedMediaTypeResponse,
+)
 
 
 class BaseHandler(object):

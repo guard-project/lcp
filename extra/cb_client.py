@@ -114,7 +114,6 @@ class DeleteThisCBClient:
 
             query = self.config.context_broker['url'] + '/exec-env'
             data = self.config.exec_env_register_data()
-            print(data)
 
             try:
                 if not self.is_lcp_registered():

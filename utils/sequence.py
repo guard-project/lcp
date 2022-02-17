@@ -47,6 +47,7 @@ def subset(elements, *keys, negation=False):
             return element[0] not in keys
         else:
             return element[0] in keys
+
     return dict(filter(match, elements.items()))
 
 

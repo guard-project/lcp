@@ -21,7 +21,7 @@ class Formatter:
     @staticmethod
     def info(name):
         for s in stack():
-            if name in s.filename.replace('_', '-'):
+            if name in s.filename.replace("_", "-"):
                 return s
         return None
 
@@ -31,17 +31,20 @@ class Formatter:
         # record['called'] = Bunch(filename=path.basename(s.filename),
         #                          function=s.function, lineno=s.lineno,
         #                          icon=emoji(':computer:'))
-        record['called'] = Bunch(filename=record['file'].name,
-                                 function=record['function'],
-                                 lineno=record['line'],
-                                 icon=emoji(':computer:'))
-        record['elapsed'] = Bunch(
-            time=record['elapsed'], icon=emoji(':alarm_clock:'))
-        record['message'] = emoji(record['message'])
+        record["called"] = Bunch(
+            filename=record["file"].name,
+            function=record["function"],
+            lineno=record["line"],
+            icon=emoji(":computer:"),
+        )
+        record["elapsed"] = Bunch(
+            time=record["elapsed"], icon=emoji(":alarm_clock:")
+        )
+        record["message"] = emoji(record["message"])
 
 
 class Log:
-    default_icon = ':small_orange_diamond:'
+    default_icon = ":small_orange_diamond:"
 
     @classmethod
     def init(cls, config):
@@ -53,37 +56,42 @@ class Log:
         """
         with open(config) as cfg_file:
             cfg = yaml.load(cfg_file, Loader=Full_Loader)
-        levels = cfg.get('levels', [])
+        levels = cfg.get("levels", [])
         for level in levels:
-            level['icon'] = emoji(level.get('icon', cls.default_icon))
-            _name = level.get('name', None)
+            level["icon"] = emoji(level.get("icon", cls.default_icon))
+            _name = level.get("name", None)
             if _name:
                 klass = type(logger)
                 setattr(klass, _name.lower(), partialmethod(klass.log, _name))
         hdls = []
-        for sink_data in cfg.get('sinks', []):
-            if sink_data.get('enabled', True):
-                klass = sink_data.get('klass', None)
+        for sink_data in cfg.get("sinks", []):
+            if sink_data.get("enabled", True):
+                klass = sink_data.get("klass", None)
                 if klass:
-                    if klass.lower() == 'stdout':
+                    if klass.lower() == "stdout":
                         sink = sys.stdout
-                    elif klass.lower() == 'stderr':
+                    elif klass.lower() == "stderr":
                         sink = sys.stderr
                     else:
                         sink = klass.format(name=_name)
-                        if (sink_data.get('clear', True) and
-                                os.path.exists(sink)):
+                        if sink_data.get("clear", True) and os.path.exists(
+                            sink
+                        ):
                             os.remove(sink)
-                    h = dict(sink=sink, **sink_data.get('args', {}))
+                    h = dict(sink=sink, **sink_data.get("args", {}))
                     hdls.append(h)
-        logger.configure(handlers=hdls, levels=cfg.get(
-            'levels', {}), patcher=Formatter.apply)
+        logger.configure(
+            handlers=hdls,
+            levels=cfg.get("levels", {}),
+            patcher=Formatter.apply,
+        )
 
         for level in levels:
-            _icon = level['icon']
-            _name = level['name']
-            cls.get('log').info(
-                f"Found additional log level: {_icon:<3} {_name}")
+            _icon = level["icon"]
+            _name = level["name"]
+            cls.get("log").info(
+                f"Found additional log level: {_icon:<3} {_name}"
+            )
 
     @classmethod
     def get(cls, name=about_name):
@@ -92,6 +100,7 @@ class Log:
         def __exception(msg, exception):
             out.error(msg)
             out.debug(exception)
+
         out.exception = __exception
         return out
 

@@ -13,3 +13,5 @@ swagger/*
 log/lcp.log
 config
 config/*
+Pipfile.lock
+

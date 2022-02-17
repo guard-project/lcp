@@ -23,8 +23,6 @@ from extra.controller import LCPController
 if __name__ == "__main__":
     db = ArgReader.read()
 
-    print(db)
-
     if db.version is not None:
         print(db.version)
     else:
@@ -37,4 +35,11 @@ if __name__ == "__main__":
 
         LCPController().start_threads()
 
-        waitress.serve(api_instance, host=db.host, port=db.port, expose_tracebacks=False, ident=ident, _quiet=True)
+        waitress.serve(
+            api_instance,
+            host=db.host,
+            port=db.port,
+            expose_tracebacks=False,
+            ident=ident,
+            _quiet=True,
+        )
