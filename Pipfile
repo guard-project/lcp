@@ -1,0 +1,72 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+apispec = "==4.0.0"
+bunch = "==1.0.1"
+dicttoxml = "==1.7.4"
+dpath = "==2.0.1"
+emoji = "==0.6.0"
+falcon-apispec = "==0.3.0"
+falcon-auth = "==1.1.0"
+falcon-elastic-apm = "==0.1.1"
+falcon-require-https = "==0.1.0"
+falcon = "==2.0.0"
+jproperties = "==2.1.1"
+loguru = ">=0.6.0"
+marshmallow = "==3.4.0"
+msgpack = "==1.0.0"
+psutil = "==5.6.7"
+requests = ">=2.24.0"
+rich = "==9.2.0"
+swagger-ui-py = "==0.2.0"
+toolz = "==0.10.0"
+waitress = "==1.4.3"
+xmltodict = "==0.12.0"
+Pint = "==0.11"
+PyJWT = {version = "==2.0.1", extras = ["crypto"]}
+PyYAML = "==5.4"
+flask = "==1.1.2"
+flask-RESTful = "==0.3.8"
+distro = "~=1.5.0"
+netifaces = "~=0.10.9"
+
+
+[dev-packages]
+autopep8 = "*" # https://github.com/hhatto/autopep8
+black = "*" # https://github.com/psf/black
+flake8 = "*" # https://flake8.pycqa.org
+mccabe = "*" # https://github.com/PyCQA/mccabe
+# pycallgraph = "*" # https://pycallgraph.readthedocs.io/en/master/
+pycodestyle = "*" # https://github.com/PyCQA/pycodestyle
+pyflakes = "*" # https://github.com/PyCQA/pyflakes
+pylint = "*" # https://pylint.org/Update requests version
+setuptools = "==57.5.0" # for pycallgraph
+vprof = "*" # https://github.com/nvdv/vprof
+watchdog = {extras = ["watchmedo"], version = "*"}
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+# program
+autorestart = "bash scripts/autorestart.sh"
+requirements = "bash scripts/requirements.sh"
+start = "bash scripts/start.sh"
+# dev
+changelog = "bat CHANGELOG.md"
+clean-gt-action="bash scripts/clean-gh-action.sh"
+codestyle = "find . -iname '*.py' -exec pycodestyle --exclude='./.venv/*'  --first {} \\;"
+complexity = "find . -iname '*.py' -exec python -m mccabe --min=10 {} \\;"
+error-check = "python3 -m pyflakes ."
+format-black = "black -t py38 --line-length 79 ./"
+format-pep8 = "find . -iname '*.py' -exec autopep8 --exclude='./.venv/*' --in-place --aggressive --aggressive {} \\;"
+graph = "pycallgraph ./ --output=dev/graph.svg"
+linter = "find . -iname '*.py' -exec pylint --exclude='./.venv/*'  {} \\;"
+profiler-start = "vprof -c cmh ./main.py --output-file dev/profiler.json"
+profiler-view = "vprof --input-file dev/profiler.json"
+requirements-dev = "bash scripts/requirements-dev.sh"
+security-scan = "docker scan cnit_ml"
+style-guide = "flake8 . --exclude=.venv"
