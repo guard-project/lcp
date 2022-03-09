@@ -21,6 +21,7 @@ CONTAINER_TYPES = ["openvz", "lxc", "lxc-libvirt", "systemd-nspawn", "docker", "
 
 class HostInformation:
     def __init__(self):
+        self.hypervisor = None
         self.is_container = False
         self.environment = self.get_execution_environment()
         self.cpus = self.cpu_count()
@@ -154,6 +155,7 @@ class HostInformation:
             if js_str_data in ["lxc", "lxc-libvirt"]:
                 return "lxc-container"
         if js_str_data in VM_TYPES:
+            self.hypervisor = js_str_data
             return "vm"
 
         return js_str_data
@@ -197,6 +199,8 @@ class HostInfoToLcpHelper:
                           'ram': self.host_info.ram,
                           'networkInterfaces': NetworkInterfacesInfo().net_info()['networkInterfaces'],
                           }
+        if self.host_info.hypervisor is not None:
+            self.js_info['environment']['hypervisor'] = self.host_info.hypervisor
         if len(self.host_info.disk_devices) > 0 and not self.host_info.is_container:
             self.deployment['diskDevices'] = self.host_info.disk_devices
             print(self.host_info.disk_devices)
