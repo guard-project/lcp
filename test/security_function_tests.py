@@ -33,7 +33,7 @@ class TestMyApp(LCPTestBase):
         assert (type(body) is list)
         assert len(body) == 0
 
-        config.setAgent(sf_dict)
+        config.set_agent(sf_dict)
         d = config.agents
 
         result = self.simulate_get("/agent/instance", headers=headers)
@@ -162,8 +162,7 @@ class TestMyApp(LCPTestBase):
         config = getLCPConfig()
         headers = getAuthorizationHeaders()
         schema_agent_type = AgentType()
-
-        config.setAgentType(at_dict)
+        config.set_agent_type(at_dict)
 
         assert len(config.agent_types) == 1
         result = self.simulate_get("/agent/type", headers=headers)
@@ -175,6 +174,46 @@ class TestMyApp(LCPTestBase):
         assert len(body) == 1
         assert body[0]['id'] == config.agent_types[0]["id"]
         assert body[0]['id'] == config.config['agent_types'][0]["id"]
+
+        # Test get by ID
+        result = self.simulate_get("/agent/type/demoagenttype", headers=headers)
+        assert  result.status_code == 200
+        body = result.json
+        assert body['id'] == config.agent_types[0]["id"]
+        assert body['id'] == config.config['agent_types'][0]["id"]
+
+    def testAgentTypePut(self):
+        at_dict = loadExampleFile("agent-type-example.json")
+        config = getLCPConfig()
+        headers = getAuthorizationHeaders()
+        headers.pop('content-type')
+        schema_agent_type = AgentType()
+        config.set_agent_type(at_dict)
+
+        new_data = '{"id": "newid-fails"}'
+        result = self.simulate_put("/agent/type/demoagenttype", headers=headers, body=new_data)
+
+        assert result.status_code == 406
+
+        new_data = {"description": "This is a new description"}
+        result = self.simulate_put("/agent/type/demoagenttype", headers=headers, body=json.dumps(new_data))
+
+        assert result.status_code == 204
+        config.get_agent_type_by_id('demoagenttype')['description'] == new_data['description']
+
+
+    def testAgentTypeDelete(self):
+        at_dict = loadExampleFile("agent-type-example.json")
+        config = getLCPConfig()
+        headers = getAuthorizationHeaders()
+        headers.pop('content-type')
+        schema_agent_type = AgentType()
+        config.set_agent_type(at_dict)
+
+        result = self.simulate_delete("/agent/type/demoagenttype", headers=headers)
+
+        assert result.status_code == 204
+        assert config.get_agent_type_by_id('demoagenttype') is None
 
     def testAgentTypeExample(self):
         at_dict = loadExampleFile("agent-type-example.json")

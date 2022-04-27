@@ -1230,6 +1230,77 @@ paths:
         it.
       tags:
       - software
+  /self/container/{id}:
+    delete:
+      description: 'Gets the information of a container (Docker, LXC, etc) running
+        with the LCP and the information of
+
+        the software that the container is running. This information could help to
+        depict the deployment in
+
+        the node and the Software information could be useful to query the CVE dtabase
+        in search for known
+
+        vulnerabilities.
+
+
+        If no container is known by the LCP it would retrieve an empty array.
+
+        '
+      responses:
+        '200':
+          description: Get the Description of the containers and their software running
+            with the LCP
+          schema:
+            items:
+              $ref: '#/definitions/ContainerSchema'
+            type: array
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response_Schema'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
+      summary: Get Description of a container running with the LCP
+      tags:
+      - software
+    get:
+      description: 'Gets the information of a container (Docker, LXC, etc) running
+        with the LCP and the information of
+
+        the software that the container is running. This information could help to
+        depict the deployment in
+
+        the node and the Software information could be useful to query the CVE dtabase
+        in search for known
+
+        vulnerabilities.
+
+
+        If no container is known by the LCP it would retrieve an empty array.
+
+        '
+      responses:
+        '200':
+          description: Get the Description of the containers and their software running
+            with the LCP
+          schema:
+            items:
+              $ref: '#/definitions/ContainerSchema'
+            type: array
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response_Schema'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
+      summary: Get Description of a container running with the LCP
+      tags:
+      - software
   /lcp_son/{id}:
     delete:
       description: 'Removes one Son of the queried LCP given its ID.
@@ -1701,6 +1772,36 @@ paths:
       summary: Remove the description of an Agent Instance deployed with LCP
       tags:
       - Agents
+    get:
+      description: 'Gets the information of the SecurityFunctions deployed along with
+        the LCP
+
+        '
+      responses:
+        '200':
+          description: Get the Server's configuration infromation from LCP
+          schema:
+            $ref: '#/definitions/Agent'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response_Schema'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response_Schema'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
+      summary: Get the Description and configuration parameters of Security Agents
+        deployed with LCP
+      tags:
+      - Agents
     put:
       description: 'Updates the description of an instance known and previously defined.
 
@@ -1777,6 +1878,35 @@ paths:
           schema:
             $ref: '#/definitions/Internal_Server_Error_Response_Schem'
       summary: Deletes an Agent type.
+      tags:
+      - Agents
+    get:
+      description: 'Gets the information of the Agent Types known by this LCP and
+        the data got.
+
+        '
+      responses:
+        '200':
+          description: Data relative to the Agents known by this LCP agent
+          schema:
+            $ref: '#/definitions/AgentType'
+        '400':
+          description: Request not valid.
+          schema:
+            $ref: '#/definitions/Bad_Request_Response_Schema'
+        '401':
+          description: Authentication failed.
+          schema:
+            $ref: '#/definitions/Unauthorized_Response_Schema'
+        '406':
+          description: Request validation failed.
+          schema:
+            $ref: '#/definitions/Not_Acceptable_Response_Schema'
+        '500':
+          description: Server not available to satisfy the request.
+          schema:
+            $ref: '#/definitions/Internal_Server_Error_Response_Schema'
+      summary: Get data relative to the Security Agents defined to be used this LCP
       tags:
       - Agents
     put:
@@ -2212,10 +2342,11 @@ tags:
   name: config
 - description: Status data of the LCP.
   name: status
-- &id003
-  description: Returns the description of software installed
+- description: Returns the description of software installed
   name: software
 - description: Returns the description of software installed
+  name: software
+- description: Returns the description of software installed in containers
   name: software
 - description: Returns the description of software installed in containers
   name: software
@@ -2235,7 +2366,6 @@ tags:
   name: Agents
 - description: Describes the Agent types and Agent instances.
   name: Agents
-- *id003
 - description: This method does the initial configuration
   name: self
 - description: Returns description of self LCP.

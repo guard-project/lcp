@@ -65,14 +65,14 @@ class LCPController:
                 self.send_initial_messages_lcp()
 
         def set_agent_type(self, playload):
-            self.config.setAgentType(playload)
+            self.config.set_agent_type(playload)
 
         def set_agent_instance(self, payload):
             req_agent_type = payload['hasAgentType']
             agent_type = self.config.get_agent_type_by_id(req_agent_type)
             if agent_type is None:
                 raise KeyError()
-            self.config.setAgent(payload)
+            self.config.set_agent(payload)
 
         def set_context_broker(self, payload):
             self.config.setContextBroker(payload)

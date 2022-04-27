@@ -1,4 +1,6 @@
 from functools import partial
+
+from api.backends import GuardJWTAuthBackend
 from resource import routes
 
 import falcon
@@ -27,10 +29,31 @@ def api(title, version):
 
     middlewares = [NegotiationMiddleware()]
 
+    def user_loader(token):
+        return {"user": token}
+
     if ArgReader.db.auth:
         _extracted_from_api_9(log, middlewares)
     else:
         log.notice("JWT authentication disabled")
+
+    if ArgReader.db.oauth2:
+        log.notice("OAuth2/JWT authentication enabled")
+
+        guard_jwt_auth_backend = GuardJWTAuthBackend(
+            client_id=ArgReader.db.oauth2_client_id,
+            client_secret=ArgReader.db.oauth2_client_secret,
+            user_loader=user_loader,
+            token_check_uri=ArgReader.db.oauth2_token_check_uri,
+            verify=ArgReader.db.oauth2_verify,
+            auth_header_prefix=ArgReader.db.auth_header_prefix
+        )
+        exempt_routes = ["/api/doc", "/api/doc/swagger.json", "/dev/token"]
+        middlewares.append(
+            FalconAuthMiddleware(guard_jwt_auth_backend, exempt_routes)
+        )
+    else:
+        log.notice("OAuth2/JWT authentication disabled")
 
     if ArgReader.db.https:
         log.notice("Force to use HTTPS instead of HTTP")

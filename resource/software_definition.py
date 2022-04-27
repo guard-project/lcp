@@ -3,7 +3,7 @@ from docstring import docstring
 from schema.software_definitions import SoftwareDefinition as SoftwareDefinitionSchema
 from schema.software_definitions import ContainerSchema
 from marshmallow.exceptions import ValidationError
-from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_204
+from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_204, HTTP_OK, HTTP_NO_CONTENT
 import json
 from extra.lcp_config import LCPConfig
 # import traceback
@@ -33,7 +33,7 @@ class SoftwareDefinition(BaseResource):
             resp.status = HTTP_CREATED
 
             for e in payload:
-                LCPConfig().setSoftware(e)
+                LCPConfig().set_software(e)
 
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
@@ -84,7 +84,7 @@ class SoftwareDefinitionById(BaseResource):
             software_schema = SoftwareDefinitionSchema(many=False)
             software_schema.load(s)
             resp.status = HTTP_204
-            LCPConfig().setSoftware(s)
+            LCPConfig().set_software(s)
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
             resp.body = json.dumps(e.messages)
@@ -111,8 +111,29 @@ class ContainerDefinition(BaseResource):
             resp.status = HTTP_CREATED
 
             for e in payload:
-                LCPConfig().setContainers(e)
+                LCPConfig().set_containers(e)
 
         except ValidationError as e:
             resp.body = json.dumps(e.messages)
             resp.status = HTTP_NOT_ACCEPTABLE
+
+
+class ContainerDefinitionById(BaseResource):
+    tag = {'name': 'software',
+           'description': 'Returns the description of software installed in containers'}
+    routes = "/self/container/{id}"
+
+    @docstring(source="Software/GetContainer.yml")
+    def on_get(self, req, resp, id):
+        d = LCPConfig().get_container_by_id(id)
+        if d is None:
+            resp.status = HTTP_NOT_FOUND
+        else:
+            resp.body = json.dumps(d)
+            resp.status = HTTP_OK
+
+    @docstring(source="Software/GetContainer.yml")
+    def on_delete(self, req, resp, id):
+        d = LCPConfig().delete_container_by_id(id)
+        resp.status = HTTP_NO_CONTENT if d else HTTP_NOT_FOUND
+

@@ -1,7 +1,7 @@
 from resource.code import CodeResource
 from resource.config import ConfigResource
 from resource.status import StatusResource
-from resource.software_definition import SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition
+from resource.software_definition import SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition, ContainerDefinitionById
 from resource.lcp_resources import SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification
 from resource.cloud_resource import CloudInfrastructure
 from resource.security_functions import SecurityFunction, AgentTypeResource, SecurityFunctionbyId, AgentTypeResourcebyId
@@ -12,11 +12,10 @@ from utils.log import Log
 from utils.sequence import wrap
 
 db = (CodeResource, ConfigResource, StatusResource,
-      SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition,
+      SoftwareDefinition, SoftwareDefinitionById, ContainerDefinition, ContainerDefinitionById,
       SonRequestIdentificationById, SonLCPIdentification, ParentLCPIdentification,
       CloudInfrastructure,
       SecurityFunction, AgentTypeResource, SecurityFunctionbyId, AgentTypeResourcebyId,
-      SoftwareDefinition,
       DescribeDeployment, DescribeSelf, InitialSelfConfiguration,
       Interacts, InteractsById, PollContextBroker)
 

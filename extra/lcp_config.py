@@ -206,7 +206,6 @@ class LCPConfig(object):
             return None
 
 
-
         def setInitialConfiguration(self, dict_cfg):
             should_start_thread = False
             if self.lcp is None:
@@ -225,7 +224,7 @@ class LCPConfig(object):
             self.exec_env_type = dictDeployment['executionType']
             self.save()
 
-        def setAgentType(self, elem):
+        def set_agent_type(self, elem):
             updated = False
             for i in range(0, len(self.agent_types)):
                 if self.agent_types[i]['id'] == elem['id']:
@@ -243,13 +242,20 @@ class LCPConfig(object):
                     return a
             return None
 
-        def findAgentType(self, id):
+        def delete_agent_type_by_id(self, id):
+            for a in range(0, len(self.agent_types)):
+                if self.agent_types[a]['id'] == id:
+                    self.agent_types.pop(a)
+                    return True
+            return False
+
+        def find_agent_type(self, id):
             for i in range(0, len(self.agent_types)):
                 if self.agent_types[i]['id'] == id:
                     return self.agent_types[i]
             return None
 
-        def setAgent(self, elem):
+        def set_agent(self, elem):
             updated = False
             for i in range(0, len(self.agents)):
                 if self.agents[i]["id"] == elem["id"]:
@@ -259,7 +265,29 @@ class LCPConfig(object):
                 self.agents.append(elem)
             self.save()
 
-        def setSoftware(self, elem):
+        def get_agent_instance_by_id(self, a_id):
+            for a in range(0, len(self.agents)):
+                if self.agents[a]["id"] ==  a_id:
+                    return self.agents[a]
+
+            return None
+
+        def delete_agent_instance_by_id(self, a_id):
+            for a in range(0, len(self.agents)):
+                if self.agents[a]["id"] == a_id:
+                    self.agents.pop(a)
+                    return True
+
+            return False
+
+        def exists_agent_instance_by_type(self, a_type):
+            for a in self.agents:
+                if a['hasAgentType'] == a_type:
+                    return True
+            return False
+
+
+        def set_software(self, elem):
             updated = False
             for i in range(0, len(self.self_software)):
                 if self.self_software[i]["id"] == elem["id"]:
@@ -270,7 +298,8 @@ class LCPConfig(object):
                 self.self_software.append(elem)
             self.save()
 
-        def setContainers(self, elem):
+
+        def set_containers(self, elem):
             updated = False
             if self.self_containers is None:
                 self.self_containers = []
@@ -284,6 +313,31 @@ class LCPConfig(object):
                 self.self_containers.append(elem)
             self.config["self_containers"] = self.self_containers
             self.save()
+
+
+        def get_container_by_id(self, c_id):
+            if self.self_containers is None:
+                self.self_containers = []
+
+            for i in self.self_containers:
+                if i["id"] == c_id:
+                    return i
+
+            return None
+
+        def delete_container_by_id(self, c_id):
+            if self.self_containers is None:
+                self.self_containers = []
+
+            for i in range(0, len(self.self_containers)):
+                if self.self_containers[i]["id"] == c_id:
+                    self.self_containers.pop(i)
+                    return True
+
+            return False
+
+
+
 
         def setParent(self, elem):
             updated = False

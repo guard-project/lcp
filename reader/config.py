@@ -30,6 +30,25 @@ class ConfigReader:
             "auth", "secret-key", fallback="guard-secret-key"
         )
 
+        self.oauth2 = self.cr.getboolean(
+            "oauth2", "enabled", fallback=True)
+
+        if self.oauth2:
+            self.oauth2_client_id = self.cr.get("oauth2", "client-id")
+            self.oauth2_client_secret = self.cr.get(
+                "oauth2", "client-secret")
+            self.oauth2_token_check_uri = self.cr.get(
+                "oauth2", "token-check-uri",)
+            self.oauth2_token_get_uri = self.cr.get(
+                "oauth2", "token-get-uri",)
+            self.oauth2_verify = self.cr.get("oauth2", "verify")
+        else:
+            self.oauth2_client_id = ""
+            self.oauth2_client_secret = ""
+            self.oauth2_token_check_uri = ""
+            self.oauth2_token_get_uri = ""
+            self.oauth2_verify = ""
+
         self.elastic_apm_enabled = self.cr.getboolean(
             "elastic-apm", "enabled", fallback=False
         )
