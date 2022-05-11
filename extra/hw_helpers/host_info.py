@@ -80,14 +80,6 @@ class HostInformation:
             elif var == "NAME":
                 pass
 
-        # print(os.name)
-        # print(f"System: {platform.system()}")
-        # print(f"Release: {platform.release()}")
-        # print(f"Version: {platform.version()}")
-        # print(f"uname: {platform.uname()}")
-        # print(f"distro: {distro.linux_distribution()}")
-        # print(f"processor: {platform.uname().processor}")
-        # print(f"machine: {platform.uname().machine}")
 
     def partition_info(self):
         partitions = psutil.disk_partitions()
@@ -203,7 +195,6 @@ class HostInfoToLcpHelper:
             self.js_info['environment']['hypervisor'] = self.host_info.hypervisor
         if len(self.host_info.disk_devices) > 0 and not self.host_info.is_container:
             self.deployment['diskDevices'] = self.host_info.disk_devices
-            print(self.host_info.disk_devices)
             Disk(many=True).load(self.host_info.disk_devices)
         self.js_info['environment'].update(self.deployment)
         self.js_info['type'] = 'ExecutionEnvironment'
@@ -211,5 +202,4 @@ class HostInfoToLcpHelper:
 
 if __name__ == "__main__":
     h = HostInfoToLcpHelper().js_info
-    # print(json.dumps(h['environment']['diskDevices']))
     ExecutionEnvironment(many=False).load(h)
