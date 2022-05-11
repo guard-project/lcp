@@ -138,7 +138,7 @@ class HostInformation:
     def get_execution_environment(self):
         if Path("/.dockerenv").exists():
             self.is_container = True
-            return "docker-container"
+            return "container-docker"
 
         command_str = ["systemd-detect-virt"]
         cmd_res = subprocess.run(command_str, stdout=PIPE, stderr=PIPE)
