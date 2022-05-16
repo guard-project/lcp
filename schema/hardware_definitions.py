@@ -25,7 +25,7 @@ IPV6_RE = r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:
 IPV4_RE = r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(/(3[0-2]|[0-2][0-9]|[0-9]))?$"
 MACADDR_RE = r"^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$"
 
-EXEC_ENV_TYPE = ['bare-metal', 'contailer-lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
+EXEC_ENV_TYPE = ['bare-metal', 'container-lxc', 'vm', 'container-k8s', 'container-docker', 'cloud',
                  'mobile', 'gateway', 'application']
 
 ExecutionEnvironmentEnum = ['ExecutionEnvironment']
