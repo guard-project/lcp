@@ -145,7 +145,7 @@ class HostInformation:
         if js_str_data in CONTAINER_TYPES:
             self.is_container = True
             if js_str_data in ["lxc", "lxc-libvirt"]:
-                return "lxc-container"
+                return "container-lxc"
         if js_str_data in VM_TYPES:
             self.hypervisor = js_str_data
             return "vm"
@@ -166,7 +166,7 @@ class HostInfoToLcpHelper:
         return json.dumps(self.js_info)
 
     def getObjectType(self, env_type):
-        if env_type == 'lxc-container':
+        if env_type == 'container-lxc':
             self.js_info['environment']['type'] = 'LXCContainer'
         elif env_type == 'bare-metal':
             self.js_info['environment']['type'] = 'BaremetalServer'
