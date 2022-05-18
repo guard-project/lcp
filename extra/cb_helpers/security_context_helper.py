@@ -36,6 +36,9 @@ class SecurityContextHelper:
 
         self.security_context['exec_env']['interactions'] = config.interactions
 
+        if config.cloud:
+            self.security_context['cloud'] = config.cloud
+
 
     def getData(self):
         PollSchema(many=False).load(self.security_context)

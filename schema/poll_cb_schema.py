@@ -5,6 +5,7 @@ from schema.hardware_definitions import *
 from schema.software_definitions import ContainerSchema, SoftwareDefinition
 from schema.artifacts import InteractsWithSchema
 from schema.security_functions import AgentType, Agent
+from schema.cloudschema import CloudSchema
 from schema.hardware_definitions import EXEC_ENV_TYPE
 
 __all__ = [
@@ -51,5 +52,6 @@ class PollSchema(BaseSchema):
     exec_env = fields.Nested(LCPContextBrokerDefinition, required=True,
                         description="LCP Description as required by the CB")
     lcpSons = fields.List(fields.Nested(LCPContextBrokerDefinition), required=False)
+    cloud = fields.Nested(CloudSchema, required=False)
     agentType = fields.List(fields.Nested(AgentType), required=False)
     agentInstance = fields.List(fields.Nested(Agent), required=False)

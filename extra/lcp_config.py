@@ -48,6 +48,7 @@ class LCPConfig(object):
             self.interactions = {"softwareArtifacts": [], "externalStorage": []}
             self.parent_lcp_data = {}
             self.reload(self.filename)
+            self.cloud = {}
 
         def merge_dicts(d1, d2):
             if d1 == d2:
@@ -146,6 +147,12 @@ class LCPConfig(object):
             try:
                 if 'interactions' in self.config:
                     self.interactions = self.config['interactions']
+            except KeyError:
+                pass
+
+            try:
+                if 'cloud' in self.config:
+                    self.cloud = self.config['cloud']
             except KeyError:
                 pass
 
@@ -471,6 +478,11 @@ class LCPConfig(object):
         def set_parent_lcp_data(self, data):
             self.parent_lcp_data = data
             self.config['parent_lcp_data'] = self.parent_lcp_data
+            self.save()
+
+        def set_cloud(self, data):
+            self.cloud = data
+            self.config['cloud'] = self.cloud
             self.save()
 
     instance = None

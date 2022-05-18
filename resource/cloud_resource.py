@@ -5,7 +5,7 @@ import json
 from lib.http import HTTPMethod
 from marshmallow.exceptions import ValidationError
 from falcon import HTTP_NOT_ACCEPTABLE
-
+from extra.lcp_config import  LCPConfig
 
 class CloudInfrastructure(BaseResource):
     data = []
@@ -29,22 +29,18 @@ class CloudInfrastructure(BaseResource):
 
     @docstring(source="Cloud/GetCloudInfrastructure.yml")
     def on_get(self, req, resp):
-        resp_data, valid = CloudSchema(method=HTTPMethod.GET) \
-        .validate(data={})
-
-        resp.body = json.dumps(CloudInfrastructure.data)
+        resp.body = json.dumps(LCPConfig().cloud)
 
     @docstring(source="Cloud/PostCloudInfrastructure.yml")
     def on_post(self, req, resp):
         resp_data, valid = CloudSchema(method=HTTPMethod.POST) \
             .validate(data={})
-        payload = req.media if isinstance(req.media, list) else [req.media]
-
+        payload = req.media
         try:
-            cl_schema = CloudSchema(many=True)
+            cl_schema = CloudSchema(many=False)
             cl_schema.load(payload)
-            for e in payload:
-                CloudInfrastructure.update_data(e)
+
+            LCPConfig().set_cloud(payload)
         except ValidationError as ve:
             resp.body = json.dumps(ve.messages)
             req.status = HTTP_NOT_ACCEPTABLE
