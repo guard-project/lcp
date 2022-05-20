@@ -10,6 +10,7 @@ from schema.lcp_schemas import LCPDescription
 import json
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
 from extra.controller import LCPController
+from extra.cb_helpers.security_context_helper import SecurityContextHelper
 
 
 class DescribeDeployment(BaseResource):
@@ -84,3 +85,27 @@ class InitialSelfConfiguration(BaseResource):
         except ValidationError as e:
             resp.body = json.dumps(e.messages)
             resp.status = HTTP_NOT_ACCEPTABLE
+
+    def on_get(self, req, resp):
+        lcp = json.dumps(LCPConfig().lcp)
+        if lcp == "null":
+            resp.body = None
+            resp.status = HTTP_NOT_FOUND
+        else:
+            helper = SecurityContextHelper(LCPConfig())
+            helper.getData()
+            data = helper.security_context
+
+            nd = {"lcp": data['exec_env']['lcp']}
+            nd['enabled'] = "yes"
+            nd['hostname'] = data['exec_env']['hostname']
+            nd['type_id'] = data['exec_env']['type_id']
+            nd['description'] = data['exec_env']['description']
+            nd['id'] = data['exec_env']['id']
+
+            if 'sons' in nd['lcp']:
+                nd['lcp'].pop('sons')
+            if 'father' in nd['lcp']:
+                nd['lcp'].pop('father')
+            resp.body = json.dumps(nd)
+

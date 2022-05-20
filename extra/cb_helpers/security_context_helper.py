@@ -3,6 +3,7 @@ from extra.extra_utils import UrlSchemaData
 from schema.poll_cb_schema import LCPConnectionAsInCB, LCPContextBrokerDefinition, PollSchema
 from schema.hardware_definitions import ExecutionEnvironment
 
+
 class SecurityContextHelper:
     def __init__(self, config):
         if config.lcp is None:
