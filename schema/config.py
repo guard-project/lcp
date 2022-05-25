@@ -5,6 +5,7 @@ from marshmallow.fields import Float, Integer, List, Nested, Raw, Str
 
 from schema.base import BaseSchema
 from utils.datetime import FORMAT
+from utils.schema import ListOrOne
 
 _all__ = [
     "ConfigRequestSchema",
@@ -25,8 +26,11 @@ class ConfigActionRequestSchema(BaseSchema):
 
     id = Str(required=True, example="start", description="Id of the action.")
     cmd = Str(required=True, description="Command.")
-    args = Str(
-        many=True, example="-al", description="Single command argument."
+    args = ListOrOne(
+        Str,
+        many=True,
+        example="-al",
+        description="Command argument."
     )
     daemon = Boolean(
         default=False,
