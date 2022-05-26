@@ -9,12 +9,29 @@
         "cSpell.words": [
             "autopep",
             "autorestart",
+            "certifi",
+            "cffi",
             "codestyle",
+            "colorama",
+            "commonmark",
+            "idna",
+            "jinja",
+            "markupsafe",
             "mccabe",
+            "pipenv",
+            "Pipfile",
             "pycallgraph",
+            "pycparser",
             "pyflakes",
+            "pygments",
+            "pyjwt",
             "pylint",
+            "pyyaml",
+            "urllib",
+            "venv",
             "watchmedo"
-        ]
+        ],
+        "esbonio.sphinx.buildDir": "docs/.build",
+        "esbonio.sphinx.confDir": "docs/conf.py"
     }
 }
