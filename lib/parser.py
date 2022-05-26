@@ -1,3 +1,4 @@
+import contextlib
 import json
 import os
 
@@ -18,6 +19,8 @@ def json_parser(schema, source, path, value):
     else:
         with open(source, "r") as file:
             content = json.load(file)
+    with contextlib.suppress(ValueError):
+        value = json.loads(value)
     old_value = dpath.util.get(content, path, default=None)
     if old_value != value:
         if old_value is None:
@@ -37,6 +40,8 @@ def xml_parser(schema, source, path, value):
     else:
         with open(source, "r") as file:
             content = xml_to_dict.parse(file.read())
+    with contextlib.suppress(xml_to_dict.ParsingInterrupted):
+        value = xml_to_dict.parse(value)
     old_value = dpath.util.get(content, path, default=None)
     if old_value != value:
         if old_value is None:
@@ -56,6 +61,8 @@ def yaml_parser(schema, source, path, value):
     else:
         with open(source, "r") as file:
             content = yaml.load(file, Loader=Full_Loader)
+    with contextlib.suppress(yaml.YAMLError):
+        value = yaml.load(value, Loader=Full_Loader)
     old_value = dpath.util.get(content, path, default=None)
     if old_value != value:
         if old_value is None:
