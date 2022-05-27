@@ -1,7 +1,7 @@
 from marshmallow import validate
 from marshmallow.fields import Boolean
 from marshmallow.fields import DateTime as Date_Time
-from marshmallow.fields import Float, Integer, List, Nested, Raw, Str
+from marshmallow.fields import Float, Integer, Nested, Raw, Str
 
 from schema.base import BaseSchema
 from utils.datetime import FORMAT
