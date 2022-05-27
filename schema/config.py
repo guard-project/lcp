@@ -61,7 +61,7 @@ class ConfigParameterRequestSchema(BaseSchema):
     source = Str(
         required=True, example=EXAMPLE_FILENAME, description="Source filename."
     )
-    path = List(Str(required=True, example="period", description="Key path."))
+    path = ListOrOne(Str, required=True, example="period", description="Key path.")
     value = Raw(
         required=True, example="10s", description="Parameter new value."
     )

@@ -113,13 +113,14 @@ class ConfigResource(BaseResource):
     def __parameters(self, data):
         schema = data.get("schema", None)
         source = data.get("source", None)
-        path = []
-        for p in wrap(data.get("path", [])):
-            try:
-                np = int(p)
-            except ValueError:
-                np = p
-            path.append(np)
+        path = data.get("path", [])
+        if is_list(path):
+            def parse(item):
+                try:
+                    return int(item)
+                except ValueError:
+                    return item
+            path = map(parse, path)
         value = data.get("value", None)
         output = {"type": "parameter"}
         try:
