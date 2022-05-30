@@ -2028,6 +2028,7 @@
       }
     },
     "/self/configuration": {
+      "get": {},
       "post": {
         "summary": "Post initial configuration for the LCP.",
         "description": "Post initial configuration for the LCP. This includes information about itself\nlike the execution environment ID (lcp.id), the URL where the LCP can be\ncontacted and a human readable name.\n\nThis request will trigger a \"self discovery\" of the deployment of the\nexecution environment (baremental, container, vm), network configuration,\ndisks, cpus, ram, etc\n",
@@ -2365,15 +2366,28 @@
     "SoftwareDefinition": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "example": "a406874b-dea7-4cd1-9d4e-b82a18ec993b",
+          "description": "ID of this Software Instance"
+        },
         "product": {
           "type": "string",
           "example": "MySQL",
           "description": "Name of this piece of Software instance"
         },
-        "version": {
+        "type": {
           "type": "string",
-          "example": "5.8.1",
-          "description": "Version of the Piece of Software installed"
+          "enum": [
+            "SoftwareDefinition"
+          ],
+          "example": "SoftwareDefinition",
+          "description": "Class SoftwareDefinition. The value must be SoftwareDefinition"
+        },
+        "address": {
+          "type": "string",
+          "example": "192.168.0.1",
+          "description": "Server address or IP where the software is listening"
         },
         "hasSoftwareConnections": {
           "type": "array",
@@ -2382,11 +2396,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "address": {
-          "type": "string",
-          "example": "192.168.0.1",
-          "description": "Server address or IP where the software is listening"
         },
         "openTCPPorts": {
           "type": "array",
@@ -2403,6 +2412,11 @@
           "example": "Oracle Coorporation",
           "description": "Name of the Vendor for this software"
         },
+        "version": {
+          "type": "string",
+          "example": "5.8.1",
+          "description": "Version of the Piece of Software installed"
+        },
         "openUDPPorts": {
           "type": "array",
           "example": [
@@ -2412,19 +2426,6 @@
           "items": {
             "type": "integer"
           }
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "SoftwareDefinition"
-          ],
-          "example": "SoftwareDefinition",
-          "description": "Class SoftwareDefinition. The value must be SoftwareDefinition"
-        },
-        "id": {
-          "type": "string",
-          "example": "a406874b-dea7-4cd1-9d4e-b82a18ec993b",
-          "description": "ID of this Software Instance"
         }
       },
       "required": [
@@ -2441,13 +2442,6 @@
           "type": "string",
           "example": "413216e3-169f-4638-830e-ef0607732fde",
           "description": "Id of the Container."
-        },
-        "software": {
-          "type": "array",
-          "description": "Description of the Software contained in the container",
-          "items": {
-            "$ref": "#/definitions/SoftwareDefinition"
-          }
         },
         "type": {
           "type": "string",
@@ -2467,6 +2461,13 @@
           ],
           "example": "docker",
           "description": "Description of the Container"
+        },
+        "software": {
+          "type": "array",
+          "description": "Description of the Software contained in the container",
+          "items": {
+            "$ref": "#/definitions/SoftwareDefinition"
+          }
         }
       },
       "required": [
@@ -2479,18 +2480,10 @@
     "LCPDescription": {
       "type": "object",
       "properties": {
-        "exec_env_type": {
+        "id": {
           "type": "string",
-          "enum": [
-            "LCPDescription"
-          ],
-          "example": "bare-metal",
-          "description": "execution environment type"
-        },
-        "description": {
-          "type": "string",
-          "example": "Testing LCP in localhost",
-          "description": "A Human readable description, so it is easy to identify"
+          "example": "15d41167-79d3-48bf-b8db-9db0c8cc8d54",
+          "description": "Unique ID for the Son LCP"
         },
         "type": {
           "type": "string",
@@ -2500,21 +2493,29 @@
           "example": "LCPDescription",
           "description": "FIWARE's type for this class: LCPDescription"
         },
-        "id": {
+        "exec_env_type": {
           "type": "string",
-          "example": "15d41167-79d3-48bf-b8db-9db0c8cc8d54",
-          "description": "Unique ID for the Son LCP"
-        },
-        "name": {
-          "type": "string",
-          "example": "lcp-example",
-          "description": "Name for the LCP in readable human format"
+          "enum": [
+            "LCPDescription"
+          ],
+          "example": "bare-metal",
+          "description": "execution environment type"
         },
         "url": {
           "type": "string",
           "format": "url",
           "example": "http://lcpapi.example.com:4000",
           "description": "URL where the Son LCP Listens"
+        },
+        "description": {
+          "type": "string",
+          "example": "Testing LCP in localhost",
+          "description": "A Human readable description, so it is easy to identify"
+        },
+        "name": {
+          "type": "string",
+          "example": "lcp-example",
+          "description": "Name for the LCP in readable human format"
         }
       },
       "required": [
@@ -2541,15 +2542,15 @@
     "CloudController": {
       "type": "object",
       "properties": {
-        "controller_id": {
-          "type": "string",
-          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
-          "description": "ID of the Controller host"
-        },
         "type": {
           "type": "string",
           "example": "BaremetalServer",
           "description": "Type of server acting as CloudController"
+        },
+        "controller_id": {
+          "type": "string",
+          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
+          "description": "ID of the Controller host"
         }
       },
       "required": [
@@ -2560,15 +2561,15 @@
     "CloudCompute": {
       "type": "object",
       "properties": {
-        "controller_id": {
-          "type": "string",
-          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
-          "description": "ID of the Compute host. The controller could act as compute"
-        },
         "type": {
           "type": "string",
           "example": "BaremetalServer",
           "description": "Type of server acting as CloudController"
+        },
+        "controller_id": {
+          "type": "string",
+          "example": "3b3041bf-b2fb-47da-8e72-331a67ffd292",
+          "description": "ID of the Compute host. The controller could act as compute"
         }
       },
       "required": [
@@ -2579,20 +2580,10 @@
     "CloudSchema": {
       "type": "object",
       "properties": {
-        "version": {
+        "id": {
           "type": "string",
-          "example": "queens",
-          "description": "Cloud release code name"
-        },
-        "description": {
-          "type": "string",
-          "example": "FIWARE Lab Wolfsburg node",
-          "description": "Some description of the Cloud"
-        },
-        "vendor": {
-          "type": "string",
-          "example": "Openstack",
-          "description": "Cloud Vendor Name"
+          "example": "f9e6ee65-517a-44da-854d-fdd058fcf2dd",
+          "description": "Cloud ID"
         },
         "type": {
           "type": "string",
@@ -2602,6 +2593,11 @@
           "example": "CloudDescription",
           "description": "Must be CloudDescription"
         },
+        "description": {
+          "type": "string",
+          "example": "FIWARE Lab Wolfsburg node",
+          "description": "Some description of the Cloud"
+        },
         "controllers": {
           "type": "array",
           "description": "List of Cloud Controllers",
@@ -2609,10 +2605,10 @@
             "$ref": "#/definitions/CloudController"
           }
         },
-        "id": {
+        "name": {
           "type": "string",
-          "example": "f9e6ee65-517a-44da-854d-fdd058fcf2dd",
-          "description": "Cloud ID"
+          "example": "Wolfsburg-FIWARE-Lab-Cloud",
+          "description": "Human readable Cloud name"
         },
         "compute_nodes": {
           "type": "array",
@@ -2621,10 +2617,15 @@
             "$ref": "#/definitions/CloudCompute"
           }
         },
-        "name": {
+        "vendor": {
           "type": "string",
-          "example": "Wolfsburg-FIWARE-Lab-Cloud",
-          "description": "Human readable Cloud name"
+          "example": "Openstack",
+          "description": "Cloud Vendor Name"
+        },
+        "version": {
+          "type": "string",
+          "example": "queens",
+          "description": "Cloud release code name"
         }
       },
       "required": [
@@ -2637,21 +2638,23 @@
     "Agent": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "example": "5db06770-8c64-4693-9724-ff318b02f897",
+          "description": "Security Function ID."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "AgentInstance"
+          ],
+          "example": "AgentInstance",
+          "description": "Data type AgentInstance. Must be 'AgentInstance'"
+        },
         "partner": {
           "type": "string",
           "example": "Guard Project",
           "description": "Name of the partner/owner of the Agent"
-        },
-        "endpoint_url": {
-          "type": "string",
-          "format": "url",
-          "example": "http://example.com:4250/v1/config",
-          "description": "URL if some to configure the Parameters."
-        },
-        "version": {
-          "type": "string",
-          "example": "1.0.1",
-          "description": "Version of the Security Property associated"
         },
         "description": {
           "type": "string",
@@ -2663,6 +2666,22 @@
           "example": "PROBE",
           "description": "Id of the Agent Type Associated with this Agent Instance"
         },
+        "endpoint_url": {
+          "type": "string",
+          "format": "url",
+          "example": "http://example.com:4250/v1/config",
+          "description": "URL if some to configure the Parameters."
+        },
+        "vendor": {
+          "type": "string",
+          "example": "FIWARE Foundation e.V.",
+          "description": "Name of the vendor providing the security Function"
+        },
+        "version": {
+          "type": "string",
+          "example": "1.0.1",
+          "description": "Version of the Security Property associated"
+        },
         "status": {
           "type": "string",
           "enum": [
@@ -2672,24 +2691,6 @@
           ],
           "example": "started",
           "description": "Update the status the of the agent-instance if the command is executed correctly."
-        },
-        "vendor": {
-          "type": "string",
-          "example": "FIWARE Foundation e.V.",
-          "description": "Name of the vendor providing the security Function"
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "AgentInstance"
-          ],
-          "example": "AgentInstance",
-          "description": "Data type AgentInstance. Must be 'AgentInstance'"
-        },
-        "id": {
-          "type": "string",
-          "example": "5db06770-8c64-4693-9724-ff318b02f897",
-          "description": "Security Function ID."
         }
       },
       "required": [
@@ -2697,29 +2698,6 @@
         "id",
         "status",
         "type"
-      ]
-    },
-    "AgentResource": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "string",
-          "example": "This is the config file for an agent",
-          "description": "Description of the Resource"
-        },
-        "path": {
-          "type": "string",
-          "example": "/etc/myagent/config.yaml",
-          "description": "Path of the Agent config file"
-        },
-        "example": {
-          "type": "string",
-          "example": "points to an example config file",
-          "description": "Config file example"
-        }
-      },
-      "required": [
-        "path"
       ]
     },
     "AgentActionSchema": {
@@ -2780,47 +2758,41 @@
         "type"
       ]
     },
+    "AgentResource": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "This is the config file for an agent",
+          "description": "Description of the Resource"
+        },
+        "path": {
+          "type": "string",
+          "example": "/etc/myagent/config.yaml",
+          "description": "Path of the Agent config file"
+        },
+        "example": {
+          "type": "string",
+          "example": "points to an example config file",
+          "description": "Config file example"
+        }
+      },
+      "required": [
+        "path"
+      ]
+    },
     "AgentType": {
       "type": "object",
       "properties": {
-        "partner": {
+        "id": {
           "type": "string",
-          "example": "guard-partner",
-          "description": "Name of the Partner who created the resource"
-        },
-        "resources": {
-          "type": "array",
-          "description": "List of agents Resources that could be used",
-          "items": {
-            "$ref": "#/definitions/AgentResource"
-          }
-        },
-        "description": {
-          "type": "string",
-          "example": "Example agent",
-          "description": "Description of the Agent type"
-        },
-        "schema": {
-          "type": "string",
-          "example": "yaml",
-          "description": "Type of configuration file (json, yaml, etc.)"
-        },
-        "jsonSchema": {
-          "type": "string",
-          "example": "https://json-schema.org/draft/2020-12/schema",
-          "description": "Pointer for the json describing the data from this kind of agents"
+          "example": "5db06770-8c64-4693-9724-ff318b02f897",
+          "description": "Agent Type ID."
         },
         "source": {
           "type": "string",
           "example": "/etc/example_agent/config.yaml",
           "description": "The config file where parameters are configured"
-        },
-        "actions": {
-          "type": "array",
-          "description": "List of actions and expected result fro this agent",
-          "items": {
-            "$ref": "#/definitions/AgentActionSchema"
-          }
         },
         "type": {
           "type": "string",
@@ -2830,16 +2802,45 @@
           "example": "AgentType",
           "description": "Data type AgentType. Must be 'AgentType'"
         },
-        "id": {
+        "schema": {
           "type": "string",
-          "example": "5db06770-8c64-4693-9724-ff318b02f897",
-          "description": "Agent Type ID."
+          "example": "yaml",
+          "description": "Type of configuration file (json, yaml, etc.)"
+        },
+        "partner": {
+          "type": "string",
+          "example": "guard-partner",
+          "description": "Name of the Partner who created the resource"
+        },
+        "description": {
+          "type": "string",
+          "example": "Example agent",
+          "description": "Description of the Agent type"
+        },
+        "actions": {
+          "type": "array",
+          "description": "List of actions and expected result fro this agent",
+          "items": {
+            "$ref": "#/definitions/AgentActionSchema"
+          }
+        },
+        "jsonSchema": {
+          "type": "string",
+          "example": "https://json-schema.org/draft/2020-12/schema",
+          "description": "Pointer for the json describing the data from this kind of agents"
         },
         "parameters": {
           "type": "array",
           "description": "List of configuration parameters used",
           "items": {
             "$ref": "#/definitions/AgentParameter"
+          }
+        },
+        "resources": {
+          "type": "array",
+          "description": "List of agents Resources that could be used",
+          "items": {
+            "$ref": "#/definitions/AgentResource"
           }
         }
       },
@@ -2872,7 +2873,7 @@
           "type": "string",
           "enum": [
             "bare-metal",
-            "contailer-lxc",
+            "container-lxc",
             "vm",
             "container-k8s",
             "container-docker",
@@ -2899,10 +2900,10 @@
     "ExternalStorageSchema": {
       "type": "object",
       "properties": {
-        "description": {
+        "id": {
           "type": "string",
-          "example": "remote nfs drive",
-          "description": "High level description for this remote storage drive"
+          "example": "a406874b-dea7-4cd1-9d4e-b82a18ec993b",
+          "description": "ID of this external Storage type"
         },
         "type": {
           "type": "string",
@@ -2911,6 +2912,16 @@
           ],
           "example": "ExternalStorage",
           "description": "Type of the document. It must be External Storage"
+        },
+        "url": {
+          "type": "string",
+          "example": "nfs://192.168.10.245:2049/data",
+          "description": "URL for this remote resource"
+        },
+        "description": {
+          "type": "string",
+          "example": "remote nfs drive",
+          "description": "High level description for this remote storage drive"
         },
         "storageType": {
           "type": "string",
@@ -2925,16 +2936,6 @@
             "SSH-FS"
           ],
           "description": "Type of storage type."
-        },
-        "id": {
-          "type": "string",
-          "example": "a406874b-dea7-4cd1-9d4e-b82a18ec993b",
-          "description": "ID of this external Storage type"
-        },
-        "url": {
-          "type": "string",
-          "example": "nfs://192.168.10.245:2049/data",
-          "description": "URL for this remote resource"
         }
       },
       "required": [
@@ -2976,6 +2977,11 @@
           "example": 4000,
           "description": "Port where the LCP is listening"
         },
+        "https": {
+          "type": "boolean",
+          "example": true,
+          "description": "Defines the protocol to connect the LCP. HTTPS if true, HTTP if false"
+        },
         "sons": {
           "type": "array",
           "example": [
@@ -2985,11 +2991,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "https": {
-          "type": "boolean",
-          "example": true,
-          "description": "Defines the protocol to connect the LCP. HTTPS if true, HTTP if false"
         }
       },
       "required": [
@@ -2997,29 +2998,42 @@
         "port"
       ]
     },
-    "LCPContextBrokerDefinition": {
+    "NetworkLInkCB": {
       "type": "object",
       "properties": {
-        "container": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ContainerSchema"
-          }
-        },
-        "hostname": {
+        "id": {
           "type": "string",
-          "example": "localhost",
-          "description": "Hostname of the Host where the LCP can be contacted. If a proxy is behind the LCP, the value should be the proxy host"
-        },
-        "enabled": {
-          "type": "boolean",
-          "example": true,
-          "description": "Describes if the LCP is enabled or not"
+          "example": "a12bc576-b55d-4392-b613-f3babd1cb77f",
+          "description": "ID of the Network link"
         },
         "description": {
           "type": "string",
-          "example": "Testing LCP in localhost",
-          "description": "A Human readable description, so it is easy to identify"
+          "description": "Human readable description for the Network link"
+        },
+        "type_id": {
+          "type": "string",
+          "enum": [
+            "multi-pnt",
+            "network-slice",
+            "pnt2pnt",
+            "wifi",
+            "hosted"
+          ],
+          "description": "network link type for this link"
+        }
+      },
+      "required": [
+        "id",
+        "type_id"
+      ]
+    },
+    "LCPContextBrokerDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "15d41167-79d3-48bf-b8db-9db0c8cc8d54",
+          "description": "Unique ID for the Son LCP"
         },
         "sw_info": {
           "type": "array",
@@ -3027,14 +3041,11 @@
             "$ref": "#/definitions/SoftwareDefinition"
           }
         },
-        "interactions": {
-          "$ref": "#/definitions/InteractsWithSchema"
-        },
         "type_id": {
           "type": "string",
           "enum": [
             "bare-metal",
-            "contailer-lxc",
+            "container-lxc",
             "vm",
             "container-k8s",
             "container-docker",
@@ -3046,17 +3057,43 @@
           "example": "bare-metal",
           "description": "Type of execution environment"
         },
+        "hostname": {
+          "type": "string",
+          "example": "localhost",
+          "description": "Hostname of the Host where the LCP can be contacted. If a proxy is behind the LCP, the value should be the proxy host"
+        },
+        "enabled": {
+          "type": "boolean",
+          "example": true,
+          "description": "Describes if the LCP is enabled or not"
+        },
+        "container": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContainerSchema"
+          }
+        },
+        "description": {
+          "type": "string",
+          "example": "Testing LCP in localhost",
+          "description": "A Human readable description, so it is easy to identify"
+        },
+        "lcp": {
+          "$ref": "#/definitions/LCPConnectionAsInCB"
+        },
+        "interactions": {
+          "$ref": "#/definitions/InteractsWithSchema"
+        },
         "hw_info": {
           "type": "object",
           "description": "Definition of environment hardware. Can be one of the types LXCContainer, DockerContainer, VirtualServer, BaremetalServer"
         },
-        "id": {
-          "type": "string",
-          "example": "15d41167-79d3-48bf-b8db-9db0c8cc8d54",
-          "description": "Unique ID for the Son LCP"
-        },
-        "lcp": {
-          "$ref": "#/definitions/LCPConnectionAsInCB"
+        "network_links": {
+          "type": "array",
+          "description": "Network links connection to other hosts",
+          "items": {
+            "$ref": "#/definitions/NetworkLInkCB"
+          }
         }
       },
       "required": [
@@ -3070,12 +3107,6 @@
     "PollSchema": {
       "type": "object",
       "properties": {
-        "lcpSons": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LCPContextBrokerDefinition"
-          }
-        },
         "agentType": {
           "type": "array",
           "items": {
@@ -3087,6 +3118,15 @@
           "items": {
             "$ref": "#/definitions/Agent"
           }
+        },
+        "lcpSons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LCPContextBrokerDefinition"
+          }
+        },
+        "cloud": {
+          "$ref": "#/definitions/CloudSchema"
         },
         "exec_env": {
           "description": "LCP Description as required by the CB",

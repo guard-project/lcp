@@ -281,7 +281,7 @@ definitions:
         description: Type of Exec. Env. Deployment
         enum:
         - bare-metal
-        - contailer-lxc
+        - container-lxc
         - vm
         - container-k8s
         - container-docker
@@ -415,6 +415,11 @@ definitions:
         $ref: '#/definitions/InteractsWithSchema'
       lcp:
         $ref: '#/definitions/LCPConnectionAsInCB'
+      network_links:
+        description: Network links connection to other hosts
+        items:
+          $ref: '#/definitions/NetworkLInkCB'
+        type: array
       sw_info:
         items:
           $ref: '#/definitions/SoftwareDefinition'
@@ -423,7 +428,7 @@ definitions:
         description: Type of execution environment
         enum:
         - bare-metal
-        - contailer-lxc
+        - container-lxc
         - vm
         - container-k8s
         - container-docker
@@ -486,6 +491,28 @@ definitions:
     required:
     - url
     type: object
+  NetworkLInkCB:
+    properties:
+      description:
+        description: Human readable description for the Network link
+        type: string
+      id:
+        description: ID of the Network link
+        example: a12bc576-b55d-4392-b613-f3babd1cb77f
+        type: string
+      type_id:
+        description: network link type for this link
+        enum:
+        - multi-pnt
+        - network-slice
+        - pnt2pnt
+        - wifi
+        - hosted
+        type: string
+    required:
+    - id
+    - type_id
+    type: object
   PollSchema:
     properties:
       agentInstance:
@@ -496,6 +523,8 @@ definitions:
         items:
           $ref: '#/definitions/AgentType'
         type: array
+      cloud:
+        $ref: '#/definitions/CloudSchema'
       exec_env:
         allOf:
         - $ref: '#/definitions/LCPContextBrokerDefinition'
@@ -2058,6 +2087,7 @@ paths:
       tags:
       - self
   /self/configuration:
+    get: {}
     post:
       description: 'Post initial configuration for the LCP. This includes information
         about itself

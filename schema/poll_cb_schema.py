@@ -7,6 +7,7 @@ from schema.artifacts import InteractsWithSchema
 from schema.security_functions import AgentType, Agent
 from schema.cloudschema import CloudSchema
 from schema.hardware_definitions import EXEC_ENV_TYPE
+from schema.network_link import NetworkLInkCB
 
 __all__ = [
     'PollSchema',
@@ -43,6 +44,8 @@ class LCPContextBrokerDefinition(BaseSchema):
     hw_info = fields.Dict(required=False,
                               description="Definition of environment hardware. Can be one of the types LXCContainer, " \
                                           "DockerContainer, VirtualServer, BaremetalServer")
+    network_links = fields.List(fields.Nested(NetworkLInkCB), required=False,
+                                description="Network links connection to other hosts")
 
 
 class PollSchema(BaseSchema):

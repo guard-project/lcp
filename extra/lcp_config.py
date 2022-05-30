@@ -49,6 +49,7 @@ class LCPConfig(object):
             self.parent_lcp_data = {}
             self.reload(self.filename)
             self.cloud = {}
+            self.network_links = []
 
         def merge_dicts(d1, d2):
             if d1 == d2:
@@ -156,6 +157,12 @@ class LCPConfig(object):
             except KeyError:
                 pass
 
+            try:
+                if 'network_links' in self.config:
+                    self.network_links = self.config['network_links']
+            except KeyError:
+                pass
+
             self.deployment = self.config['deployment'] if 'deployment' in self.config else {}
 
         def add_external_storage_interaction(self, storage):
@@ -166,6 +173,7 @@ class LCPConfig(object):
                     updated = True
             if not updated:
                 self.interactions['externalStorage'].append(storage)
+                self.setNetworkLink(self.lcp['id'], storage['id'], as_son=False)
             self.config['interactions'] = self.interactions
             self.save()
 
@@ -187,6 +195,7 @@ class LCPConfig(object):
                     updated = True
             if not updated:
                 self.interactions['softwareArtifacts'].append(software)
+                self.setNetworkLink(self.lcp['id'], software['id'], as_son=False)
             self.config['interactions'] = self.interactions
             self.save()
 
@@ -343,9 +352,6 @@ class LCPConfig(object):
 
             return False
 
-
-
-
         def setParent(self, elem):
             updated = False
             if not elem['url'] in self.parents:
@@ -353,6 +359,48 @@ class LCPConfig(object):
                 self.config['lcp_parents'] = self.parents
                 updated = True
             self.save()
+
+        def setNetworkLink(self, exec_env_id, a_id, as_son=True):
+            nl_id = f"{exec_env_id}-{a_id}"
+
+            for m in self.network_links:
+                if m['id'] == nl_id:
+                    return
+
+            nl = {"type": "NetworkLink",
+                  "exec_env_id": exec_env_id,
+                  "id": nl_id,
+                  "networkLinkType": "pnt2pnt"}
+
+            if as_son:
+                nl["remoteExecutionEnvironmentId"] = a_id
+            else:
+                nl["remoteArtifactId"] = a_id
+
+            self.network_links.append(nl)
+            self.config['network_links'] = self.network_links
+
+        def generate_network_links(self):
+            if not self.network_links == []:
+                return
+
+            if len(self.sons) > 0:
+                for son in self.sons:
+                    self.setNetworkLink(self.lcp['id'], son[id])
+
+            if not self.parent_lcp_data == {}:
+                self.setNetworkLink(self.parent_lcp_data['id'], self.lcp['id'])
+
+            if not self.interactions['softwareArtifacts'] == []:
+                for i in self.interactions['softwareArtifacts']:
+                    self.setNetworkLink(self.lcp['id'], i[id], as_son=False)
+
+            if not self.interactions['externalStorage'] == []:
+                for i in self.interactions['externalStorage']:
+                    self.setNetworkLink(self.lcp['id'], i[id], as_son=False)
+
+            self.save()
+
 
         def setSon(self, elem):
             updated = False
@@ -363,6 +411,7 @@ class LCPConfig(object):
             if not updated:
                 self.sons.append(elem)
             self.config['lcp_sons'] = self.sons
+            self.setNetworkLink(self.lcp['id'], elem['id'])
             self.save()
 
         def getSonById(self, son_id):
@@ -478,6 +527,7 @@ class LCPConfig(object):
         def set_parent_lcp_data(self, data):
             self.parent_lcp_data = data
             self.config['parent_lcp_data'] = self.parent_lcp_data
+            self.setNetworkLink(self.parent_lcp_data['id'], self.lcp['id'], True)
             self.save()
 
         def set_cloud(self, data):

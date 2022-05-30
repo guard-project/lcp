@@ -4,5 +4,6 @@ lcp:
   url: http://localhost:4000
   description: Test config file for LCP
   type: LCPDescription
+  exec_env_type: bare-metal
 
 type: bare-metal

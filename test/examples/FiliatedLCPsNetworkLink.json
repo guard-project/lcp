@@ -1,0 +1,18 @@
+[
+{
+  "url": "http://localhost:4000",
+  "id": "somelocalhostlcp",
+  "type": "LCPDescription",
+  "description": "a local host LCP to be connected to",
+  "name": "LCPLocalHost",
+  "exec_env_type": "bare-metal"
+},
+{
+  "url": "http://guard-project.eu:4000",
+  "id": "remote-lcp-default-route",
+  "type": "LCPDescription",
+  "description": "A remote LCP somewhere in the internet",
+  "name": "Remote LCP somehwere",
+  "exec_env_type": "vm"
+}
+]

@@ -36,10 +36,27 @@ class SecurityContextHelper:
                 self.security_context['agentInstance'] = config.agents.copy()
 
         self.security_context['exec_env']['interactions'] = config.interactions
+        self.security_context['exec_env']['network_links'] = self.get_network_links(config)
 
         if config.cloud:
             self.security_context['cloud'] = config.cloud
 
+    def get_network_links(self, config):
+        r = []
+        for f in config.network_links:
+            if 'remoteExecutionEnvironmentId' in f:
+                r.append({
+                    "id": f['id'],
+                    "type_id": f['networkLinkType'],
+                    "description": f"link from exec-env {f['exec_env_id']} to exec-env {f['remoteExecutionEnvironmentId']}"
+                })
+            elif 'remoteArtifactId' in f:
+                r.append({
+                    "id": f['id'],
+                    "type_id": f['networkLinkType'],
+                    "description": f"link from exec-env {config.lcp['id']} to remote artifact {f['remoteArtifactId']}"
+                })
+        return r
 
     def getData(self):
         PollSchema(many=False).load(self.security_context)
@@ -58,8 +75,8 @@ class SecurityContextHelper:
         # d['stage'] = ""
         d['lcp'] = {}
         # d['partner'] = "FIWARE Foundation e.V."
-        if "exec_env_type" in lcp:
-            d['type_id'] = lcp['exec_env_type']
+        # if "exec_env_type" in lcp:
+        d['type_id'] = lcp['exec_env_type']
         usd = UrlSchemaData(lcp['url'])
         d['lcp']['port'] = usd.port
         d['lcp']['https'] = usd.https

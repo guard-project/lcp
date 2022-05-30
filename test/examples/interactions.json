@@ -1,0 +1,24 @@
+{
+  "externalStorage": [
+    {
+      "type": "ExternalStorage",
+      "description": "remote nfs drive",
+      "id": "1066866c-5e4c-41dc-bc02-02668a81327f",
+      "storageType": "NFS",
+      "url": "nfs://192.168.10.245:2049/data"
+    }
+  ],
+  "softwareArtifacts": [
+    {
+      "type": "SoftwareDefinition",
+      "address": "192.168.0.10",
+      "openTCPPorts": [3306],
+      "product": "MySQL",
+      "id": "a406874b-dea7-4cd1-9d4e-b82a18ec993b",
+      "hasSoftwareConnections": [],
+      "vendor": "Oracle Coorporation",
+      "version": "5.8.1",
+      "openUDPPorts": [33066]
+    }
+  ]
+}
