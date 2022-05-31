@@ -1,10 +1,11 @@
 from marshmallow import validate
 from marshmallow.fields import Boolean
 from marshmallow.fields import DateTime as Date_Time
-from marshmallow.fields import Float, Integer, List, Nested, Raw, Str
+from marshmallow.fields import Float, Integer, Nested, Raw, Str
 
 from schema.base import BaseSchema
 from utils.datetime import FORMAT
+from utils.schema import ListOrOne
 
 _all__ = [
     "ConfigRequestSchema",
@@ -25,8 +26,11 @@ class ConfigActionRequestSchema(BaseSchema):
 
     id = Str(required=True, example="start", description="Id of the action.")
     cmd = Str(required=True, description="Command.")
-    args = Str(
-        many=True, example="-al", description="Single command argument."
+    args = ListOrOne(
+        Str,
+        many=True,
+        example="-al",
+        description="Command argument."
     )
     daemon = Boolean(
         default=False,
@@ -57,7 +61,8 @@ class ConfigParameterRequestSchema(BaseSchema):
     source = Str(
         required=True, example=EXAMPLE_FILENAME, description="Source filename."
     )
-    path = List(Str(required=True, example="period", description="Key path."))
+    path = ListOrOne(Str, required=True, example="period",
+                     description="Key path.")
     value = Raw(
         required=True, example="10s", description="Parameter new value."
     )
