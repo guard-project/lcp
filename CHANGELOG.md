@@ -26,3 +26,4 @@
 - Add JWT Authentication.
 - Enhanced Log configuration.
 - Added support for insertion of new parameters.
+- Added autorestart script.

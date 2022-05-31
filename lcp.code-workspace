@@ -1,12 +1,12 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"cSpell.language": "en-GB",
-		"cSpell.words": [
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "cSpell.language": "en-GB",
+        "cSpell.words": [
             "Carrega",
             "Guerino",
             "Kimbie",
@@ -77,11 +77,13 @@
             "werkzeug",
             "xmltodict"
         ],
-		"editor.tabCompletion": "on",
-		"editor.wordWrap": "on",
-		"editor.wrappingIndent": "deepIndent",
-		"files.insertFinalNewline": true,
-		"workbench.colorTheme": "GitHub Dark",
-		"workbench.editor.tabSizing": "shrink"
-	}
+        "editor.tabCompletion": "on",
+        "editor.wordWrap": "on",
+        "editor.wrappingIndent": "deepIndent",
+        "files.insertFinalNewline": true,
+        "workbench.colorTheme": "GitHub Dark",
+        "workbench.editor.tabSizing": "shrink",
+        "esbonio.sphinx.buildDir": "docs/.build",
+        "esbonio.sphinx.confDir": "docs/conf.py"
+    }
 }
