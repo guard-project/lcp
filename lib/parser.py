@@ -71,7 +71,7 @@ def yaml_parser(schema, source, path, value):
 
 def property_parser(schema, source, path, value):
     with open(source, "rb") as file:
-        content = Properties()
+        content = Properties(process_escapes_in_values=False)
         content.load(file, "utf-8")
         k = ".".join(path)
         try:
