@@ -118,7 +118,7 @@ class ConfigResource(BaseResource):
                     return int(item)
                 except ValueError:
                     return item
-            path = map(parse, path)
+            path = list(map(parse, path))
         value = data.get("value", None)
         output = {"type": "parameter"}
         try:
