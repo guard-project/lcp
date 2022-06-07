@@ -23,8 +23,8 @@ def getAuthorizationHeaders():
            "content-type": "application/json"}
 
 
-def getLCPConfig():
-    config = LCPConfig("examples/TestConfigFile.yaml")
+def getLCPConfig(file="examples/TestConfigFile.yaml"):
+    config = LCPConfig(file)
     config.testing = True
     return config
 

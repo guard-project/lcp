@@ -6,10 +6,8 @@ from resource.base import BaseResource
 from docstring import docstring
 from lib.http import HTTPMethod
 from lib.parser import json_parser, property_parser, xml_parser, yaml_parser
-from lib.response import (BadRequestResponse, BaseResponse, ContentResponse,
-                          NoContentResponse, NotFoundResponse)
-from schema.config import (ConfigActionResponseSchema,
-                           ConfigParameterResponseSchema, ConfigRequestSchema,
+from lib.response import BadRequestResponse, BaseResponse, ContentResponse, NoContentResponse, NotFoundResponse
+from schema.config import (ConfigActionResponseSchema, ConfigParameterResponseSchema, ConfigRequestSchema,
                            ConfigResourceResponseSchema)
 from utils.datetime import datetime_to_str
 from utils.exception import extract_info
@@ -120,7 +118,7 @@ class ConfigResource(BaseResource):
                     return int(item)
                 except ValueError:
                     return item
-            path = map(parse, path)
+            path = list(map(parse, path))
         value = data.get("value", None)
         output = {"type": "parameter"}
         try:
