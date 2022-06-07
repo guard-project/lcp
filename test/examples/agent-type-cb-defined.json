@@ -1,0 +1,7 @@
+{
+    "id": "demoagenttype-cb",
+    "type": "AgentType",
+    "description": "Description of this demoagenttype",
+    "partner": "guard-partner",
+    "schema": "cb-defined"
+}

@@ -1,0 +1,29 @@
+lcp:
+  id: d73f8a66-3ce6-4e23-9cdf-977a103c969d
+  name: guard-local-lcp
+  url: http://localhost:4000
+  description: Test config file for LCP
+  type: LCPDescription
+  exec_env_type: bare-metal
+type: bare-metal
+self_software:
+- address: 0.0.0.0
+  hasSoftwareConnections:
+  - openstack:glance-api:queens
+  - openstack:nova-api:queens
+  - openstack:neutron-api:queens
+  id: ubuntu:nginx:1.14.0-0ubuntu1.6
+  openTCPPorts:
+  - 443
+  - 80
+  - 5000
+  product: NGINX
+  type: SoftwareDefinition
+  vendor: Nginx, Inc.
+  version: 1.14.0
+network_links:
+- exec_env_id: urn:lcp:guard-local-lcp
+  id: urn:lcp:guard-local-lcp-test-network-link
+  networkLinkType: pnt2pnt
+  remoteExecutionEnvironmentId: urn:lcp:remote-excution-environment
+  type: NetworkLink

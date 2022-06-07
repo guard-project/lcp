@@ -228,3 +228,35 @@ class TestMyApp(LCPTestBase):
 
         aih = AgentInstanceHelper(a_dict)
         print(aih.dumps())
+
+    def testAgentTypeCBDefined(self):
+        sft_dict = loadExampleFile("agent-type-cb-defined.json")
+        sf_dict = loadExampleFile("security-function-example.json")
+        config = getLCPConfig()
+        headers = getAuthorizationHeaders()
+        body = json.dumps(sft_dict)
+        result = self.simulate_post("/agent/type", headers=headers,
+                                    body=json.dumps(sft_dict))
+        sft_dict = loadExampleFile("agent-type-example.json")
+        result = self.simulate_post("/agent/type", headers=headers,
+                                    body=json.dumps(sft_dict))
+
+        result = self.simulate_post("/agent/instance", headers=headers,
+                                    body=json.dumps(sf_dict))
+
+        # Modify the instance to post another different one
+        sf_dict['hasAgentType'] = 'demoagenttype-cb'
+        sf_dict['id'] = f'{sft_dict["id"]}-cb'
+        result = self.simulate_post("/agent/instance", headers=headers,
+                                    body=json.dumps(sf_dict))
+        print(result.status_code)
+        assert(result.status_code == 201)
+        assert len(config.agents) == 2
+
+        result = self.simulate_get("/poll", headers=headers)
+        body = result.json
+
+        assert len(body['agentType']) == 1
+        assert body['agentType'][0]['id'] == 'demoagenttype'
+
+        assert len(body['agentInstance']) == 2

@@ -12,7 +12,7 @@ __all__ = [
 ]
 
 AGENT_STATUS = ['started', 'stopped', 'unknown']
-PARAMETER_SCHEMAS = ['properties', 'json', 'xml', 'yaml']
+PARAMETER_SCHEMAS = ['properties', 'json', 'xml', 'yaml', 'cb-defined']
 PARAMETER_TYPES = ['binary', 'boolean', 'choice',
                    'integer', 'number', 'time-duration', 'string']
 
@@ -65,9 +65,9 @@ class AgentType(BaseSchema):
                          description="Name of the Partner who created the resource")
     schema = fields.Str(required=True, example="yaml",
                         description="Type of configuration file (json, yaml, etc.)")
-    source = fields.Str(required=True, example="/etc/example_agent/config.yaml",
+    source = fields.Str(required=False, example="/etc/example_agent/config.yaml",
                         description="The config file where parameters are configured")
-    actions = ListOrOne(fields.Nested(AgentActionSchema), required=True,
+    actions = ListOrOne(fields.Nested(AgentActionSchema), required=False,
                           description="List of actions and expected result fro this agent")
     resources = ListOrOne(fields.Nested(AgentResource), required=False,
                             description="List of agents Resources that could be used")

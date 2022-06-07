@@ -47,9 +47,11 @@ class LCPConfig(object):
             self.agent_types = []
             self.interactions = {"softwareArtifacts": [], "externalStorage": []}
             self.parent_lcp_data = {}
-            self.reload(self.filename)
             self.cloud = {}
             self.network_links = []
+
+            # Reload the configuration.
+            self.reload(self.filename)
 
         def merge_dicts(d1, d2):
             if d1 == d2:
