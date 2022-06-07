@@ -160,11 +160,9 @@ definitions:
         example: AgentType
         type: string
     required:
-    - actions
     - id
     - partner
     - schema
-    - source
     - type
     type: object
   CloudCompute:

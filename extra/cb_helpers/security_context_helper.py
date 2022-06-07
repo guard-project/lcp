@@ -31,7 +31,11 @@ class SecurityContextHelper:
             self.security_context['exec_env']['container'] = config.self_containers.copy()
 
         if len(config.agent_types) > 0:
-            self.security_context['agentType'] = config.agent_types.copy()
+            d = config.agent_types.copy()
+            self.security_context['agentType'] = []
+            for a in d:
+                if a['schema'] != 'cb-defined':
+                    self.security_context['agentType'].append(a)
             if len(config.agents) > 0:
                 self.security_context['agentInstance'] = config.agents.copy()
 
