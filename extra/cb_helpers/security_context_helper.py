@@ -85,6 +85,9 @@ class SecurityContextHelper:
         d['lcp']['port'] = usd.port
         d['lcp']['https'] = usd.https
 
+        if usd.path != "" and usd.path!="/":
+            d['lcp']['endpoint'] = usd.path
+
         d['hostname'] = usd.host
 
         return d

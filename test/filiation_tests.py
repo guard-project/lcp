@@ -10,11 +10,12 @@ from test.testbase import LCPTestBase
 class TestMyApp(LCPTestBase):
     def _getFiliationData(self):
         uuid = "94216230-ae26-464c-9541-cc0ca62cd1ce"
-        url = "https://example.url.com:4443"
+        url = "https://example.url.com:4443/somewhereeles"
         name = "lcp:example"
         d_type = "LCPDescription"
         description = "Some descriptiont goes here"
-        body_dict = {"id": uuid, "type": d_type, "url": url, "name": name, "description": description}
+        body_dict = {"id": uuid, "type": d_type, "url": url, "name": name, "description": description,
+                     "exec_env_type": "vm"}
         return uuid, url, body_dict
 
     def _setFiliationData(self):
@@ -76,6 +77,7 @@ class TestMyApp(LCPTestBase):
         id, url, body_dict = self._getFiliationData()
         lcp_info = LCPDescription()
         body = lcp_info.dump(body_dict)
+        config = getLCPConfig()
 
         # With Authorization header + OK data -- Expected: 201 Created
         headers = getAuthorizationHeaders()
@@ -95,6 +97,9 @@ class TestMyApp(LCPTestBase):
         body = lcp_info.dump(body_dict)
         result = self.simulate_post("/lcp_son", headers=headers, body=json.dumps(body))
         assert(result.status == "406 Not Acceptable")
+
+        result = self.simulate_get("/poll", headers=headers)
+        print(json.dumps(result.json))
 
     def test_post_multi(self):
         body = loadExampleFile("FiliatedLCPs.json")

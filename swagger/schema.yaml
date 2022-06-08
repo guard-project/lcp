@@ -358,6 +358,10 @@ definitions:
     type: object
   LCPConnectionAsInCB:
     properties:
+      endpoint:
+        description: endpoint where the lcp starts listening
+        example: /endpoint
+        type: string
       father:
         description: ID of the LCP father.
         example: 0597a13e-9440-4139-a6dd-87eaa9799b55

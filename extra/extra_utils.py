@@ -13,6 +13,7 @@ class UrlSchemaData:
         self.host = ""
         self.https = False
         self.get_port()
+        self.path = r.path
 
     def get_port(self):
         try:
@@ -28,3 +29,7 @@ class UrlSchemaData:
                 self.https = True
 
 
+if __name__ == "__main__":
+    schema = UrlSchemaData("http://localhost:4000/lcp_endpoint")
+    schema = UrlSchemaData("http://localhost:4000")
+    print(schema)

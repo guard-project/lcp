@@ -17,8 +17,9 @@ class PollContextBroker(BaseResource):
 
     @docstring(source="poll/get_poll.yml")
     def on_get(self, req, resp):
+        config = LCPConfig()
         try:
-            helper = SecurityContextHelper(LCPConfig())
+            helper = SecurityContextHelper(config)
             data = helper.getData()
             resp.body = helper.getData()
         except KeyError as e:
