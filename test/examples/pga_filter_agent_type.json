@@ -1,0 +1,84 @@
+{
+  "id": "urn:AgentType:id:pgafilter",
+  "type": "AgentType",
+  "description": "eBPF+XDP rule-based detection of packets generated with PGA",
+  "actions": [
+    {
+      "id": "start",
+      "cmd": "pgafilterctl start",
+      "status": "started"
+    },
+    {
+      "id": "stop",
+      "cmd": "pgafilterctl stop",
+      "status": "stopped"
+    },
+    {
+      "id": "restart",
+      "cmd": "pgafilterctl restart",
+      "status": "started"
+    },
+    {
+      "id": "reload",
+      "cmd": "pgafilterctl reload",
+      "status": "started"
+    },
+    {
+      "id": "status",
+      "cmd": "pgafilterctl status",
+      "status": "unknown"
+    }
+  ],
+  "resources": [
+    {
+      "id": "urn:AgentResource:id:config-file",
+      "type": "AgentResource",
+      "source": "/opt/pgafilter/config.yml",
+      "description": "pgafilter configuration file",
+      "example": "interface: pgafilter\nkafka_server:\n- guard2-svc.westeurope.cloudapp.azure.com:29092\nkafka_topic: detection-results\nlog:\n-  format: no_place\n   level: INFO\n   sink: /opt/pgafilter/pgafilter.log\nrules:\n  - \"tcp-seq_is_tcp-ack\"\n  - \"tcp-sport_is_tcp-seq:0:1\"\n  - \"tcp-sport_is_tcp-seq:2:3\"\n  - \"tcp-dport_is_tcp-seq:0:1\"\n  - \"tcp-dport_is_tcp-seq:2:3\"\n  - \"ip-dst:2_xor_ip-id:0_is_tcp-seq:2\"\n",
+      "schema": "yaml",
+      "parameters": [
+        {
+          "id": "urn:AgentResourceParameter:id:rules",
+          "path": "rules",
+          "description": "Enabled rules",
+          "example": "['rule1', 'rule2', 'rule3']",
+          "list": true,
+          "type": "string"
+        },
+        {
+          "path": "poll-interval",
+          "description": "Polling interval for retrivieng eBPF data and processing it [in secs]. 1 second is a minimal acceptable value",
+          "example": "1",
+          "id": "urn:AgentResourceParameter:id:poll-interval",
+          "type": "integer"
+        },
+        {
+          "path": "kafka-topic",
+          "description": "Kafka topic for sending the messages",
+          "example": "data-pgafilter",
+          "id": "urn:AgentResourceParameter:id:kafka-topic",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "id": "urn:AgentResource:id:rule-file",
+      "type": "AgentResource",
+      "source": "/opt/pgafilter/rules.yml",
+      "description": "pgafilter PGA signatures/rules file",
+      "example": "release: 2021-03-01T12:46:01\nrules:\n  tcp-seq_is_tcp-ack:\n    sid: 1001\n    rev: 1\n    args:\n      - tcphdr\n    content: \"tcphdr->syn && !tcphdr->ack && tcphdr->seq == tcphdr->ack_seq\"\n    comment: \"TCP-SYN and TCP SEQ is equal to TCP ACK\"\n  tcp-ack_nonzero:\n    sid: 1002\n    rev: 1\n    args: [tcphdr]\n    content: \"tcphdr->syn && !tcphdr->ack && tcphdr->ack_seq != 0\"\n    comment: \"TCP-SYN and TCP ACK is non-zero\"\n  tcp-sport_is_tcp-seq:0:1:\n    sid: 1003\n    rev: 1\n    args: [tcphdr, iphdr]\n    content: \"tcphdr->source == pga_2_byte32(tcphdr->seq 0 1)\"\n",
+      "schema": "yaml",
+      "parameters": []
+    },
+    {
+      "id": "urn:AgnetResource:id:firewall-file",
+      "type": "AgentResource",
+      "source": "/opt/pgafilter/firewall.yml",
+      "description": "pgafilter firewall rules file",
+      "example": "rules:\n  - \"sid:123|name:goldeneye|sport:80|saddr:128.1.1.1|dport:12772|daddr:1.1.1.1|proto:tcp\"\n  - \"saddr:1.1.1.1\"\n",
+      "schema": "yaml",
+      "parameters": []
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "urn:AgentType:id:guard-vdpi",
+  "type": "AgentType",
+  "description": "VDPI Agent.",
+  "actions": [
+    {
+      "id": "start",
+      "cmd": "/opt/guard-vdpi/guard-lcp-vdpi-wrapper --start --properties /opt/guard-vdpi/guard-lcp-vdpi-wrapper.properties",
+      "description": "Start vdpi agent",
+      "status": "started"
+    },
+    {
+      "id": "stop",
+      "cmd": "/opt/guard-vdpi/guard-lcp-vdpi-wrapper --stop",
+      "description": "Stop vdpi agent",
+      "status": "stopped"
+    },
+    {
+      "id": "restart",
+      "cmd": "/opt/guard-vdpi/guard-lcp-vdpi-wrapper --restart",
+      "description": "Restart vdpi agent",
+      "status": "started"
+    },
+    {
+      "id": "stop",
+      "cmd": "/opt/guard-vdpi/guard-lcp-vdpi-wrapper --force-stop",
+      "description": "Force the stopping of vdpi agent",
+      "status": "stopped"
+    }
+  ],
+  "resources": [
+    {
+      "id": "urn:AgentResource:id:guard-vdpi:config-resources",
+      "type": "AgentResource",
+      "source": "/opt/guard-vdpi/guard-lcp-vdpi-wrapper.properties",
+      "description": "properites file for vpdi agent",
+      "schema": "properties",
+      "parameters": [
+        {
+          "id": "urn:AgentResourceParameter:id:interface",
+          "path": [
+            "target",
+            "iface"
+          ],
+          "description": "target interface for vdpi",
+          "example": "eth0",
+          "type": "string"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:demo-mode",
+          "path": [
+            "target",
+            "demo-mode"
+          ],
+          "description": "if True, a pcap file will be loaded instead of targeting an interface in real time",
+          "example": "True",
+          "type": "boolean"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:demo-mode-pcap-file",
+          "path": [
+            "target",
+            "demo-mode",
+            "pcap-file"
+          ],
+          "description": "Used in conjunction with demo-mode property, if True, load the current pcap file (abs path of the file located on actual target host) to get vdpi statistics", 
+          "example": "/tmp/Friday-WorkingHours.pcap",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

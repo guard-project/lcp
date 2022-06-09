@@ -1,0 +1,137 @@
+{
+  "actions": [
+    {
+      "config": {
+        "cmd": "pgafilterctl start"
+      },
+      "id": "start",
+      "status": "started"
+    },
+    {
+      "config": {
+        "cmd": "pgafilterctl stop"
+      },
+      "id": "stop",
+      "status": "stopped"
+    },
+    {
+      "config": {
+        "cmd": "pgafilterctl restart"
+      },
+      "id": "restart",
+      "status": "started"
+    },
+    {
+      "config": {
+        "cmd": "pgafilterctl reload"
+      },
+      "id": "reload",
+      "status": "started"
+    },
+    {
+      "config": {
+        "cmd": "pgafilterctl status"
+      },
+      "id": "status",
+      "status": "unknown"
+    }
+  ],
+  "description": "eBPF+XDP rule-based detection of packets generated with PGA",
+  "id": "pgafilter",
+  "parameters": [
+    {
+      "config": {
+        "path": [
+          "rules"
+        ],
+        "schema": "yaml",
+        "source": "/opt/pgafilter/config.yml"
+      },
+      "description": "Enabled rules",
+      "example": "['rule1', 'rule2', 'rule3']",
+      "id": "rules",
+      "list": "true",
+      "type": "string"
+    },
+    {
+      "config": {
+        "path": [
+          "poll-interval"
+        ],
+        "schema": "yaml",
+        "source": "/opt/pgafilter/config.yml"
+      },
+      "description": "Polling interval for retrivieng eBPF data and processing it [in secs]. 1 second is a minimal acceptable value",
+      "example": 1,
+      "id": "poll-interval",
+      "type": "integer"
+    },
+    {
+      "config": {
+        "path": [
+          "kafka-topic"
+        ],
+        "schema": "yaml",
+        "source": "/opt/pgafilter/config.yml"
+      },
+      "description": "Kafka topic for sending the messages",
+      "example": "data-pgafilter",
+      "id": "kafka-topic",
+      "type": "string"
+    },
+    {
+      "config": {
+        "path": [
+          "release"
+        ],
+        "schema": "yaml",
+        "source": "/opt/pgafilter/rules.yml"
+      },
+      "description": "Release date of the rule file (version)",
+      "example": "2021-03-01T12:46:01",
+      "id": "release",
+      "type": "string"
+    },
+    {
+      "config": {
+        "path": [
+          "rules"
+        ],
+        "schema": "yaml",
+        "source": "/opt/pgafilter/firewall.yml"
+      },
+      "description": "Firewall rules declaration",
+      "example": "['sid:123|name:goldeneye|sport:80|saddr:128.1.1.1|dport:12772|daddr:1.1.1.1|proto:tcp', 'saddr:1.1.1.1']",
+      "id": "firewall-rules",
+      "list": "true",
+      "type": "string"
+    }
+  ],
+  "partner": "nask",
+  "resources": [
+    {
+      "config": {
+        "path": "/opt/pgafilter/config.yml"
+      },
+      "description": "pgafilter configuration file",
+      "example": "interface: pgafilter\nkafka_server:\n- guard2-svc.westeurope.cloudapp.azure.com:29092\nkafka_topic: detection-results\nlog:\n-  format: no_place\n   level: INFO\n   sink: /opt/pgafilter/pgafilter.log\nrules:\n  - \"tcp-seq_is_tcp-ack\"\n  - \"tcp-sport_is_tcp-seq:0:1\"\n  - \"tcp-sport_is_tcp-seq:2:3\"\n  - \"tcp-dport_is_tcp-seq:0:1\"\n  - \"tcp-dport_is_tcp-seq:2:3\"\n  - \"ip-dst:2_xor_ip-id:0_is_tcp-seq:2\"\n",
+      "id": "config-file"
+    },
+    {
+      "config": {
+        "path": "/opt/pgafilter/rules.yml"
+      },
+      "description": "pgafilter PGA signatures/rules file",
+      "example": "release: 2021-03-01T12:46:01\nrules:\n  tcp-seq_is_tcp-ack:\n    sid: 1001\n    rev: 1\n    args:\n      - tcphdr\n    content: \"tcphdr->syn && !tcphdr->ack && tcphdr->seq == tcphdr->ack_seq\"\n    comment: \"TCP-SYN and TCP SEQ is equal to TCP ACK\"\n  tcp-ack_nonzero:\n    sid: 1002\n    rev: 1\n    args: [tcphdr]\n    content: \"tcphdr->syn && !tcphdr->ack && tcphdr->ack_seq != 0\"\n    comment: \"TCP-SYN and TCP ACK is non-zero\"\n  tcp-sport_is_tcp-seq:0:1:\n    sid: 1003\n    rev: 1\n    args: [tcphdr, iphdr]\n    content: \"tcphdr->source == pga_2_byte32(tcphdr->seq 0 1)\"\n",
+      "id": "rule-file"
+    },
+    {
+      "config": {
+        "path": "/opt/pgafilter/firewall.yml"
+      },
+      "description": "pgafilter firewall rules file",
+      "example": "rules:\n  - \"sid:123|name:goldeneye|sport:80|saddr:128.1.1.1|dport:12772|daddr:1.1.1.1|proto:tcp\"\n  - \"saddr:1.1.1.1\"\n",
+      "id": "firewall-file"
+    }
+  ]
+}

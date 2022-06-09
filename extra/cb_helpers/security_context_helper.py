@@ -6,21 +6,23 @@ from schema.hardware_definitions import ExecutionEnvironment
 
 class SecurityContextHelper:
     def __init__(self, config):
+        self.config = config
         if config.lcp is None:
             raise KeyError('unconfigured LCP')
 
         self.security_context = {}
         # self.security_context['executionEnvironmentType'] = config.exec_env_type
-        self.security_context['exec_env'] = self.setLcpData(config.lcp)
+        self.security_context['exec_env'] = self.setLcpData(config.lcp).copy()
 
         if len(config.sons) > 0:
             self.security_context['exec_env']['lcp']['sons'] = []
             self.security_context['lcpSons'] = []
             for son in config.sons:
-                self.security_context['lcpSons'].append(self.setLcpData(son))
+                self.security_context['lcpSons'].append(self.setLcpData(son).copy())
                 self.security_context['exec_env']['lcp']['sons'].append(son['id'])
         if len(config.parents) > 0:
-            self.security_context['exec_env']['lcp']['father'] = config.parent_lcp_data['id']
+            if 'id' in config.parent_lcp_data:
+                self.security_context['exec_env']['lcp']['father'] = config.parent_lcp_data['id']
 
         if len(config.self_software) > 0:
             self.security_context['exec_env']['sw_info'] = config.self_software.copy()
@@ -34,13 +36,13 @@ class SecurityContextHelper:
             d = config.agent_types.copy()
             self.security_context['agentType'] = []
             for a in d:
-                if a['schema'] != 'cb-defined':
-                    self.security_context['agentType'].append(a)
+                if not ('schema' in a and a['schema'] == 'cb-defined'):
+                    self.security_context['agentType'].append(a.copy())
             if len(config.agents) > 0:
                 self.security_context['agentInstance'] = config.agents.copy()
 
-        self.security_context['exec_env']['interactions'] = config.interactions
-        self.security_context['exec_env']['network_links'] = self.get_network_links(config)
+        self.security_context['exec_env']['interactions'] = config.interactions.copy()
+        self.security_context['exec_env']['network_links'] = self.get_network_links(config).copy()
 
         if config.cloud:
             self.security_context['cloud'] = config.cloud
@@ -62,9 +64,65 @@ class SecurityContextHelper:
                 })
         return r
 
+    def rewrite_agent_types(self, ctx):
+        context = ctx.copy()
+        if 'agentType' in context and len(context['agentType']) > 0:
+            for agent in context['agentType']:
+                agent.pop('type')
+                resources = []
+                parameters = []
+                for r in agent['resources']:
+                    resource = r.copy()
+                    resource.pop('type')
+                    nr = {"config": {"path": resource['source']}}
+                    if 'description' in resource:
+                        nr['description'] = resource['description']
+                    nr['id'] = resource['id']
+                    if 'example' in resource:
+                        nr['example'] = resource['example']
+                    resources.append(nr)
+
+                    for parameter in resource['parameters']:
+                        cfg = {"config": {
+                            "path": [ parameter['path'] ],
+                            "schema": resource['schema'],
+                            "source": resource['source'],
+                        },
+                            "id": parameter['id'],
+                            "list": parameter['list'] if 'list' in parameter else False,
+                            "type": parameter['type']
+                        }
+                        if 'description' in parameter:
+                            cfg['description'] = parameter['description']
+                        if 'example' in parameter:
+                            cfg['example'] = parameter['example']
+                        if 'values' in parameter:
+                            cfg['values'] = parameter['values']
+                        parameters.append(cfg)
+
+                agent['resources'] = resources
+                agent['parameters'] = parameters
+                # agent['source'] = resource['source']
+                # agent['schema'] = resource['schema']
+
+                if 'actions' in agent:
+                    acs = []
+                    for a in agent['actions']:
+                        action = a.copy()
+                        action['config'] = {"cmd": action['cmd']}
+                        action.pop('cmd')
+                        acs.append(action)
+                    agent['actions'] = acs
+        return context
+
     def getData(self):
-        PollSchema(many=False).load(self.security_context)
-        return json.dumps(self.security_context)
+        try:
+            PollSchema(many=False).load(self.security_context)
+            context = self.security_context.copy()
+            c = self.rewrite_agent_types(context)
+        except ValueError as ve:
+            raise(ve)
+        return json.dumps(c)
 
 
     def setLcpData(self, lcp):
@@ -84,6 +142,10 @@ class SecurityContextHelper:
         usd = UrlSchemaData(lcp['url'])
         d['lcp']['port'] = usd.port
         d['lcp']['https'] = usd.https
+
+        if usd.path != "" and usd.path!="/":
+            d['lcp']['endpoint'] = usd.path
+
 
         d['hostname'] = usd.host
 

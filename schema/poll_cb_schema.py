@@ -21,6 +21,8 @@ class LCPConnectionAsInCB(BaseSchema):
                      description="Port where the LCP is listening")
     https = fields.Boolean(required=True, example=True,
                           description="Defines the protocol to connect the LCP. HTTPS if true, HTTP if false")
+    endpoint = fields.Str(required=False, example="/endpoint",
+                      description="endpoint where the lcp starts listening")
     sons = fields.List(fields.Str, required=False, example=["lpc:son:id:1", "lcp:son:id:2"])
     father = fields.Str(required=False, example="0597a13e-9440-4139-a6dd-87eaa9799b55",
                         description="ID of the LCP father.")

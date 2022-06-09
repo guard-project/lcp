@@ -13,6 +13,7 @@ class UrlSchemaData:
         self.host = ""
         self.https = False
         self.get_port()
+        self.path = r.path
 
     def get_port(self):
         try:

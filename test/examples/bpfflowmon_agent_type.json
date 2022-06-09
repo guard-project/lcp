@@ -1,0 +1,105 @@
+{
+  "id": "urn:AgentType:id:bpfflowmon",
+  "type": "AgentType",
+  "description": "eBPF-based flow monitoring agent",
+  "actions": [
+    {
+      "id": "start",
+      "cmd": "/usr/local/bin/tc_flowmon.sh start",
+      "description": "Start flow monitoring session",
+      "status": "started"
+    },
+    {
+      "id": "stop",
+      "cmd": "/usr/local/bin/tc_flowmon.sh stopt", 
+      "description": "Stop collecting flow information, but monitoring remains active in the background",
+      "status": "stopped"
+    },
+    {
+      "id": "load",
+      "cmd": "/usr/local/bin/tc_flowmon.sh load",
+      "description": "Load eBPF program and start monitoring, but do not collect flow records",
+      "status": "started"
+    },
+    {
+      "id": "unload",
+      "cmd": "/usr/local/bin/tc_flowmon.sh unload",
+      "description": "Unload eBPF program(s) and stop flow collection if still running",
+      "status": "stopped"
+    },
+    {
+      "id": "purge",
+      "cmd": "/usr/local/bin/tc_flowmon.sh purge",
+      "description": "Purge eBPF map and stop/unload the program",
+      "status": "stopped"
+    }
+  ],
+  "resources": [
+    {
+      "id": "urn:AgentResource:id:config-file",
+      "type": "AgentResource",
+      "source": "/etc/default/bpfflowmon",
+      "description": "bpfflowmon configuration file",
+      "schema": "properties",
+      "parameters": [
+        {
+          "id": "urn:AgentResourceParameter:id:IFACE",
+          "path": "IFACE",
+          "description": "The interface(s) to monitor",
+          "example": "eth0,eth1",
+          "list": false,
+          "type": "string"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:LOGFILE",
+          "path": "LOGFILE",
+          "description": "The name of the log file for periodic stats",
+          "example": "/var/log/bpfflowmon.log",
+          "list": false,
+          "type": "string"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:DUMPDIR",
+          "path": "DUMPDIR",
+          "description": "The directory to dump flows to",
+          "example": "/tmp",
+          "list": false,
+          "type": "string"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:DIR",
+          "path": "DIR",
+          "description": "Select incoming/outgoing direction for traffic monitorin",
+          "example": "ingres|egress|both",
+          "list": false,
+          "type": "string",
+          "values": [
+            "ingress",
+            "egress",
+            "both"
+          ]
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:INTERVAL",
+          "path": "INTERVAL",
+          "description": "Polling interval to dump flows.",
+          "example": "10",
+          "list": false,
+          "type": "integer"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:FORMAT",
+          "path": "FORMAT",
+          "description": "Output format of flow dumping.",
+          "example": "plaintext|json",
+          "list": false,
+          "type": "choice",
+          "values": [
+            "plaintext",
+            "json"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -527,6 +527,8 @@ class LCPConfig(object):
                 return []
 
         def set_parent_lcp_data(self, data):
+            if not 'id' in self.parent_lcp_data or not 'id' in self.lcp:
+                return
             self.parent_lcp_data = data
             self.config['parent_lcp_data'] = self.parent_lcp_data
             self.setNetworkLink(self.parent_lcp_data['id'], self.lcp['id'], True)
@@ -536,6 +538,7 @@ class LCPConfig(object):
             self.cloud = data
             self.config['cloud'] = self.cloud
             self.save()
+
 
     instance = None
 

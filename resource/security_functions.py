@@ -1,5 +1,5 @@
 from schema.security_functions import Agent as AgentSchema
-from schema.security_functions import AgentType
+from schema.security_functions import AgentType, AgentResource
 from docstring import docstring
 from resource.base import BaseResource
 import json
@@ -118,11 +118,13 @@ class AgentTypeResource(BaseResource):
         payload = req.media if isinstance(req.media, list) else [req.media]
         controller = LCPController()
 
+        for pl in payload:
+            controller.tweak_old_agent_type(pl)
+
         try:
             at_schema = AgentType(many=True)
-            d = at_schema.validate(payload)
-            if d[1] == False:
-                raise ValidationError("Not acceptable")
+            d = at_schema.load(payload)
+
             for e in payload:
                 controller.set_agent_type(e)
             resp.status = HTTP_CREATED

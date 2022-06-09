@@ -1,3 +1,5 @@
+import time
+
 from schema.lcp_schemas import LCPDescription
 from resource import SonLCPIdentification
 from test_utils import *
@@ -146,16 +148,16 @@ class TestMyApp(LCPTestBase):
 
     def test_send_parent_message_to_lcp(self):
         """
-        This summulate that we are an LCP parent with our own http server on localhost:4884
+        This summulate that we are an LCP parent with our own http server on localhost:8448
         1. Simulate sending a message to LCPSon as a parent to it
         2. Reads within 5 seconds if the LCPSon, after recieving the simulated messages sends a /lcp_son
-           op to the parent url (localhost:4884)
+           op to the parent url (localhost:8448)
         3. Compares if the SON LCP's data is what we expected.
         4. Assert that
         :return:
         """
         cfg = getLCPConfig()
-        parent = {"url": "http://localhost:4884"}
+        parent = {"url": "http://localhost:8448"}
         lcp_client = LCPClient()
         start_mock_http_server()
 
@@ -163,7 +165,7 @@ class TestMyApp(LCPTestBase):
             message = LCPMessages(BetweenLCPMessages.PostLCPParent, parent)
             lcp_client.postLcpSon(message.data)
             try:
-                d = TestHttpServer.q.get(timeout=3)
+                d = TestHttpServer.q.get(timeout=10)
                 # So, the LCP Son has called our mock server?
                 assert d['id'] == cfg.lcp['id']
                 assert d['url'] == cfg.lcp['url']
@@ -177,17 +179,17 @@ class TestMyApp(LCPTestBase):
 
     def test_post_parent_message_to_lcp(self):
         """
-        This summulate that we are an LCP parent with our own http server on localhost:4884
+        This summulate that we are an LCP parent with our own http server on localhost:8448
         This simulates the complete loop parent -> son , son -> parent
         1. Simulate http POST to LCPSon as a parent to it
         2. Reads within 5 seconds if the LCPSon, after the POST method is triggered sends a /lcp_son
-           op to the parent url (localhost:4884)
+           op to the parent url (localhost:8448)
         3. Compares if the SON LCP's data is what we expected.
         4. Assert that
         :return:
         """
         cfg = getLCPConfig()
-        parent = {"url": "http://localhost:4884"}
+        parent = {"url": "http://localhost:8448"}
         lcp_client = LCPClient()
         start_mock_http_server()
         headers = getAuthorizationHeaders()
@@ -198,7 +200,7 @@ class TestMyApp(LCPTestBase):
             result = self.simulate_post("/lcp_parent", headers=headers,
                                         body=json.dumps(parent))
             try:
-                d = TestHttpServer.q.get(timeout=3)
+                d = TestHttpServer.q.get(timeout=10)
                 # So, the LCP Son has called our mock server?
                 assert d['id'] == cfg.lcp['id']
                 assert d['url'] == cfg.lcp['url']
@@ -208,6 +210,8 @@ class TestMyApp(LCPTestBase):
             stop_mock_http_server()
             # from extra.clients_starter import end_client_threads
             # end_client_threads()
+            info = self.simulate_get("/poll", headers=headers)
+            print(json.dumps(info.json))
         assert True
 
 
@@ -220,7 +224,7 @@ class TestMyApp(LCPTestBase):
 
         try:
             # Tests that the Http server is closed...
-            requests.get("http://localhost:4884/")
+            requests.get("http://localhost:8448/")
             assert False
         except requests.exceptions.ConnectionError:
             assert True

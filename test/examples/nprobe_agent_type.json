@@ -1,0 +1,49 @@
+{
+  "id": "urn:AgentType:id:nprobe",
+  "type": "AgentType",
+  "description": "nprobe",
+  "actions": [
+    {
+      "id": "start",
+      "cmd": "service nprobe start",
+      "daemon": true,
+      "status": "started"
+    },
+    {
+      "id": "stop",
+      "cmd": "service nprobe stop",
+      "daemon": true,
+      "status": "stopped"
+    },
+    {
+      "id": "restart",
+      "cmd": "service nprobe restart",
+      "daemon": true,
+      "status": "started"
+    }
+  ],
+  "resources": [
+    {
+      "id": "urn:AgentResource:id:nprobe:config-resources",
+      "type": "AgentResource",
+      "source": "/etc/nprobe/nprobe.conf",
+      "schema": "properties",
+      "parameters": [
+        {
+          "id": "urn:AgentResourceParameter:id:interface-for-vdpi",
+          "path": "-i",
+          "description": "target interface for vdpi",
+          "example": "eth0",
+          "type": "string"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:kafaka",
+          "path": "--kafka",
+          "description": "kafka configuration. Includes list of brokers/ports and topic.",
+          "example": "127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094;topicFlows",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

@@ -38,29 +38,31 @@ class AgentTypeForCBHelper:
         if not 'parameters' in self.data:
             return
 
-        parameters = self.data['parameters']
-        source = self.data['source']
-        schema = self.data['schema']
+        resources = self.data['resources']
 
         odp = []
         self.od['parameters'] = odp
+        for resource in resources:
+            parameters = resource['parameters']
+            source = resource['source']
+            schema = resource['schema']
 
-        for p in parameters:
-            dp = {
-                'config': {
-                    'path': p['path'].split('.'),
-                    'schema': schema,
-                    'source': source
-                },
-                'id': p['path'],
-                'type': p['type']
-            }
-            if 'description' in p:
-                dp['description'] = p['description']
-            if 'list' in p:
-                dp['list'] = p['list']
-            if 'example' in p:
-                dp['example'] = p['example']
-            if 'type' in p:
-                dp['type'] = p['type']
-            odp.append(dp)
+            for p in parameters:
+                dp = {
+                    'config': {
+                        'path': p['path'].split('.'),
+                        'schema': schema,
+                        'source': source
+                    },
+                    'id': p['path'],
+                    'type': p['type']
+                }
+                if 'description' in p:
+                    dp['description'] = p['description']
+                if 'list' in p:
+                    dp['list'] = p['list']
+                if 'example' in p:
+                    dp['example'] = p['example']
+                if 'type' in p:
+                    dp['type'] = p['type']
+                odp.append(dp)

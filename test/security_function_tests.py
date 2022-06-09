@@ -215,48 +215,68 @@ class TestMyApp(LCPTestBase):
         assert result.status_code == 204
         assert config.get_agent_type_by_id('demoagenttype') is None
 
-    def testAgentTypeExample(self):
-        at_dict = loadExampleFile("agent-type-example.json")
-        config = getLCPConfig()
+    # def testAgentTypeExample(self):
+    #    at_dict = loadExampleFile("agent-type-example.json")
+    #    config = getLCPConfig()
 
-        schema_agent_type = AgentType()
-        schema_agent_type.load(at_dict)
+    #    schema_agent_type = AgentType()
+    #    schema_agent_type.load(at_dict)
 
-        a_dict = loadExampleFile("agent-instance-example-for-lcp.json")
-        schema_agent = Agent()
-        schema_agent.load(a_dict)
+    #    a_dict = loadExampleFile("agent-instance-example-for-lcp.json")
+    #    schema_agent = Agent()
+    #    schema_agent.load(a_dict)
 
-        aih = AgentInstanceHelper(a_dict)
-        print(aih.dumps())
+    #    aih = AgentInstanceHelper(a_dict)
+    #    print(aih.dumps())
 
     def testAgentTypeCBDefined(self):
-        sft_dict = loadExampleFile("agent-type-cb-defined.json")
-        sf_dict = loadExampleFile("security-function-example.json")
+        agent_type_dict = loadExampleFile("agent-type-cb-defined.json")
+        agent_dict = loadExampleFile("security-function-example.json")
         config = getLCPConfig()
         headers = getAuthorizationHeaders()
-        body = json.dumps(sft_dict)
-        result = self.simulate_post("/agent/type", headers=headers,
-                                    body=json.dumps(sft_dict))
-        sft_dict = loadExampleFile("agent-type-example.json")
-        result = self.simulate_post("/agent/type", headers=headers,
-                                    body=json.dumps(sft_dict))
+        body = json.dumps(agent_type_dict)
 
-        result = self.simulate_post("/agent/instance", headers=headers,
-                                    body=json.dumps(sf_dict))
+        # Post agent type 1
+        result = self.simulate_post("/agent/type", headers=headers,
+                                    body=json.dumps(agent_type_dict))
+        assert(result.status_code == 201)
 
-        # Modify the instance to post another different one
-        sf_dict['hasAgentType'] = 'demoagenttype-cb'
-        sf_dict['id'] = f'{sft_dict["id"]}-cb'
+        agent_type_dict = loadExampleFile("agent-type-example.json")
+        result = self.simulate_post("/agent/type", headers=headers,
+                                    body=json.dumps(agent_type_dict))
+        print(result.status_code)
+        print(result.json)
+        assert(result.status_code == 201)
+
+
+        # Get the agents
+        result = self.simulate_get("/agent/type", headers=headers)
+        print(result.status_code)
+        assert(result.status_code == 200)
+        assert(len(result.json) == 2)
+
+        # Post agent instance
         result = self.simulate_post("/agent/instance", headers=headers,
-                                    body=json.dumps(sf_dict))
+                                    body=json.dumps(agent_dict))
+        assert(result.status_code == 201)
+
+        # Modify the instance to post another different one and post it
+        agent_dict['hasAgentType'] = 'demoagenttype-cb'
+        agent_dict['id'] = f'{agent_type_dict["id"]}-cb'
+        result = self.simulate_post("/agent/instance", headers=headers,
+                                    body=json.dumps(agent_dict))
         print(result.status_code)
         assert(result.status_code == 201)
         assert len(config.agents) == 2
 
+
         result = self.simulate_get("/poll", headers=headers)
         body = result.json
+        print("----------------")
+        print(json.dumps(body))
+        print("----------------")
 
+        print(len(body['agentType']))
         assert len(body['agentType']) == 1
         assert body['agentType'][0]['id'] == 'demoagenttype'
-
         assert len(body['agentInstance']) == 2

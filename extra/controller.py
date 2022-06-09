@@ -7,16 +7,25 @@ from marshmallow import ValidationError
 import time
 import json
 
+import hashlib
+
 
 class LCPController:
     class __LCPController:
         def __init__(self):
             self.config = LCPConfig()
+            self.migrate_agents()
             self.build_environment()
 
             self.initial_messages_to_lcp_sent = False
 
             LCPClient().set_controller(self)
+
+        def migrate_agents(self):
+            agents = self.config.agent_types
+            for a in agents:
+                self.tweak_old_agent_type(a)
+                self.config.set_agent_type(a)
 
         def build_environment(self):
             if self.config.exec_env_type is None:
@@ -78,6 +87,33 @@ class LCPController:
             self.config.setContextBroker(payload)
             if self.config.context_broker is not None:
                 self.send_initial_messages_cb()
+
+        def tweak_old_agent_type(self, data):
+            resources = None
+            if 'schema' in data:
+                if data['schema'] == 'cb-defined':
+                    data['resources'] = []
+                if 'resources' not in data:
+                    data['resources'] = []
+                    resources = {"schema": data['schema']}
+                    data.pop('schema')
+                    if 'source' in data:
+                        resources['source'] = data['source']
+                        data.pop('source')
+                    if 'parameters' in data:
+                        resources['parameters'] = data['parameters']
+                        for r in resources['parameters']:
+                            if 'id' not in r:
+                                sha1 = hashlib.sha1()
+                                sha1.update(r['path'].encode('UTF-8'))
+                                r['id'] = sha1.hexdigest()
+                        data.pop('parameters')
+                    if not 'id' in data['resources']:
+                        sha1 = hashlib.sha1()
+                        sha1.update(resources['source'].encode('UTF-8'))
+                        resources['id'] = sha1.hexdigest()
+                        resources['type'] = 'AgentResource'
+                    data['resources'].append(resources)
 
     instance = None
 

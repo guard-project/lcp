@@ -19,8 +19,10 @@ class PollContextBroker(BaseResource):
     def on_get(self, req, resp):
         try:
             helper = SecurityContextHelper(LCPConfig())
-            data = helper.getData()
             resp.body = helper.getData()
+        except ValueError as ve:
+            resp.status = HTTP_FAILED_DEPENDENCY
+            resp.body = json.dumps(ve.messages)
         except KeyError as e:
             traceback.print_exc()
             resp.body = json.dumps({"messages": "Unconfigured LCP"})

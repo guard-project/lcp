@@ -18,10 +18,17 @@ PARAMETER_TYPES = ['binary', 'boolean', 'choice',
 
 AgentTypeEnum = ['AgentType']
 AgentInstanceEnum = ['AgentInstance']
+AgentResourceEnum = ['AgentResource']
+AgentParameterEnum = ['AgentParameter']
 
 
 class AgentParameter(BaseSchema):
-    path = fields.Str(required=True, example="HeartbeatTime",
+    id = fields.Str(required=True, example='f445f6e7-e852-4b30-915b-98d19fe64d2e',
+                    description='Paramter Id')
+    # type = fields.Str(required=True, enum=AgentParamterEnum, example="AgentParameter",
+    #                  validate=marshmallow.validate.OneOf(AgentParameterEnum),
+    #                  description="Data type AgentParameter. Must be 'AgentParamter'")
+    path = ListOrOne(fields.Str, required=True, example="HeartbeatTime",
                       description="Name of the Parameter")
     type = fields.Str(required=True, example="integer",
                       description="Type of the Parameter: Int, Number, String...")
@@ -31,6 +38,10 @@ class AgentParameter(BaseSchema):
                              description="Some description explaining the parameter")
     list = fields.Boolean(required=False, example="true",
                           description="Marks whether a parameter is list or not")
+    example = fields.Str(required=False, example="time.hearbeat",
+                         description="Some example showing how the schema could be")
+    values = fields.List(fields.Str, required=False, example="list of elements",
+                         description="possible values of elements")
 
 
 class AgentActionSchema(BaseSchema):
@@ -40,15 +51,28 @@ class AgentActionSchema(BaseSchema):
                      description='Action command.')
     status = fields.Str(enum=AGENT_STATUS, example=AGENT_STATUS[0],
                         description='Update the status the of the agent-instance according to cmd condition')
+    description = fields.Str(required=False, example="This is one action for the schema ",
+                             description="Description of the action")
+    daemon = fields.Boolean(required=False, example="True or False",
+                            description="Configure as daemon the action execution")
 
 
 class AgentResource(BaseSchema):
-    path = fields.Str(required=True, example="/etc/myagent/config.yaml",
-                      description="Path of the Agent config file")
+    id = fields.Str(required=True, example="0725bcf3-8c21-4a10-8369-f3010488e6c3",
+                    description="ID of the Resource")
+    type = fields.Str(required=True, enum=AgentResourceEnum, example="AgentResource",
+                      validate=marshmallow.validate.OneOf(AgentResourceEnum),
+                      description="Data type AgentType. Must be 'AgentType'")
     description = fields.Str(required=False, example="This is the config file for an agent",
                              description="Description of the Resource")
     example = fields.Str(required=False, example="points to an example config file",
                          description="Config file example")
+    parameters = ListOrOne(fields.Nested(AgentParameter), required=False,
+                           description="List of configuration parameters used")
+    schema = fields.Str(required=True, example="yaml",
+                        description="Type of configuration file (json, yaml, etc.)")
+    source = fields.Str(required=False, example="/etc/example_agent/config.yaml",
+                        description="The config file where parameters are configured")
 
 
 class AgentType(BaseSchema):
@@ -59,20 +83,16 @@ class AgentType(BaseSchema):
                       description="Data type AgentType. Must be 'AgentType'")
     description = fields.Str(required=False, example="Example agent",
                              description="Description of the Agent type")
-    parameters = ListOrOne(fields.Nested(AgentParameter), required=False,
-                             description="List of configuration parameters used")
-    partner = fields.Str(required=True, example="guard-partner",
+    partner = fields.Str(required=False, example="guard-partner",
                          description="Name of the Partner who created the resource")
-    schema = fields.Str(required=True, example="yaml",
-                        description="Type of configuration file (json, yaml, etc.)")
-    source = fields.Str(required=False, example="/etc/example_agent/config.yaml",
-                        description="The config file where parameters are configured")
     actions = ListOrOne(fields.Nested(AgentActionSchema), required=False,
                           description="List of actions and expected result fro this agent")
     resources = ListOrOne(fields.Nested(AgentResource), required=False,
                             description="List of agents Resources that could be used")
     jsonSchema = fields.Str(required=False, example="https://json-schema.org/draft/2020-12/schema",
                                   description="Pointer for the json describing the data from this kind of agents")
+    schema = fields.Str(required=False, example="cb-defined",
+                        description="This is defined in CB - Not in LCP")
 
 
 class Agent(BaseSchema):
