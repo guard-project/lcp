@@ -80,7 +80,10 @@ def property_parser(schema, source, path, value):
             Log.get("property-parser").exception(f"Parsing property {k}", e)
             old_value = None
         if old_value != value:
-            content[k] = value
+            try:
+                content[k] = value
+            except TypeError:
+                content[k] = str(value)
             with open(source, "wb") as file:
                 content.store(file, encoding="utf-8")
                 return {"value": {"new": value, "old": old_value}}
