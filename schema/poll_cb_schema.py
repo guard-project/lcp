@@ -37,7 +37,8 @@ class LCPContextBrokerDefinition(BaseSchema):
     lcp = fields.Nested(LCPConnectionAsInCB, required=True)
     type_id = fields.Str(required=True, example="bare-metal", enum=EXEC_ENV_TYPE,
                                           description="Type of execution environment",
-                                          validate=marshmallow.validate.OneOf(EXEC_ENV_TYPE))
+                                          # validate=marshmallow.validate.OneOf(EXEC_ENV_TYPE)
+                                          )
     hostname = fields.Str(required=True, example="localhost",
                           description="Hostname of the Host where the LCP can be contacted. If a proxy is behind the LCP, the value should be the proxy host")
     interactions = fields.Nested(InteractsWithSchema, required=False)
