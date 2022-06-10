@@ -6,7 +6,6 @@ from schema.software_definitions import ContainerSchema, SoftwareDefinition
 from schema.artifacts import InteractsWithSchema
 from schema.security_functions import AgentType, Agent
 from schema.cloudschema import CloudSchema
-from schema.hardware_definitions import EXEC_ENV_TYPE
 from schema.network_link import NetworkLInkCB
 
 __all__ = [
@@ -35,9 +34,8 @@ class LCPContextBrokerDefinition(BaseSchema):
     enabled = fields.Boolean(required=True, example=True,
                          description="Describes if the LCP is enabled or not")
     lcp = fields.Nested(LCPConnectionAsInCB, required=True)
-    type_id = fields.Str(required=True, example="bare-metal", enum=EXEC_ENV_TYPE,
-                                          description="Type of execution environment",
-                                          # validate=marshmallow.validate.OneOf(EXEC_ENV_TYPE)
+    type_id = fields.Str(required=True, example="bare-metal",
+                                          description="Type of execution environment"
                                           )
     hostname = fields.Str(required=True, example="localhost",
                           description="Hostname of the Host where the LCP can be contacted. If a proxy is behind the LCP, the value should be the proxy host")
@@ -52,9 +50,6 @@ class LCPContextBrokerDefinition(BaseSchema):
 
 
 class PollSchema(BaseSchema):
-    # executionEnvironmentType = fields.Str(required=True, example="bare-metal", enum=EXEC_ENV_TYPE,
-    #                                       description="Type of execution environment",
-    #                                      validate=marshmallow.validate.OneOf(EXEC_ENV_TYPE))
     exec_env = fields.Nested(LCPContextBrokerDefinition, required=True,
                         description="LCP Description as required by the CB")
     lcpSons = fields.List(fields.Nested(LCPContextBrokerDefinition), required=False)
