@@ -137,8 +137,7 @@ class HostInformation:
         if cmd_res.returncode != 0:
             js_str_data = "none"
         else:
-            js_str_data = cmd_res.stdout.decode('utf-8').strip()
-
+            js_str_data = cmd_res.stdout.decode('utf-8').strip().lower()
 
         if js_str_data == "none":
             return "bare-metal"
@@ -146,6 +145,8 @@ class HostInformation:
             self.is_container = True
             if js_str_data in ["lxc", "lxc-libvirt"]:
                 return "container-lxc"
+            if js_str_data == "docker":
+                return "container-docker"
         if js_str_data in VM_TYPES:
             self.hypervisor = js_str_data
             return "vm"

@@ -131,7 +131,8 @@ class VirtualServer(BaseSchema):
                       description="Type of the object. It must be VirtualServer")
     hostname = fields.Str(required=True, example='corporario.example.com',
                           description="Network interface Name in the OS")
-    hypervisor = fields.Str(required=True, example='kvm', validate=marshmallow.validate.OneOf(HYPERVISORS),
+    hypervisor = fields.Str(required=True, example='kvm',
+                            # validate=marshmallow.validate.OneOf(HYPERVISORS),
                             description="Hypervisor name/technology")
     cloud_id = fields.Str(required=False, example="a4518fe5-9da9-43a5-8bc6-1433e28935f1",
                           description="Cloud ID -- Maybe None if somehow hosted")
@@ -189,7 +190,8 @@ class ExecutionEnvironment(BaseSchema):
                       description="Class ExecutionEnvironment. The value must be ExecutionEnvironment")
     executionType = fields.Str(required=True, example="bare-metal",
                       description="Type of Exec. Env. Deployment",
-                      validate=validate.OneOf(EXEC_ENV_TYPE))
+                      # validate=validate.OneOf(EXEC_ENV_TYPE)
+                               )
     environment = fields.Dict(required=True,
                               description="Definition of environment hardware. Can be one of the types LXCContainer, " \
                                           "DockerContainer, VirtualServer, BaremetalServer")
