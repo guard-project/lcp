@@ -84,7 +84,7 @@ class SecurityContextHelper:
 
                     for parameter in resource['parameters']:
                         cfg = {"config": {
-                            "path": [ parameter['path'] ],
+                            "path": parameter['path']
                             "schema": resource['schema'],
                             "source": resource['source'],
                         },
