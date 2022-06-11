@@ -38,6 +38,12 @@ class TestMyApp(LCPTestBase):
                                     body=json.dumps(agent_type_dict))
         assert(result.status_code == 201)
 
+        # Post agent type
+        agent_type_dict = loadExampleFile("vuln-scanner_agent_type.json"),
+        result = self.simulate_post("/agent/type", headers=headers,
+                                    body=json.dumps(agent_type_dict))
+        assert(result.status_code == 201)
+
         result = self.simulate_get("/poll", headers=headers)
         assert(result.status_code == 200)
         body = result.json

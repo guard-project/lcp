@@ -1,0 +1,46 @@
+{
+  "id": "urn:AgentType:id:vuln-scanner",
+  "type": "AgentType",
+  "description": "vuln-scanner agent",
+  "actions": [
+    {
+      "id": "start",
+      "cmd": "/opt/vuln_agent/launch.py --config /opt/vuln_agent/src/input/{config}.json",
+      "status": "started"
+    },
+    {
+      "id": "setup",
+      "cmd": "/opt/vuln_agent/launch.py --status"
+    },
+    {
+      "id": "clean",
+      "cmd": "/opt/vuln_agent/launch.py --delete"
+    }
+  ],
+  "resources": [
+    {
+      "id": "urn:AgentResource:id:vuln-scanner:config-resources",
+      "type": "AgentResource",
+      "source": "/opt/vuln_agent/src/input/{config}.json",
+      "schema": "json",
+      "parameters": [
+        {
+          "id": "urn:AgentResourceParameter:id:vuln-scanner:host",
+          "path": [
+            "hosts", 
+            "0", 
+            "host"
+          ],
+          "description": "Description of the first host configuration",
+          "example": "172.28.128.3",
+          "type": "string"
+        },
+        {
+          "id": "urn:AgentResourceParameter:id:vuln-scanner:config-file",
+          "path": "/opt/vuln_agent/src/input/{config}.json",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

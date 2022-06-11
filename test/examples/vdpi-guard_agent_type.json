@@ -22,7 +22,7 @@
       "status": "started"
     },
     {
-      "id": "stop",
+      "id": "force-stop",
       "cmd": "/opt/guard-vdpi/guard-lcp-vdpi-wrapper --force-stop",
       "description": "Force the stopping of vdpi agent",
       "status": "stopped"
