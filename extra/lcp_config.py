@@ -392,20 +392,13 @@ class LCPConfig(object):
             return True
 
 
-        def removeParent(self, elem):
-            found = False
-            if not elem in self.parents:
-                print(f"{elem} -- NOT FOUND")
-                return False
-            else:
-                print(f"{elem} -- YES FOUND")
-                self.parents=[]
-                self.parent_lcp_data = {}
-                self.network_links = []
-                self.generate_network_links()
-                return True
-            return False
+        def removeParent(self):
+            self.parents=[]
+            self.parent_lcp_data = {}
+            self.network_links = []
+            self.generate_network_links()
 
+            return True
 
         def setNetworkLink(self, exec_env_id, a_id, as_son=True):
             nl_id = f"{exec_env_id}-{a_id}"

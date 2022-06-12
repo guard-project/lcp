@@ -1,7 +1,8 @@
 from docstring import docstring
 from resource.base import BaseResource
 from marshmallow import ValidationError
-from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK, HTTP_ACCEPTED, HTTP_FAILED_DEPENDENCY
+from falcon import HTTP_NOT_ACCEPTABLE, HTTP_CREATED, HTTP_NOT_FOUND, HTTP_OK, HTTP_ACCEPTED,\
+    HTTP_FAILED_DEPENDENCY, HTTP_204
 from lib.http import HTTPMethod
 from schema.lcp_schemas import LCPDescription, LCPFatherConnection
 import json
@@ -122,18 +123,11 @@ class ParentLCPIdentification(BaseResource):
 
     @docstring(source="filiation/delete_lcp_parent.yaml")
     def on_delete(self, req, resp):
-        p = req.params
-        if not 'url' in p:
-            resp.body={"error": "?url=xxx parameter required to remove parent"}
-            resp.status = HTTP_NOT_FOUND
-            return
-        url = p['url']
-
-        self.log.notice(f"DELETE /lcp_parent -- url={url}")
-        r = LCPConfig().removeParent(url)
+        cfg = LCPConfig().parents
+        r = LCPConfig().removeParent()
         if r:
             ParentLCPIdentification.notified = []
-            resp.status = HTTP_ACCEPTED
+            resp.status = HTTP_204
         else:
             resp.status = HTTP_NOT_FOUND
 

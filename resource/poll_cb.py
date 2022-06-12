@@ -24,7 +24,6 @@ class PollContextBroker(BaseResource):
             resp.status = HTTP_FAILED_DEPENDENCY
             resp.body = json.dumps(ve.messages)
         except KeyError as e:
-            traceback.print_exc()
             resp.body = json.dumps({"messages": "Unconfigured LCP"})
             resp.status = HTTP_NOT_FOUND
 

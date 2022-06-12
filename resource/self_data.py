@@ -88,7 +88,7 @@ class InitialSelfConfiguration(BaseResource):
             resp.status = HTTP_NOT_ACCEPTABLE
 
     def on_delete(self, req, resp):
-        LCPConfig().reset()
+        LCPConfig().purge()
         ParentLCPIdentification.notifed = []
         LCPController().reset()
 
