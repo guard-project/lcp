@@ -21,6 +21,15 @@ class LCPController:
 
             LCPClient().set_controller(self)
 
+        def reset(self):
+            self.config = LCPConfig()
+            self.migrate_agents()
+            self.build_environment()
+
+            self.initial_messages_to_lcp_sent = False
+
+            LCPClient().set_controller(self)
+
         def migrate_agents(self):
             agents = self.config.agent_types
             for a in agents:

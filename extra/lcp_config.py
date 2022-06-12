@@ -30,6 +30,30 @@ class LCPConfig(object):
             with open(self.filename, "w") as f:
                 yaml.dump(self.config, f, default_flow_style=False)
 
+        def purge(self):
+            self.config = {}
+            self.lcp = None
+            self.sons = []
+            self.parents = []
+            self.user = ""
+            self.password = ""
+            self.deployment = {}
+            self.agents = []
+            self.testing = False
+            self.children_requested = []
+            self.self_software = []
+            self.self_containers = []
+            self.exec_env_type = None
+            self.agent_types = []
+            self.interactions = {"softwareArtifacts": [], "externalStorage": []}
+            self.parent_lcp_data = {}
+            self.cloud = {}
+            self.network_links = []
+
+            self.save()
+            self.reload(self.filename)
+
+
         def reset(self):
             self.config = {}
             self.lcp = None
@@ -144,6 +168,8 @@ class LCPConfig(object):
 
             try:
                 self.parent_lcp_data = self.config['parent_lcp_data']
+                if len(self.parents) > 1:
+                    self.parents[0] = self.parent_lcp_data['url']
             except KeyError:
                 pass
 
@@ -356,11 +382,30 @@ class LCPConfig(object):
 
         def setParent(self, elem):
             updated = False
+            if len(self.parents) > 0 and not elem['url'] == self.parents[0]:
+                return False
             if not elem['url'] in self.parents:
                 self.parents.append(elem['url'])
                 self.config['lcp_parents'] = self.parents
                 updated = True
             self.save()
+            return True
+
+
+        def removeParent(self, elem):
+            found = False
+            if not elem in self.parents:
+                print(f"{elem} -- NOT FOUND")
+                return False
+            else:
+                print(f"{elem} -- YES FOUND")
+                self.parents=[]
+                self.parent_lcp_data = {}
+                self.network_links = []
+                self.generate_network_links()
+                return True
+            return False
+
 
         def setNetworkLink(self, exec_env_id, a_id, as_son=True):
             nl_id = f"{exec_env_id}-{a_id}"
@@ -382,13 +427,14 @@ class LCPConfig(object):
             self.network_links.append(nl)
             self.config['network_links'] = self.network_links
 
+
         def generate_network_links(self):
             if not self.network_links == []:
                 return
 
             if len(self.sons) > 0:
                 for son in self.sons:
-                    self.setNetworkLink(self.lcp['id'], son[id])
+                    self.setNetworkLink(self.lcp['id'], son['id'])
 
             if not self.parent_lcp_data == {}:
                 self.setNetworkLink(self.parent_lcp_data['id'], self.lcp['id'])
@@ -427,6 +473,8 @@ class LCPConfig(object):
             d = self.getSonById(son_id)
             if d is not None:
                 self.sons.remove(d)
+                self.network_links = []
+                self.generate_network_links()
                 self.save()
             return d
 
@@ -527,8 +575,6 @@ class LCPConfig(object):
                 return []
 
         def set_parent_lcp_data(self, data):
-            if not 'id' in self.parent_lcp_data or not 'id' in self.lcp:
-                return
             self.parent_lcp_data = data
             self.config['parent_lcp_data'] = self.parent_lcp_data
             self.setNetworkLink(self.parent_lcp_data['id'], self.lcp['id'], True)

@@ -11,6 +11,7 @@ import json
 from extra.hw_helpers.host_info import HostInfoToLcpHelper
 from extra.controller import LCPController
 from extra.cb_helpers.security_context_helper import SecurityContextHelper
+from resource.lcp_resources import ParentLCPIdentification
 
 
 class DescribeDeployment(BaseResource):
@@ -85,6 +86,11 @@ class InitialSelfConfiguration(BaseResource):
         except ValidationError as e:
             resp.body = json.dumps(e.messages)
             resp.status = HTTP_NOT_ACCEPTABLE
+
+    def on_delete(self, req, resp):
+        LCPConfig().reset()
+        ParentLCPIdentification.notifed = []
+        LCPController().reset()
 
     def on_get(self, req, resp):
         lcp = json.dumps(LCPConfig().lcp)

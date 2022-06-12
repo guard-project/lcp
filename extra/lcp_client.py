@@ -15,6 +15,8 @@ from lib.token import create_token
 class BetweenLCPMessages(enum.Enum):
     PostLCPSon = 1
     PostLCPParent = 2
+    RemoveLCPParent = 3
+    RemoveLCPSon = 3
     END_THREAD = 100
 
 
@@ -60,6 +62,7 @@ class LCPClient(object):
                                 (parent['url'], resp.status_code))
                 if resp.status_code in (200, 201, 202):
                     data = resp.json()
+                    print(f" --- CONFIG set_parent_lcp_data: {data} ")
                     self.config.set_parent_lcp_data(data)
                     pass
                 if resp.status_code >= 500:

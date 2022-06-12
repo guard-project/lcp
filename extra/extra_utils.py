@@ -11,7 +11,7 @@ class UrlSchemaData:
         self.netloc = r.netloc
         self.port = 0
         self.host = ""
-        self.https = False
+        self.https = self.scheme == HTTPS_SCHEME
         self.get_port()
         self.path = r.path
 
@@ -27,5 +27,3 @@ class UrlSchemaData:
                 self.port = 80
             if self.scheme == HTTPS_SCHEME:
                 self.https = True
-
-

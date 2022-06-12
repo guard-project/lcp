@@ -76,10 +76,10 @@ class SonLCPIdentification(BaseResource):
 class ParentLCPIdentification(BaseResource):
     tag = {'name': 'lcp_relationships', 'description': 'Describes a "son" LCP linked in this service chain.'}
     routes = '/lcp_parent'
+    notified = []
 
     def __init__(self):
         self.log = Log.get('SonLCPIdentification')
-        self.notified = []
 
 
     @docstring(source="filiation/post_lcp_parent.yaml")
@@ -91,23 +91,26 @@ class ParentLCPIdentification(BaseResource):
             return
         resp_Data, valid = LCPDescription(method=HTTPMethod.POST) \
             .validate(data={})
-        payload = req.media if isinstance(req.media, list) else [req.media]
+        payload = req.media
         cfg = LCPConfig()
         self.log.notice("POST /lcp_parent -- ")
 
         try:
-            parent = LCPFatherConnection(many=True)
+            parent = LCPFatherConnection(many=False)
             parent.load(payload)
             parent.validate(payload)
-            for f in payload:
-                cfg.setParent(f)
-                if f not in self.notified:
-                    self.notified.append(f)
-                    LCPClient().send(LCPMessages(BetweenLCPMessages.PostLCPSon, f))
+
+            r = cfg.setParent(payload)
+            if r == False:
+                raise ValidationError("Parent already defined")
+            if payload not in ParentLCPIdentification.notified:
+                ParentLCPIdentification.notified.append(payload)
+                LCPClient().send(LCPMessages(BetweenLCPMessages.PostLCPSon, payload))
             resp.status = HTTP_ACCEPTED
             resp.body = json.dumps(self_lcp)
         except ValidationError as e:
             resp.status = HTTP_NOT_ACCEPTABLE
+            resp.body = json.dumps({"error": e.messages})
 
     @docstring(source="filiation/get_lcp_parents.yaml")
     def on_get(self, req, resp):
@@ -119,8 +122,20 @@ class ParentLCPIdentification(BaseResource):
 
     @docstring(source="filiation/delete_lcp_parent.yaml")
     def on_delete(self, req, resp):
-        self.log.notice("DELETE /lcp_parent --")
-        resp.status = HTTP_NOT_FOUND
+        p = req.params
+        if not 'url' in p:
+            resp.body={"error": "?url=xxx parameter required to remove parent"}
+            resp.status = HTTP_NOT_FOUND
+            return
+        url = p['url']
+
+        self.log.notice(f"DELETE /lcp_parent -- url={url}")
+        r = LCPConfig().removeParent(url)
+        if r:
+            ParentLCPIdentification.notified = []
+            resp.status = HTTP_ACCEPTED
+        else:
+            resp.status = HTTP_NOT_FOUND
 
 
 class SonRequestIdentificationById(BaseResource):

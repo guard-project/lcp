@@ -228,3 +228,12 @@ class TestMyApp(LCPTestBase):
             assert False
         except requests.exceptions.ConnectionError:
             assert True
+
+    def test_delete_parent(self):
+        headers = getAuthorizationHeaders()
+        cfg = getLCPConfig()
+
+        d={"params_csv": "i=sdfassss"}
+
+        r = self.simulate_delete("/lcp_parent", headers=headers, **d)
+        print(r)
