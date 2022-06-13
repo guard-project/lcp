@@ -59,7 +59,7 @@ class SonLCPIdentification(BaseResource):
 
     def test_if_im_in(self, url):
         try:
-            r = requests.get(url + "/lcp_parent")
+            r = requests.get(url + "/lcp_parent", timeout=1)
             self_url = LCPConfig().lcp['url']
             parents = r.json()
             for p in parents:
